@@ -169,6 +169,9 @@
   background: transparent;
   border: none;
   color: var(--slate-300);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   font-weight: 500;
   font-size: 0.875rem;
   cursor: pointer;
