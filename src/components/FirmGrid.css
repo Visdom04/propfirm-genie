@@ -270,3 +270,24 @@
 }
 
 .copy-btn:hover { color: #67e8f9; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .firm-table-section { padding: 1rem 1rem 3rem; }
+}
+
+@media (max-width: 768px) {
+  .firm-table-section { padding: 0.5rem 0.5rem 2rem; }
+  .firm-table-wrap { border-radius: 12px; }
+  /* Hide description on tablet to give more room */
+  .td-desc, .th-desc { display: none; }
+}
+
+@media (max-width: 480px) {
+  /* Further hide columns on mobile for readability */
+  .td-website, .th-website { display: none; }
+  .th-years, .td-years { display: none; }
+  .firm-table th, .firm-table td { padding: 0.75rem 0.6rem; }
+  .firm-title { font-size: 0.8rem; }
+  .alloc-value { font-size: 0.8rem; }
+}

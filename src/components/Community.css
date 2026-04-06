@@ -220,6 +220,17 @@
 .tracker-stat--yellow .tracker-stat-value { color: #fbbf24; }
 .tracker-stat--cyan   .tracker-stat-value { color: #67e8f9; }
 
+@media (max-width: 1024px) {
+  .community-section { padding: 1rem 1.5rem 3rem; }
+}
+
 @media (max-width: 768px) {
-  .community-section { grid-template-columns: 1fr; }
+  .community-section { grid-template-columns: 1fr; padding: 1rem 1rem 2.5rem; }
+  .tracker-stats { grid-template-columns: repeat(3, 1fr); }
+  .comm-card { padding: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .tracker-stats { grid-template-columns: 1fr; }
+  .tracker-title { font-size: 1.3rem; }
 }

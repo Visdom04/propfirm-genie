@@ -301,27 +301,22 @@
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
-  .search-bar {
-    width: 200px;
-  }
+  .search-bar { width: 200px; }
 }
 
 @media (max-width: 900px) {
-  .search-bar {
-    display: none;
-  }
-
-  .navbar-center {
-    display: none;
-  }
+  .search-bar { display: none; }
+  .navbar-center { display: none; }
+  .navbar-subnav { display: none; }
 }
 
-@media (max-width: 640px) {
-  .navbar-content {
-    padding: 0 1rem;
-  }
+@media (max-width: 768px) {
+  .btn-link { display: none; }
+  .navbar .btn-secondary { display: none; }
+  .navbar-content { padding: 0 1rem; }
+}
 
-  .btn-link {
-    display: none;
-  }
+@media (max-width: 480px) {
+  .logo-text { display: none; }
+  .navbar .btn-primary { padding: 7px 14px; font-size: 0.8rem; }
 }

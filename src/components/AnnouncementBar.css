@@ -45,6 +45,13 @@
 
 @media (max-width: 640px) {
   .announcement-text {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
+    white-space: normal;
+    text-align: center;
   }
+  .announcement-cta { display: none; }
+}
+
+@media (max-width: 400px) {
+  .announcement-icon { display: none; }
 }
