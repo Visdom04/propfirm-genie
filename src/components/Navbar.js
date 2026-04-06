@@ -1,0 +1,48 @@
+import './Navbar.css';
+
+export default function Navbar() {
+  return (
+    <nav className="navbar">
+      <div className="container navbar-content">
+        <div className="navbar-left">
+          <div className="logo">
+            <div className="logo-icon">P</div>
+            <span className="logo-text">Prop Firm <span className="text-blue">Match</span></span>
+          </div>
+          
+          <div className="search-bar glass">
+            <svg className="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" placeholder="Search prop firms..." />
+          </div>
+        </div>
+
+        <div className="navbar-center">
+          <div className="category-switcher glass">
+            <button className="switch-btn active">Forex</button>
+            <button className="switch-btn">Futures</button>
+            <button className="switch-btn">Crypto <span className="badge-new">NEW</span></button>
+          </div>
+        </div>
+
+        <div className="navbar-right">
+          <button className="btn-link">We're Hiring 🚀</button>
+          <button className="btn btn-secondary">Log in</button>
+          <button className="btn btn-primary">Sign Up</button>
+          <button className="menu-btn">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+
+      <div className="navbar-subnav">
+        <div className="container subnav-content">
+          {['Home', 'Offers', 'Challenges', 'Best Sellers', 'Reviews', 'Favorite Firms', 'Prop Firm Rules', 'Spreads', 'Payouts', 'Brokers'].map((item) => (
+            <a key={item} href="#" className={`subnav-link${item === 'Home' ? ' active' : ''}`}>
+              {item}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+  );
+}

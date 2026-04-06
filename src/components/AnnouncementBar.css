@@ -1,0 +1,50 @@
+.announcement-bar {
+  width: 100%;
+  background: linear-gradient(90deg, #67e8f9, #818cf8);
+  padding: 7px 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.announcement-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.announcement-icon {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.announcement-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+}
+
+.announcement-cta {
+  background: white;
+  color: #1e1e2e;
+  border: none;
+  padding: 5px 14px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.announcement-cta:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 640px) {
+  .announcement-text {
+    font-size: 0.78rem;
+  }
+}
