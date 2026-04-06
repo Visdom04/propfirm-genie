@@ -3,6 +3,10 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import CategoryNav from '@/components/CategoryNav';
 import FirmGrid from '@/components/FirmGrid';
+import Features from '@/components/Features';
+import Community from '@/components/Community';
+import Newsletter from '@/components/Newsletter';
+import Footer from '@/components/Footer';
 
 export const metadata = {
   title: 'Prop Firm Match | Compare the Best Prop Trading Firms of 2026',
@@ -17,16 +21,10 @@ export default function Home() {
       <Hero />
       <CategoryNav />
       <FirmGrid />
-      
-      <footer className="footer container glass">
-        <p>© 2026 Prop Firm Match. All rights reserved.</p>
-        <div className="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Contact</a>
-        </div>
-      </footer>
-      
+      <Features />
+      <Community />
+      <Newsletter />
+      <Footer />
     </main>
   );
 }

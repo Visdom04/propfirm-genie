@@ -1,0 +1,225 @@
+.community-section {
+  padding: 2rem 40px 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* ── Card base ── */
+.comm-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.comm-card:hover {
+  border-color: rgba(103,232,249,0.2);
+}
+
+.comm-card::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(103,232,249,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Top row ── */
+.comm-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comm-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--slate-500);
+  text-transform: uppercase;
+}
+
+.comm-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comm-icon--discord {
+  background: rgba(88,101,242,0.15);
+  border: 1px solid rgba(88,101,242,0.25);
+  color: #818cf8;
+}
+
+.comm-icon--tracker {
+  background: rgba(103,232,249,0.1);
+  border: 1px solid rgba(103,232,249,0.2);
+  color: #67e8f9;
+}
+
+/* ── Brand ── */
+.comm-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.comm-brand-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(103,232,249,0.15), rgba(129,140,248,0.2));
+  border: 1px solid rgba(103,232,249,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #67e8f9;
+  flex-shrink: 0;
+}
+
+.comm-brand-name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: white;
+  margin: 0;
+}
+
+.comm-stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 4px;
+}
+
+.comm-online {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4ade80;
+}
+
+.comm-members {
+  font-size: 0.75rem;
+  color: var(--slate-400);
+}
+
+/* ── Text ── */
+.comm-desc {
+  font-size: 0.88rem;
+  color: var(--slate-300);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.comm-desc-sub {
+  font-size: 0.82rem;
+  color: var(--slate-500);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Tags ── */
+.comm-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.comm-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--slate-400);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 99px;
+  padding: 4px 12px;
+}
+
+/* ── CTA ── */
+.comm-cta {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(180deg, #67e8f9, #818cf8);
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+  box-shadow: 0 0 24px rgba(103,232,249,0.2);
+}
+
+.comm-cta:hover {
+  opacity: 0.92;
+  box-shadow: 0 0 36px rgba(103,232,249,0.35);
+}
+
+/* ── Tracker title ── */
+.tracker-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+/* ── Tracker stats ── */
+.tracker-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.tracker-stat {
+  border-radius: 12px;
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid;
+}
+
+.tracker-stat--green  { background: rgba(74,222,128,0.06);  border-color: rgba(74,222,128,0.15);  }
+.tracker-stat--yellow { background: rgba(251,191,36,0.06);  border-color: rgba(251,191,36,0.15);  }
+.tracker-stat--cyan   { background: rgba(103,232,249,0.06); border-color: rgba(103,232,249,0.15); }
+
+.tracker-stat-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--slate-500);
+}
+
+.tracker-stat svg { color: var(--slate-500); }
+
+.tracker-stat-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: white;
+}
+
+.tracker-stat--green  .tracker-stat-value { color: #4ade80; }
+.tracker-stat--yellow .tracker-stat-value { color: #fbbf24; }
+.tracker-stat--cyan   .tracker-stat-value { color: #67e8f9; }
+
+@media (max-width: 768px) {
+  .community-section { grid-template-columns: 1fr; }
+}

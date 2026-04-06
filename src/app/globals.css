@@ -160,25 +160,6 @@ body {
   overflow: hidden;
 }
 
-.footer {
-  margin: 4rem auto 2rem;
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 16px;
-  color: var(--slate-500);
-  font-size: 0.9rem;
-}
-
-.footer-links {
-  display: flex;
-  gap: 2rem;
-}
-
-.footer-links a:hover {
-  color: white;
-}
 
 /* Background Blobs */
 .blobs {
