@@ -1,8 +1,9 @@
 .hero-wrapper {
   width: 100%;
   background-color: #0a0a14;
-  overflow: hidden;
+  position: relative;
 }
+
 
 .hero {
   padding: 4rem 0 0;
@@ -112,18 +113,22 @@
   z-index: 2;
 }
 
-/* Gradient glow behind image */
+/* Glow behind the image */
 .hero-image-wrap::before {
   content: '';
   position: absolute;
-  inset: -60px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
   background: radial-gradient(ellipse at center,
-    rgba(103, 232, 249, 0.35) 0%,
-    rgba(129, 140, 248, 0.30) 40%,
-    transparent 70%);
-  filter: blur(50px);
+    rgba(103, 232, 249, 0.55) 0%,
+    rgba(129, 140, 248, 0.45) 40%,
+    rgba(103, 232, 249, 0.15) 65%,
+    transparent 80%);
+  filter: blur(35px);
   z-index: -1;
-  border-radius: 50%;
 }
 
 .hero-image {
@@ -131,8 +136,8 @@
   height: auto;
   display: block;
   border-radius: 12px 12px 0 0;
-  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 40%, rgba(0,0,0,0.6) 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, rgba(0,0,0,0.6) 70%, transparent 100%);
 }
 
 /* ── Floating animation ── */
