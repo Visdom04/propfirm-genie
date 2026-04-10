@@ -1,4 +1,17 @@
 :root {
+  /* ── Type tokens ──────────────────────────────────────────────── */
+  /* Font stack aliases */
+  --font-display: var(--font-outfit), 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-body:    var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Fluid scale — display/editorial (hero + section heads) */
+  --type-hero:    clamp(2.5rem, 5.5vw + 0.6rem, 5rem);
+  --type-section: clamp(1.75rem, 2.8vw + 0.6rem, 2.75rem);
+  --type-card-h:  clamp(1.05rem, 1.2vw + 0.35rem, 1.3rem);
+  --type-body-lg: clamp(1rem, 0.9vw + 0.4rem, 1.15rem);
+  --type-body:    clamp(0.875rem, 0.5vw + 0.35rem, 1rem);
+  --type-label:   0.72rem;
+
   /* Theme: Teal → Blue → Purple */
   --background: #0a0a14;
   --foreground: #ffffff;
@@ -50,8 +63,9 @@ html, body {
 }
 
 h1, h2, h3 {
+  font-family: var(--font-display);
   letter-spacing: -0.04em;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 body {

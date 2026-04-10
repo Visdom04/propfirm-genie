@@ -1,5 +1,19 @@
 import Image from 'next/image';
+import { firms } from '@/data/firms';
 import './Hero.css';
+
+/** Five recognizable firms for the glass showcase strip (order is intentional for visual balance). */
+const HERO_SHOWCASE_SLUGS = [
+  'The5%ers',
+  'FundingPips',
+  'Alpha Capital',
+  'AquaFunded',
+  'Blue Guardian',
+];
+
+const heroShowcaseFirms = HERO_SHOWCASE_SLUGS.map((name) => firms.find((f) => f.name === name)).filter(
+  Boolean
+);
 
 const cards = [
   { id: 1, logo: '/firm/bg-partner.svg',          name: 'Blue Guardian', platform: 'MT5',      balance: '$53,897.78',  status: 'Evaluation', style: { top: '5%',  left: '2%'  }, delay: '0s'    },
@@ -51,6 +65,35 @@ export default function Hero() {
           <div className="hero-actions">
             <button className="hero-btn-primary">Get Started</button>
             <button className="hero-btn-secondary">Watch Video</button>
+          </div>
+
+          <div className="hero-partners-glass" aria-label="Featured prop trading firms">
+            <span className="hero-partners-glass__label">Compare top firms</span>
+            <div className="hero-partners-glass__inner">
+              <div className="hero-partners-glass__logos">
+                {heroShowcaseFirms.map((firm, i) => (
+                  <div
+                    key={firm.name}
+                    className="hero-float-logo"
+                    style={{
+                      '--float-delay': `${i * 0.45}s`,
+                      '--float-duration': `${3.2 + (i % 3) * 0.35}s`,
+                    }}
+                  >
+                    <div className="hero-float-logo__halo" aria-hidden />
+                    <div className="hero-float-logo__cell">
+                      <Image
+                        src={firm.logo}
+                        alt={`${firm.name} logo`}
+                        width={44}
+                        height={44}
+                        className="hero-float-logo__img"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
