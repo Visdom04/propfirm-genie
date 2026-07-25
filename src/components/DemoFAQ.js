@@ -1,15 +1,20 @@
 'use client';
 
 import { useId } from 'react';
+import { SITE_URL } from '@/lib/brand';
 import './DemoFAQ.css';
 
 const FAQ_ITEMS = [
   {
-    q: 'What is a prop firm?',
-    a: 'A proprietary trading firm provides capital so you can trade their money instead of risking only your own. You typically pass an evaluation or challenge that proves risk discipline; if you meet the rules, you keep a share of profits while the firm carries most of the capital risk.',
+    q: 'How fast are payouts?',
+    a: 'Payout speed depends on the firm you choose. Prop Firm Wise surfaces each partner’s payout cadence up front — weekly, bi-weekly, or monthly — so you can match firms to how you actually trade and withdraw.',
   },
   {
-    q: 'How does PropFirmGenie pick a match?',
+    q: 'What is a prop firm?',
+    a: 'A proprietary trading firm provides capital so you can trade their money instead of risking only your own. You typically pass an evaluation that proves risk discipline; if you meet the rules, you keep a share of profits while the firm carries most of the capital risk.',
+  },
+  {
+    q: 'How does Prop Firm Wise pick a match?',
     a: 'You tell us your budget, drawdown comfort, payout cadence, markets, and account size. We score firms against those preferences and surface options that fit — so you spend less time reading fine print and more time comparing real trade-offs.',
   },
   {
@@ -22,11 +27,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Do you execute trades or hold my capital?',
-    a: 'No. PropFirmGenie is a discovery and comparison layer. You open accounts and pay evaluation fees directly with the firms you choose. We don’t custody funds or place trades on your behalf.',
-  },
-  {
-    q: 'How often is comparison data refreshed?',
-    a: 'We aim to refresh listings and promo flags frequently as firms change rules and pricing. Markets move fast — double-check time-sensitive details (like discount codes) on the firm’s checkout page before you commit.',
+    a: 'No. Prop Firm Wise is a discovery and comparison layer. You open accounts and pay evaluation fees directly with the firms you choose. We don’t custody funds or place trades on your behalf.',
   },
 ];
 
@@ -37,12 +38,11 @@ export default function DemoFAQ() {
     <section className="demo-faq" id="faq" aria-labelledby="demo-faq-title">
       <div className="demo-faq__inner">
         <header className="demo-faq__head">
-          <p className="demo-faq__eyebrow">Questions</p>
           <h2 id="demo-faq-title" className="demo-faq__title">
-            Straight answers, <span className="demo-faq__title-accent">no jargon wall</span>
+            Frequently Asked Questions?
           </h2>
           <p className="demo-faq__sub">
-            The basics traders ask before choosing a challenge — in plain language, aligned with how you already filter firms on this page.
+            We&apos;ve got <span className="demo-faq__sub-accent">answers</span>
           </p>
         </header>
 
@@ -52,13 +52,15 @@ export default function DemoFAQ() {
               key={item.q}
               className="demo-faq__item"
               name="demo-faq"
-              style={{ animationDelay: `${index * 0.05}s` }}
+              open={index === 0}
             >
               <summary className="demo-faq__summary">
                 <span className="demo-faq__q-text" id={`${baseId}-q-${index}`}>
                   {item.q}
                 </span>
-                <span className="demo-faq__chevron" aria-hidden="true" />
+                <span className="demo-faq__toggle" aria-hidden="true">
+                  <span className="demo-faq__toggle-icon" />
+                </span>
               </summary>
               <div
                 className="demo-faq__panel"
@@ -73,7 +75,7 @@ export default function DemoFAQ() {
 
         <p className="demo-faq__footnote">
           Still stuck?{' '}
-          <a href="#" className="demo-faq__link">
+          <a href={`${SITE_URL}/Support`} className="demo-faq__link">
             Open the help center
           </a>{' '}
           or compare live rules in the table above.

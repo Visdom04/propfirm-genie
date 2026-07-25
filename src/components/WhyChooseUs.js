@@ -211,7 +211,7 @@ function CardCompare({ rootRef }) {
         </div>
         <h3 className="why-card__heading">AI-powered comparison</h3>
         <p className="why-card__text">
-          Side-by-side rules, fees, and platforms — ranked for how you actually trade, not generic star ratings.
+          Side-by-side rules, fees, and platforms, ranked for how you actually trade, not generic star ratings.
         </p>
       </div>
       <div className="why-card__viz">
@@ -284,7 +284,7 @@ function CardRewards({ rootRef }) {
         </div>
         <h3 className="why-card__heading">Best rewards</h3>
         <p className="why-card__text">
-          Spot the strongest promos, fee breaks, and loyalty perks across firms — without digging through Discord
+          Spot the strongest promos, fee breaks, and loyalty perks across firms without digging through Discord
           threads.
         </p>
       </div>
@@ -388,7 +388,7 @@ function CardLiveIntel({ rootRef }) {
         </div>
         <h3 className="why-card__heading">Live firm intelligence</h3>
         <p className="why-card__text">
-          Programs shift fast — we refresh rankings and highlights so you are not acting on last month&apos;s
+          Programs shift fast. We refresh rankings and highlights so you are not acting on last month&apos;s
           spreadsheet.
         </p>
       </div>
@@ -515,15 +515,14 @@ export default function WhyChooseUs() {
 
   return (
     <section ref={sectionRef} className="why-choose" aria-labelledby="why-choose-title">
+      <div className="why-choose__glow" aria-hidden />
       <div className="why-choose__inner">
         <header className="why-choose__head">
-          <p className="why-choose__eyebrow">Why choose us</p>
           <h2 id="why-choose-title" ref={titleRef} className="why-choose__title">
-            Built for traders who{' '}
-            <span className="why-choose__title-accent">hate homework</span>
+            Why Choose <span className="why-choose__title-accent">Prop Firm Wise</span>
           </h2>
           <p ref={subRef} className="why-choose__sub">
-            Three reasons PropFirmGenie feels less like a directory and more like a decision engine.
+            Three reasons we feel less like a directory and more like a decision engine.
           </p>
         </header>
 

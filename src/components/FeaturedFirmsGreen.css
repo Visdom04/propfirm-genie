@@ -1,0 +1,484 @@
+/* ═══════════════════════════════════════════════════════════════════
+   FeaturedFirms — flat coverflow carousel (center-focus, no fan tilt)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.feat-firms {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: clamp(40px, 5vw, 72px) clamp(16px, 3vw, 32px) clamp(48px, 5vw, 80px);
+  overflow: hidden;
+}
+
+.feat-firms::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.22), transparent);
+}
+
+/* Center spotlight glow — follows active card */
+.feat-firms__spotlight {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(420px, 70vw);
+  height: min(520px, 80vw);
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 50%,
+    rgba(34, 197, 94, 0.28) 0%,
+    rgba(6, 78, 59, 0.12) 40%,
+    transparent 72%
+  );
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.feat-firms__inner {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(16px, 2vw, 24px);
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feat-firms--visible .feat-firms__inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feat-firms__inner {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Header ──────────────────────────────────────────────────────── */
+.feat-firms__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 560px;
+}
+
+.feat-firms__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.28);
+  color: #bbf7d0;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.feat-firms__eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #10b981 100%);
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+  animation: featFirmsPulse 1.8s ease-out infinite;
+}
+
+@keyframes featFirmsPulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); }
+  70% { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.feat-firms__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-section);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #fff;
+  line-height: 1.15;
+}
+
+.feat-firms__title-accent {
+  background: var(--gradient-headline);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.feat-firms__sub {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(148, 163, 184, 0.88);
+}
+
+/* ── Carousel stage ──────────────────────────────────────────────── */
+.feat-firms__stage {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: clamp(340px, 38vw, 440px);
+  margin-top: clamp(8px, 1.5vw, 16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --fc-step: clamp(96px, 9vw, 140px);
+  --fc-tilt: 10deg;
+  --fc-arc: 22px;
+  outline: none;
+}
+
+.feat-firms__track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Card — fanned hand-of-cards, rotateZ + arc lift ─────────────── */
+.fc-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(150px, 13vw, 196px);
+  aspect-ratio: 2 / 3;
+  transform: translate(-50%, -50%)
+    translateX(calc(var(--fc-dist) * var(--fc-step)))
+    translateY(calc(var(--fc-abs) * var(--fc-arc)))
+    rotateZ(calc(var(--fc-dist) * var(--fc-tilt)))
+    scale(calc(1 - var(--fc-abs) * 0.1));
+  transform-origin: 50% 115%;
+  opacity: calc(1 - var(--fc-abs) * 0.22);
+  transition:
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.65s ease;
+  will-change: transform, opacity;
+}
+
+.fc-card--active {
+  opacity: 1;
+}
+
+.fc-card__hit {
+  all: unset;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.fc-card--active .fc-card__hit {
+  border-color: rgba(134, 239, 172, 0.35);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    0 0 48px rgba(34, 197, 94, 0.25);
+  cursor: default;
+}
+
+.fc-card__bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 90% at 50% 18%,
+    #12261c 0%,
+    #0a1410 55%,
+    #050a08 100%
+  );
+}
+
+.fc-card__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(closest-side, var(--fc-glow, #10b981) 0%, transparent 68%);
+  opacity: 0.42;
+  filter: blur(18px);
+  mix-blend-mode: screen;
+  transition: opacity 0.65s ease;
+}
+
+.fc-card--active .fc-card__glow {
+  opacity: 0.6;
+}
+
+.fc-card__logo-zone {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24% 18% 34%;
+}
+
+.fc-card__logo {
+  width: 68%;
+  height: auto;
+  max-height: 44%;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 22px var(--fc-glow, #10b981))
+    drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.65s ease;
+}
+
+.fc-card--active .fc-card__logo {
+  transform: scale(1.04);
+}
+
+/* Dim overlay on side cards — like streaming coverflow */
+.fc-card__dim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, calc(0.06 + var(--fc-abs) * 0.46));
+  transition: background 0.65s ease;
+  pointer-events: none;
+}
+
+.fc-card--active .fc-card__dim {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.28) 32%,
+    transparent 58%
+  );
+}
+
+/* Side-card chrome stays hidden — reference shows icon + name only until a card is active */
+.fc-card__badge,
+.fc-card__rating,
+.fc-card__discount,
+.fc-card__meta {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fc-card--active .fc-card__badge,
+.fc-card--active .fc-card__rating,
+.fc-card--active .fc-card__discount,
+.fc-card--active .fc-card__meta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fc-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1e1b4b;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.fc-card__rating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  color: #fbbf24;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.fc-card__star {
+  width: 11px;
+  height: 11px;
+}
+
+.fc-card__footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 12px 18px;
+  text-align: center;
+}
+
+.fc-card__discount {
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: rgba(74, 222, 128, 0.9);
+  color: #04140e;
+  font-family: var(--font-body);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.fc-card__name {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.fc-card__meta {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(226, 232, 240, 0.72);
+}
+
+/* ── Nav arrows ──────────────────────────────────────────────────── */
+.feat-firms__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.88);
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.feat-firms__nav:hover {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(134, 239, 172, 0.35);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.feat-firms__nav--prev {
+  left: clamp(0px, 1vw, 8px);
+}
+
+.feat-firms__nav--next {
+  right: clamp(0px, 1vw, 8px);
+}
+
+/* ── Dots ────────────────────────────────────────────────────────── */
+.feat-firms__dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: clamp(10px, 1.5vw, 18px);
+}
+
+.feat-firms__dot {
+  all: unset;
+  box-sizing: border-box;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  transition: background 0.3s ease, width 0.3s ease;
+}
+
+.feat-firms__dot:hover {
+  background: rgba(255, 255, 255, 0.36);
+}
+
+.feat-firms__dot--on {
+  width: 22px;
+  border-radius: 4px;
+  background: var(--gradient-vibrant);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .feat-firms__stage {
+    --fc-step: 132px;
+    height: clamp(300px, 78vw, 380px);
+  }
+
+  .fc-card {
+    width: clamp(160px, 52vw, 200px);
+  }
+
+  .feat-firms__nav {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feat-firms__stage {
+    --fc-step: 108px;
+  }
+
+  .fc-card {
+    width: clamp(140px, 58vw, 170px);
+  }
+
+  .feat-firms__nav--prev { left: 0; }
+  .feat-firms__nav--next { right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feat-firms__eyebrow-dot {
+    animation: none;
+  }
+
+  .fc-card,
+  .fc-card__logo,
+  .fc-card__dim,
+  .fc-card__hit {
+    transition: none;
+  }
+}

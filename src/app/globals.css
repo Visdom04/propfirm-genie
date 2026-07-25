@@ -1,8 +1,9 @@
 :root {
   /* ── Type tokens ──────────────────────────────────────────────── */
-  /* Font stack aliases */
-  --font-display: var(--font-outfit), 'Outfit', ui-sans-serif, system-ui, sans-serif;
-  --font-body:    var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* Font stack — geometric sans + editorial serif accent */
+  --font-display: var(--font-sans), 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-body:    var(--font-sans), 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif:   var(--font-instrument), 'Instrument Serif', Georgia, 'Times New Roman', serif;
 
   /* Fluid scale — display/editorial (hero + section heads) */
   --type-hero:    clamp(2.5rem, 5.5vw + 0.6rem, 5rem);
@@ -12,37 +13,62 @@
   --type-body:    clamp(0.875rem, 0.5vw + 0.35rem, 1rem);
   --type-label:   0.72rem;
 
-  /* Theme: Teal → Blue → Purple */
-  --background: #0a0a14;
+  /* Theme: purple → blue (indigo midpoint) */
+  --background: #05060f;
   --foreground: #ffffff;
 
-  --accent-purple: #8b5cf6;
+  --demo-bg-deep: #05060f;
+  --demo-bg-mid: #0a0f24;
+  --demo-glow-core: #5b21b6;
+  --demo-glow-rich: #1e3a8a;
+  --demo-accent-lavender: #c4b5fd;
+  --demo-accent-lilac: #dbeafe;
+
+  --accent-purple: #a855f7;
   --accent-blue: #3b82f6;
-  --accent-cyan: #06b6d4;
-  --accent-teal: #14b8a6;
-  --accent-pink: #f472b6;
+  --accent-indigo: #6366f1;
+  --accent-cyan: #60a5fa;
+  --accent-teal: #818cf8;
+  --accent-pink: #e879f9;
 
   --slate-300: #cbd5e1;
   --slate-400: #94a3b8;
   --slate-500: #64748b;
-  --slate-700: #334155;
-  --slate-800: #0f172a;
-  --slate-900: #020617;
+  --slate-700: #1e293b;
+  --slate-800: #0a0f24;
+  --slate-900: #05060f;
 
   /* Glassmorphism */
   --glass-bg: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-blur: blur(20px);
 
-  /* Teal-first gradients */
-  --gradient-primary: linear-gradient(180deg, #67e8f9, #818cf8);
-  --gradient-solid: linear-gradient(180deg, #67e8f9, #818cf8);
-  --gradient-vibrant: linear-gradient(180deg, #67e8f9, #818cf8);
+  /* Purple → blue gradients */
+  --gradient-primary: linear-gradient(135deg, #c4b5fd 0%, #a855f7 38%, #6366f1 68%, #3b82f6 100%);
+  --gradient-solid: linear-gradient(135deg, #e0e7ff 0%, #a855f7 40%, #4f46e5 72%, #2563eb 100%);
+  --gradient-vibrant: linear-gradient(180deg, #ffffff 0%, #e0e7ff 38%, #93c5fd 100%);
+  --gradient-headline: linear-gradient(180deg, #ffffff 0%, #ddd6fe 34%, #818cf8 62%, #60a5fa 100%);
+  --gradient-card-glass: linear-gradient(
+    145deg,
+    rgba(91, 33, 182, 0.26) 0%,
+    rgba(79, 70, 229, 0.16) 40%,
+    rgba(30, 58, 138, 0.22) 70%,
+    rgba(5, 6, 15, 0.55) 100%
+  );
   --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
 
+  /* Trustpilot accent (reviews + FAQ) */
+  --tp-green: #00b67a;
+  --tp-green-mid: #00a06b;
+  --tp-green-bright: #2dd4a0;
+  --tp-green-dim: rgba(0, 182, 122, 0.22);
+  --tp-green-glow: rgba(0, 182, 122, 0.38);
+  --tp-gradient: linear-gradient(90deg, #34d399 0%, #00b67a 48%, #10b981 100%);
+  --tp-gradient-soft: linear-gradient(135deg, #6ee7b7 0%, #00b67a 55%, #059669 100%);
+
   /* Glow Effects */
-  --glow-purple: 0 0 40px rgba(139, 92, 246, 0.4);
-  --glow-cyan: 0 0 40px rgba(6, 182, 212, 0.4);
+  --glow-purple: 0 0 48px rgba(168, 85, 247, 0.38);
+  --glow-cyan: 0 0 40px rgba(96, 165, 250, 0.3);
   --glow-blue: 0 0 40px rgba(59, 130, 246, 0.4);
 }
 
@@ -57,14 +83,14 @@ html, body {
   overflow-x: hidden;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-outfit), sans-serif;
-  letter-spacing: -0.01em;
+  font-family: var(--font-body);
+  letter-spacing: -0.015em;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   font-weight: 700;
 }
 
@@ -120,7 +146,7 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 50px rgba(37, 99, 235, 0.6);
+  box-shadow: 0 0 50px rgba(99, 102, 241, 0.55);
 }
 
 .btn-secondary {
@@ -214,7 +240,7 @@ body {
 .blob-2 {
   bottom: -100px;
   left: -100px;
-  background: var(--accent-blue);
+  background: var(--accent-purple);
 }
 
 @media (max-width: 768px) {

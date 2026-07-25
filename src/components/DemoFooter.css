@@ -1,4 +1,4 @@
-/* DemoFooter — AuthPlat structure · Prop Firm Match content · DemoHero tokens */
+/* DemoFooter — Prop Firm Wise footer · DemoHero tokens */
 
 .demo-footer {
   position: relative;
@@ -59,11 +59,18 @@
 
 .demo-footer__logo-icon {
   display: flex;
-  filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.35));
+  filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.35));
+}
+
+.demo-footer__logo-img {
+  display: block;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .demo-footer__logo-text {
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -71,7 +78,7 @@
 }
 
 .demo-footer__logo-accent {
-  color: #60a5fa;
+  color: #818cf8;
 }
 
 .demo-footer__socials {
@@ -123,7 +130,7 @@
   width: 100%;
   padding: 11px 16px;
   border-radius: 100px;
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 500;
   color: rgba(226, 232, 240, 0.88);
@@ -150,7 +157,7 @@
 
 .demo-footer__pill-icon {
   display: flex;
-  color: rgba(147, 197, 253, 0.85);
+  color: rgba(165, 180, 252, 0.85);
   flex-shrink: 0;
 }
 
@@ -171,7 +178,7 @@
 }
 
 .demo-footer__lang .demo-footer__pill-icon {
-  color: rgba(147, 197, 253, 0.85);
+  color: rgba(165, 180, 252, 0.85);
 }
 
 .demo-footer__lang-select {
@@ -182,7 +189,7 @@
   background: transparent;
   border: none;
   outline: none;
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 500;
   color: rgba(226, 232, 240, 0.92);
@@ -199,7 +206,7 @@
 }
 
 .demo-footer__privacy {
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 0.78rem;
   line-height: 1.45;
   color: rgba(148, 163, 184, 0.65);
@@ -215,7 +222,7 @@
 /* ── Link columns ──────────────────────────────────────────────── */
 .demo-footer__heading {
   margin: 0 0 14px;
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -233,7 +240,7 @@
 }
 
 .demo-footer__link {
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 400;
   color: rgba(203, 213, 225, 0.78);
@@ -274,7 +281,7 @@
 
 .demo-footer__copy {
   margin: 0;
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 0.8125rem;
   color: rgba(148, 163, 184, 0.72);
 }
@@ -286,7 +293,7 @@
 }
 
 .demo-footer__legal-link {
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 0.8125rem;
   color: rgba(148, 163, 184, 0.72);
   text-decoration: none;
@@ -295,45 +302,6 @@
 
 .demo-footer__legal-link:hover {
   color: rgba(255, 255, 255, 0.88);
-}
-
-/* ── Massive “GENIE” (decorative) ──────────────────────────────── */
-.demo-footer__mega-wrap {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-  user-select: none;
-  margin-top: clamp(-12px, -1vw, 0px);
-  padding-bottom: clamp(8px, 2vw, 20px);
-  /* Crop overflow like reference */
-  overflow: hidden;
-  line-height: 0;
-}
-
-.demo-footer__mega {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  font-weight: 800;
-  font-size: clamp(4.5rem, 19vw, 13.5rem);
-  letter-spacing: -0.045em;
-  line-height: 0.78;
-  text-transform: uppercase;
-  background: linear-gradient(
-    180deg,
-    rgba(226, 232, 240, 0.38) 0%,
-    rgba(148, 163, 184, 0.14) 38%,
-    rgba(100, 116, 139, 0.04) 62%,
-    rgba(15, 23, 42, 0) 88%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  transform: translateY(18%);
-  filter: drop-shadow(0 0 48px rgba(96, 165, 250, 0.06));
 }
 
 @media (prefers-reduced-motion: reduce) {

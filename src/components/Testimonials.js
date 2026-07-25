@@ -1,354 +1,205 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react';
-import anime from 'animejs';
+import { BRAND_NAME } from '@/lib/brand';
 import './Testimonials.css';
 
-/* ── Data ─────────────────────────────────────────────────────────── */
-const FIRM_TABS = [
-  { id: 'ftmo', label: 'FTMO', shape: 'circle' },
-  { id: 'mff', label: 'MFF', shape: 'square' },
-  { id: 'topstep', label: 'TOPSTEP', shape: 'diamond' },
-  { id: 'e8', label: 'E8', shape: 'ring' },
-];
+const REVIEW_COUNT = '1,150';
 
 const TESTIMONIALS = [
-  [
-    {
-      name: 'Alex Rivera',
-      role: 'Prop Trader',
-      firm: 'Funded via FTMO',
-      initials: 'AR',
-      color: '#60a5fa',
-      stars: 5,
-      quote:
-        '"PropFirmGenie matched me with the perfect $100k account in under 2 minutes. Their AI understood my low-drawdown style and pointed me straight to FTMO — passed first try."',
-    },
-    {
-      name: 'Sarah Kim',
-      role: 'Forex Specialist',
-      firm: 'Funded via MFF',
-      initials: 'SK',
-      color: '#a78bfa',
-      stars: 5,
-      quote:
-        '"The comparison table saved me weeks of research. Side-by-side payout rules, drawdown limits, and fees — all in one view. I went from confused to funded in 3 weeks."',
-    },
-    {
-      name: 'Marcus T.',
-      role: 'Futures Trader',
-      firm: 'Funded via TopStep',
-      initials: 'MT',
-      color: '#34d399',
-      stars: 5,
-      quote:
-        "\"As a futures trader I was always overlooked by generic sites. PropFirmGenie surfaced TopStep's combine rules and showed me exactly why I was the right fit. Game-changer.\"",
-    },
-  ],
-  [
-    {
-      name: 'Priya Sharma',
-      role: 'Swing Trader',
-      firm: 'Funded via E8 Markets',
-      initials: 'PS',
-      color: '#f472b6',
-      stars: 5,
-      quote:
-        '"I tried three firms before finding PropFirmGenie. The filter for payout speed alone helped me avoid two firms with terrible withdrawal tracks. Now funded and profitable."',
-    },
-    {
-      name: 'James O.',
-      role: 'Crypto Desk Trader',
-      firm: 'Funded via FTMO',
-      initials: 'JO',
-      color: '#fb923c',
-      stars: 5,
-      quote:
-        '"The live intelligence feature flagged a rule change at my original target firm the week before I was going to sign up. Saved me money and steered me to a better option."',
-    },
-    {
-      name: 'Li Wei',
-      role: 'Algo Developer',
-      firm: 'Funded via MFF',
-      initials: 'LW',
-      color: '#60a5fa',
-      stars: 4,
-      quote:
-        '"Finding algo-friendly firms used to require deep-diving Reddit threads. PropFirmGenie surfaced EA-allowed accounts with scaling plans instantly. Brilliant product."',
-    },
-  ],
+  {
+    id: 'alex',
+    name: 'Alex Rivera',
+    reviews: 12,
+    location: 'United States',
+    timeAgo: '18 hours ago',
+    avatar: 'AR',
+    stars: 5,
+    headline: 'Found my $100k match in under two minutes',
+    body: 'Prop Firm Wise understood my low-drawdown style and pointed me straight to FTMO. Passed the evaluation on my first attempt — the filters alone saved hours of research.',
+  },
+  {
+    id: 'sarah',
+    name: 'Sarah Kim',
+    reviews: 8,
+    location: 'United Kingdom',
+    timeAgo: '2 days ago',
+    avatar: 'SK',
+    stars: 5,
+    headline: 'Side-by-side rules finally made sense',
+    body: 'Payout rules, drawdown limits, and fees in one comparison view. I went from confused to funded in three weeks without digging through Discord threads.',
+  },
+  {
+    id: 'marcus',
+    name: 'Marcus T.',
+    reviews: 21,
+    location: 'United States',
+    timeAgo: '5 days ago',
+    avatar: 'MT',
+    stars: 5,
+    headline: 'TopStep rules surfaced instantly',
+    body: "As a futures trader I was always overlooked by generic sites. Prop Firm Wise showed me exactly why TopStep's combine rules fit how I trade. Game-changer.",
+  },
+  {
+    id: 'priya',
+    name: 'Priya Sharma',
+    reviews: 6,
+    location: 'India',
+    timeAgo: '3 days ago',
+    avatar: 'PS',
+    stars: 5,
+    headline: 'Payout speed filter saved me from a bad pick',
+    body: 'I almost signed with a firm that looked great on paper. The payout cadence filter flagged slow withdrawals — switched to a better match and got funded within a month.',
+  },
+  {
+    id: 'james',
+    name: 'James O.',
+    reviews: 15,
+    location: 'Canada',
+    timeAgo: '1 week ago',
+    avatar: 'JO',
+    stars: 5,
+    headline: 'Caught a rule change before I paid',
+    body: 'Live firm intelligence flagged an evaluation rule update the week before checkout. Saved me money and steered me to a firmer with clearer scaling terms.',
+  },
+  {
+    id: 'li',
+    name: 'Li Wei',
+    reviews: 9,
+    location: 'Singapore',
+    timeAgo: '4 days ago',
+    avatar: 'LW',
+    stars: 5,
+    headline: 'Algo-friendly firms in one search',
+    body: 'Finding EA-allowed accounts used to mean hours on Reddit. Prop Firm Wise surfaced scaling plans and platform support instantly — passed and scaled on first try.',
+  },
 ];
 
-/* ── Stars ────────────────────────────────────────────────────────── */
-function Stars({ count }) {
+const MARQUEE_ITEMS = [...TESTIMONIALS, ...TESTIMONIALS];
+
+function TrustpilotStarBox() {
+  return (
+    <span className="tp-star-box" aria-hidden>
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2l2.35 7.23H22l-6.1 4.43 2.33 7.2L12 17.1l-6.23 4.76 2.33-7.2L2 9.23h7.65L12 2z" />
+      </svg>
+    </span>
+  );
+}
+
+function CardStars({ count }) {
   return (
     <div className="testi-stars" aria-label={`${count} out of 5 stars`}>
-      {[1, 2, 3, 4, 5].map(i => (
+      {Array.from({ length: 5 }, (_, i) => (
         <svg
           key={i}
-          className={`testi-star${i <= count ? ' testi-star--on' : ''}`}
+          className={`testi-star${i < count ? ' testi-star--on' : ''}`}
           viewBox="0 0 24 24"
-          fill="none"
+          fill="currentColor"
           aria-hidden
         >
-          <path
-            d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17.2 5.8 21.3l2.4-7.4L2 9.4h7.6L12 2z"
-            fill={i <= count ? 'currentColor' : 'none'}
-            stroke="currentColor"
-            strokeWidth="1.4"
-            strokeLinejoin="round"
-          />
+          <path d="M12 2l2.35 7.23H22l-6.1 4.43 2.33 7.2L12 17.1l-6.23 4.76 2.33-7.2L2 9.23h7.65L12 2z" />
         </svg>
       ))}
     </div>
   );
 }
 
-/* ── Avatar ───────────────────────────────────────────────────────── */
-function Avatar({ initials, color }) {
+function TrustpilotLogo() {
   return (
-    <div
-      className="testi-avatar"
-      style={{ '--avatar-color': color }}
-      aria-hidden
-    >
-      <span className="testi-avatar__initials">{initials}</span>
-    </div>
+    <span className="testi-trust__logo" aria-label="Trustpilot">
+      <svg className="testi-trust__logo-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <path d="M12 2l2.35 7.23H22l-6.1 4.43 2.33 7.2L12 17.1l-6.23 4.76 2.33-7.2L2 9.23h7.65L12 2z" />
+      </svg>
+      Trustpilot
+    </span>
   );
 }
 
-/* ── Single card ─────────────────────────────────────────────────── */
-function TestiCard({ data, index }) {
+function TestiCard({ data }) {
   return (
-    <article className="testi-card" style={{ animationDelay: `${index * 0.08}s` }}>
-      <div className="testi-card__glow" aria-hidden />
-      <div className="testi-card__inner">
-        <div className="testi-card__top">
-          <Avatar initials={data.initials} color={data.color} />
-          <Stars count={data.stars} />
+    <article className="testi-card">
+      <div className="testi-card__header">
+        <div className="testi-avatar" aria-hidden>
+          <span>{data.avatar}</span>
         </div>
-        <blockquote className="testi-card__quote">{data.quote}</blockquote>
-        <div className="testi-card__divider" aria-hidden />
-        <footer className="testi-card__footer">
+        <div className="testi-card__identity">
           <p className="testi-card__name">{data.name}</p>
-          <p className="testi-card__role">{data.role}</p>
-          <p className="testi-card__firm">{data.firm}</p>
-        </footer>
+          <p className="testi-card__meta">
+            <span>{data.reviews} reviews</span>
+            <span className="testi-card__meta-dot" aria-hidden>·</span>
+            <span className="testi-card__location">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="M12 21s7-4.5 7-11a7 7 0 10-14 0c0 6.5 7 11 7 11z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                />
+                <circle cx="12" cy="10" r="2.25" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+              {data.location}
+            </span>
+          </p>
+        </div>
       </div>
+
+      <div className="testi-card__rating-row">
+        <CardStars count={data.stars} />
+        <span className="testi-card__time">{data.timeAgo}</span>
+      </div>
+
+      <h3 className="testi-card__headline">{data.headline}</h3>
+      <p className="testi-card__body">{data.body}</p>
     </article>
   );
 }
 
-/* ── Main section ─────────────────────────────────────────────────── */
-const AUTO_INTERVAL_MS = 3000;
-
 export default function Testimonials() {
-  const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const subRef = useRef(null);
-  const sliderRef = useRef(null);
-
-  const [activeFirm, setActiveFirm] = useState('ftmo');
-  const [slide, setSlide] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const timerRef = useRef(null);
-  const total = TESTIMONIALS.length;
-
-  /* ── auto-advance ─────────────────────────────────────────────── */
-  const goTo = useCallback(
-    (next, dir = 1) => {
-      if (isAnimating) return;
-      const idx = ((next % total) + total) % total;
-      setIsAnimating(true);
-
-      const el = sliderRef.current;
-      if (!el) {
-        setSlide(idx);
-        setIsAnimating(false);
-        return;
-      }
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        setSlide(idx);
-        setIsAnimating(false);
-        return;
-      }
-
-      anime({
-        targets: el,
-        opacity: [1, 0],
-        translateX: [0, dir * -40],
-        duration: 260,
-        easing: 'easeInQuad',
-        complete: () => {
-          setSlide(idx);
-          anime({
-            targets: el,
-            opacity: [0, 1],
-            translateX: [dir * 40, 0],
-            duration: 340,
-            easing: 'easeOutExpo',
-            complete: () => setIsAnimating(false),
-          });
-        },
-      });
-    },
-    [isAnimating, total],
-  );
-
-  const goNext = useCallback(() => goTo(slide + 1, 1), [slide, goTo]);
-  const goPrev = useCallback(() => goTo(slide - 1, -1), [slide, goTo]);
-
-  /* ── reset timer on manual nav ───────────────────────────────── */
-  const resetTimer = useCallback(() => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(goNext, AUTO_INTERVAL_MS);
-  }, [goNext]);
-
-  useEffect(() => {
-    timerRef.current = setInterval(goNext, AUTO_INTERVAL_MS);
-    return () => clearInterval(timerRef.current);
-  }, [goNext]);
-
-  /* ── scroll entrance animation ────────────────────────────────── */
-  useLayoutEffect(() => {
-    if (typeof window === 'undefined') return undefined;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
-
-    const els = [titleRef.current, subRef.current].filter(Boolean);
-    els.forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(22px)';
-    });
-    return () => els.forEach(el => { el.style.opacity = ''; el.style.transform = ''; });
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return undefined;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
-
-    const section = sectionRef.current;
-    if (!section) return undefined;
-
-    const io = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const tl = anime.timeline({ easing: 'easeOutExpo' });
-          if (titleRef.current) {
-            tl.add({ targets: titleRef.current, opacity: [0, 1], translateY: [22, 0], duration: 720 });
-          }
-          if (subRef.current) {
-            tl.add({ targets: subRef.current, opacity: [0, 1], translateY: [14, 0], duration: 560 }, '-=500');
-          }
-          io.disconnect();
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -6% 0px' },
-    );
-
-    io.observe(section);
-    return () => io.disconnect();
-  }, []);
-
-  const handleManualNav = (fn) => {
-    fn();
-    resetTimer();
-  };
-
   return (
-    <section ref={sectionRef} className="testi-section" aria-labelledby="testi-title">
+    <section className="testi-section" id="wise-circle" aria-labelledby="testi-title">
+      <div className="testi-section__glow" aria-hidden />
+
       <div className="testi-inner">
-
-        {/* ── header ── */}
         <header className="testi-head">
-          <div className="testi-eyebrow">
-            <span className="testi-eyebrow__dot" />
-            Client Success
-          </div>
-
-          <h2 id="testi-title" ref={titleRef} className="testi-title">
-            What our traders say about{' '}
-            <span className="testi-title__accent">finding their firm.</span>
+          <h2 id="testi-title" className="testi-title">
+            Why Traders Love <span className="testi-title__accent">{BRAND_NAME}</span>
           </h2>
 
-          <p ref={subRef} className="testi-sub">
-            Real results from real traders. See how PropFirmGenie helped them cut research time and get funded faster.
-          </p>
-        </header>
+          <p className="testi-reviews-count">Based on {REVIEW_COUNT} Reviews</p>
 
-        {/* ── firm tabs ── */}
-        <div className="testi-tabs" role="tablist" aria-label="Filter by firm">
-          {FIRM_TABS.map(tab => (
-            <button
-              key={tab.id}
-              role="tab"
-              aria-selected={activeFirm === tab.id}
-              className={`testi-tab${activeFirm === tab.id ? ' testi-tab--active' : ''}`}
-              onClick={() => setActiveFirm(tab.id)}
-            >
-              <FirmShape shape={tab.shape} active={activeFirm === tab.id} />
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        {/* ── CTA ── */}
-        <a href="#" className="testi-cta">
-          View all success stories
-        </a>
-
-        {/* ── slider ── */}
-        <div className="testi-slider-wrap" aria-live="polite" aria-atomic="true">
-          <div ref={sliderRef} className="testi-grid">
-            {TESTIMONIALS[slide].map((t, i) => (
-              <TestiCard key={`${slide}-${i}`} data={t} index={i} />
-            ))}
-          </div>
-
-          {/* ── dots + arrows ── */}
-          <div className="testi-controls">
-            <button
-              className="testi-arrow testi-arrow--prev"
-              onClick={() => handleManualNav(goPrev)}
-              aria-label="Previous testimonials"
-            >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-                <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-
-            <div className="testi-dots" role="group" aria-label="Slide indicators">
-              {TESTIMONIALS.map((_, i) => (
-                <button
-                  key={i}
-                  className={`testi-dot${i === slide ? ' testi-dot--active' : ''}`}
-                  onClick={() => handleManualNav(() => goTo(i, i > slide ? 1 : -1))}
-                  aria-label={`Go to slide ${i + 1}`}
-                  aria-current={i === slide}
-                />
+          <div className="testi-trust" aria-label="Rated excellent on Trustpilot">
+            <span className="testi-trust__label">Excellent</span>
+            <div className="testi-trust__stars">
+              {Array.from({ length: 5 }, (_, i) => (
+                <TrustpilotStarBox key={i} />
               ))}
             </div>
+            <TrustpilotLogo />
+          </div>
+        </header>
 
-            <button
-              className="testi-arrow testi-arrow--next"
-              onClick={() => handleManualNav(goNext)}
-              aria-label="Next testimonials"
-            >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-                <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
+        <div className="testi-marquee" aria-label="Scrolling trader reviews" aria-live="off">
+          <div className="testi-marquee__viewport">
+            <div className="testi-marquee__track">
+              {MARQUEE_ITEMS.map((item, index) => (
+                <TestiCard key={`${item.id}-${index}`} data={item} />
+              ))}
+            </div>
           </div>
         </div>
 
+        <a href="#" className="testi-cta">
+          View all
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path
+              d="M7 17L17 7M17 7H9M17 7v8"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </a>
       </div>
     </section>
   );
-}
-
-/* ── Geometric firm shape ────────────────────────────────────────── */
-function FirmShape({ shape, active }) {
-  const cls = `testi-tab__shape testi-tab__shape--${shape}${active ? ' testi-tab__shape--active' : ''}`;
-  return <span className={cls} aria-hidden />;
 }

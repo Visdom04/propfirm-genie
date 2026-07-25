@@ -1,13 +1,14 @@
 'use client';
 
 import { useId } from 'react';
+import { BRAND_LOGO_SRC, BRAND_NAME, SITE_DASHBOARD, SITE_HOME, SITE_MEMBERSHIP, SITE_URL } from '@/lib/brand';
 import './DemoFooter.css';
 
 const PROP_FIRMS_LINKS = [
-  { href: '#', label: 'All Prop Firms' },
-  { href: '#', label: 'Compare Challenges' },
-  { href: '#', label: 'Best Sellers' },
-  { href: '#', label: 'Favorite Firms' },
+  { href: `${SITE_URL}/prop-firms`, label: 'All Prop Firms' },
+  { href: `${SITE_URL}/prop-firms`, label: 'Compare Challenges' },
+  { href: `${SITE_URL}/prop-firms`, label: 'Best Sellers' },
+  { href: `${SITE_URL}/prop-firms`, label: 'Favorite Firms' },
   { href: '#', label: 'Announcements' },
   { href: '#', label: 'Prop Firm Rules' },
   { href: '#', label: 'Reviews' },
@@ -46,8 +47,8 @@ const COMPANY_LINKS = [
 ];
 
 const HELP_LINKS = [
-  { href: '#', label: 'Contact Us' },
-  { href: '#', label: 'How it Works' },
+  { href: `${SITE_URL}/Contact`, label: 'Contact Us' },
+  { href: `${SITE_URL}/HowItWorks`, label: 'How it Works' },
 ];
 
 const SOCIALS = [
@@ -116,7 +117,7 @@ export default function DemoFooter() {
   const langId = useId();
 
   return (
-    <footer className="demo-footer" aria-labelledby="demo-footer-heading">
+    <footer className="demo-footer" id="contact" aria-labelledby="demo-footer-heading">
       <h2 id="demo-footer-heading" className="demo-footer__sr-only">
         Site footer
       </h2>
@@ -126,26 +127,12 @@ export default function DemoFooter() {
           <div className="demo-footer__grid">
             {/* Column 1 — brand, socials, controls (AuthPlat-style) */}
             <div className="demo-footer__brand">
-              <a href="#" className="demo-footer__logo" aria-label="PropFirmGenie home">
+              <a href={SITE_HOME} className="demo-footer__logo" aria-label={`${BRAND_NAME} home`}>
                 <span className="demo-footer__logo-icon" aria-hidden="true">
-                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <circle cx="14" cy="14" r="13" stroke="#60a5fa" strokeWidth="1.5" opacity="0.4" />
-                    <path
-                      d="M14 5 C14 5 8 10 8 16 C8 20 10.5 23 14 23 C17.5 23 20 20 20 16 C20 10 14 5 14 5Z"
-                      fill="#60a5fa"
-                      opacity="0.25"
-                    />
-                    <path
-                      d="M14 8 C14 8 10 12 10 16.5 C10 19.5 11.8 22 14 22 C16.2 22 18 19.5 18 16.5 C18 12 14 8 14 8Z"
-                      fill="#93c5fd"
-                      opacity="0.5"
-                    />
-                    <circle cx="14" cy="16" r="3" fill="#bfdbfe" opacity="0.85" />
-                    <path d="M14 22 C14 22 12 25 14 26.5 C16 25 14 22 14 22Z" fill="#60a5fa" opacity="0.5" />
-                  </svg>
+                  <img src={BRAND_LOGO_SRC} alt="" width={28} height={28} className="demo-footer__logo-img" />
                 </span>
                 <span className="demo-footer__logo-text">
-                  PropFirm<span className="demo-footer__logo-accent">Genie</span>
+                  Prop Firm<span className="demo-footer__logo-accent">Wise</span>
                 </span>
               </a>
 
@@ -240,15 +227,15 @@ export default function DemoFooter() {
           <div className="demo-footer__rule" aria-hidden="true" />
 
           <div className="demo-footer__meta">
-            <p className="demo-footer__copy">© 2026 PropFirmGenie. All rights reserved.</p>
+            <p className="demo-footer__copy">© 2026 {BRAND_NAME}. All rights reserved.</p>
             <nav className="demo-footer__legal" aria-label="Legal">
-              <a href="#" className="demo-footer__legal-link">
+              <a href={`${SITE_URL}/TermsAndConditions`} className="demo-footer__legal-link">
                 Terms
               </a>
-              <a href="#" className="demo-footer__legal-link">
+              <a href={`${SITE_URL}/PrivacyPolicy`} className="demo-footer__legal-link">
                 Privacy
               </a>
-              <a href="#" className="demo-footer__legal-link">
+              <a href={`${SITE_URL}/PrivacyPolicy`} className="demo-footer__legal-link">
                 Cookies
               </a>
             </nav>
@@ -256,9 +243,6 @@ export default function DemoFooter() {
         </div>
       </div>
 
-      <div className="demo-footer__mega-wrap" aria-hidden="true">
-        <p className="demo-footer__mega">GENIE</p>
-      </div>
     </footer>
   );
 }

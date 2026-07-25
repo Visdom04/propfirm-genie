@@ -1,0 +1,289 @@
+/* Testimonial Wall — Discord "Wall of Love" Pinterest-style board */
+
+.wall-section {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: clamp(64px, 8vw, 108px) clamp(24px, 4vw, 56px) clamp(80px, 9vw, 128px);
+  overflow: hidden;
+}
+
+.wall-section__glow {
+  position: absolute;
+  top: -6%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 96vw);
+  height: 420px;
+  background: radial-gradient(
+    ellipse 70% 78% at 50% 30%,
+    rgba(59, 130, 246, 0.14) 0%,
+    rgba(91, 33, 182, 0.1) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.wall-inner {
+  position: relative;
+  max-width: 1360px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+.wall-head {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+
+.wall-eyebrow {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+}
+
+.wall-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.wall-title__accent {
+  background: var(--gradient-headline);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.wall-trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 12px;
+  margin-top: 2px;
+}
+
+.wall-trust__stars {
+  display: flex;
+  gap: 4px;
+}
+
+.wall-tp-star-box {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: var(--tp-green);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 182, 122, 0.35);
+}
+
+.wall-tp-star-box svg {
+  width: 15px;
+  height: 15px;
+  color: #fff;
+}
+
+.wall-trust__score {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.wall-trust__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.wall-trust__logo-star {
+  width: 20px;
+  height: 20px;
+  color: var(--tp-green);
+}
+
+.wall-stat {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(148, 163, 184, 0.82);
+}
+
+.wall-stat strong {
+  color: #fff;
+  font-weight: 800;
+}
+
+/* ── Vertical scrolling board — 3 independent drifting columns ──── */
+.wall-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(14px, 1.6vw, 20px);
+  height: clamp(520px, 62vw, 680px);
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 6%,
+    #000 16%,
+    #000 84%,
+    rgba(0, 0, 0, 0.5) 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 6%,
+    #000 16%,
+    #000 84%,
+    rgba(0, 0, 0, 0.5) 94%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wall-section.is-visible .wall-grid {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wall-col--1,
+.wall-col--2 {
+  display: none;
+}
+
+@media (min-width: 560px) {
+  .wall-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wall-col--1 {
+    display: block;
+  }
+}
+
+@media (min-width: 900px) {
+  .wall-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .wall-col--2 {
+    display: block;
+  }
+}
+
+.wall-col {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.wall-col__track {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.6vw, 20px);
+  width: 100%;
+  animation: wallScroll var(--wall-duration, 46s) linear infinite;
+  animation-direction: var(--wall-dir, normal);
+  will-change: transform;
+}
+
+.wall-col:hover .wall-col__track {
+  animation-play-state: paused;
+}
+
+@keyframes wallScroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.wall-card {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  flex: 0 0 auto;
+  border-radius: 16px;
+  border: 1px solid rgba(147, 197, 253, 0.14);
+  border-top-color: rgba(196, 181, 253, 0.22);
+  background: rgba(15, 15, 26, 0.4);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 16px 36px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.wall-card:hover {
+  border-color: rgba(199, 160, 255, 0.32);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(168, 85, 247, 0.14),
+    0 22px 44px rgba(0, 0, 0, 0.46);
+}
+
+.wall-card__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wall-grid {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    height: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .wall-col {
+    height: auto;
+    overflow: visible;
+  }
+
+  .wall-col__track {
+    animation: none;
+  }
+
+  .wall-col__track > .wall-card:nth-child(n + 4) {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .wall-title__accent {
+    color: LinkText;
+  }
+}
