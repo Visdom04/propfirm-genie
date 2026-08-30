@@ -1,0 +1,437 @@
+/* Testimonials — TradeDay / Trustpilot reference */
+
+.testi-section {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: clamp(72px, 9vw, 120px) clamp(24px, 4vw, 56px);
+  overflow: hidden;
+}
+
+/* Ambient purple radial behind heading */
+.testi-section__glow {
+  position: absolute;
+  top: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 96vw);
+  height: 400px;
+  background: radial-gradient(
+    ellipse 72% 80% at 50% 38%,
+    rgba(91, 33, 182, 0.18) 0%,
+    rgba(59, 130, 246, 0.12) 38%,
+    rgba(30, 58, 138, 0.06) 55%,
+    transparent 72%
+  );
+  pointer-events: none;
+}
+
+.testi-inner {
+  position: relative;
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(36px, 4.5vw, 52px);
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+.testi-head {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: none;
+}
+
+.testi-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.testi-title__accent {
+  background: var(--gradient-headline);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.testi-reviews-count {
+  margin: 4px 0 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(148, 163, 184, 0.82);
+}
+
+.testi-trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 12px;
+  margin-top: 4px;
+}
+
+.testi-trust__label {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.testi-trust__stars {
+  display: flex;
+  gap: 4px;
+}
+
+/* Trustpilot star-in-box */
+.tp-star-box {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: var(--tp-green);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 182, 122, 0.35);
+}
+
+.tp-star-box svg {
+  width: 17px;
+  height: 17px;
+  color: #fff;
+}
+
+.testi-trust__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.testi-trust__logo-star {
+  width: 22px;
+  height: 22px;
+  color: var(--tp-green);
+}
+
+/* ── Infinite marquee ─────────────────────────────────────────────── */
+.testi-marquee {
+  position: relative;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.testi-marquee__viewport {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.45) 4%,
+    #000 14%,
+    #000 86%,
+    rgba(0, 0, 0, 0.45) 96%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.45) 4%,
+    #000 14%,
+    #000 86%,
+    rgba(0, 0, 0, 0.45) 96%,
+    transparent 100%
+  );
+}
+
+.testi-marquee__track {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(16px, 2vw, 24px);
+  width: max-content;
+  padding: 6px 0 10px;
+  animation: testiMarquee 52s linear infinite;
+  will-change: transform;
+}
+
+.testi-marquee:hover .testi-marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes testiMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Glass shell + bluish-purple gradient (~65% blend) */
+.testi-card {
+  position: relative;
+  isolation: isolate;
+  flex: 0 0 min(380px, 78vw);
+  width: min(380px, 78vw);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: clamp(20px, 2.4vw, 28px);
+  border-radius: 18px;
+  border: 1px solid rgba(147, 197, 253, 0.14);
+  border-top-color: rgba(196, 181, 253, 0.22);
+  border-left-color: rgba(147, 197, 253, 0.18);
+  backdrop-filter: blur(24px) saturate(165%);
+  -webkit-backdrop-filter: blur(24px) saturate(165%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 20px 48px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.testi-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--gradient-card-glass);
+  opacity: 0.68;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.testi-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.035);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.testi-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.testi-card:hover {
+  border-color: rgba(199, 160, 255, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 0 0 1px rgba(168, 85, 247, 0.12),
+    0 24px 56px rgba(0, 0, 0, 0.45);
+}
+
+.testi-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testi-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+}
+
+.testi-card__identity {
+  min-width: 0;
+  text-align: left;
+}
+
+.testi-card__name {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.testi-card__meta {
+  margin: 3px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(148, 163, 184, 0.78);
+}
+
+.testi-card__meta-dot {
+  opacity: 0.5;
+}
+
+.testi-card__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.testi-card__location svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.7;
+}
+
+.testi-card__rating-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.testi-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.testi-star {
+  width: 17px;
+  height: 17px;
+  color: rgba(100, 116, 139, 0.35);
+}
+
+.testi-star--on {
+  color: var(--tp-green);
+}
+
+.testi-card__time {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(148, 163, 184, 0.62);
+  white-space: nowrap;
+}
+
+.testi-card__headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 0.9vw + 0.55rem, 1.125rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.38;
+  color: #fff;
+}
+
+.testi-card__body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.62;
+  color: rgba(148, 163, 184, 0.85);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── CTA ────────────────────────────────────────────────────────── */
+.testi-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  padding: 13px 30px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  background: transparent;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.testi-cta svg {
+  width: 17px;
+  height: 17px;
+}
+
+.testi-cta:hover {
+  border-color: rgba(129, 140, 248, 0.45);
+  background: rgba(99, 102, 241, 0.08);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 960px) {
+  .testi-card {
+    flex: 0 0 min(320px, 86vw);
+    width: min(320px, 86vw);
+    min-height: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testi-marquee__track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 24px;
+    gap: 16px;
+  }
+
+  .testi-marquee__track > .testi-card:nth-child(n + 7) {
+    display: none;
+  }
+
+  .testi-marquee {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .testi-marquee__viewport {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .testi-card,
+  .testi-cta {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .testi-title__accent {
+    color: LinkText;
+  }
+}
