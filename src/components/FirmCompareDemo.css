@@ -1,17 +1,17 @@
 /* Prop firm compare — Deep Space Oracle demo (blue glass, matches .search-panel) */
 
 .cmp {
-  --cmp-accent: #60a5fa;
-  --cmp-accent-soft: #93c5fd;
-  --cmp-cyan: #38bdf8;
+  --cmp-accent: #818cf8;
+  --cmp-accent-soft: #a5b4fc;
+  --cmp-cyan: #60a5fa;
   --cmp-indigo: #818cf8;
   --cmp-bg: rgba(5, 14, 29, 0.9);
   --cmp-row: rgba(8, 22, 42, 0.82);
   --cmp-border: rgba(255, 255, 255, 0.1);
-  --cmp-glow: rgba(96, 165, 250, 0.35);
+  --cmp-glow: rgba(129, 140, 248, 0.35);
 
   width: 100%;
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body);
   position: relative;
 }
 
@@ -82,8 +82,8 @@
 }
 
 .cmp-sidebar__close:hover {
-  background: rgba(96, 165, 250, 0.12);
-  border-color: rgba(96, 165, 250, 0.35);
+  background: rgba(129, 140, 248, 0.12);
+  border-color: rgba(129, 140, 248, 0.35);
   color: #fff;
 }
 
@@ -143,14 +143,14 @@
 }
 
 .cmp-chip:hover {
-  border-color: rgba(96, 165, 250, 0.35);
+  border-color: rgba(129, 140, 248, 0.35);
 }
 
 .cmp-chip--on {
-  border-color: rgba(96, 165, 250, 0.5);
-  background: rgba(96, 165, 250, 0.1);
-  color: #e0f2fe;
-  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.12);
+  border-color: rgba(129, 140, 248, 0.5);
+  background: rgba(129, 140, 248, 0.1);
+  color: #e0e7ff;
+  box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.12);
 }
 
 .cmp-reset {
@@ -213,12 +213,12 @@
 }
 
 .cmp-pill--active {
-  color: #f0f9ff;
-  border-color: rgba(96, 165, 250, 0.45);
-  background: rgba(96, 165, 250, 0.08);
+  color: #eef2ff;
+  border-color: rgba(129, 140, 248, 0.45);
+  background: rgba(129, 140, 248, 0.08);
   box-shadow:
-    0 0 0 1px rgba(96, 165, 250, 0.15),
-    0 0 28px rgba(96, 165, 250, 0.12);
+    0 0 0 1px rgba(129, 140, 248, 0.15),
+    0 0 28px rgba(129, 140, 248, 0.12);
 }
 
 .cmp-pill--active svg {
@@ -226,7 +226,7 @@
 }
 
 .cmp-pill--filter-open {
-  border-color: rgba(96, 165, 250, 0.42);
+  border-color: rgba(129, 140, 248, 0.42);
   color: #dbeafe;
 }
 
@@ -256,7 +256,7 @@
   border: 1px solid rgba(255, 255, 255, 0.14);
   background:
     linear-gradient(125deg, rgba(255, 255, 255, 0.1) 0%, transparent 45%),
-    linear-gradient(210deg, rgba(96, 165, 250, 0.07) 0%, transparent 50%),
+    linear-gradient(210deg, rgba(129, 140, 248, 0.07) 0%, transparent 50%),
     linear-gradient(180deg, rgba(15, 30, 52, 0.42) 0%, rgba(5, 14, 29, 0.55) 100%);
   backdrop-filter: blur(40px) saturate(185%);
   -webkit-backdrop-filter: blur(40px) saturate(185%);
@@ -266,7 +266,7 @@
     inset 0 -1px 0 rgba(0, 0, 0, 0.2),
     inset 0 3px 28px rgba(0, 0, 0, 0.42),
     inset 0 0 0 1px rgba(0, 0, 0, 0.28),
-    0 0 0 1px rgba(96, 165, 250, 0.09),
+    0 0 0 1px rgba(129, 140, 248, 0.09),
     0 20px 48px rgba(0, 0, 0, 0.38),
     0 8px 32px rgba(15, 23, 42, 0.28);
 }
@@ -279,9 +279,9 @@
     inset 0 -1px 0 rgba(0, 0, 0, 0.18),
     inset 0 4px 32px rgba(0, 0, 0, 0.46),
     inset 0 0 0 1px rgba(0, 0, 0, 0.32),
-    0 0 0 1px rgba(96, 165, 250, 0.12),
+    0 0 0 1px rgba(129, 140, 248, 0.12),
     0 32px 64px rgba(0, 0, 0, 0.42),
-    0 16px 48px rgba(59, 130, 246, 0.08);
+    0 16px 48px rgba(99, 102, 241, 0.08);
 }
 
 .cmp-table-scroller:focus-within {
@@ -300,7 +300,7 @@
     rgba(255, 255, 255, 0.07) 0%,
     transparent 35%,
     transparent 65%,
-    rgba(147, 197, 253, 0.06) 100%
+    rgba(165, 180, 252, 0.06) 100%
   );
   opacity: 0.82;
 }
@@ -435,7 +435,7 @@
 }
 
 .cmp-th__btn:focus-visible {
-  outline: 2px solid rgba(96, 165, 250, 0.65);
+  outline: 2px solid rgba(129, 140, 248, 0.65);
   outline-offset: 3px;
   border-radius: 6px;
 }
@@ -487,13 +487,13 @@ tbody .cmp-row:nth-child(even) .cmp-td {
 .cmp-row:hover .cmp-td {
   background: linear-gradient(
     180deg,
-    rgba(96, 165, 250, 0.12) 0%,
+    rgba(129, 140, 248, 0.12) 0%,
     rgba(10, 26, 48, 0.82) 48%,
     rgba(0, 0, 0, 0.16) 100%
   );
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    inset 0 0 0 1px rgba(96, 165, 250, 0.1);
+    inset 0 0 0 1px rgba(129, 140, 248, 0.1);
 }
 
 .cmp-row:last-child .cmp-td {
@@ -582,7 +582,7 @@ tbody .cmp-row:nth-child(even) .cmp-td {
 
 .cmp-fav:hover:not(:disabled) {
   color: var(--cmp-accent-soft);
-  background: rgba(96, 165, 250, 0.1);
+  background: rgba(129, 140, 248, 0.1);
 }
 
 .cmp-fav:disabled {
@@ -627,7 +627,7 @@ tbody .cmp-row:nth-child(even) .cmp-td {
   font-size: 1rem;
   font-weight: 800;
   color: #fff;
-  border: 2px solid rgba(96, 165, 250, 0.38);
+  border: 2px solid rgba(129, 140, 248, 0.38);
   background: rgba(0, 0, 0, 0.32);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
 }
@@ -737,7 +737,7 @@ tbody .cmp-row:nth-child(even) .cmp-td {
   font-weight: 800;
   color: #e2e8f0;
   background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(96, 165, 250, 0.28);
+  border: 1px solid rgba(129, 140, 248, 0.28);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
@@ -762,7 +762,7 @@ tbody .cmp-row:nth-child(even) .cmp-td {
   display: block;
   height: 100%;
   border-radius: 100px;
-  background: linear-gradient(90deg, #38bdf8 0%, #3b82f6 55%, #4f46e5 100%);
+  background: linear-gradient(90deg, #60a5fa 0%, #6366f1 55%, #818cf8 100%);
   transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -785,7 +785,7 @@ tbody .cmp-row:nth-child(even) .cmp-td {
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 48%, #1d4ed8 100%);
+  background: linear-gradient(180deg, #6366f1 0%, #5b5ef7 48%, #4338ca 100%);
   box-shadow:
     0 2px 12px rgba(15, 23, 42, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
@@ -845,19 +845,19 @@ tbody .cmp-row:nth-child(even) .cmp-td {
   font-weight: 700;
   color: var(--cmp-accent-soft);
   text-decoration: none;
-  border: 1px solid rgba(96, 165, 250, 0.4);
+  border: 1px solid rgba(129, 140, 248, 0.4);
   background: rgba(0, 0, 0, 0.2);
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 
 .cmp-firm-link:hover {
-  background: rgba(96, 165, 250, 0.1);
-  border-color: rgba(147, 197, 253, 0.55);
-  color: #e0f2fe;
+  background: rgba(129, 140, 248, 0.1);
+  border-color: rgba(165, 180, 252, 0.55);
+  color: #e0e7ff;
 }
 
 .cmp-firm-link:focus-visible {
-  outline: 2px solid rgba(96, 165, 250, 0.65);
+  outline: 2px solid rgba(129, 140, 248, 0.65);
   outline-offset: 3px;
 }
 

@@ -8,9 +8,11 @@ import Community from '@/components/Community';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
 
+import { BRAND_DESCRIPTION, BRAND_NAME } from '@/lib/brand';
+
 export const metadata = {
-  title: 'Prop Firm Match | Compare the Best Prop Trading Firms of 2026',
-  description: 'Trusted platform to compare prop trading firms using verified data and insights. Find the best Forex, Futures, and Crypto challenges.',
+  title: `${BRAND_NAME} | Compare the Best Prop Trading Firms`,
+  description: BRAND_DESCRIPTION,
 };
 
 export default function Home() {

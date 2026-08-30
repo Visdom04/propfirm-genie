@@ -70,7 +70,7 @@ function WallCard({ item }) {
         alt={`${BRAND_NAME} trader testimonial screenshot from our Discord community`}
         width={item.width}
         height={item.height}
-        sizes="(max-width: 640px) 92vw, (max-width: 900px) 46vw, 30vw"
+        sizes="(max-width: 560px) 92vw, (max-width: 900px) 46vw, 34vw"
         className="wall-card__img"
         loading="lazy"
       />

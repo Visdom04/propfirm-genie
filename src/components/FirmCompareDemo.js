@@ -68,8 +68,8 @@ function YearsRing({ years, label, ringId }) {
       <svg className="cmp-years__svg" width="56" height="56" viewBox="0 0 56 56" aria-hidden>
         <defs>
           <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#38bdf8" />
-            <stop offset="45%" stopColor="#60a5fa" />
+            <stop offset="0%" stopColor="#60a5fa" />
+            <stop offset="45%" stopColor="#818cf8" />
             <stop offset="100%" stopColor="#818cf8" />
           </linearGradient>
         </defs>

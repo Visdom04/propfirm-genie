@@ -13,6 +13,8 @@
     "data:firms": "npm run extend:firms -- --write && npm run validate:firms && npm run sync:firms"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.5",
+    "@supabase/supabase-js": "^2.109.0",
     "@tailwindcss/postcss": "^4.3.2",
     "animejs": "^3.2.2",
     "framer-motion": "^12.42.2",

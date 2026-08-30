@@ -10,29 +10,38 @@ import {
   STEP_OPTIONS,
   PRICE_OPTIONS,
 } from '@/data/firms';
+import CompareFilterSidebar, {
+  createEmptyFacet,
+  cloneFacet,
+  countActiveFilters,
+  isRangeActive,
+  normalizeDrawdown,
+} from '@/components/CompareFilterSidebar';
 import './FirmCompareDemoGreen.css';
 
 const MAX_FAVORITES = 5;
 const PAGE_SIZE = 10;
-const COLS_STORAGE_KEY = 'cmp-green-visible-cols-v2';
+const COLS_STORAGE_KEY = 'cmp-green-visible-cols-v3';
 
 /** Default table order when no column sort is active */
 const DEFAULT_FIRM_ORDER = [
-  'Apex Trader Funding',
   'Lucid Trading',
   'Tradeify',
-  'My Funded Futures',
   'Take Profit Trader',
+  'My Funded Futures',
+  'Apex Trader Funding',
+  'Legends Trading',
+  'Phidias Propfirm',
+  'E8 Futures',
+  'Nexgen ProTrader Funding',
+  'Bulenox',
+  'Purdia',
+  'YRM Prop',
+  'DayTraders',
   'FundedNext Futures',
   'Top One Futures',
   'Earn2Trade',
-  'Purdia',
-  'YRM Prop',
-  'Bulenox',
-  'Phidias Propfirm',
-  'Legends Trading',
   'TradeDay',
-  'E8 Futures',
   'Blue Guardian',
 ];
 
@@ -121,31 +130,46 @@ function buildCuratedDefaultRows(rows) {
 }
 
 const INFO_COPY = {
-  steps:
-    'How many evaluation phases you must pass before funding. Instant means no challenge phase.',
+  accountSize:
+    'Starting simulated balance for this challenge (e.g. 25k / 50k / 100k). Larger size usually means bigger targets and drawdown.',
+  maxLossType:
+    'How drawdown is measured: EOD (end of day), Intraday (live trailing), Static (fixed floor), or Trailing. Check firm rules for DLL add-ons.',
   activationFee:
-    'One-time fee charged when you move from evaluation to a funded account. “None” means no activation fee.',
-  maxPayout:
-    'Highest amount you can withdraw in a payout cycle (or overall), based on the firm’s rules for this plan.',
-  minPayout:
-    'Minimum profit you need before you can request a payout on this plan.',
+    'One-time fee when you move from evaluation to a funded account. “None” means no activation fee (sometimes waived with promo).',
+  profitTarget:
+    'Profit you must hit to pass the evaluation. “—” / Instant / Straight to Funded means no eval target (direct or instant funded).',
+  maxLoss:
+    'Maximum drawdown / loss limit before the account fails (sometimes shown with TDA, DLL, or add-on options in brackets).',
+  maxLots:
+    'Maximum contracts allowed — shown as minis | micros when both apply. Scaling plans may raise size after profit milestones.',
+  consistency:
+    'Consistency rule on Eval | Funded (e.g. None / 40%). Caps how much of your profit can come from a single day.',
+  payoutFreq:
+    'How often you can request a payout once funded (daily, every N days, winning-day rules, buffers, or min profit per cycle).',
+  profitSplit:
+    'Share of profits you keep once funded (e.g. 90%). Progressive splits (75%→100%) increase after payout milestones.',
+  price:
+    'Challenge price with the KAGE promo applied when “Apply Discount” is on. Strikethrough shows the regular (was) price when available.',
 };
 
 /** Mid-column track widths — keep header + body cells in lockstep */
 const MID_COLS = [
-  { key: 'accountSize', label: 'Account size', sort: true, min: 120 },
-  { key: 'steps', label: 'Steps', sort: true, min: 110 },
-  { key: 'activationFee', label: 'Activation fee', sort: false, min: 140 },
-  { key: 'maxLots', label: 'Max contract size', sub: 'Minis / Micros', sort: false, min: 158 },
-  { key: 'profitTarget', label: 'Profit target', sort: true, min: 120 },
-  { key: 'maxLoss', label: 'Max loss', sort: true, min: 110 },
-  { key: 'maxLossType', label: 'Max loss type', sort: true, min: 140 },
-  { key: 'ptDd', label: 'PT:DD', sort: true, min: 90 },
-  { key: 'profitSplit', label: 'Profit split', sort: true, min: 130 },
-  { key: 'maxPayout', label: 'Max payout amount', sort: true, min: 160 },
-  { key: 'minPayout', label: 'Min payout threshold', sort: true, min: 160 },
-  { key: 'consistency', label: 'Consistency rule', sub: 'Eval / Funded', sort: false, min: 168 },
-  { key: 'payoutFreq', label: 'Payout freq.', sort: true, min: 200 },
+  { key: 'accountSize', label: 'Account size', tip: 'accountSize', sort: true, min: 128 },
+  { key: 'maxLossType', label: 'Drawdown type', tip: 'maxLossType', sort: true, min: 144 },
+  { key: 'activationFee', label: 'Activation fee', tip: 'activationFee', sort: false, min: 144 },
+  { key: 'profitTarget', label: 'Profit target', tip: 'profitTarget', sort: true, min: 144 },
+  { key: 'maxLoss', label: 'Max drawdown', tip: 'maxLoss', sort: true, min: 144 },
+  { key: 'maxLots', label: 'Max contract', sub: 'Minis / Micros', tip: 'maxLots', sort: false, min: 144 },
+  {
+    key: 'consistency',
+    label: 'Consistency rule',
+    sub: 'Eval / Funded',
+    tip: 'consistency',
+    sort: false,
+    min: 176,
+  },
+  { key: 'payoutFreq', label: 'Payout freq.', tip: 'payoutFreq', sort: true, min: 208 },
+  { key: 'profitSplit', label: 'Profit split', tip: 'profitSplit', sort: true, min: 144 },
 ];
 
 const ALL_COL_KEYS = MID_COLS.map(c => c.key);
@@ -205,30 +229,56 @@ function buildPageItems(current, total) {
   return items;
 }
 
-const EMPTY_FACET = {
-  assets: [],
-  sizes: [],
-  steps: [],
-  prices: [],
-  country: null,
-  platform: null,
-  programType: null,
-};
-
-function flagEmoji(code) {
-  if (!code || code.length !== 2) return '';
-  const A = 0x1f1e6;
-  const upper = code.toUpperCase();
-  return String.fromCodePoint(
-    ...[...upper].map(c => A + (c.charCodeAt(0) - 65))
-  );
-}
-
 function formatMultiLabel(selected, fallback) {
   if (!selected?.length) return fallback;
   if (selected.length === 1) return selected[0];
   return 'Multiple';
 }
+
+function computeFilterBounds() {
+  const prices = [];
+  const splits = [];
+  const ratings = [];
+  const years = [];
+  const drawdown = new Set();
+  firms.forEach(f => {
+    ratings.push(Number(f.rating) || 0);
+    years.push(Number(f.years) || 0);
+    (f.plans || []).forEach(p => {
+      if (p.price != null && Number.isFinite(Number(p.price))) prices.push(Number(p.price));
+      const split =
+        typeof p.profitSplit === 'number'
+          ? p.profitSplit
+          : Number(String(p.profitSplitLabel || p.profitSplit).match(/[\d.]+/)?.[0] || 0);
+      if (Number.isFinite(split)) splits.push(split);
+      drawdown.add(normalizeDrawdown(p.maxLossType));
+    });
+  });
+  const priceMin = Math.max(1, Math.floor(Math.min(...prices, 1)));
+  const priceMax = Math.ceil(Math.max(...prices, 100));
+  return {
+    price: { min: priceMin, max: priceMax, step: 1 },
+    split: {
+      min: Math.max(1, Math.floor(Math.min(...splits, 70))),
+      max: Math.min(100, Math.ceil(Math.max(...splits, 100))),
+    },
+    rating: {
+      min: 0,
+      max: Math.max(
+        1,
+        Math.ceil((Math.max(...ratings.filter(r => r > 0), 5) || 5) * 10) / 10
+      ),
+    },
+    years: {
+      min: 0,
+      max: Math.max(1, Math.ceil(Math.max(...years, 1))),
+    },
+    drawdownTypes: ['EOD', 'Intraday', 'Static', 'Trailing'].filter(t => drawdown.has(t)),
+  };
+}
+
+const FILTER_BOUNDS = computeFilterBounds();
+const EMPTY_FACET = createEmptyFacet(FILTER_BOUNDS);
 
 function formatMoney(n) {
   return `$${Number(n).toFixed(2)}`;
@@ -306,12 +356,18 @@ function RatingStars({ rating, idPrefix = 'star' }) {
 }
 
 function ProfitSplitBar({ pct }) {
-  const fill = Math.min(100, Math.max(0, Number(pct) || 0));
+  const raw = pct == null ? '' : String(pct).trim();
+  const numericOnly = /^\d+(\.\d+)?$/.test(raw);
+  const fillNum = numericOnly ? Number(raw) : Number(String(raw).match(/[\d.]+/)?.[0] || 0);
+  if (!numericOnly && raw) {
+    return <span className="cmp-split cmp-split--text">{raw.includes('%') ? raw : `${raw}%`}</span>;
+  }
+  const fill = Math.min(100, Math.max(0, fillNum || 0));
   const segs = 10;
   const lit = Math.round((fill / 100) * segs);
   return (
     <div className="cmp-split">
-      <span className="cmp-split__val">{pct}%</span>
+      <span className="cmp-split__val">{fill}%</span>
       <div className="cmp-split__segments" role="presentation" aria-hidden>
         {Array.from({ length: segs }, (_, i) => (
           <span
@@ -403,78 +459,64 @@ function renderMidCell(col, p) {
           {String(p.accountSize).replace('$', '')}
         </div>
       );
-    case 'steps':
-      return (
-        <div key={col.key} className="cmp-td cmp-mid__cell" style={style}>
-          <span className="cmp-cell-with-info">
-            {p.steps}
-            <InfoTip tipKey="steps" />
-          </span>
-        </div>
-      );
     case 'activationFee':
       return (
-        <div key={col.key} className="cmp-td cmp-td--muted cmp-mid__cell" style={style}>
-          <span className="cmp-cell-with-info">
-            {p.activationFee}
-            <InfoTip tipKey="activationFee" />
-          </span>
+        <div key={col.key} className="cmp-td cmp-td--muted cmp-td--wrap cmp-mid__cell" style={style}>
+          {p.activationFee}
         </div>
       );
     case 'maxLots':
       return (
-        <div key={col.key} className="cmp-td cmp-td--num cmp-mid__cell" style={style}>
-          {String(p.maxLots).includes('|') ? (
+        <div key={col.key} className="cmp-td cmp-td--num cmp-td--wrap cmp-mid__cell" style={style}>
+          {String(p.maxLots).includes('|') || String(p.maxLots).includes('/') ? (
             <>
-              {p.maxLots.split('|')[0].trim()} <span className="cmp-pipe">|</span>{' '}
-              {p.maxLots.split('|')[1].trim()}
+              {String(p.maxLots)
+                .split(/[|/]/)
+                .map((part, i, arr) => (
+                  <span key={`${part}-${i}`}>
+                    {i > 0 ? (
+                      <>
+                        {' '}
+                        <span className="cmp-pipe">|</span>{' '}
+                      </>
+                    ) : null}
+                    {part.trim()}
+                    {i === arr.length - 1 && p.maxLotsNote ? (
+                      <span className="cmp-muted"> {p.maxLotsNote}</span>
+                    ) : null}
+                  </span>
+                ))}
             </>
           ) : (
-            p.maxLots
+            <>
+              {p.maxLots}
+              {p.maxLotsNote ? <span className="cmp-muted"> {p.maxLotsNote}</span> : null}
+            </>
           )}
         </div>
       );
     case 'profitTarget':
     case 'maxLoss':
-    case 'ptDd':
       return (
-        <div key={col.key} className="cmp-td cmp-td--num cmp-mid__cell" style={style}>
+        <div key={col.key} className="cmp-td cmp-td--num cmp-td--wrap cmp-mid__cell" style={style}>
           {p[col.key]}
         </div>
       );
     case 'maxLossType':
       return (
-        <div key={col.key} className="cmp-td cmp-mid__cell" style={style}>
+        <div key={col.key} className="cmp-td cmp-td--wrap cmp-mid__cell" style={style}>
           {p.maxLossType}
         </div>
       );
     case 'profitSplit':
       return (
         <div key={col.key} className="cmp-td cmp-mid__cell" style={style}>
-          <ProfitSplitBar pct={p.profitSplit} />
-        </div>
-      );
-    case 'maxPayout':
-      return (
-        <div key={col.key} className="cmp-td cmp-td--wrap cmp-mid__cell" style={style}>
-          <span className="cmp-cell-with-info">
-            {p.maxPayout}
-            <InfoTip tipKey="maxPayout" />
-          </span>
-        </div>
-      );
-    case 'minPayout':
-      return (
-        <div key={col.key} className="cmp-td cmp-td--wrap cmp-mid__cell" style={style}>
-          <span className="cmp-cell-with-info">
-            {p.minPayout}
-            <InfoTip tipKey="minPayout" />
-          </span>
+          <ProfitSplitBar pct={p.profitSplitLabel || p.profitSplit} />
         </div>
       );
     case 'consistency':
       return (
-        <div key={col.key} className="cmp-td cmp-td--num cmp-mid__cell" style={style}>
+        <div key={col.key} className="cmp-td cmp-td--num cmp-td--wrap cmp-mid__cell" style={style}>
           <span className={p.consistencyEval === 'None' ? 'cmp-muted' : undefined}>
             {p.consistencyEval}
           </span>{' '}
@@ -616,7 +658,7 @@ function ToggleSwitch({ label, checked, onChange }) {
   );
 }
 
-function SortHead({ label, sortKey, sort, onSort, className = '', sub, style }) {
+function SortHead({ label, sortKey, sort, onSort, className = '', sub, tip, style }) {
   return (
     <div
       role="columnheader"
@@ -626,23 +668,29 @@ function SortHead({ label, sortKey, sort, onSort, className = '', sub, style }) 
         sort.key === sortKey ? (sort.dir === 'desc' ? 'descending' : 'ascending') : 'none'
       }
     >
-      <button type="button" className="cmp-th__btn" onClick={() => onSort(sortKey)}>
-        <span className="cmp-th__label">{label}</span>
-        <SortArrows active={sort.key === sortKey} direction={sort.dir} />
-      </button>
+      <div className="cmp-th__top">
+        <button type="button" className="cmp-th__btn" onClick={() => onSort(sortKey)}>
+          <span className="cmp-th__label">{label}</span>
+          <SortArrows active={sort.key === sortKey} direction={sort.dir} />
+        </button>
+        {tip ? <InfoTip tipKey={tip} /> : null}
+      </div>
       {sub ? <span className="cmp-th__sub">{sub}</span> : null}
     </div>
   );
 }
 
-function StaticHead({ label, sub, className = '', style }) {
+function StaticHead({ label, sub, tip, className = '', style }) {
   return (
     <div
       role="columnheader"
       className={`cmp-th${sub ? ' cmp-th--stacked' : ''} ${className}`.trim()}
       style={style}
     >
-      <span className="cmp-th__label">{label}</span>
+      <div className="cmp-th__top">
+        <span className="cmp-th__label">{label}</span>
+        {tip ? <InfoTip tipKey={tip} /> : null}
+      </div>
       {sub ? <span className="cmp-th__sub">{sub}</span> : null}
     </div>
   );
@@ -752,8 +800,10 @@ function TableScrollSlider({ getMidPanes, masterRef }) {
 export default function FirmCompareDemo() {
   const [topMode, setTopMode] = useState('all');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [favorites, setFavorites] = useState(() => new Set());
-  const [facet, setFacet] = useState(EMPTY_FACET);
+  const [facet, setFacet] = useState(() => cloneFacet(EMPTY_FACET));
+  const [draft, setDraft] = useState(() => cloneFacet(EMPTY_FACET));
   const [applyDiscount, setApplyDiscount] = useState(true);
   const [search, setSearch] = useState('');
   const [customizeOpen, setCustomizeOpen] = useState(false);
@@ -768,6 +818,14 @@ export default function FirmCompareDemo() {
   const masterMidRef = useRef(null);
   const midScrollLeft = useRef(0);
   const syncingScroll = useRef(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 900px)');
+    const sync = () => setIsMobile(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
 
   const visibleMidCols = useMemo(
     () => MID_COLS.filter(c => visibleCols.has(c.key)),
@@ -834,7 +892,7 @@ export default function FirmCompareDemo() {
   );
 
   const uniqueCountries = useMemo(
-    () => [...new Set(firms.map(f => f.countryCode))].sort(),
+    () => [...new Set(firms.map(f => f.countryCode).filter(Boolean))].sort(),
     []
   );
   const uniqueAssets = useMemo(() => {
@@ -847,6 +905,35 @@ export default function FirmCompareDemo() {
     firms.forEach(f => f.platforms.forEach(p => s.add(p)));
     return [...s].sort();
   }, []);
+  const firmList = useMemo(
+    () =>
+      [...firms].sort((a, b) => firmOrderIndex(a.name) - firmOrderIndex(b.name)),
+    []
+  );
+  const availableSizes = useMemo(() => {
+    const present = new Set();
+    firms.forEach(f => (f.plans || []).forEach(p => present.add(p.accountSize)));
+    return ACCOUNT_SIZE_OPTIONS.filter(s => present.has(s));
+  }, []);
+
+  const availableSteps = useMemo(() => {
+    const present = new Set();
+    firms.forEach(f => (f.plans || []).forEach(p => present.add(p.steps)));
+    return STEP_OPTIONS.filter(s => present.has(s));
+  }, []);
+
+  const filterOptions = useMemo(
+    () => ({
+      assets: uniqueAssets,
+      sizes: availableSizes,
+      steps: availableSteps,
+      priceTypes: PRICE_OPTIONS,
+      drawdownTypes: FILTER_BOUNDS.drawdownTypes,
+      platforms: uniquePlatforms,
+      countries: uniqueCountries,
+    }),
+    [uniqueAssets, uniquePlatforms, uniqueCountries, availableSizes, availableSteps]
+  );
 
   useEffect(() => {
     if (!openDropdown && !customizeOpen) return undefined;
@@ -870,6 +957,24 @@ export default function FirmCompareDemo() {
     };
   }, [openDropdown, customizeOpen]);
 
+  useEffect(() => {
+    if (!sidebarOpen) return undefined;
+    const onKey = e => {
+      if (e.key === 'Escape') setSidebarOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [sidebarOpen]);
+
+  useEffect(() => {
+    if (!sidebarOpen || !isMobile) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [sidebarOpen, isMobile]);
+
   const toggleFavorite = useCallback(name => {
     setFavorites(prev => {
       const next = new Set(prev);
@@ -879,8 +984,32 @@ export default function FirmCompareDemo() {
     });
   }, []);
 
+  const openSidebar = useCallback(() => {
+    setDraft(cloneFacet(facet));
+    setSidebarOpen(true);
+    setOpenDropdown(null);
+    setCustomizeOpen(false);
+  }, [facet]);
+
+  const closeSidebar = useCallback(() => {
+    setSidebarOpen(false);
+    if (isMobile) setDraft(cloneFacet(facet));
+  }, [facet, isMobile]);
+
+  const applyDraftFacet = useCallback(next => {
+    setDraft(next);
+    if (!isMobile) setFacet(cloneFacet(next));
+  }, [isMobile]);
+
+  const applyMobileFilters = useCallback(() => {
+    setFacet(cloneFacet(draft));
+    setSidebarOpen(false);
+  }, [draft]);
+
   const resetFacets = useCallback(() => {
-    setFacet(EMPTY_FACET);
+    const empty = cloneFacet(EMPTY_FACET);
+    setDraft(empty);
+    setFacet(empty);
     setSearch('');
     setOpenDropdown(null);
     setSort({ key: 'default', dir: 'asc' });
@@ -889,10 +1018,12 @@ export default function FirmCompareDemo() {
   const toggleMulti = useCallback((key, value) => {
     setFacet(prev => {
       const list = prev[key];
-      const next = list.includes(value) ? list.filter(v => v !== value) : [...list, value];
-      return { ...prev, [key]: next };
+      const nextList = list.includes(value) ? list.filter(v => v !== value) : [...list, value];
+      const next = { ...prev, [key]: nextList };
+      if (sidebarOpen) setDraft(cloneFacet(next));
+      return next;
     });
-  }, []);
+  }, [sidebarOpen]);
 
   const cycleSort = useCallback(key => {
     setSort(prev => {
@@ -934,24 +1065,58 @@ export default function FirmCompareDemo() {
     if (facet.prices.length) {
       rows = rows.filter(r => facet.prices.includes(r.plan.priceType));
     }
-    if (facet.country) rows = rows.filter(r => r.firm.countryCode === facet.country);
-    if (facet.platform) {
-      rows = rows.filter(r => r.firm.platforms.includes(facet.platform));
+    if (facet.firms.length) {
+      rows = rows.filter(r => facet.firms.includes(r.firm.name));
     }
-    if (facet.programType) rows = rows.filter(r => r.firm.type === facet.programType);
+    if (facet.drawdownTypes.length) {
+      rows = rows.filter(r =>
+        facet.drawdownTypes.includes(normalizeDrawdown(r.plan.maxLossType))
+      );
+    }
+    if (facet.platforms.length) {
+      rows = rows.filter(r => facet.platforms.some(p => r.firm.platforms.includes(p)));
+    }
+    if (facet.countries.length) {
+      rows = rows.filter(r => facet.countries.includes(r.firm.countryCode));
+    }
+    if (isRangeActive(facet.priceRange, FILTER_BOUNDS.price)) {
+      const { min, max } = facet.priceRange;
+      rows = rows.filter(r => {
+        const price = applyDiscount ? Number(r.plan.price) : Number(r.plan.priceWas ?? r.plan.price);
+        return price >= min && price <= max;
+      });
+    }
+    if (isRangeActive(facet.splitRange, FILTER_BOUNDS.split)) {
+      const { min, max } = facet.splitRange;
+      rows = rows.filter(r => {
+        const split =
+          typeof r.plan.profitSplit === 'number'
+            ? r.plan.profitSplit
+            : Number(String(r.plan.profitSplitLabel || r.plan.profitSplit).match(/[\d.]+/)?.[0] || 0);
+        return split >= min && split <= max;
+      });
+    }
+    if (isRangeActive(facet.ratingRange, FILTER_BOUNDS.rating)) {
+      const { min, max } = facet.ratingRange;
+      rows = rows.filter(r => {
+        const rating = Number(r.firm.rating) || 0;
+        return rating >= min && rating <= max;
+      });
+    }
+    if (isRangeActive(facet.yearsRange, FILTER_BOUNDS.years)) {
+      const { min, max } = facet.yearsRange;
+      rows = rows.filter(r => {
+        const y = Number(r.firm.years) || 0;
+        return y >= min && y <= max;
+      });
+    }
 
     const mul = sort.dir === 'desc' ? -1 : 1;
     const isDefaultSort = !sort.key || sort.key === 'default';
     const hasBrowseFilters =
       topMode === 'favorites' ||
       Boolean(search.trim()) ||
-      facet.assets.length > 0 ||
-      facet.sizes.length > 0 ||
-      facet.steps.length > 0 ||
-      facet.prices.length > 0 ||
-      Boolean(facet.country) ||
-      Boolean(facet.platform) ||
-      Boolean(facet.programType);
+      countActiveFilters(facet, FILTER_BOUNDS) > 0;
 
     /* Unfiltered default: 1 best plan/firm → 1 second deal/firm → full catalog */
     if (isDefaultSort && !hasBrowseFilters) {
@@ -975,7 +1140,7 @@ export default function FirmCompareDemo() {
     });
 
     return rows;
-  }, [topMode, favorites, facet, sort, search]);
+  }, [topMode, favorites, facet, sort, search, applyDiscount]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const pageItems = useMemo(() => buildPageItems(page, totalPages), [page, totalPages]);
@@ -1000,27 +1165,15 @@ export default function FirmCompareDemo() {
     return () => cancelAnimationFrame(id);
   }, [pageRows, visibleMidCols, applyMidScroll]);
 
-  /* Native scroll + wheel — keep every mid pane locked together */
+  /* Wheel/trackpad horizontal scroll — keep every mid pane locked together.
+     Native drag/touch/scrollbar scroll is already synced via onScroll={onMidScroll}
+     on each .cmp-mid; a second native 'scroll' listener here used to race that
+     React handler through the same syncingScroll lock, which is what caused rows
+     to drift out of sync under continuous scrolling. Wheel needs its own handler
+     because it must preventDefault before the browser scrolls just one pane. */
   useEffect(() => {
     const root = boardRef.current;
     if (!root) return undefined;
-
-    const panes = () => Array.from(root.querySelectorAll('.cmp-mid'));
-
-    const lockFrom = (left, source) => {
-      if (syncingScroll.current) return;
-      syncingScroll.current = true;
-      applyMidScroll(left, source);
-      requestAnimationFrame(() => {
-        syncingScroll.current = false;
-      });
-    };
-
-    const onScroll = e => {
-      const t = e.target;
-      if (!(t instanceof HTMLElement) || !t.classList.contains('cmp-mid')) return;
-      lockFrom(t.scrollLeft, t);
-    };
 
     const onWheel = e => {
       const mid = e.target instanceof Element ? e.target.closest('.cmp-mid') : null;
@@ -1034,32 +1187,17 @@ export default function FirmCompareDemo() {
       const max = Math.max(0, mid.scrollWidth - mid.clientWidth);
       const next = Math.min(Math.max(mid.scrollLeft + delta, 0), max);
       syncingScroll.current = true;
-      midScrollLeft.current = next;
-      panes().forEach(pane => {
-        pane.scrollLeft = next;
-      });
+      applyMidScroll(next, null);
       requestAnimationFrame(() => {
         syncingScroll.current = false;
       });
     };
 
-    const bind = () => {
-      panes().forEach(pane => {
-        pane.removeEventListener('scroll', onScroll);
-        pane.addEventListener('scroll', onScroll, { passive: true });
-      });
-    };
-
-    bind();
     root.addEventListener('wheel', onWheel, { passive: false });
-    const mo = new MutationObserver(bind);
-    mo.observe(root, { childList: true, subtree: true });
     return () => {
-      mo.disconnect();
       root.removeEventListener('wheel', onWheel);
-      panes().forEach(pane => pane.removeEventListener('scroll', onScroll));
     };
-  }, [applyMidScroll, pageRows.length]);
+  }, [applyMidScroll]);
 
   const copyCode = async code => {
     try {
@@ -1072,361 +1210,217 @@ export default function FirmCompareDemo() {
   };
 
   const favCount = favorites.size;
-  const activeQuickFilters =
-    facet.assets.length + facet.sizes.length + facet.steps.length + facet.prices.length;
+  const activeFilterCount = countActiveFilters(facet, FILTER_BOUNDS);
+  const draftFilterCount = countActiveFilters(draft, FILTER_BOUNDS);
 
   return (
-    <div className="cmp">
-      {sidebarOpen && (
-        <button
-          type="button"
-          className="cmp-sidebar__backdrop"
-          aria-label="Close filters"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
-
+    <div className={`cmp${sidebarOpen ? ' cmp--filters-open' : ''}`}>
       <div className="cmp-layout">
-        <aside
-          className={`cmp-sidebar${sidebarOpen ? ' cmp-sidebar--open' : ''}`}
-          id="cmp-filters"
-          aria-hidden={!sidebarOpen}
-        >
-          <div className="cmp-sidebar__head">
-            <span className="cmp-sidebar__title">Advanced filters</span>
-            <button
-              type="button"
-              className="cmp-sidebar__close"
-              onClick={() => setSidebarOpen(false)}
-              aria-label="Close filter panel"
-            >
-              ×
-            </button>
-          </div>
-
-          {activeQuickFilters > 0 && (
-            <div className="cmp-sidebar__active">
-              {facet.assets.map(a => (
-                <span key={`a-${a}`} className="cmp-sidebar__chip">Assets: {a}</span>
-              ))}
-              {facet.sizes.map(s => (
-                <span key={`s-${s}`} className="cmp-sidebar__chip">Size: {s}</span>
-              ))}
-              {facet.steps.map(s => (
-                <span key={`st-${s}`} className="cmp-sidebar__chip">Steps: {s}</span>
-              ))}
-              {facet.prices.map(p => (
-                <span key={`p-${p}`} className="cmp-sidebar__chip">Price: {p}</span>
-              ))}
-            </div>
-          )}
-
-          <details className="cmp-acc" open>
-            <summary className="cmp-acc__summary">Instruments</summary>
-            <div className="cmp-acc__body">
-              {uniqueAssets.map(a => (
-                <button
-                  key={a}
-                  type="button"
-                  className={`cmp-chip ${facet.assets.includes(a) ? 'cmp-chip--on' : ''}`}
-                  onClick={() => toggleMulti('assets', a)}
-                >
-                  {a}
-                </button>
-              ))}
-            </div>
-          </details>
-
-          <details className="cmp-acc" open>
-            <summary className="cmp-acc__summary">Account size</summary>
-            <div className="cmp-acc__body">
-              {ACCOUNT_SIZE_OPTIONS.map(s => (
-                <button
-                  key={s}
-                  type="button"
-                  className={`cmp-chip ${facet.sizes.includes(s) ? 'cmp-chip--on' : ''}`}
-                  onClick={() => toggleMulti('sizes', s)}
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
-          </details>
-
-          <details className="cmp-acc">
-            <summary className="cmp-acc__summary">Steps</summary>
-            <div className="cmp-acc__body">
-              {STEP_OPTIONS.map(s => (
-                <button
-                  key={s}
-                  type="button"
-                  className={`cmp-chip ${facet.steps.includes(s) ? 'cmp-chip--on' : ''}`}
-                  onClick={() => toggleMulti('steps', s)}
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
-          </details>
-
-          <details className="cmp-acc">
-            <summary className="cmp-acc__summary">Price</summary>
-            <div className="cmp-acc__body">
-              {PRICE_OPTIONS.map(p => (
-                <button
-                  key={p}
-                  type="button"
-                  className={`cmp-chip ${facet.prices.includes(p) ? 'cmp-chip--on' : ''}`}
-                  onClick={() => toggleMulti('prices', p)}
-                >
-                  {p}
-                </button>
-              ))}
-            </div>
-          </details>
-
-          <details className="cmp-acc">
-            <summary className="cmp-acc__summary">Countries</summary>
-            <div className="cmp-acc__body">
-              {uniqueCountries.map(c => (
-                <button
-                  key={c}
-                  type="button"
-                  className={`cmp-chip ${facet.country === c ? 'cmp-chip--on' : ''}`}
-                  onClick={() => setFacet(p => ({ ...p, country: p.country === c ? null : c }))}
-                >
-                  {flagEmoji(c)} {c}
-                </button>
-              ))}
-            </div>
-          </details>
-
-          <details className="cmp-acc">
-            <summary className="cmp-acc__summary">Platforms</summary>
-            <div className="cmp-acc__body">
-              {uniquePlatforms.map(p => (
-                <button
-                  key={p}
-                  type="button"
-                  className={`cmp-chip ${facet.platform === p ? 'cmp-chip--on' : ''}`}
-                  onClick={() =>
-                    setFacet(f => ({ ...f, platform: f.platform === p ? null : p }))
-                  }
-                >
-                  {p}
-                </button>
-              ))}
-            </div>
-          </details>
-
-          <details className="cmp-acc">
-            <summary className="cmp-acc__summary">Program type</summary>
-            <div className="cmp-acc__body">
-              {['Challenge', 'Funded'].map(t => (
-                <button
-                  key={t}
-                  type="button"
-                  className={`cmp-chip ${facet.programType === t ? 'cmp-chip--on' : ''}`}
-                  onClick={() =>
-                    setFacet(f => ({ ...f, programType: f.programType === t ? null : t }))
-                  }
-                >
-                  {t}
-                </button>
-              ))}
-            </div>
-          </details>
-
-          <button type="button" className="cmp-reset" onClick={resetFacets}>
-            Reset filter
-          </button>
-        </aside>
+        <CompareFilterSidebar
+          open={sidebarOpen}
+          draft={draft}
+          bounds={FILTER_BOUNDS}
+          options={filterOptions}
+          firmList={firmList}
+          onChange={applyDraftFacet}
+          onApply={applyMobileFilters}
+          onReset={resetFacets}
+          onClose={closeSidebar}
+          activeCount={isMobile ? draftFilterCount : activeFilterCount}
+        />
 
         <div className="cmp-main">
-          <div className="cmp-toolbar" role="toolbar" aria-label="Table filters" ref={toolbarRef}>
-            <button
-              type="button"
-              className={`cmp-pill${sidebarOpen ? ' cmp-pill--active cmp-pill--filter-open' : ''}`}
-              onClick={() => {
-                setSidebarOpen(v => !v);
-                setOpenDropdown(null);
-              }}
-              aria-pressed={sidebarOpen}
-              aria-expanded={sidebarOpen}
-              aria-controls="cmp-filters"
-            >
-              <ToolbarIcon name="filter" />
-              Filter
-            </button>
-
-            <span className="cmp-toolbar__sep" aria-hidden />
-
-            <FilterDropdown
-              id="assets"
-              label="Assets"
-              valueLabel={formatMultiLabel(facet.assets, 'All')}
-              open={openDropdown === 'assets'}
-              onToggle={setOpenDropdown}
-              options={uniqueAssets}
-              selected={facet.assets}
-              onToggleOption={opt => toggleMulti('assets', opt)}
-            />
-            <FilterDropdown
-              id="sizes"
-              label="Size"
-              valueLabel={formatMultiLabel(facet.sizes, 'All')}
-              open={openDropdown === 'sizes'}
-              onToggle={setOpenDropdown}
-              options={ACCOUNT_SIZE_OPTIONS}
-              selected={facet.sizes}
-              onToggleOption={opt => toggleMulti('sizes', opt)}
-            />
-            <FilterDropdown
-              id="steps"
-              label="Steps"
-              valueLabel={formatMultiLabel(facet.steps, 'All')}
-              open={openDropdown === 'steps'}
-              onToggle={setOpenDropdown}
-              options={STEP_OPTIONS}
-              selected={facet.steps}
-              onToggleOption={opt => toggleMulti('steps', opt)}
-            />
-            <FilterDropdown
-              id="prices"
-              label="Price"
-              valueLabel={formatMultiLabel(facet.prices, 'All')}
-              open={openDropdown === 'prices'}
-              onToggle={setOpenDropdown}
-              options={PRICE_OPTIONS}
-              selected={facet.prices}
-              onToggleOption={opt => toggleMulti('prices', opt)}
-            />
-
-            <span className="cmp-toolbar__sep" aria-hidden />
-
-            <ToggleSwitch
-              label="Apply Discount"
-              checked={applyDiscount}
-              onChange={setApplyDiscount}
-            />
-
-            <span className="cmp-toolbar__sep" aria-hidden />
-
-            <button
-              type="button"
-              className={`cmp-pill cmp-pill--round${topMode === 'all' ? ' cmp-pill--active' : ''}`}
-              onClick={() => setTopMode('all')}
-              aria-pressed={topMode === 'all'}
-            >
-              All
-            </button>
-            <button
-              type="button"
-              className={`cmp-pill${topMode === 'favorites' ? ' cmp-pill--active' : ''}`}
-              onClick={() => setTopMode('favorites')}
-              aria-pressed={topMode === 'favorites'}
-            >
-              <ToolbarIcon name="bookmark" />
-              Bookmarks {favCount}/{MAX_FAVORITES}
-            </button>
-
-            <div className="cmp-customize-wrap">
-              <button
-                type="button"
-                className={`cmp-pill cmp-pill--customize${customizeOpen ? ' cmp-pill--active' : ''}`}
-                onClick={() => {
-                  setCustomizeOpen(v => !v);
-                  setOpenDropdown(null);
-                }}
-                aria-pressed={customizeOpen}
-                aria-expanded={customizeOpen}
-              >
-                <ToolbarIcon name="grid" />
-                Customize
-              </button>
-              {customizeOpen && (
-                <div className="cmp-customize" role="dialog" aria-label="Customize columns">
-                  <p className="cmp-customize__title">Show or hide columns</p>
-                  <div className="cmp-customize__list">
-                    {MID_COLS.map(col => (
-                      <label key={col.key} className="cmp-customize__item">
-                        <input
-                          type="checkbox"
-                          checked={visibleCols.has(col.key)}
-                          onChange={() => toggleCol(col.key)}
-                        />
-                        <span>{col.label}</span>
-                      </label>
-                    ))}
-                  </div>
+          <div className="cmp-table-stage">
+            {/* PFM-style: one horizontal scrollable filter line, flush with table */}
+            <div className="cmp-chrome" ref={toolbarRef}>
+              <div className="cmp-filter-line" role="toolbar" aria-label="Quick filters">
+                <div className="cmp-filter-line__scroll">
                   <button
                     type="button"
-                    className="cmp-customize__reset"
-                    onClick={() => setVisibleCols(new Set(ALL_COL_KEYS))}
+                    className={`cmp-filter-trigger${sidebarOpen ? ' cmp-filter-trigger--open' : ''}`}
+                    onClick={() => {
+                      if (sidebarOpen) closeSidebar();
+                      else openSidebar();
+                    }}
+                    aria-pressed={sidebarOpen}
+                    aria-expanded={sidebarOpen}
+                    aria-controls="cmp-filters"
+                    aria-label={sidebarOpen ? 'Close filters' : 'Open filters'}
                   >
-                    Reset columns
+                    <ToolbarIcon name="filter" />
+                    {activeFilterCount > 0 ? (
+                      <span className="cmp-pill__badge">{activeFilterCount}</span>
+                    ) : null}
+                  </button>
+
+                  <FilterDropdown
+                    id="assets"
+                    label="Assets"
+                    valueLabel={formatMultiLabel(facet.assets, 'All')}
+                    open={openDropdown === 'assets'}
+                    onToggle={setOpenDropdown}
+                    options={uniqueAssets}
+                    selected={facet.assets}
+                    onToggleOption={opt => toggleMulti('assets', opt)}
+                  />
+                  <FilterDropdown
+                    id="sizes"
+                    label="Size"
+                    valueLabel={formatMultiLabel(facet.sizes, 'All')}
+                    open={openDropdown === 'sizes'}
+                    onToggle={setOpenDropdown}
+                    options={availableSizes.length ? availableSizes : ACCOUNT_SIZE_OPTIONS}
+                    selected={facet.sizes}
+                    onToggleOption={opt => toggleMulti('sizes', opt)}
+                  />
+                  <FilterDropdown
+                    id="steps"
+                    label="Steps"
+                    valueLabel={formatMultiLabel(facet.steps, 'All')}
+                    open={openDropdown === 'steps'}
+                    onToggle={setOpenDropdown}
+                    options={availableSteps.length ? availableSteps : STEP_OPTIONS}
+                    selected={facet.steps}
+                    onToggleOption={opt => toggleMulti('steps', opt)}
+                  />
+                  <FilterDropdown
+                    id="prices"
+                    label="Price"
+                    valueLabel={formatMultiLabel(facet.prices, 'All')}
+                    open={openDropdown === 'prices'}
+                    onToggle={setOpenDropdown}
+                    options={PRICE_OPTIONS}
+                    selected={facet.prices}
+                    onToggleOption={opt => toggleMulti('prices', opt)}
+                  />
+
+                  <span className="cmp-filter-line__sep" aria-hidden />
+
+                  <ToggleSwitch
+                    label="Apply Discount"
+                    checked={applyDiscount}
+                    onChange={setApplyDiscount}
+                  />
+
+                  <button
+                    type="button"
+                    className={`cmp-pill cmp-pill--round${topMode === 'all' ? ' cmp-pill--active' : ''}`}
+                    onClick={() => setTopMode('all')}
+                    aria-pressed={topMode === 'all'}
+                  >
+                    All
+                  </button>
+                  <button
+                    type="button"
+                    className={`cmp-pill cmp-pill--compact${topMode === 'favorites' ? ' cmp-pill--active' : ''}`}
+                    onClick={() => setTopMode('favorites')}
+                    aria-pressed={topMode === 'favorites'}
+                  >
+                    <ToolbarIcon name="bookmark" />
+                    {favCount}/{MAX_FAVORITES}
                   </button>
                 </div>
-              )}
-            </div>
+              </div>
 
-            <label className="cmp-search">
-              <svg
-                className="cmp-search__icon"
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
-                <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
-                <path
-                  d="M21 21l-4.3-4.3"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <input
-                type="text"
-                className="cmp-search__input"
-                placeholder="Search firm name…"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                aria-label="Search firm name"
-                autoComplete="off"
-                spellCheck={false}
-              />
-              {search ? (
-                <button
-                  type="button"
-                  className="cmp-search__clear"
-                  onClick={() => setSearch('')}
-                  aria-label="Clear search"
-                >
-                  ×
-                </button>
-              ) : null}
-            </label>
-          </div>
+              <div className="cmp-tools-row">
+                <div className="cmp-customize-wrap">
+                  <button
+                    type="button"
+                    className={`cmp-pill cmp-pill--customize${customizeOpen ? ' cmp-pill--active' : ''}`}
+                    onClick={() => {
+                      setCustomizeOpen(v => !v);
+                      setOpenDropdown(null);
+                    }}
+                    aria-pressed={customizeOpen}
+                    aria-expanded={customizeOpen}
+                  >
+                    <ToolbarIcon name="grid" />
+                    Customize
+                  </button>
+                  {customizeOpen && (
+                    <div className="cmp-customize" role="dialog" aria-label="Customize columns">
+                      <p className="cmp-customize__title">Show or hide columns</p>
+                      <div className="cmp-customize__list">
+                        {MID_COLS.map(col => (
+                          <label key={col.key} className="cmp-customize__item">
+                            <input
+                              type="checkbox"
+                              checked={visibleCols.has(col.key)}
+                              onChange={() => toggleCol(col.key)}
+                            />
+                            <span>{col.label}</span>
+                          </label>
+                        ))}
+                      </div>
+                      <button
+                        type="button"
+                        className="cmp-customize__reset"
+                        onClick={() => setVisibleCols(new Set(ALL_COL_KEYS))}
+                      >
+                        Reset columns
+                      </button>
+                    </div>
+                  )}
+                </div>
 
-          <div className="cmp-table-stage">
-            <div className="cmp-table-headrow">
-              <h3 className="cmp-table-heading">
-                Prop firm challenges <span className="cmp-table-heading__count">{filtered.length}</span>
-              </h3>
-              <TableScrollSlider getMidPanes={getMidPanes} masterRef={masterMidRef} />
+                <label className="cmp-search">
+                  <svg
+                    className="cmp-search__icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
+                    <path
+                      d="M21 21l-4.3-4.3"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  <input
+                    type="text"
+                    className="cmp-search__input"
+                    placeholder="Search for challenges"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                    aria-label="Search for challenges"
+                    autoComplete="off"
+                    spellCheck={false}
+                  />
+                  {search ? (
+                    <button
+                      type="button"
+                      className="cmp-search__clear"
+                      onClick={() => setSearch('')}
+                      aria-label="Clear search"
+                    >
+                      ×
+                    </button>
+                  ) : null}
+                </label>
+              </div>
+
+              <div className="cmp-table-headrow">
+                <h3 className="cmp-table-heading">
+                  Prop firm challenges{' '}
+                  <span className="cmp-table-heading__count">{filtered.length}</span>
+                </h3>
+                <TableScrollSlider getMidPanes={getMidPanes} masterRef={masterMidRef} />
+              </div>
             </div>
 
             <div
               className="cmp-board"
               ref={boardRef}
               role="table"
-              aria-label="Compare prop firm challenges: size, steps, drawdown, payouts, and price"
+              aria-label="Compare prop firm challenges: size, drawdown, contracts, payouts, and price"
             >
               <div className="cmp-board__row cmp-board__row--head" role="row">
                 <div className="cmp-pin cmp-pin--firm" role="columnheader">
-                  <span className="cmp-th cmp-th--firm">Firm / Rank</span>
+                  <span className="cmp-th cmp-th--firm">Firm / Plan</span>
                 </div>
                 <div
                   className="cmp-mid"
@@ -1442,6 +1436,7 @@ export default function FirmCompareDemo() {
                           key={col.key}
                           label={col.label}
                           sub={col.sub}
+                          tip={col.tip}
                           sortKey={col.key}
                           sort={sort}
                           onSort={cycleSort}
@@ -1453,6 +1448,7 @@ export default function FirmCompareDemo() {
                           key={col.key}
                           label={col.label}
                           sub={col.sub}
+                          tip={col.tip}
                           className="cmp-mid__cell"
                           style={{ flex: `0 0 ${col.min}px`, minWidth: col.min }}
                         />
@@ -1463,6 +1459,7 @@ export default function FirmCompareDemo() {
                 <div className="cmp-pin cmp-pin--price" role="columnheader">
                   <SortHead
                     label="Price"
+                    tip="price"
                     sortKey="price"
                     sort={sort}
                     onSort={cycleSort}
@@ -1506,7 +1503,7 @@ export default function FirmCompareDemo() {
                             <div className="cmp-firm__logo">
                               <Image src={f.logo} alt={`${f.name} logo`} width={52} height={52} />
                             </div>
-                            <VerifiedBadge />
+                            {f.reviews >= 10 && f.rating >= 4 ? <VerifiedBadge /> : null}
                           </div>
                           <div className="cmp-firm__meta">
                             <span className="cmp-firm__name">{f.name}</span>
@@ -1542,13 +1539,18 @@ export default function FirmCompareDemo() {
                                 ? `Remove ${f.name} from bookmarks`
                                 : `Bookmark ${f.name}`
                             }
-                            disabled={!favorites.has(f.name) && favorites.size >= MAX_FAVORITES}
+                            aria-pressed={favorites.has(f.name)}
+                            disabled={
+                              !favorites.has(f.name) && favorites.size >= MAX_FAVORITES
+                                ? true
+                                : undefined
+                            }
                           >
                             <Bookmark
                               size={16}
                               strokeWidth={1.85}
-                              absoluteStrokeWidth
-                              fill={favorites.has(f.name) ? 'currentColor' : 'none'}
+                              fill={favorites.has(f.name) ? 'currentColor' : 'transparent'}
+                              aria-hidden
                             />
                           </button>
                         </div>
@@ -1563,12 +1565,15 @@ export default function FirmCompareDemo() {
                       <div className="cmp-pin cmp-pin--price" role="cell">
                         <div className="cmp-price">
                           <div className="cmp-price__meta">
-                            {applyDiscount && p.priceWas > p.price && (
+                            {applyDiscount &&
+                            Number(p.priceWas) > Number(p.price) ? (
                               <span className="cmp-price__was">{formatMoney(p.priceWas)}</span>
-                            )}
+                            ) : null}
                             <span className="cmp-price__now">{formatMoney(displayPrice)}</span>
-                            <span className="cmp-price__type">{p.priceType.toLowerCase()}</span>
-                            {applyDiscount && promoCode && (
+                            <span className="cmp-price__type">
+                              {String(p.priceType || 'One Time').toLowerCase()}
+                            </span>
+                            {applyDiscount && promoCode ? (
                               <button
                                 type="button"
                                 className="cmp-price__code"
@@ -1577,7 +1582,7 @@ export default function FirmCompareDemo() {
                                 {promoCode}
                                 {copied === promoCode ? ' ✓' : ''}
                               </button>
-                            )}
+                            ) : null}
                           </div>
                           {websiteHref ? (
                             <a
@@ -1606,7 +1611,7 @@ export default function FirmCompareDemo() {
                     type="button"
                     className="cmp-pager__btn"
                     onClick={() => setPage(p => Math.max(1, p - 1))}
-                    disabled={page <= 1}
+                    disabled={page <= 1 ? true : undefined}
                     aria-label="Previous page"
                   >
                     Previous
@@ -1633,7 +1638,7 @@ export default function FirmCompareDemo() {
                     type="button"
                     className="cmp-pager__btn"
                     onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                    disabled={page >= totalPages}
+                    disabled={page >= totalPages ? true : undefined}
                     aria-label="Next page"
                   >
                     Next

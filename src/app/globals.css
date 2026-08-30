@@ -72,10 +72,18 @@
   --glow-blue: 0 0 40px rgba(59, 130, 246, 0.4);
 }
 
-* {
+/* Avoid padding/margin on * — that beats Tailwind @layer utilities and
+   kills every px-*, mx-auto, gap-adjacent spacing utility on Tailwind pages. */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
+}
+
+html,
+body {
   margin: 0;
+  padding: 0;
 }
 
 html, body {

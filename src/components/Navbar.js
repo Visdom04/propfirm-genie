@@ -1,14 +1,16 @@
 import './Navbar.css';
+import { BRAND_LOGO_SRC, BRAND_NAME, SITE_HOME } from '@/lib/brand';
+import AuthNav from './AuthNav';
 
 export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="container navbar-content">
         <div className="navbar-left">
-          <div className="logo">
-            <div className="logo-icon">P</div>
-            <span className="logo-text">Prop Firm <span className="text-blue">Match</span></span>
-          </div>
+          <a href={SITE_HOME} className="logo" aria-label={`${BRAND_NAME} home`}>
+            <img src={BRAND_LOGO_SRC} alt="" className="logo-icon-img" width={32} height={32} />
+            <span className="logo-text">Prop Firm <span className="text-blue">Wise</span></span>
+          </a>
           
           <div className="search-bar glass">
             <svg className="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -31,8 +33,7 @@ export default function Navbar() {
             </svg>
             We're Hiring
           </button>
-          <button className="btn btn-secondary">Log in</button>
-          <button className="btn btn-primary">Sign Up</button>
+          <AuthNav />
           <button className="menu-btn">
              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
           </button>

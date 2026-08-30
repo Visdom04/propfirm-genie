@@ -1,0 +1,94 @@
+.login-page {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.login-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1.5rem 6rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+}
+
+.auth-form h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.75rem;
+}
+
+.auth-sub,
+.login-home {
+  color: var(--slate-400);
+  font-size: 0.95rem;
+}
+
+.auth-sub {
+  margin: 0 0 1.25rem;
+}
+
+.auth-form label {
+  display: block;
+  margin: 0.75rem 0 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--slate-300);
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+  font-size: 1rem;
+}
+
+.auth-form input:focus {
+  outline: 2px solid rgba(99, 102, 241, 0.55);
+  outline-offset: 1px;
+}
+
+.auth-submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.auth-error {
+  margin: 0 0 1rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.12);
+  color: #fca5a5;
+  font-size: 0.9rem;
+}
+
+.auth-switch {
+  margin: 1.1rem 0 0;
+  color: var(--slate-400);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.auth-switch button {
+  background: none;
+  border: none;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.login-home {
+  margin: 1.25rem 0 0;
+  text-align: center;
+}
+
+.login-home a {
+  color: var(--slate-300);
+}

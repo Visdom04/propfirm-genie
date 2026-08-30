@@ -46,6 +46,22 @@
   white-space: nowrap;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-icon-img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.35));
+}
+
 .logo-icon {
   width: 32px;
   height: 32px;
@@ -165,6 +181,11 @@
   flex-shrink: 0;
 }
 
+.navbar-right form {
+  display: inline-flex;
+  margin: 0;
+}
+
 .btn-link {
   background: transparent;
   border: none;
@@ -196,6 +217,13 @@
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
+  text-decoration: none;
+}
+
+.navbar .auth-nav-email {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .navbar .btn-secondary {

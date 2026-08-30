@@ -1,9 +1,9 @@
 import DemoHero from '@/components/DemoHero';
+import { BRAND_DESCRIPTION, BRAND_NAME } from '@/lib/brand';
 
 export const metadata = {
-  title: 'PropFirmGenie — Find the Best Prop Firm in Seconds',
-  description:
-    'Tell us your budget, rules, and goals. Our AI finds the best prop trading firm match instantly.',
+  title: `${BRAND_NAME} — Compare Prop Firms & Earn Exclusive Rewards`,
+  description: BRAND_DESCRIPTION,
 };
 
 export default function DemoPage() {

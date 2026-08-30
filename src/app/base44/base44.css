@@ -1,0 +1,6 @@
+/* Preview uses DemoHero.css (same as /demo) for pixel parity.
+   Keep this file for any Base44-route-only overrides. */
+
+.base44-note {
+  display: none;
+}
