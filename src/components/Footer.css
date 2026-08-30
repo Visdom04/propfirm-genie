@@ -22,6 +22,15 @@
   font-size: 1rem;
   color: white;
   letter-spacing: -0.03em;
+  text-decoration: none;
+}
+
+.footer-logo-icon-img {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.35));
 }
 
 .footer-logo-icon {

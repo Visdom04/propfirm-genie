@@ -22,7 +22,7 @@ export default function Community() {
             </svg>
           </div>
           <div>
-            <h3 className="comm-brand-name">Prop Firm Match</h3>
+            <h3 className="comm-brand-name">Prop Firm Wise</h3>
             <div className="comm-stats">
               <span className="comm-online">● 500 Online</span>
               <span className="comm-members">👥 3,557 Members</span>

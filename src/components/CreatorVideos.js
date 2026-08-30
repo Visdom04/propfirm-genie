@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import './CreatorVideos.css';
 
-const CHANNEL_URL = 'https://www.youtube.com/@PropFirmGenie';
+const CHANNEL_URL = 'https://propfirmwise.com';
 
 const VISIBLE_COUNT = 3;
 
@@ -120,7 +120,7 @@ export default function CreatorVideos() {
   const dotCount = MAX_START + 1;
 
   return (
-    <section className="creator-videos" aria-labelledby="creator-videos-heading">
+    <section className="creator-videos" id="tools" aria-labelledby="creator-videos-heading">
       <div className="creator-videos__glows" aria-hidden="true">
         <div className="creator-videos__glow creator-videos__glow--a" />
         <div className="creator-videos__glow creator-videos__glow--b" />

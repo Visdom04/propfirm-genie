@@ -4,11 +4,11 @@ import './Hero.css';
 
 /** Five recognizable firms for the glass showcase strip (order is intentional for visual balance). */
 const HERO_SHOWCASE_SLUGS = [
-  'The5%ers',
-  'FundingPips',
-  'Alpha Capital',
-  'AquaFunded',
-  'Blue Guardian',
+  'Lucid Trading',
+  'My Funded Futures',
+  'Apex Trader Funding',
+  'Tradeify',
+  'Take Profit Trader',
 ];
 
 const heroShowcaseFirms = HERO_SHOWCASE_SLUGS.map((name) => firms.find((f) => f.name === name)).filter(
@@ -16,12 +16,12 @@ const heroShowcaseFirms = HERO_SHOWCASE_SLUGS.map((name) => firms.find((f) => f.
 );
 
 const cards = [
-  { id: 1, logo: '/firm/bg-partner.svg',          name: 'Blue Guardian', platform: 'MT5',      balance: '$53,897.78',  status: 'Evaluation', style: { top: '5%',  left: '2%'  }, delay: '0s'    },
-  { id: 2, logo: '/firm/alpha-partner.svg',        name: 'Alpha Capital', platform: 'cTrader',  balance: '$199,027.50', status: 'Funded',     style: { top: '40%', left: '-1%' }, delay: '0.6s'  },
-  { id: 3, logo: '/firm/funding-pips-partner.svg', name: 'FundingPips',   platform: 'cTrader',  balance: '$22,322.40',  status: 'Evaluation', style: { top: '72%', left: '4%'  }, delay: '1.2s'  },
-  { id: 4, logo: '/firm/aquafunded-partner.svg',   name: 'Aqua Funded',   platform: 'DX Trade', balance: '$203,158.35', status: 'Funded',     style: { top: '3%',  right: '2%' }, delay: '0.3s'  },
-  { id: 5, logo: '/firm/the-5-ers-partner.svg',    name: 'The5%ers',      platform: 'MT5',      balance: '$9,993.00',   status: 'Evaluation', style: { top: '42%', right: '0%' }, delay: '0.9s'  },
-  { id: 6, logo: '/firm/brightfunded-partner.svg', name: 'BrightFunded',  platform: 'MT5',      balance: '$10,650.25',  status: 'Evaluation', style: { top: '70%', right: '3%' }, delay: '1.5s'  },
+  { id: 1, logo: '/firm/lucid-trading.png',        name: 'Lucid Trading',        platform: 'NinjaTrader', balance: '$53,897.78',  status: 'Evaluation', style: { top: '5%',  left: '2%'  }, delay: '0s'    },
+  { id: 2, logo: '/firm/my-funded-futures.png',    name: 'My Funded Futures',    platform: 'Tradovate',   balance: '$199,027.50', status: 'Funded',     style: { top: '40%', left: '-1%' }, delay: '0.6s'  },
+  { id: 3, logo: '/firm/apex-trader-funding.png',  name: 'Apex Trader Funding',  platform: 'NinjaTrader', balance: '$22,322.40',  status: 'Evaluation', style: { top: '72%', left: '4%'  }, delay: '1.2s'  },
+  { id: 4, logo: '/firm/tradeify.png',             name: 'Tradeify',             platform: 'TradingView', balance: '$203,158.35', status: 'Funded',     style: { top: '3%',  right: '2%' }, delay: '0.3s'  },
+  { id: 5, logo: '/firm/take-profit-trader.png',   name: 'Take Profit Trader',   platform: 'NinjaTrader', balance: '$9,993.00',   status: 'Evaluation', style: { top: '42%', right: '0%' }, delay: '0.9s'  },
+  { id: 6, logo: '/firm/funded-next-futures.png',  name: 'FundedNext Futures',   platform: 'NinjaTrader', balance: '$10,650.25',  status: 'Evaluation', style: { top: '70%', right: '3%' }, delay: '1.5s'  },
 ];
 
 function FirmCard({ card }) {

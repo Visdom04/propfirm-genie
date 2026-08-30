@@ -1,4 +1,5 @@
 import './Footer.css';
+import { BRAND_LOGO_SRC, BRAND_NAME, SITE_HOME, SITE_URL } from '@/lib/brand';
 
 export default function Footer() {
   return (
@@ -7,11 +8,11 @@ export default function Footer() {
 
         {/* Brand + email */}
         <div className="footer-brand">
-          <div className="footer-logo">
-            <div className="footer-logo-icon">P</div>
-            <span className="footer-logo-text">Prop Firm <span>Match</span></span>
-          </div>
-          <p className="footer-tagline">The #1 platform to compare, review and track prop trading firms worldwide.</p>
+          <a href={SITE_HOME} className="footer-logo" aria-label={`${BRAND_NAME} home`}>
+            <img src={BRAND_LOGO_SRC} alt="" className="footer-logo-icon-img" width={36} height={36} />
+            <span className="footer-logo-text">Prop Firm <span>Wise</span></span>
+          </a>
+          <p className="footer-tagline">Payout protection, free evaluation accounts, and bonus payouts on prop firm purchases.</p>
           <div className="footer-email-form">
             <input type="email" placeholder="Your Email" className="footer-email-input" />
             <button className="footer-email-btn">Get Updates</button>
@@ -37,8 +38,8 @@ export default function Footer() {
 
         <div className="footer-col">
           <h4 className="footer-col-title">SUPPORT</h4>
-          <a href="mailto:support@propfirmmatch.com" className="footer-link footer-link--cyan">
-            support@propfirmmatch.com
+          <a href="mailto:support@propfirmwise.com" className="footer-link footer-link--cyan">
+            support@propfirmwise.com
           </a>
         </div>
 
@@ -68,10 +69,10 @@ export default function Footer() {
 
       {/* Divider + bottom */}
       <div className="footer-bottom container">
-        <span className="footer-copy">© 2026 Prop Firm Match. All rights reserved.</span>
+        <span className="footer-copy">© 2026 {BRAND_NAME}. All rights reserved.</span>
         <div className="footer-bottom-links">
-          <a href="#" className="footer-link">Terms of Service</a>
-          <a href="#" className="footer-link">Privacy Policy</a>
+          <a href={`${SITE_URL}/TermsAndConditions`} className="footer-link">Terms of Service</a>
+          <a href={`${SITE_URL}/PrivacyPolicy`} className="footer-link">Privacy Policy</a>
           <a href="#" className="footer-link">Cookie Policy</a>
         </div>
       </div>
