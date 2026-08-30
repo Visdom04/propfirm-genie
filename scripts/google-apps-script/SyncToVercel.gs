@@ -68,17 +68,6 @@ function onOpen() {
     .addToUi();
 }
 
-/** Hard wipe validations + filters (clearContents alone leaves ghost dropdowns). */
-function nukeSheetMeta_(sheet) {
-  if (!sheet) return;
-  try {
-    var filter = sheet.getFilter();
-    if (filter) filter.remove();
-  } catch (e) {}
-  // Sheet.clear = content + formatting + data validations
-  sheet.clear();
-}
-
 function applyDropdowns_(sheet) {
   var lastCol = Math.max(sheet.getLastColumn(), 1);
   var headers = sheet.getRange(1, 1, 1, lastCol).getDisplayValues()[0];
