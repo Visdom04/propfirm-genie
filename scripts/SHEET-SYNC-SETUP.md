@@ -34,12 +34,13 @@ After this branch is **pushed + Vercel deployed**:
 
 1. Paste latest `SyncToVercel.gs` (keep your real `SYNC_SECRET`)
 2. Reload the spreadsheet → menu **PropFirm Sync**
-3. **Import plans from URL** → confirms → replaces Plans tab from  
-   `https://propfirm-plum.vercel.app/data/firm-plans.tsv`  
-   (fallback: GitHub raw on this branch)
-4. Auto-runs `syncNow` after import
+3. **Strip ALL dropdowns** (clears red Invalid triangles)
+4. **Import plans from URL** → recreates tab, **no dropdowns**
+5. Optional: **Diagnose sheet** → Apps Script Logs show per-column HAS_DROPDOWN
 
-Or copy `scripts/firm-plans.tsv` into the Plans tab by hand.
+**Do NOT** click Google Sheets **Convert to table** — Tables invent dropdowns and cause red “Invalid input” on Min Days / Daily DD / News / List Price.
+
+Red triangles ≠ bad data. They mean a dropdown rule rejects the cell (`setAllowInvalid(true)` still shows warnings).
 
 ## Test
 

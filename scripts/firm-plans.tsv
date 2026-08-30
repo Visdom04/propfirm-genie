@@ -116,37 +116,37 @@ Purdia	EOD	100k	EOD (DLL $2,000)	$130	$6,000	$3,000	10 (100 micros)	None / None	
 Purdia	Instant	25k	EOD	None	$1,000 (SFA→LFA)	$750	2	None / None	10 days (then Daily LFA; 5 profitable ≥$125; first payout $1,000)	90%	$349 (one-time)	KAGE	S2F	None	None	none		
 Purdia	Instant	50k	EOD	None	$2,000 (SFA→LFA)	$1,500	5	None / None	10 days (then Daily LFA; 5 profitable ≥$200; first payout $1,000)	90%	$549 (one-time)	KAGE	S2F	None	None	none		
 Purdia	Instant	100k	EOD	None	$3,000 (SFA→LFA)	$3,000	10	None / None	10 days (then Daily LFA; 5 profitable ≥$200; first payout $1,000)	90%	$849 (one-time)	KAGE	S2F	None	None	none		
-YRM	Challenge	25k	EOD (trailing)	$0 (was $99)	$1,500	$1,000	2 (20 micros)	50% / 35%	6 days (caps 1st→4th+: $1,000 / $1,500 / $2,500 / $3,500+)	90%	$69 (was $99; reset $63)	KAGE	Challenge	None	None	none	$99	30
-YRM	Challenge	50k	EOD (trailing)	$0 (was $99)	$3,000	$2,000	5 (50 micros)	50% / 35%	6 days (caps 1st→4th+: $1,500 / $2,000 / $2,500 / $4,000+)	90%	$92 (was $132; reset $86)	KAGE	Challenge	None	None	none	$132	30
-YRM	Challenge	100k	EOD (trailing)	$0 (was $99)	$6,000	$3,000	10 (100 micros)	50% / 35%	6 days (caps 1st→4th+: $2,000 / $2,500 / $3,000 / $5,000+)	90%	$162 (was $232; reset $151)	KAGE	Challenge	None	None	none	$232	30
-YRM	Challenge	150k	EOD (trailing)	$0 (was $99)	$9,000	$4,500	15 (150 micros)	50% / 35%	6 days (caps 1st→4th+: $2,500 / $3,000 / $3,500 / $6,000+)	90%	$209 (was $298; reset $186)	KAGE	Challenge	None	None	none	$298	30
-DayTraders	S2L	50k	Intraday (trailing)	None	$3,000	$2,000	2 (20 micros)	25% / None	8 days (min day $200)	80%	$179 (was $329)	KAGE	Challenge	None	None	both	$329	46
-DayTraders	S2L	150k	Intraday (trailing)	None	$8,500	$4,500	3 (30 micros)	25% / None	8 days (min day $300)	80%	$319 (was $469)	KAGE	Challenge	None	None	both	$469	32
-DayTraders	S2L	300k	Intraday (trailing)	None	$15,000	$7,000	4 (40 micros)	25% / None	8 days (min day $400)	80%	$449 (was $599)	KAGE	Challenge	None	None	both	$599	25
-DayTraders	Trailing	25k	Intraday (trailing)	$99	$1,500	$1,500	6 (60 micros)	50% / 30%	8 days (min day $100; max payout $1,000)	100%	$37.35 (was $249)	KAGE	Challenge	None	None	both	$249	85
-DayTraders	Trailing 2K	50k	Intraday (trailing)	$99	$3,000	$2,000	10 (100 micros)	50% / 30%	8 days (min day $200; max payout $2,000)	100%	$70.35 (was $469)	KAGE	Challenge	None	None	both	$469	85
-DayTraders	Trailing 2.5K	50k	Intraday (trailing)	$99	$3,000	$2,500	10 (100 micros)	50% / 30%	8 days (min day $200; max payout $2,000)	100%	$56.85 (was $379)	KAGE	Challenge	None	None	both	$379	85
-DayTraders	Trailing	150k	Intraday (trailing)	$99	$8,500	$4,500	24 (240 micros)	50% / 30%	8 days (min day $300; max payout $3,500)	100%	$104.85 (was $699)	KAGE	Challenge	None	None	both	$699	85
-DayTraders	Trailing	300k	Intraday (trailing)	$99	$15,000	$7,000	40 (400 micros)	50% / 30%	8 days (min day $400; max payout $5,000)	100%	$131.85 (was $879)	KAGE	Challenge	None	None	both	$879	85
-DayTraders	EOD	25k	EOD (trailing)	$99	$1,500	$1,500	6 (60 micros)	50% / 30%	8 days (min day $100; max payout $1,000)	100%	$46.35 (was $309)	KAGE	Challenge	None	None	both	$309	85
-DayTraders	EOD	150k	EOD (trailing)	$99	$8,500	$4,000	24 (240 micros)	50% / 30%	8 days (min day $300; max payout $3,500)	100%	$134.85 (was $899)	KAGE	Challenge	None	None	both	$899	85
-DayTraders	EOD	300k	EOD (trailing)	$99	$15,000	$6,500	40 (400 micros)	50% / 30%	8 days (min day $400; max payout $5,000)	100%	$239.85 (was $1,599)	KAGE	Challenge	None	None	both	$1,599	85
-DayTraders	Static	25k	Static	$99	$2,500	$750	4 (40 micros)	50% / 30%	8 days (min day $100; max payout $1,000)	100%	$30 (was $150)	KAGE	Challenge	None	None	both	$150	80
-DayTraders	Static	50k	Static	$99	$3,750	$1,000	6 (60 micros)	50% / 30%	8 days (min day $200; max payout $2,000)	100%	$40 (was $200)	KAGE	Challenge	None	None	both	$200	80
-DayTraders	Static	100k	Static	$99	$5,750	$1,500	8 (80 micros)	50% / 30%	8 days (min day $300; max payout $3,500)	100%	$65 (was $325)	KAGE	Challenge	None	None	both	$325	80
-DayTraders	Static	150k	Static	$99	$6,750	$1,750	8 (80 micros)	50% / 30%	8 days (min day $300; max payout $3,500)	100%	$80 (was $400)	KAGE	Challenge	None	None	both	$400	80
-DayTraders	S2F (Instant)	25k	EOD (trailing)	None	None	$1,000	2 (20 micros)	None / 20%	8 days (min day $100; max payout $1,000)	100%	$222 (was $370)	KAGE	S2F	None	None	both	$370	40
-DayTraders	S2F (Instant)	50k	EOD (trailing)	None	None	$2,500	10 (100 micros)	None / 20%	8 days (min day $200; max payout $2,000)	100%	$342 (was $570)	KAGE	S2F	None	None	both	$570	40
-DayTraders	S2F (Instant)	150k	EOD (trailing)	None	None	$6,000	24 (240 micros)	None / 20%	8 days (min day $300; max payout $3,000)	100%	$495 (was $825)	KAGE	S2F	None	None	both	$825	40
-FundedNext	Legacy	25k	EOD	None	$1,250	$1,000	2 (20 micros)	40% / None	5 days (Weekly; bench ≥$100; 50% profits max $3,000 before 30 days; 100% after)	80%	$71.99 (was $79.99)	KAGE	Challenge	None	None	both	$79.99	10
-FundedNext	Legacy	50k	EOD	None	$3,000	$2,000	3 (30 micros)	40% / None	5 days (Weekly; bench ≥$200; 50% profits max $6,000 before 30 days; 100% after)	80%	$179.99 (was $199.99)	KAGE	Challenge	None	None	both	$199.99	10
-FundedNext	Legacy	100k	EOD	None	$6,000	$3,000	5 (50 micros)	40% / None	5 days (Weekly; bench ≥$200; 50% profits max $6,000 before 30 days; 100% after)	80%	$215.99 (was $239.99)	KAGE	Challenge	None	None	both	$239.99	10
-FundedNext	Flex	50k	EOD	None	$2,500	$1,500	3 (30 micros)	40% / None	5 days (Weekly; bench ≥$200; 50% profits max $1,500 before 30 days; Live after 5 payouts)	95%	$60.30 (was $133.99)	KAGE	Challenge	None	None	both	$133.99	55
-FundedNext	Flex	100k	EOD	None	$5,000	$2,500	5 (50 micros)	40% / None	5 days (Weekly; bench ≥$200; 50% profits max $2,500 before 30 days; Live after 5 payouts)	95%	$112.50 (was $249.99)	KAGE	Challenge	None	None	both	$249.99	55
-FundedNext	Flex	150k	EOD	None	$8,000	$4,000	8 (80 micros)	40% / None	5 days (Weekly; bench ≥$250; 50% profits max $4,000 before 30 days; Live after 5 payouts)	95%	$217.80 (was $483.99)	KAGE	Challenge	None	None	both	$483.99	55
-FundedNext	Rapid Pro	25k	EOD	None	$1,500	$1,000	2 (10 micros)	None / 40%	On request (min profit/cycle $500; max $800; conclude after 5)	90%	$79.99 (was $159.98)	KAGE	Challenge	None	None	both	$159.98	50
-FundedNext	Rapid Pro	50k	EOD	None	$3,000	$2,000	4 (40 micros)	None / 40%	On request (min profit/cycle $500; max $1,200; conclude after 5)	90%	$149.99 (was $299.98)	KAGE	Challenge	None	None	both	$299.98	50
-FundedNext	Rapid Pro	100k	EOD	None	$5,000	$2,500	6 (60 micros)	None / 40%	On request (min profit/cycle $500; max $2,500; conclude after 5)	90%	$249.99 (was $499.98)	KAGE	Challenge	None	None	both	$499.98	50
-FundedNext	Rapid Daily	25k	EOD (DLL $500 eval)	None	$1,500	$1,000	2 (10 micros)	None / None	Daily (above buffer $26,100; min profit/cycle $500; max $800; conclude after 5)	90%	$79.99 (was $159.98)	KAGE	Challenge	None	None	both	$159.98	50
-FundedNext	Rapid Daily	50k	EOD (DLL $1,000 eval)	None	$3,000	$2,000	4 (40 micros)	None / None	Daily (above buffer $52,100; min profit/cycle $500; max $1,200; conclude after 5)	90%	$149.99 (was $299.98)	KAGE	Challenge	None	None	both	$299.98	50
-FundedNext	Rapid Daily	100k	EOD (DLL $1,250 eval)	None	$5,000	$2,500	6 (60 micros)	None / None	Daily (above buffer $102,600; min profit/cycle $500; max $2,500; conclude after 5)	90%	$249.99 (was $499.98)	KAGE	Challenge	None	None	both	$499.98	50
+YRM	Challenge	25k	EOD (trailing)	$0	$1,500	$1,000	2 (20 micros)	50% / 35%	6 days (caps 1st→4th+: $1,000 / $1,500 / $2,500 / $3,500+)	90%	$69	KAGE	Challenge	None	None	none	$99	30
+YRM	Challenge	50k	EOD (trailing)	$0	$3,000	$2,000	5 (50 micros)	50% / 35%	6 days (caps 1st→4th+: $1,500 / $2,000 / $2,500 / $4,000+)	90%	$92	KAGE	Challenge	None	None	none	$132	30
+YRM	Challenge	100k	EOD (trailing)	$0	$6,000	$3,000	10 (100 micros)	50% / 35%	6 days (caps 1st→4th+: $2,000 / $2,500 / $3,000 / $5,000+)	90%	$162	KAGE	Challenge	None	None	none	$232	30
+YRM	Challenge	150k	EOD (trailing)	$0	$9,000	$4,500	15 (150 micros)	50% / 35%	6 days (caps 1st→4th+: $2,500 / $3,000 / $3,500 / $6,000+)	90%	$209	KAGE	Challenge	None	None	none	$298	30
+DayTraders	S2L	50k	Intraday (trailing)	None	$3,000	$2,000	2 (20 micros)	25% / None	8 days (min day $200)	80%	$179	KAGE	Challenge	None	None	both	$329	46
+DayTraders	S2L	150k	Intraday (trailing)	None	$8,500	$4,500	3 (30 micros)	25% / None	8 days (min day $300)	80%	$319	KAGE	Challenge	None	None	both	$469	32
+DayTraders	S2L	300k	Intraday (trailing)	None	$15,000	$7,000	4 (40 micros)	25% / None	8 days (min day $400)	80%	$449	KAGE	Challenge	None	None	both	$599	25
+DayTraders	Trailing	25k	Intraday (trailing)	$99	$1,500	$1,500	6 (60 micros)	50% / 30%	8 days (min day $100; max payout $1,000)	100%	$37.35	KAGE	Challenge	None	None	both	$249	85
+DayTraders	Trailing 2K	50k	Intraday (trailing)	$99	$3,000	$2,000	10 (100 micros)	50% / 30%	8 days (min day $200; max payout $2,000)	100%	$70.35	KAGE	Challenge	None	None	both	$469	85
+DayTraders	Trailing 2.5K	50k	Intraday (trailing)	$99	$3,000	$2,500	10 (100 micros)	50% / 30%	8 days (min day $200; max payout $2,000)	100%	$56.85	KAGE	Challenge	None	None	both	$379	85
+DayTraders	Trailing	150k	Intraday (trailing)	$99	$8,500	$4,500	24 (240 micros)	50% / 30%	8 days (min day $300; max payout $3,500)	100%	$104.85	KAGE	Challenge	None	None	both	$699	85
+DayTraders	Trailing	300k	Intraday (trailing)	$99	$15,000	$7,000	40 (400 micros)	50% / 30%	8 days (min day $400; max payout $5,000)	100%	$131.85	KAGE	Challenge	None	None	both	$879	85
+DayTraders	EOD	25k	EOD (trailing)	$99	$1,500	$1,500	6 (60 micros)	50% / 30%	8 days (min day $100; max payout $1,000)	100%	$46.35	KAGE	Challenge	None	None	both	$309	85
+DayTraders	EOD	150k	EOD (trailing)	$99	$8,500	$4,000	24 (240 micros)	50% / 30%	8 days (min day $300; max payout $3,500)	100%	$134.85	KAGE	Challenge	None	None	both	$899	85
+DayTraders	EOD	300k	EOD (trailing)	$99	$15,000	$6,500	40 (400 micros)	50% / 30%	8 days (min day $400; max payout $5,000)	100%	$239.85	KAGE	Challenge	None	None	both	$1,599	85
+DayTraders	Static	25k	Static	$99	$2,500	$750	4 (40 micros)	50% / 30%	8 days (min day $100; max payout $1,000)	100%	$30	KAGE	Challenge	None	None	both	$150	80
+DayTraders	Static	50k	Static	$99	$3,750	$1,000	6 (60 micros)	50% / 30%	8 days (min day $200; max payout $2,000)	100%	$40	KAGE	Challenge	None	None	both	$200	80
+DayTraders	Static	100k	Static	$99	$5,750	$1,500	8 (80 micros)	50% / 30%	8 days (min day $300; max payout $3,500)	100%	$65	KAGE	Challenge	None	None	both	$325	80
+DayTraders	Static	150k	Static	$99	$6,750	$1,750	8 (80 micros)	50% / 30%	8 days (min day $300; max payout $3,500)	100%	$80	KAGE	Challenge	None	None	both	$400	80
+DayTraders	S2F (Instant)	25k	EOD (trailing)	None	None	$1,000	2 (20 micros)	None / 20%	8 days (min day $100; max payout $1,000)	100%	$222	KAGE	S2F	None	None	both	$370	40
+DayTraders	S2F (Instant)	50k	EOD (trailing)	None	None	$2,500	10 (100 micros)	None / 20%	8 days (min day $200; max payout $2,000)	100%	$342	KAGE	S2F	None	None	both	$570	40
+DayTraders	S2F (Instant)	150k	EOD (trailing)	None	None	$6,000	24 (240 micros)	None / 20%	8 days (min day $300; max payout $3,000)	100%	$495	KAGE	S2F	None	None	both	$825	40
+FundedNext	Legacy	25k	EOD	None	$1,250	$1,000	2 (20 micros)	40% / None	5 days (Weekly; bench ≥$100; 50% profits max $3,000 before 30 days; 100% after)	80%	$71.99	KAGE	Challenge	None	None	both	$79.99	10
+FundedNext	Legacy	50k	EOD	None	$3,000	$2,000	3 (30 micros)	40% / None	5 days (Weekly; bench ≥$200; 50% profits max $6,000 before 30 days; 100% after)	80%	$179.99	KAGE	Challenge	None	None	both	$199.99	10
+FundedNext	Legacy	100k	EOD	None	$6,000	$3,000	5 (50 micros)	40% / None	5 days (Weekly; bench ≥$200; 50% profits max $6,000 before 30 days; 100% after)	80%	$215.99	KAGE	Challenge	None	None	both	$239.99	10
+FundedNext	Flex	50k	EOD	None	$2,500	$1,500	3 (30 micros)	40% / None	5 days (Weekly; bench ≥$200; 50% profits max $1,500 before 30 days; Live after 5 payouts)	95%	$60.30	KAGE	Challenge	None	None	both	$133.99	55
+FundedNext	Flex	100k	EOD	None	$5,000	$2,500	5 (50 micros)	40% / None	5 days (Weekly; bench ≥$200; 50% profits max $2,500 before 30 days; Live after 5 payouts)	95%	$112.50	KAGE	Challenge	None	None	both	$249.99	55
+FundedNext	Flex	150k	EOD	None	$8,000	$4,000	8 (80 micros)	40% / None	5 days (Weekly; bench ≥$250; 50% profits max $4,000 before 30 days; Live after 5 payouts)	95%	$217.80	KAGE	Challenge	None	None	both	$483.99	55
+FundedNext	Rapid Pro	25k	EOD	None	$1,500	$1,000	2 (10 micros)	None / 40%	On request (min profit/cycle $500; max $800; conclude after 5)	90%	$79.99	KAGE	Challenge	None	None	both	$159.98	50
+FundedNext	Rapid Pro	50k	EOD	None	$3,000	$2,000	4 (40 micros)	None / 40%	On request (min profit/cycle $500; max $1,200; conclude after 5)	90%	$149.99	KAGE	Challenge	None	None	both	$299.98	50
+FundedNext	Rapid Pro	100k	EOD	None	$5,000	$2,500	6 (60 micros)	None / 40%	On request (min profit/cycle $500; max $2,500; conclude after 5)	90%	$249.99	KAGE	Challenge	None	None	both	$499.98	50
+FundedNext	Rapid Daily	25k	EOD (DLL $500 eval)	None	$1,500	$1,000	2 (10 micros)	None / None	Daily (above buffer $26,100; min profit/cycle $500; max $800; conclude after 5)	90%	$79.99	KAGE	Challenge	None	None	both	$159.98	50
+FundedNext	Rapid Daily	50k	EOD (DLL $1,000 eval)	None	$3,000	$2,000	4 (40 micros)	None / None	Daily (above buffer $52,100; min profit/cycle $500; max $1,200; conclude after 5)	90%	$149.99	KAGE	Challenge	None	None	both	$299.98	50
+FundedNext	Rapid Daily	100k	EOD (DLL $1,250 eval)	None	$5,000	$2,500	6 (60 micros)	None / None	Daily (above buffer $102,600; min profit/cycle $500; max $2,500; conclude after 5)	90%	$249.99	KAGE	Challenge	None	None	both	$499.98	50
