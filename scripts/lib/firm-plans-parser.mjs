@@ -293,10 +293,20 @@ export function validateFirmPlans({ headers, rows, fileLabel }) {
   }
 
   const missingExtended = EXTENDED_HEADERS.filter(h => !headers.includes(h));
-  if (missingExtended.length === EXTENDED_HEADERS.length) {
+  if (missingExtended.length) {
     warnings.push(
-      `${fileLabel}: extended compare columns not present (${missingExtended.join(', ')}). Compare page will infer some values until filled.`
+      `${fileLabel}: missing extended compare columns (${missingExtended.join(', ')}). Run: node scripts/extend-firm-plans-cols.mjs --write`
     );
+  } else {
+    let emptyRules = 0;
+    for (const row of rows) {
+      if (!row.minTradingDays || !row.dailyDrawdown || !row.newsTrading) emptyRules += 1;
+    }
+    if (emptyRules > 0) {
+      warnings.push(
+        `${fileLabel}: ${emptyRules}/${rows.length} rows missing Min Trading Days, Daily Drawdown, or News Trading — H2H shows — until filled`
+      );
+    }
   }
 
   return { errors, warnings, stats: { rows: rows.length, firms: new Set(rows.map(r => r.firmName)).size } };
@@ -322,9 +332,12 @@ export function rowToPlan(row) {
   let profitTarget = row.profitTarget;
   if (profitTarget === 'None') profitTarget = '— (Instant)';
 
-  const dailyDrawdown = row.dailyDrawdown ? parseMoney(row.dailyDrawdown) : null;
-  const minTradingDays = row.minTradingDays ? parseOptionalNumber(row.minTradingDays) : null;
-  const newsTrading = row.newsTrading ? row.newsTrading.toLowerCase() : null;
+  const hasDaily = Boolean(String(row.dailyDrawdown || '').trim());
+  const hasMinDays = Boolean(String(row.minTradingDays || '').trim());
+  const hasNews = Boolean(String(row.newsTrading || '').trim());
+  const dailyDrawdown = hasDaily ? parseMoney(row.dailyDrawdown) : undefined;
+  const minTradingDays = hasMinDays ? parseOptionalNumber(row.minTradingDays) : undefined;
+  const newsTrading = hasNews ? row.newsTrading.toLowerCase() : undefined;
 
   return {
     firmName: row.firmName,
@@ -343,9 +356,10 @@ export function rowToPlan(row) {
       ptDd: computePtDd(profitTarget, maxLoss),
       profitSplit: split.profitSplit,
       ...(split.profitSplitLabel ? { profitSplitLabel: split.profitSplitLabel } : {}),
-      ...(dailyDrawdown != null ? { dailyDrawdown: dailyDrawdown === 0 ? null : dailyDrawdown } : {}),
-      ...(minTradingDays != null ? { minTradingDays } : {}),
-      ...(newsTrading ? { newsTrading } : {}),
+      // null = explicit None; omit key = unknown (show — in H2H)
+      ...(hasDaily ? { dailyDrawdown: dailyDrawdown === 0 ? null : dailyDrawdown } : {}),
+      ...(hasMinDays ? { minTradingDays } : {}),
+      ...(hasNews ? { newsTrading } : {}),
       ...(listPrice ? { listPrice } : {}),
       ...(discountPct != null ? { discountPct } : {}),
       maxPayout: '—',

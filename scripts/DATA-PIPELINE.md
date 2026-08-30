@@ -35,16 +35,31 @@ Create **two tabs**:
 | Price | $98 | Current promo price |
 | Promo CODE | KAGE | Default KAGE |
 
-**Extended columns (for `/compare-firms` — add when ready):**
+**Extended columns (required for accurate `/compare-firms` highlights):**
 
 | Column | Example | Rules |
 |--------|---------|-------|
 | Account Category | Challenge | `Challenge` or `S2F` (auto-inferred if blank) |
-| Min Trading Days | 2 | Number or None |
-| Daily Drawdown | None | Dollar or None |
+| Min Trading Days | 2 | Number or `None` (blank = unknown → UI shows —) |
+| Daily Drawdown | None | Dollar or `None` (blank = unknown) |
 | News Trading | both | `both`, `eval`, or `none` |
-| List Price | $165 | Strikethrough / pre-discount price |
+| List Price | $165 | Pre-discount / strikethrough price |
 | Discount % | 40 | 0–100 |
+
+**Add columns to live Google Sheet:**
+
+1. Apps Script → run `ensureExtendedColumns` (or syncNow — headers auto-append)
+2. Or paste headers from local `scripts/firm-plans.tsv` after `npm run extend:firms`
+3. Fill Min / Daily / News from official firm rules (starter seeds live in `scripts/firm-plans-extended-overrides.json` — verify before trusting)
+4. List Price / Discount % can seed from prior `firms.js` via extend script
+
+```bash
+npm run extend:firms          # dry-run
+npm run extend:firms -- --write
+npm run validate:firms
+npm run sync:firms            # optional: bake into firms.js
+# then Google Sheet: paste updated TSV or edit cells → syncNow
+```
 
 **Sheet data validation (recommended):**
 
@@ -76,7 +91,7 @@ npm run validate:firms
 npm run sync:firms
 ```
 
-6. Smoke check `/demo-2` and (when built) `/compare-firms` for 2–3 known pairs.
+6. Smoke check `/demo-2` and `/compare-firms` for 2–3 known pairs.
 
 ## What “robust” means here
 

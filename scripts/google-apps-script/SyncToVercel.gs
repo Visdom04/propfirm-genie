@@ -4,16 +4,176 @@
  * SETUP:
  * 1. Set SYNC_URL + SYNC_SECRET (same as Vercel env SYNC_SECRET)
  * 2. Run installEditTrigger() once (authorize)
- * 3. Run syncNow() to test
+ * 3. Reload sheet → menu "PropFirm Sync" appears
+ * 4. Run syncNow() to test
  *
  * Sheet can stay PRIVATE — script PUSHes TSV (no "Anyone with link" needed).
+ *
+ * IMPORT:
+ * Menu → PropFirm Sync → Import plans from URL
+ * Fetches PLANS_TSV_URL (public/data/firm-plans.tsv on Vercel after deploy)
+ * and replaces the Plans tab, then optionally syncs to site.
  */
 
 const SYNC_URL = 'https://propfirm-plum.vercel.app/api/sync-firms';
 const SYNC_SECRET = 'PASTE_SAME_SECRET_AS_VERCEL'; // never commit real secret to git
 const DEBOUNCE_MS = 60 * 1000;
-const PLANS_TAB = 'Plans'; // rename if your tab differs (e.g. firm-plans)
+const PLANS_TAB = 'firm-plans'; // rename if your tab differs (e.g. Plans)
 const FIRMS_TAB = 'Firms';
+
+/**
+ * Public TSV after commit+deploy.
+ * Fallback: GitHub raw on your branch if Vercel not updated yet.
+ */
+const PLANS_TSV_URL = 'https://propfirm-plum.vercel.app/data/firm-plans.tsv';
+const PLANS_TSV_URL_FALLBACK =
+  'https://raw.githubusercontent.com/mayur5689/propfirm/Visdom04/feat/demo-page-brand-kit/scripts/firm-plans.tsv';
+
+/** Extended H2H columns — append if missing (safe, does not wipe data). */
+const EXTENDED_HEADERS = [
+  'Account Category',
+  'Min Trading Days',
+  'Daily Drawdown',
+  'News Trading',
+  'List Price',
+  'Discount %',
+];
+
+/** Sheet menu (reload spreadsheet after pasting script) */
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('PropFirm Sync')
+    .addItem('Import plans from URL', 'importPlansFromUrl')
+    .addItem('Ensure extended columns', 'ensureExtendedColumns')
+    .addItem('Sync sheet → site now', 'syncNow')
+    .addSeparator()
+    .addItem('Install edit auto-sync', 'installEditTrigger')
+    .addToUi();
+}
+
+function ensureExtendedHeaders_(sheet) {
+  if (!sheet) return;
+  var lastCol = Math.max(sheet.getLastColumn(), 1);
+  var headers = sheet.getRange(1, 1, 1, lastCol).getDisplayValues()[0];
+  var existing = {};
+  headers.forEach(function (h, i) {
+    if (h) existing[String(h).trim()] = i + 1;
+  });
+  var nextCol = lastCol;
+  EXTENDED_HEADERS.forEach(function (name) {
+    if (existing[name]) return;
+    nextCol += 1;
+    sheet.getRange(1, nextCol).setValue(name);
+    existing[name] = nextCol;
+  });
+
+  var lastRow = Math.max(sheet.getLastRow(), 2);
+  if (existing['Account Category']) {
+    sheet
+      .getRange(2, existing['Account Category'], lastRow, existing['Account Category'])
+      .setDataValidation(
+        SpreadsheetApp.newDataValidation().requireValueInList(['Challenge', 'S2F'], true).build()
+      );
+  }
+  if (existing['News Trading']) {
+    sheet
+      .getRange(2, existing['News Trading'], lastRow, existing['News Trading'])
+      .setDataValidation(
+        SpreadsheetApp.newDataValidation().requireValueInList(['both', 'eval', 'none'], true).build()
+      );
+  }
+}
+
+/** One-time: add extended compare columns + dropdowns on Plans tab */
+function ensureExtendedColumns() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var plansSheet = findSheet_(ss, PLANS_TAB);
+  if (!plansSheet) throw new Error('Plans tab not found');
+  ensureExtendedHeaders_(plansSheet);
+  SpreadsheetApp.getUi().alert(
+    'Extended columns ready on Plans tab. Fill Min Trading Days / Daily Drawdown / News Trading / List Price / Discount %, then syncNow().'
+  );
+}
+
+/**
+ * Fetch PLANS_TSV_URL → replace Plans tab → ensure dropdowns → syncNow.
+ * Confirms before wipe.
+ */
+function importPlansFromUrl() {
+  var ui = SpreadsheetApp.getUi();
+  var confirm = ui.alert(
+    'Import plans from URL?',
+    'This REPLACES the entire "' +
+      PLANS_TAB +
+      '" tab with:\n' +
+      PLANS_TSV_URL +
+      '\n\nThen syncs to the site. Continue?',
+    ui.ButtonSet.OK_CANCEL
+  );
+  if (confirm !== ui.Button.OK) return;
+
+  var text = fetchPlansTsv_();
+  var grid = tsvToGrid_(text);
+  if (!grid.length || String(grid[0][0]).trim() !== 'Firm') {
+    throw new Error('Downloaded TSV invalid — first cell must be Firm');
+  }
+
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = findSheet_(ss, PLANS_TAB);
+  if (!sheet) {
+    sheet = ss.insertSheet(PLANS_TAB);
+  }
+
+  sheet.clearContents();
+  sheet.clearDataValidations();
+  sheet.getRange(1, 1, grid.length, grid[0].length).setValues(grid);
+  ensureExtendedHeaders_(sheet);
+
+  ui.alert('Imported ' + (grid.length - 1) + ' plan rows. Syncing to site…');
+  syncNow();
+}
+
+function fetchPlansTsv_() {
+  var urls = [PLANS_TSV_URL, PLANS_TSV_URL_FALLBACK];
+  var lastErr = '';
+  for (var i = 0; i < urls.length; i++) {
+    try {
+      var res = UrlFetchApp.fetch(urls[i], { muteHttpExceptions: true, followRedirects: true });
+      var code = res.getResponseCode();
+      var body = res.getContentText();
+      if (code >= 200 && code < 300 && body && body.indexOf('Firm') === 0) {
+        Logger.log('Imported from ' + urls[i]);
+        return body;
+      }
+      lastErr = urls[i] + ' → HTTP ' + code;
+    } catch (e) {
+      lastErr = urls[i] + ' → ' + e;
+    }
+  }
+  throw new Error(
+    'Could not fetch plans TSV. Deploy/push first so URL exists.\nTried: ' + urls.join('\n') + '\nLast: ' + lastErr
+  );
+}
+
+function tsvToGrid_(text) {
+  var lines = String(text)
+    .replace(/^\uFEFF/, '')
+    .split(/\r?\n/)
+    .filter(function (l) {
+      return l.trim().length > 0;
+    });
+  var rows = lines.map(function (line) {
+    return line.split('\t');
+  });
+  var width = 0;
+  rows.forEach(function (r) {
+    if (r.length > width) width = r.length;
+  });
+  return rows.map(function (r) {
+    while (r.length < width) r.push('');
+    return r;
+  });
+}
 
 function onEditInstallable(e) {
   scheduleSync_();
@@ -73,7 +233,6 @@ function sheetToTsv_(sheet) {
 function findSheet_(ss, name) {
   var exact = ss.getSheetByName(name);
   if (exact) return exact;
-  // fuzzy: first sheet if Plans missing
   if (name === PLANS_TAB) return ss.getSheets()[0];
   return null;
 }
@@ -87,6 +246,7 @@ function syncNow() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var plansSheet = findSheet_(ss, PLANS_TAB);
   var firmsSheet = findSheet_(ss, FIRMS_TAB);
+  ensureExtendedHeaders_(plansSheet);
   var plansTsv = sheetToTsv_(plansSheet);
   var firmsTsv = sheetToTsv_(firmsSheet);
 
