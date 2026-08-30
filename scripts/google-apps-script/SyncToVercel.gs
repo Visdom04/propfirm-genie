@@ -124,8 +124,11 @@ function importPlansFromUrl() {
     sheet = ss.insertSheet(PLANS_TAB);
   }
 
+  // clearContents only — clearDataValidations is a Range method, not Sheet
+  var oldLastRow = Math.max(sheet.getLastRow(), 1);
+  var oldLastCol = Math.max(sheet.getLastColumn(), 1);
+  sheet.getRange(1, 1, oldLastRow, oldLastCol).clearDataValidations();
   sheet.clearContents();
-  sheet.clearDataValidations();
   sheet.getRange(1, 1, grid.length, grid[0].length).setValues(grid);
   ensureExtendedHeaders_(sheet);
 
