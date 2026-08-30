@@ -45,14 +45,25 @@ function onOpen() {
     .createMenu('PropFirm Sync')
     .addItem('Import plans from URL', 'importPlansFromUrl')
     .addItem('Ensure extended columns', 'ensureExtendedColumns')
+    .addItem('Fix validation / ghost cols', 'fixSheetValidations')
     .addItem('Sync sheet → site now', 'syncNow')
     .addSeparator()
     .addItem('Install edit auto-sync', 'installEditTrigger')
     .addToUi();
 }
 
+function clearSheetValidations_(sheet) {
+  if (!sheet) return;
+  // Wipe validations far past used range (ghost dropdowns in T–Z etc.)
+  var maxRows = Math.max(sheet.getMaxRows(), 200);
+  var maxCols = Math.max(sheet.getMaxColumns(), 40);
+  sheet.getRange(1, 1, maxRows, maxCols).clearDataValidations();
+}
+
 function ensureExtendedHeaders_(sheet) {
   if (!sheet) return;
+  clearSheetValidations_(sheet);
+
   var lastCol = Math.max(sheet.getLastColumn(), 1);
   var headers = sheet.getRange(1, 1, 1, lastCol).getDisplayValues()[0];
   var existing = {};
@@ -67,21 +78,51 @@ function ensureExtendedHeaders_(sheet) {
     existing[name] = nextCol;
   });
 
+  // Drop leftover junk columns to the right of last real header
+  var realLast = 0;
+  Object.keys(existing).forEach(function (k) {
+    if (existing[k] > realLast) realLast = existing[k];
+  });
+  if (realLast > 0 && sheet.getMaxColumns() > realLast) {
+    sheet
+      .getRange(1, realLast + 1, sheet.getMaxRows(), sheet.getMaxColumns())
+      .clearContent()
+      .clearDataValidations();
+  }
+
   var lastRow = Math.max(sheet.getLastRow(), 2);
+  // ONLY these two cols get dropdowns — Min Days / Daily DD / List / Discount stay free text
   if (existing['Account Category']) {
     sheet
       .getRange(2, existing['Account Category'], lastRow, existing['Account Category'])
       .setDataValidation(
-        SpreadsheetApp.newDataValidation().requireValueInList(['Challenge', 'S2F'], true).build()
+        SpreadsheetApp.newDataValidation()
+          .requireValueInList(['Challenge', 'S2F'], true)
+          .setAllowInvalid(false)
+          .build()
       );
   }
   if (existing['News Trading']) {
     sheet
       .getRange(2, existing['News Trading'], lastRow, existing['News Trading'])
       .setDataValidation(
-        SpreadsheetApp.newDataValidation().requireValueInList(['both', 'eval', 'none'], true).build()
+        SpreadsheetApp.newDataValidation()
+          .requireValueInList(['both', 'eval', 'none'], true)
+          .setAllowInvalid(false)
+          .build()
       );
   }
+}
+
+/** Fix red triangles + empty header cols without full re-import */
+function fixSheetValidations() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var plansSheet = findSheet_(ss, PLANS_TAB);
+  if (!plansSheet) throw new Error('Plans tab not found');
+  ensureExtendedHeaders_(plansSheet);
+  SpreadsheetApp.getUi().alert(
+    'Cleared ghost dropdowns. Only Account Category + News Trading keep lists. Min Trading Days / Daily Drawdown / List Price / Discount % are free text.'
+  );
 }
 
 /** One-time: add extended compare columns + dropdowns on Plans tab */
@@ -124,10 +165,8 @@ function importPlansFromUrl() {
     sheet = ss.insertSheet(PLANS_TAB);
   }
 
-  // clearContents only — clearDataValidations is a Range method, not Sheet
-  var oldLastRow = Math.max(sheet.getLastRow(), 1);
-  var oldLastCol = Math.max(sheet.getLastColumn(), 1);
-  sheet.getRange(1, 1, oldLastRow, oldLastCol).clearDataValidations();
+  // Clear old dropdowns far right (T–Z ghosts), then rewrite grid
+  clearSheetValidations_(sheet);
   sheet.clearContents();
   sheet.getRange(1, 1, grid.length, grid[0].length).setValues(grid);
   ensureExtendedHeaders_(sheet);
