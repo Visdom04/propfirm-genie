@@ -1,5 +1,6 @@
 import './Navbar.css';
 import { BRAND_LOGO_SRC, BRAND_NAME, SITE_HOME } from '@/lib/brand';
+import AuthNav from './AuthNav';
 
 export default function Navbar() {
   return (
@@ -32,8 +33,7 @@ export default function Navbar() {
             </svg>
             We're Hiring
           </button>
-          <button className="btn btn-secondary">Log in</button>
-          <button className="btn btn-primary">Sign Up</button>
+          <AuthNav />
           <button className="menu-btn">
              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
           </button>

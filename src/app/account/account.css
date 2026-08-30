@@ -1,0 +1,41 @@
+.account-page {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.account-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1.5rem 6rem;
+}
+
+.account-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 2rem;
+}
+
+.account-kicker {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate-400);
+}
+
+.account-card h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.75rem;
+}
+
+.account-email {
+  margin: 0 0 0.75rem;
+  color: var(--accent-cyan);
+  word-break: break-all;
+}
+
+.account-hint {
+  margin: 0 0 1.5rem;
+  color: var(--slate-400);
+  font-size: 0.95rem;
+}
