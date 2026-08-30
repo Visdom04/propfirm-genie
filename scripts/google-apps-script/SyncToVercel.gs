@@ -39,6 +39,22 @@ const EXTENDED_HEADERS = [
   'Discount %',
 ];
 
+const CORE_HEADERS = [
+  'Firm',
+  'Plan Type',
+  'Account Size',
+  'Drawdown Type',
+  'Activation Fee',
+  'Profit Target',
+  'Max Drawdown',
+  'Max Contract',
+  'Consistency Rule Eval, Funded',
+  'Payout Freq.',
+  'Profit Split',
+  'Price',
+  'Promo CODE',
+];
+
 /** Sheet menu (reload spreadsheet after pasting script) */
 function onOpen() {
   SpreadsheetApp.getUi()
@@ -52,53 +68,36 @@ function onOpen() {
     .addToUi();
 }
 
-function clearSheetValidations_(sheet) {
+/** Hard wipe validations + filters (clearContents alone leaves ghost dropdowns). */
+function nukeSheetMeta_(sheet) {
   if (!sheet) return;
-  // Wipe validations far past used range (ghost dropdowns in T–Z etc.)
-  var maxRows = Math.max(sheet.getMaxRows(), 200);
-  var maxCols = Math.max(sheet.getMaxColumns(), 40);
-  sheet.getRange(1, 1, maxRows, maxCols).clearDataValidations();
+  try {
+    var filter = sheet.getFilter();
+    if (filter) filter.remove();
+  } catch (e) {}
+  // Sheet.clear = content + formatting + data validations
+  sheet.clear();
 }
 
-function ensureExtendedHeaders_(sheet) {
-  if (!sheet) return;
-  clearSheetValidations_(sheet);
-
+function applyDropdowns_(sheet) {
   var lastCol = Math.max(sheet.getLastColumn(), 1);
   var headers = sheet.getRange(1, 1, 1, lastCol).getDisplayValues()[0];
   var existing = {};
   headers.forEach(function (h, i) {
-    if (h) existing[String(h).trim()] = i + 1;
+    var name = String(h || '').trim();
+    if (name) existing[name] = i + 1;
   });
-  var nextCol = lastCol;
-  EXTENDED_HEADERS.forEach(function (name) {
-    if (existing[name]) return;
-    nextCol += 1;
-    sheet.getRange(1, nextCol).setValue(name);
-    existing[name] = nextCol;
-  });
-
-  // Drop leftover junk columns to the right of last real header
-  var realLast = 0;
-  Object.keys(existing).forEach(function (k) {
-    if (existing[k] > realLast) realLast = existing[k];
-  });
-  if (realLast > 0 && sheet.getMaxColumns() > realLast) {
-    sheet
-      .getRange(1, realLast + 1, sheet.getMaxRows(), sheet.getMaxColumns())
-      .clearContent()
-      .clearDataValidations();
-  }
 
   var lastRow = Math.max(sheet.getLastRow(), 2);
-  // ONLY these two cols get dropdowns — Min Days / Daily DD / List / Discount stay free text
+
+  // ONLY these two — never Min Days / Daily DD / List / Discount
   if (existing['Account Category']) {
     sheet
       .getRange(2, existing['Account Category'], lastRow, existing['Account Category'])
       .setDataValidation(
         SpreadsheetApp.newDataValidation()
           .requireValueInList(['Challenge', 'S2F'], true)
-          .setAllowInvalid(false)
+          .setAllowInvalid(true)
           .build()
       );
   }
@@ -108,10 +107,65 @@ function ensureExtendedHeaders_(sheet) {
       .setDataValidation(
         SpreadsheetApp.newDataValidation()
           .requireValueInList(['both', 'eval', 'none'], true)
-          .setAllowInvalid(false)
+          .setAllowInvalid(true)
           .build()
       );
   }
+  return existing;
+}
+
+function ensureExtendedHeaders_(sheet) {
+  if (!sheet) return;
+  // Do NOT sheet.clear() here — would wipe data. Only strip validations on used+ghost area.
+  try {
+    var filter = sheet.getFilter();
+    if (filter) filter.remove();
+  } catch (e) {}
+  sheet.getRange(1, 1, sheet.getMaxRows(), sheet.getMaxColumns()).clearDataValidations();
+
+  var lastCol = Math.max(sheet.getLastColumn(), 1);
+  var headers = sheet.getRange(1, 1, 1, lastCol).getDisplayValues()[0];
+  var existing = {};
+  headers.forEach(function (h, i) {
+    var name = String(h || '').trim();
+    if (name) existing[name] = i + 1;
+  });
+
+  // If Max Contract header missing / blank col H, force full header row from known schema
+  if (!existing['Max Contract'] || !String(headers[7] || '').trim()) {
+    var expected = CORE_HEADERS.concat(EXTENDED_HEADERS);
+    var width = Math.max(lastCol, expected.length);
+    var row = [];
+    for (var c = 0; c < width; c++) {
+      row.push(expected[c] || '');
+    }
+    sheet.getRange(1, 1, 1, width).setValues([row]);
+  }
+
+  lastCol = Math.max(sheet.getLastColumn(), 1);
+  headers = sheet.getRange(1, 1, 1, lastCol).getDisplayValues()[0];
+  existing = {};
+  headers.forEach(function (h, i) {
+    var name = String(h || '').trim();
+    if (name) existing[name] = i + 1;
+  });
+
+  EXTENDED_HEADERS.forEach(function (name) {
+    if (existing[name]) return;
+    var nextCol = sheet.getLastColumn() + 1;
+    sheet.getRange(1, nextCol).setValue(name);
+    existing[name] = nextCol;
+  });
+
+  var realLast = 0;
+  Object.keys(existing).forEach(function (k) {
+    if (existing[k] > realLast) realLast = existing[k];
+  });
+  if (realLast > 0 && sheet.getMaxColumns() > realLast) {
+    sheet.getRange(1, realLast + 1, sheet.getMaxRows(), sheet.getMaxColumns()).clear();
+  }
+
+  applyDropdowns_(sheet);
 }
 
 /** Fix red triangles + empty header cols without full re-import */
@@ -121,7 +175,7 @@ function fixSheetValidations() {
   if (!plansSheet) throw new Error('Plans tab not found');
   ensureExtendedHeaders_(plansSheet);
   SpreadsheetApp.getUi().alert(
-    'Cleared ghost dropdowns. Only Account Category + News Trading keep lists. Min Trading Days / Daily Drawdown / List Price / Discount % are free text.'
+    'Cleared ALL dropdowns, fixed headers if needed. Only Account Category (Challenge/S2F) + News Trading (both/eval/none) have lists now.'
   );
 }
 
@@ -137,16 +191,15 @@ function ensureExtendedColumns() {
 }
 
 /**
- * Fetch PLANS_TSV_URL → replace Plans tab → ensure dropdowns → syncNow.
- * Confirms before wipe.
+ * Fetch PLANS_TSV_URL → DELETE+recreate Plans tab (kills ghost validations) → syncNow.
  */
 function importPlansFromUrl() {
   var ui = SpreadsheetApp.getUi();
   var confirm = ui.alert(
     'Import plans from URL?',
-    'This REPLACES the entire "' +
+    'This DELETES and recreates the "' +
       PLANS_TAB +
-      '" tab with:\n' +
+      '" tab from:\n' +
       PLANS_TSV_URL +
       '\n\nThen syncs to the site. Continue?',
     ui.ButtonSet.OK_CANCEL
@@ -160,19 +213,28 @@ function importPlansFromUrl() {
   }
 
   var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = findSheet_(ss, PLANS_TAB);
-  if (!sheet) {
-    sheet = ss.insertSheet(PLANS_TAB);
-  }
-
-  // Clear old dropdowns far right (T–Z ghosts), then rewrite grid
-  clearSheetValidations_(sheet);
-  sheet.clearContents();
+  var sheet = recreatePlansSheet_(ss);
   sheet.getRange(1, 1, grid.length, grid[0].length).setValues(grid);
-  ensureExtendedHeaders_(sheet);
+  applyDropdowns_(sheet);
 
-  ui.alert('Imported ' + (grid.length - 1) + ' plan rows. Syncing to site…');
+  ui.alert('Imported ' + (grid.length - 1) + ' plan rows into a fresh tab. Syncing to site…');
   syncNow();
+}
+
+/** Delete firm-plans tab and insert clean one (only way to kill stubborn validations). */
+function recreatePlansSheet_(ss) {
+  var old = findSheet_(ss, PLANS_TAB);
+  var idx = old ? old.getIndex() : 1;
+  if (old) {
+    if (ss.getSheets().length === 1) {
+      ss.insertSheet('_tmp_keep_');
+    }
+    ss.deleteSheet(old);
+  }
+  var sheet = ss.insertSheet(PLANS_TAB, Math.max(idx - 1, 0));
+  var tmp = ss.getSheetByName('_tmp_keep_');
+  if (tmp) ss.deleteSheet(tmp);
+  return sheet;
 }
 
 function fetchPlansTsv_() {
