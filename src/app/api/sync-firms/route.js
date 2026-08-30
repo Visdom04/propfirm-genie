@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import { revalidateTag } from 'next/cache';
 import {
-  FIRMS_SHEET_TAG,
+  buildFirmsFromTsv,
   isSheetSyncConfigured,
-  loadFirmsFromGoogleSheet,
+  saveFirmsCatalog,
+  readFirmsCatalog,
 } from '@/lib/firmPlansSheet';
 
 function unauthorized() {
@@ -21,21 +21,34 @@ function checkSecret(request) {
 
 /**
  * POST /api/sync-firms
- * Called by Google Apps Script after sheet edits.
- * Fetches Plans (+ Firms) from Google Sheet, validates, then busts cache.
+ * Apps Script PUSHES Plans + Firms TSV in the body (no public sheet share needed).
  */
 export async function POST(request) {
   if (!checkSecret(request)) return unauthorized();
 
-  if (!process.env.GOOGLE_SHEET_ID) {
+  let body = {};
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ ok: false, error: 'Expected JSON body' }, { status: 400 });
+  }
+
+  const plansTsv = body.plansTsv || body.plans || '';
+  const firmsTsv = body.firmsTsv || body.firms || '';
+
+  if (!plansTsv || typeof plansTsv !== 'string') {
     return NextResponse.json(
-      { ok: false, error: 'GOOGLE_SHEET_ID env var is not set on Vercel' },
-      { status: 500 }
+      {
+        ok: false,
+        error:
+          'Missing plansTsv. Update Apps Script to PUSH sheet data (see scripts/google-apps-script/SyncToVercel.gs).',
+      },
+      { status: 400 }
     );
   }
 
   try {
-    const result = await loadFirmsFromGoogleSheet();
+    const result = buildFirmsFromTsv(plansTsv, firmsTsv);
 
     if (!result.ok) {
       return NextResponse.json(
@@ -49,14 +62,21 @@ export async function POST(request) {
       );
     }
 
-    revalidateTag(FIRMS_SHEET_TAG, 'max');
+    const saved = saveFirmsCatalog({
+      firms: result.firms,
+      source: 'google-sheet-push',
+      syncedAt: result.syncedAt,
+      stats: result.stats,
+      validation: result.validation,
+    });
 
     return NextResponse.json({
       ok: true,
-      message: 'Sheet synced. Cache revalidated.',
+      message: 'Sheet synced via Apps Script push.',
       stats: result.stats,
       warnings: result.validation?.warnings || [],
-      syncedAt: result.syncedAt,
+      syncedAt: saved.syncedAt,
+      firmCount: result.firms.length,
     });
   } catch (err) {
     return NextResponse.json(
@@ -66,14 +86,15 @@ export async function POST(request) {
   }
 }
 
-/** GET — health / config check (still requires secret) */
 export async function GET(request) {
   if (!checkSecret(request)) return unauthorized();
+  const live = readFirmsCatalog();
   return NextResponse.json({
     ok: true,
     configured: isSheetSyncConfigured(),
-    sheetId: process.env.GOOGLE_SHEET_ID || null,
-    plansGid: process.env.GOOGLE_SHEET_PLANS_GID || '0',
-    firmsGid: process.env.GOOGLE_SHEET_FIRMS_GID || '812133584',
+    mode: 'apps-script-push',
+    hasLiveCatalog: Boolean(live?.firms?.length),
+    syncedAt: live?.syncedAt || null,
+    firmCount: live?.firms?.length || 0,
   });
 }

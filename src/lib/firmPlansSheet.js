@@ -1,4 +1,5 @@
-import { unstable_cache } from 'next/cache';
+import fs from 'node:fs';
+import path from 'node:path';
 import { firms as staticFirms } from '@/data/firms';
 import {
   parseTsv,
@@ -9,42 +10,12 @@ import {
 
 export const FIRMS_SHEET_TAG = 'firms-sheet';
 
-function sheetConfig() {
-  const sheetId = process.env.GOOGLE_SHEET_ID;
-  if (!sheetId) return null;
-  return {
-    sheetId,
-    plansGid: process.env.GOOGLE_SHEET_PLANS_GID || '0',
-    firmsGid: process.env.GOOGLE_SHEET_FIRMS_GID || '812133584',
-  };
-}
-
-export function isSheetSyncConfigured() {
-  return Boolean(process.env.GOOGLE_SHEET_ID && process.env.SYNC_SECRET);
-}
-
-function exportUrl(sheetId, gid) {
-  return `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=tsv&gid=${gid}`;
-}
-
-async function fetchTsv(url, label) {
-  const res = await fetch(url, {
-    // Cache forever until sync endpoint calls revalidateTag(FIRMS_SHEET_TAG)
-    next: { tags: [FIRMS_SHEET_TAG], revalidate: false },
-    redirect: 'follow',
-  });
-  if (!res.ok) {
-    throw new Error(`${label}: Google Sheet export failed (${res.status}). Share sheet as Anyone with link → Viewer.`);
-  }
-  const text = await res.text();
-  if (text.includes('<!DOCTYPE html') || text.includes('<html')) {
-    throw new Error(`${label}: got HTML instead of TSV — sheet is not publicly viewable via link.`);
-  }
-  return text;
-}
+const CATALOG_PATH = path.join('/tmp', 'propfirm-firms-catalog.json');
 
 function parseFirmsMetaTsv(text) {
-  const lines = text.split(/\r?\n/).filter(l => l.trim());
+  const lines = String(text || '')
+    .split(/\r?\n/)
+    .filter(l => l.trim());
   const map = new Map();
   if (lines.length < 2) return map;
   for (let i = 1; i < lines.length; i += 1) {
@@ -128,7 +99,6 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
     }
   }
 
-  // Keep static firms that aren't in the sheet (marketing-only)
   for (const f of staticFirms) {
     if (!byFirm.has(f.name)) result.push(f);
   }
@@ -136,25 +106,8 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
   return result;
 }
 
-/**
- * Fetch + validate + build firm catalog from Google Sheet.
- * Does not use Next cache — call via getCachedSheetFirms().
- */
-export async function loadFirmsFromGoogleSheet() {
-  const cfg = sheetConfig();
-  if (!cfg) {
-    return { ok: false, error: 'GOOGLE_SHEET_ID not set', firms: staticFirms };
-  }
-
-  const plansText = await fetchTsv(exportUrl(cfg.sheetId, cfg.plansGid), 'Plans');
-  let firmsMetaText = '';
-  try {
-    firmsMetaText = await fetchTsv(exportUrl(cfg.sheetId, cfg.firmsGid), 'Firms');
-  } catch {
-    // Firms tab optional
-  }
-
-  const parsed = parseTsv(plansText, { fileLabel: 'Google Sheet / Plans' });
+export function buildFirmsFromTsv(plansTsv, firmsTsv = '') {
+  const parsed = parseTsv(plansTsv, { fileLabel: 'Plans' });
   const validation = validateFirmPlans(parsed);
   if (validation.errors.length) {
     return {
@@ -166,7 +119,7 @@ export async function loadFirmsFromGoogleSheet() {
   }
 
   const parsedPlans = parsed.rows.map(rowToPlan);
-  const metaMap = parseFirmsMetaTsv(firmsMetaText);
+  const metaMap = parseFirmsMetaTsv(firmsTsv);
   const firms = mergeSheetIntoFirms(parsedPlans, metaMap);
 
   return {
@@ -178,34 +131,49 @@ export async function loadFirmsFromGoogleSheet() {
   };
 }
 
-export const getCachedSheetFirms = unstable_cache(
-  async () => {
-    const result = await loadFirmsFromGoogleSheet();
-    if (!result.ok) {
-      // Keep serving static catalog if sheet is temporarily broken
-      return {
-        firms: staticFirms,
-        source: 'static',
-        error: result.error,
-        validation: result.validation,
-        syncedAt: null,
-      };
+export function saveFirmsCatalog(payload) {
+  const body = {
+    firms: payload.firms,
+    source: payload.source || 'google-sheet-push',
+    syncedAt: payload.syncedAt || new Date().toISOString(),
+    stats: payload.stats || null,
+    warnings: payload.validation?.warnings || [],
+  };
+  fs.writeFileSync(CATALOG_PATH, JSON.stringify(body), 'utf8');
+  // Also keep a process-local copy for this instance
+  globalThis.__propfirmFirmsCatalog = body;
+  return body;
+}
+
+export function readFirmsCatalog() {
+  if (globalThis.__propfirmFirmsCatalog?.firms?.length) {
+    return globalThis.__propfirmFirmsCatalog;
+  }
+  try {
+    if (fs.existsSync(CATALOG_PATH)) {
+      const raw = JSON.parse(fs.readFileSync(CATALOG_PATH, 'utf8'));
+      globalThis.__propfirmFirmsCatalog = raw;
+      return raw;
     }
-    return {
-      firms: result.firms,
-      source: 'google-sheet',
-      error: null,
-      validation: result.validation,
-      syncedAt: result.syncedAt,
-    };
-  },
-  ['firms-from-google-sheet'],
-  { tags: [FIRMS_SHEET_TAG] }
-);
+  } catch {
+    // ignore corrupt cache
+  }
+  return null;
+}
+
+export function isSheetSyncConfigured() {
+  return Boolean(process.env.SYNC_SECRET);
+}
 
 export async function getRuntimeFirms() {
-  if (!process.env.GOOGLE_SHEET_ID) {
-    return { firms: staticFirms, source: 'static', syncedAt: null, error: null };
+  const live = readFirmsCatalog();
+  if (live?.firms?.length) {
+    return {
+      firms: live.firms,
+      source: live.source || 'google-sheet-push',
+      syncedAt: live.syncedAt || null,
+      error: null,
+    };
   }
-  return getCachedSheetFirms();
+  return { firms: staticFirms, source: 'static', syncedAt: null, error: null };
 }
