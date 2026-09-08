@@ -2,6 +2,7 @@ import CompareFirmsH2H from '@/components/compare/CompareFirmsH2H';
 import { getRuntimeFirms } from '@/lib/firmPlansSheet';
 import { slugify } from '@/lib/firmsApi';
 import { BRAND_NAME } from '@/lib/brand';
+import { firmLogo } from '@/lib/firmLogos';
 
 export const metadata = {
   title: `Compare Prop Firms Side by Side | ${BRAND_NAME}`,
@@ -13,11 +14,13 @@ function toCompareFirm(firm) {
   return {
     slug: slugify(firm.name),
     name: firm.name,
-    logo: firm.logo,
+    logo: firmLogo(firm.name, firm.logo),
     discount: firm.discount,
     promoCode: firm.promoCode,
     affiliateLink: firm.affiliateLink,
     platforms: firm.platforms || [],
+    rating: firm.rating,
+    reviews: firm.reviews,
     isPopular: Boolean(firm.isPopular),
     plans: (firm.plans || []).map(p => ({
       id: p.id,

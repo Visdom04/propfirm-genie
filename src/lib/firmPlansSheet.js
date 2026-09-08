@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { firms as staticFirms } from '@/data/firms';
+import { firmLogo } from '@/lib/firmLogos';
 import {
   parseTsv,
   validateFirmPlans,
@@ -57,6 +58,7 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
       for (const p of plans) p.popularity = pop;
       result.push({
         ...base,
+        logo: firmLogo(name, base.logo),
         ...(meta.affiliateLink ? { affiliateLink: meta.affiliateLink } : {}),
         ...(meta.lastVerified ? { lastVerified: meta.lastVerified } : {}),
         ...(meta.verifiedBy ? { verifiedBy: meta.verifiedBy } : {}),
@@ -70,7 +72,7 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
       for (const p of plans) p.popularity = 1000;
       result.push({
         name,
-        logo: '/firm/placeholder.png',
+        logo: firmLogo(name, '/firm/placeholder.png'),
         rating: 0,
         reviews: 0,
         description: `${name} plans synced from Google Sheet.`,

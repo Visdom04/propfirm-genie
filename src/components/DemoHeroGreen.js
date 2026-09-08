@@ -1,37 +1,32 @@
 'use client';
 
 import FirmCompareDemoGreen from '@/components/FirmCompareDemoGreen';
-import './DemoHeroGreen.css';
+import GreenPageShell from '@/components/green/GreenPageShell';
+import { FocusWord } from '@/components/green/PfgControls';
 
 /** Digi Green demo-2 — compare table only */
 export default function DemoHero() {
   return (
-    <div className="demo-page demo-page--green demo-page--table-only">
-      <div className="demo-aura" aria-hidden="true" />
-      <div className="demo-vignette" aria-hidden="true" />
-      <div className="demo-stars" aria-hidden="true" />
-      <div className="demo-grid" aria-hidden="true" />
-      <div className="demo-orb demo-orb--1" aria-hidden="true" />
-      <div className="demo-orb demo-orb--2" aria-hidden="true" />
-      <div className="demo-orb demo-orb--3" aria-hidden="true" />
-
-      <section className="demo-compare" id="partner-firms" aria-labelledby="demo-compare-title">
-        <div className="demo-compare__inner">
-          <p className="demo-compare__eyebrow">
-            <span className="demo-compare__eyebrow-dot" aria-hidden />
-            Verified directory
-          </p>
-          <h1 id="demo-compare-title" className="demo-compare__title">
-            Compare firms
+    <GreenPageShell>
+      <section
+        className="mx-auto w-full max-w-[1440px] px-4 pb-20 pt-10 sm:px-6 lg:px-8"
+        id="partner-firms"
+        aria-labelledby="demo-compare-title"
+      >
+        <header className="mb-8 text-center">
+          <h1
+            id="demo-compare-title"
+            className="mb-4 text-[clamp(1.85rem,4.4vw,3rem)] font-bold leading-[1.12] tracking-tight text-white"
+          >
+            Compare Prop
+            <FocusWord>Firms</FocusWord>
           </h1>
-          <p className="demo-compare__sub">
-            Side-by-side rules, platforms, allocation, and promos — same layout as our full directory.
+          <p className="mx-auto m-0 max-w-xl text-[15px] leading-relaxed text-white/70">
+            Filter challenges by size, steps, and price — rules, drawdown, and promos in one table.
           </p>
-          <div className="demo-compare__table-zone">
-            <FirmCompareDemoGreen />
-          </div>
-        </div>
+        </header>
+        <FirmCompareDemoGreen />
       </section>
-    </div>
+    </GreenPageShell>
   );
 }

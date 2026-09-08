@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import Image from 'next/image';
 import { firms } from '@/data/firms';
+import { firmLogo } from '@/lib/firmLogos';
 import './FirmMarquee.css';
 
 const CARD_GRADIENTS = [
@@ -36,7 +37,7 @@ function MarqueeCard({ firm, index, gradients }) {
       <span className="firm-marquee__discount">{firm.discount}</span>
       <span className="firm-marquee__logo-wrap">
         <Image
-          src={firm.logo}
+          src={firmLogo(firm.name, firm.logo)}
           alt=""
           width={96}
           height={96}

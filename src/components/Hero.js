@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { firms } from '@/data/firms';
+import { firmLogo } from '@/lib/firmLogos';
 import './Hero.css';
 
 /** Five recognizable firms for the glass showcase strip (order is intentional for visual balance). */
@@ -35,7 +36,7 @@ function FirmCard({ card }) {
       </span>
       <div className="firm-card__body">
         <div className="firm-card__logo">
-          <Image src={card.logo} alt={card.name} width={26} height={26} />
+          <Image src={firmLogo(card.name, card.logo)} alt={card.name} width={26} height={26} />
         </div>
         <div className="firm-card__info">
           <span className="firm-card__name">{card.name}</span>
@@ -83,7 +84,7 @@ export default function Hero() {
                     <div className="hero-float-logo__halo" aria-hidden />
                     <div className="hero-float-logo__cell">
                       <Image
-                        src={firm.logo}
+                        src={firmLogo(firm.name, firm.logo)}
                         alt={`${firm.name} logo`}
                         width={44}
                         height={44}

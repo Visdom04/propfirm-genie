@@ -1,15 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import { createPortal } from 'react-dom';
 import { useMemo, useState, useCallback, useEffect, useRef, useId } from 'react';
 import { Bookmark, Star } from 'lucide-react';
-import {
-  firms,
-  ACCOUNT_SIZE_OPTIONS,
-  STEP_OPTIONS,
-  PRICE_OPTIONS,
-} from '@/data/firms';
+import { firms, ACCOUNT_SIZE_OPTIONS, PRICE_OPTIONS } from '@/data/firms';
 import CompareFilterSidebar, {
   createEmptyFacet,
   cloneFacet,
@@ -17,13 +11,26 @@ import CompareFilterSidebar, {
   isRangeActive,
   normalizeDrawdown,
 } from '@/components/CompareFilterSidebar';
-import './FirmCompareDemoGreen.css';
+import { PfgPrimary } from '@/components/green/PfgControls';
+import { firmLogo } from '@/lib/firmLogos';
 
 const MAX_FAVORITES = 5;
 const PAGE_SIZE = 10;
 const COLS_STORAGE_KEY = 'cmp-green-visible-cols-v3';
 
-/** Default table order when no column sort is active */
+/** Instant / Direct / STF grouped; 1 Step is the other eval path */
+const STEP_FILTER_OPTIONS = ['Instant / Direct / STF', '1 Step'];
+
+function planMatchesStepFilter(planSteps, selected) {
+  if (!selected?.length) return true;
+  return selected.some(label => {
+    if (label === 'Instant / Direct / STF') {
+      return planSteps === 'Instant' || planSteps === 'Direct / STF';
+    }
+    return planSteps === label;
+  });
+}
+
 const DEFAULT_FIRM_ORDER = [
   'Lucid Trading',
   'Tradeify',
@@ -50,39 +57,27 @@ const firmOrderIndex = name => {
   return i === -1 ? DEFAULT_FIRM_ORDER.length + 1 : i;
 };
 
-/** Prefer common retail sizes when discount/price are close */
-const PREFERRED_SIZES = ['$50K', '$100K', '$25K', '$150K', '$75K'];
-
-function discountPct(plan) {
-  const was = Number(plan.priceWas) || 0;
-  const now = Number(plan.price) || 0;
-  if (was <= 0 || now >= was) return 0;
-  return (was - now) / was;
+/** Stable per-plan hash so default rows mix sizes without hydration flicker */
+function stableHash(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i += 1) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
 }
 
-/** Higher = better “featured” pick (discount first, then price, then size) */
-function planHighlightScore(plan) {
-  const disc = discountPct(plan);
-  const price = Number(plan.price);
-  const cheap = Number.isFinite(price) ? 1 / (1 + Math.max(price, 0)) : 0;
-  const sizeIdx = PREFERRED_SIZES.indexOf(plan.accountSize);
-  const sizeBoost = sizeIdx === -1 ? 0 : (PREFERRED_SIZES.length - sizeIdx) * 0.015;
-  return disc * 10 + cheap + sizeBoost;
+function pickHighlightPlans(plans, firmName) {
+  if (!plans.length) return { primary: null, secondary: null };
+  const ranked = [...plans].sort((a, b) => {
+    const ha = stableHash(`${firmName}:${a.id}`);
+    const hb = stableHash(`${firmName}:${b.id}`);
+    if (ha !== hb) return ha - hb;
+    return String(a.id).localeCompare(String(b.id));
+  });
+  return { primary: ranked[0] || null, secondary: ranked[1] || null };
 }
 
-function pickHighlightPlans(plans) {
-  const ranked = [...plans].sort((a, b) => planHighlightScore(b) - planHighlightScore(a));
-  const primary = ranked[0] || null;
-  const secondary = ranked.find(p => p.id !== primary?.id) || null;
-  return { primary, secondary };
-}
-
-/**
- * Default browse order:
- *  1) one best plan per firm (firm order)  → fills page 1 + start of page 2
- *  2) one second plan per firm (best remaining deal)
- *  3) every other plan / size
- */
 function buildCuratedDefaultRows(rows) {
   const byFirm = new Map();
   rows.forEach(r => {
@@ -91,17 +86,17 @@ function buildCuratedDefaultRows(rows) {
     else byFirm.set(r.firm.name, [r]);
   });
 
-  const firmNames = [...byFirm.keys()].sort(
-    (a, b) => firmOrderIndex(a) - firmOrderIndex(b)
-  );
-
+  const firmNames = [...byFirm.keys()].sort((a, b) => firmOrderIndex(a) - firmOrderIndex(b));
   const primaries = [];
   const secondaries = [];
   const used = new Set();
 
   firmNames.forEach(name => {
     const firmRows = byFirm.get(name);
-    const { primary, secondary } = pickHighlightPlans(firmRows.map(r => r.plan));
+    const { primary, secondary } = pickHighlightPlans(
+      firmRows.map(r => r.plan),
+      name
+    );
     if (primary) {
       const row = firmRows.find(r => r.plan.id === primary.id);
       if (row) {
@@ -149,10 +144,9 @@ const INFO_COPY = {
   profitSplit:
     'Share of profits you keep once funded (e.g. 90%). Progressive splits (75%→100%) increase after payout milestones.',
   price:
-    'Challenge price with the KAGE promo applied when “Apply Discount” is on. Strikethrough shows the regular (was) price when available.',
+    'Challenge price. With Apply discounts on, this is the promo price (strikethrough = regular price). With it off, this is the regular list price.',
 };
 
-/** Mid-column track widths — keep header + body cells in lockstep */
 const MID_COLS = [
   { key: 'accountSize', label: 'Account size', tip: 'accountSize', sort: true, min: 128 },
   { key: 'maxLossType', label: 'Drawdown type', tip: 'maxLossType', sort: true, min: 144 },
@@ -174,6 +168,23 @@ const MID_COLS = [
 
 const ALL_COL_KEYS = MID_COLS.map(c => c.key);
 
+const ROW =
+  'relative grid grid-cols-[320px_minmax(0,1fr)_200px] max-md:grid-cols-[252px_minmax(0,1fr)_160px]';
+const PIN_FIRM =
+  'flex min-w-0 items-center border border-[#3FB185]/25 border-r-white/10 bg-[#0c1612] px-4 py-4 max-md:px-3 rounded-l-2xl';
+const PIN_PRICE =
+  'flex min-w-0 items-center border border-[#3FB185]/25 border-l-white/10 bg-[#0c1612] px-4 py-4 max-md:px-3 rounded-r-2xl';
+const PIN_HEAD =
+  'rounded-none border-transparent border-b border-b-[#3FB185]/20 bg-[#070f0c] py-3 shadow-none';
+const MID =
+  'cmp-mid relative min-w-0 overflow-x-auto overflow-y-hidden scrollbar-none border-y border-[#3FB185]/15 bg-[#0c1612]';
+const MID_CELL =
+  'relative box-border flex shrink-0 items-center border-r border-slate-400/50 last:border-r-0 px-3.5 py-2';
+const TH =
+  'flex flex-col items-start justify-center gap-0.5 whitespace-nowrap text-left text-[0.68rem] font-semibold uppercase tracking-[0.04em] text-slate-400/90';
+const CHIP_ON = 'border-[#3FB185]/50 bg-[#3FB185]/15 text-[#3FB185]';
+const CHIP_OFF = 'border-white/10 bg-black/20 text-slate-200 hover:border-emerald-500/35';
+
 function loadVisibleCols() {
   if (typeof window === 'undefined') return new Set(ALL_COL_KEYS);
   try {
@@ -188,7 +199,6 @@ function loadVisibleCols() {
   }
 }
 
-/** Parse "$75K", "$1,500", "1:0.67" into sortable numbers when possible */
 function sortValue(key, plan, firm) {
   if (key === 'profitSplit' || key === 'price' || key === 'rating') {
     const v = key === 'rating' ? firm.rating : plan[key];
@@ -212,7 +222,6 @@ function sortValue(key, plan, firm) {
   return plan[key] ?? firm[key] ?? '';
 }
 
-/** Windowed page list: 1, 2, …, last (Match-style) */
 function buildPageItems(current, total) {
   if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
   const items = [];
@@ -264,15 +273,9 @@ function computeFilterBounds() {
     },
     rating: {
       min: 0,
-      max: Math.max(
-        1,
-        Math.ceil((Math.max(...ratings.filter(r => r > 0), 5) || 5) * 10) / 10
-      ),
+      max: Math.max(1, Math.ceil((Math.max(...ratings.filter(r => r > 0), 5) || 5) * 10) / 10),
     },
-    years: {
-      min: 0,
-      max: Math.max(1, Math.ceil(Math.max(...years, 1))),
-    },
+    years: { min: 0, max: Math.max(1, Math.ceil(Math.max(...years, 1))) },
     drawdownTypes: ['EOD', 'Intraday', 'Static', 'Trailing'].filter(t => drawdown.has(t)),
   };
 }
@@ -281,25 +284,31 @@ const FILTER_BOUNDS = computeFilterBounds();
 const EMPTY_FACET = createEmptyFacet(FILTER_BOUNDS);
 
 function formatMoney(n) {
-  return `$${Number(n).toFixed(2)}`;
+  const v = Number(n);
+  if (!Number.isFinite(v) || v <= 0) return '—';
+  return `$${v.toFixed(2)}`;
+}
+
+function listPriceOf(plan) {
+  const was = Number(plan?.priceWas);
+  const list = Number(plan?.listPrice);
+  if (Number.isFinite(was) && was > 0) return was;
+  if (Number.isFinite(list) && list > 0) return list;
+  return Number(plan?.price) || 0;
+}
+
+function salePriceOf(plan) {
+  return Number(plan?.price) || 0;
 }
 
 function SortArrows({ active, direction }) {
   const upStrong = active && direction === 'asc';
   const downStrong = active && direction === 'desc';
   return (
-    <span className="cmp-th__sort" aria-hidden>
+    <span aria-hidden className="inline-flex text-current">
       <svg width="7" height="10" viewBox="0 0 7 10" fill="none">
-        <path
-          d="M3.5 0L6.5 4H0.5L3.5 0Z"
-          fill="currentColor"
-          opacity={upStrong ? 1 : 0.3}
-        />
-        <path
-          d="M3.5 10L0.5 6H6.5L3.5 10Z"
-          fill="currentColor"
-          opacity={downStrong ? 1 : 0.3}
-        />
+        <path d="M3.5 0L6.5 4H0.5L3.5 0Z" fill="currentColor" opacity={upStrong ? 1 : 0.3} />
+        <path d="M3.5 10L0.5 6H6.5L3.5 10Z" fill="currentColor" opacity={downStrong ? 1 : 0.3} />
       </svg>
     </span>
   );
@@ -318,25 +327,28 @@ const STAR_PATH =
 
 function VerifiedBadge() {
   return (
-    <span className="cmp-firm__verified" title="Verified firm" aria-label="Verified">
+    <span
+      className="absolute -bottom-0.5 -right-0.5 z-[2] grid size-4 place-items-center rounded-full border-[1.5px] border-[#080c0a] bg-gradient-to-br from-amber-200 via-amber-500 to-amber-700 text-white shadow"
+      title="Verified firm"
+      aria-label="Verified"
+    >
       <Star size={9} strokeWidth={0} fill="#fff" aria-hidden />
     </span>
   );
 }
 
-/** Stars rounded to nearest half so 4.2→4, 4.6→4.5 — stable & readable */
 function RatingStars({ rating, idPrefix = 'star' }) {
   const rounded = Math.round(Math.min(5, Math.max(0, Number(rating) || 0)) * 2) / 2;
   return (
-    <span className="cmp-stars" aria-hidden>
+    <span className="inline-flex items-center gap-0.5 leading-none" aria-hidden>
       {[1, 2, 3, 4, 5].map(n => {
         const state = rounded >= n ? 'full' : rounded >= n - 0.5 ? 'half' : 'empty';
         const clipId = `${idPrefix}-half-${n}`;
         return (
-          <span key={n} className={`cmp-stars__s cmp-stars__s--${state}`}>
+          <span key={n} className="inline-flex size-[11px] shrink-0">
             <svg viewBox="0 0 24 24" width="11" height="11">
-              <path d={STAR_PATH} className="cmp-stars__track" />
-              {state === 'full' && <path d={STAR_PATH} className="cmp-stars__fill" />}
+              <path d={STAR_PATH} className="fill-[#3FB185]/25" />
+              {state === 'full' && <path d={STAR_PATH} className="fill-[#3FB185]" />}
               {state === 'half' && (
                 <>
                   <defs>
@@ -344,7 +356,7 @@ function RatingStars({ rating, idPrefix = 'star' }) {
                       <rect x="0" y="0" width="12" height="24" />
                     </clipPath>
                   </defs>
-                  <path d={STAR_PATH} className="cmp-stars__fill" clipPath={`url(#${clipId})`} />
+                  <path d={STAR_PATH} className="fill-[#3FB185]" clipPath={`url(#${clipId})`} />
                 </>
               )}
             </svg>
@@ -360,19 +372,23 @@ function ProfitSplitBar({ pct }) {
   const numericOnly = /^\d+(\.\d+)?$/.test(raw);
   const fillNum = numericOnly ? Number(raw) : Number(String(raw).match(/[\d.]+/)?.[0] || 0);
   if (!numericOnly && raw) {
-    return <span className="cmp-split cmp-split--text">{raw.includes('%') ? raw : `${raw}%`}</span>;
+    return <span className="font-bold text-white">{raw.includes('%') ? raw : `${raw}%`}</span>;
   }
   const fill = Math.min(100, Math.max(0, fillNum || 0));
   const segs = 10;
   const lit = Math.round((fill / 100) * segs);
   return (
-    <div className="cmp-split">
-      <span className="cmp-split__val">{fill}%</span>
-      <div className="cmp-split__segments" role="presentation" aria-hidden>
+    <div className="flex min-w-[110px] items-center gap-2.5">
+      <span className="text-[0.95rem] font-extrabold text-white">{fill}%</span>
+      <div className="flex min-w-14 flex-1 items-center gap-0.5" role="presentation" aria-hidden>
         {Array.from({ length: segs }, (_, i) => (
           <span
             key={i}
-            className={`cmp-split__seg${i < lit ? ' cmp-split__seg--on' : ''}`}
+            className={`h-[7px] flex-1 rounded-sm ${
+              i < lit
+                ? 'bg-gradient-to-b from-[#3FB185] via-[#2d8a68] to-[#1B4B38]'
+                : 'bg-white/10'
+            }`}
           />
         ))}
       </div>
@@ -420,11 +436,11 @@ function InfoTip({ tipKey }) {
   if (!text) return null;
 
   return (
-    <span className="cmp-tip">
+    <span className="relative inline-flex items-center">
       <button
         ref={btnRef}
         type="button"
-        className="cmp-tip__btn"
+        className="btn-bare inline-flex size-[18px] items-center justify-center rounded-full text-slate-400 hover:bg-[#3FB185]/15 hover:text-[#3FB185] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3FB185]/55"
         aria-label="More info"
         aria-describedby={open ? tipId : undefined}
         onMouseEnter={show}
@@ -439,7 +455,9 @@ function InfoTip({ tipKey }) {
           <span
             id={tipId}
             role="tooltip"
-            className={`cmp-tip__panel cmp-tip__panel--portal cmp-tip__panel--${pos.place}`}
+            className={`pointer-events-none fixed z-[10050] w-[min(240px,70vw)] rounded-[10px] border border-[#3FB185]/35 bg-gradient-to-b from-[#122018] to-[#0a1410] px-3 py-2.5 text-[0.72rem] font-medium leading-snug normal-case tracking-normal text-slate-200 shadow-[0_14px_32px_rgba(0,0,0,0.55)] ${
+              pos.place === 'above' ? '-translate-x-1/2 -translate-y-full' : '-translate-x-1/2'
+            }`}
             style={{ top: pos.top, left: pos.left }}
           >
             {text}
@@ -452,83 +470,73 @@ function InfoTip({ tipKey }) {
 
 function renderMidCell(col, p) {
   const style = { flex: `0 0 ${col.min}px`, minWidth: col.min };
+  const wrap = `${MID_CELL} max-w-40 whitespace-normal text-[0.82rem] font-bold leading-snug text-slate-50`;
   switch (col.key) {
     case 'accountSize':
       return (
-        <div key={col.key} className="cmp-td cmp-td--num cmp-mid__cell" style={style}>
+        <div key={col.key} className={`${MID_CELL} whitespace-nowrap text-[0.82rem] font-bold text-slate-50`} style={style}>
           {String(p.accountSize).replace('$', '')}
         </div>
       );
     case 'activationFee':
       return (
-        <div key={col.key} className="cmp-td cmp-td--muted cmp-td--wrap cmp-mid__cell" style={style}>
+        <div key={col.key} className={`${wrap} text-slate-400`} style={style}>
           {p.activationFee}
         </div>
       );
     case 'maxLots':
       return (
-        <div key={col.key} className="cmp-td cmp-td--num cmp-td--wrap cmp-mid__cell" style={style}>
+        <div key={col.key} className={wrap} style={style}>
           {String(p.maxLots).includes('|') || String(p.maxLots).includes('/') ? (
             <>
               {String(p.maxLots)
                 .split(/[|/]/)
-                .map((part, i, arr) => (
+                .map((part, i) => (
                   <span key={`${part}-${i}`}>
-                    {i > 0 ? (
-                      <>
-                        {' '}
-                        <span className="cmp-pipe">|</span>{' '}
-                      </>
-                    ) : null}
+                    {i > 0 ? <span className="mx-0.5 text-slate-500"> | </span> : null}
                     {part.trim()}
-                    {i === arr.length - 1 && p.maxLotsNote ? (
-                      <span className="cmp-muted"> {p.maxLotsNote}</span>
-                    ) : null}
                   </span>
                 ))}
             </>
           ) : (
-            <>
-              {p.maxLots}
-              {p.maxLotsNote ? <span className="cmp-muted"> {p.maxLotsNote}</span> : null}
-            </>
+            p.maxLots
           )}
         </div>
       );
     case 'profitTarget':
     case 'maxLoss':
       return (
-        <div key={col.key} className="cmp-td cmp-td--num cmp-td--wrap cmp-mid__cell" style={style}>
+        <div key={col.key} className={wrap} style={style}>
           {p[col.key]}
         </div>
       );
     case 'maxLossType':
       return (
-        <div key={col.key} className="cmp-td cmp-td--wrap cmp-mid__cell" style={style}>
+        <div key={col.key} className={wrap} style={style}>
           {p.maxLossType}
         </div>
       );
     case 'profitSplit':
       return (
-        <div key={col.key} className="cmp-td cmp-mid__cell" style={style}>
+        <div key={col.key} className={MID_CELL} style={style}>
           <ProfitSplitBar pct={p.profitSplitLabel || p.profitSplit} />
         </div>
       );
     case 'consistency':
       return (
-        <div key={col.key} className="cmp-td cmp-td--num cmp-td--wrap cmp-mid__cell" style={style}>
-          <span className={p.consistencyEval === 'None' ? 'cmp-muted' : undefined}>
+        <div key={col.key} className={wrap} style={style}>
+          <span className={p.consistencyEval === 'None' ? 'text-slate-500' : undefined}>
             {p.consistencyEval}
-          </span>{' '}
-          <span className="cmp-pipe">|</span>{' '}
-          <span className={p.consistencyFunded === 'None' ? 'cmp-muted' : undefined}>
+          </span>
+          <span className="mx-0.5 text-slate-500"> | </span>
+          <span className={p.consistencyFunded === 'None' ? 'text-slate-500' : undefined}>
             {p.consistencyFunded}
           </span>
         </div>
       );
     case 'payoutFreq':
       return (
-        <div key={col.key} className="cmp-td cmp-td--wrap cmp-mid__cell" style={style}>
+        <div key={col.key} className={wrap} style={style}>
           {p.payoutFreq}
         </div>
       );
@@ -544,23 +552,13 @@ function ToolbarIcon({ name }) {
     case 'filter':
       return (
         <svg {...s}>
-          <path
-            d="M4 5h16l-5.5 7v6.5L10 17v-5L4 5z"
-            stroke={stroke}
-            strokeWidth="1.65"
-            strokeLinejoin="round"
-          />
+          <path d="M4 5h16l-5.5 7v6.5L10 17v-5L4 5z" stroke={stroke} strokeWidth="1.65" strokeLinejoin="round" />
         </svg>
       );
     case 'bookmark':
       return (
         <svg {...s}>
-          <path
-            d="M7 4h10v17l-5-3.2L7 21V4z"
-            stroke={stroke}
-            strokeWidth="1.65"
-            strokeLinejoin="round"
-          />
+          <path d="M7 4h10v17l-5-3.2L7 21V4z" stroke={stroke} strokeWidth="1.65" strokeLinejoin="round" />
         </svg>
       );
     case 'chevron':
@@ -602,22 +600,28 @@ function FilterDropdown({ id, label, valueLabel, open, onToggle, options, select
   }, [open, onToggle]);
 
   return (
-    <div className={`cmp-dd${open ? ' cmp-dd--open' : ''}`}>
+    <div className="relative shrink-0">
       <button
         type="button"
-        className={`cmp-dd__btn${selected.length ? ' cmp-dd__btn--active' : ''}`}
+        className={`btn-bare inline-flex h-10 items-center gap-1.5 rounded-xl border px-3 text-[0.78rem] font-semibold ${
+          selected.length ? `border-[#3FB185]/50 bg-[#3FB185]/12 text-[#3FB185]` : 'border-white/10 bg-white/5 text-white/80'
+        } ${open ? 'border-[#3FB185]/60' : ''}`}
         onClick={() => onToggle(open ? null : id)}
         aria-expanded={open}
         aria-haspopup="listbox"
       >
-        <span className="cmp-dd__label">{label}:</span>
-        <span className="cmp-dd__value">{valueLabel}</span>
+        <span className="text-slate-400">{label}:</span>
+        <span className="font-bold text-white">{valueLabel}</span>
         <ToolbarIcon name="chevron" />
       </button>
       {open && (
-        <div className="cmp-dd__panel" role="listbox" aria-label={`${label} options`}>
-          <p className="cmp-dd__hint">Select one or multiple options</p>
-          <div className="cmp-dd__options">
+        <div
+          className="absolute left-0 top-[calc(100%+8px)] z-20 min-w-[220px] rounded-xl border border-white/10 bg-[#0c1612] p-3 shadow-[0_16px_40px_rgba(0,0,0,0.45)]"
+          role="listbox"
+          aria-label={`${label} options`}
+        >
+          <p className="mb-2 text-[0.68rem] text-slate-500">Select one or multiple options</p>
+          <div className="flex flex-wrap gap-2">
             {options.map(opt => {
               const on = selected.includes(opt);
               return (
@@ -626,7 +630,7 @@ function FilterDropdown({ id, label, valueLabel, open, onToggle, options, select
                   type="button"
                   role="option"
                   aria-selected={on}
-                  className={`cmp-chip ${on ? 'cmp-chip--on' : ''}`}
+                  className={`min-h-8 rounded-full border px-2.5 py-1.5 text-[0.7rem] font-semibold ${on ? CHIP_ON : CHIP_OFF}`}
                   onClick={() => onToggleOption(opt)}
                 >
                   {opt}
@@ -640,20 +644,44 @@ function FilterDropdown({ id, label, valueLabel, open, onToggle, options, select
   );
 }
 
+const SORT_OPTIONS = [
+  { key: 'default', label: 'Popularity' },
+  { key: 'price', label: 'Price' },
+  { key: 'accountSize', label: 'Account size' },
+  { key: 'profitSplit', label: 'Profit split' },
+  { key: 'profitTarget', label: 'Profit target' },
+];
+
+function sortLabel(sort) {
+  return SORT_OPTIONS.find(o => o.key === sort.key)?.label || MID_COLS.find(c => c.key === sort.key)?.label || 'Popularity';
+}
+
 function ToggleSwitch({ label, checked, onChange }) {
   return (
-    <label className="cmp-toggle">
+    <label className="inline-flex shrink-0 items-center gap-2">
       <button
         type="button"
-        className={`cmp-toggle__track${checked ? ' cmp-toggle__track--on' : ''}`}
+        className={`btn-bare relative h-6 w-11 rounded-full border transition-colors ${
+          checked ? 'border-[#3FB185]/60 bg-[#3FB185]' : 'border-white/15 bg-white/10'
+        }`}
         role="switch"
         aria-checked={checked}
         aria-label={label}
         onClick={() => onChange(!checked)}
       >
-        <span className="cmp-toggle__thumb" />
+        <span
+          className={`absolute top-[3px] grid size-[18px] place-items-center rounded-full bg-white text-[#1B4B38] transition-[left] ${
+            checked ? 'left-[22px]' : 'left-[3px]'
+          }`}
+        >
+          {checked ? (
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden>
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+            </svg>
+          ) : null}
+        </span>
       </button>
-      <span className="cmp-toggle__label">{label}</span>
+      <span className="whitespace-nowrap text-[0.78rem] font-semibold text-white/75">{label}</span>
     </label>
   );
 }
@@ -662,41 +690,38 @@ function SortHead({ label, sortKey, sort, onSort, className = '', sub, tip, styl
   return (
     <div
       role="columnheader"
-      className={`cmp-th${sub ? ' cmp-th--stacked' : ''} ${className}`.trim()}
+      className={`${TH} ${sub ? 'whitespace-normal' : ''} ${className}`.trim()}
       style={style}
-      aria-sort={
-        sort.key === sortKey ? (sort.dir === 'desc' ? 'descending' : 'ascending') : 'none'
-      }
+      aria-sort={sort.key === sortKey ? (sort.dir === 'desc' ? 'descending' : 'ascending') : 'none'}
     >
-      <div className="cmp-th__top">
-        <button type="button" className="cmp-th__btn" onClick={() => onSort(sortKey)}>
-          <span className="cmp-th__label">{label}</span>
+      <div className="flex items-center gap-1">
+        <button
+          type="button"
+          className="btn-bare inline-flex items-center gap-1 uppercase"
+          onClick={() => onSort(sortKey)}
+        >
+          <span>{label}</span>
           <SortArrows active={sort.key === sortKey} direction={sort.dir} />
         </button>
         {tip ? <InfoTip tipKey={tip} /> : null}
       </div>
-      {sub ? <span className="cmp-th__sub">{sub}</span> : null}
+      {sub ? <span className="text-[0.62rem] font-medium normal-case tracking-normal text-slate-500">{sub}</span> : null}
     </div>
   );
 }
 
 function StaticHead({ label, sub, tip, className = '', style }) {
   return (
-    <div
-      role="columnheader"
-      className={`cmp-th${sub ? ' cmp-th--stacked' : ''} ${className}`.trim()}
-      style={style}
-    >
-      <div className="cmp-th__top">
-        <span className="cmp-th__label">{label}</span>
+    <div role="columnheader" className={`${TH} ${sub ? 'whitespace-normal' : ''} ${className}`.trim()} style={style}>
+      <div className="flex items-center gap-1">
+        <span>{label}</span>
         {tip ? <InfoTip tipKey={tip} /> : null}
       </div>
-      {sub ? <span className="cmp-th__sub">{sub}</span> : null}
+      {sub ? <span className="text-[0.62rem] font-medium normal-case tracking-normal text-slate-500">{sub}</span> : null}
     </div>
   );
 }
 
-/** One horizontal scrollbar driving every mid pane via shared scrollLeft */
 function TableScrollSlider({ getMidPanes, masterRef }) {
   const trackRef = useRef(null);
   const dragging = useRef(false);
@@ -771,11 +796,18 @@ function TableScrollSlider({ getMidPanes, masterRef }) {
     };
   }, [scrollFromClientX]);
 
-  if (!metrics.needed) return null;
+  if (!metrics.needed) {
+    return (
+      <div className="relative h-2 min-w-0 flex-1" aria-hidden>
+        <div className="absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 rounded-full bg-white/10" />
+        <div className="absolute inset-x-[8%] top-1/2 h-1.5 -translate-y-1/2 rounded-full bg-linear-to-r from-transparent via-[#3FB185] to-transparent shadow-[0_0_12px_rgba(63,177,133,0.45)]" />
+      </div>
+    );
+  }
 
   return (
     <div
-      className="cmp-hscroll"
+      className="relative h-2 min-w-[120px] flex-1 cursor-pointer"
       ref={trackRef}
       role="scrollbar"
       aria-orientation="horizontal"
@@ -788,9 +820,9 @@ function TableScrollSlider({ getMidPanes, masterRef }) {
         scrollFromClientX(e.clientX);
       }}
     >
-      <div className="cmp-hscroll__track" aria-hidden />
+      <div className="absolute inset-x-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-white/10" aria-hidden />
       <div
-        className="cmp-hscroll__thumb"
+        className="absolute top-1/2 h-[6px] -translate-y-1/2 rounded-full bg-gradient-to-r from-[#1B4B38] via-[#3FB185] to-[#3FB185]/70 shadow-[0_0_12px_rgba(63,177,133,0.35)]"
         style={{ width: `${metrics.thumbPct}%`, left: `${metrics.leftPct}%` }}
       />
     </div>
@@ -827,10 +859,7 @@ export default function FirmCompareDemo() {
     return () => mq.removeEventListener('change', sync);
   }, []);
 
-  const visibleMidCols = useMemo(
-    () => MID_COLS.filter(c => visibleCols.has(c.key)),
-    [visibleCols]
-  );
+  const visibleMidCols = useMemo(() => MID_COLS.filter(c => visibleCols.has(c.key)), [visibleCols]);
 
   useEffect(() => {
     setVisibleCols(loadVisibleCols());
@@ -895,19 +924,13 @@ export default function FirmCompareDemo() {
     () => [...new Set(firms.map(f => f.countryCode).filter(Boolean))].sort(),
     []
   );
-  const uniqueAssets = useMemo(() => {
-    const s = new Set();
-    firms.forEach(f => f.assets.forEach(a => s.add(a)));
-    return [...s].sort();
-  }, []);
   const uniquePlatforms = useMemo(() => {
     const s = new Set();
     firms.forEach(f => f.platforms.forEach(p => s.add(p)));
     return [...s].sort();
   }, []);
   const firmList = useMemo(
-    () =>
-      [...firms].sort((a, b) => firmOrderIndex(a.name) - firmOrderIndex(b.name)),
+    () => [...firms].sort((a, b) => firmOrderIndex(a.name) - firmOrderIndex(b.name)),
     []
   );
   const availableSizes = useMemo(() => {
@@ -916,23 +939,17 @@ export default function FirmCompareDemo() {
     return ACCOUNT_SIZE_OPTIONS.filter(s => present.has(s));
   }, []);
 
-  const availableSteps = useMemo(() => {
-    const present = new Set();
-    firms.forEach(f => (f.plans || []).forEach(p => present.add(p.steps)));
-    return STEP_OPTIONS.filter(s => present.has(s));
-  }, []);
-
   const filterOptions = useMemo(
     () => ({
-      assets: uniqueAssets,
+      assets: [],
       sizes: availableSizes,
-      steps: availableSteps,
+      steps: STEP_FILTER_OPTIONS,
       priceTypes: PRICE_OPTIONS,
       drawdownTypes: FILTER_BOUNDS.drawdownTypes,
       platforms: uniquePlatforms,
       countries: uniqueCountries,
     }),
-    [uniqueAssets, uniquePlatforms, uniqueCountries, availableSizes, availableSteps]
+    [uniquePlatforms, uniqueCountries, availableSizes]
   );
 
   useEffect(() => {
@@ -996,10 +1013,13 @@ export default function FirmCompareDemo() {
     if (isMobile) setDraft(cloneFacet(facet));
   }, [facet, isMobile]);
 
-  const applyDraftFacet = useCallback(next => {
-    setDraft(next);
-    if (!isMobile) setFacet(cloneFacet(next));
-  }, [isMobile]);
+  const applyDraftFacet = useCallback(
+    next => {
+      setDraft(next);
+      if (!isMobile) setFacet(cloneFacet(next));
+    },
+    [isMobile]
+  );
 
   const applyMobileFilters = useCallback(() => {
     setFacet(cloneFacet(draft));
@@ -1015,15 +1035,18 @@ export default function FirmCompareDemo() {
     setSort({ key: 'default', dir: 'asc' });
   }, []);
 
-  const toggleMulti = useCallback((key, value) => {
-    setFacet(prev => {
-      const list = prev[key];
-      const nextList = list.includes(value) ? list.filter(v => v !== value) : [...list, value];
-      const next = { ...prev, [key]: nextList };
-      if (sidebarOpen) setDraft(cloneFacet(next));
-      return next;
-    });
-  }, [sidebarOpen]);
+  const toggleMulti = useCallback(
+    (key, value) => {
+      setFacet(prev => {
+        const list = prev[key];
+        const nextList = list.includes(value) ? list.filter(v => v !== value) : [...list, value];
+        const next = { ...prev, [key]: nextList };
+        if (sidebarOpen) setDraft(cloneFacet(next));
+        return next;
+      });
+    },
+    [sidebarOpen]
+  );
 
   const cycleSort = useCallback(key => {
     setSort(prev => {
@@ -1053,14 +1076,11 @@ export default function FirmCompareDemo() {
       });
     }
 
-    if (facet.assets.length) {
-      rows = rows.filter(r => facet.assets.some(a => r.firm.assets.includes(a)));
-    }
     if (facet.sizes.length) {
       rows = rows.filter(r => facet.sizes.includes(r.plan.accountSize));
     }
     if (facet.steps.length) {
-      rows = rows.filter(r => facet.steps.includes(r.plan.steps));
+      rows = rows.filter(r => planMatchesStepFilter(r.plan.steps, facet.steps));
     }
     if (facet.prices.length) {
       rows = rows.filter(r => facet.prices.includes(r.plan.priceType));
@@ -1069,9 +1089,7 @@ export default function FirmCompareDemo() {
       rows = rows.filter(r => facet.firms.includes(r.firm.name));
     }
     if (facet.drawdownTypes.length) {
-      rows = rows.filter(r =>
-        facet.drawdownTypes.includes(normalizeDrawdown(r.plan.maxLossType))
-      );
+      rows = rows.filter(r => facet.drawdownTypes.includes(normalizeDrawdown(r.plan.maxLossType)));
     }
     if (facet.platforms.length) {
       rows = rows.filter(r => facet.platforms.some(p => r.firm.platforms.includes(p)));
@@ -1082,7 +1100,7 @@ export default function FirmCompareDemo() {
     if (isRangeActive(facet.priceRange, FILTER_BOUNDS.price)) {
       const { min, max } = facet.priceRange;
       rows = rows.filter(r => {
-        const price = applyDiscount ? Number(r.plan.price) : Number(r.plan.priceWas ?? r.plan.price);
+        const price = applyDiscount ? salePriceOf(r.plan) : listPriceOf(r.plan);
         return price >= min && price <= max;
       });
     }
@@ -1114,11 +1132,8 @@ export default function FirmCompareDemo() {
     const mul = sort.dir === 'desc' ? -1 : 1;
     const isDefaultSort = !sort.key || sort.key === 'default';
     const hasBrowseFilters =
-      topMode === 'favorites' ||
-      Boolean(search.trim()) ||
-      countActiveFilters(facet, FILTER_BOUNDS) > 0;
+      topMode === 'favorites' || Boolean(search.trim()) || countActiveFilters(facet, FILTER_BOUNDS) > 0;
 
-    /* Unfiltered default: 1 best plan/firm → 1 second deal/firm → full catalog */
     if (isDefaultSort && !hasBrowseFilters) {
       return buildCuratedDefaultRows(rows);
     }
@@ -1158,19 +1173,12 @@ export default function FirmCompareDemo() {
     return filtered.slice(start, start + PAGE_SIZE);
   }, [filtered, page]);
 
-  /* Keep every mid pane locked to the shared horizontal offset after page/filter changes */
   useEffect(() => {
     const left = midScrollLeft.current;
     const id = requestAnimationFrame(() => applyMidScroll(left, null));
     return () => cancelAnimationFrame(id);
   }, [pageRows, visibleMidCols, applyMidScroll]);
 
-  /* Wheel/trackpad horizontal scroll — keep every mid pane locked together.
-     Native drag/touch/scrollbar scroll is already synced via onScroll={onMidScroll}
-     on each .cmp-mid; a second native 'scroll' listener here used to race that
-     React handler through the same syncingScroll lock, which is what caused rows
-     to drift out of sync under continuous scrolling. Wheel needs its own handler
-     because it must preventDefault before the browser scrolls just one pane. */
   useEffect(() => {
     const root = boardRef.current;
     if (!root) return undefined;
@@ -1214,8 +1222,8 @@ export default function FirmCompareDemo() {
   const draftFilterCount = countActiveFilters(draft, FILTER_BOUNDS);
 
   return (
-    <div className={`cmp${sidebarOpen ? ' cmp--filters-open' : ''}`}>
-      <div className="cmp-layout">
+    <div className="relative w-full font-[family-name:var(--font-body)]">
+      <div className="flex w-full items-start">
         <CompareFilterSidebar
           open={sidebarOpen}
           draft={draft}
@@ -1229,161 +1237,111 @@ export default function FirmCompareDemo() {
           activeCount={isMobile ? draftFilterCount : activeFilterCount}
         />
 
-        <div className="cmp-main">
-          <div className="cmp-table-stage">
-            {/* PFM-style: one horizontal scrollable filter line, flush with table */}
-            <div className="cmp-chrome" ref={toolbarRef}>
-              <div className="cmp-filter-line" role="toolbar" aria-label="Quick filters">
-                <div className="cmp-filter-line__scroll">
-                  <button
-                    type="button"
-                    className={`cmp-filter-trigger${sidebarOpen ? ' cmp-filter-trigger--open' : ''}`}
-                    onClick={() => {
-                      if (sidebarOpen) closeSidebar();
-                      else openSidebar();
-                    }}
-                    aria-pressed={sidebarOpen}
-                    aria-expanded={sidebarOpen}
-                    aria-controls="cmp-filters"
-                    aria-label={sidebarOpen ? 'Close filters' : 'Open filters'}
-                  >
-                    <ToolbarIcon name="filter" />
-                    {activeFilterCount > 0 ? (
-                      <span className="cmp-pill__badge">{activeFilterCount}</span>
-                    ) : null}
-                  </button>
+        <div className="min-w-0 flex-1">
+          <div className="w-full">
+            <div
+              className="relative z-[3] flex flex-col gap-3 rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 bg-[#08120e]/90 p-2.5 sm:p-3"
+              ref={toolbarRef}
+            >
+              <div
+                className={`scrollbar-none relative flex min-w-0 flex-nowrap items-center gap-2 ${
+                  openDropdown ? 'overflow-visible' : 'overflow-x-auto'
+                }`}
+                role="toolbar"
+                aria-label="Quick filters"
+              >
+                <button
+                  type="button"
+                  className={`btn-bare relative grid size-10 shrink-0 place-items-center rounded-xl border ${
+                    sidebarOpen
+                      ? 'border-[#3FB185]/60 bg-[#3FB185]/15 text-[#3FB185]'
+                      : 'border-white/10 bg-white/5 text-white/80'
+                  }`}
+                  onClick={() => {
+                    if (sidebarOpen) closeSidebar();
+                    else openSidebar();
+                  }}
+                  aria-pressed={sidebarOpen}
+                  aria-expanded={sidebarOpen}
+                  aria-controls="cmp-filters"
+                  aria-label={sidebarOpen ? 'Close filters' : 'Open filters'}
+                >
+                  <ToolbarIcon name="filter" />
+                  {activeFilterCount > 0 ? (
+                    <span className="absolute -right-1 -top-1 grid min-w-4 place-items-center rounded-full bg-[#3FB185] px-1 text-[9px] font-bold text-[#0a0f0d]">
+                      {activeFilterCount}
+                    </span>
+                  ) : null}
+                </button>
 
-                  <FilterDropdown
-                    id="assets"
-                    label="Assets"
-                    valueLabel={formatMultiLabel(facet.assets, 'All')}
-                    open={openDropdown === 'assets'}
-                    onToggle={setOpenDropdown}
-                    options={uniqueAssets}
-                    selected={facet.assets}
-                    onToggleOption={opt => toggleMulti('assets', opt)}
-                  />
-                  <FilterDropdown
-                    id="sizes"
-                    label="Size"
-                    valueLabel={formatMultiLabel(facet.sizes, 'All')}
-                    open={openDropdown === 'sizes'}
-                    onToggle={setOpenDropdown}
-                    options={availableSizes.length ? availableSizes : ACCOUNT_SIZE_OPTIONS}
-                    selected={facet.sizes}
-                    onToggleOption={opt => toggleMulti('sizes', opt)}
-                  />
-                  <FilterDropdown
-                    id="steps"
-                    label="Steps"
-                    valueLabel={formatMultiLabel(facet.steps, 'All')}
-                    open={openDropdown === 'steps'}
-                    onToggle={setOpenDropdown}
-                    options={availableSteps.length ? availableSteps : STEP_OPTIONS}
-                    selected={facet.steps}
-                    onToggleOption={opt => toggleMulti('steps', opt)}
-                  />
-                  <FilterDropdown
-                    id="prices"
-                    label="Price"
-                    valueLabel={formatMultiLabel(facet.prices, 'All')}
-                    open={openDropdown === 'prices'}
-                    onToggle={setOpenDropdown}
-                    options={PRICE_OPTIONS}
-                    selected={facet.prices}
-                    onToggleOption={opt => toggleMulti('prices', opt)}
-                  />
+                <FilterDropdown
+                  id="sizes"
+                  label="Size"
+                  valueLabel={formatMultiLabel(facet.sizes, 'All')}
+                  open={openDropdown === 'sizes'}
+                  onToggle={setOpenDropdown}
+                  options={availableSizes.length ? availableSizes : ACCOUNT_SIZE_OPTIONS}
+                  selected={facet.sizes}
+                  onToggleOption={opt => toggleMulti('sizes', opt)}
+                />
+                <FilterDropdown
+                  id="steps"
+                  label="Steps"
+                  valueLabel={formatMultiLabel(facet.steps, 'All')}
+                  open={openDropdown === 'steps'}
+                  onToggle={setOpenDropdown}
+                  options={STEP_FILTER_OPTIONS}
+                  selected={facet.steps}
+                  onToggleOption={opt => toggleMulti('steps', opt)}
+                />
+                <FilterDropdown
+                  id="prices"
+                  label="Price"
+                  valueLabel={formatMultiLabel(facet.prices, 'All')}
+                  open={openDropdown === 'prices'}
+                  onToggle={setOpenDropdown}
+                  options={PRICE_OPTIONS}
+                  selected={facet.prices}
+                  onToggleOption={opt => toggleMulti('prices', opt)}
+                />
 
-                  <span className="cmp-filter-line__sep" aria-hidden />
+                <ToggleSwitch label="Apply discounts" checked={applyDiscount} onChange={setApplyDiscount} />
 
-                  <ToggleSwitch
-                    label="Apply Discount"
-                    checked={applyDiscount}
-                    onChange={setApplyDiscount}
-                  />
+                <button
+                  type="button"
+                  className={`btn-bare inline-flex h-10 shrink-0 items-center rounded-full px-5 text-[0.82rem] font-bold ${
+                    topMode === 'all'
+                      ? 'bg-[#3FB185] text-[#0a0f0d]'
+                      : 'border border-white/10 bg-white/5 text-white/80'
+                  }`}
+                  onClick={() => setTopMode('all')}
+                  aria-pressed={topMode === 'all'}
+                >
+                  All
+                </button>
+                <button
+                  type="button"
+                  className={`btn-bare inline-flex h-10 shrink-0 items-center gap-1.5 rounded-xl border px-3 text-[0.78rem] font-semibold ${
+                    topMode === 'favorites'
+                      ? 'border-[#3FB185]/60 bg-[#3FB185]/15 text-[#3FB185]'
+                      : 'border-white/10 bg-white/5 text-white/80'
+                  }`}
+                  onClick={() => setTopMode('favorites')}
+                  aria-pressed={topMode === 'favorites'}
+                >
+                  <ToolbarIcon name="bookmark" />
+                  {favCount}/{MAX_FAVORITES}
+                </button>
 
-                  <button
-                    type="button"
-                    className={`cmp-pill cmp-pill--round${topMode === 'all' ? ' cmp-pill--active' : ''}`}
-                    onClick={() => setTopMode('all')}
-                    aria-pressed={topMode === 'all'}
-                  >
-                    All
-                  </button>
-                  <button
-                    type="button"
-                    className={`cmp-pill cmp-pill--compact${topMode === 'favorites' ? ' cmp-pill--active' : ''}`}
-                    onClick={() => setTopMode('favorites')}
-                    aria-pressed={topMode === 'favorites'}
-                  >
-                    <ToolbarIcon name="bookmark" />
-                    {favCount}/{MAX_FAVORITES}
-                  </button>
-                </div>
-              </div>
-
-              <div className="cmp-tools-row">
-                <div className="cmp-customize-wrap">
-                  <button
-                    type="button"
-                    className={`cmp-pill cmp-pill--customize${customizeOpen ? ' cmp-pill--active' : ''}`}
-                    onClick={() => {
-                      setCustomizeOpen(v => !v);
-                      setOpenDropdown(null);
-                    }}
-                    aria-pressed={customizeOpen}
-                    aria-expanded={customizeOpen}
-                  >
-                    <ToolbarIcon name="grid" />
-                    Customize
-                  </button>
-                  {customizeOpen && (
-                    <div className="cmp-customize" role="dialog" aria-label="Customize columns">
-                      <p className="cmp-customize__title">Show or hide columns</p>
-                      <div className="cmp-customize__list">
-                        {MID_COLS.map(col => (
-                          <label key={col.key} className="cmp-customize__item">
-                            <input
-                              type="checkbox"
-                              checked={visibleCols.has(col.key)}
-                              onChange={() => toggleCol(col.key)}
-                            />
-                            <span>{col.label}</span>
-                          </label>
-                        ))}
-                      </div>
-                      <button
-                        type="button"
-                        className="cmp-customize__reset"
-                        onClick={() => setVisibleCols(new Set(ALL_COL_KEYS))}
-                      >
-                        Reset columns
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                <label className="cmp-search">
-                  <svg
-                    className="cmp-search__icon"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
+                <label className="ml-auto flex h-10 w-[min(100%,280px)] min-w-[200px] shrink-0 items-center gap-2 rounded-xl border border-white/10 bg-black/30 px-3 focus-within:border-[#3FB185]/45">
+                  <svg className="shrink-0 text-white/40" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
-                    <path
-                      d="M21 21l-4.3-4.3"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
+                    <path d="M21 21l-4.3-4.3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                   <input
                     type="text"
-                    className="cmp-search__input"
-                    placeholder="Search for challenges"
+                    className="min-w-0 flex-1 border-0 bg-transparent text-[0.82rem] text-white outline-none placeholder:text-white/35"
+                    placeholder="Search for challenges..."
                     value={search}
                     onChange={e => setSearch(e.target.value)}
                     aria-label="Search for challenges"
@@ -1393,7 +1351,7 @@ export default function FirmCompareDemo() {
                   {search ? (
                     <button
                       type="button"
-                      className="cmp-search__clear"
+                      className="btn-bare text-white/40 hover:text-white"
                       onClick={() => setSearch('')}
                       aria-label="Clear search"
                     >
@@ -1403,33 +1361,119 @@ export default function FirmCompareDemo() {
                 </label>
               </div>
 
-              <div className="cmp-table-headrow">
-                <h3 className="cmp-table-heading">
-                  Prop firm challenges{' '}
-                  <span className="cmp-table-heading__count">{filtered.length}</span>
-                </h3>
+              <div className="flex min-w-0 items-center gap-3">
+                <p className="m-0 shrink-0 text-[0.92rem] font-semibold text-[#3FB185]">
+                  {filtered.length.toLocaleString('en-US')} prop firm challenges
+                </p>
                 <TableScrollSlider getMidPanes={getMidPanes} masterRef={masterMidRef} />
+                <div className="relative shrink-0">
+                  <button
+                    type="button"
+                    className="btn-bare inline-flex items-center gap-1.5 text-[0.78rem] font-semibold text-white/70 hover:text-white"
+                    onClick={() => {
+                      setOpenDropdown(openDropdown === 'sort' ? null : 'sort');
+                      setCustomizeOpen(false);
+                    }}
+                    aria-expanded={openDropdown === 'sort'}
+                    aria-haspopup="listbox"
+                  >
+                    <span>
+                      Sorted by: <span className="text-white">{sortLabel(sort)}</span>
+                    </span>
+                    <span className="inline-flex flex-col text-[7px] leading-[0.65]" aria-hidden>
+                      <span>▲</span>
+                      <span>▼</span>
+                    </span>
+                  </button>
+                  {openDropdown === 'sort' ? (
+                    <div
+                      className="absolute right-0 top-[calc(100%+8px)] z-20 min-w-[180px] rounded-xl border border-white/10 bg-[#0c1612] p-2 shadow-[0_16px_40px_rgba(0,0,0,0.45)]"
+                      role="listbox"
+                      aria-label="Sort challenges"
+                    >
+                      {SORT_OPTIONS.map(opt => (
+                        <button
+                          key={opt.key}
+                          type="button"
+                          role="option"
+                          aria-selected={sort.key === opt.key}
+                          className={`btn-bare flex w-full rounded-lg px-2.5 py-2 text-left text-[0.78rem] font-semibold ${
+                            sort.key === opt.key ? 'bg-[#3FB185]/15 text-[#3FB185]' : 'text-white/75 hover:bg-white/5'
+                          }`}
+                          onClick={() => {
+                            setSort({ key: opt.key, dir: opt.key === 'default' ? 'asc' : 'desc' });
+                            setOpenDropdown(null);
+                          }}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+                <div className="relative shrink-0">
+                  <button
+                    type="button"
+                    className={`btn-bare grid size-9 place-items-center rounded-xl border ${
+                      customizeOpen
+                        ? 'border-[#3FB185]/60 bg-[#3FB185]/15 text-[#3FB185]'
+                        : 'border-white/10 bg-white/5 text-white/70'
+                    }`}
+                    onClick={() => {
+                      setCustomizeOpen(v => !v);
+                      setOpenDropdown(null);
+                    }}
+                    aria-pressed={customizeOpen}
+                    aria-expanded={customizeOpen}
+                    aria-label="Customize columns"
+                  >
+                    <ToolbarIcon name="grid" />
+                  </button>
+                  {customizeOpen && (
+                    <div
+                      className="absolute right-0 top-[calc(100%+8px)] z-20 w-56 rounded-xl border border-white/10 bg-[#0c1612] p-3 shadow-[0_16px_40px_rgba(0,0,0,0.45)]"
+                      role="dialog"
+                      aria-label="Customize columns"
+                    >
+                      <p className="mb-2 text-[0.72rem] font-semibold text-white/70">Show or hide columns</p>
+                      <div className="flex flex-col gap-1.5">
+                        {MID_COLS.map(col => (
+                          <label key={col.key} className="flex items-center gap-2 text-[0.75rem] text-white/80">
+                            <input
+                              type="checkbox"
+                              className="accent-[#3FB185]"
+                              checked={visibleCols.has(col.key)}
+                              onChange={() => toggleCol(col.key)}
+                            />
+                            <span>{col.label}</span>
+                          </label>
+                        ))}
+                      </div>
+                      <button
+                        type="button"
+                        className="btn-bare mt-2 text-[0.72rem] font-semibold text-[#3FB185] hover:underline"
+                        onClick={() => setVisibleCols(new Set(ALL_COL_KEYS))}
+                      >
+                        Reset columns
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 
             <div
-              className="cmp-board"
+              className="relative z-[1] mt-0 flex w-full min-w-0 flex-col gap-2 rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]/55 pb-2"
               ref={boardRef}
               role="table"
               aria-label="Compare prop firm challenges: size, drawdown, contracts, payouts, and price"
             >
-              <div className="cmp-board__row cmp-board__row--head" role="row">
-                <div className="cmp-pin cmp-pin--firm" role="columnheader">
-                  <span className="cmp-th cmp-th--firm">Firm / Plan</span>
+              <div className={`${ROW} m-0`} role="row">
+                <div className={`${PIN_FIRM} ${PIN_HEAD}`} role="columnheader">
+                  <span className={TH}>Firm / Plan</span>
                 </div>
-                <div
-                  className="cmp-mid"
-                  id="cmp-mid-scroller"
-                  ref={setMasterMidRef}
-                  onScroll={onMidScroll}
-                  role="presentation"
-                >
-                  <div className="cmp-mid__track">
+                <div className={`${MID} flex items-center bg-[#070f0c]`} id="cmp-mid-scroller" ref={setMasterMidRef} onScroll={onMidScroll} role="presentation">
+                  <div className="flex min-h-[52px] w-max items-center">
                     {visibleMidCols.map(col =>
                       col.sort ? (
                         <SortHead
@@ -1440,7 +1484,7 @@ export default function FirmCompareDemo() {
                           sortKey={col.key}
                           sort={sort}
                           onSort={cycleSort}
-                          className="cmp-mid__cell"
+                          className={MID_CELL}
                           style={{ flex: `0 0 ${col.min}px`, minWidth: col.min }}
                         />
                       ) : (
@@ -1449,32 +1493,25 @@ export default function FirmCompareDemo() {
                           label={col.label}
                           sub={col.sub}
                           tip={col.tip}
-                          className="cmp-mid__cell"
+                          className={MID_CELL}
                           style={{ flex: `0 0 ${col.min}px`, minWidth: col.min }}
                         />
                       )
                     )}
                   </div>
                 </div>
-                <div className="cmp-pin cmp-pin--price" role="columnheader">
-                  <SortHead
-                    label="Price"
-                    tip="price"
-                    sortKey="price"
-                    sort={sort}
-                    onSort={cycleSort}
-                    className="cmp-th--price"
-                  />
+                <div className={`${PIN_PRICE} ${PIN_HEAD}`} role="columnheader">
+                  <SortHead label="Price" tip="price" sortKey="price" sort={sort} onSort={cycleSort} />
                 </div>
               </div>
 
               {filtered.length === 0 ? (
-                <div className="cmp-board__empty" role="row">
-                  <div className="cmp-empty" role="cell">
+                <div className="block px-6 py-10 text-center text-sm text-slate-400" role="row">
+                  <div role="cell">
                     No challenges match these filters. Try{' '}
                     <button
                       type="button"
-                      className="cmp-empty__link"
+                      className="btn-bare font-semibold text-[#3FB185] underline"
                       onClick={() => {
                         resetFacets();
                         setTopMode('all');
@@ -1488,30 +1525,65 @@ export default function FirmCompareDemo() {
               ) : (
                 pageRows.map(({ firm: f, plan: p }, i) => {
                   const websiteHref = firmWebsiteUrl(f.website);
-                  const displayPrice = applyDiscount ? p.price : p.priceWas;
+                  const salePrice = salePriceOf(p);
+                  const listPrice = listPriceOf(p);
+                  const displayPrice = applyDiscount ? salePrice : listPrice;
+                  const showWas = applyDiscount && listPrice > salePrice;
                   const promoCode = p.promoCode || f.promoCode;
+                  const even = i % 2 === 1;
+                  const logoSrc = firmLogo(f.name, f.logo);
                   return (
                     <div
                       key={p.id}
-                      className="cmp-board__row cmp-row"
+                      className={`${ROW} group`}
                       role="row"
                       style={{ animationDelay: `${Math.min(i, 12) * 0.04}s` }}
                     >
-                      <div className="cmp-pin cmp-pin--firm" role="cell">
-                        <div className="cmp-firm">
-                          <div className="cmp-firm__logo-wrap">
-                            <div className="cmp-firm__logo">
-                              <Image src={f.logo} alt={`${f.name} logo`} width={52} height={52} />
+                      <div
+                        className={`${PIN_FIRM} ${even ? 'bg-[#0a1410]' : ''} group-hover:border-[#3FB185]/40 group-hover:bg-[#122018]`}
+                        role="cell"
+                      >
+                        <div className="flex w-full min-w-0 items-start gap-3">
+                          <div className="relative mt-0.5 shrink-0" style={{ width: 44, height: 44 }}>
+                            <div
+                              className="overflow-hidden bg-black"
+                              style={{
+                                width: 44,
+                                height: 44,
+                                boxSizing: 'border-box',
+                                borderRadius: 10,
+                                border: '2px solid rgba(63,177,133,0.45)',
+                                padding: 2,
+                              }}
+                            >
+                              {logoSrc ? (
+                                <img
+                                  src={logoSrc}
+                                  alt=""
+                                  width={80}
+                                  height={80}
+                                  className="size-full object-cover object-center"
+                                  style={{ transform: 'scale(1.04)' }}
+                                />
+                              ) : (
+                                <span className="grid size-full place-items-center text-[0.58rem] font-bold text-white/50">
+                                  {f.name.slice(0, 2)}
+                                </span>
+                              )}
                             </div>
                             {f.reviews >= 10 && f.rating >= 4 ? <VerifiedBadge /> : null}
                           </div>
-                          <div className="cmp-firm__meta">
-                            <span className="cmp-firm__name">{f.name}</span>
+                          <div className="flex min-w-0 flex-1 flex-col items-start justify-center gap-1 pt-0.5">
+                            <span className="block w-full truncate text-[0.95rem] font-bold leading-tight tracking-tight text-slate-50">
+                              {f.name}
+                            </span>
                             {p.planType ? (
-                              <span className="cmp-firm__plan-type">{p.planType}</span>
+                              <span className="line-clamp-2 w-full text-left text-xs font-semibold leading-snug text-[#3FB185]/85">
+                                {p.planType}
+                              </span>
                             ) : null}
                             <div
-                              className="cmp-firm__rating-pill"
+                              className="inline-flex max-w-full items-center gap-1.5"
                               aria-label={
                                 f.reviews < 10
                                   ? 'Less than 10 reviews'
@@ -1519,20 +1591,27 @@ export default function FirmCompareDemo() {
                               }
                             >
                               {f.reviews < 10 ? (
-                                <span className="cmp-firm__reviews">Less than 10 reviews</span>
+                                <span className="text-[0.7rem] font-semibold text-[#3FB185]">Less than 10 reviews</span>
                               ) : (
                                 <>
-                                  <span className="cmp-firm__rating">{f.rating.toFixed(1)}</span>
+                                  <span className="shrink-0 text-xs font-bold tabular-nums text-white">
+                                    {f.rating.toFixed(1)}
+                                  </span>
                                   <RatingStars rating={f.rating} idPrefix={`r-${p.id}`} />
-                                  <span className="cmp-firm__rating-sep" aria-hidden />
-                                  <span className="cmp-firm__reviews">[{f.reviews}]</span>
+                                  <span className="text-[0.72rem] font-bold tabular-nums text-[#3FB185]">
+                                    [{f.reviews}]
+                                  </span>
                                 </>
                               )}
                             </div>
                           </div>
                           <button
                             type="button"
-                            className={`cmp-fav${favorites.has(f.name) ? ' cmp-fav--on' : ''}`}
+                            className={`btn-bare ml-auto mt-[-2px] grid size-7 shrink-0 place-items-center rounded-lg ${
+                              favorites.has(f.name)
+                                ? 'text-[#3FB185]'
+                                : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                            }`}
                             onClick={() => toggleFavorite(f.name)}
                             aria-label={
                               favorites.has(f.name)
@@ -1540,11 +1619,7 @@ export default function FirmCompareDemo() {
                                 : `Bookmark ${f.name}`
                             }
                             aria-pressed={favorites.has(f.name)}
-                            disabled={
-                              !favorites.has(f.name) && favorites.size >= MAX_FAVORITES
-                                ? true
-                                : undefined
-                            }
+                            disabled={!favorites.has(f.name) && favorites.size >= MAX_FAVORITES ? true : undefined}
                           >
                             <Bookmark
                               size={16}
@@ -1556,27 +1631,35 @@ export default function FirmCompareDemo() {
                         </div>
                       </div>
 
-                      <div className="cmp-mid" onScroll={onMidScroll} role="presentation">
-                        <div className="cmp-mid__track">
+                      <div
+                        className={`${MID} ${even ? 'bg-[#0a1410]' : ''} group-hover:border-[#3FB185]/40 group-hover:bg-[#122018]`}
+                        onScroll={onMidScroll}
+                        role="presentation"
+                      >
+                        <div className="flex min-h-full w-max items-stretch">
                           {visibleMidCols.map(col => renderMidCell(col, p))}
                         </div>
                       </div>
 
-                      <div className="cmp-pin cmp-pin--price" role="cell">
-                        <div className="cmp-price">
-                          <div className="cmp-price__meta">
-                            {applyDiscount &&
-                            Number(p.priceWas) > Number(p.price) ? (
-                              <span className="cmp-price__was">{formatMoney(p.priceWas)}</span>
+                      <div
+                        className={`${PIN_PRICE} ${even ? 'bg-[#0a1410]' : ''} group-hover:border-[#3FB185]/40 group-hover:bg-[#122018]`}
+                        role="cell"
+                      >
+                        <div className="flex w-full items-center justify-between gap-3">
+                          <div className="flex min-w-0 flex-col gap-0.5">
+                            {showWas ? (
+                              <span className="text-[0.72rem] text-slate-400 line-through">{formatMoney(listPrice)}</span>
                             ) : null}
-                            <span className="cmp-price__now">{formatMoney(displayPrice)}</span>
-                            <span className="cmp-price__type">
+                            <span className="text-[1.05rem] font-extrabold tracking-tight text-white">
+                              {formatMoney(displayPrice)}
+                            </span>
+                            <span className="text-[0.68rem] lowercase text-slate-400">
                               {String(p.priceType || 'One Time').toLowerCase()}
                             </span>
                             {applyDiscount && promoCode ? (
                               <button
                                 type="button"
-                                className="cmp-price__code"
+                                className="btn-bare self-start text-[0.68rem] font-bold text-[#3FB185] hover:underline"
                                 onClick={() => copyCode(promoCode)}
                               >
                                 {promoCode}
@@ -1585,16 +1668,18 @@ export default function FirmCompareDemo() {
                             ) : null}
                           </div>
                           {websiteHref ? (
-                            <a
+                            <PfgPrimary
                               href={websiteHref}
-                              className="cmp-buy"
+                              compact
                               target="_blank"
-                              rel="noopener noreferrer"
+                              rel="noopener noreferrer sponsored"
                             >
                               Buy
-                            </a>
+                            </PfgPrimary>
                           ) : (
-                            <span className="cmp-buy cmp-buy--muted">—</span>
+                            <span className="inline-flex h-8 shrink-0 items-center rounded-lg bg-white/5 px-3 text-[0.75rem] font-bold text-slate-500">
+                              —
+                            </span>
                           )}
                         </div>
                       </div>
@@ -1605,11 +1690,11 @@ export default function FirmCompareDemo() {
             </div>
 
             {filtered.length > 0 && (
-              <nav className="cmp-pager" aria-label="Table pagination">
-                <div className="cmp-pager__group">
+              <nav className="mt-3 flex flex-wrap items-center justify-center gap-2.5" aria-label="Table pagination">
+                <div className="flex flex-wrap items-center justify-center gap-1">
                   <button
                     type="button"
-                    className="cmp-pager__btn"
+                    className="inline-flex min-h-7 items-center rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[0.72rem] font-semibold text-slate-300 hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35"
                     onClick={() => setPage(p => Math.max(1, p - 1))}
                     disabled={page <= 1 ? true : undefined}
                     aria-label="Previous page"
@@ -1618,14 +1703,18 @@ export default function FirmCompareDemo() {
                   </button>
                   {pageItems.map((item, idx) =>
                     item === '…' ? (
-                      <span key={`e-${idx}`} className="cmp-pager__ellipsis" aria-hidden>
+                      <span key={`e-${idx}`} className="inline-flex h-7 w-5 items-center justify-center text-[0.75rem] font-bold text-slate-500" aria-hidden>
                         …
                       </span>
                     ) : (
                       <button
                         key={item}
                         type="button"
-                        className={`cmp-pager__page${page === item ? ' cmp-pager__page--active' : ''}`}
+                        className={`size-7 rounded-[7px] text-[0.72rem] font-semibold ${
+                          page === item
+                            ? 'bg-[#3FB185] text-[#0a0f0d]'
+                            : 'border border-white/10 bg-white/5 text-slate-300 hover:bg-white/10'
+                        }`}
                         onClick={() => setPage(item)}
                         aria-label={`Page ${item}`}
                         aria-current={page === item ? 'page' : undefined}
@@ -1636,15 +1725,15 @@ export default function FirmCompareDemo() {
                   )}
                   <button
                     type="button"
-                    className="cmp-pager__btn"
-                    onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                    className="inline-flex min-h-7 items-center rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[0.72rem] font-semibold text-slate-300 hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35"
+                    onClick={() => setPage(p => Math.min(p, totalPages))}
                     disabled={page >= totalPages ? true : undefined}
                     aria-label="Next page"
                   >
                     Next
                   </button>
                 </div>
-                <span className="cmp-pager__meta" aria-live="polite">
+                <span className="text-[0.72rem] text-slate-500" aria-live="polite">
                   {Math.min((page - 1) * PAGE_SIZE + 1, filtered.length)}–
                   {Math.min(page * PAGE_SIZE, filtered.length)} of {filtered.length}
                 </span>

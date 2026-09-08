@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useMemo, useState, useCallback } from 'react';
 import { firms } from '@/data/firms';
+import { firmLogo } from '@/lib/firmLogos';
 import './FirmCompareDemo.css';
 
 const MAX_FAVORITES = 5;
@@ -480,7 +481,7 @@ export default function FirmCompareDemo() {
                       <td className="cmp-td cmp-td--firm">
                         <div className="cmp-firm">
                           <div className="cmp-firm__logo">
-                            <Image src={f.logo} alt={`${f.name} logo`} width={52} height={52} />
+                            <Image src={firmLogo(f.name, f.logo)} alt={`${f.name} logo`} width={52} height={52} />
                           </div>
                           <div className="cmp-firm__meta">
                             <div className="cmp-firm__title-row">

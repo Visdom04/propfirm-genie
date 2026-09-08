@@ -1,6 +1,7 @@
 'use client';
 
 import { useId, useState } from 'react';
+import { firmLogo } from '@/lib/firmLogos';
 
 export const COUNTRY_LABELS = {
   US: 'United States',
@@ -65,7 +66,6 @@ export function isRangeActive(range, bound) {
 export function countActiveFilters(facet, bounds) {
   if (!facet) return 0;
   let n =
-    facet.assets.length +
     facet.sizes.length +
     facet.steps.length +
     facet.prices.length +
@@ -80,6 +80,13 @@ export function countActiveFilters(facet, bounds) {
   return n;
 }
 
+const chipClass = on =>
+  `min-h-8 rounded-full border px-2.5 py-1.5 text-[0.7rem] font-semibold transition-colors ${
+    on
+      ? 'border-[#3FB185]/50 bg-[#3FB185]/15 text-[#3FB185]'
+      : 'border-white/10 bg-black/20 text-slate-200 hover:border-[#3FB185]/35'
+  }`;
+
 function DualRange({ label, min, max, step = 1, value, onChange, format = v => v }) {
   const id = useId();
   const lo = Math.min(value.min, value.max);
@@ -89,25 +96,25 @@ function DualRange({ label, min, max, step = 1, value, onChange, format = v => v
   const rightPct = ((hi - min) / span) * 100;
 
   return (
-    <div className="cmp-range">
-      <div className="cmp-range__head">
-        <label className="cmp-range__label" htmlFor={`${id}-min`}>
+    <div className="mb-3 w-full">
+      <div className="mb-1.5 flex items-center justify-between">
+        <label className="text-[0.72rem] font-semibold text-green-200/80" htmlFor={`${id}-min`}>
           {label}
         </label>
-        <span className="cmp-range__vals">
+        <span className="text-[0.7rem] tabular-nums text-slate-400">
           {format(lo)} – {format(hi)}
         </span>
       </div>
-      <div className="cmp-range__track-wrap">
-        <div className="cmp-range__rail" aria-hidden />
+      <div className="relative h-6">
+        <div className="absolute top-1/2 h-1 w-full -translate-y-1/2 rounded-full bg-white/10" aria-hidden />
         <div
-          className="cmp-range__fill"
+          className="absolute top-1/2 h-1 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#1B4B38] to-[#3FB185]"
           style={{ left: `${leftPct}%`, width: `${Math.max(0, rightPct - leftPct)}%` }}
           aria-hidden
         />
         <input
           id={`${id}-min`}
-          className="cmp-range__input"
+          className="range-thumb pointer-events-none absolute inset-x-0 top-0 z-[2] h-6 w-full appearance-none bg-transparent"
           type="range"
           min={min}
           max={max}
@@ -121,7 +128,7 @@ function DualRange({ label, min, max, step = 1, value, onChange, format = v => v
         />
         <input
           id={`${id}-max`}
-          className="cmp-range__input"
+          className="range-thumb pointer-events-none absolute inset-x-0 top-0 z-[3] h-6 w-full appearance-none bg-transparent"
           type="range"
           min={min}
           max={max}
@@ -134,7 +141,7 @@ function DualRange({ label, min, max, step = 1, value, onChange, format = v => v
           }}
         />
       </div>
-      <div className="cmp-range__ends" aria-hidden>
+      <div className="mt-0.5 flex justify-between text-[0.65rem] text-slate-500" aria-hidden>
         <span>{format(min)}</span>
         <span>{format(max)}</span>
       </div>
@@ -146,12 +153,24 @@ function Accordion({ title, defaultOpen = false, children, accent }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
     <details
-      className={`cmp-acc${accent ? ' cmp-acc--accent' : ''}`}
+      className="border-b border-white/5 py-1"
       open={open}
       onToggle={e => setOpen(e.currentTarget.open)}
     >
-      <summary className="cmp-acc__summary">{title}</summary>
-      <div className="cmp-acc__body">{children}</div>
+      <summary
+        className={`flex min-h-10 cursor-pointer list-none items-center justify-between py-2 text-[0.78rem] font-semibold [&::-webkit-details-marker]:hidden ${
+          accent || open ? 'text-green-200' : 'text-green-100/90'
+        }`}
+      >
+        {title}
+        <span
+          className={`ml-2 size-1.5 border-r-2 border-b-2 border-green-200/50 ${
+            open ? 'mt-0.5 rotate-[225deg]' : '-mt-1 rotate-45'
+          }`}
+          aria-hidden
+        />
+      </summary>
+      <div className="flex flex-wrap gap-2 pb-2.5 pt-1">{children}</div>
     </details>
   );
 }
@@ -182,29 +201,35 @@ export default function CompareFilterSidebar({
       {open ? (
         <button
           type="button"
-          className="cmp-sidebar__backdrop"
+          className="fixed inset-0 z-[45] hidden cursor-pointer border-0 bg-[#020812]/70 backdrop-blur-md max-[900px]:block"
           aria-label="Close filters"
           onClick={onClose}
         />
       ) : null}
 
       <aside
-        className={`cmp-sidebar cmp-sidebar--responsive${open ? ' cmp-sidebar--open' : ''}`}
+        className={`z-[2] flex flex-col self-start overflow-hidden rounded-[18px] border border-white/10 bg-gradient-to-b from-[#0c1c14]/98 to-[#080e0a]/99 max-[900px]:fixed max-[900px]:inset-x-0 max-[900px]:bottom-0 max-[900px]:top-auto max-[900px]:z-50 max-[900px]:max-h-[min(92vh,860px)] max-[900px]:rounded-t-[22px] max-[900px]:rounded-b-none max-[900px]:opacity-100 ${
+          open
+            ? 'pointer-events-auto mr-4 w-[min(300px,32vw)] opacity-100 shadow-[0_18px_48px_rgba(0,0,0,0.35)] max-[900px]:mr-0 max-[900px]:w-full max-[900px]:translate-y-0'
+            : 'pointer-events-none mr-0 w-0 border-0 opacity-0 max-[900px]:w-full max-[900px]:translate-y-[110%]'
+        } sticky top-3 max-h-[calc(100vh-24px)] transition-[width,margin,opacity,transform] duration-300`}
         id="cmp-filters"
         aria-hidden={!open}
         inert={!open ? true : undefined}
         aria-label="Filters"
       >
-        <div className="cmp-sidebar__head">
-          <span className="cmp-sidebar__title">
+        <div className="flex items-center justify-between px-4 pb-2.5 pt-4">
+          <span className="flex items-center gap-2 text-sm font-bold text-slate-50">
             Filters
             {activeCount > 0 ? (
-              <span className="cmp-sidebar__count">{activeCount}</span>
+              <span className="rounded-full bg-[#3FB185] px-1.5 py-0.5 text-[0.65rem] font-bold text-[#0a0f0d]">
+                {activeCount}
+              </span>
             ) : null}
           </span>
           <button
             type="button"
-            className="cmp-sidebar__close"
+            className="btn-bare grid size-8 place-items-center rounded-lg text-lg text-slate-400 hover:bg-white/5 hover:text-white"
             onClick={onClose}
             aria-label="Close filter panel"
           >
@@ -212,40 +237,34 @@ export default function CompareFilterSidebar({
           </button>
         </div>
 
-        <div className="cmp-sidebar__scroll">
-          <Accordion title="Instruments" defaultOpen accent>
-            {options.assets.map(a => (
-              <button
-                key={a}
-                type="button"
-                className={`cmp-chip ${draft.assets.includes(a) ? 'cmp-chip--on' : ''}`}
-                onClick={() => toggle('assets', a)}
-              >
-                {a}
-              </button>
-            ))}
-          </Accordion>
-
+        <div className="scrollbar-none min-h-0 flex-1 overflow-y-auto px-4">
           <Accordion title={`Firms · ${firmList.length}`} defaultOpen>
-            <div className="cmp-firm-list" role="group" aria-label="Filter by firm">
+            <div className="flex max-h-56 w-full flex-col gap-1 overflow-y-auto pr-1" role="group" aria-label="Filter by firm">
               {firmList.map(f => {
                 const on = draft.firms.includes(f.name);
                 return (
-                  <label key={f.name} className={`cmp-firm-check${on ? ' cmp-firm-check--on' : ''}`}>
+                  <label
+                    key={f.name}
+                    className={`flex cursor-pointer items-center gap-2 rounded-lg px-1.5 py-1 ${
+                      on ? 'bg-[#3FB185]/10' : 'hover:bg-white/5'
+                    }`}
+                  >
                     <input
                       type="checkbox"
+                      className="accent-[#3FB185]"
                       checked={on}
                       onChange={() => toggle('firms', f.name)}
                     />
-                    <span className="cmp-firm-check__logo">
+                    <span className="relative grid size-[30px] shrink-0 place-items-center overflow-hidden rounded-md border border-white/10 bg-black/30">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={f.logo} alt="" width={30} height={30} loading="lazy" decoding="async" />
-                      {f.isPopular ? (
-                        <span className="cmp-firm-check__star" title="Popular" aria-hidden />
+                      <img src={firmLogo(f.name, f.logo)} alt="" width={30} height={30} loading="lazy" decoding="async" />
+                      {f.isNew ? (
+                        <span className="absolute -right-0.5 -top-0.5 rounded bg-[#3FB185] px-0.5 text-[8px] font-bold text-[#0a0f0d]">
+                          NEW
+                        </span>
                       ) : null}
-                      {f.isNew ? <span className="cmp-firm-check__new">NEW</span> : null}
                     </span>
-                    <span className="cmp-firm-check__name" title={f.name}>
+                    <span className="truncate text-[0.75rem] font-semibold text-slate-100" title={f.name}>
                       {f.name}
                     </span>
                   </label>
@@ -259,7 +278,7 @@ export default function CompareFilterSidebar({
               <button
                 key={s}
                 type="button"
-                className={`cmp-chip ${draft.sizes.includes(s) ? 'cmp-chip--on' : ''}`}
+                className={chipClass(draft.sizes.includes(s))}
                 onClick={() => toggle('sizes', s)}
               >
                 {s}
@@ -272,7 +291,7 @@ export default function CompareFilterSidebar({
               <button
                 key={s}
                 type="button"
-                className={`cmp-chip ${draft.steps.includes(s) ? 'cmp-chip--on' : ''}`}
+                className={chipClass(draft.steps.includes(s))}
                 onClick={() => toggle('steps', s)}
               >
                 {s}
@@ -285,7 +304,7 @@ export default function CompareFilterSidebar({
               <button
                 key={t}
                 type="button"
-                className={`cmp-chip ${draft.drawdownTypes.includes(t) ? 'cmp-chip--on' : ''}`}
+                className={chipClass(draft.drawdownTypes.includes(t))}
                 onClick={() => toggle('drawdownTypes', t)}
               >
                 {t}
@@ -298,7 +317,7 @@ export default function CompareFilterSidebar({
               <button
                 key={p}
                 type="button"
-                className={`cmp-chip ${draft.prices.includes(p) ? 'cmp-chip--on' : ''}`}
+                className={chipClass(draft.prices.includes(p))}
                 onClick={() => toggle('prices', p)}
               >
                 {p}
@@ -307,7 +326,7 @@ export default function CompareFilterSidebar({
           </Accordion>
 
           <Accordion title="Advanced filtering" defaultOpen>
-            <div className="cmp-range-stack">
+            <div className="flex w-full flex-col">
               <DualRange
                 label="Price"
                 min={bounds.price.min}
@@ -352,7 +371,7 @@ export default function CompareFilterSidebar({
               <button
                 key={p}
                 type="button"
-                className={`cmp-chip ${draft.platforms.includes(p) ? 'cmp-chip--on' : ''}`}
+                className={chipClass(draft.platforms.includes(p))}
                 onClick={() => toggle('platforms', p)}
               >
                 {p}
@@ -361,12 +380,14 @@ export default function CompareFilterSidebar({
           </Accordion>
 
           <Accordion title="Countries">
-            <p className="cmp-acc__hint">Countries where firms are based</p>
+            <p className="mb-1 w-full text-[0.68rem] leading-snug text-green-200/55">
+              Countries where firms are based
+            </p>
             {options.countries.map(c => (
               <button
                 key={c}
                 type="button"
-                className={`cmp-chip ${draft.countries.includes(c) ? 'cmp-chip--on' : ''}`}
+                className={chipClass(draft.countries.includes(c))}
                 onClick={() => toggle('countries', c)}
               >
                 {COUNTRY_LABELS[c] || c}
@@ -375,15 +396,27 @@ export default function CompareFilterSidebar({
           </Accordion>
         </div>
 
-        <div className="cmp-sidebar__foot">
-          <button type="button" className="cmp-reset cmp-sidebar__reset-desktop" onClick={onReset}>
+        <div className="border-t border-white/10 px-4 py-3 max-[900px]:pb-[calc(14px+env(safe-area-inset-bottom,0px))]">
+          <button
+            type="button"
+            className="hidden w-full rounded-lg border border-white/10 py-2 text-[0.75rem] font-semibold text-slate-300 hover:bg-white/5 min-[901px]:block"
+            onClick={onReset}
+          >
             Reset filter
           </button>
-          <div className="cmp-sidebar__foot-mobile">
-            <button type="button" className="cmp-sidebar__reset-btn" onClick={onReset}>
+          <div className="hidden grid-cols-[1fr_1.15fr] gap-2.5 max-[900px]:grid">
+            <button
+              type="button"
+              className="rounded-lg border border-white/10 py-2.5 text-[0.75rem] font-semibold text-slate-300"
+              onClick={onReset}
+            >
               Reset filter
             </button>
-            <button type="button" className="cmp-sidebar__apply-btn" onClick={onApply}>
+            <button
+              type="button"
+              className="rounded-lg bg-gradient-to-r from-[#1B4B38] to-[#3FB185] py-2.5 text-[0.75rem] font-bold text-white"
+              onClick={onApply}
+            >
               Apply
             </button>
           </div>

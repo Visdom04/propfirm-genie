@@ -21,18 +21,18 @@
   --demo-bg-mid: #0c1612;
   --demo-glow-core: #14532d;
   --demo-glow-rich: #064e3b;
-  --demo-accent-lavender: #86efac;
-  --demo-accent-lilac: #bbf7d0;
-  --accent-purple: #22c55e;
-  --accent-blue: #22c55e;
-  --accent-indigo: #10b981;
-  --accent-cyan: #4ade80;
-  --accent-teal: #34d399;
-  --accent-pink: #6ee7b7;
-  --gradient-primary: linear-gradient(135deg, #86efac 0%, #22c55e 38%, #10b981 68%, #059669 100%);
-  --gradient-solid: linear-gradient(135deg, #dcfce7 0%, #22c55e 40%, #16a34a 72%, #15803d 100%);
-  --gradient-vibrant: linear-gradient(180deg, #ffffff 0%, #dcfce7 38%, #86efac 100%);
-  --gradient-headline: linear-gradient(180deg, #ffffff 0%, #d1fae5 34%, #22c55e 62%, #4ade80 100%);
+  --demo-accent-lavender: #8fd4b8;
+  --demo-accent-lilac: #a8e0c8;
+  --accent-purple: #3FB185;
+  --accent-blue: #3FB185;
+  --accent-indigo: #3FB185;
+  --accent-cyan: #3FB185;
+  --accent-teal: #1B4B38;
+  --accent-pink: #8fd4b8;
+  --gradient-primary: linear-gradient(135deg, #8fd4b8 0%, #3FB185 38%, #1B4B38 100%);
+  --gradient-solid: linear-gradient(135deg, #3FB185 0%, #2d8a68 50%, #1B4B38 100%);
+  --gradient-vibrant: linear-gradient(180deg, #ffffff 0%, #8fd4b8 38%, #3FB185 100%);
+  --gradient-headline: linear-gradient(180deg, #ffffff 0%, #c8ead9 34%, #3FB185 62%, #1B4B38 100%);
   --gradient-card-glass: linear-gradient(
     145deg,
     rgba(6, 95, 70, 0.28) 0%,
@@ -40,10 +40,10 @@
     rgba(6, 78, 59, 0.22) 70%,
     rgba(10, 15, 13, 0.55) 100%
   );
-  --demo-gradient-accent: linear-gradient(115deg, #22c55e 0%, #16a34a 48%, #4ade80 100%);
-  --glow-purple: 0 0 48px rgba(34, 197, 94, 0.38);
-  --glow-cyan: 0 0 40px rgba(74, 222, 128, 0.3);
-  --glow-blue: 0 0 40px rgba(16, 185, 129, 0.4);
+  --demo-gradient-accent: linear-gradient(115deg, #3FB185 0%, #1B4B38 55%, #3FB185 100%);
+  --glow-purple: 0 0 48px rgba(63, 177, 133, 0.32);
+  --glow-cyan: 0 0 40px rgba(63, 177, 133, 0.28);
+  --glow-blue: 0 0 40px rgba(27, 75, 56, 0.4);
   background: #0a0f0d;
 }
 
@@ -254,7 +254,7 @@
 }
 
 .demo-nav__links li:first-child .demo-nav__link {
-  color: #4ade80;
+  color: #3FB185;
 }
 
 .demo-nav__signin {
@@ -273,7 +273,7 @@
 .demo-nav__signin:hover {
   color: #fff;
   background: rgba(34, 197, 94, 0.1);
-  border-color: #4ade80;
+  border-color: #3FB185;
   box-shadow: 0 0 18px rgba(34, 197, 94, 0.22);
 }
 
@@ -285,7 +285,7 @@
   text-decoration: none;
   padding: 11px 22px;
   border-radius: 999px;
-  background: #22c55e;
+  background: #3FB185;
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.28),
@@ -294,7 +294,7 @@
 }
 
 .demo-nav__signup:hover {
-  background: #4ade80;
+  background: #3FB185;
   color: #0a0f0d;
   transform: translateY(-2px);
   box-shadow:
@@ -739,7 +739,7 @@
 
   background: linear-gradient(
     115deg,
-    #86efac 0%,
+    #8fd4b8 0%,
     #10b981 32%,
     #059669 68%,
     #10b981 100%
@@ -758,7 +758,7 @@
   background: linear-gradient(
     115deg,
     #bbf7d0 0%,
-    #4ade80 32%,
+    #3FB185 32%,
     #059669 68%,
     #059669 100%
   );
@@ -911,7 +911,7 @@
   font-weight: 700;
   color: #fff;
   text-decoration: none;
-  background: #22c55e;
+  background: #3FB185;
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
@@ -924,7 +924,7 @@
 
 .hero-discord-cta:hover {
   transform: translateY(-2px);
-  background: #4ade80;
+  background: #3FB185;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.28),
     0 14px 36px rgba(34, 197, 94, 0.5);
@@ -957,7 +957,7 @@
 
 .hero-ghost-cta:hover {
   background: rgba(34, 197, 94, 0.12);
-  border-color: #4ade80;
+  border-color: #3FB185;
   transform: translateY(-1px);
   color: #fff;
   box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
@@ -1278,7 +1278,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #4ade80;
+  background: #3FB185;
   box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
   animation: pulseDot 2.4s ease-in-out infinite;
 }
@@ -1653,14 +1653,14 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #86efac;
+  color: #8fd4b8;
 }
 
 .demo-compare__eyebrow-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #22c55e;
+  background: #3FB185;
   box-shadow: 0 0 10px rgba(34, 197, 94, 0.65);
 }
 
@@ -1729,7 +1729,7 @@
   background: rgba(34, 197, 94, 0.14);
   border-color: rgba(74, 222, 128, 0.35);
   box-shadow: 0 0 20px rgba(34, 197, 94, 0.22);
-  color: #86efac;
+  color: #8fd4b8;
 }
 
 .demo-page--green .why-card__viz-inner {
@@ -1782,7 +1782,7 @@
 }
 
 .demo-page--green .why-live__chip::after {
-  background: #22c55e;
+  background: #3FB185;
   border-right-color: rgba(167, 243, 208, 0.35);
   border-bottom-color: rgba(167, 243, 208, 0.35);
 }
@@ -1798,9 +1798,9 @@
     90deg,
     transparent 0%,
     rgba(34, 197, 94, 0.3) 8%,
-    #22c55e 22%,
+    #3FB185 22%,
     #10b981 50%,
-    #4ade80 78%,
+    #3FB185 78%,
     rgba(74, 222, 128, 0.3) 92%,
     transparent 100%
   );
@@ -1815,7 +1815,7 @@
 }
 
 .demo-page--green .hiw-connector__stem {
-  background: linear-gradient(180deg, #86efac 0%, #22c55e 50%, rgba(16, 185, 129, 0.45) 100%);
+  background: linear-gradient(180deg, #8fd4b8 0%, #3FB185 50%, rgba(16, 185, 129, 0.45) 100%);
   box-shadow:
     0 0 6px rgba(34, 197, 94, 0.65),
     0 0 14px rgba(16, 185, 129, 0.35);
@@ -1823,7 +1823,7 @@
 
 .demo-page--green .hiw-node {
   border-color: rgba(74, 222, 128, 0.55);
-  color: #86efac;
+  color: #8fd4b8;
   box-shadow:
     0 0 0 1px rgba(52, 211, 153, 0.14),
     0 0 16px rgba(34, 197, 94, 0.38),
@@ -1890,12 +1890,12 @@
 }
 
 .demo-page--green .demo-faq__toggle {
-  background: linear-gradient(135deg, #16a34a 0%, #4ade80 100%);
+  background: linear-gradient(135deg, #16a34a 0%, #3FB185 100%);
   box-shadow: 0 3px 14px rgba(34, 197, 94, 0.42);
 }
 
 .demo-page--green .demo-faq__item[open] .demo-faq__toggle {
-  background: linear-gradient(135deg, #15803d 0%, #86efac 100%);
+  background: linear-gradient(135deg, #15803d 0%, #8fd4b8 100%);
   box-shadow: 0 4px 16px rgba(34, 197, 94, 0.5);
 }
 
@@ -1903,9 +1903,9 @@
 .demo-page--green .discord-cta__banner {
   background: linear-gradient(
     115deg,
-    #86efac 0%,
-    #4ade80 28%,
-    #22c55e 58%,
+    #8fd4b8 0%,
+    #3FB185 28%,
+    #3FB185 58%,
     #10b981 100%
   );
   box-shadow:
@@ -1938,11 +1938,11 @@
 }
 
 .demo-page--green .demo-footer__logo-accent {
-  color: #4ade80;
+  color: #3FB185;
 }
 
 .demo-page--green .demo-footer__social-link:hover {
-  color: #4ade80;
+  color: #3FB185;
   border-color: rgba(74, 222, 128, 0.35);
   background: rgba(34, 197, 94, 0.1);
 }
@@ -1970,7 +1970,7 @@
 
 /* Firm marquee discount pills */
 .demo-page--green .firm-marquee__discount {
-  background: #22c55e;
+  background: #3FB185;
   color: #fff;
 }
 
