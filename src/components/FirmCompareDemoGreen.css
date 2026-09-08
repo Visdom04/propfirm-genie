@@ -1643,7 +1643,7 @@
   background: #000;
   border: 2px solid rgba(63, 177, 133, 0.45);
   display: grid;
-  place-items-center;
+  place-items: center;
   padding: 2px;
   overflow: hidden;
   box-sizing: border-box;
