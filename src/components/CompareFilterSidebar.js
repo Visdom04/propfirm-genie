@@ -7,9 +7,11 @@ export const COUNTRY_LABELS = {
   US: 'United States',
   AE: 'United Arab Emirates',
   CY: 'Cyprus',
+  CZ: 'Czechia',
   GB: 'United Kingdom',
   CA: 'Canada',
   AU: 'Australia',
+  LC: 'Saint Lucia',
 };
 
 /** Collapse noisy drawdown strings into filterable buckets */

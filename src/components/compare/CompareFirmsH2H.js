@@ -854,6 +854,7 @@ export default function CompareFirmsH2H({ firms = [], popularPairs = [] }) {
                 large
                 value={planA ? formatUsd(planA.price) : '—'}
                 sub={planA?.priceWas && planA.priceWas > planA.price ? formatUsd(planA.priceWas) : null}
+                note={planA?.priceNote || null}
                 badge={planA ? discountBadge(firmA, planA) : null}
                 best={costWinner === 0}
               />
@@ -863,6 +864,7 @@ export default function CompareFirmsH2H({ firms = [], popularPairs = [] }) {
                 large
                 value={planB ? formatUsd(planB.price) : '—'}
                 sub={planB?.priceWas && planB.priceWas > planB.price ? formatUsd(planB.priceWas) : null}
+                note={planB?.priceNote || null}
                 badge={planB ? discountBadge(firmB, planB) : null}
                 best={costWinner === 1}
               />

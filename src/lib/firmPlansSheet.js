@@ -59,6 +59,7 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
       result.push({
         ...base,
         logo: firmLogo(name, base.logo),
+        comingSoon: plans.length === 0,
         ...(meta.affiliateLink ? { affiliateLink: meta.affiliateLink } : {}),
         ...(meta.lastVerified ? { lastVerified: meta.lastVerified } : {}),
         ...(meta.verifiedBy ? { verifiedBy: meta.verifiedBy } : {}),
@@ -96,6 +97,7 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
         allocPct: 0.5,
         isNew: true,
         isPopular: Boolean(meta.isPopular),
+        comingSoon: false,
         plans,
       });
     }

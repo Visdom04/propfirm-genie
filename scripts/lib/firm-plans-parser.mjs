@@ -7,6 +7,7 @@
 export const FIRM_NAME_MAP = {
   FundedNext: 'FundedNext Futures',
   YRM: 'YRM Prop',
+  TradersLaunch: 'Traders Launch',
 };
 
 export const CORE_HEADERS = [
@@ -32,6 +33,7 @@ export const EXTENDED_HEADERS = [
   'News Trading',
   'List Price',
   'Discount %',
+  'Price Note',
 ];
 
 export const ACCOUNT_CATEGORIES = new Set(['Challenge', 'S2F']);
@@ -215,6 +217,7 @@ export function parseTsv(text, { fileLabel = 'firm-plans.tsv' } = {}) {
       newsTrading: col(cols, idxMap, 'News Trading'),
       listPrice: col(cols, idxMap, 'List Price'),
       discountPct: col(cols, idxMap, 'Discount %'),
+      priceNote: col(cols, idxMap, 'Price Note'),
     };
 
     row.accountCategory = inferAccountCategory(
@@ -335,6 +338,7 @@ export function rowToPlan(row) {
   const hasDaily = Boolean(String(row.dailyDrawdown || '').trim());
   const hasMinDays = Boolean(String(row.minTradingDays || '').trim());
   const hasNews = Boolean(String(row.newsTrading || '').trim());
+  const priceNote = String(row.priceNote || '').trim();
   const dailyDrawdown = hasDaily ? parseMoney(row.dailyDrawdown) : undefined;
   const minTradingDays = hasMinDays ? parseOptionalNumber(row.minTradingDays) : undefined;
   const newsTrading = hasNews ? row.newsTrading.toLowerCase() : undefined;
@@ -362,6 +366,7 @@ export function rowToPlan(row) {
       ...(hasNews ? { newsTrading } : {}),
       ...(listPrice ? { listPrice } : {}),
       ...(discountPct != null ? { discountPct } : {}),
+      ...(priceNote ? { priceNote } : {}),
       maxPayout: '—',
       minPayout: '—',
       consistencyEval: cons.eval,

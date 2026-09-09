@@ -19,7 +19,7 @@ Sheet can stay **private** (no “Anyone with link” needed).
 2. Set `SYNC_SECRET`
 3. If Plans tab is not named `Plans`, set `PLANS_TAB` (e.g. `firm-plans`)
 4. Run `installEditTrigger` once, then `syncNow`
-5. **Extended compare cols:** run `ensureExtendedColumns` once (or rely on `syncNow` auto-append). Fill Min Trading Days / Daily Drawdown / News Trading / List Price / Discount %. Dropdowns for Category + News apply automatically.
+5. **Extended compare cols:** run `ensureExtendedColumns` once (or rely on `syncNow` auto-append). Fill Min Trading Days / Daily Drawdown / News Trading / List Price / Discount % / Price Note.
 
 Local seed (optional before paste into Sheet):
 

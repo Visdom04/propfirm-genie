@@ -12,11 +12,18 @@ export const PLATFORM_LOGOS = {
   TradeSea: `${BASE}/TradeSea.webp`,
   TradingView: `${BASE}/TradingView.webp`,
   Tradovate: `${BASE}/Tradovate.webp`,
+  'Tradovate Prop': `${BASE}/Tradovate.webp`,
+  DeepCharts: `${BASE}/DeepCharts.webp`,
+  Volumetrica: `${BASE}/Volumetrica.webp`,
+  'Volumetrica IQC Trader': `${BASE}/Volumetrica.webp`,
+  'Project X': `${BASE}/Project%20X.webp`,
+  Plus500: `${BASE}/Plus500.webp`,
 };
 
 export const PLATFORM_MARK = {
   NinjaTrader: { abbr: 'NT', tone: 'bg-[#163a5f]' },
   Tradovate: { abbr: 'Td', tone: 'bg-[#0f4a3c]' },
+  'Tradovate Prop': { abbr: 'Td', tone: 'bg-[#0f4a3c]' },
   TradingView: { abbr: 'TV', tone: 'bg-[#1c3d4a]' },
   Rithmic: { abbr: 'R', tone: 'bg-[#4a321c]' },
   Quantower: { abbr: 'Q', tone: 'bg-[#2a2450]' },
@@ -27,6 +34,11 @@ export const PLATFORM_MARK = {
   'Sierra Chart': { abbr: 'SC', tone: 'bg-[#1e3a2f]' },
   'R|Trader Pro': { abbr: 'RT', tone: 'bg-[#2d3a1e]' },
   TradeSea: { abbr: 'TS', tone: 'bg-[#1a3344]' },
+  DeepCharts: { abbr: 'DC', tone: 'bg-[#1a3d4a]' },
+  'Volumetrica IQC Trader': { abbr: 'VQ', tone: 'bg-[#2a3a1e]' },
+  Volumetrica: { abbr: 'V', tone: 'bg-[#2a3a1e]' },
+  'Project X': { abbr: 'PX', tone: 'bg-[#1e2a44]' },
+  Plus500: { abbr: 'P5', tone: 'bg-[#2a2418]' },
 };
 
 export function platformLogo(name) {

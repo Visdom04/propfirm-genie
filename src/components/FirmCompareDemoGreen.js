@@ -48,7 +48,6 @@ const DEFAULT_FIRM_ORDER = [
   'FundedNext Futures',
   'Top One Futures',
   'Earn2Trade',
-  'TradeDay',
   'Blue Guardian',
 ];
 
@@ -396,8 +395,8 @@ function ProfitSplitBar({ pct }) {
   );
 }
 
-function InfoTip({ tipKey }) {
-  const text = INFO_COPY[tipKey];
+function InfoTip({ tipKey, text: textProp, label = 'More info' }) {
+  const text = textProp || INFO_COPY[tipKey];
   const tipId = useId();
   const btnRef = useRef(null);
   const [open, setOpen] = useState(false);
@@ -441,7 +440,7 @@ function InfoTip({ tipKey }) {
         ref={btnRef}
         type="button"
         className="btn-bare inline-flex size-[18px] items-center justify-center rounded-full text-slate-400 hover:bg-[#3FB185]/15 hover:text-[#3FB185] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3FB185]/55"
-        aria-label="More info"
+        aria-label={label}
         aria-describedby={open ? tipId : undefined}
         onMouseEnter={show}
         onMouseLeave={hide}
@@ -926,11 +925,14 @@ export default function FirmCompareDemo() {
   );
   const uniquePlatforms = useMemo(() => {
     const s = new Set();
-    firms.forEach(f => f.platforms.forEach(p => s.add(p)));
+    firms.forEach(f => (f.platforms || []).forEach(p => s.add(p)));
     return [...s].sort();
   }, []);
   const firmList = useMemo(
-    () => [...firms].sort((a, b) => firmOrderIndex(a.name) - firmOrderIndex(b.name)),
+    () =>
+      [...firms]
+        .filter(f => (f.plans || []).length)
+        .sort((a, b) => firmOrderIndex(a.name) - firmOrderIndex(b.name)),
     []
   );
   const availableSizes = useMemo(() => {
@@ -1650,8 +1652,13 @@ export default function FirmCompareDemo() {
                             {showWas ? (
                               <span className="text-[0.72rem] text-slate-400 line-through">{formatMoney(listPrice)}</span>
                             ) : null}
-                            <span className="text-[1.05rem] font-extrabold tracking-tight text-white">
-                              {formatMoney(displayPrice)}
+                            <span className="inline-flex items-center gap-1">
+                              <span className="text-[1.05rem] font-extrabold tracking-tight text-white">
+                                {formatMoney(displayPrice)}
+                              </span>
+                              {p.priceNote ? (
+                                <InfoTip text={p.priceNote} label="Other price options for this plan" />
+                              ) : null}
                             </span>
                             <span className="text-[0.68rem] lowercase text-slate-400">
                               {String(p.priceType || 'One Time').toLowerCase()}

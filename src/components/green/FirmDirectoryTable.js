@@ -2,10 +2,11 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { Check, Copy, Filter, Flame, Heart, Sparkles } from 'lucide-react';
-import { firms } from '@/data/firms';
+import { firms as staticFirms } from '@/data/firms';
 import { COUNTRY_LABELS } from '@/components/CompareFilterSidebar';
 import { discountBadge } from '@/lib/compareHighlights';
 import { firmLogo, RANK_TROPHIES } from '@/lib/firmLogos';
+import { firmRankMap } from '@/lib/firmRank';
 import { PLATFORM_MARK, platformLogo } from '@/lib/platformLogos';
 import { PfgGhost } from '@/components/green/PfgControls';
 
@@ -19,7 +20,7 @@ const FAV_KEY = 'demo4-favs';
 const COLS =
   'grid min-w-[1180px] grid-cols-[28px_minmax(200px,1.15fr)_minmax(128px,0.85fr)_minmax(110px,0.75fr)_72px_minmax(132px,0.9fr)_minmax(118px,0.8fr)_minmax(96px,0.7fr)_118px_92px] items-center gap-x-3';
 
-const FLAGS = { US: '🇺🇸', AE: '🇦🇪', CY: '🇨🇾', GB: '🇬🇧', CA: '🇨🇦', AU: '🇦🇺' };
+const FLAGS = { US: '🇺🇸', AE: '🇦🇪', CY: '🇨🇾', CZ: '🇨🇿', GB: '🇬🇧', CA: '🇨🇦', AU: '🇦🇺', LC: '🇱🇨' };
 const NUMERIC_SORT = new Set(['rank', 'reviews', 'years', 'alloc']);
 
 function compactNum(n) {
@@ -29,10 +30,18 @@ function compactNum(n) {
   return v.toLocaleString('en-US');
 }
 
+function isComingSoon(firm) {
+  return Boolean(firm.comingSoon) && !(firm.plans || []).length;
+}
+
 function promoLabel(firm) {
+  if (isComingSoon(firm)) return 'Coming soon';
+  const firmDisc = String(firm.discount || '');
+  const range = firmDisc.match(/(\d+)\s*[–-]\s*(\d+)\s*%/);
+  if (range) return `${range[1]}–${range[2]}% OFF`;
   const badge = discountBadge(firm, firm.plans?.[0] || null);
   if (badge) return `${badge.replace('-', '')} OFF`;
-  const m = String(firm.discount || '').match(/(\d+)\s*%/);
+  const m = firmDisc.match(/(\d+)\s*%/);
   if (m) return `${m[1]}% OFF`;
   return null;
 }
@@ -76,7 +85,7 @@ function RatingStars({ rating, idPrefix }) {
   );
 }
 
-function CoverImg({ src, alt, size, className, eager, fetchPriority, zoom = 1 }) {
+function CoverImg({ src, alt, size, className, eager, fetchPriority, zoom = 1, onError }) {
   return (
     <img
       src={src}
@@ -90,6 +99,7 @@ function CoverImg({ src, alt, size, className, eager, fetchPriority, zoom = 1 })
       draggable={false}
       className={className}
       style={zoom !== 1 ? { transform: `scale(${zoom})` } : undefined}
+      onError={onError}
     />
   );
 }
@@ -143,6 +153,8 @@ function RankMark({ rank }) {
 function FirmMark({ rank, src, name, eager }) {
   const metal = RANK_FRAME[rank];
   const top = Boolean(metal);
+  const [broken, setBroken] = useState(false);
+  const showImg = Boolean(src) && !broken;
   return (
     <div
       className="relative shrink-0 bg-black"
@@ -161,7 +173,7 @@ function FirmMark({ rank, src, name, eager }) {
       }}
     >
       <div className="size-full overflow-hidden rounded-md">
-        {src ? (
+        {showImg ? (
           <CoverImg
             src={src}
             alt=""
@@ -169,6 +181,7 @@ function FirmMark({ rank, src, name, eager }) {
             eager={eager}
             zoom={1.04}
             className="size-full object-cover object-center"
+            onError={() => setBroken(true)}
           />
         ) : (
           <span className="grid size-full place-items-center text-[0.58rem] font-bold text-white/50">
@@ -268,14 +281,14 @@ function rowTone(rank) {
   return 'border-white/10 bg-[#0c1612]';
 }
 
-export default function FirmDirectoryTable() {
-  const [mode, setMode] = useState('popular');
+export default function FirmDirectoryTable({ firms = staticFirms }) {
+  const [mode, setMode] = useState('all');
   const [filterOpen, setFilterOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [copiedFirm, setCopiedFirm] = useState(null);
-  const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState(true);
   const [sort, setSort] = useState('rank');
-  const [dir, setDir] = useState('desc');
+  const [dir, setDir] = useState('asc');
   const [favorites, setFavorites] = useState(() => new Set());
   const [selCountries, setSelCountries] = useState([]);
   const [selPlatforms, setSelPlatforms] = useState([]);
@@ -299,29 +312,22 @@ export default function FirmDirectoryTable() {
 
   const countryOpts = useMemo(
     () => [...new Set(firms.map(f => f.countryCode).filter(Boolean))].sort(),
-    []
+    [firms]
   );
   const platformOpts = useMemo(
     () => [...new Set(firms.flatMap(f => f.platforms || []))].sort(),
-    []
+    [firms]
   );
   const assetOpts = useMemo(
     () => [...new Set(firms.flatMap(f => f.assets || []))].sort(),
-    []
+    [firms]
   );
 
-  const rankByName = useMemo(() => {
-    const byRating = [...firms].sort((a, b) => {
-      const rd = Number(b.rating) - Number(a.rating);
-      if (rd) return rd;
-      return Number(b.reviews) - Number(a.reviews);
-    });
-    return new Map(byRating.map((f, i) => [f.name, i + 1]));
-  }, []);
+  const rankByName = useMemo(() => firmRankMap(firms), [firms]);
 
   const maxYears = useMemo(
     () => Math.max(8, ...firms.map(f => Number(f.years) || 0)),
-    []
+    [firms]
   );
 
   const facetCount = selCountries.length + selPlatforms.length + selAssets.length + (search.trim() ? 1 : 0);
@@ -356,19 +362,18 @@ export default function FirmDirectoryTable() {
         cmp = (Number(a.reviews) || 0) - (Number(b.reviews) || 0);
         if (!cmp) cmp = (Number(a.rating) || 0) - (Number(b.rating) || 0);
       } else {
-        cmp = (Number(a.rating) || 0) - (Number(b.rating) || 0);
-        if (!cmp) cmp = (Number(a.reviews) || 0) - (Number(b.reviews) || 0);
+        cmp = (rankByName.get(a.name) || 99) - (rankByName.get(b.name) || 99);
       }
       return cmp * mul;
     });
     return list;
-  }, [mode, search, favorites, sort, dir, selCountries, selPlatforms, selAssets]);
+  }, [mode, search, favorites, sort, dir, selCountries, selPlatforms, selAssets, rankByName, firms]);
 
   const visible = showAll ? ranked : ranked.slice(0, PAGE_SIZE);
 
   const setModeChip = next => {
     setMode(next);
-    setShowAll(false);
+    setShowAll(next === 'all');
     setSearch('');
   };
 
@@ -376,7 +381,7 @@ export default function FirmDirectoryTable() {
     if (sort === col) setDir(d => (d === 'asc' ? 'desc' : 'asc'));
     else {
       setSort(col);
-      setDir(NUMERIC_SORT.has(col) ? 'desc' : 'asc');
+      setDir(col === 'rank' ? 'asc' : NUMERIC_SORT.has(col) ? 'desc' : 'asc');
     }
   };
 
@@ -430,6 +435,9 @@ export default function FirmDirectoryTable() {
             </span>
           ) : null}
         </button>
+        <Chip active={mode === 'all'} onClick={() => setModeChip('all')}>
+          All
+        </Chip>
         <Chip active={mode === 'popular'} onClick={() => setModeChip('popular')}>
           <Flame size={14} className={mode === 'popular' ? 'text-[#3FB185]' : 'text-white/50'} />
           Popular
@@ -441,9 +449,6 @@ export default function FirmDirectoryTable() {
         <Chip active={mode === 'new'} onClick={() => setModeChip('new')}>
           <Sparkles size={14} className={mode === 'new' ? 'text-[#3FB185]' : 'text-white/50'} />
           New
-        </Chip>
-        <Chip active={mode === 'all'} onClick={() => setModeChip('all')}>
-          All
         </Chip>
       </div>
 
@@ -552,6 +557,7 @@ export default function FirmDirectoryTable() {
               const allocPct = Math.max(0.12, Math.min(1, Number(f.allocPct) || 0.5));
               const copied = copiedFirm === f.name;
               const logoSrc = firmLogo(f.name, f.logo);
+              const coming = isComingSoon(f);
               return (
                 <li key={f.name} className={`rounded-xl border px-2 py-2.5 sm:rounded-2xl sm:px-3 sm:py-3 ${rowTone(rank)}`}>
                   <div className={COLS}>
@@ -561,18 +567,24 @@ export default function FirmDirectoryTable() {
                       <FirmMark rank={rank} src={logoSrc} name={f.name} eager={i < 4} />
                       <div className="min-w-0">
                         <div className="truncate text-[0.92rem] font-bold text-white">{f.name}</div>
-                        <div className="mt-0.5 flex items-center gap-1.5">
-                          <button
-                            type="button"
-                            className={`${BTN} text-[#3FB185]!`}
-                            aria-pressed={liked}
-                            aria-label={liked ? `Remove ${f.name} from favorites` : `Save ${f.name} to favorites`}
-                            onClick={() => toggleFavorite(f.name)}
-                          >
-                            <Heart size={13} className={liked ? 'fill-[#3FB185]' : ''} />
-                          </button>
-                          <span className="text-[0.68rem] tabular-nums text-white/40">{compactNum(f.likes)}</span>
-                        </div>
+                        {coming ? (
+                          <div className="mt-0.5 text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-[#3FB185]/80">
+                            Coming soon
+                          </div>
+                        ) : (
+                          <div className="mt-0.5 flex items-center gap-1.5">
+                            <button
+                              type="button"
+                              className={`${BTN} text-[#3FB185]!`}
+                              aria-pressed={liked}
+                              aria-label={liked ? `Remove ${f.name} from favorites` : `Save ${f.name} to favorites`}
+                              onClick={() => toggleFavorite(f.name)}
+                            >
+                              <Heart size={13} className={liked ? 'fill-[#3FB185]' : ''} />
+                            </button>
+                            <span className="text-[0.68rem] tabular-nums text-white/40">{compactNum(f.likes)}</span>
+                          </div>
+                        )}
                       </div>
                     </div>
 
@@ -654,24 +666,36 @@ export default function FirmDirectoryTable() {
                       <div className="bg-[#3FB185] px-2 py-1 text-center text-[0.68rem] font-bold text-[#0a0f0d]">
                         {off || 'Deal'}
                       </div>
-                      <button
-                        type="button"
-                        className={`${BTN} flex w-full items-center justify-center gap-1 bg-[#08120e]! px-2 py-1.5 text-[0.7rem] font-bold text-white! hover:bg-[#0e1c16]!`}
-                        onClick={() => copyCode(f.name, f.promoCode)}
-                      >
-                        {copied ? <Check size={11} /> : <Copy size={11} />}
-                        {copied ? 'Copied' : f.promoCode}
-                      </button>
+                      {coming ? (
+                        <div className="bg-[#08120e] px-2 py-1.5 text-center text-[0.7rem] font-bold text-white/50">
+                          Soon
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          className={`${BTN} flex w-full items-center justify-center gap-1 bg-[#08120e]! px-2 py-1.5 text-[0.7rem] font-bold text-white! hover:bg-[#0e1c16]!`}
+                          onClick={() => copyCode(f.name, f.promoCode)}
+                        >
+                          {copied ? <Check size={11} /> : <Copy size={11} />}
+                          {copied ? 'Copied' : f.promoCode}
+                        </button>
+                      )}
                     </div>
 
-                    <PfgGhost
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer sponsored"
-                      className="min-h-9 px-3 py-1.5 text-[0.75rem]"
-                    >
-                      Visit
-                    </PfgGhost>
+                    {coming ? (
+                      <PfgGhost disabled className="min-h-9 cursor-default px-3 py-1.5 text-[0.75rem] opacity-60">
+                        Coming soon
+                      </PfgGhost>
+                    ) : (
+                      <PfgGhost
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer sponsored"
+                        className="min-h-9 px-3 py-1.5 text-[0.75rem]"
+                      >
+                        Visit
+                      </PfgGhost>
+                    )}
                   </div>
                 </li>
               );

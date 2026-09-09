@@ -30,9 +30,15 @@ export const FIRM_LOGOS = {
   Purdia: asset('Purdia.webp'),
   'Take Profit Trader': asset('Take%20Profit%20Trader.webp'),
   'Top One Futures': asset('Top%20One%20Futures.webp'),
-  TradeDay: asset('TradeDay.webp'),
+  Topstep: asset('Topstep.webp'),
   Tradeify: asset('Tradeify.webp'),
+  'Traders Launch': asset('Traders%20Launch.webp'),
   'YRM Prop': asset('YRM%20Prop.webp'),
+  'IQ Capital': asset('IQ%20Capital.webp'),
+  FundedSeat: asset('FundedSeat.webp'),
+  FTMO: asset('FTMO.webp'),
+  'The Trading Pit': asset('The%20Trading%20Pit.webp'),
+  'Funded Futures Network': asset('Funded%20Futures%20Network.webp'),
 };
 
 export function firmLogo(name, fallback) {
