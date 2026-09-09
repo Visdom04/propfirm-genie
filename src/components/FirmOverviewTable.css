@@ -1,0 +1,127 @@
+/* Frozen firm/price rails — thermal binding + fade into the scrolling mid pane */
+.ov-board {
+  --ov-firm: 360px;
+  --ov-price: 248px;
+  padding: 0 18px 16px;
+}
+
+@media (max-width: 767px) {
+  .ov-board {
+    --ov-firm: 320px;
+    --ov-price: 200px;
+    padding: 0 14px 14px;
+  }
+}
+
+.ov-row {
+  position: relative;
+  isolation: isolate;
+}
+
+.ov-pin-firm,
+.ov-pin-price {
+  position: relative;
+  z-index: 6;
+  box-sizing: border-box;
+}
+
+.ov-pin-firm {
+  padding: 18px 16px 18px 22px;
+  box-shadow:
+    inset -12px 0 20px -10px rgba(0, 0, 0, 0.62),
+    10px 0 22px rgba(0, 0, 0, 0.38),
+    0 0 32px rgba(63, 177, 133, 0.1);
+}
+
+.ov-pin-price {
+  padding: 18px 22px 18px 16px;
+  box-shadow:
+    inset 12px 0 20px -10px rgba(0, 0, 0, 0.62),
+    -10px 0 22px rgba(0, 0, 0, 0.38),
+    0 0 32px rgba(63, 177, 133, 0.1);
+}
+
+.ov-row::before,
+.ov-row::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  width: 16px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.ov-row::before {
+  left: calc(var(--ov-firm) - 8px);
+  background: linear-gradient(90deg, #0c1612 18%, rgba(12, 22, 18, 0) 100%);
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.ov-row::after {
+  right: calc(var(--ov-price) - 8px);
+  background: linear-gradient(270deg, #0c1612 18%, rgba(12, 22, 18, 0) 100%);
+  box-shadow: 10px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.ov-row--head::before {
+  background: linear-gradient(90deg, #070f0c 18%, rgba(7, 15, 12, 0) 100%);
+}
+
+.ov-row--head::after {
+  background: linear-gradient(270deg, #070f0c 18%, rgba(7, 15, 12, 0) 100%);
+}
+
+.ov-row--even::before {
+  background: linear-gradient(90deg, #0a1410 18%, rgba(10, 20, 16, 0) 100%);
+}
+
+.ov-row--even::after {
+  background: linear-gradient(270deg, #0a1410 18%, rgba(10, 20, 16, 0) 100%);
+}
+
+.ov-row:hover::before {
+  background: linear-gradient(90deg, #122018 18%, rgba(18, 32, 24, 0) 100%);
+}
+
+.ov-row:hover::after {
+  background: linear-gradient(270deg, #122018 18%, rgba(18, 32, 24, 0) 100%);
+}
+
+.ov-row:hover .ov-pin-firm {
+  box-shadow:
+    inset -12px 0 20px -10px rgba(0, 0, 0, 0.5),
+    12px 0 28px rgba(0, 0, 0, 0.42),
+    0 0 40px rgba(63, 177, 133, 0.2);
+}
+
+.ov-row:hover .ov-pin-price {
+  box-shadow:
+    inset 12px 0 20px -10px rgba(0, 0, 0, 0.5),
+    -12px 0 28px rgba(0, 0, 0, 0.42),
+    0 0 40px rgba(63, 177, 133, 0.2);
+}
+
+.ov-row--head .ov-pin-firm,
+.ov-row--head .ov-pin-price {
+  box-shadow: none;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+@media print {
+  nav,
+  .ov-no-print,
+  section > header {
+    display: none !important;
+  }
+
+  .ov-board {
+    overflow: visible !important;
+    border: 1px solid #1b4b38 !important;
+  }
+
+  .ov-board .cmp-mid {
+    overflow: visible !important;
+  }
+}

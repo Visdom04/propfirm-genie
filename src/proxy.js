@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { updateSession } from '@/lib/supabase/update-session';
 
 /** Public product pages. Everything else is hidden from the live site. */
-const LIVE = ['/demo-2', '/demo-4', '/compare-firms'];
+const LIVE = ['/demo-2', '/demo-4', '/compare-firms', '/compare-page-2'];
 const ALLOW_PREFIX = ['/api/', '/auth/', '/login', '/account'];
 
 function isAllowed(pathname) {

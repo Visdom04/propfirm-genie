@@ -9,7 +9,7 @@ export default function DemoHero() {
   return (
     <GreenPageShell>
       <section
-        className="mx-auto w-full max-w-[1440px] px-4 pb-20 pt-10 sm:px-6 lg:px-8"
+        className="mx-auto w-full max-w-[1600px] px-4 pb-20 pt-10 sm:px-6 lg:px-8"
         id="partner-firms"
         aria-labelledby="demo-compare-title"
       >

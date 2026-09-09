@@ -13,6 +13,7 @@ import CompareFilterSidebar, {
 } from '@/components/CompareFilterSidebar';
 import { PfgPrimary } from '@/components/green/PfgControls';
 import { firmLogo } from '@/lib/firmLogos';
+import './FirmCompareDemoGreen.edges.css';
 
 const MAX_FAVORITES = 5;
 const PAGE_SIZE = 10;
@@ -47,7 +48,6 @@ const DEFAULT_FIRM_ORDER = [
   'DayTraders',
   'FundedNext Futures',
   'Top One Futures',
-  'Earn2Trade',
   'Blue Guardian',
 ];
 
@@ -168,11 +168,11 @@ const MID_COLS = [
 const ALL_COL_KEYS = MID_COLS.map(c => c.key);
 
 const ROW =
-  'relative grid grid-cols-[320px_minmax(0,1fr)_200px] max-md:grid-cols-[252px_minmax(0,1fr)_160px]';
+  'cmp-edge-row relative grid items-stretch grid-cols-[340px_minmax(0,1fr)_228px] max-md:grid-cols-[280px_minmax(0,1fr)_180px]';
 const PIN_FIRM =
-  'flex min-w-0 items-center border border-[#3FB185]/25 border-r-white/10 bg-[#0c1612] px-4 py-4 max-md:px-3 rounded-l-2xl';
+  'cmp-edge-pin-firm flex min-w-0 items-center self-stretch border border-[#3FB185]/25 border-r-transparent bg-[#0c1612] rounded-l-2xl';
 const PIN_PRICE =
-  'flex min-w-0 items-center border border-[#3FB185]/25 border-l-white/10 bg-[#0c1612] px-4 py-4 max-md:px-3 rounded-r-2xl';
+  'cmp-edge-pin-price flex min-w-0 items-center self-stretch border border-[#3FB185]/25 border-l-transparent bg-[#0c1612] rounded-r-2xl';
 const PIN_HEAD =
   'rounded-none border-transparent border-b border-b-[#3FB185]/20 bg-[#070f0c] py-3 shadow-none';
 const MID =
@@ -1242,7 +1242,7 @@ export default function FirmCompareDemo() {
         <div className="min-w-0 flex-1">
           <div className="w-full">
             <div
-              className="relative z-[3] flex flex-col gap-3 rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 bg-[#08120e]/90 p-2.5 sm:p-3"
+              className="relative z-[3] flex flex-col gap-3 rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 bg-[#08120e]/90 px-4 py-3 sm:px-[18px] sm:py-3.5"
               ref={toolbarRef}
             >
               <div
@@ -1465,12 +1465,12 @@ export default function FirmCompareDemo() {
             </div>
 
             <div
-              className="relative z-[1] mt-0 flex w-full min-w-0 flex-col gap-2 rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]/55 pb-2"
+              className="cmp-edge-board relative z-[1] mt-0 flex w-full min-w-0 flex-col gap-2 overflow-hidden rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]/55"
               ref={boardRef}
               role="table"
               aria-label="Compare prop firm challenges: size, drawdown, contracts, payouts, and price"
             >
-              <div className={`${ROW} m-0`} role="row">
+              <div className={`${ROW} cmp-edge-row--head m-0`} role="row">
                 <div className={`${PIN_FIRM} ${PIN_HEAD}`} role="columnheader">
                   <span className={TH}>Firm / Plan</span>
                 </div>
@@ -1537,7 +1537,7 @@ export default function FirmCompareDemo() {
                   return (
                     <div
                       key={p.id}
-                      className={`${ROW} group`}
+                      className={`${ROW} group ${even ? 'cmp-edge-row--even' : ''}`}
                       role="row"
                       style={{ animationDelay: `${Math.min(i, 12) * 0.04}s` }}
                     >

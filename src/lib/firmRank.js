@@ -17,7 +17,6 @@ export const FIRM_RANK_ORDER = [
   'Purdia',
   'YRM Prop',
   'DayTraders',
-  'Earn2Trade',
   'Funded Futures Network',
   'The Trading Pit',
   'Blue Guardian',

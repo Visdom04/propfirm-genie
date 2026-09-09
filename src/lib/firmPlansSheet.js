@@ -11,6 +11,13 @@ import {
 
 export const FIRMS_SHEET_TAG = 'firms-sheet';
 
+/** Firms removed from all live pages — filtered from runtime catalog. */
+export const HIDDEN_FIRMS = new Set(['Earn2Trade']);
+
+function withoutHiddenFirms(firms) {
+  return firms.filter(f => !HIDDEN_FIRMS.has(f.name));
+}
+
 const CATALOG_PATH = path.join('/tmp', 'propfirm-firms-catalog.json');
 
 function parseFirmsMetaTsv(text) {
@@ -173,11 +180,11 @@ export async function getRuntimeFirms() {
   const live = readFirmsCatalog();
   if (live?.firms?.length) {
     return {
-      firms: live.firms,
+      firms: withoutHiddenFirms(live.firms),
       source: live.source || 'google-sheet-push',
       syncedAt: live.syncedAt || null,
       error: null,
     };
   }
-  return { firms: staticFirms, source: 'static', syncedAt: null, error: null };
+  return { firms: withoutHiddenFirms(staticFirms), source: 'static', syncedAt: null, error: null };
 }
