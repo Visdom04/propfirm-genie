@@ -1,15 +1,17 @@
 const BASE = 'https://rtzkywwbsldinjgykqag.supabase.co/storage/v1/object/public/genie-assets/firms';
 const PUBLIC = 'https://rtzkywwbsldinjgykqag.supabase.co/storage/v1/object/public/genie-assets/public';
 
+function asset(file) {
+  return `${BASE}/${file}`;
+}
+
+export const GENIE_LOGO = asset('PROP_FIRM_GENIE.svg');
+
 export const RANK_TROPHIES = {
   1: `${PUBLIC}/Golden.webp`,
   2: `${PUBLIC}/Silver.webp`,
   3: `${PUBLIC}/Bronze.webp`,
 };
-
-function asset(file) {
-  return `${BASE}/${file}`;
-}
 
 /** Public firm marks in `genie-assets/firms`. Fallback to local `/firm/*` when missing. */
 export const FIRM_LOGOS = {

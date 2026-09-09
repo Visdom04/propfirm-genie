@@ -1,3 +1,5 @@
+import SiteNav from '@/components/green/SiteNav';
+
 export default function GreenPageShell({ children, className = '' }) {
   return (
     <div
@@ -31,7 +33,10 @@ export default function GreenPageShell({ children, className = '' }) {
         aria-hidden
         className="pointer-events-none fixed bottom-0 left-1/3 size-[480px] rounded-full bg-teal-800/20 blur-[140px]"
       />
-      <div className="relative z-[1]">{children}</div>
+      <div className="relative z-[1]">
+        <SiteNav />
+        {children}
+      </div>
     </div>
   );
 }
