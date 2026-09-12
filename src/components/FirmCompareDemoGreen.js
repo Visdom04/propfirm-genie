@@ -13,11 +13,12 @@ import CompareFilterSidebar, {
 } from '@/components/CompareFilterSidebar';
 import { PfgPrimary } from '@/components/green/PfgControls';
 import { firmLogo } from '@/lib/firmLogos';
+import { listPriceOf, salePriceOf } from '@/lib/planPrice';
 import './FirmCompareDemoGreen.edges.css';
 
 const MAX_FAVORITES = 5;
 const PAGE_SIZE = 10;
-const COLS_STORAGE_KEY = 'cmp-green-visible-cols-v3';
+const COLS_STORAGE_KEY = 'cmp-green-visible-cols-v4';
 
 /** Instant / Direct / STF grouped; 1 Step is the other eval path */
 const STEP_FILTER_OPTIONS = ['Instant / Direct / STF', '1 Step'];
@@ -144,15 +145,19 @@ const INFO_COPY = {
     'Share of profits you keep once funded (e.g. 90%). Progressive splits (75%→100%) increase after payout milestones.',
   price:
     'Challenge price. With Apply discounts on, this is the promo price (strikethrough = regular price). With it off, this is the regular list price.',
+  planType: 'The named path for this row (Flex, Select, Test, Instant, and so on).',
+  steps: 'How many evaluation stages this path uses (1 Step, Instant / Direct / STF).',
 };
 
 const MID_COLS = [
-  { key: 'accountSize', label: 'Account size', tip: 'accountSize', sort: true, min: 128 },
-  { key: 'maxLossType', label: 'Drawdown type', tip: 'maxLossType', sort: true, min: 144 },
+  { key: 'planType', label: 'Plan', tip: 'planType', sort: true, min: 112 },
+  { key: 'steps', label: 'Steps', tip: 'steps', sort: true, min: 96 },
+  { key: 'accountSize', label: 'Account', label2: 'size', tip: 'accountSize', sort: true, min: 92 },
+  { key: 'maxLossType', label: 'Drawdown', label2: 'type', tip: 'maxLossType', sort: true, min: 96 },
   { key: 'activationFee', label: 'Activation fee', tip: 'activationFee', sort: false, min: 144 },
-  { key: 'profitTarget', label: 'Profit target', tip: 'profitTarget', sort: true, min: 144 },
-  { key: 'maxLoss', label: 'Max drawdown', tip: 'maxLoss', sort: true, min: 144 },
-  { key: 'maxLots', label: 'Max contract', sub: 'Minis / Micros', tip: 'maxLots', sort: false, min: 144 },
+  { key: 'profitTarget', label: 'Profit', label2: 'target', tip: 'profitTarget', sort: true, min: 96 },
+  { key: 'maxLoss', label: 'Max', label2: 'drawdown', tip: 'maxLoss', sort: true, min: 96 },
+  { key: 'maxLots', label: 'Max', label2: 'contract', sub: 'Minis / Micros', tip: 'maxLots', sort: false, min: 108 },
   {
     key: 'consistency',
     label: 'Consistency rule',
@@ -168,19 +173,18 @@ const MID_COLS = [
 const ALL_COL_KEYS = MID_COLS.map(c => c.key);
 
 const ROW =
-  'cmp-edge-row relative grid items-stretch grid-cols-[340px_minmax(0,1fr)_228px] max-md:grid-cols-[280px_minmax(0,1fr)_180px]';
+  'cmp-edge-row relative grid items-stretch grid-cols-[280px_minmax(0,1fr)_216px] max-md:grid-cols-[244px_minmax(0,1fr)_184px]';
 const PIN_FIRM =
-  'cmp-edge-pin-firm flex min-w-0 items-center self-stretch border border-[#3FB185]/25 border-r-transparent bg-[#0c1612] rounded-l-2xl';
+  'cmp-edge-pin-firm flex min-w-0 items-center self-stretch bg-transparent';
 const PIN_PRICE =
-  'cmp-edge-pin-price flex min-w-0 items-center self-stretch border border-[#3FB185]/25 border-l-transparent bg-[#0c1612] rounded-r-2xl';
-const PIN_HEAD =
-  'rounded-none border-transparent border-b border-b-[#3FB185]/20 bg-[#070f0c] py-3 shadow-none';
+  'cmp-edge-pin-price flex min-w-0 items-center self-stretch bg-transparent';
+const PIN_HEAD = 'cmp-edge-head bg-[#080c0a] py-3';
 const MID =
-  'cmp-mid relative min-w-0 overflow-x-auto overflow-y-hidden scrollbar-none border-y border-[#3FB185]/15 bg-[#0c1612]';
+  'cmp-mid relative min-w-0 overflow-x-auto overflow-y-hidden scrollbar-none bg-transparent';
 const MID_CELL =
-  'relative box-border flex shrink-0 items-center border-r border-slate-400/50 last:border-r-0 px-3.5 py-2';
+  'relative box-border flex min-h-[64px] shrink-0 items-center justify-center border-r border-white/[0.06] last:border-r-0 px-3 py-2.5';
 const TH =
-  'flex flex-col items-start justify-center gap-0.5 whitespace-nowrap text-left text-[0.68rem] font-semibold uppercase tracking-[0.04em] text-slate-400/90';
+  'flex min-h-[44px] flex-col items-center justify-center gap-0.5 whitespace-nowrap text-center text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-500';
 const CHIP_ON = 'border-[#3FB185]/50 bg-[#3FB185]/15 text-[#3FB185]';
 const CHIP_OFF = 'border-white/10 bg-black/20 text-slate-200 hover:border-emerald-500/35';
 
@@ -199,6 +203,9 @@ function loadVisibleCols() {
 }
 
 function sortValue(key, plan, firm) {
+  if (key === 'planType' || key === 'steps') {
+    return String(plan[key] || '').toLowerCase();
+  }
   if (key === 'profitSplit' || key === 'price' || key === 'rating') {
     const v = key === 'rating' ? firm.rating : plan[key];
     return typeof v === 'number' ? v : Number(v) || 0;
@@ -253,7 +260,8 @@ function computeFilterBounds() {
     ratings.push(Number(f.rating) || 0);
     years.push(Number(f.years) || 0);
     (f.plans || []).forEach(p => {
-      if (p.price != null && Number.isFinite(Number(p.price))) prices.push(Number(p.price));
+      const sale = salePriceOf(p);
+      if (sale > 0) prices.push(sale);
       const split =
         typeof p.profitSplit === 'number'
           ? p.profitSplit
@@ -286,18 +294,6 @@ function formatMoney(n) {
   const v = Number(n);
   if (!Number.isFinite(v) || v <= 0) return '—';
   return `$${v.toFixed(2)}`;
-}
-
-function listPriceOf(plan) {
-  const was = Number(plan?.priceWas);
-  const list = Number(plan?.listPrice);
-  if (Number.isFinite(was) && was > 0) return was;
-  if (Number.isFinite(list) && list > 0) return list;
-  return Number(plan?.price) || 0;
-}
-
-function salePriceOf(plan) {
-  return Number(plan?.price) || 0;
 }
 
 function SortArrows({ active, direction }) {
@@ -334,6 +330,31 @@ function VerifiedBadge() {
       <Star size={9} strokeWidth={0} fill="#fff" aria-hidden />
     </span>
   );
+}
+
+function RatingChip({ rating, reviews, idPrefix }) {
+  if (reviews < 10) {
+    return <span className="text-[0.68rem] font-semibold text-[#3FB185]">Less than 10 reviews</span>;
+  }
+  return (
+    <span
+      className="inline-flex max-w-full items-center gap-1 rounded-full border border-[#3FB185]/35 bg-[#3FB185]/10 px-2 py-[3px]"
+      aria-label={`Rated ${rating} from ${reviews} reviews`}
+    >
+      <span className="shrink-0 text-[0.72rem] font-bold tabular-nums text-white">{Number(rating).toFixed(1)}</span>
+      <RatingStars rating={rating} idPrefix={idPrefix} />
+      <span className="shrink-0 text-[0.68rem] font-bold tabular-nums text-[#3FB185]">[{reviews}]</span>
+    </span>
+  );
+}
+
+function splitDrawdown(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return [];
+  if (raw.includes('/')) return raw.split('/').map(s => s.trim()).filter(Boolean);
+  const m = raw.match(/^(EOD|Intraday|Static|Trailing)\s+(.+)$/i);
+  if (m) return [m[1], m[2]];
+  return [raw];
 }
 
 function RatingStars({ rating, idPrefix = 'star' }) {
@@ -469,11 +490,23 @@ function InfoTip({ tipKey, text: textProp, label = 'More info' }) {
 
 function renderMidCell(col, p) {
   const style = { flex: `0 0 ${col.min}px`, minWidth: col.min };
-  const wrap = `${MID_CELL} max-w-40 whitespace-normal text-[0.82rem] font-bold leading-snug text-slate-50`;
+  const wrap = `${MID_CELL} text-center text-[0.82rem] font-semibold leading-snug text-slate-50`;
   switch (col.key) {
+    case 'planType':
+      return (
+        <div key={col.key} className={`${wrap} px-2 text-[0.78rem] leading-snug`} style={style}>
+          <span className="line-clamp-2">{p.planType || '—'}</span>
+        </div>
+      );
+    case 'steps':
+      return (
+        <div key={col.key} className={`${MID_CELL} px-2 whitespace-nowrap text-[0.82rem] font-semibold text-slate-50`} style={style}>
+          {p.steps || '—'}
+        </div>
+      );
     case 'accountSize':
       return (
-        <div key={col.key} className={`${MID_CELL} whitespace-nowrap text-[0.82rem] font-bold text-slate-50`} style={style}>
+        <div key={col.key} className={`${MID_CELL} whitespace-nowrap text-[0.82rem] font-bold tabular-nums text-slate-50`} style={style}>
           {String(p.accountSize).replace('$', '')}
         </div>
       );
@@ -509,12 +542,18 @@ function renderMidCell(col, p) {
           {p[col.key]}
         </div>
       );
-    case 'maxLossType':
+    case 'maxLossType': {
+      const lines = splitDrawdown(p.maxLossType);
       return (
-        <div key={col.key} className={wrap} style={style}>
-          {p.maxLossType}
+        <div key={col.key} className={`${wrap} flex-col gap-0.5`} style={style}>
+          {lines.map(line => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
         </div>
       );
+    }
     case 'profitSplit':
       return (
         <div key={col.key} className={MID_CELL} style={style}>
@@ -685,21 +724,31 @@ function ToggleSwitch({ label, checked, onChange }) {
   );
 }
 
-function SortHead({ label, sortKey, sort, onSort, className = '', sub, tip, style }) {
+function HeadLabel({ label, label2 }) {
+  if (!label2) return <span>{label}</span>;
+  return (
+    <span className="flex flex-col items-center leading-[1.15] text-center">
+      <span>{label}</span>
+      <span>{label2}</span>
+    </span>
+  );
+}
+
+function SortHead({ label, label2, sortKey, sort, onSort, className = '', sub, tip, style }) {
   return (
     <div
       role="columnheader"
-      className={`${TH} ${sub ? 'whitespace-normal' : ''} ${className}`.trim()}
+      className={`${TH} ${label2 || sub ? 'whitespace-normal' : ''} ${className}`.trim()}
       style={style}
       aria-sort={sort.key === sortKey ? (sort.dir === 'desc' ? 'descending' : 'ascending') : 'none'}
     >
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-0.5">
         <button
           type="button"
-          className="btn-bare inline-flex items-center gap-1 uppercase"
+          className="btn-bare inline-flex items-center gap-0.5 uppercase"
           onClick={() => onSort(sortKey)}
         >
-          <span>{label}</span>
+          <HeadLabel label={label} label2={label2} />
           <SortArrows active={sort.key === sortKey} direction={sort.dir} />
         </button>
         {tip ? <InfoTip tipKey={tip} /> : null}
@@ -709,11 +758,13 @@ function SortHead({ label, sortKey, sort, onSort, className = '', sub, tip, styl
   );
 }
 
-function StaticHead({ label, sub, tip, className = '', style }) {
+function StaticHead({ label, label2, sub, tip, className = '', style }) {
   return (
-    <div role="columnheader" className={`${TH} ${sub ? 'whitespace-normal' : ''} ${className}`.trim()} style={style}>
-      <div className="flex items-center gap-1">
-        <span>{label}</span>
+    <div role="columnheader" className={`${TH} ${label2 || sub ? 'whitespace-normal' : ''} ${className}`.trim()} style={style}>
+      <div className="flex items-center gap-0.5">
+        <span className="uppercase">
+          <HeadLabel label={label} label2={label2} />
+        </span>
         {tip ? <InfoTip tipKey={tip} /> : null}
       </div>
       {sub ? <span className="text-[0.62rem] font-medium normal-case tracking-normal text-slate-500">{sub}</span> : null}
@@ -843,7 +894,6 @@ export default function FirmCompareDemo() {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [sort, setSort] = useState({ key: 'default', dir: 'asc' });
   const [page, setPage] = useState(1);
-  const [copied, setCopied] = useState(null);
   const toolbarRef = useRef(null);
   const boardRef = useRef(null);
   const masterMidRef = useRef(null);
@@ -1209,16 +1259,6 @@ export default function FirmCompareDemo() {
     };
   }, [applyMidScroll]);
 
-  const copyCode = async code => {
-    try {
-      await navigator.clipboard.writeText(code);
-      setCopied(code);
-      setTimeout(() => setCopied(null), 2000);
-    } catch {
-      setCopied(null);
-    }
-  };
-
   const favCount = favorites.size;
   const activeFilterCount = countActiveFilters(facet, FILTER_BOUNDS);
   const draftFilterCount = countActiveFilters(draft, FILTER_BOUNDS);
@@ -1447,7 +1487,7 @@ export default function FirmCompareDemo() {
                               checked={visibleCols.has(col.key)}
                               onChange={() => toggleCol(col.key)}
                             />
-                            <span>{col.label}</span>
+                            <span>{col.label2 ? `${col.label} ${col.label2}` : col.label}</span>
                           </label>
                         ))}
                       </div>
@@ -1465,22 +1505,23 @@ export default function FirmCompareDemo() {
             </div>
 
             <div
-              className="cmp-edge-board relative z-[1] mt-0 flex w-full min-w-0 flex-col gap-2 overflow-hidden rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]/55"
+              className="cmp-edge-board relative z-[1] mt-0 flex w-full min-w-0 flex-col overflow-hidden rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]/80"
               ref={boardRef}
               role="table"
               aria-label="Compare prop firm challenges: size, drawdown, contracts, payouts, and price"
             >
               <div className={`${ROW} cmp-edge-row--head m-0`} role="row">
                 <div className={`${PIN_FIRM} ${PIN_HEAD}`} role="columnheader">
-                  <span className={TH}>Firm / Plan</span>
+                  <span className={`${TH} w-full items-start pl-4 text-left`}>Firm</span>
                 </div>
-                <div className={`${MID} flex items-center bg-[#070f0c]`} id="cmp-mid-scroller" ref={setMasterMidRef} onScroll={onMidScroll} role="presentation">
+                <div className={`${MID} flex items-center`} id="cmp-mid-scroller" ref={setMasterMidRef} onScroll={onMidScroll} role="presentation">
                   <div className="flex min-h-[52px] w-max items-center">
                     {visibleMidCols.map(col =>
                       col.sort ? (
                         <SortHead
                           key={col.key}
                           label={col.label}
+                          label2={col.label2}
                           sub={col.sub}
                           tip={col.tip}
                           sortKey={col.key}
@@ -1493,6 +1534,7 @@ export default function FirmCompareDemo() {
                         <StaticHead
                           key={col.key}
                           label={col.label}
+                          label2={col.label2}
                           sub={col.sub}
                           tip={col.tip}
                           className={MID_CELL}
@@ -1502,8 +1544,15 @@ export default function FirmCompareDemo() {
                     )}
                   </div>
                 </div>
-                <div className={`${PIN_PRICE} ${PIN_HEAD}`} role="columnheader">
-                  <SortHead label="Price" tip="price" sortKey="price" sort={sort} onSort={cycleSort} />
+                <div className={`${PIN_PRICE} ${PIN_HEAD} justify-end`} role="columnheader">
+                  <SortHead
+                    label="Price"
+                    tip="price"
+                    sortKey="price"
+                    sort={sort}
+                    onSort={cycleSort}
+                    className="w-full items-end text-right"
+                  />
                 </div>
               </div>
 
@@ -1531,7 +1580,6 @@ export default function FirmCompareDemo() {
                   const listPrice = listPriceOf(p);
                   const displayPrice = applyDiscount ? salePrice : listPrice;
                   const showWas = applyDiscount && listPrice > salePrice;
-                  const promoCode = p.promoCode || f.promoCode;
                   const even = i % 2 === 1;
                   const logoSrc = firmLogo(f.name, f.logo);
                   return (
@@ -1541,23 +1589,10 @@ export default function FirmCompareDemo() {
                       role="row"
                       style={{ animationDelay: `${Math.min(i, 12) * 0.04}s` }}
                     >
-                      <div
-                        className={`${PIN_FIRM} ${even ? 'bg-[#0a1410]' : ''} group-hover:border-[#3FB185]/40 group-hover:bg-[#122018]`}
-                        role="cell"
-                      >
+                      <div className={`${PIN_FIRM}`} role="cell">
                         <div className="flex w-full min-w-0 items-start gap-3">
-                          <div className="relative mt-0.5 shrink-0" style={{ width: 44, height: 44 }}>
-                            <div
-                              className="overflow-hidden bg-black"
-                              style={{
-                                width: 44,
-                                height: 44,
-                                boxSizing: 'border-box',
-                                borderRadius: 10,
-                                border: '2px solid rgba(63,177,133,0.45)',
-                                padding: 2,
-                              }}
-                            >
+                          <div className="relative mt-0.5 shrink-0" style={{ width: 40, height: 40 }}>
+                            <div className="size-10 overflow-hidden rounded-full bg-black ring-1 ring-white/15">
                               {logoSrc ? (
                                 <img
                                   src={logoSrc}
@@ -1565,7 +1600,6 @@ export default function FirmCompareDemo() {
                                   width={80}
                                   height={80}
                                   className="size-full object-cover object-center"
-                                  style={{ transform: 'scale(1.04)' }}
                                 />
                               ) : (
                                 <span className="grid size-full place-items-center text-[0.58rem] font-bold text-white/50">
@@ -1576,43 +1610,17 @@ export default function FirmCompareDemo() {
                             {f.reviews >= 10 && f.rating >= 4 ? <VerifiedBadge /> : null}
                           </div>
                           <div className="flex min-w-0 flex-1 flex-col items-start justify-center gap-1 pt-0.5">
-                            <span className="block w-full truncate text-[0.95rem] font-bold leading-tight tracking-tight text-slate-50">
+                            <span className="block w-full truncate text-[0.92rem] font-bold leading-tight tracking-tight text-slate-50">
                               {f.name}
                             </span>
-                            {p.planType ? (
-                              <span className="line-clamp-2 w-full text-left text-xs font-semibold leading-snug text-[#3FB185]/85">
-                                {p.planType}
-                              </span>
-                            ) : null}
-                            <div
-                              className="inline-flex max-w-full items-center gap-1.5"
-                              aria-label={
-                                f.reviews < 10
-                                  ? 'Less than 10 reviews'
-                                  : `Rated ${f.rating} from ${f.reviews} reviews`
-                              }
-                            >
-                              {f.reviews < 10 ? (
-                                <span className="text-[0.7rem] font-semibold text-[#3FB185]">Less than 10 reviews</span>
-                              ) : (
-                                <>
-                                  <span className="shrink-0 text-xs font-bold tabular-nums text-white">
-                                    {f.rating.toFixed(1)}
-                                  </span>
-                                  <RatingStars rating={f.rating} idPrefix={`r-${p.id}`} />
-                                  <span className="text-[0.72rem] font-bold tabular-nums text-[#3FB185]">
-                                    [{f.reviews}]
-                                  </span>
-                                </>
-                              )}
-                            </div>
+                            <RatingChip rating={f.rating} reviews={f.reviews} idPrefix={`r-${p.id}`} />
                           </div>
                           <button
                             type="button"
-                            className={`btn-bare ml-auto mt-[-2px] grid size-7 shrink-0 place-items-center rounded-lg ${
+                            className={`btn-bare grid size-7 shrink-0 place-items-center rounded-md ${
                               favorites.has(f.name)
                                 ? 'text-[#3FB185]'
-                                : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                                : 'text-slate-400 hover:bg-white/5 hover:text-white'
                             }`}
                             onClick={() => toggleFavorite(f.name)}
                             aria-label={
@@ -1624,7 +1632,7 @@ export default function FirmCompareDemo() {
                             disabled={!favorites.has(f.name) && favorites.size >= MAX_FAVORITES ? true : undefined}
                           >
                             <Bookmark
-                              size={16}
+                              size={15}
                               strokeWidth={1.85}
                               fill={favorites.has(f.name) ? 'currentColor' : 'transparent'}
                               aria-hidden
@@ -1633,58 +1641,44 @@ export default function FirmCompareDemo() {
                         </div>
                       </div>
 
-                      <div
-                        className={`${MID} ${even ? 'bg-[#0a1410]' : ''} group-hover:border-[#3FB185]/40 group-hover:bg-[#122018]`}
-                        onScroll={onMidScroll}
-                        role="presentation"
-                      >
+                      <div className={`${MID}`} onScroll={onMidScroll} role="presentation">
                         <div className="flex min-h-full w-max items-stretch">
                           {visibleMidCols.map(col => renderMidCell(col, p))}
                         </div>
                       </div>
 
-                      <div
-                        className={`${PIN_PRICE} ${even ? 'bg-[#0a1410]' : ''} group-hover:border-[#3FB185]/40 group-hover:bg-[#122018]`}
-                        role="cell"
-                      >
-                        <div className="flex w-full items-center justify-between gap-3">
-                          <div className="flex min-w-0 flex-col gap-0.5">
-                            {showWas ? (
-                              <span className="text-[0.72rem] text-slate-400 line-through">{formatMoney(listPrice)}</span>
-                            ) : null}
+                      <div className={`${PIN_PRICE}`} role="cell">
+                        <div className="flex w-full items-center justify-end gap-2.5">
+                          <div className="flex min-w-0 flex-col items-end gap-0.5 text-right">
                             <span className="inline-flex items-center gap-1">
-                              <span className="text-[1.05rem] font-extrabold tracking-tight text-white">
+                              <span className="text-[1.05rem] font-extrabold tracking-tight tabular-nums text-white">
                                 {formatMoney(displayPrice)}
                               </span>
                               {p.priceNote ? (
                                 <InfoTip text={p.priceNote} label="Other price options for this plan" />
                               ) : null}
                             </span>
-                            <span className="text-[0.68rem] lowercase text-slate-400">
+                            {showWas ? (
+                              <span className="text-[0.72rem] text-slate-500 line-through tabular-nums">
+                                {formatMoney(listPrice)}
+                              </span>
+                            ) : null}
+                            <span className="text-[0.65rem] lowercase text-slate-500">
                               {String(p.priceType || 'One Time').toLowerCase()}
                             </span>
-                            {applyDiscount && promoCode ? (
-                              <button
-                                type="button"
-                                className="btn-bare self-start text-[0.68rem] font-bold text-[#3FB185] hover:underline"
-                                onClick={() => copyCode(promoCode)}
-                              >
-                                {promoCode}
-                                {copied === promoCode ? ' ✓' : ''}
-                              </button>
-                            ) : null}
                           </div>
                           {websiteHref ? (
                             <PfgPrimary
                               href={websiteHref}
                               compact
+                              className="h-8 rounded-full! px-3.5"
                               target="_blank"
                               rel="noopener noreferrer sponsored"
                             >
-                              Buy
+                              KAGE
                             </PfgPrimary>
                           ) : (
-                            <span className="inline-flex h-8 shrink-0 items-center rounded-lg bg-white/5 px-3 text-[0.75rem] font-bold text-slate-500">
+                            <span className="inline-flex h-8 shrink-0 items-center rounded-full bg-white/5 px-3 text-[0.75rem] font-bold text-slate-500">
                               —
                             </span>
                           )}

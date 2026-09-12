@@ -1,21 +1,36 @@
-/* Inner gap + thermal rails for the demo-2 challenge table */
+/* Challenge table rails — flat rows, quiet freeze (Wise presentation) */
 .cmp-edge-board {
-  --cmp-firm: 340px;
-  --cmp-price: 228px;
-  padding: 0 18px 16px;
+  --cmp-firm: 280px;
+  --cmp-price: 216px;
+  padding: 0 12px 8px;
 }
 
 @media (max-width: 767px) {
   .cmp-edge-board {
-    --cmp-firm: 280px;
-    --cmp-price: 180px;
-    padding: 0 14px 14px;
+    --cmp-firm: 244px;
+    --cmp-price: 184px;
+    padding: 0 10px 8px;
   }
 }
 
 .cmp-edge-row {
   position: relative;
   isolation: isolate;
+  border: 1px solid transparent;
+}
+
+.cmp-edge-row:not(.cmp-edge-row--head) {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.cmp-edge-row--even:not(.cmp-edge-row--head) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cmp-edge-row:not(.cmp-edge-row--head):hover {
+  border-color: rgba(63, 177, 133, 0.38);
+  border-radius: 12px;
+  background: rgba(18, 32, 24, 0.65);
 }
 
 .cmp-edge-pin-firm,
@@ -26,85 +41,45 @@
 }
 
 .cmp-edge-pin-firm {
-  padding: 18px 16px 18px 22px;
-  box-shadow:
-    inset -12px 0 20px -10px rgba(0, 0, 0, 0.62),
-    10px 0 22px rgba(0, 0, 0, 0.38),
-    0 0 32px rgba(63, 177, 133, 0.1);
+  padding: 12px 12px 12px 16px;
 }
 
 .cmp-edge-pin-price {
-  padding: 18px 22px 18px 16px;
-  box-shadow:
-    inset 12px 0 20px -10px rgba(0, 0, 0, 0.62),
-    -10px 0 22px rgba(0, 0, 0, 0.38),
-    0 0 32px rgba(63, 177, 133, 0.1);
+  padding: 12px 16px 12px 12px;
 }
 
 .cmp-edge-row::before,
 .cmp-edge-row::after {
   content: '';
   position: absolute;
-  top: 1px;
-  bottom: 1px;
-  width: 16px;
+  top: 8px;
+  bottom: 8px;
+  width: 10px;
   z-index: 5;
   pointer-events: none;
 }
 
 .cmp-edge-row::before {
-  left: calc(var(--cmp-firm) - 8px);
-  background: linear-gradient(90deg, #0c1612 18%, rgba(12, 22, 18, 0) 100%);
-  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.5);
+  left: calc(var(--cmp-firm) - 6px);
+  background: linear-gradient(90deg, rgba(6, 12, 10, 0.55) 0%, rgba(6, 12, 10, 0) 100%);
 }
 
 .cmp-edge-row::after {
-  right: calc(var(--cmp-price) - 8px);
-  background: linear-gradient(270deg, #0c1612 18%, rgba(12, 22, 18, 0) 100%);
-  box-shadow: 10px 0 20px rgba(0, 0, 0, 0.5);
+  right: calc(var(--cmp-price) - 6px);
+  background: linear-gradient(270deg, rgba(6, 12, 10, 0.55) 0%, rgba(6, 12, 10, 0) 100%);
 }
 
-.cmp-edge-row--head::before {
-  background: linear-gradient(90deg, #070f0c 18%, rgba(7, 15, 12, 0) 100%);
+.cmp-edge-row--head {
+  border-radius: 0;
+  border-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.cmp-edge-row--head::before,
 .cmp-edge-row--head::after {
-  background: linear-gradient(270deg, #070f0c 18%, rgba(7, 15, 12, 0) 100%);
+  display: none;
 }
 
-.cmp-edge-row--even::before {
-  background: linear-gradient(90deg, #0a1410 18%, rgba(10, 20, 16, 0) 100%);
-}
-
-.cmp-edge-row--even::after {
-  background: linear-gradient(270deg, #0a1410 18%, rgba(10, 20, 16, 0) 100%);
-}
-
-.cmp-edge-row:hover::before {
-  background: linear-gradient(90deg, #122018 18%, rgba(18, 32, 24, 0) 100%);
-}
-
-.cmp-edge-row:hover::after {
-  background: linear-gradient(270deg, #122018 18%, rgba(18, 32, 24, 0) 100%);
-}
-
-.cmp-edge-row:hover .cmp-edge-pin-firm {
-  box-shadow:
-    inset -12px 0 20px -10px rgba(0, 0, 0, 0.5),
-    12px 0 28px rgba(0, 0, 0, 0.42),
-    0 0 40px rgba(63, 177, 133, 0.2);
-}
-
-.cmp-edge-row:hover .cmp-edge-pin-price {
-  box-shadow:
-    inset 12px 0 20px -10px rgba(0, 0, 0, 0.5),
-    -12px 0 28px rgba(0, 0, 0, 0.42),
-    0 0 40px rgba(63, 177, 133, 0.2);
-}
-
-.cmp-edge-row--head .cmp-edge-pin-firm,
-.cmp-edge-row--head .cmp-edge-pin-price {
+.cmp-edge-head {
   box-shadow: none;
-  padding-top: 12px;
-  padding-bottom: 12px;
 }

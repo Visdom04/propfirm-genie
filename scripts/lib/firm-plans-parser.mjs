@@ -4,6 +4,8 @@
  * No top-level fs — safe to import from Next.js API routes.
  */
 
+import { salePriceOf } from './plan-price.mjs';
+
 export const FIRM_NAME_MAP = {
   FundedNext: 'FundedNext Futures',
   YRM: 'YRM Prop',
@@ -246,11 +248,29 @@ export function validateFirmPlans({ headers, rows, fileLabel }) {
     if (!row.accountSize) errors.push(`${prefix}: Account Size is required`);
     if (!row.drawdownType) errors.push(`${prefix}: Drawdown Type is required`);
     if (!row.profitSplit) errors.push(`${prefix}: Profit Split is required`);
-    if (!row.price) errors.push(`${prefix}: Price is required`);
 
     const price = parsePrice(row.price);
-    if (!price.price || price.price <= 0) {
-      errors.push(`${prefix}: Price must parse to a number greater than 0`);
+    const listPrice = row.listPrice ? parsePrice(row.listPrice).price : price.priceWas;
+    const discountPct = row.discountPct ? parseOptionalNumber(row.discountPct) : null;
+    const canCompute = Boolean(listPrice > 0 && discountPct != null && discountPct >= 0 && discountPct <= 100);
+    const sale = salePriceOf({
+      listPrice,
+      priceWas: listPrice,
+      discountPct,
+      price: price.price,
+    });
+
+    if (row.discountPct && (discountPct == null || discountPct < 0 || discountPct > 100)) {
+      errors.push(`${prefix}: Discount % must be between 0 and 100`);
+    }
+    if (row.discountPct && !(listPrice > 0)) {
+      errors.push(`${prefix}: Discount % needs List Price so the site can compute the sale`);
+    }
+    if (!canCompute && (!price.price || price.price <= 0)) {
+      errors.push(`${prefix}: set List Price + Discount %, or Price`);
+    }
+    if (canCompute && (!sale || sale <= 0)) {
+      errors.push(`${prefix}: List Price × Discount % must produce a sale greater than 0`);
     }
 
     const split = parseProfitSplit(row.profitSplit);
@@ -264,13 +284,6 @@ export function validateFirmPlans({ headers, rows, fileLabel }) {
 
     if (row.newsTrading && !NEWS_TRADING_VALUES.has(row.newsTrading.toLowerCase())) {
       errors.push(`${prefix}: News Trading must be both, eval, or none`);
-    }
-
-    if (row.discountPct) {
-      const d = parseOptionalNumber(row.discountPct);
-      if (d == null || d < 0 || d > 100) {
-        errors.push(`${prefix}: Discount % must be between 0 and 100`);
-      }
     }
 
     if (row.minTradingDays) {
@@ -323,6 +336,12 @@ export function rowToPlan(row) {
   const steps = inferSteps(row.planType, row.profitTarget);
   const listPrice = row.listPrice ? parsePrice(row.listPrice).price : price.priceWas;
   const discountPct = row.discountPct ? parseOptionalNumber(row.discountPct) : null;
+  const sale = salePriceOf({
+    listPrice,
+    priceWas: listPrice,
+    discountPct,
+    price: price.price,
+  });
 
   let maxLoss = row.maxDrawdown;
   if (/^\$?\d+$/.test(maxLoss.replace(/,/g, ''))) {
@@ -372,16 +391,13 @@ export function rowToPlan(row) {
       consistencyEval: cons.eval,
       consistencyFunded: cons.funded,
       payoutFreq: row.payoutFreq,
-      loyaltyPts: Math.round((price.price || 0) * 1.2),
+      loyaltyPts: Math.round((sale || 0) * 1.2),
       popularity: 1000,
-      price: price.price,
+      price: sale,
       priceWas: listPrice || price.priceWas,
       priceType: price.priceType,
       promoCode: row.promoCode || 'KAGE',
-      discount:
-        (listPrice && listPrice > price.price) || (price.priceWas && price.priceWas > price.price)
-          ? 'Promo price with KAGE'
-          : 'KAGE',
+      discount: listPrice && listPrice > sale ? 'Promo price with KAGE' : 'KAGE',
     },
   };
 }

@@ -14,6 +14,7 @@ import { PfgPrimary } from '@/components/green/PfgControls';
 import { firmLogo } from '@/lib/firmLogos';
 import { summarizeFirm } from '@/lib/firmOverview';
 import { PLATFORM_MARK, platformLogo } from '@/lib/platformLogos';
+import { salePriceOf } from '@/lib/planPrice';
 import './FirmOverviewTable.css';
 
 function slugify(name) {
@@ -30,7 +31,7 @@ const PAGE_SIZE = 12;
 
 const MID_COLS = [
   { key: 'size', label: 'Size', min: 128 },
-  { key: 'plans', label: 'Plans', min: 176 },
+  { key: 'plans', label: 'Plans', min: 132 },
   { key: 'platforms', label: 'Platforms', min: 176 },
   { key: 's2f', label: 'Straight to funded', min: 168 },
   { key: 'evalPrice', label: 'Eval from', min: 140 },
@@ -385,7 +386,8 @@ function computeBounds(catalog) {
     ratings.push(Number(f.rating) || 0);
     years.push(Number(f.years) || 0);
     (f.plans || []).forEach(p => {
-      if (p.price != null && Number.isFinite(Number(p.price))) prices.push(Number(p.price));
+      const sale = salePriceOf(p);
+      if (sale > 0) prices.push(sale);
       if (typeof p.profitSplit === 'number') splits.push(p.profitSplit);
       drawdown.add(normalizeDrawdown(p.maxLossType));
     });
@@ -427,7 +429,6 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
   const [sort, setSort] = useState({ key: 'default', dir: 'desc' });
   const [page, setPage] = useState(1);
   const [expanded, setExpanded] = useState(new Set());
-  const [copied, setCopied] = useState(null);
   const [customizeOpen, setCustomizeOpen] = useState(false);
   const [visibleCols, setVisibleCols] = useState(() => new Set(ALL_COL_KEYS));
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -590,16 +591,6 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
     });
   };
 
-  const copyCode = async code => {
-    try {
-      await navigator.clipboard.writeText(code);
-      setCopied(code);
-      setTimeout(() => setCopied(null), 1400);
-    } catch {
-      setCopied(null);
-    }
-  };
-
   const activeFilterCount = countActiveFilters(facet, bounds);
   const draftFilterCount = countActiveFilters(draft, bounds);
   const h2hHref =
@@ -617,7 +608,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         );
       case 'plans':
         return (
-          <div key={col.key} className={`${wrap} flex-col items-start justify-center gap-1`} style={style}>
+          <div key={col.key} className={`${wrap} flex-col items-start justify-center gap-0.5 px-2`} style={style}>
             {row.comingSoon ? (
               <span className="text-slate-500">Coming soon</span>
             ) : (
@@ -1081,32 +1072,24 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                       </div>
                     </div>
                     <div className={`${PIN_PRICE} ${even ? 'bg-[#0a1410]' : ''} group-hover:bg-[#122018]`} role="cell">
-                      <div className="flex w-full items-center justify-between gap-3">
-                        <div className="flex min-w-0 flex-col gap-0.5">
-                          {showWas ? (
-                            <span className="text-[0.72rem] text-slate-400 line-through">{formatMoney(row.fromWas)}</span>
-                          ) : null}
-                          <span className="text-[1.05rem] font-extrabold text-white">
+                      <div className="flex w-full items-center justify-end gap-2.5">
+                        <div className="flex min-w-0 flex-col items-end gap-0.5 text-right">
+                          <span className="text-[1.05rem] font-extrabold tabular-nums text-white">
                             {row.comingSoon ? '—' : formatMoney(row.fromPrice)}
                           </span>
-                          <span className="text-[0.68rem] lowercase text-slate-400">from · one time</span>
-                          {applyDiscount && row.promoCode && !row.comingSoon ? (
-                            <button
-                              type="button"
-                              className="btn-bare self-start text-[0.68rem] font-bold text-[#3FB185] hover:underline"
-                              onClick={() => copyCode(row.promoCode)}
-                            >
-                              {row.promoCode}
-                              {copied === row.promoCode ? ' ✓' : ''}
-                            </button>
+                          {showWas ? (
+                            <span className="text-[0.72rem] text-slate-500 line-through tabular-nums">
+                              {formatMoney(row.fromWas)}
+                            </span>
                           ) : null}
+                          <span className="text-[0.65rem] lowercase text-slate-500">from · one time</span>
                         </div>
                         {row.website && !row.comingSoon ? (
-                          <PfgPrimary href={row.website} compact target="_blank" rel="noopener noreferrer sponsored">
-                            Visit
+                          <PfgPrimary href={row.website} compact className="h-8 rounded-full! px-3.5" target="_blank" rel="noopener noreferrer sponsored">
+                            KAGE
                           </PfgPrimary>
                         ) : (
-                          <span className="inline-flex h-8 items-center rounded-lg bg-white/5 px-3 text-[0.75rem] font-bold text-slate-500">
+                          <span className="inline-flex h-8 items-center rounded-full bg-white/5 px-3 text-[0.75rem] font-bold text-slate-500">
                             Soon
                           </span>
                         )}

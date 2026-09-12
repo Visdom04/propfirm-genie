@@ -18,6 +18,7 @@ import {
 } from '@/lib/compareHighlights';
 import { PLATFORM_MARK, platformLogo } from '@/lib/platformLogos';
 import { firmLogo } from '@/lib/firmLogos';
+import { listPriceOf, salePriceOf } from '@/lib/planPrice';
 import GreenPageShell from '@/components/green/GreenPageShell';
 import { FocusWord, PfgGhost, PfgPrimary } from '@/components/green/PfgControls';
 
@@ -673,7 +674,7 @@ export default function CompareFirmsH2H({ firms = [], popularPairs = [] }) {
     if (nextB?.slug) setB(nextB);
   }, [firms]);
 
-  const costWinner = ready ? pickWinner(planA.price, planB.price, 'lower') : null;
+  const costWinner = ready ? pickWinner(salePriceOf(planA), salePriceOf(planB), 'lower') : null;
   const splitWinner = ready ? pickWinner(planA.profitSplit, planB.profitSplit, 'higher') : null;
   const targetWinner = ready
     ? pickWinner(parseMoney(planA.profitTarget), parseMoney(planB.profitTarget), 'lower')
@@ -852,8 +853,12 @@ export default function CompareFirmsH2H({ firms = [], popularPairs = [] }) {
             a={
               <ValueCell
                 large
-                value={planA ? formatUsd(planA.price) : '—'}
-                sub={planA?.priceWas && planA.priceWas > planA.price ? formatUsd(planA.priceWas) : null}
+                value={planA ? formatUsd(salePriceOf(planA)) : '—'}
+                sub={
+                  planA && listPriceOf(planA) > salePriceOf(planA)
+                    ? formatUsd(listPriceOf(planA))
+                    : null
+                }
                 note={planA?.priceNote || null}
                 badge={planA ? discountBadge(firmA, planA) : null}
                 best={costWinner === 0}
@@ -862,8 +867,12 @@ export default function CompareFirmsH2H({ firms = [], popularPairs = [] }) {
             b={
               <ValueCell
                 large
-                value={planB ? formatUsd(planB.price) : '—'}
-                sub={planB?.priceWas && planB.priceWas > planB.price ? formatUsd(planB.priceWas) : null}
+                value={planB ? formatUsd(salePriceOf(planB)) : '—'}
+                sub={
+                  planB && listPriceOf(planB) > salePriceOf(planB)
+                    ? formatUsd(listPriceOf(planB))
+                    : null
+                }
                 note={planB?.priceNote || null}
                 badge={planB ? discountBadge(firmB, planB) : null}
                 best={costWinner === 1}

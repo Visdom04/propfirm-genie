@@ -1,4 +1,5 @@
 import { categoryBucket, newsLabel, parseMoney, discountBadge } from '@/lib/compareHighlights';
+import { displayPriceOf, listPriceOf as listPrice, salePriceOf } from '@/lib/planPrice';
 
 function uniq(list) {
   return [...new Set(list.filter(v => v != null && String(v).trim() !== ''))];
@@ -32,18 +33,7 @@ function activationDollars(raw) {
 }
 
 function salePrice(plan, applyDiscount) {
-  const sale = Number(plan?.price) || 0;
-  const list = Number(plan?.priceWas || plan?.listPrice) || 0;
-  if (!applyDiscount && list > sale) return list;
-  return sale;
-}
-
-function listPrice(plan) {
-  const was = Number(plan?.priceWas);
-  const list = Number(plan?.listPrice);
-  if (Number.isFinite(was) && was > 0) return was;
-  if (Number.isFinite(list) && list > 0) return list;
-  return Number(plan?.price) || 0;
+  return displayPriceOf(plan, applyDiscount);
 }
 
 function compactPayout(raw) {
@@ -62,7 +52,7 @@ export function summarizeFirm(firm, { applyDiscount = true } = {}) {
   const comingSoon = Boolean(firm?.comingSoon) && !plans.length;
   const challenge = plans.filter(p => categoryBucket(p) === 'Challenge');
   const s2f = plans.filter(p => categoryBucket(p) === 'S2F');
-  const priced = [...challenge, ...plans].filter(p => Number(p.price) > 0);
+  const priced = [...challenge, ...plans].filter(p => salePriceOf(p) > 0);
   const cheapest = priced.reduce((best, p) => {
     const a = salePrice(p, applyDiscount);
     const b = best ? salePrice(best, applyDiscount) : Infinity;
