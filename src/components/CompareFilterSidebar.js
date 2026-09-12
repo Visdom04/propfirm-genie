@@ -348,7 +348,7 @@ export default function CompareFilterSidebar({
                 format={v => `${v}%`}
               />
               <DualRange
-                label="Trustpilot / rating"
+                label="Rating"
                 min={bounds.rating.min}
                 max={bounds.rating.max}
                 step={0.1}

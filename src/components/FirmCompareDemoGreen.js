@@ -36,6 +36,7 @@ function planMatchesStepFilter(planSteps, selected) {
 const DEFAULT_FIRM_ORDER = [
   'Lucid Trading',
   'Tradeify',
+  'Bulenox',
   'Take Profit Trader',
   'My Funded Futures',
   'Apex Trader Funding',
@@ -43,7 +44,6 @@ const DEFAULT_FIRM_ORDER = [
   'Phidias Propfirm',
   'E8 Futures',
   'Nexgen ProTrader Funding',
-  'Bulenox',
   'Purdia',
   'YRM Prop',
   'DayTraders',
