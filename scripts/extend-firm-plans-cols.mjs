@@ -110,6 +110,7 @@ const outRows = rows.map(row => {
     'News Trading': row.newsTrading || '',
     'List Price': row.listPrice || '',
     'Discount %': row.discountPct || '',
+    'Price Note': row.priceNote || '',
   };
 
   for (const [k, v] of Object.entries(coreMap)) {

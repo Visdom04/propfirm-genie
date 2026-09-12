@@ -1,14 +1,14 @@
 /* Prop firm compare — Deep Space Oracle demo (green glass, matches .search-panel) */
 
 .cmp {
-  --cmp-accent: #22c55e;
-  --cmp-accent-soft: #86efac;
-  --cmp-cyan: #4ade80;
-  --cmp-indigo: #16a34a;
+  --cmp-accent: #3FB185;
+  --cmp-accent-soft: #8fd4b8;
+  --cmp-cyan: #3FB185;
+  --cmp-indigo: #1B4B38;
   --cmp-bg: rgba(8, 18, 14, 0.92);
   --cmp-row: rgba(12, 28, 20, 0.85);
   --cmp-border: rgba(255, 255, 255, 0.1);
-  --cmp-glow: rgba(34, 197, 94, 0.35);
+  --cmp-glow: rgba(63, 177, 133, 0.35);
 
   width: 100%;
   font-family: var(--font-body);
@@ -255,7 +255,7 @@
 .cmp-sidebar__apply-btn {
   border: none;
   color: #052e16;
-  background: linear-gradient(105deg, #4ade80 0%, #22c55e 45%, #16a34a 100%);
+  background: linear-gradient(105deg, #3FB185 0%, #3FB185 45%, #1B4B38 100%);
   box-shadow: 0 8px 24px rgba(34, 197, 94, 0.28);
 }
 
@@ -437,7 +437,7 @@
 .cmp-firm-check input {
   width: 15px;
   height: 15px;
-  accent-color: #22c55e;
+  accent-color: #3FB185;
   margin: 0;
   cursor: pointer;
   border-radius: 4px;
@@ -485,7 +485,7 @@
   letter-spacing: 0.04em;
   padding: 1px 5px;
   border-radius: 999px;
-  background: #16a34a;
+  background: #1B4B38;
   color: #ecfdf5;
   white-space: nowrap;
   z-index: 1;
@@ -553,7 +553,7 @@
   height: 2px;
   transform: translateY(-50%);
   border-radius: 999px;
-  background: linear-gradient(90deg, #4ade80, #22c55e);
+  background: linear-gradient(90deg, #3FB185, #3FB185);
 }
 
 .cmp-range__input {
@@ -577,7 +577,7 @@
   height: 12px;
   border-radius: 50%;
   background: #fff;
-  border: 2px solid #22c55e;
+  border: 2px solid #3FB185;
   box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.14);
   cursor: grab;
 }
@@ -590,7 +590,7 @@
   height: 12px;
   border-radius: 50%;
   background: #fff;
-  border: 2px solid #22c55e;
+  border: 2px solid #3FB185;
   box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.14);
   cursor: grab;
 }
@@ -894,7 +894,7 @@
 }
 
 .cmp-customize__item input {
-  accent-color: #22c55e;
+  accent-color: #3FB185;
   width: 14px;
   height: 14px;
 }
@@ -1133,7 +1133,7 @@
 .cmp-pill--active {
   color: #0a0f0d;
   border-color: transparent;
-  background: #22c55e;
+  background: #3FB185;
   box-shadow:
     0 0 0 1px rgba(34, 197, 94, 0.25),
     0 0 28px rgba(34, 197, 94, 0.28);
@@ -1257,7 +1257,7 @@
   height: 5px;
   transform: translateY(-50%);
   border-radius: 100px;
-  background: linear-gradient(90deg, #16a34a 0%, #22c55e 50%, #4ade80 100%);
+  background: linear-gradient(90deg, #1B4B38 0%, #3FB185 50%, #3FB185 100%);
   box-shadow: 0 0 12px rgba(74, 222, 128, 0.45);
   pointer-events: none;
 }
@@ -1600,7 +1600,7 @@
 }
 
 .cmp-th__sort-path--on {
-  color: #4ade80;
+  color: #3FB185;
 }
 
 /* ── Card rows ───────────────────────────────────────────────────── */
@@ -1630,28 +1630,31 @@
 
 .cmp-firm__logo-wrap {
   position: relative;
-  flex: 0 0 48px;
-  width: 48px;
-  height: 48px;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
   margin-top: 1px;
 }
 
 .cmp-firm__logo {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 10px;
-  background: #080c0a;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #000;
+  border: 2px solid rgba(63, 177, 133, 0.45);
   display: grid;
   place-items: center;
-  padding: 4px;
+  padding: 2px;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .cmp-firm__logo img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.04);
 }
 
 /* Simple gold disc badge — Lucide star centered */
@@ -1752,7 +1755,7 @@
   flex-shrink: 0;
   font-size: 0.72rem;
   font-weight: 700;
-  color: #4ade80;
+  color: #3FB185;
   font-variant-numeric: tabular-nums;
   line-height: 1;
 }
@@ -1783,7 +1786,7 @@
 }
 
 .cmp-firm .cmp-stars__fill {
-  fill: #4ade80;
+  fill: #3FB185;
 }
 
 .cmp-firm > .cmp-fav {
@@ -1811,7 +1814,7 @@
 }
 
 .cmp-firm > .cmp-fav--on {
-  color: #4ade80;
+  color: #3FB185;
 }
 
 .cmp-td--num {
@@ -1862,7 +1865,7 @@
 
 .cmp-tip__btn:hover,
 .cmp-tip__btn:focus-visible {
-  color: #86efac;
+  color: #8fd4b8;
   background: rgba(34, 197, 94, 0.12);
 }
 
@@ -1945,7 +1948,7 @@
   display: block;
   height: 100%;
   border-radius: 2px;
-  background: linear-gradient(90deg, #16a34a 0%, #22c55e 55%, #86efac 100%);
+  background: linear-gradient(90deg, #1B4B38 0%, #3FB185 55%, #8fd4b8 100%);
 }
 
 .cmp-split__segments {
@@ -1964,7 +1967,7 @@
 }
 
 .cmp-split__seg--on {
-  background: linear-gradient(180deg, #86efac 0%, #22c55e 55%, #16a34a 100%);
+  background: linear-gradient(180deg, #8fd4b8 0%, #3FB185 55%, #1B4B38 100%);
   box-shadow: 0 0 6px rgba(34, 197, 94, 0.35);
 }
 
@@ -1984,7 +1987,7 @@
   height: 10px;
   transform: rotate(45deg);
   border-radius: 2px;
-  background: linear-gradient(135deg, #86efac 0%, #22c55e 55%, #16a34a 100%);
+  background: linear-gradient(135deg, #8fd4b8 0%, #3FB185 55%, #1B4B38 100%);
   box-shadow: 0 0 8px rgba(74, 222, 128, 0.45);
 }
 
@@ -2046,25 +2049,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 18px;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #052e16;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
   text-decoration: none;
-  background: linear-gradient(115deg, #16a34a 0%, #22c55e 45%, #4ade80 100%);
-  box-shadow:
-    0 0 0 1px rgba(134, 239, 172, 0.25),
-    0 4px 14px rgba(34, 197, 94, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: linear-gradient(90deg, #3FB185, #1B4B38);
+  box-shadow: none;
+  overflow: hidden;
+  transition: filter 0.2s ease;
   white-space: nowrap;
 }
 
 .cmp-buy:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 0 0 1px rgba(134, 239, 172, 0.4),
-    0 8px 20px rgba(34, 197, 94, 0.4);
+  transform: none;
+  filter: brightness(1.1);
+  box-shadow: none;
 }
 
 .cmp-buy--muted {
@@ -2152,7 +2154,7 @@
 .cmp-rank__reviews {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: #4ade80;
+  color: #3FB185;
 }
 
 /* Country */
@@ -2287,7 +2289,7 @@
   display: block;
   height: 100%;
   border-radius: 100px;
-  background: linear-gradient(90deg, #16a34a 0%, #22c55e 45%, #4ade80 100%);
+  background: linear-gradient(90deg, #1B4B38 0%, #3FB185 45%, #3FB185 100%);
   box-shadow: 0 0 10px rgba(74, 222, 128, 0.45);
   transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -2317,7 +2319,7 @@
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  background: linear-gradient(115deg, #16a34a 0%, #22c55e 42%, #4ade80 100%);
+  background: linear-gradient(115deg, #1B4B38 0%, #3FB185 42%, #3FB185 100%);
   box-shadow:
     0 0 0 1px rgba(134, 239, 172, 0.25),
     0 4px 18px rgba(34, 197, 94, 0.35),
@@ -2364,7 +2366,7 @@
 .cmp-copied {
   display: block;
   font-size: 0.68rem;
-  color: #86efac;
+  color: #8fd4b8;
   margin-top: 6px;
   text-align: center;
 }
@@ -2387,7 +2389,7 @@
 
 .cmp-firm-link:hover {
   background: rgba(34, 197, 94, 0.14);
-  border-color: #4ade80;
+  border-color: #3FB185;
   color: #bbf7d0;
   box-shadow: 0 0 18px rgba(34, 197, 94, 0.22);
 }
@@ -2561,8 +2563,9 @@
   }
 
   .cmp-buy {
-    padding: 8px 14px;
-    font-size: 0.76rem;
+    height: 28px;
+    padding: 0 8px;
+    font-size: 0.7rem;
   }
 }
 
@@ -2661,7 +2664,7 @@
 
 .cmp-pager__page--active {
   color: #0a0f0d;
-  background: #22c55e;
+  background: #3FB185;
   border-color: transparent;
   box-shadow:
     0 0 0 1px rgba(34, 197, 94, 0.25),

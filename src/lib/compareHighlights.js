@@ -125,6 +125,22 @@ export function discountBadge(firm, plan) {
   return null;
 }
 
+/** Auto-fill only when the trader has no real choice. */
+export function onlyPlanType(firm) {
+  const seen = [];
+  for (const p of firm?.plans || []) {
+    if (p.planType && !seen.includes(p.planType)) seen.push(p.planType);
+  }
+  return seen.length === 1 ? seen[0] : null;
+}
+
+export function onlyAccountSize(firm, planType) {
+  const sizes = (firm?.plans || [])
+    .filter(p => p.planType === planType)
+    .map(p => p.accountSize);
+  return sizes.length === 1 ? sizes[0] : null;
+}
+
 export function pickDefaultPlanType(firm) {
   const plans = firm?.plans || [];
   if (!plans.length) return null;

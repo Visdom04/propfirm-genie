@@ -1,5 +1,6 @@
 import { firms as staticFirms } from '@/data/firms';
 import { getRuntimeFirms } from '@/lib/firmPlansSheet';
+import { firmLogo } from '@/lib/firmLogos';
 
 export function slugify(name) {
   return name
@@ -60,7 +61,7 @@ function toSummary(f) {
   return {
     slug: slugify(f.name),
     name: f.name,
-    logo: f.logo,
+    logo: firmLogo(f.name, f.logo),
     rating: f.rating,
     reviews: f.reviews,
     website: f.website,

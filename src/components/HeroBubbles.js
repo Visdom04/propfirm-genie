@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { firms } from '@/data/firms';
+import { firmLogo } from '@/lib/firmLogos';
 import './HeroBubbles.css';
 
 const VISIBLE = 3;
@@ -45,7 +46,7 @@ function FirmBubble({ firm, slot }) {
 
         <div className="hero-bubble__avatar">
           <Image
-            src={firm.logo}
+            src={firmLogo(firm.name, firm.logo)}
             alt=""
             width={88}
             height={88}

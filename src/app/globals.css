@@ -1,3 +1,82 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  --color-genie: #3FB185;
+  --color-genie-soft: #8fd4b8;
+  --color-genie-bright: #3FB185;
+  --color-genie-bg: #0a0f0d;
+  --color-genie-panel: #0c1612;
+  --color-pfg: #3FB185;
+  --color-pfg-deep: #1B4B38;
+  --color-pfg-deal: #4D65FF;
+  --animate-rise-in: rise-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes rise-in {
+    from,
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Native <button> chrome (white boxes / dots) — we skip Tailwind preflight
+   so existing CSS pages stay intact. Use this on unstyled icon/text buttons. */
+@utility btn-bare {
+  appearance: none;
+  background-color: transparent;
+  border-width: 0;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility range-thumb {
+  &::-webkit-slider-thumb {
+    pointer-events: auto;
+    appearance: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 9999px;
+    background: #3FB185;
+    border: 2px solid #1B4B38;
+    box-shadow: 0 0 8px rgba(63, 177, 133, 0.4);
+  }
+  &::-moz-range-thumb {
+    pointer-events: auto;
+    appearance: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 9999px;
+    background: #3FB185;
+    border: 2px solid #1B4B38;
+  }
+}
+
 :root {
   /* ── Type tokens ──────────────────────────────────────────────── */
   /* Font stack — geometric sans + editorial serif accent */

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { firms } from '@/data/firms';
+import { firmLogo } from '@/lib/firmLogos';
 import './FeaturedFirmsGreen.css';
 
 const ROTATE_MS = 4500;
@@ -197,7 +198,7 @@ export default function FeaturedFirms() {
 
                     <span className="fc-card__logo-zone">
                       <Image
-                        src={firm.logo}
+                        src={firmLogo(firm.name, firm.logo)}
                         alt=""
                         width={120}
                         height={120}

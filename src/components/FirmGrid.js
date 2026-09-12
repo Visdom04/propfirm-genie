@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { firms } from '@/data/firms';
+import { firmLogo } from '@/lib/firmLogos';
 import './FirmGrid.css';
 
 function Stars({ rating }) {
@@ -41,7 +42,7 @@ export default function FirmGrid() {
                 <td className="td-firm">
                   <div className="firm-identity">
                     <div className="firm-logo-wrap">
-                      <Image src={f.logo} alt={f.name} width={38} height={38} />
+                      <Image src={firmLogo(f.name, f.logo)} alt={f.name} width={38} height={38} />
                     </div>
                     <div className="firm-meta">
                       <span className="firm-title">{f.name}</span>

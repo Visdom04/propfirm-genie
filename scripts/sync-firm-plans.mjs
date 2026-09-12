@@ -65,6 +65,75 @@ const NEW_FIRM_META = {
     isNew: true,
     isPopular: true,
   },
+  'IQ Capital': {
+    name: 'IQ Capital',
+    logo: 'https://rtzkywwbsldinjgykqag.supabase.co/storage/v1/object/public/genie-assets/firms/IQ%20Capital.webp',
+    rating: 0,
+    reviews: 0,
+    description:
+      'Futures prop firm with Core, Core DLL, Rapid, Instant, and Instant DLL paths. 80/90% profit split, news trading allowed.',
+    platforms: ['Volumetrica IQC Trader', 'DeepCharts', 'ATAS', 'Quantower'],
+    maxAccounts: '10',
+    maxAlloc: '$2,000,000',
+    promoCode: 'KAGE',
+    discount: '80% OFF',
+    website: 'iqcapital.io',
+    type: 'Challenge',
+    countryCode: 'LC',
+    likes: 0,
+    years: 0,
+    yearsLabel: 'N/A',
+    assets: ['Futures'],
+    allocPct: 0.85,
+    isNew: true,
+    isPopular: false,
+  },
+  Topstep: {
+    name: 'Topstep',
+    logo: 'https://rtzkywwbsldinjgykqag.supabase.co/storage/v1/object/public/genie-assets/firms/Topstep.webp',
+    rating: 3.4,
+    reviews: 39,
+    description:
+      'Futures prop firm since 2012 with Standard and No Activation Fee paths. 90% profit split, payouts every 5 trading days, news trading allowed.',
+    platforms: ['Project X', 'Plus500'],
+    maxAccounts: '—',
+    maxAlloc: '$750,000',
+    promoCode: 'KAGE',
+    discount: 'No verified offer',
+    website: 'topstep.com',
+    type: 'Challenge',
+    countryCode: 'US',
+    likes: 0,
+    years: 14,
+    yearsLabel: '14',
+    assets: ['Futures'],
+    allocPct: 0.72,
+    isNew: true,
+    isPopular: false,
+  },
+  'Traders Launch': {
+    name: 'Traders Launch',
+    logo: 'https://rtzkywwbsldinjgykqag.supabase.co/storage/v1/object/public/genie-assets/firms/Traders%20Launch.webp',
+    rating: 4.8,
+    reviews: 7,
+    description:
+      'Futures prop firm with NYC and 22-Hour sessions at 55% or 80% split. Monthly evaluation, daily payouts, news trading allowed.',
+    platforms: ['Quantower', 'TradingView', 'Volumetrica'],
+    maxAccounts: '5',
+    maxAlloc: '$1,500,000',
+    promoCode: 'KAGE',
+    discount: 'No verified offer',
+    website: 'traderslaunch.com',
+    type: 'Challenge',
+    countryCode: 'US',
+    likes: 0,
+    years: 3,
+    yearsLabel: '3',
+    assets: ['Futures'],
+    allocPct: 0.8,
+    isNew: true,
+    isPopular: false,
+  },
 };
 
 function loadFirmMeta() {
@@ -135,7 +204,7 @@ function serializeFirm(meta, plans, indent = 2) {
   lines.push(`${pad2}plans: [`);
   for (const p of plans) lines.push(serializePlan(p, indent + 4));
   lines.push(`${pad2}],`);
-  lines.push(`${pad},`);
+  lines.push(`${pad}},`);
   return lines.join('\n');
 }
 
@@ -193,6 +262,9 @@ function replacePlansInBlock(block, plans) {
   next = next.replace(/accountSizes:\s*\[[^\]]*\]/, `accountSizes: ${jsArray(sizes)}`);
   next = next.replace(/steps:\s*\[[^\]]*\]/, `steps: ${jsArray(stepOpts)}`);
   next = next.replace(/priceType:\s*\[[^\]]*\]/, `priceType: ${jsArray(priceTypes)}`);
+  if (plans.length) {
+    next = next.replace(/comingSoon:\s*true/, 'comingSoon: false');
+  }
   return next;
 }
 
@@ -300,7 +372,8 @@ async function main() {
     const block = serializeFirm(meta, plans, 2);
     const insertAt = src.lastIndexOf('\n];');
     if (insertAt < 0) throw new Error('cannot find end of firms array');
-    src = `${src.slice(0, insertAt)}\n${block}${src.slice(insertAt)}`;
+    const before = src.slice(0, insertAt).replace(/\}\s*$/, '},');
+    src = `${before}\n${block}${src.slice(insertAt)}`;
     namesNow.add(name);
     console.log('Added firm', name, plans.length, 'plans');
   }

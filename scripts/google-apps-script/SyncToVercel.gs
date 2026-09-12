@@ -48,6 +48,7 @@ const EXTENDED_HEADERS = [
   'News Trading',
   'List Price',
   'Discount %',
+  'Price Note',
 ];
 
 const EXPECTED_HEADERS = CORE_HEADERS.concat(EXTENDED_HEADERS);
@@ -176,7 +177,9 @@ function ensureHeaderNamesOnly() {
       .clear();
   }
   sheet.getRange(1, 1, sheet.getMaxRows(), sheet.getMaxColumns()).clearDataValidations();
-  SpreadsheetApp.getUi().alert('Header row forced to 19 expected names. No dropdowns added.');
+  SpreadsheetApp.getUi().alert(
+    'Header row forced to ' + EXPECTED_HEADERS.length + ' expected names. No dropdowns added.'
+  );
 }
 
 function importPlansFromUrl() {

@@ -1,5 +1,7 @@
 # Firm data pipeline (Google Sheet → site)
 
+Four-page product + agent instructions: see repo-root [`HANDOFF.md`](../HANDOFF.md).
+
 This repo treats **the sheet as source of truth** for plan economics. The site reads generated `src/data/firms.js` — never edit plan rows in `firms.js` by hand.
 
 ## Files
@@ -32,7 +34,7 @@ Create **two tabs**:
 | Consistency Rule Eval, Funded | None / 40% | Eval / Funded split |
 | Payout Freq. | Every 5 Days | Free text |
 | Profit Split | 90% | Number % |
-| Price | $98 | Current promo price |
+| Price | `$55` or `$199 (monthly)` | Optional if List Price + Discount % are both set. The **dollar amount is ignored** when those two are filled — the site computes sale. Keep `(monthly)` in this cell for monthly plans. Fallback sale if list/% are blank. |
 | Promo CODE | KAGE | Default KAGE |
 
 **Extended columns (required for accurate `/compare-firms` highlights):**
@@ -43,15 +45,16 @@ Create **two tabs**:
 | Min Trading Days | 2 | Number or `None` (blank = unknown → UI shows —) |
 | Daily Drawdown | None | Dollar or `None` (blank = unknown) |
 | News Trading | both | `both`, `eval`, or `none` |
-| List Price | $165 | Pre-discount / strikethrough price |
-| Discount % | 40 | 0–100 |
+| List Price | $79 | Retail / strikethrough price. Required to compute the sale. |
+| Discount % | 30 | 0–100, number only (`30` not `30%`). Sale = List × (1 − % / 100), rounded to cents. |
+| Price Note | `$13 less with Intraday` | Optional tooltip. Not used in the math. |
 
 **Add columns to live Google Sheet:**
 
 1. Apps Script → run `ensureExtendedColumns` (or syncNow — headers auto-append)
 2. Or paste headers from local `scripts/firm-plans.tsv` after `npm run extend:firms`
 3. Fill Min / Daily / News from official firm rules (starter seeds live in `scripts/firm-plans-extended-overrides.json` — verify before trusting)
-4. List Price / Discount % can seed from prior `firms.js` via extend script
+4. Fill **List Price** + **Discount %** on every row that should show a strikethrough / % off. The site computes sale from those two. Leave **Price** as a fallback (or keep `(monthly)` there).
 
 ```bash
 npm run extend:firms          # dry-run
@@ -91,7 +94,7 @@ npm run validate:firms
 npm run sync:firms
 ```
 
-6. Smoke check `/demo-2` and `/compare-firms` for 2–3 known pairs.
+6. Smoke check `/challenges`, `/compare-page-2`, `/demo-4`, and `/compare-firms` for 2–3 known firms.
 
 ## What “robust” means here
 

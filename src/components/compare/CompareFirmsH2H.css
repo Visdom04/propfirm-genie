@@ -1,8 +1,8 @@
 /* /compare-firms — Digi Green H2H */
 
 .h2h-page {
-  --h2h-accent: #22c55e;
-  --h2h-accent-soft: #86efac;
+  --h2h-accent: #3FB185;
+  --h2h-accent-soft: #8fd4b8;
   --h2h-border: rgba(255, 255, 255, 0.1);
   --h2h-panel: rgba(8, 18, 14, 0.88);
   --h2h-row: rgba(12, 28, 20, 0.72);
@@ -556,7 +556,7 @@
   gap: 10px;
   padding: 14px 16px;
   border-radius: 12px;
-  background: linear-gradient(115deg, #22c55e 0%, #16a34a 48%, #4ade80 100%);
+  background: linear-gradient(115deg, #3FB185 0%, #1B4B38 48%, #3FB185 100%);
   color: #052e16;
   font-weight: 800;
   font-size: 14px;

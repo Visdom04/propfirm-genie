@@ -1,11 +1,5 @@
-import DemoHeroGreen from '@/components/DemoHeroGreen';
+import { redirect } from 'next/navigation';
 
-export const metadata = {
-  title: 'DEGENIE — Compare Prop Firms & Earn Exclusive Rewards',
-  description:
-    'Compare top prop trading firms, claim exclusive discounts, and earn rewards with DEGENIE.',
-};
-
-export default function DemoPage() {
-  return <DemoHeroGreen />;
+export default function Demo2Redirect() {
+  redirect('/challenges');
 }
