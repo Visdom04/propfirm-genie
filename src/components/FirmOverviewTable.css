@@ -1,21 +1,36 @@
-/* Frozen firm/price rails — thermal binding + fade into the scrolling mid pane */
+/* One flat row — Firm and Price stay pinned, but they share the same surface as the mid columns. */
 .ov-board {
-  --ov-firm: 360px;
-  --ov-price: 248px;
-  padding: 0 18px 16px;
+  --ov-firm: 280px;
+  --ov-price: 216px;
+  padding: 0 12px 8px;
 }
 
 @media (max-width: 767px) {
   .ov-board {
-    --ov-firm: 320px;
-    --ov-price: 200px;
-    padding: 0 14px 14px;
+    --ov-firm: 244px;
+    --ov-price: 184px;
+    padding: 0 10px 8px;
   }
 }
 
 .ov-row {
   position: relative;
   isolation: isolate;
+  border: 1px solid transparent;
+}
+
+.ov-row:not(.ov-row--head) {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.ov-row--even:not(.ov-row--head) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ov-row:not(.ov-row--head):hover {
+  border-color: rgba(63, 177, 133, 0.38);
+  border-radius: 12px;
+  background: rgba(18, 32, 24, 0.65);
 }
 
 .ov-pin-firm,
@@ -26,87 +41,43 @@
 }
 
 .ov-pin-firm {
-  padding: 18px 16px 18px 22px;
-  box-shadow:
-    inset -12px 0 20px -10px rgba(0, 0, 0, 0.62),
-    10px 0 22px rgba(0, 0, 0, 0.38),
-    0 0 32px rgba(63, 177, 133, 0.1);
+  padding: 12px 12px 12px 16px;
 }
 
 .ov-pin-price {
-  padding: 18px 22px 18px 16px;
-  box-shadow:
-    inset 12px 0 20px -10px rgba(0, 0, 0, 0.62),
-    -10px 0 22px rgba(0, 0, 0, 0.38),
-    0 0 32px rgba(63, 177, 133, 0.1);
+  padding: 12px 16px 12px 12px;
 }
 
 .ov-row::before,
 .ov-row::after {
   content: '';
   position: absolute;
-  top: 1px;
-  bottom: 1px;
-  width: 16px;
+  top: 8px;
+  bottom: 8px;
+  width: 10px;
   z-index: 5;
   pointer-events: none;
 }
 
 .ov-row::before {
-  left: calc(var(--ov-firm) - 8px);
-  background: linear-gradient(90deg, #0c1612 18%, rgba(12, 22, 18, 0) 100%);
-  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.5);
+  left: calc(var(--ov-firm) - 6px);
+  background: linear-gradient(90deg, rgba(6, 12, 10, 0.55) 0%, rgba(6, 12, 10, 0) 100%);
 }
 
 .ov-row::after {
-  right: calc(var(--ov-price) - 8px);
-  background: linear-gradient(270deg, #0c1612 18%, rgba(12, 22, 18, 0) 100%);
-  box-shadow: 10px 0 20px rgba(0, 0, 0, 0.5);
+  right: calc(var(--ov-price) - 6px);
+  background: linear-gradient(270deg, rgba(6, 12, 10, 0.55) 0%, rgba(6, 12, 10, 0) 100%);
 }
 
-.ov-row--head::before {
-  background: linear-gradient(90deg, #070f0c 18%, rgba(7, 15, 12, 0) 100%);
+.ov-row--head {
+  border-radius: 0;
+  border-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.ov-row--head::before,
 .ov-row--head::after {
-  background: linear-gradient(270deg, #070f0c 18%, rgba(7, 15, 12, 0) 100%);
-}
-
-.ov-row--even::before {
-  background: linear-gradient(90deg, #0a1410 18%, rgba(10, 20, 16, 0) 100%);
-}
-
-.ov-row--even::after {
-  background: linear-gradient(270deg, #0a1410 18%, rgba(10, 20, 16, 0) 100%);
-}
-
-.ov-row:hover::before {
-  background: linear-gradient(90deg, #122018 18%, rgba(18, 32, 24, 0) 100%);
-}
-
-.ov-row:hover::after {
-  background: linear-gradient(270deg, #122018 18%, rgba(18, 32, 24, 0) 100%);
-}
-
-.ov-row:hover .ov-pin-firm {
-  box-shadow:
-    inset -12px 0 20px -10px rgba(0, 0, 0, 0.5),
-    12px 0 28px rgba(0, 0, 0, 0.42),
-    0 0 40px rgba(63, 177, 133, 0.2);
-}
-
-.ov-row:hover .ov-pin-price {
-  box-shadow:
-    inset 12px 0 20px -10px rgba(0, 0, 0, 0.5),
-    -12px 0 28px rgba(0, 0, 0, 0.42),
-    0 0 40px rgba(63, 177, 133, 0.2);
-}
-
-.ov-row--head .ov-pin-firm,
-.ov-row--head .ov-pin-price {
-  box-shadow: none;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  display: none;
 }
 
 @media print {

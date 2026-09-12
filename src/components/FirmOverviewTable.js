@@ -30,40 +30,39 @@ const COLS_KEY = 'cmp-overview-cols-v1';
 const PAGE_SIZE = 12;
 
 const MID_COLS = [
-  { key: 'size', label: 'Size', min: 128 },
-  { key: 'plans', label: 'Plans', min: 132 },
-  { key: 'platforms', label: 'Platforms', min: 176 },
-  { key: 's2f', label: 'Straight to funded', min: 168 },
-  { key: 'evalPrice', label: 'Eval from', min: 140 },
-  { key: 'activation', label: 'Activation fee', min: 168 },
-  { key: 'allIn', label: 'All-in from', min: 140 },
-  { key: 'drawdown', label: 'Drawdown type', min: 176 },
-  { key: 'maxLoss', label: 'Max loss', min: 148 },
-  { key: 'days', label: 'Days to pass', min: 132 },
-  { key: 'news', label: 'News trading', min: 132 },
-  { key: 'split', label: 'Profit split', min: 132 },
-  { key: 'payout', label: 'Payout freq.', min: 168 },
-  { key: 'accounts', label: 'Max funded', min: 124 },
-  { key: 'discount', label: 'Discount', min: 128 },
-  { key: 'description', label: 'Overview', min: 240 },
+  { key: 'size', label: 'Account', label2: 'size', min: 92 },
+  { key: 'plans', label: 'Plans', min: 112 },
+  { key: 'platforms', label: 'Platforms', min: 144 },
+  { key: 's2f', label: 'Straight', label2: 'to funded', min: 108 },
+  { key: 'evalPrice', label: 'Eval', label2: 'from', min: 96 },
+  { key: 'activation', label: 'Activation', label2: 'fee', min: 108 },
+  { key: 'allIn', label: 'All-in', label2: 'from', min: 96 },
+  { key: 'drawdown', label: 'Drawdown', label2: 'type', min: 96 },
+  { key: 'maxLoss', label: 'Max', label2: 'loss', min: 96 },
+  { key: 'days', label: 'Days', label2: 'to pass', min: 96 },
+  { key: 'news', label: 'News', label2: 'trading', min: 96 },
+  { key: 'split', label: 'Profit', label2: 'split', min: 96 },
+  { key: 'payout', label: 'Payout', label2: 'freq.', min: 108 },
+  { key: 'accounts', label: 'Max', label2: 'funded', min: 96 },
+  { key: 'discount', label: 'Discount', min: 108 },
+  { key: 'description', label: 'Overview', min: 200 },
 ];
 
 const ALL_COL_KEYS = MID_COLS.map(c => c.key);
 
 const ROW =
-  'ov-row relative grid items-stretch grid-cols-[360px_minmax(0,1fr)_248px] max-md:grid-cols-[320px_minmax(0,1fr)_200px]';
+  'ov-row relative grid items-stretch grid-cols-[280px_minmax(0,1fr)_216px] max-md:grid-cols-[244px_minmax(0,1fr)_184px]';
 const PIN_FIRM =
-  'ov-pin-firm flex min-w-0 items-center self-stretch border border-[#3FB185]/30 border-r-transparent bg-[#0c1612] rounded-l-2xl';
+  'ov-pin-firm flex min-w-0 items-center self-stretch border-r border-white/[0.06] bg-transparent';
 const PIN_PRICE =
-  'ov-pin-price flex min-w-0 items-center self-stretch border border-[#3FB185]/30 border-l-transparent bg-[#0c1612] rounded-r-2xl';
-const PIN_HEAD =
-  'rounded-none border-transparent border-b border-b-[#3FB185]/20 bg-[#070f0c] py-3 shadow-none';
+  'ov-pin-price flex min-w-0 items-center self-stretch border-l border-white/[0.06] bg-transparent';
+const PIN_HEAD = 'bg-[#070f0c] py-3';
 const MID =
-  'cmp-mid relative flex min-w-0 items-stretch overflow-x-auto overflow-y-hidden scrollbar-none border-y border-[#3FB185]/15 bg-[#0c1612]';
+  'cmp-mid relative flex min-w-0 items-stretch overflow-x-auto overflow-y-hidden scrollbar-none bg-transparent';
 const MID_CELL =
-  'relative box-border flex h-full shrink-0 items-center self-stretch border-r border-slate-400/50 last:border-r-0 px-4 py-3';
+  'relative box-border flex h-full shrink-0 items-center self-stretch border-r border-white/[0.06] last:border-r-0 px-3 py-2.5';
 const TH =
-  'min-h-[52px] flex-col items-start justify-center gap-1 whitespace-nowrap text-left text-[0.68rem] font-semibold uppercase tracking-[0.04em] text-slate-400/90';
+  'min-h-[52px] flex-col items-start justify-center gap-0.5 text-left text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90';
 const CHIP_ON = 'border-[#3FB185]/50 bg-[#3FB185]/15 text-[#3FB185]';
 const CHIP_OFF = 'border-white/10 bg-black/20 text-slate-200 hover:border-emerald-500/35';
 
@@ -93,6 +92,16 @@ function formatMoney(n) {
   const v = Number(n);
   if (!Number.isFinite(v) || v <= 0) return '—';
   return `$${v.toFixed(2)}`;
+}
+
+function HeadLabel({ label, label2 }) {
+  if (!label2) return <span>{label}</span>;
+  return (
+    <span className="flex flex-col items-start leading-[1.15] text-left">
+      <span>{label}</span>
+      <span>{label2}</span>
+    </span>
+  );
 }
 
 function SortArrows({ active, direction }) {
@@ -646,7 +655,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
       case 'activation':
         return (
           <div key={col.key} className={`${wrap} text-slate-300`} style={style}>
-            {row.activationLabel}
+            <span className="line-clamp-2">{row.activationLabel}</span>
           </div>
         );
       case 'allIn':
@@ -659,13 +668,13 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
       case 'drawdown':
         return (
           <div key={col.key} className={wrap} style={style}>
-            {row.drawdownLabel}
+            <span className="line-clamp-2">{row.drawdownLabel}</span>
           </div>
         );
       case 'maxLoss':
         return (
           <div key={col.key} className={wrap} style={style}>
-            {row.maxLossLabel}
+            <span className="line-clamp-2">{row.maxLossLabel}</span>
           </div>
         );
       case 'days':
@@ -689,7 +698,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
       case 'payout':
         return (
           <div key={col.key} className={wrap} style={style}>
-            {row.payoutLabel}
+            <span className="line-clamp-2">{row.payoutLabel}</span>
           </div>
         );
       case 'accounts':
@@ -701,7 +710,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
       case 'discount':
         return (
           <div key={col.key} className={`${wrap} text-[#3FB185]`} style={style}>
-            {row.discountLabel}
+            <span className="line-clamp-2">{row.discountLabel}</span>
           </div>
         );
       case 'description': {
@@ -949,7 +958,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                             })
                           }
                         />
-                        {col.label}
+                        {col.label2 ? `${col.label} ${col.label2}` : col.label}
                       </label>
                     ))}
                   </div>
@@ -966,11 +975,15 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
               <div className={`${MID} ${PIN_HEAD}`} ref={masterMidRef} onScroll={onMidScroll}>
                 <div className="flex h-full w-max items-stretch">
                   {visibleMidCols.map(col => (
-                    <div key={col.key} className={`${MID_CELL} ${TH}`} style={{ flex: `0 0 ${col.min}px`, minWidth: col.min }}>
-                      <span className="inline-flex items-center gap-1">
+                    <div
+                      key={col.key}
+                      className={`${MID_CELL} ${TH} ${col.label2 ? 'whitespace-normal' : 'whitespace-nowrap'}`}
+                      style={{ flex: `0 0 ${col.min}px`, minWidth: col.min }}
+                    >
+                      <span className="inline-flex items-center gap-0.5">
                         <button
                           type="button"
-                          className="btn-bare inline-flex items-center gap-1 uppercase"
+                          className="btn-bare inline-flex items-center gap-0.5 uppercase"
                           onClick={() =>
                             setSort(prev => ({
                               key: col.key === 'evalPrice' || col.key === 'allIn' ? col.key : prev.key,
@@ -978,7 +991,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                             }))
                           }
                         >
-                          {col.label}
+                          <HeadLabel label={col.label} label2={col.label2} />
                           {col.key === 'evalPrice' || col.key === 'allIn' ? (
                             <SortArrows active={sort.key === col.key} direction={sort.dir} />
                           ) : null}
@@ -1004,7 +1017,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                 const showWas = row.fromWas && row.fromPrice && row.fromWas > row.fromPrice;
                 return (
                   <div key={f.name} className={`${ROW} group ${even ? 'ov-row--even' : ''}`} role="row">
-                    <div className={`${PIN_FIRM} ${even ? 'bg-[#0a1410]' : ''} group-hover:bg-[#122018]`} role="cell">
+                    <div className={`${PIN_FIRM}`} role="cell">
                       <div className="flex w-full min-w-0 items-center gap-3.5">
                         <div className="relative shrink-0" style={{ width: 44, height: 44 }}>
                           <div
@@ -1066,12 +1079,12 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                         </button>
                       </div>
                     </div>
-                    <div className={`${MID} ${even ? 'bg-[#0a1410]' : ''} group-hover:bg-[#122018]`} onScroll={onMidScroll}>
+                    <div className={`${MID}`} onScroll={onMidScroll}>
                       <div className="flex h-full min-h-[88px] w-max items-stretch">
                         {visibleMidCols.map(col => renderMid(col, row))}
                       </div>
                     </div>
-                    <div className={`${PIN_PRICE} ${even ? 'bg-[#0a1410]' : ''} group-hover:bg-[#122018]`} role="cell">
+                    <div className={`${PIN_PRICE}`} role="cell">
                       <div className="flex w-full items-center justify-end gap-2.5">
                         <div className="flex min-w-0 flex-col items-end gap-0.5 text-right">
                           <span className="text-[1.05rem] font-extrabold tabular-nums text-white">
