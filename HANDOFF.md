@@ -152,10 +152,9 @@ If Overview looks wrong, fix the **sheet cell** or `compactPayout()` — do not 
 
 **Runtime vs baked data**
 
-- Challenges (`FirmCompareDemoGreen`) currently imports **baked** `@/data/firms`.
-- Overview, directory, H2H use `getRuntimeFirms()` (live `/tmp` catalog if a sheet push ran, else baked `firms.js`).
+All four pages load `getRuntimeFirms()`. Typing in Google Sheets does **not** live-update the site — use **PropFirm Sync → Sync sheet → site now**. That POST hits `SYNC_URL` (currently Vercel, not localhost).
 
-When wiring into PFG, prefer one catalog for all four pages so a sheet sync updates everything.
+On localhost, `scripts/firms-meta.tsv` overlays Rating / Reviews / Max Allocation even if a stale `/tmp` catalog exists. Production keeps the Apps Script push as source of truth. Challenges no longer hard-imports `firms.js`.
 
 ## View firm URLs
 

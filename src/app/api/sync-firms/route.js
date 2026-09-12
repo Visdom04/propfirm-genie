@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import {
   buildFirmsFromTsv,
   isSheetSyncConfigured,
@@ -69,6 +70,11 @@ export async function POST(request) {
       stats: result.stats,
       validation: result.validation,
     });
+
+    revalidatePath('/challenges');
+    revalidatePath('/firms');
+    revalidatePath('/overview');
+    revalidatePath('/compare');
 
     return NextResponse.json({
       ok: true,
