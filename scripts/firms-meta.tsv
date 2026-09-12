@@ -1,10 +1,24 @@
-Firm	Affiliate Link	Last Verified	Verified By	isPopular
-Lucid Trading	https://lucidtrading.com/?ref=KAGE	2026-09-09	Prop Firm Compare	true
-Tradeify	https://tradeify.co/?ref=KAGE	2026-08-28	ops	true
-Apex Trader Funding	https://apextraderfunding.com/?c=KAGE	2026-08-28	ops	true
-My Funded Futures	https://myfundedfutures.com/?ref=KAGE	2026-08-28	ops	true
-Take Profit Trader	https://takeprofittrader.com/?referralCode=KAGE	2026-08-28	ops	false
-FundedNext Futures	https://fundednext.com/?fpr=KAGE	2026-08-28	ops	false
-IQ Capital	https://www.iqcapital.io/	2026-09-09	Prop Firm Compare	false
-Topstep	https://www.topstep.com/	2026-08-25	Prop Firm Compare	false
-Traders Launch	https://traderslaunch.com/	2026-04-20	Prop Firm Compare	false
+Firm	Affiliate Link	Last Verified	Verified By	isPopular	Max Allocation	Rating	Reviews
+Lucid Trading	https://lucidtrading.com/?ref=KAGE	2026-09-09	Prop Firm Compare	true	$750,000	4.7	10000
+Tradeify	https://tradeify.co/?ref=KAGE	2026-08-28	ops	true	$150K	4.7	175
+Apex Trader Funding	https://apextraderfunding.com/?c=KAGE	2026-08-28	ops	true	$150K	3.8	117
+My Funded Futures	https://myfundedfutures.com/?ref=KAGE	2026-08-28	ops	true	$150K	4.5	244
+Take Profit Trader	https://takeprofittrader.com/?referralCode=KAGE	2026-08-28	ops	false	$150K	3.1	18
+FundedNext Futures	https://fundednext.com/?fpr=KAGE	2026-08-28	ops	false	$500K	4.4	75
+IQ Capital	https://www.iqcapital.io/	2026-09-09	Prop Firm Compare	false	$2,000,000	0	0
+Topstep	https://www.topstep.com/	2026-08-25	Prop Firm Compare	false	$750,000	3.4	39
+Traders Launch	https://traderslaunch.com/	2026-04-20	Prop Firm Compare	false	$1,500,000	4.8	7
+Top One Futures				true	$150K	4.7	86
+Purdia				true	$100K	4.5	48
+YRM Prop				false	$150K	0	8
+Bulenox				false	$250K	4.1	175
+Phidias Propfirm				false	$200K	4.2	118
+Legends Trading				false	$750K	4.3	164
+E8 Futures				true	5 Funded	0	0
+Blue Guardian				true	$150K	0	0
+Nexgen ProTrader Funding				false	$150K	4.2	28
+DayTraders				true	$300K	4.3	42
+Funded Futures Network				false	—	0	0
+The Trading Pit				false	—	0	0
+FundedSeat				false	—	0	0
+FTMO				false	—	0	0

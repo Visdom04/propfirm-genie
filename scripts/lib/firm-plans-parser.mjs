@@ -38,6 +38,18 @@ export const EXTENDED_HEADERS = [
   'Price Note',
 ];
 
+/** Firms tab only — do not add Rank / Country / Years / Platforms. */
+export const FIRMS_META_HEADERS = [
+  'Firm',
+  'Affiliate Link',
+  'Last Verified',
+  'Verified By',
+  'isPopular',
+  'Max Allocation',
+  'Rating',
+  'Reviews',
+];
+
 export const ACCOUNT_CATEGORIES = new Set(['Challenge', 'S2F']);
 export const NEWS_TRADING_VALUES = new Set(['both', 'eval', 'none']);
 
@@ -166,6 +178,53 @@ export function computePtDd(profitTarget, maxLoss) {
 function headerIndex(headers) {
   const map = new Map();
   headers.forEach((h, i) => map.set(h.trim(), i));
+  return map;
+}
+
+function parseBoolCell(raw) {
+  const s = String(raw || '').trim();
+  if (/^true$/i.test(s)) return true;
+  if (/^false$/i.test(s)) return false;
+  return undefined;
+}
+
+function parseNumberCell(raw) {
+  const s = String(raw || '')
+    .trim()
+    .replace(/,/g, '');
+  if (!s) return undefined;
+  const n = Number(s);
+  return Number.isFinite(n) ? n : undefined;
+}
+
+/** Header-driven Firms tab. Extra columns are ignored. */
+export function parseFirmsMetaTsv(text) {
+  const lines = String(text || '')
+    .split(/\r?\n/)
+    .filter(l => l.trim());
+  const map = new Map();
+  if (lines.length < 2) return map;
+  const headers = lines[0].split('\t').map(h => h.trim());
+  const idxMap = headerIndex(headers);
+  for (let i = 1; i < lines.length; i += 1) {
+    const cols = lines[i].split('\t');
+    const firm = col(cols, idxMap, 'Firm', 0);
+    if (!firm) continue;
+    const name = FIRM_NAME_MAP[firm] || firm;
+    const isPopular = parseBoolCell(col(cols, idxMap, 'isPopular', 4));
+    const maxAlloc = col(cols, idxMap, 'Max Allocation', 5);
+    const rating = parseNumberCell(col(cols, idxMap, 'Rating', 6));
+    const reviews = parseNumberCell(col(cols, idxMap, 'Reviews', 7));
+    map.set(name, {
+      affiliateLink: col(cols, idxMap, 'Affiliate Link', 1) || undefined,
+      lastVerified: col(cols, idxMap, 'Last Verified', 2) || undefined,
+      verifiedBy: col(cols, idxMap, 'Verified By', 3) || undefined,
+      ...(typeof isPopular === 'boolean' ? { isPopular } : {}),
+      ...(maxAlloc ? { maxAlloc } : {}),
+      ...(typeof rating === 'number' ? { rating } : {}),
+      ...(typeof reviews === 'number' ? { reviews } : {}),
+    });
+  }
   return map;
 }
 

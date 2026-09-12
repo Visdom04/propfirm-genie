@@ -4,9 +4,9 @@ import { firms as staticFirms } from '@/data/firms';
 import { firmLogo } from '@/lib/firmLogos';
 import {
   parseTsv,
+  parseFirmsMetaTsv,
   validateFirmPlans,
   rowToPlan,
-  FIRM_NAME_MAP,
 } from '../../scripts/lib/firm-plans-parser.mjs';
 
 export const FIRMS_SHEET_TAG = 'firms-sheet';
@@ -20,25 +20,18 @@ function withoutHiddenFirms(firms) {
 
 const CATALOG_PATH = path.join('/tmp', 'propfirm-firms-catalog.json');
 
-function parseFirmsMetaTsv(text) {
-  const lines = String(text || '')
-    .split(/\r?\n/)
-    .filter(l => l.trim());
-  const map = new Map();
-  if (lines.length < 2) return map;
-  for (let i = 1; i < lines.length; i += 1) {
-    const cols = lines[i].split('\t');
-    const firm = cols[0]?.trim();
-    if (!firm) continue;
-    const name = FIRM_NAME_MAP[firm] || firm;
-    map.set(name, {
-      affiliateLink: cols[1]?.trim() || undefined,
-      lastVerified: cols[2]?.trim() || undefined,
-      verifiedBy: cols[3]?.trim() || undefined,
-      isPopular: /^true$/i.test(cols[4]?.trim() || ''),
-    });
-  }
-  return map;
+function applyFirmSheetMeta(firm, meta = {}) {
+  if (!meta || !Object.keys(meta).length) return firm;
+  return {
+    ...firm,
+    ...(meta.affiliateLink ? { affiliateLink: meta.affiliateLink } : {}),
+    ...(meta.lastVerified ? { lastVerified: meta.lastVerified } : {}),
+    ...(meta.verifiedBy ? { verifiedBy: meta.verifiedBy } : {}),
+    ...(typeof meta.isPopular === 'boolean' ? { isPopular: meta.isPopular } : {}),
+    ...(meta.maxAlloc ? { maxAlloc: meta.maxAlloc } : {}),
+    ...(typeof meta.rating === 'number' ? { rating: meta.rating } : {}),
+    ...(typeof meta.reviews === 'number' ? { reviews: meta.reviews } : {}),
+  };
 }
 
 function mergeSheetIntoFirms(parsedPlans, metaMap) {
@@ -71,6 +64,9 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
         ...(meta.lastVerified ? { lastVerified: meta.lastVerified } : {}),
         ...(meta.verifiedBy ? { verifiedBy: meta.verifiedBy } : {}),
         ...(typeof meta.isPopular === 'boolean' ? { isPopular: meta.isPopular } : {}),
+        ...(meta.maxAlloc ? { maxAlloc: meta.maxAlloc } : {}),
+        ...(typeof meta.rating === 'number' ? { rating: meta.rating } : {}),
+        ...(typeof meta.reviews === 'number' ? { reviews: meta.reviews } : {}),
         accountSizes: sizes,
         steps,
         priceType: priceTypes,
@@ -104,6 +100,9 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
         allocPct: 0.5,
         isNew: true,
         isPopular: Boolean(meta.isPopular),
+        ...(meta.maxAlloc ? { maxAlloc: meta.maxAlloc } : {}),
+        ...(typeof meta.rating === 'number' ? { rating: meta.rating } : {}),
+        ...(typeof meta.reviews === 'number' ? { reviews: meta.reviews } : {}),
         comingSoon: false,
         plans,
       });
@@ -111,7 +110,7 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
   }
 
   for (const f of staticFirms) {
-    if (!byFirm.has(f.name)) result.push(f);
+    if (!byFirm.has(f.name)) result.push(applyFirmSheetMeta(f, metaMap.get(f.name)));
   }
 
   return result;
@@ -157,9 +156,6 @@ export function saveFirmsCatalog(payload) {
 }
 
 export function readFirmsCatalog() {
-  if (globalThis.__propfirmFirmsCatalog?.firms?.length) {
-    return globalThis.__propfirmFirmsCatalog;
-  }
   try {
     if (fs.existsSync(CATALOG_PATH)) {
       const raw = JSON.parse(fs.readFileSync(CATALOG_PATH, 'utf8'));
@@ -169,6 +165,9 @@ export function readFirmsCatalog() {
   } catch {
     // ignore corrupt cache
   }
+  // Long-lived `next dev` used to keep a process cache after /tmp was gone,
+  // which hid Firms-tab edits (reviews / rating / max allocation).
+  globalThis.__propfirmFirmsCatalog = null;
   return null;
 }
 
@@ -176,15 +175,37 @@ export function isSheetSyncConfigured() {
   return Boolean(process.env.SYNC_SECRET);
 }
 
+function firmsMetaTsvPath() {
+  return path.join(process.cwd(), 'scripts', 'firms-meta.tsv');
+}
+
+function overlayLocalFirmMeta(firms) {
+  try {
+    const file = firmsMetaTsvPath();
+    if (!fs.existsSync(file)) return firms;
+    const metaMap = parseFirmsMetaTsv(fs.readFileSync(file, 'utf8'));
+    if (!metaMap.size) return firms;
+    return firms.map(f => applyFirmSheetMeta(f, metaMap.get(f.name) || {}));
+  } catch {
+    return firms;
+  }
+}
+
 export async function getRuntimeFirms() {
   const live = readFirmsCatalog();
-  if (live?.firms?.length) {
-    return {
-      firms: withoutHiddenFirms(live.firms),
-      source: live.source || 'google-sheet-push',
-      syncedAt: live.syncedAt || null,
-      error: null,
-    };
+  const fromSheetPush = Boolean(live?.firms?.length);
+  let firms = fromSheetPush ? live.firms : staticFirms;
+  // Dev: overlay scripts/firms-meta.tsv so Rating/Reviews/Max Allocation
+  // show even if a stale Apps Script catalog is sitting in /tmp.
+  // Production: the Google push is source of truth — do not let the last
+  // git TSV overwrite a successful sync.
+  if (!fromSheetPush || process.env.NODE_ENV !== 'production') {
+    firms = overlayLocalFirmMeta(firms);
   }
-  return { firms: withoutHiddenFirms(staticFirms), source: 'static', syncedAt: null, error: null };
+  return {
+    firms: withoutHiddenFirms(firms),
+    source: fromSheetPush ? live.source || 'google-sheet-push' : 'static',
+    syncedAt: live?.syncedAt || null,
+    error: null,
+  };
 }

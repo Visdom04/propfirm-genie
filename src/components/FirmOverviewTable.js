@@ -717,7 +717,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
   const activeFilterCount = countActiveFilters(facet, bounds);
   const draftFilterCount = countActiveFilters(draft, bounds);
   const h2hHref =
-    spotA && spotB ? `/compare-firms?a=${slugify(spotA)}&b=${slugify(spotB)}` : null;
+    spotA && spotB ? `/compare?a=${slugify(spotA)}&b=${slugify(spotB)}` : null;
 
   const renderMid = (col, row) => {
     const style = { flex: `0 0 ${col.min}px`, minWidth: col.min };
@@ -1174,7 +1174,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                                 </span>
                                 <RatingStars rating={f.rating} idPrefix={`ov-${slugify(f.name)}`} />
                                 <span className="shrink-0 text-[0.72rem] font-bold tabular-nums text-[#3FB185]">
-                                  [{f.reviews}]
+                                  [{Number(f.reviews).toLocaleString('en-US')}]
                                 </span>
                               </>
                             )}

@@ -2,21 +2,30 @@ import { NextResponse } from 'next/server';
 import { updateSession } from '@/lib/supabase/update-session';
 
 /** Public product pages. Everything else is hidden from the live site. */
-const LIVE = ['/challenges', '/demo-4', '/compare-firms', '/compare-page-2'];
+const LIVE = ['/challenges', '/firms', '/overview', '/compare'];
 const ALLOW_PREFIX = ['/api/', '/auth/', '/login', '/account'];
+const LEGACY = {
+  '/': '/challenges',
+  '/demo-2': '/challenges',
+  '/demo-4': '/firms',
+  '/compare-page-2': '/overview',
+  '/compare-firms': '/compare',
+};
 
 function isAllowed(pathname) {
   if (pathname === '/_not-found' || pathname === '/not-found') return true;
+  if (pathname === '/api' || pathname.startsWith('/api/')) return true;
   if (LIVE.some(p => pathname === p || pathname.startsWith(`${p}/`))) return true;
   return ALLOW_PREFIX.some(p => pathname === p || pathname.startsWith(`${p}/`));
 }
 
 export async function proxy(request) {
   const { pathname } = request.nextUrl;
+  const dest = LEGACY[pathname];
 
-  if (pathname === '/' || pathname === '/demo-2') {
+  if (dest) {
     const url = request.nextUrl.clone();
-    url.pathname = '/challenges';
+    url.pathname = dest;
     return NextResponse.redirect(url);
   }
 

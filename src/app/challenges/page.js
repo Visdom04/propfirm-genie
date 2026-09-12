@@ -1,11 +1,15 @@
 import DemoHeroGreen from '@/components/DemoHeroGreen';
+import { getRuntimeFirms } from '@/lib/firmPlansSheet';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'DEGENIE — Compare Prop Challenges & Earn Exclusive Rewards',
+  title: 'Compare Prop Challenges',
   description:
-    'Compare prop trading challenges by size, steps, and price. See rules, drawdown, and KAGE pricing in one table.',
+    'Filter by size, steps, and price — rules, drawdown, and KAGE pricing in one table.',
 };
 
-export default function ChallengesPage() {
-  return <DemoHeroGreen />;
+export default async function ChallengesPage() {
+  const { firms } = await getRuntimeFirms();
+  return <DemoHeroGreen firms={firms} />;
 }

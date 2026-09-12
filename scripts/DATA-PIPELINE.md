@@ -37,7 +37,7 @@ Create **two tabs**:
 | Price | `$55` or `$199 (monthly)` | Optional if List Price + Discount % are both set. The **dollar amount is ignored** when those two are filled — the site computes sale. Keep `(monthly)` in this cell for monthly plans. Fallback sale if list/% are blank. |
 | Promo CODE | KAGE | Default KAGE |
 
-**Extended columns (required for accurate `/compare-firms` highlights):**
+**Extended columns (required for accurate `/compare` highlights):**
 
 | Column | Example | Rules |
 |--------|---------|-------|
@@ -80,6 +80,13 @@ npm run sync:firms            # optional: bake into firms.js
 | Last Verified | 2026-08-28 |
 | Verified By | ops |
 | isPopular | true |
+| Max Allocation | $150K |
+| Rating | 4.7 |
+| Reviews | 323 |
+
+Do **not** add Rank, Country, Years, or Platforms to this tab. Apps Script pushes the whole Firms sheet as TSV. Those fields stay in `src/data/firms.js`.
+
+**Rating** is 0–5 (one decimal is fine). **Reviews** is the count only (`323`, not `323 reviews`). Blank cell = leave the last known value. `0` is a real value (shows as no reviews).
 
 ## Weekly ops workflow
 
@@ -94,7 +101,7 @@ npm run validate:firms
 npm run sync:firms
 ```
 
-6. Smoke check `/challenges`, `/compare-page-2`, `/demo-4`, and `/compare-firms` for 2–3 known firms.
+6. Smoke check `/challenges`, `/overview`, `/firms`, and `/compare` for 2–3 known firms.
 
 ## What “robust” means here
 
