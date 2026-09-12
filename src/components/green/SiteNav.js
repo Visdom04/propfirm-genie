@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { GENIE_LOGO } from '@/lib/firmLogos';
 
 const LINKS = [
-  { href: '/demo-2', label: 'Challenges' },
+  { href: '/challenges', label: 'Challenges' },
   { href: '/demo-4', label: 'Firms' },
   { href: '/compare-page-2', label: 'Overview' },
   { href: '/compare-firms', label: 'Head to head' },
@@ -19,7 +19,7 @@ export default function SiteNav() {
       aria-label="Site"
     >
       <div className="mx-auto flex w-full max-w-[1440px] items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/demo-2" className="mr-3 flex h-8 shrink-0 items-center no-underline" aria-label="Prop Firm Genie home">
+        <Link href="/challenges" className="mr-3 flex h-8 shrink-0 items-center no-underline" aria-label="Prop Firm Genie home">
           <img
             src={GENIE_LOGO}
             alt=""

@@ -1,5 +1,7 @@
 # Firm data pipeline (Google Sheet → site)
 
+Four-page product + agent instructions: see repo-root [`HANDOFF.md`](../HANDOFF.md).
+
 This repo treats **the sheet as source of truth** for plan economics. The site reads generated `src/data/firms.js` — never edit plan rows in `firms.js` by hand.
 
 ## Files
@@ -92,7 +94,7 @@ npm run validate:firms
 npm run sync:firms
 ```
 
-6. Smoke check `/demo-2` and `/compare-firms` for 2–3 known pairs.
+6. Smoke check `/challenges`, `/compare-page-2`, `/demo-4`, and `/compare-firms` for 2–3 known firms.
 
 ## What “robust” means here
 

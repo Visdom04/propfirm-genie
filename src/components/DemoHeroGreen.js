@@ -4,7 +4,7 @@ import FirmCompareDemoGreen from '@/components/FirmCompareDemoGreen';
 import GreenPageShell from '@/components/green/GreenPageShell';
 import { FocusWord } from '@/components/green/PfgControls';
 
-/** Digi Green demo-2 — compare table only */
+/** Digi Green challenges table */
 export default function DemoHero() {
   return (
     <GreenPageShell>
@@ -19,10 +19,10 @@ export default function DemoHero() {
             className="mb-4 text-[clamp(1.85rem,4.4vw,3rem)] font-bold leading-[1.12] tracking-tight text-white"
           >
             Compare Prop
-            <FocusWord>Firms</FocusWord>
+            <FocusWord>Challenges</FocusWord>
           </h1>
           <p className="mx-auto m-0 max-w-xl text-[15px] leading-relaxed text-white/70">
-            Filter challenges by size, steps, and price — rules, drawdown, and promos in one table.
+            Filter by size, steps, and price — rules, drawdown, and KAGE pricing in one table.
           </p>
         </header>
         <FirmCompareDemoGreen />

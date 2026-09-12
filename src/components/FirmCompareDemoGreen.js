@@ -178,7 +178,7 @@ const PIN_FIRM =
   'cmp-edge-pin-firm flex min-w-0 items-center self-stretch bg-transparent';
 const PIN_PRICE =
   'cmp-edge-pin-price flex min-w-0 items-center self-stretch bg-transparent';
-const PIN_HEAD = 'cmp-edge-head bg-[#080c0a] py-3';
+const PIN_HEAD = 'cmp-edge-head py-3';
 const MID =
   'cmp-mid relative min-w-0 overflow-x-auto overflow-y-hidden scrollbar-none bg-transparent';
 const MID_CELL =
@@ -1505,7 +1505,7 @@ export default function FirmCompareDemo() {
             </div>
 
             <div
-              className="cmp-edge-board relative z-[1] mt-0 flex w-full min-w-0 flex-col overflow-hidden rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]/80"
+              className="cmp-edge-board relative z-[1] mt-0 flex w-full min-w-0 flex-col overflow-hidden rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]"
               ref={boardRef}
               role="table"
               aria-label="Compare prop firm challenges: size, drawdown, contracts, payouts, and price"

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { updateSession } from '@/lib/supabase/update-session';
 
 /** Public product pages. Everything else is hidden from the live site. */
-const LIVE = ['/demo-2', '/demo-4', '/compare-firms', '/compare-page-2'];
+const LIVE = ['/challenges', '/demo-4', '/compare-firms', '/compare-page-2'];
 const ALLOW_PREFIX = ['/api/', '/auth/', '/login', '/account'];
 
 function isAllowed(pathname) {
@@ -14,9 +14,9 @@ function isAllowed(pathname) {
 export async function proxy(request) {
   const { pathname } = request.nextUrl;
 
-  if (pathname === '/') {
+  if (pathname === '/' || pathname === '/demo-2') {
     const url = request.nextUrl.clone();
-    url.pathname = '/demo-2';
+    url.pathname = '/challenges';
     return NextResponse.redirect(url);
   }
 

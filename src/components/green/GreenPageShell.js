@@ -11,7 +11,7 @@ export default function GreenPageShell({ children, className = '' }) {
       />
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-0 bg-[linear-gradient(90deg,rgba(5,6,15,0.92)_0%,rgba(5,6,15,0.25)_14%,transparent_32%,transparent_68%,rgba(5,6,15,0.25)_86%,rgba(5,6,15,0.92)_100%),radial-gradient(ellipse_115%_95%_at_50%_48%,transparent_32%,rgba(5,6,15,0.55)_72%,rgba(5,6,15,0.92)_100%)]"
+        className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_115%_95%_at_50%_48%,transparent_48%,rgba(5,6,15,0.28)_82%,rgba(5,6,15,0.55)_100%)]"
       />
       <div
         aria-hidden

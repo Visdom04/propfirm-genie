@@ -1,4 +1,5 @@
 import { categoryBucket, newsLabel, parseMoney, discountBadge } from '@/lib/compareHighlights';
+import { genieFirmUrl } from '@/lib/firmGenie';
 import { displayPriceOf, listPriceOf as listPrice, salePriceOf } from '@/lib/planPrice';
 
 function uniq(list) {
@@ -36,13 +37,33 @@ function salePrice(plan, applyDiscount) {
   return displayPriceOf(plan, applyDiscount);
 }
 
+/**
+ * Overview shows cadence, not every plan’s size-specific dollar note.
+ * Sheet column is `Payout Freq.` — Challenges still shows the raw cell.
+ */
 function compactPayout(raw) {
   const s = String(raw || '').trim();
   if (!s) return '';
-  if (/every\s*1\s*day|daily/i.test(s)) return 'Daily';
-  const m = s.match(/every\s+(\d+)\s*days?/i);
-  if (m) return `Every ${m[1]} days`;
-  if (s.length > 42) return `${s.slice(0, 38).trim()}…`;
+  if (/not\s*fixed/i.test(s)) return 'Not fixed';
+  if (/on[- ]?demand/i.test(s)) return 'On-demand';
+  if (/on\s*request/i.test(s)) return 'On request';
+  if (/live after bonus/i.test(s)) return 'Live after bonus';
+  if (/daily/i.test(s) || /every\s*1\s*day/i.test(s)) return 'Daily';
+  const every = s.match(/every\s+(\d+)\s*(?:calendar\s+)?days?/i);
+  if (every) return `Every ${every[1]} days`;
+  const winning = s.match(/(\d+)\s*winning\s*days/i);
+  if (winning) return `${winning[1]} winning days`;
+  const trading = s.match(/(\d+)\s*trading\s*days/i);
+  if (trading) return `${trading[1]} trading days`;
+  if (/weekly/i.test(s)) {
+    const n = s.match(/(\d+)\s*days?/i);
+    return n ? `${n[1]} days (weekly)` : 'Weekly';
+  }
+  const hours = s.match(/every\s+(\d+)\s*hours?/i);
+  if (hours) return `Every ${hours[1]} hours`;
+  if (/\b24h\b/i.test(s)) return '24h after first trade';
+  const days = s.match(/(\d+)\s*days?/i);
+  if (days) return `${days[1]} days`;
   return s;
 }
 
@@ -93,12 +114,53 @@ export function summarizeFirm(firm, { applyDiscount = true } = {}) {
     plans.map(p => (typeof p.profitSplit === 'number' ? `${p.profitSplit}%` : null))
   );
   const drawdowns = uniq(plans.map(p => p.maxLossType));
-  const activations = uniq(plans.map(p => (p.activationFee && p.activationFee !== 'None' ? p.activationFee : 'None')));
   const payouts = uniq(plans.map(p => compactPayout(p.payoutFreq))).filter(Boolean);
   const minDays = plans.map(p => p.minTradingDays).filter(d => d != null);
   const maxLosses = plans.map(p => parseMoney(p.maxLoss)).filter(n => n != null);
   const types = uniq(plans.map(p => p.planType));
   const badge = discountBadge(firm, cheapest);
+
+  const planGroups = [];
+  {
+    const byType = new Map();
+    for (const p of plans) {
+      const type = p.planType || 'Plan';
+      if (!byType.has(type)) byType.set(type, []);
+      byType.get(type).push(p.accountSize);
+    }
+    for (const [type, sizes] of byType) {
+      planGroups.push({
+        type,
+        sizes: uniq(sizes).sort((a, b) => sizeRank(a) - sizeRank(b)),
+      });
+    }
+  }
+
+  const activationGroups = [];
+  {
+    const byFee = new Map();
+    for (const p of plans) {
+      const fee = p.activationFee && p.activationFee !== 'None' ? p.activationFee : 'None';
+      if (!byFee.has(fee)) byFee.set(fee, []);
+      byFee.get(fee).push(`${p.planType || 'Plan'} · ${p.accountSize}`);
+    }
+    for (const [fee, lines] of byFee) {
+      activationGroups.push({ fee, lines: uniq(lines) });
+    }
+  }
+
+  const paidFees = activationGroups.filter(g => g.fee !== 'None');
+  const paidAmounts = paidFees.map(g => parseMoney(g.fee)).filter(n => n != null);
+  let activationSummary = '—';
+  if (!activationGroups.length) activationSummary = '—';
+  else if (!paidFees.length) activationSummary = 'None';
+  else if (paidFees.length === 1) {
+    const fee = paidFees[0].fee;
+    const n = parseMoney(fee);
+    activationSummary = n != null && /[a-z]/i.test(fee) ? moneyLabel(n) : fee;
+  }
+  else if (paidAmounts.length >= 2) activationSummary = rangeLabel(paidAmounts);
+  else activationSummary = 'Varies';
 
   return {
     firm,
@@ -108,16 +170,13 @@ export function summarizeFirm(firm, { applyDiscount = true } = {}) {
     sizes,
     platforms: firm.platforms || [],
     types,
+    planGroups,
     straightToFunded: s2f.length > 0,
     evalPrice,
     evalWas,
     evalPlan,
-    activationLabel:
-      !activations.length || activations.every(v => v === 'None')
-        ? 'None'
-        : activations.length === 1
-          ? activations[0]
-          : 'Varies',
+    activationLabel: activationSummary,
+    activationGroups,
     allIn,
     allInNote: act == null && evalPrice != null ? 'Eval only' : null,
     drawdownLabel: drawdowns.length ? drawdowns.join(' · ') : '—',
@@ -126,12 +185,13 @@ export function summarizeFirm(firm, { applyDiscount = true } = {}) {
     news,
     maxAccounts: firm.maxAccounts || '—',
     profitSplit: splits.length ? splits.join(' · ') : '—',
-    payoutLabel: payouts.length ? payouts.slice(0, 2).join(' · ') : '—',
+    payoutLabel: payouts.length ? payouts.join(' · ') : '—',
     discountLabel: badge ? `${badge.replace('-', '')} OFF` : firm.discount || '—',
     cheapest,
     fromPrice: cheapest ? salePrice(cheapest, applyDiscount) : null,
     fromWas: cheapest ? listPrice(cheapest) : null,
     promoCode: cheapest?.promoCode || firm.promoCode || 'KAGE',
     website: firm.affiliateLink || (firm.website ? `https://${String(firm.website).replace(/^https?:\/\//, '')}` : ''),
+    genieUrl: genieFirmUrl(firm.name),
   };
 }

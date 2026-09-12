@@ -13,9 +13,13 @@
   }
 }
 
+.cmp-edge-board .cmp-mid {
+  background: transparent;
+  border: none;
+}
+
 .cmp-edge-row {
   position: relative;
-  isolation: isolate;
   border: 1px solid transparent;
 }
 
@@ -36,8 +40,8 @@
 .cmp-edge-pin-firm,
 .cmp-edge-pin-price {
   position: relative;
-  z-index: 6;
   box-sizing: border-box;
+  box-shadow: none;
 }
 
 .cmp-edge-pin-firm {
@@ -48,36 +52,10 @@
   padding: 12px 16px 12px 12px;
 }
 
-.cmp-edge-row::before,
-.cmp-edge-row::after {
-  content: '';
-  position: absolute;
-  top: 8px;
-  bottom: 8px;
-  width: 10px;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.cmp-edge-row::before {
-  left: calc(var(--cmp-firm) - 6px);
-  background: linear-gradient(90deg, rgba(6, 12, 10, 0.55) 0%, rgba(6, 12, 10, 0) 100%);
-}
-
-.cmp-edge-row::after {
-  right: calc(var(--cmp-price) - 6px);
-  background: linear-gradient(270deg, rgba(6, 12, 10, 0.55) 0%, rgba(6, 12, 10, 0) 100%);
-}
-
 .cmp-edge-row--head {
   border-radius: 0;
   border-color: transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.cmp-edge-row--head::before,
-.cmp-edge-row--head::after {
-  display: none;
 }
 
 .cmp-edge-head {

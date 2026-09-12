@@ -31,36 +31,37 @@ const PAGE_SIZE = 12;
 
 const MID_COLS = [
   { key: 'size', label: 'Account', label2: 'size', min: 92 },
-  { key: 'plans', label: 'Plans', min: 112 },
-  { key: 'platforms', label: 'Platforms', min: 144 },
+  { key: 'plans', label: 'Plans', min: 128 },
+  { key: 'platforms', label: 'Platforms', min: 160 },
   { key: 's2f', label: 'Straight', label2: 'to funded', min: 108 },
   { key: 'evalPrice', label: 'Eval', label2: 'from', min: 96 },
-  { key: 'activation', label: 'Activation', label2: 'fee', min: 108 },
+  { key: 'activation', label: 'Activation', label2: 'fee', min: 128 },
   { key: 'allIn', label: 'All-in', label2: 'from', min: 96 },
-  { key: 'drawdown', label: 'Drawdown', label2: 'type', min: 96 },
+  { key: 'drawdown', label: 'Drawdown', label2: 'type', min: 168 },
   { key: 'maxLoss', label: 'Max', label2: 'loss', min: 96 },
   { key: 'days', label: 'Days', label2: 'to pass', min: 96 },
   { key: 'news', label: 'News', label2: 'trading', min: 96 },
   { key: 'split', label: 'Profit', label2: 'split', min: 96 },
-  { key: 'payout', label: 'Payout', label2: 'freq.', min: 108 },
+  { key: 'payout', label: 'Payout', label2: 'freq.', min: 168 },
   { key: 'accounts', label: 'Max', label2: 'funded', min: 96 },
-  { key: 'discount', label: 'Discount', min: 108 },
+  { key: 'discount', label: 'Discount', min: 168 },
   { key: 'description', label: 'Overview', min: 200 },
 ];
 
 const ALL_COL_KEYS = MID_COLS.map(c => c.key);
 
 const ROW =
-  'ov-row relative grid items-stretch grid-cols-[280px_minmax(0,1fr)_216px] max-md:grid-cols-[244px_minmax(0,1fr)_184px]';
+  'ov-row relative grid items-stretch grid-cols-[280px_minmax(0,1fr)_168px] max-md:grid-cols-[244px_minmax(0,1fr)_148px]';
 const PIN_FIRM =
   'ov-pin-firm flex min-w-0 items-center self-stretch border-r border-white/[0.06] bg-transparent';
-const PIN_PRICE =
-  'ov-pin-price flex min-w-0 items-center self-stretch border-l border-white/[0.06] bg-transparent';
-const PIN_HEAD = 'bg-[#070f0c] py-3';
+const PIN_ACTION =
+  'ov-pin-price flex min-w-0 items-center justify-end self-stretch border-l border-white/[0.06] bg-transparent px-3';
+const PIN_HEAD = 'py-3';
 const MID =
   'cmp-mid relative flex min-w-0 items-stretch overflow-x-auto overflow-y-hidden scrollbar-none bg-transparent';
-const MID_CELL =
-  'relative box-border flex h-full shrink-0 items-center self-stretch border-r border-white/[0.06] last:border-r-0 px-3 py-2.5';
+const MID_CELL_BASE =
+  'relative box-border flex h-full shrink-0 self-stretch border-r border-white/[0.06] last:border-r-0 px-3 py-2.5';
+const MID_CELL = `${MID_CELL_BASE} items-center justify-center`;
 const TH =
   'min-h-[52px] flex-col items-start justify-center gap-0.5 text-left text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90';
 const CHIP_ON = 'border-[#3FB185]/50 bg-[#3FB185]/15 text-[#3FB185]';
@@ -71,18 +72,18 @@ const STAR_PATH =
 
 const INFO = {
   size: 'Account sizes this firm offers, from smallest to largest.',
-  plans: 'Challenge and straight-to-funded paths on the books.',
+  plans: 'Plan count in the cell. Open the row’s i button for every account type and size.',
   platforms: 'Trading platforms this firm supports.',
   s2f: 'Whether the firm sells a skip-the-eval / instant funded path.',
   evalPrice: 'Lowest evaluation price after the KAGE promo, when discounts are on.',
-  activation: 'Activation fee on the cheapest eval path. Varies when plans differ.',
+  activation: 'Compact fee in the cell (None, one fee, or a range). Open the row’s i button for every plan.',
   allIn: 'Cheapest eval plus that path’s activation fee, when the fee is a number.',
   drawdown: 'Drawdown styles across this firm’s plans.',
   maxLoss: 'Max loss range across account sizes.',
   days: 'Minimum trading days required to pass, if the firm sets one.',
   news: 'News trading: allowed, not allowed, or mixed by plan.',
   split: 'Trader profit split across plans.',
-  payout: 'How often funded payouts can be requested.',
+  payout: 'Cadence from the sheet Payout Freq. column, rolled up across plans (not size-by-size dollar notes).',
   accounts: 'Maximum funded accounts per trader.',
   discount: 'Current advertised offer with KAGE.',
   description: 'Short firm summary. Expand for the full blurb.',
@@ -114,6 +115,131 @@ function SortArrows({ active, direction }) {
         <path d="M3.5 10L0.5 6H6.5L3.5 10Z" fill="currentColor" opacity={downStrong ? 1 : 0.3} />
       </svg>
     </span>
+  );
+}
+
+function CellTip({ label, children }) {
+  const tipId = useId();
+  const btnRef = useRef(null);
+  const panelRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const [pos, setPos] = useState({ top: 0, left: 0, place: 'below' });
+
+  const placeTip = useCallback(() => {
+    const el = btnRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const place = r.bottom + 280 > window.innerHeight && r.top > 160 ? 'above' : 'below';
+    setPos({
+      top: place === 'above' ? r.top - 8 : r.bottom + 8,
+      left: Math.min(Math.max(r.left + r.width / 2, 160), window.innerWidth - 160),
+      place,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    placeTip();
+    const onDoc = event => {
+      const t = event.target;
+      if (btnRef.current?.contains(t) || panelRef.current?.contains(t)) return;
+      setOpen(false);
+    };
+    const onKey = event => {
+      if (event.key === 'Escape') setOpen(false);
+    };
+    const onReposition = () => placeTip();
+    document.addEventListener('mousedown', onDoc);
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('scroll', onReposition, true);
+    window.addEventListener('resize', onReposition);
+    return () => {
+      document.removeEventListener('mousedown', onDoc);
+      document.removeEventListener('keydown', onKey);
+      window.removeEventListener('scroll', onReposition, true);
+      window.removeEventListener('resize', onReposition);
+    };
+  }, [open, placeTip]);
+
+  if (!children) return null;
+
+  return (
+    <span className="relative inline-flex shrink-0 items-center">
+      <button
+        ref={btnRef}
+        type="button"
+        className={`btn-bare inline-flex size-5 items-center justify-center rounded-full ${
+          open ? 'bg-[#3FB185]/20 text-[#3FB185]' : 'text-slate-400 hover:bg-[#3FB185]/15 hover:text-[#3FB185]'
+        }`}
+        aria-label={label}
+        aria-expanded={open}
+        aria-controls={open ? tipId : undefined}
+        onClick={event => {
+          event.stopPropagation();
+          setOpen(v => !v);
+        }}
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M12 10.5v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <circle cx="12" cy="7.5" r="1" fill="currentColor" />
+        </svg>
+      </button>
+      {open
+        ? createPortal(
+            <div
+              ref={panelRef}
+              id={tipId}
+              role="dialog"
+              aria-label={label}
+              className={`fixed z-[10050] w-[min(320px,86vw)] max-h-[min(280px,70vh)] overflow-y-auto rounded-[12px] border border-[#3FB185]/35 bg-[#0c1612] px-3.5 py-3 text-left shadow-[0_18px_40px_rgba(0,0,0,0.55)] ${
+                pos.place === 'above' ? '-translate-x-1/2 -translate-y-full' : '-translate-x-1/2'
+              }`}
+              style={{ top: pos.top, left: pos.left }}
+            >
+              <p className="m-0 mb-2 text-[0.62rem] font-bold uppercase tracking-[0.08em] text-[#3FB185]/85">{label}</p>
+              {children}
+            </div>,
+            document.body
+          )
+        : null}
+    </span>
+  );
+}
+
+function PlanTip({ groups }) {
+  if (!groups?.length) return null;
+  return (
+    <CellTip label="Plan types">
+      <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
+        {groups.map(g => (
+          <li key={g.type}>
+            <p className="m-0 text-[0.8rem] font-bold leading-snug text-white">{g.type}</p>
+            <p className="m-0 mt-0.5 text-[0.72rem] font-medium leading-snug text-slate-400">
+              {g.sizes.join(' · ')}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </CellTip>
+  );
+}
+
+function ActivationTip({ groups }) {
+  if (!groups?.length) return null;
+  return (
+    <CellTip label="Activation fees">
+      <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
+        {groups.map(g => (
+          <li key={g.fee}>
+            <p className="m-0 text-[0.8rem] font-bold leading-snug text-white">{g.fee}</p>
+            <p className="m-0 mt-0.5 text-[0.72rem] font-medium leading-snug text-slate-400">
+              {g.lines.join(' · ')}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </CellTip>
   );
 }
 
@@ -228,15 +354,6 @@ function ToolbarIcon({ name }) {
       </svg>
     );
   }
-  if (name === 'print') {
-    return (
-      <svg {...s}>
-        <path d="M7 8V3h10v5" stroke="currentColor" strokeWidth="1.65" strokeLinejoin="round" />
-        <path d="M7 17H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" stroke="currentColor" strokeWidth="1.65" strokeLinejoin="round" />
-        <rect x="7" y="13" width="10" height="8" rx="1.2" stroke="currentColor" strokeWidth="1.65" />
-      </svg>
-    );
-  }
   return (
     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
       <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -249,7 +366,7 @@ function PlatformMarks({ names }) {
   if (!list.length) return <span className="text-slate-500">—</span>;
   return (
     <div className="flex flex-wrap items-center gap-1">
-      {list.slice(0, 4).map(name => {
+      {list.map(name => {
         const src = platformLogo(name);
         const mark = PLATFORM_MARK[name] || { abbr: name.slice(0, 2).toUpperCase(), tone: 'bg-[#1a2e24]' };
         return src ? (
@@ -272,9 +389,6 @@ function PlatformMarks({ names }) {
           </span>
         );
       })}
-      {list.length > 4 ? (
-        <span className="text-[0.68rem] font-bold text-white/50">+{list.length - 4}</span>
-      ) : null}
     </div>
   );
 }
@@ -607,7 +721,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
 
   const renderMid = (col, row) => {
     const style = { flex: `0 0 ${col.min}px`, minWidth: col.min };
-    const wrap = `${MID_CELL} min-h-[88px] text-[0.82rem] font-bold leading-snug text-slate-50`;
+    const wrap = `${MID_CELL_BASE} min-h-[88px] items-start justify-start text-left text-[0.82rem] font-bold leading-snug text-slate-50`;
     switch (col.key) {
       case 'size':
         return (
@@ -617,16 +731,17 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         );
       case 'plans':
         return (
-          <div key={col.key} className={`${wrap} flex-col items-start justify-center gap-0.5 px-2`} style={style}>
+          <div
+            key={col.key}
+            className={`${MID_CELL_BASE} min-h-[88px] items-center justify-start gap-1.5 text-left text-[0.82rem] font-bold leading-snug text-slate-50`}
+            style={style}
+          >
             {row.comingSoon ? (
               <span className="text-slate-500">Coming soon</span>
             ) : (
               <>
                 <span className="text-[#3FB185]">{row.planCount} plans</span>
-                <span className="line-clamp-2 font-semibold leading-snug text-slate-400">
-                  {row.types.slice(0, 3).join(' · ')}
-                  {row.types.length > 3 ? '…' : ''}
-                </span>
+                <PlanTip groups={row.planGroups} />
               </>
             )}
           </div>
@@ -654,8 +769,13 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         );
       case 'activation':
         return (
-          <div key={col.key} className={`${wrap} text-slate-300`} style={style}>
-            <span className="line-clamp-2">{row.activationLabel}</span>
+          <div
+            key={col.key}
+            className={`${MID_CELL_BASE} min-h-[88px] items-center justify-start gap-1.5 text-left text-[0.82rem] font-bold leading-snug text-slate-300`}
+            style={style}
+          >
+            <span className="min-w-0 truncate">{row.activationLabel}</span>
+            {row.comingSoon ? null : <ActivationTip groups={row.activationGroups} />}
           </div>
         );
       case 'allIn':
@@ -668,13 +788,13 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
       case 'drawdown':
         return (
           <div key={col.key} className={wrap} style={style}>
-            <span className="line-clamp-2">{row.drawdownLabel}</span>
+            <span className="whitespace-normal break-words text-left">{row.drawdownLabel}</span>
           </div>
         );
       case 'maxLoss':
         return (
           <div key={col.key} className={wrap} style={style}>
-            <span className="line-clamp-2">{row.maxLossLabel}</span>
+            <span className="whitespace-normal break-words text-left">{row.maxLossLabel}</span>
           </div>
         );
       case 'days':
@@ -698,7 +818,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
       case 'payout':
         return (
           <div key={col.key} className={wrap} style={style}>
-            <span className="line-clamp-2">{row.payoutLabel}</span>
+            <span className="whitespace-normal break-words text-left">{row.payoutLabel}</span>
           </div>
         );
       case 'accounts':
@@ -710,7 +830,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
       case 'discount':
         return (
           <div key={col.key} className={`${wrap} text-[#3FB185]`} style={style}>
-            <span className="line-clamp-2">{row.discountLabel}</span>
+            <span className="whitespace-normal break-words text-left">{row.discountLabel}</span>
           </div>
         );
       case 'description': {
@@ -871,14 +991,6 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
               <p className="m-0 shrink-0 text-[0.92rem] font-semibold text-[#3FB185]">
                 {sorted.length.toLocaleString('en-US')} firms
               </p>
-              <button
-                type="button"
-                className="btn-bare grid size-10 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/5 text-white/80 hover:border-[#3FB185]/45 hover:text-[#3FB185]"
-                onClick={() => window.print()}
-                aria-label="Print firm overview"
-              >
-                <ToolbarIcon name="print" />
-              </button>
               <label className="ml-auto flex h-10 w-[min(100%,220px)] min-w-[160px] items-center gap-2 rounded-xl border border-white/10 bg-black/30 px-3 focus-within:border-[#3FB185]/45">
                 <input
                   type="text"
@@ -908,7 +1020,6 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                       ['rating', 'Rating'],
                       ['evalPrice', 'Eval price'],
                       ['allIn', 'All-in cost'],
-                      ['fromPrice', 'From price'],
                     ].map(([key, label]) => (
                       <button
                         key={key}
@@ -967,7 +1078,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
             </div>
           </div>
 
-          <div ref={boardRef} className="ov-board overflow-hidden rounded-b-2xl border border-t-0 border-white/10 bg-[#070f0c]">
+          <div ref={boardRef} className="ov-board overflow-hidden rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]">
             <div className={`${ROW} ov-row--head sticky top-0 z-[2]`} role="row">
               <div className={`${PIN_FIRM} ${PIN_HEAD}`} role="columnheader">
                 Firm
@@ -1002,8 +1113,11 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                   ))}
                 </div>
               </div>
-              <div className={`${PIN_PRICE} ${PIN_HEAD}`} role="columnheader">
-                Price
+              <div
+                className={`${PIN_ACTION} ${PIN_HEAD} text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90`}
+                role="columnheader"
+              >
+                View firm
               </div>
             </div>
 
@@ -1014,7 +1128,6 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                 const f = row.firm;
                 const even = i % 2 === 1;
                 const logoSrc = firmLogo(f.name, f.logo);
-                const showWas = row.fromWas && row.fromPrice && row.fromWas > row.fromPrice;
                 return (
                   <div key={f.name} className={`${ROW} group ${even ? 'ov-row--even' : ''}`} role="row">
                     <div className={`${PIN_FIRM}`} role="cell">
@@ -1084,29 +1197,22 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                         {visibleMidCols.map(col => renderMid(col, row))}
                       </div>
                     </div>
-                    <div className={`${PIN_PRICE}`} role="cell">
-                      <div className="flex w-full items-center justify-end gap-2.5">
-                        <div className="flex min-w-0 flex-col items-end gap-0.5 text-right">
-                          <span className="text-[1.05rem] font-extrabold tabular-nums text-white">
-                            {row.comingSoon ? '—' : formatMoney(row.fromPrice)}
-                          </span>
-                          {showWas ? (
-                            <span className="text-[0.72rem] text-slate-500 line-through tabular-nums">
-                              {formatMoney(row.fromWas)}
-                            </span>
-                          ) : null}
-                          <span className="text-[0.65rem] lowercase text-slate-500">from · one time</span>
-                        </div>
-                        {row.website && !row.comingSoon ? (
-                          <PfgPrimary href={row.website} compact className="h-8 rounded-full! px-3.5" target="_blank" rel="noopener noreferrer sponsored">
-                            KAGE
-                          </PfgPrimary>
-                        ) : (
-                          <span className="inline-flex h-8 items-center rounded-full bg-white/5 px-3 text-[0.75rem] font-bold text-slate-500">
-                            Soon
-                          </span>
-                        )}
-                      </div>
+                    <div className={`${PIN_ACTION}`} role="cell">
+                      {row.genieUrl ? (
+                        <PfgPrimary
+                          href={row.genieUrl}
+                          compact
+                          className="h-8 rounded-full! px-3.5"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          View firm
+                        </PfgPrimary>
+                      ) : (
+                        <span className="inline-flex h-8 items-center rounded-full bg-white/5 px-3 text-[0.75rem] font-bold text-slate-500">
+                          Soon
+                        </span>
+                      )}
                     </div>
                   </div>
                 );
