@@ -15,7 +15,8 @@
  * We no longer auto-apply data validation (was a root cause of red flags).
  */
 
-const SYNC_URL = 'https://propfirm-plum.vercel.app/api/sync-firms';
+const SYNC_URL = 'https://propfirm-genie-two.vercel.app/api/sync-firms';
+const SYNC_URL_ALSO = 'https://propfirm-plum.vercel.app/api/sync-firms';
 const SYNC_SECRET = 'PASTE_SAME_SECRET_AS_VERCEL'; // never commit real secret to git
 const DEBOUNCE_MS = 60 * 1000;
 const PLANS_TAB = 'firm-plans'; // rename if your tab differs (e.g. Plans)
@@ -356,29 +357,38 @@ function syncNow() {
     throw new Error('Plans tab missing or header row must start with Firm');
   }
 
-  var res = UrlFetchApp.fetch(SYNC_URL, {
-    method: 'post',
-    contentType: 'application/json',
-    headers: {
-      Authorization: 'Bearer ' + SYNC_SECRET,
-    },
-    payload: JSON.stringify({
-      source: 'google-apps-script',
-      at: new Date().toISOString(),
-      plansTsv: plansTsv,
-      firmsTsv: firmsTsv || '',
-    }),
-    muteHttpExceptions: true,
+  var payload = JSON.stringify({
+    source: 'google-apps-script',
+    at: new Date().toISOString(),
+    plansTsv: plansTsv,
+    firmsTsv: firmsTsv || '',
+  });
+  var urls = [SYNC_URL, SYNC_URL_ALSO].filter(function (u) {
+    return u && u.indexOf('https://') === 0;
+  });
+  var lastCode = 0;
+  var lastBody = '';
+  var failures = [];
+  urls.forEach(function (url) {
+    var res = UrlFetchApp.fetch(url, {
+      method: 'post',
+      contentType: 'application/json',
+      headers: {
+        Authorization: 'Bearer ' + SYNC_SECRET,
+      },
+      payload: payload,
+      muteHttpExceptions: true,
+    });
+    lastCode = res.getResponseCode();
+    lastBody = res.getContentText();
+    Logger.log(url + ' ' + lastCode + ' ' + lastBody);
+    if (lastCode < 200 || lastCode >= 300) failures.push(url + ' → ' + lastCode);
   });
 
-  var code = res.getResponseCode();
-  var body = res.getContentText();
-  Logger.log(code + ' ' + body);
-
-  if (code < 200 || code >= 300) {
-    SpreadsheetApp.getActiveSpreadsheet().toast('Sync failed: ' + code, 'PropFirm Sync', 8);
-    throw new Error('Sync failed: ' + code + ' ' + body);
+  if (failures.length) {
+    SpreadsheetApp.getActiveSpreadsheet().toast('Sync issues: ' + failures.join(' | '), 'PropFirm Sync', 8);
+    throw new Error('Sync failed: ' + failures.join(' | ') + '\n' + lastBody);
   }
 
-  SpreadsheetApp.getActiveSpreadsheet().toast('Sheet synced to site', 'PropFirm Sync', 5);
+  SpreadsheetApp.getActiveSpreadsheet().toast('Synced ' + urls.length + ' site(s).', 'PropFirm Sync', 5);
 }

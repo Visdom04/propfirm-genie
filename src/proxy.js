@@ -14,6 +14,7 @@ const LEGACY = {
 
 function isAllowed(pathname) {
   if (pathname === '/_not-found' || pathname === '/not-found') return true;
+  if (pathname === '/api' || pathname.startsWith('/api/')) return true;
   if (LIVE.some(p => pathname === p || pathname.startsWith(`${p}/`))) return true;
   return ALLOW_PREFIX.some(p => pathname === p || pathname.startsWith(`${p}/`));
 }

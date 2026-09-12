@@ -1,8 +1,8 @@
 # Google Sheet → Vercel live sync (PUSH mode)
 
-Site: https://propfirm-plum.vercel.app/
+Site: https://propfirm-genie-two.vercel.app/
 
-Apps Script **pushes** Plans + Firms TSV to `/api/sync-firms`.  
+Apps Script **pushes** Plans + Firms TSV to `/api/sync-firms` on genie-two (and also plum if that host still has the API).  
 Sheet can stay **private** (no “Anyone with link” needed).
 
 ## Vercel env
@@ -32,7 +32,10 @@ npm run validate:firms
 
 After this branch is **pushed + Vercel deployed**:
 
-1. Paste latest `SyncToVercel.gs` (keep your real `SYNC_SECRET`)
+1. Paste latest `scripts/google-apps-script/SyncToVercel.gs` (keep your real `SYNC_SECRET`)
+2. Confirm `SYNC_URL` is `https://propfirm-genie-two.vercel.app/api/sync-firms`
+3. Optional: `SYNC_URL_ALSO` for plum
+4. Reload the spreadsheet → menu **PropFirm Sync**
 2. Reload the spreadsheet → menu **PropFirm Sync**
 3. **Strip ALL dropdowns** (clears red Invalid triangles)
 4. **Import plans from URL** → recreates tab, **no dropdowns**
