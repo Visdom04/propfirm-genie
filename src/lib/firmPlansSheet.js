@@ -116,28 +116,76 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
   return result;
 }
 
+function planErrorLine(msg) {
+  const m = String(msg).match(/^Plans:(\d+)/);
+  return m ? Number(m[1]) : null;
+}
+
+function overlayMetaOnFirms(firms, metaMap) {
+  if (!metaMap?.size) return firms;
+  return firms.map(f => applyFirmSheetMeta(f, metaMap.get(f.name) || {}));
+}
+
 export function buildFirmsFromTsv(plansTsv, firmsTsv = '') {
-  const parsed = parseTsv(plansTsv, { fileLabel: 'Plans' });
-  const validation = validateFirmPlans(parsed);
-  if (validation.errors.length) {
+  const metaMap = parseFirmsMetaTsv(firmsTsv);
+  const syncedAt = new Date().toISOString();
+
+  let parsed;
+  try {
+    parsed = parseTsv(plansTsv, { fileLabel: 'Plans' });
+  } catch (err) {
     return {
-      ok: false,
-      error: 'Sheet validation failed',
-      validation,
-      firms: staticFirms,
+      ok: true,
+      partial: true,
+      error: err instanceof Error ? err.message : 'Plans tab could not be parsed',
+      validation: {
+        errors: [],
+        warnings: [
+          err instanceof Error ? err.message : 'Plans tab could not be parsed',
+          'Applied Firms tab (rating / reviews) onto last known plans.',
+        ],
+      },
+      firms: overlayMetaOnFirms(staticFirms, metaMap),
+      stats: { rows: 0, firms: metaMap.size },
+      syncedAt,
     };
   }
 
-  const parsedPlans = parsed.rows.map(rowToPlan);
-  const metaMap = parseFirmsMetaTsv(firmsTsv);
+  const validation = validateFirmPlans(parsed);
+  const fatalLines = new Set(validation.errors.map(planErrorLine).filter(Boolean));
+  const goodRows = parsed.rows.filter(r => !fatalLines.has(r.line));
+  const skipped = parsed.rows.length - goodRows.length;
+  const warnings = [
+    ...(validation.warnings || []),
+    ...validation.errors,
+    ...(skipped ? [`Skipped ${skipped} invalid plan row(s); rest of the sheet still applied.`] : []),
+  ];
+
+  if (!goodRows.length) {
+    return {
+      ok: true,
+      partial: true,
+      error: 'No valid plan rows — applied Firms tab only',
+      validation: { ...validation, errors: [], warnings },
+      firms: overlayMetaOnFirms(staticFirms, metaMap),
+      stats: { rows: 0, firms: metaMap.size },
+      syncedAt,
+    };
+  }
+
+  const parsedPlans = goodRows.map(rowToPlan);
   const firms = mergeSheetIntoFirms(parsedPlans, metaMap);
 
   return {
     ok: true,
-    validation,
+    partial: skipped > 0,
+    validation: { ...validation, errors: [], warnings },
     firms,
-    stats: validation.stats,
-    syncedAt: new Date().toISOString(),
+    stats: {
+      rows: goodRows.length,
+      firms: new Set(goodRows.map(r => r.firmName)).size,
+    },
+    syncedAt,
   };
 }
 
@@ -165,10 +213,12 @@ export function readFirmsCatalog() {
   } catch {
     // ignore corrupt cache
   }
-  // Long-lived `next dev` used to keep a process cache after /tmp was gone,
-  // which hid Firms-tab edits (reviews / rating / max allocation).
-  globalThis.__propfirmFirmsCatalog = null;
-  return null;
+  // Dev: do not keep a process cache after /tmp is gone — it hid Firms-tab edits.
+  if (process.env.NODE_ENV !== 'production') {
+    globalThis.__propfirmFirmsCatalog = null;
+    return null;
+  }
+  return globalThis.__propfirmFirmsCatalog || null;
 }
 
 export function isSheetSyncConfigured() {

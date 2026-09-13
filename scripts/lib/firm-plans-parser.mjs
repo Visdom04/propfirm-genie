@@ -86,8 +86,18 @@ export function parseOptionalNumber(raw) {
   return m ? Number(m[1]) : null;
 }
 
+export function normalizeNewsTrading(raw) {
+  const s = String(raw || '').trim().toLowerCase();
+  if (!s) return '';
+  if (NEWS_TRADING_VALUES.has(s)) return s;
+  if (/^(both|allowed|yes|all|any)$/.test(s)) return 'both';
+  if (/^eval(uation)?(\s*only)?$/.test(s)) return 'eval';
+  if (/^(none|no|n\/a|forbidden|prohibited|not allowed)$/.test(s)) return 'none';
+  return '';
+}
+
 export function inferAccountCategory(planType, profitTarget, explicit) {
-  if (explicit) return explicit;
+  if (explicit && ACCOUNT_CATEGORIES.has(explicit)) return explicit;
   const t = `${planType} ${profitTarget}`.toLowerCase();
   if (
     /direct|lightning|instant|s2f|straight to funded|express to live/.test(t) ||
@@ -275,7 +285,7 @@ export function parseTsv(text, { fileLabel = 'firm-plans.tsv' } = {}) {
       accountCategory: col(cols, idxMap, 'Account Category'),
       minTradingDays: col(cols, idxMap, 'Min Trading Days'),
       dailyDrawdown: col(cols, idxMap, 'Daily Drawdown'),
-      newsTrading: col(cols, idxMap, 'News Trading'),
+      newsTrading: normalizeNewsTrading(col(cols, idxMap, 'News Trading')),
       listPrice: col(cols, idxMap, 'List Price'),
       discountPct: col(cols, idxMap, 'Discount %'),
       priceNote: col(cols, idxMap, 'Price Note'),
@@ -320,10 +330,14 @@ export function validateFirmPlans({ headers, rows, fileLabel }) {
     });
 
     if (row.discountPct && (discountPct == null || discountPct < 0 || discountPct > 100)) {
-      errors.push(`${prefix}: Discount % must be between 0 and 100`);
+      warnings.push(`${prefix}: Discount % must be between 0 and 100 — ignored`);
     }
     if (row.discountPct && !(listPrice > 0)) {
-      errors.push(`${prefix}: Discount % needs List Price so the site can compute the sale`);
+      if (!price.price || price.price <= 0) {
+        errors.push(`${prefix}: Discount % needs List Price so the site can compute the sale`);
+      } else {
+        warnings.push(`${prefix}: Discount % ignored without List Price (using Price column)`);
+      }
     }
     if (!canCompute && (!price.price || price.price <= 0)) {
       errors.push(`${prefix}: set List Price + Discount %, or Price`);
@@ -338,11 +352,13 @@ export function validateFirmPlans({ headers, rows, fileLabel }) {
     }
 
     if (row.accountCategory && !ACCOUNT_CATEGORIES.has(row.accountCategory)) {
-      errors.push(`${prefix}: Account Category must be Challenge or S2F`);
+      warnings.push(`${prefix}: Account Category must be Challenge or S2F — inferred from plan type`);
+      row.accountCategory = inferAccountCategory(row.planType, row.profitTarget, null);
     }
 
     if (row.newsTrading && !NEWS_TRADING_VALUES.has(row.newsTrading.toLowerCase())) {
-      errors.push(`${prefix}: News Trading must be both, eval, or none`);
+      warnings.push(`${prefix}: News Trading must be both, eval, or none — ignored`);
+      row.newsTrading = '';
     }
 
     if (row.minTradingDays) {

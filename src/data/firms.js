@@ -513,7 +513,7 @@ export const firms = [
     name: 'Lucid Trading',
     logo: '/firm/lucid-trading.png',
     rating: 4.7,
-    reviews: 10000,
+    reviews: 200,
     description:
       'Futures prop firm with Flex, Pro, Daily, and Direct paths. 90% split, 30–40% off with KAGE.',
     platforms: ['TradingView', 'NinjaTrader', 'Quantower', 'Sierra Chart', 'Rithmic', 'Tradovate Prop'],
@@ -1172,7 +1172,7 @@ export const firms = [
     name: 'Tradeify',
     logo: 'https://rtzkywwbsldinjgykqag.supabase.co/storage/v1/object/public/genie-assets/firms/Tradeify_new.webp',
     rating: 4.7,
-    reviews: 175,
+    reviews: 200,
     description:
       'Modern futures evaluation firm with growth accounts and frequent community rewards.',
     platforms: ['NinjaTrader', 'TradingView'],
