@@ -28,11 +28,10 @@ function slugify(name) {
 
 const MAX_FAVORITES = 5;
 const FAV_KEY = 'cmp-overview-favs';
-const COLS_KEY = 'cmp-overview-cols-v1';
+const COLS_KEY = 'cmp-overview-cols-v2';
 
 const MID_COLS = [
   { key: 'size', label: 'Account', label2: 'size', min: 92 },
-  { key: 'plans', label: 'Plans', min: 128 },
   { key: 'platforms', label: 'Platforms', min: 160 },
   { key: 's2f', label: 'Straight', label2: 'to funded', min: 108 },
   { key: 'evalPrice', label: 'Eval', label2: 'from', min: 96 },
@@ -86,7 +85,6 @@ const STAR_PATH =
 
 const INFO = {
   size: 'Account sizes this firm offers, from smallest to largest.',
-  plans: 'Plan count in the cell. Open the row’s i button for every account type and size.',
   platforms: 'Trading platforms this firm supports.',
   s2f: 'Whether the firm sells a skip-the-eval / instant funded path.',
   evalPrice: 'Lowest evaluation price after the KAGE promo, when discounts are on.',
@@ -218,31 +216,6 @@ function CellTip({ label, children }) {
           )
         : null}
     </span>
-  );
-}
-
-function PlanTip({ groups }) {
-  if (!groups?.length) return null;
-  return (
-    <CellTip label="Plan types">
-      <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
-        {groups.map(g => (
-          <li key={g.type}>
-            <p className="m-0 text-[0.8rem] font-bold leading-snug text-white">{g.type}</p>
-            <p className="m-0 mt-0.5 text-[0.72rem] font-medium leading-snug text-slate-400">
-              {g.sizes.join(' · ')}
-            </p>
-            {g.notes?.length
-              ? g.notes.map(note => (
-                  <p key={note} className="m-0 mt-1 text-[0.72rem] font-medium leading-snug text-emerald-200/70">
-                    {note}
-                  </p>
-                ))
-              : null}
-          </li>
-        ))}
-      </ul>
-    </CellTip>
   );
 }
 
@@ -748,23 +721,6 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         return (
           <div key={col.key} className={`${MID_CELL} min-h-[88px] whitespace-nowrap text-[0.82rem] font-bold text-slate-50`} style={style}>
             {row.sizeLabel}
-          </div>
-        );
-      case 'plans':
-        return (
-          <div
-            key={col.key}
-            className={`${MID_CELL_BASE} min-h-[88px] items-center justify-center gap-1.5 text-center text-[0.82rem] font-bold leading-snug text-slate-50`}
-            style={style}
-          >
-            {row.comingSoon ? (
-              <span className="text-slate-500">Coming soon</span>
-            ) : (
-              <>
-                <span className="text-[#3FB185]">{row.planCount} plans</span>
-                <PlanTip groups={row.planGroups} />
-              </>
-            )}
           </div>
         );
       case 'platforms':
