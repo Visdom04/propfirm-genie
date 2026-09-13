@@ -178,14 +178,14 @@ function YearsRing({ years, maxYears }) {
   );
 }
 
-function SortHead({ label, col, sort, dir, onSort }) {
+function SortHead({ label, col, sort, dir, onSort, align = 'center' }) {
   const on = sort === col;
   return (
     <button
       type="button"
-      className={`${BTN} inline-flex items-center gap-1 text-left text-[0.62rem] font-semibold uppercase tracking-[0.12em] ${
-        on ? 'text-white/80!' : 'text-white/35! hover:text-white/65!'
-      }`}
+      className={`${BTN} inline-flex w-full items-center gap-1 text-[0.62rem] font-semibold uppercase tracking-[0.12em] ${
+        align === 'left' ? 'justify-start text-left' : 'justify-center text-center'
+      } ${on ? 'text-white/80!' : 'text-white/35! hover:text-white/65!'}`}
       aria-pressed={on}
       onClick={() => onSort(col)}
     >
@@ -523,15 +523,23 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
 
       <div className="overflow-x-auto pb-2">
         <div className={`${COLS} border-b border-white/8 px-3 pb-2`}>
-          <SortHead label="Firm" col="name" sort={sort} dir={dir} onSort={onSort} />
+          <SortHead label="Firm" col="name" sort={sort} dir={dir} onSort={onSort} align="left" />
           <SortHead label="Reviews" col="reviews" sort={sort} dir={dir} onSort={onSort} />
           <SortHead label="Country" col="country" sort={sort} dir={dir} onSort={onSort} />
           <SortHead label="Years in operation" col="years" sort={sort} dir={dir} onSort={onSort} />
-          <span className="text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">Assets</span>
-          <span className="text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">Platforms</span>
+          <span className="w-full text-center text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">
+            Assets
+          </span>
+          <span className="w-full text-center text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">
+            Platforms
+          </span>
           <SortHead label="Max allocations" col="alloc" sort={sort} dir={dir} onSort={onSort} />
-          <span className="text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">Promo</span>
-          <span className="text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">Visit</span>
+          <span className="w-full text-center text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">
+            Promo
+          </span>
+          <span className="w-full text-center text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">
+            Visit
+          </span>
         </div>
 
         {visible.length === 0 ? (
@@ -577,10 +585,10 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-0.5">
+                    <div className="flex flex-col items-center justify-center gap-0.5 text-center">
                       {Number(f.rating) > 0 ? (
                         <>
-                          <span className="inline-flex w-fit items-center rounded-full bg-[#3FB185]/15 px-2 py-0.5 text-[0.78rem] font-bold tabular-nums text-[#3FB185]">
+                          <span className="inline-flex items-center rounded-full bg-[#3FB185]/15 px-2 py-0.5 text-[0.78rem] font-bold tabular-nums text-[#3FB185]">
                             {Number(f.rating).toFixed(1)}
                           </span>
                           <RatingStars rating={f.rating} idPrefix={`dir-${f.name}`} />
@@ -593,16 +601,18 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
                       )}
                     </div>
 
-                    <div className="flex items-center gap-1.5 text-[0.78rem] text-white/80">
+                    <div className="flex items-center justify-center gap-1.5 text-center text-[0.78rem] text-white/80">
                       <span className="text-base leading-none" aria-hidden>
                         {FLAGS[f.countryCode] || '🏳️'}
                       </span>
                       <span className="leading-snug">{country}</span>
                     </div>
 
-                    <YearsRing years={f.yearsLabel || f.years} maxYears={maxYears} />
+                    <div className="flex justify-center">
+                      <YearsRing years={f.yearsLabel || f.years} maxYears={maxYears} />
+                    </div>
 
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap items-center justify-center gap-1">
                       {(f.assets || []).map(a => (
                         <span
                           key={a}
@@ -613,7 +623,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
                       ))}
                     </div>
 
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap items-center justify-center gap-1">
                       {(f.platforms || []).slice(0, 4).map(name => {
                         const src = platformLogo(name);
                         const mark = PLATFORM_MARK[name] || { abbr: name.slice(0, 2).toUpperCase(), tone: 'bg-[#1a2e24]' };
@@ -644,7 +654,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
                       ) : null}
                     </div>
 
-                    <div>
+                    <div className="w-full text-center">
                       <div className="text-[0.95rem] font-extrabold text-white">{f.maxAlloc}</div>
                       <div className="mt-1 h-1 overflow-hidden rounded-full bg-white/10">
                         <div className="h-full rounded-full bg-[#3FB185]" style={{ width: `${allocPct * 100}%` }} />
@@ -671,20 +681,22 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
                       )}
                     </div>
 
-                    {coming ? (
-                      <PfgGhost disabled className="min-h-9 cursor-default px-3 py-1.5 text-[0.75rem] opacity-60">
-                        Coming soon
-                      </PfgGhost>
-                    ) : (
-                      <PfgGhost
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer sponsored"
-                        className="min-h-9 px-3 py-1.5 text-[0.75rem]"
-                      >
-                        Visit
-                      </PfgGhost>
-                    )}
+                    <div className="flex justify-center">
+                      {coming ? (
+                        <PfgGhost disabled className="min-h-9 cursor-default px-3 py-1.5 text-[0.75rem] opacity-60">
+                          Coming soon
+                        </PfgGhost>
+                      ) : (
+                        <PfgGhost
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer sponsored"
+                          className="min-h-9 px-3 py-1.5 text-[0.75rem]"
+                        >
+                          Visit
+                        </PfgGhost>
+                      )}
+                    </div>
                   </div>
                 </li>
               );
