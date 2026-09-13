@@ -5,8 +5,7 @@ import { Check, Copy, Filter, Flame, Heart, Sparkles } from 'lucide-react';
 import { firms as staticFirms } from '@/data/firms';
 import { COUNTRY_LABELS } from '@/components/CompareFilterSidebar';
 import { discountBadge } from '@/lib/compareHighlights';
-import { firmLogo, RANK_TROPHIES } from '@/lib/firmLogos';
-import { firmRankMap } from '@/lib/firmRank';
+import { firmLogo } from '@/lib/firmLogos';
 import { PLATFORM_MARK, platformLogo } from '@/lib/platformLogos';
 import { PfgGhost } from '@/components/green/PfgControls';
 
@@ -18,10 +17,10 @@ const MAX_FAVORITES = 5;
 const PAGE_SIZE = 10;
 const FAV_KEY = 'demo4-favs';
 const COLS =
-  'grid min-w-[1180px] grid-cols-[28px_minmax(200px,1.15fr)_minmax(128px,0.85fr)_minmax(110px,0.75fr)_72px_minmax(132px,0.9fr)_minmax(118px,0.8fr)_minmax(96px,0.7fr)_118px_92px] items-center gap-x-3';
+  'grid min-w-[1180px] grid-cols-[minmax(200px,1.15fr)_minmax(128px,0.85fr)_minmax(110px,0.75fr)_72px_minmax(132px,0.9fr)_minmax(118px,0.8fr)_minmax(96px,0.7fr)_118px_92px] items-center gap-x-3';
 
 const FLAGS = { US: '🇺🇸', AE: '🇦🇪', CY: '🇨🇾', CZ: '🇨🇿', GB: '🇬🇧', CA: '🇨🇦', AU: '🇦🇺', LC: '🇱🇨' };
-const NUMERIC_SORT = new Set(['rank', 'reviews', 'years', 'alloc']);
+const NUMERIC_SORT = new Set(['reviews', 'years', 'alloc']);
 
 function compactNum(n) {
   const v = Number(n) || 0;
@@ -104,55 +103,7 @@ function CoverImg({ src, alt, size, className, eager, fetchPriority, zoom = 1, o
   );
 }
 
-const RANK_FRAME = {
-  1: '#E8C547',
-  2: '#C5CDD6',
-  3: '#D07A3A',
-};
-
-const RANK_BOX = {
-  width: 22,
-  height: 22,
-  minWidth: 22,
-  minHeight: 22,
-  maxWidth: 22,
-  maxHeight: 22,
-  aspectRatio: '1 / 1',
-  justifySelf: 'center',
-  boxSizing: 'border-box',
-};
-
-function RankMark({ rank }) {
-  const trophy = RANK_TROPHIES[rank];
-  if (trophy) {
-    return (
-      <span className="grid shrink-0 place-items-center" title={`Rank ${rank}`} style={RANK_BOX}>
-        <img
-          src={trophy}
-          alt=""
-          width={22}
-          height={22}
-          decoding="async"
-          draggable={false}
-          className="object-contain object-center"
-          style={{ width: 22, height: 22, maxWidth: 22, maxHeight: 22 }}
-        />
-      </span>
-    );
-  }
-  return (
-    <span
-      className="grid shrink-0 place-items-center rounded-full border-2 border-white/18 text-[0.6rem] font-bold text-white/70"
-      style={RANK_BOX}
-    >
-      {rank}
-    </span>
-  );
-}
-
-function FirmMark({ rank, src, name, eager }) {
-  const metal = RANK_FRAME[rank];
-  const top = Boolean(metal);
+function FirmMark({ src, name, eager }) {
   const [broken, setBroken] = useState(false);
   const showImg = Boolean(src) && !broken;
   return (
@@ -168,8 +119,8 @@ function FirmMark({ rank, src, name, eager }) {
         aspectRatio: '1 / 1',
         boxSizing: 'border-box',
         borderRadius: 10,
-        border: top ? `3px solid ${metal}` : '2px solid rgba(63,177,133,0.45)',
-        padding: top ? 3 : 2,
+        border: '2px solid rgba(63,177,133,0.45)',
+        padding: 2,
       }}
     >
       <div className="size-full overflow-hidden rounded-md">
@@ -274,12 +225,7 @@ function FacetChip({ active, onClick, children }) {
   );
 }
 
-function rowTone(rank) {
-  if (rank === 1) return 'border-[#E8C547]/45 bg-[linear-gradient(90deg,rgba(232,197,71,0.16),#0c1612_46%)]';
-  if (rank === 2) return 'border-[#C5CDD6]/40 bg-[linear-gradient(90deg,rgba(197,205,214,0.14),#0c1612_46%)]';
-  if (rank === 3) return 'border-[#D07A3A]/40 bg-[linear-gradient(90deg,rgba(208,122,58,0.16),#0c1612_46%)]';
-  return 'border-white/10 bg-[#0c1612]';
-}
+const ROW_TONE = 'border-white/10 bg-[#0c1612]';
 
 export default function FirmDirectoryTable({ firms = staticFirms }) {
   const [mode, setMode] = useState('all');
@@ -287,7 +233,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
   const [search, setSearch] = useState('');
   const [copiedFirm, setCopiedFirm] = useState(null);
   const [showAll, setShowAll] = useState(true);
-  const [sort, setSort] = useState('rank');
+  const [sort, setSort] = useState('name');
   const [dir, setDir] = useState('asc');
   const [favorites, setFavorites] = useState(() => new Set());
   const [selCountries, setSelCountries] = useState([]);
@@ -322,8 +268,6 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
     () => [...new Set(firms.flatMap(f => f.assets || []))].sort(),
     [firms]
   );
-
-  const rankByName = useMemo(() => firmRankMap(firms), [firms]);
 
   const maxYears = useMemo(
     () => Math.max(8, ...firms.map(f => Number(f.years) || 0)),
@@ -362,12 +306,12 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
         cmp = (Number(a.reviews) || 0) - (Number(b.reviews) || 0);
         if (!cmp) cmp = (Number(a.rating) || 0) - (Number(b.rating) || 0);
       } else {
-        cmp = (rankByName.get(a.name) || 99) - (rankByName.get(b.name) || 99);
+        cmp = a.name.localeCompare(b.name);
       }
       return cmp * mul;
     });
     return list;
-  }, [mode, search, favorites, sort, dir, selCountries, selPlatforms, selAssets, rankByName, firms]);
+  }, [mode, search, favorites, sort, dir, selCountries, selPlatforms, selAssets, firms]);
 
   const visible = showAll ? ranked : ranked.slice(0, PAGE_SIZE);
 
@@ -381,7 +325,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
     if (sort === col) setDir(d => (d === 'asc' ? 'desc' : 'asc'));
     else {
       setSort(col);
-      setDir(col === 'rank' ? 'asc' : NUMERIC_SORT.has(col) ? 'desc' : 'asc');
+      setDir(NUMERIC_SORT.has(col) ? 'desc' : 'asc');
     }
   };
 
@@ -397,6 +341,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
       const next = new Set(prev);
       if (next.has(name)) next.delete(name);
       else if (next.size < MAX_FAVORITES) next.add(name);
+      if (next.size === 0) queueMicrotask(() => setMode('all'));
       return next;
     });
   };
@@ -442,7 +387,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
           <Flame size={14} className={mode === 'popular' ? 'text-[#3FB185]' : 'text-white/50'} />
           Popular
         </Chip>
-        <Chip active={mode === 'favorites'} onClick={() => setModeChip('favorites')}>
+        <Chip active={mode === 'favorites'} onClick={() => setModeChip(mode === 'favorites' ? 'all' : 'favorites')}>
           <Heart size={14} className={mode === 'favorites' ? 'fill-[#3FB185] text-[#3FB185]' : 'text-white/50'} />
           Favorite {ready ? favorites.size : 0}/{MAX_FAVORITES}
         </Chip>
@@ -526,13 +471,8 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
 
       <div className="overflow-x-auto pb-2">
         <div className={`${COLS} border-b border-white/8 px-3 pb-2`}>
-          <span />
           <SortHead label="Firm" col="name" sort={sort} dir={dir} onSort={onSort} />
-          <div className="flex items-center gap-1">
-            <SortHead label="Rank" col="rank" sort={sort} dir={dir} onSort={onSort} />
-            <span className="text-[0.62rem] font-semibold text-white/25">/</span>
-            <SortHead label="Reviews" col="reviews" sort={sort} dir={dir} onSort={onSort} />
-          </div>
+          <SortHead label="Reviews" col="reviews" sort={sort} dir={dir} onSort={onSort} />
           <SortHead label="Country" col="country" sort={sort} dir={dir} onSort={onSort} />
           <SortHead label="Years in operation" col="years" sort={sort} dir={dir} onSort={onSort} />
           <span className="text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">Assets</span>
@@ -549,7 +489,6 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
         ) : (
           <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
             {visible.map((f, i) => {
-              const rank = rankByName.get(f.name) || i + 1;
               const href = f.affiliateLink || (f.website ? `https://${f.website}` : '#');
               const off = promoLabel(f);
               const liked = ready && favorites.has(f.name);
@@ -559,12 +498,10 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
               const logoSrc = firmLogo(f.name, f.logo);
               const coming = isComingSoon(f);
               return (
-                <li key={f.name} className={`rounded-xl border px-2 py-2.5 sm:rounded-2xl sm:px-3 sm:py-3 ${rowTone(rank)}`}>
+                <li key={f.name} className={`rounded-xl border px-2 py-2.5 sm:rounded-2xl sm:px-3 sm:py-3 ${ROW_TONE}`}>
                   <div className={COLS}>
-                    <RankMark rank={rank} />
-
                     <div className="flex min-w-0 items-center gap-2.5">
-                      <FirmMark rank={rank} src={logoSrc} name={f.name} eager={i < 4} />
+                      <FirmMark src={logoSrc} name={f.name} eager={i < 4} />
                       <div className="min-w-0">
                         <div className="truncate text-[0.92rem] font-bold text-white">{f.name}</div>
                         {coming ? (

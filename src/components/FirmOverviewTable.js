@@ -11,6 +11,7 @@ import CompareFilterSidebar, {
   normalizeDrawdown,
 } from '@/components/CompareFilterSidebar';
 import { PfgPrimary } from '@/components/green/PfgControls';
+import TableScrollSlider from '@/components/green/TableScrollSlider';
 import { firmLogo } from '@/lib/firmLogos';
 import { summarizeFirm } from '@/lib/firmOverview';
 import { PLATFORM_MARK, platformLogo } from '@/lib/platformLogos';
@@ -55,7 +56,7 @@ const ROW =
 const PIN_FIRM =
   'ov-pin-firm flex min-w-0 items-center self-stretch border-r border-white/[0.06] bg-transparent';
 const PIN_ACTION =
-  'ov-pin-price flex min-w-0 items-center justify-end self-stretch border-l border-white/[0.06] bg-transparent px-3';
+  'ov-pin-price flex min-w-0 items-center justify-center self-stretch border-l border-white/[0.06] bg-transparent px-3';
 const PIN_HEAD = 'py-3';
 const MID =
   'cmp-mid relative flex min-w-0 items-stretch overflow-x-auto overflow-y-hidden scrollbar-none bg-transparent';
@@ -63,7 +64,7 @@ const MID_CELL_BASE =
   'relative box-border flex h-full shrink-0 self-stretch border-r border-white/[0.06] last:border-r-0 px-3 py-2.5';
 const MID_CELL = `${MID_CELL_BASE} items-center justify-center`;
 const TH =
-  'min-h-[52px] flex-col items-start justify-center gap-0.5 text-left text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90';
+  'min-h-[52px] flex-col items-center justify-center gap-0.5 text-center text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90';
 const CHIP_ON = 'border-[#3FB185]/50 bg-[#3FB185]/15 text-[#3FB185]';
 const CHIP_OFF = 'border-white/10 bg-black/20 text-slate-200 hover:border-emerald-500/35';
 
@@ -98,7 +99,7 @@ function formatMoney(n) {
 function HeadLabel({ label, label2 }) {
   if (!label2) return <span>{label}</span>;
   return (
-    <span className="flex flex-col items-start leading-[1.15] text-left">
+    <span className="flex flex-col items-center leading-[1.15] text-center">
       <span>{label}</span>
       <span>{label2}</span>
     </span>
@@ -365,7 +366,7 @@ function PlatformMarks({ names }) {
   const list = names || [];
   if (!list.length) return <span className="text-slate-500">—</span>;
   return (
-    <div className="flex flex-wrap items-center gap-1">
+    <div className="flex flex-wrap items-center justify-center gap-1">
       {list.map(name => {
         const src = platformLogo(name);
         const mark = PLATFORM_MARK[name] || { abbr: name.slice(0, 2).toUpperCase(), tone: 'bg-[#1a2e24]' };
@@ -710,6 +711,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
       const next = new Set(prev);
       if (next.has(name)) next.delete(name);
       else if (next.size < MAX_FAVORITES) next.add(name);
+      if (next.size === 0) queueMicrotask(() => setTopMode('all'));
       return next;
     });
   };
@@ -721,7 +723,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
 
   const renderMid = (col, row) => {
     const style = { flex: `0 0 ${col.min}px`, minWidth: col.min };
-    const wrap = `${MID_CELL_BASE} min-h-[88px] items-start justify-start text-left text-[0.82rem] font-bold leading-snug text-slate-50`;
+    const wrap = `${MID_CELL_BASE} min-h-[88px] items-center justify-center text-center text-[0.82rem] font-bold leading-snug text-slate-50`;
     switch (col.key) {
       case 'size':
         return (
@@ -733,7 +735,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         return (
           <div
             key={col.key}
-            className={`${MID_CELL_BASE} min-h-[88px] items-center justify-start gap-1.5 text-left text-[0.82rem] font-bold leading-snug text-slate-50`}
+            className={`${MID_CELL_BASE} min-h-[88px] items-center justify-center gap-1.5 text-center text-[0.82rem] font-bold leading-snug text-slate-50`}
             style={style}
           >
             {row.comingSoon ? (
@@ -760,7 +762,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         );
       case 'evalPrice':
         return (
-          <div key={col.key} className={`${wrap} flex-col items-start justify-center`} style={style}>
+          <div key={col.key} className={`${wrap} flex-col items-center justify-center`} style={style}>
             {row.evalWas && row.evalPrice && row.evalWas > row.evalPrice ? (
               <span className="text-[0.68rem] font-medium text-slate-500 line-through">{formatMoney(row.evalWas)}</span>
             ) : null}
@@ -771,7 +773,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         return (
           <div
             key={col.key}
-            className={`${MID_CELL_BASE} min-h-[88px] items-center justify-start gap-1.5 text-left text-[0.82rem] font-bold leading-snug text-slate-300`}
+            className={`${MID_CELL_BASE} min-h-[88px] items-center justify-center gap-1.5 text-center text-[0.82rem] font-bold leading-snug text-slate-300`}
             style={style}
           >
             <span className="min-w-0 truncate">{row.activationLabel}</span>
@@ -780,7 +782,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         );
       case 'allIn':
         return (
-          <div key={col.key} className={`${wrap} flex-col items-start justify-center text-[#3FB185]`} style={style}>
+          <div key={col.key} className={`${wrap} flex-col items-center justify-center text-[#3FB185]`} style={style}>
             <span>{formatMoney(row.allIn)}</span>
             {row.allInNote ? <span className="text-[0.62rem] font-medium text-slate-500">{row.allInNote}</span> : null}
           </div>
@@ -788,13 +790,13 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
       case 'drawdown':
         return (
           <div key={col.key} className={wrap} style={style}>
-            <span className="whitespace-normal break-words text-left">{row.drawdownLabel}</span>
+            <span className="whitespace-normal break-words text-center">{row.drawdownLabel}</span>
           </div>
         );
       case 'maxLoss':
         return (
           <div key={col.key} className={wrap} style={style}>
-            <span className="whitespace-normal break-words text-left">{row.maxLossLabel}</span>
+            <span className="whitespace-normal break-words text-center">{row.maxLossLabel}</span>
           </div>
         );
       case 'days':
@@ -818,7 +820,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
       case 'payout':
         return (
           <div key={col.key} className={wrap} style={style}>
-            <span className="whitespace-normal break-words text-left">{row.payoutLabel}</span>
+            <span className="whitespace-normal break-words text-center">{row.payoutLabel}</span>
           </div>
         );
       case 'accounts':
@@ -830,14 +832,14 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
       case 'discount':
         return (
           <div key={col.key} className={`${wrap} text-[#3FB185]`} style={style}>
-            <span className="whitespace-normal break-words text-left">{row.discountLabel}</span>
+            <span className="whitespace-normal break-words text-center">{row.discountLabel}</span>
           </div>
         );
       case 'description': {
         const open = expanded.has(row.firm.name);
         const text = row.firm.description || '—';
         return (
-          <div key={col.key} className={`${MID_CELL} min-h-[88px] max-w-72 flex-col items-start justify-center`} style={style}>
+          <div key={col.key} className={`${MID_CELL} min-h-[88px] max-w-72 flex-col items-center justify-center text-center`} style={style}>
             <p className={`m-0 text-[0.75rem] font-medium leading-snug text-slate-300 ${open ? '' : 'line-clamp-2'}`}>
               {text}
             </p>
@@ -934,16 +936,18 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
             <div className="ov-toolbar ov-no-print flex min-w-0 flex-wrap items-center gap-x-2 gap-y-2 xl:flex-nowrap">
               <button
                 type="button"
-                className={`btn-bare relative grid size-10 shrink-0 place-items-center rounded-xl border ${
+                className={`btn-bare relative inline-flex h-10 shrink-0 items-center gap-2 rounded-xl border px-3.5 text-[0.78rem] font-semibold ${
                   sidebarOpen ? 'border-[#3FB185]/60 bg-[#3FB185]/15 text-[#3FB185]' : 'border-white/10 bg-white/5 text-white/80'
                 }`}
                 onClick={() => setSidebarOpen(v => !v)}
                 aria-pressed={sidebarOpen}
+                aria-expanded={sidebarOpen}
                 aria-label={sidebarOpen ? 'Close filters' : 'Open filters'}
               >
                 <ToolbarIcon name="filter" />
+                Filter
                 {activeFilterCount > 0 ? (
-                  <span className="absolute -right-1 -top-1 grid min-w-4 place-items-center rounded-full bg-[#3FB185] px-1 text-[9px] font-bold text-[#0a0f0d]">
+                  <span className="grid min-w-4 place-items-center rounded-full bg-[#3FB185] px-1.5 text-[9px] font-bold text-[#0a0f0d]">
                     {activeFilterCount}
                   </span>
                 ) : null}
@@ -983,7 +987,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                     ? 'border-[#3FB185]/60 bg-[#3FB185]/15 text-[#3FB185]'
                     : 'border-white/10 bg-white/5 text-white/80'
                 }`}
-                onClick={() => setTopMode('favorites')}
+                onClick={() => setTopMode(m => (m === 'favorites' ? 'all' : 'favorites'))}
               >
                 <Bookmark size={14} />
                 {favorites.size}/{MAX_FAVORITES}
@@ -1114,7 +1118,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                 </div>
               </div>
               <div
-                className={`${PIN_ACTION} ${PIN_HEAD} text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90`}
+                className={`${PIN_ACTION} ${PIN_HEAD} justify-center text-center text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90`}
                 role="columnheader"
               >
                 View firm
@@ -1219,6 +1223,12 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
               })
             )}
           </div>
+
+          {sorted.length > 0 ? (
+            <div className="ov-no-print mt-3 flex min-w-0 items-center px-1">
+              <TableScrollSlider getMidPanes={getMidPanes} masterRef={masterMidRef} />
+            </div>
+          ) : null}
 
           {sorted.length > PAGE_SIZE ? (
             <nav className="ov-no-print mt-3 flex flex-wrap items-center justify-center gap-1" aria-label="Table pagination">
