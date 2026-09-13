@@ -1,4 +1,4 @@
-Firm	Plan Type	Account Size	Drawdown Type	Activation Fee	Profit Target	Max Drawdown	Max Contract	Consistency Rule Eval, Funded	Payout Freq.	Profit Split	Price	Promo CODE	Account Category	Min Trading Days	Daily Drawdown	News Trading	List Price	Discount %	Price Note
+Firm	Plan Type	Account Size	Drawdown Type	Activation Fee	Profit Target	Max Drawdown	Max Contract	Consistency Rule Eval, Funded	Payout Freq.	Profit Split	Price	Promo CODE	Account Category	Min Trading Days	Daily Drawdown	News Trading	List Price	Discount %	Price Note	Info
 Lucid Trading	Flex	25k	EOD	None	$1,250	$1,000	2 / 20	50% / None	Every 5 Days	90%	$55	KAGE	Challenge	2	None	both	$79	30	
 Lucid Trading	Direct	25k	EOD	None	— (Straight to Funded)	$1,000	2 / 20	None / 20%	Every 8 Days	90%	$230	KAGE	S2F	8	None	both	$329	30	
 Lucid Trading	Pro	25k	EOD	None	$1,250	$1,000	2 / 20	None / 40%	Every 3 Days	90%	$76	KAGE	Challenge	1	None	both	$108	30	

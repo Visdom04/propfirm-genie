@@ -36,6 +36,7 @@ export const EXTENDED_HEADERS = [
   'List Price',
   'Discount %',
   'Price Note',
+  'Info',
 ];
 
 /** Firms tab only — do not add Rank / Country / Years / Platforms. */
@@ -48,6 +49,7 @@ export const FIRMS_META_HEADERS = [
   'Max Allocation',
   'Rating',
   'Reviews',
+  'Offer',
 ];
 
 export const ACCOUNT_CATEGORIES = new Set(['Challenge', 'S2F']);
@@ -233,6 +235,7 @@ export function parseFirmsMetaTsv(text) {
       ...(maxAlloc ? { maxAlloc } : {}),
       ...(typeof rating === 'number' ? { rating } : {}),
       ...(typeof reviews === 'number' ? { reviews } : {}),
+      ...(col(cols, idxMap, 'Offer') ? { discount: col(cols, idxMap, 'Offer') } : {}),
     });
   }
   return map;
@@ -289,6 +292,7 @@ export function parseTsv(text, { fileLabel = 'firm-plans.tsv' } = {}) {
       listPrice: col(cols, idxMap, 'List Price'),
       discountPct: col(cols, idxMap, 'Discount %'),
       priceNote: col(cols, idxMap, 'Price Note'),
+      info: col(cols, idxMap, 'Info'),
     };
 
     row.accountCategory = inferAccountCategory(
@@ -429,6 +433,7 @@ export function rowToPlan(row) {
   const hasMinDays = Boolean(String(row.minTradingDays || '').trim());
   const hasNews = Boolean(String(row.newsTrading || '').trim());
   const priceNote = String(row.priceNote || '').trim();
+  const info = String(row.info || '').trim();
   const dailyDrawdown = hasDaily ? parseMoney(row.dailyDrawdown) : undefined;
   const minTradingDays = hasMinDays ? parseOptionalNumber(row.minTradingDays) : undefined;
   const newsTrading = hasNews ? row.newsTrading.toLowerCase() : undefined;
@@ -457,6 +462,7 @@ export function rowToPlan(row) {
       ...(listPrice ? { listPrice } : {}),
       ...(discountPct != null ? { discountPct } : {}),
       ...(priceNote ? { priceNote } : {}),
+      ...(info ? { info } : {}),
       maxPayout: '—',
       minPayout: '—',
       consistencyEval: cons.eval,

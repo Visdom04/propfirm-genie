@@ -2,7 +2,7 @@
 
 import { createPortal } from 'react-dom';
 import { useMemo, useState, useCallback, useEffect, useRef, useId } from 'react';
-import { Bookmark, Star } from 'lucide-react';
+import { Bookmark, Check, Copy, Star } from 'lucide-react';
 import { firms as staticFirms, ACCOUNT_SIZE_OPTIONS, PRICE_OPTIONS } from '@/data/firms';
 import CompareFilterSidebar, {
   createEmptyFacet,
@@ -11,16 +11,18 @@ import CompareFilterSidebar, {
   isRangeActive,
   normalizeDrawdown,
 } from '@/components/CompareFilterSidebar';
-import { PfgPrimary } from '@/components/green/PfgControls';
+import { PfgGhost } from '@/components/green/PfgControls';
 import TableScrollSlider from '@/components/green/TableScrollSlider';
+import { discountBadge } from '@/lib/compareHighlights';
 import { firmLogo } from '@/lib/firmLogos';
 import { compareFirmNames, defaultSortDir } from '@/lib/firmSort';
 import { listPriceOf, salePriceOf } from '@/lib/planPrice';
 import './FirmCompareDemoGreen.edges.css';
 
 const MAX_FAVORITES = 5;
-const PAGE_SIZE = 10;
-const COLS_STORAGE_KEY = 'cmp-green-visible-cols-v4';
+const COLS_STORAGE_KEY = 'cmp-green-visible-cols-v5';
+const COPY_BTN =
+  'btn-bare appearance-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3FB185]/70';
 
 /** Instant / Direct / STF grouped; 1 Step is the other eval path */
 const STEP_FILTER_OPTIONS = ['Instant / Direct / STF', '1 Step'];
@@ -170,16 +172,19 @@ const MID_COLS = [
   },
   { key: 'payoutFreq', label: 'Payout freq.', tip: 'payoutFreq', sort: true, min: 208 },
   { key: 'profitSplit', label: 'Profit split', tip: 'profitSplit', sort: true, min: 144 },
+  { key: 'price', label: 'Price', tip: 'price', sort: true, min: 108 },
 ];
 
 const ALL_COL_KEYS = MID_COLS.map(c => c.key);
 
 const ROW =
-  'cmp-edge-row relative grid items-stretch grid-cols-[280px_minmax(0,1fr)_216px] max-md:grid-cols-[244px_minmax(0,1fr)_184px]';
+  'cmp-edge-row relative grid items-stretch grid-cols-[280px_minmax(0,1fr)_118px_96px] max-md:grid-cols-[220px_minmax(0,1fr)_104px_84px]';
 const PIN_FIRM =
   'cmp-edge-pin-firm flex min-w-0 items-center self-stretch bg-transparent';
-const PIN_PRICE =
-  'cmp-edge-pin-price flex min-w-0 items-center self-stretch bg-transparent';
+const PIN_PROMO =
+  'cmp-edge-pin-promo flex min-w-0 items-center justify-center self-stretch bg-transparent';
+const PIN_VISIT =
+  'cmp-edge-pin-visit flex min-w-0 items-center justify-center self-stretch bg-transparent';
 const PIN_HEAD = 'cmp-edge-head py-3';
 const MID =
   'cmp-mid relative min-w-0 overflow-x-auto overflow-y-hidden scrollbar-none bg-transparent';
@@ -231,22 +236,6 @@ function sortValue(key, plan, firm) {
   return plan[key] ?? firm[key] ?? '';
 }
 
-function buildPageItems(current, total) {
-  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
-  const items = [];
-  const push = n => {
-    if (items[items.length - 1] !== n) items.push(n);
-  };
-  push(1);
-  if (current > 3) push('…');
-  for (let n = Math.max(2, current - 1); n <= Math.min(total - 1, current + 1); n += 1) {
-    push(n);
-  }
-  if (current < total - 2) push('…');
-  push(total);
-  return items;
-}
-
 function formatMultiLabel(selected, fallback) {
   if (!selected?.length) return fallback;
   if (selected.length === 1) return selected[0];
@@ -294,6 +283,22 @@ function formatMoney(n) {
   const v = Number(n);
   if (!Number.isFinite(v) || v <= 0) return '—';
   return `$${v.toFixed(2)}`;
+}
+
+function promoOffLabel(firm, plan) {
+  const firmDisc = String(firm?.discount || '');
+  const range = firmDisc.match(/(\d+)\s*[–-]\s*(\d+)\s*%/);
+  if (range) return `${range[1]}–${range[2]}% OFF`;
+  const badge = discountBadge(firm, plan);
+  if (badge) return `${String(badge).replace(/^-/, '')} OFF`;
+  const m = firmDisc.match(/(\d+)\s*%/);
+  if (m) return `${m[1]}% OFF`;
+  return 'Deal';
+}
+
+function visitUrl(firm) {
+  if (firm?.affiliateLink) return firm.affiliateLink;
+  return firmWebsiteUrl(firm?.website);
 }
 
 function SortArrows({ active, direction }) {
@@ -490,14 +495,17 @@ function InfoTip({ tipKey, text: textProp, label = 'More info' }) {
   );
 }
 
-function renderMidCell(col, p) {
+function renderMidCell(col, p, applyDiscount) {
   const style = { flex: `0 0 ${col.min}px`, minWidth: col.min };
   const wrap = `${MID_CELL} text-center text-[0.82rem] font-semibold leading-snug text-slate-50`;
   switch (col.key) {
     case 'planType':
       return (
         <div key={col.key} className={`${wrap} px-2 text-[0.78rem] leading-snug`} style={style}>
-          <span className="line-clamp-2">{p.planType || '—'}</span>
+          <span className="inline-flex max-w-full items-center justify-center gap-1">
+            <span className="line-clamp-2">{p.planType || '—'}</span>
+            {p.info ? <InfoTip text={p.info} label="Plan info" /> : null}
+          </span>
         </div>
       );
     case 'steps':
@@ -580,6 +588,26 @@ function renderMidCell(col, p) {
           {p.payoutFreq}
         </div>
       );
+    case 'price': {
+      const sale = salePriceOf(p);
+      const list = listPriceOf(p);
+      const display = applyDiscount ? sale : list;
+      const showWas = applyDiscount && list > sale;
+      return (
+        <div key={col.key} className={`${wrap} flex-col gap-0.5`} style={style}>
+          <span className="inline-flex items-center gap-1">
+            <span className="text-[0.95rem] font-extrabold tabular-nums tracking-tight">{formatMoney(display)}</span>
+            {p.priceNote ? <InfoTip text={p.priceNote} label="Other price options for this plan" /> : null}
+          </span>
+          {showWas ? (
+            <span className="text-[0.7rem] font-semibold text-slate-500 line-through tabular-nums">{formatMoney(list)}</span>
+          ) : null}
+          <span className="text-[0.62rem] font-medium lowercase tracking-normal text-slate-500">
+            {String(p.priceType || 'One Time').toLowerCase()}
+          </span>
+        </div>
+      );
+    }
     default:
       return null;
   }
@@ -792,7 +820,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
   const [colsHydrated, setColsHydrated] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [sort, setSort] = useState({ key: 'default', dir: 'asc' });
-  const [page, setPage] = useState(1);
+  const [copiedKey, setCopiedKey] = useState(null);
   const toolbarRef = useRef(null);
   const boardRef = useRef(null);
   const masterMidRef = useRef(null);
@@ -951,6 +979,19 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
       if (next.size === 0) queueMicrotask(() => setTopMode('all'));
       return next;
     });
+  }, []);
+
+  const copyCode = useCallback(async (key, code) => {
+    if (!code) return;
+    try {
+      await navigator.clipboard.writeText(code);
+    } catch {
+      /* clipboard can be blocked */
+    }
+    setCopiedKey(key);
+    window.setTimeout(() => {
+      setCopiedKey(current => (current === key ? null : current));
+    }, 1600);
   }, []);
 
   const openSidebar = useCallback(() => {
@@ -1117,27 +1158,11 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
     return rows;
   }, [topMode, favorites, facet, sort, search, applyDiscount, firms, filterBounds]);
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  const pageItems = useMemo(() => buildPageItems(page, totalPages), [page, totalPages]);
-
-  useEffect(() => {
-    setPage(1);
-  }, [topMode, facet, sort, search]);
-
-  useEffect(() => {
-    setPage(p => Math.min(p, totalPages));
-  }, [totalPages]);
-
-  const pageRows = useMemo(() => {
-    const start = (page - 1) * PAGE_SIZE;
-    return filtered.slice(start, start + PAGE_SIZE);
-  }, [filtered, page]);
-
   useEffect(() => {
     const left = midScrollLeft.current;
     const id = requestAnimationFrame(() => applyMidScroll(left, null));
     return () => cancelAnimationFrame(id);
-  }, [pageRows, visibleMidCols, applyMidScroll]);
+  }, [filtered, visibleMidCols, applyMidScroll]);
 
   useEffect(() => {
     const root = boardRef.current;
@@ -1417,7 +1442,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
               className="cmp-edge-board relative z-[1] mt-0 flex w-full min-w-0 flex-col overflow-hidden rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]"
               ref={boardRef}
               role="table"
-              aria-label="Compare prop firm challenges: size, drawdown, contracts, payouts, and price"
+              aria-label="Compare prop firm challenges: size, drawdown, contracts, payouts, promo, and visit"
             >
               <div className={`${ROW} cmp-edge-row--head m-0`} role="row">
                 <div className={`${PIN_FIRM} ${PIN_HEAD}`} role="columnheader">
@@ -1459,15 +1484,11 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                     )}
                   </div>
                 </div>
-                <div className={`${PIN_PRICE} ${PIN_HEAD} justify-end`} role="columnheader">
-                  <SortHead
-                    label="Price"
-                    tip="price"
-                    sortKey="price"
-                    sort={sort}
-                    onSort={cycleSort}
-                    className="w-full items-end text-right"
-                  />
+                <div className={`${PIN_PROMO} ${PIN_HEAD}`} role="columnheader">
+                  <span className={`${TH} w-full`}>Promo</span>
+                </div>
+                <div className={`${PIN_VISIT} ${PIN_HEAD}`} role="columnheader">
+                  <span className={`${TH} w-full`}>Visit</span>
                 </div>
               </div>
 
@@ -1489,14 +1510,14 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                   </div>
                 </div>
               ) : (
-                pageRows.map(({ firm: f, plan: p }, i) => {
-                  const websiteHref = firmWebsiteUrl(f.website);
-                  const salePrice = salePriceOf(p);
-                  const listPrice = listPriceOf(p);
-                  const displayPrice = applyDiscount ? salePrice : listPrice;
-                  const showWas = applyDiscount && listPrice > salePrice;
+                filtered.map(({ firm: f, plan: p }, i) => {
+                  const href = visitUrl(f);
                   const even = i % 2 === 1;
                   const logoSrc = firmLogo(f.name, f.logo);
+                  const code = p.promoCode || f.promoCode || 'KAGE';
+                  const copyKey = p.id || `${f.name}:${code}`;
+                  const copied = copiedKey === copyKey;
+                  const off = promoOffLabel(f, p);
                   return (
                     <div
                       key={p.id}
@@ -1558,46 +1579,41 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
 
                       <div className={`${MID}`} onScroll={onMidScroll} role="presentation">
                         <div className="flex min-h-full w-max items-stretch">
-                          {visibleMidCols.map(col => renderMidCell(col, p))}
+                          {visibleMidCols.map(col => renderMidCell(col, p, applyDiscount))}
                         </div>
                       </div>
 
-                      <div className={`${PIN_PRICE}`} role="cell">
-                        <div className="flex w-full items-center justify-end gap-2.5">
-                          <div className="flex min-w-0 flex-col items-end gap-0.5 text-right">
-                            <span className="inline-flex items-center gap-1">
-                              <span className="text-[1.05rem] font-extrabold tracking-tight tabular-nums text-white">
-                                {formatMoney(displayPrice)}
-                              </span>
-                              {p.priceNote ? (
-                                <InfoTip text={p.priceNote} label="Other price options for this plan" />
-                              ) : null}
-                            </span>
-                            {showWas ? (
-                              <span className="text-[0.72rem] text-slate-500 line-through tabular-nums">
-                                {formatMoney(listPrice)}
-                              </span>
-                            ) : null}
-                            <span className="text-[0.65rem] lowercase text-slate-500">
-                              {String(p.priceType || 'One Time').toLowerCase()}
-                            </span>
+                      <div className={`${PIN_PROMO} px-2`} role="cell">
+                        <div className="w-full overflow-hidden rounded-lg border border-dashed border-[#3FB185]/35">
+                          <div className="bg-[#3FB185] px-1.5 py-0.5 text-center text-[0.62rem] font-bold leading-tight text-[#0a0f0d]">
+                            {off}
                           </div>
-                          {websiteHref ? (
-                            <PfgPrimary
-                              href={websiteHref}
-                              compact
-                              className="h-8 rounded-full! px-3.5"
-                              target="_blank"
-                              rel="noopener noreferrer sponsored"
-                            >
-                              KAGE
-                            </PfgPrimary>
-                          ) : (
-                            <span className="inline-flex h-8 shrink-0 items-center rounded-full bg-white/5 px-3 text-[0.75rem] font-bold text-slate-500">
-                              —
-                            </span>
-                          )}
+                          <button
+                            type="button"
+                            className={`${COPY_BTN} flex w-full items-center justify-center gap-1 bg-[#08120e]! px-1.5 py-1.5 text-[0.68rem] font-bold text-white! hover:bg-[#0e1c16]!`}
+                            onClick={() => copyCode(copyKey, code)}
+                            aria-label={`Copy promo code ${code}`}
+                          >
+                            {copied ? <Check size={11} /> : <Copy size={11} />}
+                            {copied ? 'Copied' : code}
+                          </button>
                         </div>
+                      </div>
+                      <div className={`${PIN_VISIT} px-2`} role="cell">
+                        {href ? (
+                          <PfgGhost
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer sponsored"
+                            className="min-h-8 px-3 py-1.5 text-[0.72rem]"
+                          >
+                            Visit
+                          </PfgGhost>
+                        ) : (
+                          <span className="inline-flex h-8 items-center rounded-full bg-white/5 px-3 text-[0.72rem] font-bold text-slate-500">
+                            —
+                          </span>
+                        )}
                       </div>
                     </div>
                   );
@@ -1610,57 +1626,6 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                 <TableScrollSlider getMidPanes={getMidPanes} masterRef={masterMidRef} />
               </div>
             ) : null}
-
-            {filtered.length > 0 && (
-              <nav className="mt-3 flex flex-wrap items-center justify-center gap-2.5" aria-label="Table pagination">
-                <div className="flex flex-wrap items-center justify-center gap-1">
-                  <button
-                    type="button"
-                    className="inline-flex min-h-7 items-center rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[0.72rem] font-semibold text-slate-300 hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35"
-                    onClick={() => setPage(p => Math.max(1, p - 1))}
-                    disabled={page <= 1 ? true : undefined}
-                    aria-label="Previous page"
-                  >
-                    Previous
-                  </button>
-                  {pageItems.map((item, idx) =>
-                    item === '…' ? (
-                      <span key={`e-${idx}`} className="inline-flex h-7 w-5 items-center justify-center text-[0.75rem] font-bold text-slate-500" aria-hidden>
-                        …
-                      </span>
-                    ) : (
-                      <button
-                        key={item}
-                        type="button"
-                        className={`size-7 rounded-[7px] text-[0.72rem] font-semibold ${
-                          page === item
-                            ? 'bg-[#3FB185] text-[#0a0f0d]'
-                            : 'border border-white/10 bg-white/5 text-slate-300 hover:bg-white/10'
-                        }`}
-                        onClick={() => setPage(item)}
-                        aria-label={`Page ${item}`}
-                        aria-current={page === item ? 'page' : undefined}
-                      >
-                        {item}
-                      </button>
-                    )
-                  )}
-                  <button
-                    type="button"
-                    className="inline-flex min-h-7 items-center rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[0.72rem] font-semibold text-slate-300 hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35"
-                    onClick={() => setPage(p => Math.min(p, totalPages))}
-                    disabled={page >= totalPages ? true : undefined}
-                    aria-label="Next page"
-                  >
-                    Next
-                  </button>
-                </div>
-                <span className="text-[0.72rem] text-slate-500" aria-live="polite">
-                  {Math.min((page - 1) * PAGE_SIZE + 1, filtered.length)}–
-                  {Math.min(page * PAGE_SIZE, filtered.length)} of {filtered.length}
-                </span>
-              </nav>
-            )}
           </div>
         </div>
       </div>

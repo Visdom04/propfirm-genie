@@ -22,7 +22,7 @@ export default function DemoHero({ firms }) {
             <FocusWord>Challenges</FocusWord>
           </h1>
           <p className="mx-auto m-0 max-w-xl text-[15px] leading-relaxed text-white/70">
-            Filter by size, steps, and price — rules, drawdown, and KAGE pricing in one table.
+            Compare challenges by size, steps, drawdown, and KAGE price.
           </p>
         </header>
         <FirmCompareDemoGreen firms={firms} />

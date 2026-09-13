@@ -35,6 +35,7 @@ function applyFirmSheetMeta(firm, meta = {}) {
     ...(meta.maxAlloc ? { maxAlloc: meta.maxAlloc } : {}),
     ...(typeof meta.rating === 'number' ? { rating: meta.rating } : {}),
     ...(typeof meta.reviews === 'number' ? { reviews: meta.reviews } : {}),
+    ...(meta.discount ? { discount: meta.discount } : {}),
   };
 }
 
@@ -71,6 +72,7 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
         ...(meta.maxAlloc ? { maxAlloc: meta.maxAlloc } : {}),
         ...(typeof meta.rating === 'number' ? { rating: meta.rating } : {}),
         ...(typeof meta.reviews === 'number' ? { reviews: meta.reviews } : {}),
+        ...(meta.discount ? { discount: meta.discount } : {}),
         accountSizes: sizes,
         steps,
         priceType: priceTypes,
@@ -88,7 +90,7 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
         maxAccounts: '—',
         maxAlloc: sizes[sizes.length - 1] || '—',
         promoCode: plans[0]?.promoCode || 'KAGE',
-        discount: 'KAGE',
+        discount: meta.discount || 'No verified offer',
         website: '',
         ...(meta.affiliateLink ? { affiliateLink: meta.affiliateLink } : {}),
         ...(meta.lastVerified ? { lastVerified: meta.lastVerified } : {}),
@@ -107,6 +109,7 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
         ...(meta.maxAlloc ? { maxAlloc: meta.maxAlloc } : {}),
         ...(typeof meta.rating === 'number' ? { rating: meta.rating } : {}),
         ...(typeof meta.reviews === 'number' ? { reviews: meta.reviews } : {}),
+        ...(meta.discount ? { discount: meta.discount } : {}),
         comingSoon: false,
         plans,
       });
@@ -205,6 +208,7 @@ function slimFirmMeta(firms = []) {
       ...(f.maxAlloc ? { maxAlloc: f.maxAlloc } : {}),
       ...(typeof f.rating === 'number' ? { rating: f.rating } : {}),
       ...(typeof f.reviews === 'number' ? { reviews: f.reviews } : {}),
+      ...(f.discount ? { discount: f.discount } : {}),
     };
   }
   return map;

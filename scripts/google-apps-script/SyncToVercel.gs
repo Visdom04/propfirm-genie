@@ -45,6 +45,19 @@ const EXTENDED_HEADERS = [
   'List Price',
   'Discount %',
   'Price Note',
+  'Info',
+];
+
+const FIRMS_HEADERS = [
+  'Firm',
+  'Affiliate Link',
+  'Last Verified',
+  'Verified By',
+  'isPopular',
+  'Max Allocation',
+  'Rating',
+  'Reviews',
+  'Offer',
 ];
 
 const EXPECTED_HEADERS = CORE_HEADERS.concat(EXTENDED_HEADERS);
@@ -55,6 +68,7 @@ function onOpen() {
     .addItem('Diagnose sheet (find issues)', 'diagnoseSheet')
     .addItem('Strip ALL dropdowns', 'stripAllDropdowns')
     .addItem('Ensure header names only', 'ensureHeaderNamesOnly')
+    .addItem('Add Offer + Info columns', 'ensureOfferAndInfoColumns')
     .addItem('Sync sheet → site now', 'syncNow')
     .addSeparator()
     .addItem('Purge leaky timers', 'purgeLeakyTimers')
@@ -165,6 +179,41 @@ function ensureHeaderNamesOnly() {
   sheet.getRange(1, 1, sheet.getMaxRows(), sheet.getMaxColumns()).clearDataValidations();
   SpreadsheetApp.getUi().alert(
     'Header row forced to ' + EXPECTED_HEADERS.length + ' expected names. No dropdowns added.'
+  );
+}
+
+function appendMissingHeaders_(sheet, expected) {
+  if (!sheet) return [];
+  var lastCol = Math.max(sheet.getLastColumn(), 1);
+  var headers = sheet
+    .getRange(1, 1, 1, lastCol)
+    .getDisplayValues()[0]
+    .map(function (h) {
+      return String(h || '').trim();
+    });
+  var have = {};
+  headers.forEach(function (h) {
+    if (h) have[h] = true;
+  });
+  var missing = expected.filter(function (h) {
+    return !have[h];
+  });
+  if (!missing.length) return missing;
+  sheet.getRange(1, lastCol + 1, 1, missing.length).setValues([missing]);
+  return missing;
+}
+
+function ensureOfferAndInfoColumns() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var plansMissing = appendMissingHeaders_(findSheet_(ss, PLANS_TAB), EXPECTED_HEADERS);
+  var firmsMissing = appendMissingHeaders_(findSheet_(ss, FIRMS_TAB), FIRMS_HEADERS);
+  SpreadsheetApp.getUi().alert(
+    'Plans added: ' +
+      (plansMissing.length ? plansMissing.join(', ') : 'none') +
+      '\nFirms added: ' +
+      (firmsMissing.length ? firmsMissing.join(', ') : 'none') +
+      '\n\nOffer = picker promo line (e.g. 25% OFF - code KAGE).' +
+      '\nInfo = extra note in the Plans (i) popup. Plan Type + Account Size still fill the list.'
   );
 }
 

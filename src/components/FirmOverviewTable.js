@@ -29,7 +29,6 @@ function slugify(name) {
 const MAX_FAVORITES = 5;
 const FAV_KEY = 'cmp-overview-favs';
 const COLS_KEY = 'cmp-overview-cols-v1';
-const PAGE_SIZE = 12;
 
 const MID_COLS = [
   { key: 'size', label: 'Account', label2: 'size', min: 92 },
@@ -233,6 +232,13 @@ function PlanTip({ groups }) {
             <p className="m-0 mt-0.5 text-[0.72rem] font-medium leading-snug text-slate-400">
               {g.sizes.join(' · ')}
             </p>
+            {g.notes?.length
+              ? g.notes.map(note => (
+                  <p key={note} className="m-0 mt-1 text-[0.72rem] font-medium leading-snug text-emerald-200/70">
+                    {note}
+                  </p>
+                ))
+              : null}
           </li>
         ))}
       </ul>
@@ -566,7 +572,6 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
   const [favorites, setFavorites] = useState(new Set());
   const [topMode, setTopMode] = useState('all');
   const [sort, setSort] = useState({ key: 'default', dir: 'desc' });
-  const [page, setPage] = useState(1);
   const [expanded, setExpanded] = useState(new Set());
   const [customizeOpen, setCustomizeOpen] = useState(false);
   const [visibleCols, setVisibleCols] = useState(() => new Set(ALL_COL_KEYS));
@@ -693,14 +698,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
     return copy;
   }, [filtered, sort]);
 
-  const pages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
-  const pageSafe = Math.min(page, pages);
-  const pageRows = sorted.slice((pageSafe - 1) * PAGE_SIZE, pageSafe * PAGE_SIZE);
   const visibleMidCols = MID_COLS.filter(c => visibleCols.has(c.key));
-
-  useEffect(() => {
-    setPage(1);
-  }, [search, spotA, spotB, topMode, facet, applyDiscount, sort]);
 
   const getMidPanes = useCallback(() => {
     const root = boardRef.current;
@@ -1153,10 +1151,10 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
               </div>
             </div>
 
-            {pageRows.length === 0 ? (
+            {sorted.length === 0 ? (
               <p className="px-5 py-10 text-center text-sm text-white/45">No firms match these filters.</p>
             ) : (
-              pageRows.map((row, i) => {
+              sorted.map((row, i) => {
                 const f = row.firm;
                 const even = i % 2 === 1;
                 const logoSrc = firmLogo(f.name, f.logo);
@@ -1256,23 +1254,6 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
             <div className="ov-no-print mt-3 flex min-w-0 items-center px-1">
               <TableScrollSlider getMidPanes={getMidPanes} masterRef={masterMidRef} />
             </div>
-          ) : null}
-
-          {sorted.length > PAGE_SIZE ? (
-            <nav className="ov-no-print mt-3 flex flex-wrap items-center justify-center gap-1" aria-label="Table pagination">
-              {Array.from({ length: pages }, (_, i) => i + 1).map(n => (
-                <button
-                  key={n}
-                  type="button"
-                  className={`size-7 rounded-[7px] text-[0.72rem] font-semibold ${
-                    pageSafe === n ? 'bg-[#3FB185] text-[#0a0f0d]' : 'border border-white/10 bg-white/5 text-slate-300'
-                  }`}
-                  onClick={() => setPage(n)}
-                >
-                  {n}
-                </button>
-              ))}
-            </nav>
           ) : null}
         </div>
       </div>

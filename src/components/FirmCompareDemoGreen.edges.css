@@ -1,14 +1,16 @@
 /* Challenge table rails — flat rows, quiet freeze (Wise presentation) */
 .cmp-edge-board {
   --cmp-firm: 280px;
-  --cmp-price: 216px;
+  --cmp-promo: 118px;
+  --cmp-visit: 96px;
   padding: 0 12px 8px;
 }
 
 @media (max-width: 767px) {
   .cmp-edge-board {
-    --cmp-firm: 244px;
-    --cmp-price: 184px;
+    --cmp-firm: 220px;
+    --cmp-promo: 104px;
+    --cmp-visit: 84px;
     padding: 0 10px 8px;
   }
 }
@@ -38,7 +40,8 @@
 }
 
 .cmp-edge-pin-firm,
-.cmp-edge-pin-price {
+.cmp-edge-pin-promo,
+.cmp-edge-pin-visit {
   position: relative;
   box-sizing: border-box;
   box-shadow: none;
@@ -48,8 +51,9 @@
   padding: 12px 12px 12px 16px;
 }
 
-.cmp-edge-pin-price {
-  padding: 12px 16px 12px 12px;
+.cmp-edge-pin-promo,
+.cmp-edge-pin-visit {
+  padding: 12px 8px;
 }
 
 .cmp-edge-row--head {

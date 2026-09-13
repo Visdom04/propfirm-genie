@@ -703,7 +703,7 @@ export default function CompareFirmsH2H({ firms = [], popularPairs = [] }) {
             <FocusWord>Head to Head</FocusWord>
           </h1>
           <p className="mx-auto m-0 max-w-xl text-[15px] leading-relaxed text-white/70">
-            Pick two firms, then account type and size — costs, drawdowns, splits, and rules side by side.
+            Choose two firms, then a plan and size. Compare costs, drawdowns, splits, and rules.
           </p>
         </header>
 

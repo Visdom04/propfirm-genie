@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Browse Prop Firms',
-  description: 'Ratings, platforms, allocation, and promo codes in one A–Z directory.',
+  description: 'Ratings, platforms, max allocation, and promo codes, listed A to Z.',
 };
 
 export default async function FirmsPage() {
@@ -21,7 +21,7 @@ export default async function FirmsPage() {
             <FocusWord>Firms</FocusWord>
           </h1>
           <p className="mx-auto m-0 max-w-xl text-[15px] leading-relaxed text-white/70">
-            Ratings, platforms, allocation, and promo codes in one A–Z directory.
+            Ratings, platforms, max allocation, and promo codes, listed A to Z.
           </p>
         </header>
         <FirmDirectoryTable firms={firms} />

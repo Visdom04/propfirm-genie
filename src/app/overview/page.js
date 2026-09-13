@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Prop Firm Overview',
-  description: 'One row per firm — sizes, ratings, platforms, eval cost, and payout rules.',
+  description: 'One row per firm for sizes, ratings, eval cost, and payout rules.',
 };
 
 export default async function OverviewPage() {
@@ -21,7 +21,7 @@ export default async function OverviewPage() {
             <FocusWord>Overview</FocusWord>
           </h1>
           <p className="mx-auto m-0 max-w-xl text-[15px] leading-relaxed text-white/70">
-            One row per firm — sizes, ratings, platforms, eval cost, and payout rules. Pin two names to spotlight a pair.
+            One row per firm for sizes, ratings, eval cost, and payout rules. Pin two firms to keep them in view.
           </p>
         </header>
         <FirmOverviewTable firms={firms} />
