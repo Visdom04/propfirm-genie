@@ -60,11 +60,15 @@ const SORT_OPTIONS = [
 
 function sortLabel(sort) {
   if (sort.key === 'firm' && sort.dir === 'desc') return 'Z–A';
-  return SORT_OPTIONS.find(o => o.key === sort.key)?.label || 'Popularity';
+  return (
+    SORT_OPTIONS.find(o => o.key === sort.key)?.label ||
+    MID_COLS.find(c => c.key === sort.key)?.label ||
+    'Popularity'
+  );
 }
 
 const ROW =
-  'ov-row relative grid items-stretch grid-cols-[280px_minmax(0,1fr)_168px] max-md:grid-cols-[244px_minmax(0,1fr)_148px]';
+  'ov-row grid items-stretch grid-cols-[var(--ov-firm)_minmax(0,1fr)_var(--ov-price)]';
 const PIN_FIRM =
   'ov-pin-firm flex min-w-0 items-center self-stretch border-r border-white/[0.06] bg-transparent';
 const PIN_ACTION =
@@ -204,7 +208,7 @@ function CellTip({ label, children }) {
               id={tipId}
               role="dialog"
               aria-label={label}
-              className={`fixed z-[10050] w-[min(320px,86vw)] max-h-[min(280px,70vh)] overflow-y-auto rounded-[12px] border border-[#3FB185]/35 bg-[#0c1612] px-3.5 py-3 text-left shadow-[0_18px_40px_rgba(0,0,0,0.55)] ${
+              className={`fixed z-[10050] w-[min(320px,86vw)] max-h-[min(280px,70vh)] overflow-y-auto scrollbar-pfg rounded-[12px] border border-[#3FB185]/35 bg-[#0c1612] px-3.5 py-3 text-left shadow-[0_18px_40px_rgba(0,0,0,0.55)] ${
                 pos.place === 'above' ? '-translate-x-1/2 -translate-y-full' : '-translate-x-1/2'
               }`}
               style={{ top: pos.top, left: pos.left }}
@@ -394,8 +398,7 @@ function FirmSpot({ label, value, firms, other, onPick, onClear }) {
   const [pos, setPos] = useState({ top: 0, left: 0, width: 240 });
   const matches = firms
     .filter(f => f.name !== other)
-    .filter(f => !q || f.name.toLowerCase().includes(q.toLowerCase()))
-    .slice(0, 8);
+    .filter(f => !q || f.name.toLowerCase().includes(q.toLowerCase()));
   const selected = firms.find(f => f.name === value);
 
   const placeMenu = useCallback(() => {
@@ -435,6 +438,8 @@ function FirmSpot({ label, value, firms, other, onPick, onClear }) {
           className="min-w-0 flex-1 border-0 bg-transparent text-[0.8rem] text-white outline-none placeholder:text-white/35"
           placeholder="Any firm"
           value={open ? q : selected?.name || q}
+          autoComplete="off"
+          spellCheck={false}
           onChange={e => {
             setQ(e.target.value);
             setOpen(true);
@@ -464,7 +469,7 @@ function FirmSpot({ label, value, firms, other, onPick, onClear }) {
       {open && matches.length
         ? createPortal(
             <div
-              className="fixed z-[10040] max-h-56 overflow-auto rounded-xl border border-[#3FB185]/35 bg-[#0c1612] p-1 shadow-[0_18px_48px_rgba(0,0,0,0.65)]"
+              className="fixed z-[10040] max-h-[min(70vh,420px)] overflow-auto rounded-xl border border-[#3FB185]/35 bg-[#0c1612] p-1 shadow-[0_18px_48px_rgba(0,0,0,0.65)]"
               style={{ top: pos.top, left: pos.left, width: pos.width }}
               role="listbox"
               aria-label={`${label} matches`}
@@ -521,14 +526,41 @@ function computeBounds(catalog) {
   };
 }
 
+function numFrom(raw) {
+  const s = String(raw ?? '').trim();
+  if (!s || /^none$/i.test(s) || s === '—' || s === '-') return 0;
+  const m = s.replace(/,/g, '').match(/-?[\d.]+/);
+  return m ? Number(m[0]) : 0;
+}
+
 function sortValue(key, row) {
-  if (key === 'firm') return row.firm?.name || '';
-  if (key === 'rating') return Number(row.firm.rating) || 0;
+  const f = row.firm;
+  if (key === 'firm') return f?.name || '';
+  if (key === 'rating') return Number(f.rating) || 0;
+  if (key === 'size') return numFrom(row.sizes?.[row.sizes.length - 1] || row.sizeLabel);
+  if (key === 'platforms') return (row.platforms || []).length;
+  if (key === 's2f') return row.straightToFunded ? 1 : 0;
   if (key === 'evalPrice') return row.evalPrice || 0;
+  if (key === 'activation') {
+    if (/^none$/i.test(String(row.activationLabel || ''))) return 0;
+    const n = numFrom(row.activationLabel);
+    return n || 0;
+  }
   if (key === 'allIn') return row.allIn || 0;
-  if (key === 'fromPrice') return row.fromPrice || 0;
+  if (key === 'drawdown') return String(row.drawdownLabel || '');
+  if (key === 'maxLoss') return numFrom(row.maxLossLabel);
+  if (key === 'days') return numFrom(row.daysToPass);
+  if (key === 'news') {
+    if (row.news === 'Allowed') return 2;
+    if (row.news === 'Varies') return 1;
+    return 0;
+  }
   if (key === 'split') return Number(String(row.profitSplit).match(/\d+/)?.[0] || 0);
-  return Number(row.firm.likes) || 0;
+  if (key === 'payout') return String(row.payoutLabel || '');
+  if (key === 'accounts') return numFrom(row.maxAccounts);
+  if (key === 'discount') return numFrom(row.discountLabel);
+  if (key === 'description') return String(f?.description || '');
+  return Number(f?.likes) || 0;
 }
 
 export default function FirmOverviewTable({ firms: catalog = [] }) {
@@ -672,6 +704,14 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
   }, [filtered, sort]);
 
   const visibleMidCols = MID_COLS.filter(c => visibleCols.has(c.key));
+  const colMin = col => (isMobile ? Math.max(84, Math.round(col.min * 0.82)) : col.min);
+
+  const cycleSort = key => {
+    setSort(prev => {
+      if (prev.key !== key) return { key, dir: defaultSortDir(key) };
+      return { key, dir: prev.dir === 'asc' ? 'desc' : 'asc' };
+    });
+  };
 
   const getMidPanes = useCallback(() => {
     const root = boardRef.current;
@@ -714,7 +754,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
     spotA && spotB ? `/compare?a=${slugify(spotA)}&b=${slugify(spotB)}` : null;
 
   const renderMid = (col, row) => {
-    const style = { flex: `0 0 ${col.min}px`, minWidth: col.min };
+    const style = { flex: `0 0 ${colMin(col)}px`, minWidth: colMin(col) };
     const wrap = `${MID_CELL_BASE} min-h-[88px] items-center justify-center text-center text-[0.82rem] font-bold leading-snug text-slate-50`;
     switch (col.key) {
       case 'size':
@@ -867,7 +907,8 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         </div>
 
         <div className="min-w-0 flex-1">
-          <div className="ov-no-print relative z-30 overflow-visible flex flex-col gap-3 rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 bg-[#08120e]/90 px-4 py-3 sm:px-[18px] sm:py-3.5">
+          <div className="ov-workbench">
+          <div className="ov-chrome ov-no-print flex flex-col gap-3 rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 px-4 py-3 sm:px-[18px] sm:py-3.5">
             <div className="ov-spotlight flex min-w-0 flex-wrap items-end gap-2 rounded-2xl border border-[#3FB185]/40 bg-[#07140f] px-3.5 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_32px_rgba(0,0,0,0.35)]">
               <p className="m-0 w-full text-[0.68rem] font-bold uppercase tracking-[0.1em] text-[#3FB185]/80">Spotlight two firms</p>
               <FirmSpot
@@ -1052,46 +1093,37 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
             </div>
           </div>
 
-          <div ref={boardRef} className="ov-board overflow-hidden rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]">
-            <div className={`${ROW} ov-row--head sticky top-0 z-[2]`} role="row">
-              <div className={`${PIN_FIRM} ${PIN_HEAD}`} role="columnheader">
+          <div
+            ref={boardRef}
+            className={`ov-board scrollbar-pfg border border-t-0 border-white/10 bg-[#060c0a] ${sorted.length ? '' : 'rounded-b-2xl'}`}
+          >
+            <div className={`${ROW} ov-row--head`} role="row">
+              <div className={`${PIN_FIRM} ${PIN_HEAD} bg-[#060c0a]`} role="columnheader">
                 <button
                   type="button"
-                  className="btn-bare inline-flex items-center gap-0.5 pl-4 text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90"
-                  onClick={() =>
-                    setSort(prev => ({
-                      key: 'firm',
-                      dir: prev.key === 'firm' && prev.dir === 'asc' ? 'desc' : 'asc',
-                    }))
-                  }
+                  className="btn-bare inline-flex items-center gap-0.5 pl-2 text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90 sm:pl-4"
+                  onClick={() => cycleSort('firm')}
                 >
                   Firm
                   <SortArrows active={sort.key === 'firm'} direction={sort.dir} />
                 </button>
               </div>
-              <div className={`${MID} ${PIN_HEAD}`} ref={masterMidRef} onScroll={onMidScroll}>
+              <div className={`${MID} ${PIN_HEAD} bg-[#060c0a]`} ref={masterMidRef} onScroll={onMidScroll}>
                 <div className="flex h-full w-max items-stretch">
                   {visibleMidCols.map(col => (
                     <div
                       key={col.key}
                       className={`${MID_CELL} ${TH} ${col.label2 ? 'whitespace-normal' : 'whitespace-nowrap'}`}
-                      style={{ flex: `0 0 ${col.min}px`, minWidth: col.min }}
+                      style={{ flex: `0 0 ${colMin(col)}px`, minWidth: colMin(col) }}
                     >
                       <span className="inline-flex items-center gap-0.5">
                         <button
                           type="button"
                           className="btn-bare inline-flex items-center gap-0.5 uppercase"
-                          onClick={() =>
-                            setSort(prev => ({
-                              key: col.key === 'evalPrice' || col.key === 'allIn' ? col.key : prev.key,
-                              dir: prev.key === col.key && prev.dir === 'asc' ? 'desc' : 'asc',
-                            }))
-                          }
+                          onClick={() => cycleSort(col.key)}
                         >
                           <HeadLabel label={col.label} label2={col.label2} />
-                          {col.key === 'evalPrice' || col.key === 'allIn' ? (
-                            <SortArrows active={sort.key === col.key} direction={sort.dir} />
-                          ) : null}
+                          <SortArrows active={sort.key === col.key} direction={sort.dir} />
                         </button>
                         <InfoTip text={INFO[col.key]} />
                       </span>
@@ -1100,7 +1132,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                 </div>
               </div>
               <div
-                className={`${PIN_ACTION} ${PIN_HEAD} justify-center text-center text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90`}
+                className={`${PIN_ACTION} ${PIN_HEAD} justify-center bg-[#060c0a] text-center text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90`}
                 role="columnheader"
               >
                 View firm
@@ -1192,7 +1224,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          View firm
+                          {isMobile ? 'View' : 'View firm'}
                         </PfgPrimary>
                       ) : (
                         <span className="inline-flex h-8 items-center rounded-full bg-white/5 px-3 text-[0.75rem] font-bold text-slate-500">
@@ -1207,10 +1239,11 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
           </div>
 
           {sorted.length > 0 ? (
-            <div className="ov-no-print mt-3 flex min-w-0 items-center px-1">
+            <div className="ov-scroll-track ov-no-print flex min-w-0 items-center rounded-b-2xl border border-t-0 border-white/10">
               <TableScrollSlider getMidPanes={getMidPanes} masterRef={masterMidRef} />
             </div>
           ) : null}
+          </div>
         </div>
       </div>
     </div>

@@ -15,8 +15,9 @@ export default function SiteNav() {
   const pathname = usePathname() || '';
   return (
     <nav
-      className="relative z-[2] border-b border-white/10 bg-[#0a0f0d]/70 backdrop-blur-md"
+      className="sticky top-0 z-40 border-b border-white/10 bg-[#0a0f0d]/92 backdrop-blur-md"
       aria-label="Site"
+      style={{ '--pfg-nav-h': '3.5rem' }}
     >
       <div className="mx-auto flex w-full max-w-[1440px] items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/challenges" className="mr-3 flex h-8 shrink-0 items-center no-underline" aria-label="Prop Firm Genie home">

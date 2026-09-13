@@ -254,9 +254,9 @@ export default function CompareFilterSidebar({
           </button>
         </div>
 
-        <div className="scrollbar-none min-h-0 flex-1 overflow-y-auto px-4">
+        <div className="scrollbar-pfg min-h-0 flex-1 overflow-y-auto px-4">
           <Accordion title={`Firms · ${firmList.length}`} defaultOpen>
-            <div className="flex max-h-56 w-full flex-col gap-1 overflow-y-auto pr-1" role="group" aria-label="Filter by firm">
+            <div className="scrollbar-pfg flex max-h-56 w-full flex-col gap-1 overflow-y-auto pr-1" role="group" aria-label="Filter by firm">
               {firmList.map(f => {
                 const on = draft.firms.includes(f.name);
                 return (

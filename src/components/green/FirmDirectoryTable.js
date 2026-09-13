@@ -9,6 +9,7 @@ import { firmLogo } from '@/lib/firmLogos';
 import { compareFirmNames } from '@/lib/firmSort';
 import { PLATFORM_MARK, platformLogo } from '@/lib/platformLogos';
 import { PfgGhost } from '@/components/green/PfgControls';
+import './FirmDirectoryTable.css';
 
 const BTN =
   'btn-bare appearance-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3FB185]/70';
@@ -21,12 +22,16 @@ const COLS =
   'grid min-w-[1180px] grid-cols-[minmax(200px,1.15fr)_minmax(128px,0.85fr)_minmax(110px,0.75fr)_72px_minmax(132px,0.9fr)_minmax(118px,0.8fr)_minmax(96px,0.7fr)_118px_92px] items-center gap-x-3';
 
 const FLAGS = { US: '🇺🇸', AE: '🇦🇪', CY: '🇨🇾', CZ: '🇨🇿', GB: '🇬🇧', CA: '🇨🇦', AU: '🇦🇺', LC: '🇱🇨' };
-const NUMERIC_SORT = new Set(['reviews', 'years', 'alloc']);
+const NUMERIC_SORT = new Set(['reviews', 'years', 'alloc', 'platforms', 'promo']);
 const SORT_OPTIONS = [
   { key: 'name', label: 'A–Z' },
   { key: 'reviews', label: 'Reviews' },
+  { key: 'country', label: 'Country' },
   { key: 'years', label: 'Years' },
+  { key: 'assets', label: 'Assets' },
+  { key: 'platforms', label: 'Platforms' },
   { key: 'alloc', label: 'Max allocation' },
+  { key: 'promo', label: 'Promo' },
 ];
 
 function compactNum(n) {
@@ -50,6 +55,14 @@ function promoLabel(firm) {
   const m = firmDisc.match(/(\d+)\s*%/);
   if (m) return `${m[1]}% OFF`;
   return null;
+}
+
+function promoSortValue(firm) {
+  const label = promoLabel(firm) || '';
+  const range = label.match(/(\d+)\s*[–-]\s*(\d+)/);
+  if (range) return Number(range[2]) || Number(range[1]) || 0;
+  const m = label.match(/(\d+)/);
+  return m ? Number(m[1]) : 0;
 }
 
 function allocValue(raw) {
@@ -314,7 +327,13 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
       }
       if (sort === 'years') cmp = (Number(a.years) || 0) - (Number(b.years) || 0);
       else if (sort === 'alloc') cmp = allocValue(a.maxAlloc) - allocValue(b.maxAlloc);
-      else if (sort === 'reviews') {
+      else if (sort === 'platforms') cmp = (a.platforms || []).length - (b.platforms || []).length;
+      else if (sort === 'promo') cmp = promoSortValue(a) - promoSortValue(b);
+      else if (sort === 'assets') {
+        cmp = compareFirmNames((a.assets || []).join(' '), (b.assets || []).join(' '), dir);
+        if (!cmp) return compareFirmNames(a.name, b.name, dir);
+        return cmp;
+      } else if (sort === 'reviews') {
         cmp = (Number(a.reviews) || 0) - (Number(b.reviews) || 0);
         if (!cmp) cmp = (Number(a.rating) || 0) - (Number(b.rating) || 0);
       }
@@ -375,7 +394,9 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
 
   return (
     <div className="w-full">
-      <div className="mb-4 flex flex-wrap items-center gap-2">
+      <div className="dir-workbench">
+      <div className="dir-chrome rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 px-4 py-3 sm:px-[18px] sm:py-3.5">
+      <div className="flex flex-wrap items-center gap-2">
         <button
           type="button"
           className={`${BTN} inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-[0.78rem] font-semibold ${
@@ -450,7 +471,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
       </div>
 
       {filterOpen ? (
-        <div className="mb-4 space-y-3 rounded-2xl border border-white/10 bg-[#0c1612] px-4 py-4">
+        <div className="mt-3 space-y-3 rounded-2xl border border-white/10 bg-[#0c1612] px-4 py-4">
           <label className="flex items-center gap-2 rounded-full border border-white/12 bg-[#08120e] px-4 py-2.5">
             <svg className="shrink-0 text-white/35" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
               <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
@@ -520,28 +541,26 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
           ) : null}
         </div>
       ) : null}
+      </div>
 
-      <div className="overflow-x-auto pb-2">
-        <div className={`${COLS} border-b border-white/8 px-3 pb-2`}>
-          <SortHead label="Firm" col="name" sort={sort} dir={dir} onSort={onSort} align="left" />
-          <SortHead label="Reviews" col="reviews" sort={sort} dir={dir} onSort={onSort} />
-          <SortHead label="Country" col="country" sort={sort} dir={dir} onSort={onSort} />
-          <SortHead label="Years in operation" col="years" sort={sort} dir={dir} onSort={onSort} />
-          <span className="w-full text-center text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">
-            Assets
-          </span>
-          <span className="w-full text-center text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">
-            Platforms
-          </span>
-          <SortHead label="Max allocations" col="alloc" sort={sort} dir={dir} onSort={onSort} />
-          <span className="w-full text-center text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">
-            Promo
-          </span>
-          <span className="w-full text-center text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">
-            Visit
-          </span>
+      <div className="dir-board scrollbar-pfg rounded-b-2xl border border-t-0 border-white/10">
+        <div className="dir-head px-3 pb-2 pt-1">
+          <div className={COLS}>
+            <SortHead label="Firm" col="name" sort={sort} dir={dir} onSort={onSort} align="left" />
+            <SortHead label="Reviews" col="reviews" sort={sort} dir={dir} onSort={onSort} />
+            <SortHead label="Country" col="country" sort={sort} dir={dir} onSort={onSort} />
+            <SortHead label="Years in operation" col="years" sort={sort} dir={dir} onSort={onSort} />
+            <SortHead label="Assets" col="assets" sort={sort} dir={dir} onSort={onSort} />
+            <SortHead label="Platforms" col="platforms" sort={sort} dir={dir} onSort={onSort} />
+            <SortHead label="Max allocations" col="alloc" sort={sort} dir={dir} onSort={onSort} />
+            <SortHead label="Promo" col="promo" sort={sort} dir={dir} onSort={onSort} />
+            <span className="w-full text-center text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">
+              Visit
+            </span>
+          </div>
         </div>
 
+        <div className="px-3 pb-3 pt-2">
         {visible.length === 0 ? (
           <p className="rounded-2xl border border-white/10 bg-[#0c1612] px-5 py-10 text-center text-sm text-white/45">
             {mode === 'favorites' ? 'No favorites yet. Heart a firm to pin it here (max 5).' : 'No firms match this filter.'}
@@ -703,6 +722,8 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
             })}
           </ul>
         )}
+        </div>
+      </div>
       </div>
 
       {ranked.length > PAGE_SIZE && !showAll ? (

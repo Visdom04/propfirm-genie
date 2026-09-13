@@ -192,7 +192,7 @@ function PickerMenu({ items, onPick, onClose, searchable = false, selectedKey })
 
   return (
     <div
-      className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 max-h-72 overflow-y-auto rounded-2xl border border-white/10 bg-[#0c1612] p-2 shadow-[0_20px_50px_rgba(0,0,0,0.55)]"
+      className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 max-h-72 overflow-y-auto scrollbar-pfg rounded-2xl border border-white/10 bg-[#0c1612] p-2 shadow-[0_20px_50px_rgba(0,0,0,0.55)]"
       ref={ref}
       role="listbox"
     >

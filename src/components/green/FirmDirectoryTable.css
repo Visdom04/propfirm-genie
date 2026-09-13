@@ -1,0 +1,40 @@
+.dir-workbench {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 3.5rem);
+}
+
+.dir-chrome {
+  flex-shrink: 0;
+  background: #08120e;
+}
+
+.dir-board {
+  flex: 1 1 auto;
+  min-height: 12rem;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #060c0a;
+}
+
+.dir-head {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  isolation: isolate;
+  width: max-content;
+  min-width: 100%;
+  background: #060c0a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 18px rgba(6, 12, 10, 0.92);
+}
+
+@media print {
+  .dir-workbench {
+    max-height: none !important;
+  }
+
+  .dir-board {
+    overflow: visible !important;
+  }
+}

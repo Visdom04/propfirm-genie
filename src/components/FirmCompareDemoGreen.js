@@ -158,16 +158,16 @@ const MID_COLS = [
   { key: 'steps', label: 'Steps', tip: 'steps', sort: true, min: 96 },
   { key: 'accountSize', label: 'Account', label2: 'size', tip: 'accountSize', sort: true, min: 92 },
   { key: 'maxLossType', label: 'Drawdown', label2: 'type', tip: 'maxLossType', sort: true, min: 96 },
-  { key: 'activationFee', label: 'Activation fee', tip: 'activationFee', sort: false, min: 144 },
+  { key: 'activationFee', label: 'Activation fee', tip: 'activationFee', sort: true, min: 144 },
   { key: 'profitTarget', label: 'Profit', label2: 'target', tip: 'profitTarget', sort: true, min: 96 },
   { key: 'maxLoss', label: 'Max', label2: 'drawdown', tip: 'maxLoss', sort: true, min: 96 },
-  { key: 'maxLots', label: 'Max', label2: 'contract', sub: 'Minis / Micros', tip: 'maxLots', sort: false, min: 108 },
+  { key: 'maxLots', label: 'Max', label2: 'contract', sub: 'Minis / Micros', tip: 'maxLots', sort: true, min: 108 },
   {
     key: 'consistency',
     label: 'Consistency rule',
     sub: 'Eval / Funded',
     tip: 'consistency',
-    sort: false,
+    sort: true,
     min: 176,
   },
   { key: 'payoutFreq', label: 'Payout freq.', tip: 'payoutFreq', sort: true, min: 208 },
@@ -178,7 +178,7 @@ const MID_COLS = [
 const ALL_COL_KEYS = MID_COLS.map(c => c.key);
 
 const ROW =
-  'cmp-edge-row relative grid items-stretch grid-cols-[280px_minmax(0,1fr)_118px_96px] max-md:grid-cols-[220px_minmax(0,1fr)_104px_84px]';
+  'cmp-edge-row grid items-stretch grid-cols-[280px_minmax(0,1fr)_118px_96px] max-md:grid-cols-[168px_minmax(0,1fr)_92px_72px]';
 const PIN_FIRM =
   'cmp-edge-pin-firm flex min-w-0 items-center self-stretch bg-transparent';
 const PIN_PROMO =
@@ -228,10 +228,24 @@ function sortValue(key, plan, firm) {
     const m = raw.replace(/,/g, '').match(/-?[\d.]+/);
     return m ? Number(m[0]) : 0;
   }
+  if (key === 'maxLots') {
+    const m = String(plan.maxLots || '').match(/[\d.]+/);
+    return m ? Number(m[0]) : 0;
+  }
+  if (key === 'consistency') {
+    return `${plan.consistencyEval || ''} ${plan.consistencyFunded || ''}`.toLowerCase();
+  }
   if (key === 'ptDd') {
     const parts = String(plan.ptDd || '').split(':');
     if (parts.length === 2) return Number(parts[1]) || 0;
     return 0;
+  }
+  if (key === 'promo') {
+    const label = promoOffLabel(firm, plan);
+    const range = String(label).match(/(\d+)\s*[–-]\s*(\d+)/);
+    if (range) return Number(range[2]) || Number(range[1]) || 0;
+    const m = String(label).match(/(\d+)/);
+    return m ? Number(m[1]) : 0;
   }
   return plan[key] ?? firm[key] ?? '';
 }
@@ -1213,9 +1227,9 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
         />
 
         <div className="min-w-0 flex-1">
-          <div className="w-full">
+          <div className="cmp-workbench">
             <div
-              className="relative z-[3] flex flex-col gap-3 rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 bg-[#08120e]/90 px-4 py-3 sm:px-[18px] sm:py-3.5"
+              className="cmp-chrome relative z-[3] flex flex-col gap-3 rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 px-4 py-3 sm:px-[18px] sm:py-3.5"
               ref={toolbarRef}
             >
               <div
@@ -1439,13 +1453,15 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
             </div>
 
             <div
-              className="cmp-edge-board relative z-[1] mt-0 flex w-full min-w-0 flex-col overflow-hidden rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]"
+              className={`cmp-edge-board scrollbar-pfg relative z-[1] mt-0 flex w-full min-w-0 flex-col border border-t-0 border-white/10 bg-[#060c0a] ${
+                filtered.length ? '' : 'rounded-b-2xl'
+              }`}
               ref={boardRef}
               role="table"
               aria-label="Compare prop firm challenges: size, drawdown, contracts, payouts, promo, and visit"
             >
               <div className={`${ROW} cmp-edge-row--head m-0`} role="row">
-                <div className={`${PIN_FIRM} ${PIN_HEAD}`} role="columnheader">
+                <div className={`${PIN_FIRM} ${PIN_HEAD} bg-[#060c0a]`} role="columnheader">
                   <SortHead
                     label="Firm"
                     sortKey="firm"
@@ -1454,7 +1470,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                     className="w-full items-start pl-4 text-left"
                   />
                 </div>
-                <div className={`${MID} flex items-center`} id="cmp-mid-scroller" ref={setMasterMidRef} onScroll={onMidScroll} role="presentation">
+                <div className={`${MID} flex items-center bg-[#060c0a]`} id="cmp-mid-scroller" ref={setMasterMidRef} onScroll={onMidScroll} role="presentation">
                   <div className="flex min-h-[52px] w-max items-center">
                     {visibleMidCols.map(col =>
                       col.sort ? (
@@ -1484,10 +1500,10 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                     )}
                   </div>
                 </div>
-                <div className={`${PIN_PROMO} ${PIN_HEAD}`} role="columnheader">
-                  <span className={`${TH} w-full`}>Promo</span>
+                <div className={`${PIN_PROMO} ${PIN_HEAD} bg-[#060c0a]`} role="columnheader">
+                  <SortHead label="Promo" sortKey="promo" sort={sort} onSort={cycleSort} className="w-full justify-center" />
                 </div>
-                <div className={`${PIN_VISIT} ${PIN_HEAD}`} role="columnheader">
+                <div className={`${PIN_VISIT} ${PIN_HEAD} bg-[#060c0a]`} role="columnheader">
                   <span className={`${TH} w-full`}>Visit</span>
                 </div>
               </div>
@@ -1622,7 +1638,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
             </div>
 
             {filtered.length > 0 ? (
-              <div className="mt-3 flex min-w-0 items-center px-1">
+              <div className="cmp-scroll-track flex min-w-0 items-center rounded-b-2xl border border-t-0 border-white/10">
                 <TableScrollSlider getMidPanes={getMidPanes} masterRef={masterMidRef} />
               </div>
             ) : null}
