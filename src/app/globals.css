@@ -337,3 +337,100 @@ body {
     text-align: center;
   }
 }
+
+/* Dual-thumb filter sliders: kill native iOS/Safari track + progress fill
+   so only the custom rail/thumbs show. */
+.pfg-dual-range {
+  position: relative;
+  height: 36px;
+  overflow: visible;
+  touch-action: none;
+}
+
+.pfg-dual-range input[type='range'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+  color: transparent;
+  accent-color: transparent;
+}
+
+.pfg-dual-range input[type='range']::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.pfg-dual-range input[type='range']::-webkit-slider-container {
+  background: transparent;
+}
+
+.pfg-dual-range input[type='range']::-moz-range-track {
+  height: 4px;
+  border: none;
+  background: transparent;
+}
+
+.pfg-dual-range input[type='range']::-moz-range-progress {
+  background: transparent;
+}
+
+.pfg-dual-range input[type='range']::-ms-track {
+  height: 4px;
+  border-color: transparent;
+  background: transparent;
+  color: transparent;
+}
+
+.pfg-dual-range input[type='range']::-ms-fill-lower,
+.pfg-dual-range input[type='range']::-ms-fill-upper {
+  background: transparent;
+}
+
+.pfg-dual-range input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: auto;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  margin-top: -7px;
+  border-radius: 999px;
+  background: #0c1612;
+  border: 2px solid #3fb185;
+  box-shadow: 0 0 0 3px rgba(8, 18, 14, 0.92);
+  cursor: pointer;
+}
+
+.pfg-dual-range input[type='range']::-moz-range-thumb {
+  -moz-appearance: none;
+  appearance: none;
+  pointer-events: auto;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #3fb185;
+  border-radius: 999px;
+  background: #0c1612;
+  box-shadow: 0 0 0 3px rgba(8, 18, 14, 0.92);
+  cursor: pointer;
+}
+
+.pfg-dual-range input[type='range']:focus-visible::-webkit-slider-thumb,
+.pfg-dual-range input[type='range']:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 3px rgba(8, 18, 14, 0.92), 0 0 0 5px rgba(63, 177, 133, 0.45);
+}

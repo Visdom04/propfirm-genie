@@ -1,11 +1,12 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { Check, Copy, Filter, Flame, Heart, Sparkles } from 'lucide-react';
+import { Check, ChevronDown, Copy, Filter, Flame, Heart, Sparkles } from 'lucide-react';
 import { firms as staticFirms } from '@/data/firms';
 import { COUNTRY_LABELS } from '@/components/CompareFilterSidebar';
 import { discountBadge } from '@/lib/compareHighlights';
 import { firmLogo } from '@/lib/firmLogos';
+import { compareFirmNames } from '@/lib/firmSort';
 import { PLATFORM_MARK, platformLogo } from '@/lib/platformLogos';
 import { PfgGhost } from '@/components/green/PfgControls';
 
@@ -21,6 +22,12 @@ const COLS =
 
 const FLAGS = { US: '🇺🇸', AE: '🇦🇪', CY: '🇨🇾', CZ: '🇨🇿', GB: '🇬🇧', CA: '🇨🇦', AU: '🇦🇺', LC: '🇱🇨' };
 const NUMERIC_SORT = new Set(['reviews', 'years', 'alloc']);
+const SORT_OPTIONS = [
+  { key: 'name', label: 'A–Z' },
+  { key: 'reviews', label: 'Reviews' },
+  { key: 'years', label: 'Years' },
+  { key: 'alloc', label: 'Max allocation' },
+];
 
 function compactNum(n) {
   const v = Number(n) || 0;
@@ -235,6 +242,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
   const [showAll, setShowAll] = useState(true);
   const [sort, setSort] = useState('name');
   const [dir, setDir] = useState('asc');
+  const [sortOpen, setSortOpen] = useState(false);
   const [favorites, setFavorites] = useState(() => new Set());
   const [selCountries, setSelCountries] = useState([]);
   const [selPlatforms, setSelPlatforms] = useState([]);
@@ -294,20 +302,23 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
 
     const mul = dir === 'asc' ? 1 : -1;
     list = [...list].sort((a, b) => {
+      if (sort === 'name') return compareFirmNames(a.name, b.name, dir);
+
       let cmp = 0;
-      if (sort === 'name') cmp = a.name.localeCompare(b.name);
-      else if (sort === 'country') {
+      if (sort === 'country') {
         const ca = COUNTRY_LABELS[a.countryCode] || a.countryCode || '';
         const cb = COUNTRY_LABELS[b.countryCode] || b.countryCode || '';
-        cmp = ca.localeCompare(cb);
-      } else if (sort === 'years') cmp = (Number(a.years) || 0) - (Number(b.years) || 0);
+        cmp = compareFirmNames(ca, cb, dir);
+        if (!cmp) return compareFirmNames(a.name, b.name, dir);
+        return cmp;
+      }
+      if (sort === 'years') cmp = (Number(a.years) || 0) - (Number(b.years) || 0);
       else if (sort === 'alloc') cmp = allocValue(a.maxAlloc) - allocValue(b.maxAlloc);
       else if (sort === 'reviews') {
         cmp = (Number(a.reviews) || 0) - (Number(b.reviews) || 0);
         if (!cmp) cmp = (Number(a.rating) || 0) - (Number(b.rating) || 0);
-      } else {
-        cmp = a.name.localeCompare(b.name);
       }
+      if (!cmp) return compareFirmNames(a.name, b.name);
       return cmp * mul;
     });
     return list;
@@ -327,7 +338,10 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
       setSort(col);
       setDir(NUMERIC_SORT.has(col) ? 'desc' : 'asc');
     }
+    setSortOpen(false);
   };
+
+  const sortLabel = SORT_OPTIONS.find(o => o.key === sort)?.label || 'A–Z';
 
   const clearFacets = () => {
     setSearch('');
@@ -395,6 +409,44 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
           <Sparkles size={14} className={mode === 'new' ? 'text-[#3FB185]' : 'text-white/50'} />
           New
         </Chip>
+        <div className="relative ml-auto">
+          <button
+            type="button"
+            className={`${BTN} inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/4 px-3.5 py-2 text-[0.78rem] font-semibold text-white/80`}
+            aria-expanded={sortOpen}
+            aria-haspopup="listbox"
+            onClick={() => setSortOpen(v => !v)}
+          >
+            Sorted by: <span className="text-white">{sort === 'name' && dir === 'desc' ? 'Z–A' : sortLabel}</span>
+            <ChevronDown size={14} className={sortOpen ? 'rotate-180 text-[#3FB185]' : 'text-white/45'} />
+          </button>
+          {sortOpen ? (
+            <div
+              className="absolute right-0 top-[calc(100%+8px)] z-20 min-w-[180px] rounded-xl border border-white/10 bg-[#0c1612] p-2 shadow-[0_16px_40px_rgba(0,0,0,0.45)]"
+              role="listbox"
+              aria-label="Sort firms"
+            >
+              {SORT_OPTIONS.map(opt => (
+                <button
+                  key={opt.key}
+                  type="button"
+                  role="option"
+                  aria-selected={sort === opt.key}
+                  className={`${BTN} flex w-full rounded-lg px-2.5 py-2 text-left text-[0.78rem] font-semibold ${
+                    sort === opt.key ? 'bg-[#3FB185]/15 text-[#3FB185]' : 'text-white/75 hover:bg-white/5'
+                  }`}
+                  onClick={() => {
+                    setSort(opt.key);
+                    setDir(NUMERIC_SORT.has(opt.key) ? 'desc' : 'asc');
+                    setSortOpen(false);
+                  }}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
       </div>
 
       {filterOpen ? (

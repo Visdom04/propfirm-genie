@@ -14,6 +14,7 @@ import CompareFilterSidebar, {
 import { PfgPrimary } from '@/components/green/PfgControls';
 import TableScrollSlider from '@/components/green/TableScrollSlider';
 import { firmLogo } from '@/lib/firmLogos';
+import { compareFirmNames, defaultSortDir } from '@/lib/firmSort';
 import { listPriceOf, salePriceOf } from '@/lib/planPrice';
 import './FirmCompareDemoGreen.edges.css';
 
@@ -204,6 +205,7 @@ function loadVisibleCols() {
 }
 
 function sortValue(key, plan, firm) {
+  if (key === 'firm') return firm?.name || '';
   if (key === 'planType' || key === 'steps') {
     return String(plan[key] || '').toLowerCase();
   }
@@ -684,6 +686,7 @@ function FilterDropdown({ id, label, valueLabel, open, onToggle, options, select
 
 const SORT_OPTIONS = [
   { key: 'default', label: 'Popularity' },
+  { key: 'firm', label: 'A–Z' },
   { key: 'price', label: 'Price' },
   { key: 'accountSize', label: 'Account size' },
   { key: 'profitSplit', label: 'Profit split' },
@@ -691,6 +694,7 @@ const SORT_OPTIONS = [
 ];
 
 function sortLabel(sort) {
+  if (sort.key === 'firm' && sort.dir === 'desc') return 'Z–A';
   return SORT_OPTIONS.find(o => o.key === sort.key)?.label || MID_COLS.find(c => c.key === sort.key)?.label || 'Popularity';
 }
 
@@ -998,7 +1002,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
 
   const cycleSort = useCallback(key => {
     setSort(prev => {
-      if (prev.key !== key) return { key, dir: 'desc' };
+      if (prev.key !== key) return { key, dir: defaultSortDir(key) };
       return { key, dir: prev.dir === 'desc' ? 'asc' : 'desc' };
     });
   }, []);
@@ -1093,13 +1097,21 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
         return sortValue('accountSize', b.plan, b.firm) - sortValue('accountSize', a.plan, a.firm);
       }
 
+      if (sort.key === 'firm') {
+        const byName = compareFirmNames(a.firm.name, b.firm.name, sort.dir);
+        if (byName !== 0) return byName;
+        return sortValue('accountSize', a.plan, a.firm) - sortValue('accountSize', b.plan, b.firm);
+      }
+
       const av = sortValue(sort.key, a.plan, a.firm);
       const bv = sortValue(sort.key, b.plan, b.firm);
       let primary = 0;
       if (typeof av === 'number' && typeof bv === 'number') primary = (av - bv) * mul;
-      else primary = String(av ?? '').localeCompare(String(bv ?? '')) * mul;
+      else primary = compareFirmNames(av, bv, sort.dir);
       if (primary !== 0) return primary;
-      return firmOrderIndex(a.firm.name) - firmOrderIndex(b.firm.name);
+      const byName = compareFirmNames(a.firm.name, b.firm.name);
+      if (byName !== 0) return byName;
+      return sortValue('accountSize', a.plan, a.firm) - sortValue('accountSize', b.plan, b.firm);
     });
 
     return rows;
@@ -1340,7 +1352,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                             sort.key === opt.key ? 'bg-[#3FB185]/15 text-[#3FB185]' : 'text-white/75 hover:bg-white/5'
                           }`}
                           onClick={() => {
-                            setSort({ key: opt.key, dir: opt.key === 'default' ? 'asc' : 'desc' });
+                            setSort({ key: opt.key, dir: defaultSortDir(opt.key) });
                             setOpenDropdown(null);
                           }}
                         >
@@ -1409,7 +1421,13 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
             >
               <div className={`${ROW} cmp-edge-row--head m-0`} role="row">
                 <div className={`${PIN_FIRM} ${PIN_HEAD}`} role="columnheader">
-                  <span className={`${TH} w-full items-start pl-4 text-left`}>Firm</span>
+                  <SortHead
+                    label="Firm"
+                    sortKey="firm"
+                    sort={sort}
+                    onSort={cycleSort}
+                    className="w-full items-start pl-4 text-left"
+                  />
                 </div>
                 <div className={`${MID} flex items-center`} id="cmp-mid-scroller" ref={setMasterMidRef} onScroll={onMidScroll} role="presentation">
                   <div className="flex min-h-[52px] w-max items-center">

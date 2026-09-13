@@ -15,6 +15,7 @@ import TableScrollSlider from '@/components/green/TableScrollSlider';
 import { firmLogo } from '@/lib/firmLogos';
 import { summarizeFirm } from '@/lib/firmOverview';
 import { PLATFORM_MARK, platformLogo } from '@/lib/platformLogos';
+import { compareFirmNames, defaultSortDir } from '@/lib/firmSort';
 import { salePriceOf } from '@/lib/planPrice';
 import './FirmOverviewTable.css';
 
@@ -50,6 +51,19 @@ const MID_COLS = [
 ];
 
 const ALL_COL_KEYS = MID_COLS.map(c => c.key);
+
+const SORT_OPTIONS = [
+  { key: 'default', label: 'Popularity' },
+  { key: 'firm', label: 'A–Z' },
+  { key: 'rating', label: 'Rating' },
+  { key: 'evalPrice', label: 'Eval price' },
+  { key: 'allIn', label: 'All-in cost' },
+];
+
+function sortLabel(sort) {
+  if (sort.key === 'firm' && sort.dir === 'desc') return 'Z–A';
+  return SORT_OPTIONS.find(o => o.key === sort.key)?.label || 'Popularity';
+}
 
 const ROW =
   'ov-row relative grid items-stretch grid-cols-[280px_minmax(0,1fr)_168px] max-md:grid-cols-[244px_minmax(0,1fr)_148px]';
@@ -529,6 +543,7 @@ function computeBounds(catalog) {
 }
 
 function sortValue(key, row) {
+  if (key === 'firm') return row.firm?.name || '';
   if (key === 'rating') return Number(row.firm.rating) || 0;
   if (key === 'evalPrice') return row.evalPrice || 0;
   if (key === 'allIn') return row.allIn || 0;
@@ -665,9 +680,15 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
     const copy = [...filtered];
     copy.sort((a, b) => {
       if (sort.key === 'default') return (Number(b.firm.likes) || 0) - (Number(a.firm.likes) || 0);
+      if (sort.key === 'firm') return compareFirmNames(a.firm.name, b.firm.name, sort.dir);
       const va = sortValue(sort.key, a);
       const vb = sortValue(sort.key, b);
-      return sort.dir === 'asc' ? va - vb : vb - va;
+      if (typeof va === 'number' && typeof vb === 'number') {
+        const cmp = va - vb;
+        if (cmp !== 0) return sort.dir === 'asc' ? cmp : -cmp;
+        return compareFirmNames(a.firm.name, b.firm.name);
+      }
+      return compareFirmNames(va, vb, sort.dir);
     });
     return copy;
   }, [filtered, sort]);
@@ -679,7 +700,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
 
   useEffect(() => {
     setPage(1);
-  }, [search, spotA, spotB, topMode, facet, applyDiscount]);
+  }, [search, spotA, spotB, topMode, facet, applyDiscount, sort]);
 
   const getMidPanes = useCallback(() => {
     const root = boardRef.current;
@@ -1014,17 +1035,12 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                     setCustomizeOpen(false);
                   }}
                 >
-                  Sorted by: <span className="text-white">{sort.key === 'default' ? 'Popularity' : sort.key}</span>
+                  Sorted by: <span className="text-white">{sortLabel(sort)}</span>
                   <ToolbarIcon name="chevron" />
                 </button>
                 {openDropdown === 'sort' ? (
                   <div className="absolute right-0 top-[calc(100%+8px)] z-[60] min-w-[180px] rounded-xl border border-white/10 bg-[#0c1612] p-2 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
-                    {[
-                      ['default', 'Popularity'],
-                      ['rating', 'Rating'],
-                      ['evalPrice', 'Eval price'],
-                      ['allIn', 'All-in cost'],
-                    ].map(([key, label]) => (
+                    {SORT_OPTIONS.map(({ key, label }) => (
                       <button
                         key={key}
                         type="button"
@@ -1032,7 +1048,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                           sort.key === key ? 'bg-[#3FB185]/15 text-[#3FB185]' : 'text-white/75'
                         }`}
                         onClick={() => {
-                          setSort({ key, dir: key === 'default' ? 'desc' : 'asc' });
+                          setSort({ key, dir: defaultSortDir(key) });
                           setOpenDropdown(null);
                         }}
                       >
@@ -1085,7 +1101,19 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
           <div ref={boardRef} className="ov-board overflow-hidden rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]">
             <div className={`${ROW} ov-row--head sticky top-0 z-[2]`} role="row">
               <div className={`${PIN_FIRM} ${PIN_HEAD}`} role="columnheader">
-                Firm
+                <button
+                  type="button"
+                  className="btn-bare inline-flex items-center gap-0.5 pl-4 text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90"
+                  onClick={() =>
+                    setSort(prev => ({
+                      key: 'firm',
+                      dir: prev.key === 'firm' && prev.dir === 'asc' ? 'desc' : 'asc',
+                    }))
+                  }
+                >
+                  Firm
+                  <SortArrows active={sort.key === 'firm'} direction={sort.dir} />
+                </button>
               </div>
               <div className={`${MID} ${PIN_HEAD}`} ref={masterMidRef} onScroll={onMidScroll}>
                 <div className="flex h-full w-max items-stretch">
