@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { getCache } from '@vercel/functions';
 import { firms as staticFirms } from '@/data/firms';
 import { firmLogo } from '@/lib/firmLogos';
 import {
@@ -19,6 +20,9 @@ function withoutHiddenFirms(firms) {
 }
 
 const CATALOG_PATH = path.join('/tmp', 'propfirm-firms-catalog.json');
+const CATALOG_CACHE_KEY = 'propfirm-firms-catalog-v1';
+const META_CACHE_KEY = 'propfirm-firms-meta-v1';
+const CATALOG_TTL_SEC = 60 * 60 * 24 * 14;
 
 function applyFirmSheetMeta(firm, meta = {}) {
   if (!meta || !Object.keys(meta).length) return firm;
@@ -189,7 +193,41 @@ export function buildFirmsFromTsv(plansTsv, firmsTsv = '') {
   };
 }
 
-export function saveFirmsCatalog(payload) {
+function slimFirmMeta(firms = []) {
+  const map = {};
+  for (const f of firms) {
+    if (!f?.name) continue;
+    map[f.name] = {
+      ...(f.affiliateLink ? { affiliateLink: f.affiliateLink } : {}),
+      ...(f.lastVerified ? { lastVerified: f.lastVerified } : {}),
+      ...(f.verifiedBy ? { verifiedBy: f.verifiedBy } : {}),
+      ...(typeof f.isPopular === 'boolean' ? { isPopular: f.isPopular } : {}),
+      ...(f.maxAlloc ? { maxAlloc: f.maxAlloc } : {}),
+      ...(typeof f.rating === 'number' ? { rating: f.rating } : {}),
+      ...(typeof f.reviews === 'number' ? { reviews: f.reviews } : {}),
+    };
+  }
+  return map;
+}
+
+function overlayMetaObject(firms, metaByName = {}) {
+  return firms.map(f => applyFirmSheetMeta(f, metaByName[f.name] || {}));
+}
+
+function isLiveCatalog(raw) {
+  return Boolean(raw && typeof raw === 'object' && Array.isArray(raw.firms) && raw.firms.length);
+}
+
+function runtimeCache() {
+  try {
+    return getCache({ namespace: 'propfirm' });
+  } catch (err) {
+    console.error('[firms-catalog] runtime cache unavailable', err);
+    return null;
+  }
+}
+
+export async function saveFirmsCatalog(payload) {
   const body = {
     firms: payload.firms,
     source: payload.source || 'google-sheet-push',
@@ -197,13 +235,59 @@ export function saveFirmsCatalog(payload) {
     stats: payload.stats || null,
     warnings: payload.validation?.warnings || [],
   };
-  fs.writeFileSync(CATALOG_PATH, JSON.stringify(body), 'utf8');
-  // Also keep a process-local copy for this instance
   globalThis.__propfirmFirmsCatalog = body;
-  return body;
+  try {
+    fs.writeFileSync(CATALOG_PATH, JSON.stringify(body), 'utf8');
+  } catch {
+    // /tmp can be missing in some runtimes
+  }
+
+  let persisted = 'tmp';
+  const cache = runtimeCache();
+  if (cache) {
+    try {
+      await cache.set(CATALOG_CACHE_KEY, body, {
+        ttl: CATALOG_TTL_SEC,
+        tags: ['firms-sheet'],
+        name: 'firms-catalog',
+      });
+      await cache.set(META_CACHE_KEY, slimFirmMeta(body.firms), {
+        ttl: CATALOG_TTL_SEC,
+        tags: ['firms-sheet'],
+        name: 'firms-meta',
+      });
+      persisted = 'runtime-cache';
+    } catch (err) {
+      console.error('[firms-catalog] runtime cache set failed', err);
+    }
+  }
+  return { ...body, persisted };
 }
 
-export function readFirmsCatalog() {
+export async function readFirmsCatalog() {
+  const cache = runtimeCache();
+  if (cache) {
+    try {
+      const cached = await cache.get(CATALOG_CACHE_KEY);
+      if (isLiveCatalog(cached)) {
+        globalThis.__propfirmFirmsCatalog = cached;
+        return cached;
+      }
+      const meta = await cache.get(META_CACHE_KEY);
+      if (meta && typeof meta === 'object' && Object.keys(meta).length) {
+        return {
+          firms: overlayMetaObject(staticFirms, meta),
+          source: 'google-sheet-meta',
+          syncedAt: null,
+          stats: null,
+          warnings: [],
+        };
+      }
+    } catch (err) {
+      console.error('[firms-catalog] runtime cache get failed', err);
+    }
+  }
+
   try {
     if (fs.existsSync(CATALOG_PATH)) {
       const raw = JSON.parse(fs.readFileSync(CATALOG_PATH, 'utf8'));
@@ -242,7 +326,7 @@ function overlayLocalFirmMeta(firms) {
 }
 
 export async function getRuntimeFirms() {
-  const live = readFirmsCatalog();
+  const live = await readFirmsCatalog();
   const fromSheetPush = Boolean(live?.firms?.length);
   let firms = fromSheetPush ? live.firms : staticFirms;
   // Dev: overlay scripts/firms-meta.tsv so Rating/Reviews/Max Allocation

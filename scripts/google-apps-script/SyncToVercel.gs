@@ -307,7 +307,7 @@ function syncNow() {
     var code = res.getResponseCode();
     var body = res.getContentText();
     byUrl[url] = { code: code, body: body };
-    Logger.log(url + ' ' + code + ' ' + body);
+    Logger.log(url + ' ' + code + ' ' + formatSyncBody_(body));
   });
 
   var primary = byUrl[SYNC_URL];
@@ -336,9 +336,12 @@ function syncNow() {
     'Genie-two synced · ' +
     (parsed.firmCount || '?') +
     ' firms · Lucid reviews=' +
-    (parsed.lucidReviews != null ? parsed.lucidReviews : '?');
-  if (parsed.partial || (parsed.warnings && parsed.warnings.length)) {
-    msg += ' (warnings — check Apps Script logs)';
+    (parsed.lucidReviews != null ? parsed.lucidReviews : '?') +
+    ' · Tradeify reviews=' +
+    (parsed.tradeifyReviews != null ? parsed.tradeifyReviews : '?');
+  if (parsed.persisted) msg += ' · ' + parsed.persisted;
+  if (parsed.partial || parsed.warningCount) {
+    msg += ' · ' + (parsed.warningCount || parsed.warnings.length) + ' warning(s)';
   }
   SpreadsheetApp.getActiveSpreadsheet().toast(msg, 'PropFirm Sync', 8);
 
@@ -353,14 +356,22 @@ function formatSyncBody_(body) {
   try {
     var j = JSON.parse(text);
     var parts = [];
+    if (j.ok === true) parts.push('ok');
     if (j.error) parts.push(j.error);
     if (j.message) parts.push(j.message);
+    if (j.firmCount != null) parts.push('firms=' + j.firmCount);
+    if (j.lucidReviews != null) parts.push('Lucid reviews=' + j.lucidReviews);
+    if (j.tradeifyReviews != null) parts.push('Tradeify reviews=' + j.tradeifyReviews);
+    if (j.persisted) parts.push('persisted=' + j.persisted);
+    if (j.stats && j.stats.rows != null) parts.push('planRows=' + j.stats.rows);
+    var warnCount = j.warningCount != null ? j.warningCount : ((j.warnings && j.warnings.length) || 0);
+    if (warnCount) parts.push('warnings=' + warnCount);
     var errs = (j.validation && j.validation.errors) || [];
-    if (errs.length) parts.push(errs.slice(0, 5).join('\n'));
-    var warns = j.warnings || (j.validation && j.validation.warnings) || [];
-    if (warns.length) parts.push(warns.slice(0, 5).join('\n'));
-    return parts.join('\n') || text.slice(0, 500);
+    if (errs.length) parts.push(errs.slice(0, 3).join(' | '));
+    var warns = j.warnings || [];
+    if (warns.length) parts.push(warns.slice(0, 3).join(' | '));
+    return parts.join(' · ') || text.slice(0, 400);
   } catch (e) {
-    return text.slice(0, 500);
+    return text.slice(0, 400);
   }
 }

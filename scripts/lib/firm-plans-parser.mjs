@@ -332,12 +332,8 @@ export function validateFirmPlans({ headers, rows, fileLabel }) {
     if (row.discountPct && (discountPct == null || discountPct < 0 || discountPct > 100)) {
       warnings.push(`${prefix}: Discount % must be between 0 and 100 — ignored`);
     }
-    if (row.discountPct && !(listPrice > 0)) {
-      if (!price.price || price.price <= 0) {
-        errors.push(`${prefix}: Discount % needs List Price so the site can compute the sale`);
-      } else {
-        warnings.push(`${prefix}: Discount % ignored without List Price (using Price column)`);
-      }
+    if (row.discountPct && !(listPrice > 0) && (!price.price || price.price <= 0)) {
+      errors.push(`${prefix}: Discount % needs List Price so the site can compute the sale`);
     }
     if (!canCompute && (!price.price || price.price <= 0)) {
       errors.push(`${prefix}: set List Price + Discount %, or Price`);
