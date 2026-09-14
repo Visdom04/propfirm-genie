@@ -26,7 +26,7 @@ const NEW_FIRM_META = {
     reviews: 28,
     description:
       'Futures prop firm with Evaluation and Instant funded paths, progressive profit split to 100%.',
-    platforms: ['NinjaTrader', 'Tradovate'],
+    platforms: ['TradingView', 'CQG Web/Desktop', 'Sierra Chart', 'DeepCharts', 'MotiveWave', 'Bookmap', 'Jigsaw'],
     maxAccounts: '5',
     maxAlloc: '$150K',
     promoCode: 'KAGE',
@@ -49,7 +49,7 @@ const NEW_FIRM_META = {
     reviews: 42,
     description:
       'Futures prop firm with Trailing, EOD, Static, S2L, and Instant (S2F) account paths.',
-    platforms: ['NinjaTrader', 'Tradovate'],
+    platforms: ['ONYX', 'Quantower', 'MotiveWave', 'ATAS', 'Bookmap', 'Finamark', 'Jigsaw', 'Sierra Chart', 'VolFix', 'R|Trader Pro'],
     maxAccounts: '5',
     maxAlloc: '$300K',
     promoCode: 'KAGE',
@@ -95,7 +95,7 @@ const NEW_FIRM_META = {
     reviews: 39,
     description:
       'Futures prop firm since 2012 with Standard and No Activation Fee paths. 90% profit split, payouts every 5 trading days, news trading allowed.',
-    platforms: ['Project X', 'Plus500'],
+    platforms: ['TopstepX', 'Quantower'],
     maxAccounts: '—',
     maxAlloc: '$750,000',
     promoCode: 'KAGE',

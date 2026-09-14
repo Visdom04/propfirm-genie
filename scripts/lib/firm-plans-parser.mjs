@@ -10,6 +10,10 @@ export const FIRM_NAME_MAP = {
   FundedNext: 'FundedNext Futures',
   YRM: 'YRM Prop',
   TradersLaunch: 'Traders Launch',
+  'Blue Guardian Futures': 'Blue Guardian',
+  'The Trading Pit Futures': 'The Trading Pit',
+  'Purdia Capital': 'Purdia',
+  'FTMO Futures': 'FTMO',
 };
 
 export const CORE_HEADERS = [
