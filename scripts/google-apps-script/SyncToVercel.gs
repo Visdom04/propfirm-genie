@@ -12,14 +12,14 @@
  */
 
 const SYNC_URL = 'https://propfirm-genie-two.vercel.app/api/sync-firms';
-const SYNC_URL_ALSO = 'https://propfirm-plum.vercel.app/api/sync-firms';
+const SYNC_URL_ALSO = 'https://propfirm-genie.vercel.app/api/sync-firms';
 const SYNC_SECRET = 'PASTE_SAME_SECRET_AS_VERCEL'; // never commit real secret to git
 const DEBOUNCE_MS = 60 * 1000;
 const PLANS_TAB = 'firm-plans';
 const FIRMS_TAB = 'Firms';
 
 const PLANS_TSV_URL = 'https://propfirm-genie-two.vercel.app/data/firm-plans.tsv';
-const PLANS_TSV_URL_FALLBACK = 'https://propfirm-plum.vercel.app/data/firm-plans.tsv';
+const PLANS_TSV_URL_FALLBACK = 'https://propfirm-genie.vercel.app/data/firm-plans.tsv';
 
 const CORE_HEADERS = [
   'Firm',
@@ -324,7 +324,7 @@ function findSheet_(ss, name) {
   return null;
 }
 
-/** Push sheet → genie-two. Plum is optional and must not fail the run. */
+/** Push sheet → genie-two. Prop Firm Genie is optional and must not fail the run. */
 function syncNow() {
   if (!SYNC_SECRET || SYNC_SECRET.indexOf('PASTE_') === 0) {
     throw new Error('Set SYNC_SECRET in this script to match Vercel SYNC_SECRET');
@@ -403,7 +403,7 @@ function syncNow() {
 
   var also = SYNC_URL_ALSO && byUrl[SYNC_URL_ALSO];
   if (also && (also.code < 200 || also.code >= 300)) {
-    Logger.log('Optional plum sync skipped: ' + also.code + ' ' + also.body);
+    Logger.log('Optional Prop Firm Genie sync skipped: ' + also.code + ' ' + also.body);
   }
 }
 

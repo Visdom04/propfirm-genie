@@ -163,7 +163,7 @@ If Overview looks wrong, fix the **sheet cell** or `compactPayout()` — do not 
 
 **Runtime vs baked data**
 
-All four pages load `getRuntimeFirms()`. Typing in Google Sheets does **not** live-update the site — use **PropFirm Sync → Sync sheet → site now**. That POST hits `SYNC_URL` (currently Vercel, not localhost).
+All four pages load `getRuntimeFirms()`. Typing in Google Sheets does **not** live-update the site — use **PropFirm Sync → Sync sheet → site now**. That POST hits `SYNC_URL` (`https://propfirm-genie-two.vercel.app/api/sync-firms`) and, if set, `SYNC_URL_ALSO` (`https://propfirm-genie.vercel.app/api/sync-firms`). Plum is not a sync target. The optional Genie push must not fail the run. `propfirmgenie.com` does not expose this API yet.
 
 On localhost, `scripts/firms-meta.tsv` overlays Rating / Reviews / Max Allocation even if a stale `/tmp` catalog exists. Production keeps the Apps Script push as source of truth. Challenges no longer hard-imports `firms.js`.
 
