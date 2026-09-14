@@ -18,6 +18,7 @@ export const PLATFORM_LOGOS = {
   'Volumetrica IQC Trader': `${BASE}/Volumetrica.webp`,
   'Project X': `${BASE}/Project%20X.webp`,
   Plus500: `${BASE}/Plus500.webp`,
+  'R|Trader Pro': `${BASE}/Rithmic.webp`,
 };
 
 export const PLATFORM_MARK = {
@@ -41,6 +42,62 @@ export const PLATFORM_MARK = {
   Plus500: { abbr: 'P5', tone: 'bg-[#2a2418]' },
 };
 
+const ALIASES = {
+  nt: 'NinjaTrader',
+  ninjatrader: 'NinjaTrader',
+  ninja: 'NinjaTrader',
+  tv: 'TradingView',
+  tradingview: 'TradingView',
+  td: 'Tradovate',
+  tradovate: 'Tradovate',
+  tradovateprop: 'Tradovate',
+  rithmic: 'Rithmic',
+  rtrader: 'Rithmic',
+  rtraderpro: 'Rithmic',
+  rt: 'Rithmic',
+  quantower: 'Quantower',
+  sierra: 'Sierra Chart',
+  sierrachart: 'Sierra Chart',
+  projectx: 'Project X',
+  volumetrica: 'Volumetrica',
+  volumetricaiqctrader: 'Volumetrica',
+};
+
+function norm(name) {
+  return String(name || '')
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '');
+}
+
+const KEYS_BY_LENGTH = Object.keys(PLATFORM_LOGOS).sort((a, b) => norm(b).length - norm(a).length);
+
+export function canonicalPlatform(name) {
+  const raw = String(name || '').trim();
+  if (!raw) return '';
+  if (PLATFORM_LOGOS[raw] || PLATFORM_MARK[raw]) return raw;
+  const n = norm(raw);
+  if (ALIASES[n]) return ALIASES[n];
+  for (const key of KEYS_BY_LENGTH) {
+    if (norm(key) === n) return key;
+  }
+  for (const key of KEYS_BY_LENGTH) {
+    const kn = norm(key);
+    if (kn.length >= 4 && (n.includes(kn) || kn.includes(n))) return key;
+  }
+  return raw;
+}
+
+export function platformMark(name) {
+  const key = canonicalPlatform(name);
+  return PLATFORM_MARK[key] || { abbr: String(name || '?').slice(0, 2).toUpperCase(), tone: 'bg-[#1a2e24]' };
+}
+
 export function platformLogo(name) {
-  return PLATFORM_LOGOS[name] || null;
+  const raw = String(name || '').trim();
+  if (!raw) return null;
+  if (PLATFORM_LOGOS[raw]) return PLATFORM_LOGOS[raw];
+  const key = canonicalPlatform(raw);
+  if (PLATFORM_LOGOS[key]) return PLATFORM_LOGOS[key];
+  return `${BASE}/${encodeURIComponent(raw)}.webp`;
 }

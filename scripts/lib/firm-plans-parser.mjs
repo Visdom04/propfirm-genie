@@ -39,7 +39,7 @@ export const EXTENDED_HEADERS = [
   'Info',
 ];
 
-/** Firms tab only — do not add Rank / Country / Years / Platforms. */
+/** Firms tab — extra columns after Offer are optional. */
 export const FIRMS_META_HEADERS = [
   'Firm',
   'Affiliate Link',
@@ -50,7 +50,35 @@ export const FIRMS_META_HEADERS = [
   'Rating',
   'Reviews',
   'Offer',
+  'Country',
+  'Years',
+  'Assets',
+  'Platforms',
 ];
+
+const COUNTRY_PARSE = {
+  US: 'US',
+  USA: 'US',
+  'UNITED STATES': 'US',
+  AE: 'AE',
+  UAE: 'AE',
+  'UNITED ARAB EMIRATES': 'AE',
+  CY: 'CY',
+  CYPRUS: 'CY',
+  CZ: 'CZ',
+  CZECHIA: 'CZ',
+  'CZECH REPUBLIC': 'CZ',
+  GB: 'GB',
+  UK: 'GB',
+  'UNITED KINGDOM': 'GB',
+  CA: 'CA',
+  CANADA: 'CA',
+  AU: 'AU',
+  AUSTRALIA: 'AU',
+  LC: 'LC',
+  'SAINT LUCIA': 'LC',
+  'ST LUCIA': 'LC',
+};
 
 export const ACCOUNT_CATEGORIES = new Set(['Challenge', 'S2F']);
 export const NEWS_TRADING_VALUES = new Set(['both', 'eval', 'none']);
@@ -195,9 +223,23 @@ function headerIndex(headers) {
 
 function parseBoolCell(raw) {
   const s = String(raw || '').trim();
-  if (/^true$/i.test(s)) return true;
-  if (/^false$/i.test(s)) return false;
+  if (/^(true|yes|1|on|y)$/i.test(s)) return true;
+  if (/^(false|no|0|off|n)$/i.test(s)) return false;
   return undefined;
+}
+
+function parseEnabledCell(raw) {
+  const s = String(raw || '').trim().toLowerCase();
+  if (!s) return undefined;
+  if (/^(false|no|0|off|n|disabled|hide|hidden)$/.test(s)) return false;
+  if (/^(true|yes|1|on|y|enabled|live|show)$/.test(s)) return true;
+  return undefined;
+}
+
+function parseLogoCell(raw) {
+  const s = String(raw || '').trim();
+  if (/^https?:\/\//i.test(s)) return s;
+  return '';
 }
 
 function parseNumberCell(raw) {
@@ -209,7 +251,37 @@ function parseNumberCell(raw) {
   return Number.isFinite(n) ? n : undefined;
 }
 
-/** Header-driven Firms tab. Extra columns are ignored. */
+function parseListCell(raw) {
+  const s = String(raw || '').trim();
+  if (!s || s === '—' || s === '-') return [];
+  return s
+    .split(/[,;]+/)
+    .map(v => v.trim())
+    .filter(Boolean);
+}
+
+function parseCountryCell(raw) {
+  const s = String(raw || '').trim();
+  if (!s) return undefined;
+  return COUNTRY_PARSE[s.toUpperCase()] || (s.length === 2 ? s.toUpperCase() : undefined);
+}
+
+function parseYearsCell(raw) {
+  const s = String(raw || '').trim();
+  if (!s) return {};
+  const m = s.match(/(\d+(?:\.\d+)?)/);
+  if (!m) return { years: 0, yearsLabel: s };
+  return { years: Number(m[1]), yearsLabel: s };
+}
+
+function colAny(cols, idxMap, names, fallbackIdx) {
+  for (const name of names) {
+    if (idxMap.has(name)) return col(cols, idxMap, name, fallbackIdx);
+  }
+  return col(cols, idxMap, names[0], fallbackIdx);
+}
+
+/** Header-driven Firms tab. Unknown extra columns are ignored. */
 export function parseFirmsMetaTsv(text) {
   const lines = String(text || '')
     .split(/\r?\n/)
@@ -227,6 +299,12 @@ export function parseFirmsMetaTsv(text) {
     const maxAlloc = col(cols, idxMap, 'Max Allocation', 5);
     const rating = parseNumberCell(col(cols, idxMap, 'Rating', 6));
     const reviews = parseNumberCell(col(cols, idxMap, 'Reviews', 7));
+    const countryCode = parseCountryCell(colAny(cols, idxMap, ['Country', 'Country Code'], 9));
+    const yearsMeta = parseYearsCell(colAny(cols, idxMap, ['Years', 'Years in operation'], 10));
+    const assets = parseListCell(col(cols, idxMap, 'Assets', 11));
+    const platforms = parseListCell(col(cols, idxMap, 'Platforms', 12));
+    const enabled = parseEnabledCell(colAny(cols, idxMap, ['Enabled', 'Live', 'Active', 'Show'], 13));
+    const logo = parseLogoCell(colAny(cols, idxMap, ['Logo', 'Logo URL', 'Image'], 14));
     map.set(name, {
       affiliateLink: col(cols, idxMap, 'Affiliate Link', 1) || undefined,
       lastVerified: col(cols, idxMap, 'Last Verified', 2) || undefined,
@@ -236,6 +314,12 @@ export function parseFirmsMetaTsv(text) {
       ...(typeof rating === 'number' ? { rating } : {}),
       ...(typeof reviews === 'number' ? { reviews } : {}),
       ...(col(cols, idxMap, 'Offer') ? { discount: col(cols, idxMap, 'Offer') } : {}),
+      ...(countryCode ? { countryCode } : {}),
+      ...(typeof yearsMeta.years === 'number' ? yearsMeta : {}),
+      ...(assets.length ? { assets } : {}),
+      ...(platforms.length ? { platforms } : {}),
+      ...(typeof enabled === 'boolean' ? { enabled } : {}),
+      ...(logo ? { logo } : {}),
     });
   }
   return map;

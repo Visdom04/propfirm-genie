@@ -87,7 +87,7 @@ export default function TableScrollSlider({ getMidPanes, masterRef }) {
 
   return (
     <div
-      className="relative h-2 min-w-[120px] flex-1 cursor-pointer"
+      className="relative h-2 min-w-0 flex-1 cursor-pointer"
       ref={trackRef}
       role="scrollbar"
       aria-orientation="horizontal"

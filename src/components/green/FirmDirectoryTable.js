@@ -7,7 +7,7 @@ import { COUNTRY_LABELS } from '@/components/CompareFilterSidebar';
 import { discountBadge } from '@/lib/compareHighlights';
 import { firmLogo } from '@/lib/firmLogos';
 import { compareFirmNames } from '@/lib/firmSort';
-import { PLATFORM_MARK, platformLogo } from '@/lib/platformLogos';
+import PlatformLogo from '@/components/green/PlatformLogo';
 import { PfgGhost } from '@/components/green/PfgControls';
 import './FirmDirectoryTable.css';
 
@@ -19,7 +19,7 @@ const MAX_FAVORITES = 5;
 const PAGE_SIZE = 10;
 const FAV_KEY = 'demo4-favs';
 const COLS =
-  'grid min-w-[1180px] grid-cols-[minmax(200px,1.15fr)_minmax(128px,0.85fr)_minmax(110px,0.75fr)_72px_minmax(132px,0.9fr)_minmax(118px,0.8fr)_minmax(96px,0.7fr)_118px_92px] items-center gap-x-3';
+  'dir-cols grid min-w-[1180px] grid-cols-[minmax(200px,1.15fr)_minmax(128px,0.85fr)_minmax(110px,0.75fr)_72px_minmax(132px,0.9fr)_minmax(118px,0.8fr)_minmax(96px,0.7fr)_118px_92px] items-center gap-x-3';
 
 const FLAGS = { US: '🇺🇸', AE: '🇦🇪', CY: '🇨🇾', CZ: '🇨🇿', GB: '🇬🇧', CA: '🇨🇦', AU: '🇦🇺', LC: '🇱🇨' };
 const NUMERIC_SORT = new Set(['reviews', 'years', 'alloc', 'platforms', 'promo']);
@@ -128,7 +128,7 @@ function FirmMark({ src, name, eager }) {
   const showImg = Boolean(src) && !broken;
   return (
     <div
-      className="relative shrink-0 bg-black"
+      className="dir-firm-mark relative shrink-0 bg-black"
       style={{
         width: 44,
         height: 44,
@@ -171,7 +171,7 @@ function YearsRing({ years, maxYears }) {
   const c = 2 * Math.PI * r;
   const pct = Math.min(1, n / max);
   return (
-    <span className="relative grid size-12 place-items-center">
+    <span className="dir-years relative grid size-12 place-items-center">
       <svg width="48" height="48" viewBox="0 0 48 48" className="-rotate-90" aria-hidden>
         <circle cx="24" cy="24" r={r} fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3.2" />
         <circle
@@ -217,7 +217,7 @@ function Chip({ active, onClick, children }) {
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={`${BTN} inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3.5 py-2 text-[0.78rem] font-semibold ${
+      className={`${BTN} inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3.5 py-2 text-[0.78rem] font-semibold max-md:gap-0.5 max-md:px-2 max-md:py-1 max-md:text-[0.62rem] ${
         active
           ? 'border-[#3FB185]/70 bg-[#3FB185]/15 text-white'
           : 'border-white/12 bg-white/4 text-white/75 hover:border-white/20'
@@ -395,11 +395,11 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
   return (
     <div className="w-full">
       <div className="dir-workbench">
-      <div className="dir-chrome rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 px-4 py-3 sm:px-[18px] sm:py-3.5">
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="dir-chrome rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 px-4 py-3 sm:px-[18px] sm:py-3.5 max-md:px-1.5 max-md:py-1.5">
+      <div className="dir-chrome-bar flex flex-nowrap items-center gap-2 max-md:gap-1">
         <button
           type="button"
-          className={`${BTN} inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-[0.78rem] font-semibold ${
+          className={`${BTN} inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-[0.78rem] font-semibold max-md:gap-1 max-md:px-2.5 max-md:py-1 max-md:text-[0.7rem] ${
             filterOpen || facetCount
               ? 'border-[#3FB185]/70 bg-[#3FB185]/15 text-white'
               : 'border-white/12 bg-white/4 text-white/80'
@@ -407,7 +407,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
           aria-expanded={filterOpen}
           onClick={() => setFilterOpen(v => !v)}
         >
-          <Filter size={14} />
+          <Filter size={14} className="max-md:hidden" />
           Filter
           {facetCount ? (
             <span className="grid min-w-4 place-items-center rounded-full bg-[#3FB185] px-1.5 text-[0.62rem] font-bold text-[#0a0f0d]">
@@ -419,26 +419,30 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
           All
         </Chip>
         <Chip active={mode === 'popular'} onClick={() => setModeChip('popular')}>
-          <Flame size={14} className={mode === 'popular' ? 'text-[#3FB185]' : 'text-white/50'} />
+          <Flame size={14} className={`max-md:hidden ${mode === 'popular' ? 'text-[#3FB185]' : 'text-white/50'}`} />
           Popular
         </Chip>
         <Chip active={mode === 'favorites'} onClick={() => setModeChip(mode === 'favorites' ? 'all' : 'favorites')}>
-          <Heart size={14} className={mode === 'favorites' ? 'fill-[#3FB185] text-[#3FB185]' : 'text-white/50'} />
-          Favorite {ready ? favorites.size : 0}/{MAX_FAVORITES}
+          <Heart size={14} className={`max-md:hidden ${mode === 'favorites' ? 'fill-[#3FB185] text-[#3FB185]' : 'text-white/50'}`} />
+          <span className="max-md:hidden">Favorite</span>
+          <span className="md:hidden">Fave</span> {ready ? favorites.size : 0}/{MAX_FAVORITES}
         </Chip>
         <Chip active={mode === 'new'} onClick={() => setModeChip('new')}>
-          <Sparkles size={14} className={mode === 'new' ? 'text-[#3FB185]' : 'text-white/50'} />
+          <Sparkles size={14} className={`max-md:hidden ${mode === 'new' ? 'text-[#3FB185]' : 'text-white/50'}`} />
           New
         </Chip>
-        <div className="relative ml-auto">
+        <div className="relative ml-auto shrink-0">
           <button
             type="button"
-            className={`${BTN} inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/4 px-3.5 py-2 text-[0.78rem] font-semibold text-white/80`}
+            className={`${BTN} inline-flex items-center gap-1 rounded-full border border-white/12 bg-white/4 px-2.5 py-1 text-[0.68rem] font-semibold text-white/80 max-md:px-2 max-md:py-1 max-md:text-[0.62rem] sm:gap-1.5 sm:px-3.5 sm:py-2 sm:text-[0.78rem]`}
             aria-expanded={sortOpen}
             aria-haspopup="listbox"
             onClick={() => setSortOpen(v => !v)}
           >
-            Sorted by: <span className="text-white">{sort === 'name' && dir === 'desc' ? 'Z–A' : sortLabel}</span>
+            <span className="min-w-0 truncate">
+              <span className="max-sm:hidden">Sorted by: </span>
+              <span className="text-white">{sort === 'name' && dir === 'desc' ? 'Z–A' : sortLabel}</span>
+            </span>
             <ChevronDown size={14} className={sortOpen ? 'rotate-180 text-[#3FB185]' : 'text-white/45'} />
           </button>
           {sortOpen ? (
@@ -577,7 +581,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
               const logoSrc = firmLogo(f.name, f.logo);
               const coming = isComingSoon(f);
               return (
-                <li key={f.name} className={`rounded-xl border px-2 py-2.5 sm:rounded-2xl sm:px-3 sm:py-3 ${ROW_TONE}`}>
+                <li key={f.name} className={`dir-row rounded-xl border px-2 py-2.5 sm:rounded-2xl sm:px-3 sm:py-3 max-md:px-1.5 max-md:py-1.5 ${ROW_TONE}`}>
                   <div className={COLS}>
                     <div className="flex min-w-0 items-center gap-2.5">
                       <FirmMark src={logoSrc} name={f.name} eager={i < 4} />
@@ -642,30 +646,10 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
                       ))}
                     </div>
 
-                    <div className="flex flex-wrap items-center justify-center gap-1">
-                      {(f.platforms || []).slice(0, 4).map(name => {
-                        const src = platformLogo(name);
-                        const mark = PLATFORM_MARK[name] || { abbr: name.slice(0, 2).toUpperCase(), tone: 'bg-[#1a2e24]' };
-                        return src ? (
-                          <img
-                            key={name}
-                            src={src}
-                            alt={name}
-                            title={name}
-                            width={26}
-                            height={26}
-                            className="size-[26px] rounded-full border border-white/15 bg-white object-contain p-px"
-                          />
-                        ) : (
-                          <span
-                            key={name}
-                            title={name}
-                            className={`grid size-[26px] place-items-center rounded-full border border-white/15 text-[0.5rem] font-black text-white ${mark.tone}`}
-                          >
-                            {mark.abbr}
-                          </span>
-                        );
-                      })}
+                    <div className="dir-platforms flex flex-wrap items-center justify-center gap-1">
+                      {(f.platforms || []).slice(0, 4).map(name => (
+                        <PlatformLogo key={name} name={name} size={26} />
+                      ))}
                       {(f.platforms || []).length > 4 ? (
                         <span className="grid size-[26px] place-items-center rounded-full border border-white/15 text-[0.52rem] font-bold text-white/60">
                           +{(f.platforms || []).length - 4}

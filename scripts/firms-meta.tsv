@@ -1,24 +1,24 @@
-Firm	Affiliate Link	Last Verified	Verified By	isPopular	Max Allocation	Rating	Reviews	Offer
-Lucid Trading	https://lucidtrading.com/?ref=KAGE	2026-09-09	Prop Firm Compare	true	$750,000	4.7	200	30–40% OFF
-Tradeify	https://tradeify.co/?ref=KAGE	2026-08-28	ops	true	$150K	4.7	200	Save $148 with code KAGE
-Apex Trader Funding	https://apextraderfunding.com/?c=KAGE	2026-08-28	ops	true	$150K	3.8	117	Coupon One Pack (30-day eval, no resets)
-My Funded Futures	https://myfundedfutures.com/?ref=KAGE	2026-08-28	ops	true	$150K	4.5	244	Promo monthly pricing
-Take Profit Trader	https://takeprofittrader.com/?referralCode=KAGE	2026-08-28	ops	false	$150K	3.1	18	40% OFF
-FundedNext Futures	https://fundednext.com/?fpr=KAGE	2026-08-28	ops	false	$500K	4.4	75	40% OFF
-IQ Capital	https://www.iqcapital.io/	2026-09-09	Prop Firm Compare	false	$2,000,000	0	0	80% OFF
-Topstep	https://www.topstep.com/	2026-08-25	Prop Firm Compare	false	$750,000	3.4	39	No verified offer
-Traders Launch	https://traderslaunch.com/	2026-04-20	Prop Firm Compare	false	$1,500,000	4.8	7	No verified offer
-Top One Futures				true	$150K	4.7	86	Up to 55% OFF with KAGE
-Purdia				true	$100K	4.5	48	25% OFF
-YRM Prop				false	$150K	0	8	30% OFF with KAGE
-Bulenox				false	$250K	4.1	175	Coupon $50OFF
-Phidias Propfirm				false	$200K	4.2	118	Monthly SAVE 60% with KAGE
-Legends Trading				false	$750K	4.3	164	LTG discount applied
-E8 Futures				true	5 Funded	0	0	Save $37 with code KAGE
-Blue Guardian				true	$150K	0	0	25% OFF with KAGE
-Nexgen ProTrader Funding				false	$150K	4.2	28	KAGE promo pricing
-DayTraders				true	$300K	4.3	42	KAGE promo pricing
-Funded Futures Network				false	—	0	0	Coming soon
-The Trading Pit				false	—	0	0	Coming soon
-FundedSeat				false	—	0	0	Coming soon
-FTMO				false	—	0	0	Coming soon
+Firm	Affiliate Link	Last Verified	Verified By	isPopular	Max Allocation	Rating	Reviews	Offer	Country	Years	Assets	Platforms	Enabled	Logo
+Lucid Trading	https://lucidtrading.com/?ref=KAGE	2026-09-09	Prop Firm Compare	true	$750,000	4.7	200	30–40% OFF	US	1	Futures	TradingView, NinjaTrader, Quantower, Sierra Chart, Rithmic, Tradovate Prop
+Tradeify	https://tradeify.co/?ref=KAGE	2026-08-28	ops	true	$150K	4.7	200	Save $148 with code KAGE	US	2	Futures	NinjaTrader, TradingView
+Apex Trader Funding	https://apextraderfunding.com/?c=KAGE	2026-08-28	ops	true	$150K	3.8	117	Coupon One Pack (30-day eval, no resets)	US	6	Futures	NinjaTrader, Tradovate, Rithmic
+My Funded Futures	https://myfundedfutures.com/?ref=KAGE	2026-08-28	ops	true	$150K	4.5	244	Promo monthly pricing	US	4	Futures	NinjaTrader, TradingView
+Take Profit Trader	https://takeprofittrader.com/?referralCode=KAGE	2026-08-28	ops	false	$150K	3.1	18	40% OFF	US	5	Futures	NinjaTrader, Tradovate
+FundedNext Futures	https://fundednext.com/?fpr=KAGE	2026-08-28	ops	false	$500K	4.4	75	40% OFF	AE	3	Futures	NinjaTrader, Tradovate, TradingView
+IQ Capital	https://www.iqcapital.io/	2026-09-09	Prop Firm Compare	false	$2,000,000	0	0	80% OFF	LC	N/A	Futures	Volumetrica IQC Trader, DeepCharts, ATAS, Quantower
+Topstep	https://www.topstep.com/	2026-08-25	Prop Firm Compare	false	$750,000	3.4	39	No verified offer	US	14	Futures	Project X, Plus500
+Traders Launch	https://traderslaunch.com/	2026-04-20	Prop Firm Compare	false	$1,500,000	4.8	7	No verified offer	US	3	Futures	Quantower, TradingView, Volumetrica
+Top One Futures				true	$150K	4.7	86	Up to 55% OFF with KAGE	US	3	Futures	NinjaTrader, Tradovate
+Purdia				true	$100K	4.5	48	25% OFF	US	2	Futures	NinjaTrader, Tradovate
+YRM Prop				false	$150K	0	8	30% OFF with KAGE	US	1	Futures	Rithmic, TradeSea
+Bulenox				false	$250K	4.1	175	Coupon $50OFF	US	4	Futures	NinjaTrader, Rithmic
+Phidias Propfirm				false	$200K	4.2	118	Monthly SAVE 60% with KAGE	US	3	Futures	NinjaTrader, Tradovate, TradingView, Quantower, ATAS, MotiveWave, Bookmap, Jigsaw, Sierra Chart
+Legends Trading				false	$750K	4.3	164	LTG discount applied	US	3	Futures	NinjaTrader, Tradovate, TradingView, R|Trader Pro, MotiveWave, Quantower, Sierra Chart, Jigsaw, Bookmap, ATAS
+E8 Futures				true	5 Funded	0	0	Save $37 with code KAGE	CY	4	Futures, Forex	NinjaTrader, Tradovate, TradingView
+Blue Guardian				true	$150K	0	0	25% OFF with KAGE	US	2	Futures	NinjaTrader, Tradovate, TradingView
+Nexgen ProTrader Funding				false	$150K	4.2	28	KAGE promo pricing	US	2	Futures	NinjaTrader, Tradovate
+DayTraders				true	$300K	4.3	42	KAGE promo pricing	US	2	Futures	NinjaTrader, Tradovate
+Funded Futures Network				false	—	0	0	Coming soon	US	—	Futures	
+The Trading Pit				false	—	0	0	Coming soon	US	—	Futures	
+FundedSeat				false	—	0	0	Coming soon	US	—	Futures	
+FTMO				false	—	0	0	Coming soon	CZ	—	Futures	

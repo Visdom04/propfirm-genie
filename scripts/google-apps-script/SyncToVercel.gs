@@ -58,6 +58,12 @@ const FIRMS_HEADERS = [
   'Rating',
   'Reviews',
   'Offer',
+  'Country',
+  'Years',
+  'Assets',
+  'Platforms',
+  'Enabled',
+  'Logo',
 ];
 
 const EXPECTED_HEADERS = CORE_HEADERS.concat(EXTENDED_HEADERS);
@@ -68,7 +74,7 @@ function onOpen() {
     .addItem('Diagnose sheet (find issues)', 'diagnoseSheet')
     .addItem('Strip ALL dropdowns', 'stripAllDropdowns')
     .addItem('Ensure header names only', 'ensureHeaderNamesOnly')
-    .addItem('Add Offer + Info columns', 'ensureOfferAndInfoColumns')
+    .addItem('Add missing sheet columns', 'ensureOfferAndInfoColumns')
     .addItem('Sync sheet → site now', 'syncNow')
     .addSeparator()
     .addItem('Purge leaky timers', 'purgeLeakyTimers')
@@ -213,7 +219,8 @@ function ensureOfferAndInfoColumns() {
       '\nFirms added: ' +
       (firmsMissing.length ? firmsMissing.join(', ') : 'none') +
       '\n\nOffer = picker promo line (e.g. 25% OFF - code KAGE).' +
-      '\nInfo = extra note in the Plans (i) popup. Plan Type + Account Size still fill the list.'
+      '\nInfo = extra note in the Plans (i) popup. Plan Type + Account Size still fill the list.' +
+      '\nFirms: Country, Years, Assets, Platforms. Enabled = YES/NO (blank = show). Logo = paste a public Supabase image URL.'
   );
 }
 

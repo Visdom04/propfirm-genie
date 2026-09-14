@@ -297,6 +297,22 @@ function applyFirmMeta(block, meta) {
       next = next.replace(/discount:\s*(?:'[^']*'|"[^"]*")/, `discount: ${jsString(meta.discount)}`);
     }
   }
+  if (meta.countryCode) {
+    next = next.replace(/countryCode:\s*(?:'[^']*'|"[^"]*")/, `countryCode: ${jsString(meta.countryCode)}`);
+  }
+  if (typeof meta.years === 'number') {
+    next = next.replace(/years:\s*[\d.]+/, `years: ${meta.years}`);
+    const label = String(meta.yearsLabel ?? meta.years);
+    if (/yearsLabel:/.test(next)) {
+      next = next.replace(/yearsLabel:\s*(?:'[^']*'|"[^"]*")/, `yearsLabel: ${jsString(label)}`);
+    }
+  }
+  if (Array.isArray(meta.assets) && meta.assets.length) {
+    next = next.replace(/assets:\s*\[[^\]]*\]/, `assets: ${jsArray(meta.assets)}`);
+  }
+  if (Array.isArray(meta.platforms) && meta.platforms.length) {
+    next = next.replace(/platforms:\s*\[[^\]]*\]/, `platforms: ${jsArray(meta.platforms)}`);
+  }
   return next;
 }
 
@@ -374,6 +390,13 @@ async function main() {
     if (typeof sheetMeta?.rating === 'number') meta.rating = sheetMeta.rating;
     if (typeof sheetMeta?.reviews === 'number') meta.reviews = sheetMeta.reviews;
     if (sheetMeta?.discount) meta.discount = sheetMeta.discount;
+    if (sheetMeta?.countryCode) meta.countryCode = sheetMeta.countryCode;
+    if (typeof sheetMeta?.years === 'number') {
+      meta.years = sheetMeta.years;
+      meta.yearsLabel = sheetMeta.yearsLabel || String(sheetMeta.years);
+    }
+    if (Array.isArray(sheetMeta?.assets) && sheetMeta.assets.length) meta.assets = sheetMeta.assets;
+    if (Array.isArray(sheetMeta?.platforms) && sheetMeta.platforms.length) meta.platforms = sheetMeta.platforms;
     for (const p of plans) p.popularity = meta.likes;
     const block = serializeFirm(meta, plans, 2);
     const insertAt = src.lastIndexOf('\n];');

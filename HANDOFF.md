@@ -110,7 +110,7 @@ Logos: `src/lib/firmLogos.js` points at Supabase `genie-assets`. Local fallbacks
 Two Google Sheet tabs:
 
 1. **Plans** → `scripts/firm-plans.tsv` — one row = one plan + account size.
-2. **Firms** → `scripts/firms-meta.tsv` — affiliate link, last verified, `isPopular`, **Max Allocation**, **Rating**, **Reviews**. Do not add rank / country / years / platforms.
+2. **Firms** → `scripts/firms-meta.tsv` — affiliate link, last verified, `isPopular`, **Max Allocation**, **Rating**, **Reviews**, **Country**, **Years**, **Assets**, **Platforms**, **Enabled**, **Logo**.
 
 After any sheet change:
 

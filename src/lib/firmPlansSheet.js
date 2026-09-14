@@ -16,7 +16,7 @@ export const FIRMS_SHEET_TAG = 'firms-sheet';
 export const HIDDEN_FIRMS = new Set(['Earn2Trade']);
 
 function withoutHiddenFirms(firms) {
-  return firms.filter(f => !HIDDEN_FIRMS.has(f.name));
+  return firms.filter(f => !HIDDEN_FIRMS.has(f.name) && f.enabled !== false);
 }
 
 const CATALOG_PATH = path.join('/tmp', 'propfirm-firms-catalog.json');
@@ -36,6 +36,14 @@ function applyFirmSheetMeta(firm, meta = {}) {
     ...(typeof meta.rating === 'number' ? { rating: meta.rating } : {}),
     ...(typeof meta.reviews === 'number' ? { reviews: meta.reviews } : {}),
     ...(meta.discount ? { discount: meta.discount } : {}),
+    ...(meta.countryCode ? { countryCode: meta.countryCode } : {}),
+    ...(typeof meta.years === 'number'
+      ? { years: meta.years, yearsLabel: String(meta.yearsLabel ?? meta.years) }
+      : {}),
+    ...(Array.isArray(meta.assets) && meta.assets.length ? { assets: meta.assets } : {}),
+    ...(Array.isArray(meta.platforms) && meta.platforms.length ? { platforms: meta.platforms } : {}),
+    ...(typeof meta.enabled === 'boolean' ? { enabled: meta.enabled } : {}),
+    ...(meta.logo ? { logo: firmLogo(firm.name, meta.logo) } : {}),
   };
 }
 
@@ -61,58 +69,54 @@ function mergeSheetIntoFirms(parsedPlans, metaMap) {
     if (base) {
       const pop = base.likes || 1000;
       for (const p of plans) p.popularity = pop;
-      result.push({
-        ...base,
-        logo: firmLogo(name, base.logo),
-        comingSoon: plans.length === 0,
-        ...(meta.affiliateLink ? { affiliateLink: meta.affiliateLink } : {}),
-        ...(meta.lastVerified ? { lastVerified: meta.lastVerified } : {}),
-        ...(meta.verifiedBy ? { verifiedBy: meta.verifiedBy } : {}),
-        ...(typeof meta.isPopular === 'boolean' ? { isPopular: meta.isPopular } : {}),
-        ...(meta.maxAlloc ? { maxAlloc: meta.maxAlloc } : {}),
-        ...(typeof meta.rating === 'number' ? { rating: meta.rating } : {}),
-        ...(typeof meta.reviews === 'number' ? { reviews: meta.reviews } : {}),
-        ...(meta.discount ? { discount: meta.discount } : {}),
-        accountSizes: sizes,
-        steps,
-        priceType: priceTypes,
-        plans,
-      });
+      result.push(
+        applyFirmSheetMeta(
+          {
+            ...base,
+            logo: firmLogo(name, base.logo),
+            comingSoon: plans.length === 0,
+            accountSizes: sizes,
+            steps,
+            priceType: priceTypes,
+            plans,
+          },
+          meta
+        )
+      );
     } else {
       for (const p of plans) p.popularity = 1000;
-      result.push({
-        name,
-        logo: firmLogo(name, '/firm/placeholder.png'),
-        rating: 0,
-        reviews: 0,
-        description: `${name} plans synced from Google Sheet.`,
-        platforms: [],
-        maxAccounts: '—',
-        maxAlloc: sizes[sizes.length - 1] || '—',
-        promoCode: plans[0]?.promoCode || 'KAGE',
-        discount: meta.discount || 'No verified offer',
-        website: '',
-        ...(meta.affiliateLink ? { affiliateLink: meta.affiliateLink } : {}),
-        ...(meta.lastVerified ? { lastVerified: meta.lastVerified } : {}),
-        type: 'Challenge',
-        countryCode: 'US',
-        likes: 1000,
-        years: 1,
-        yearsLabel: '1',
-        assets: ['Futures'],
-        accountSizes: sizes,
-        steps,
-        priceType: priceTypes,
-        allocPct: 0.5,
-        isNew: true,
-        isPopular: Boolean(meta.isPopular),
-        ...(meta.maxAlloc ? { maxAlloc: meta.maxAlloc } : {}),
-        ...(typeof meta.rating === 'number' ? { rating: meta.rating } : {}),
-        ...(typeof meta.reviews === 'number' ? { reviews: meta.reviews } : {}),
-        ...(meta.discount ? { discount: meta.discount } : {}),
-        comingSoon: false,
-        plans,
-      });
+      result.push(
+        applyFirmSheetMeta(
+          {
+            name,
+            logo: firmLogo(name, '/firm/placeholder.png'),
+            rating: 0,
+            reviews: 0,
+            description: `${name} plans synced from Google Sheet.`,
+            platforms: [],
+            maxAccounts: '—',
+            maxAlloc: sizes[sizes.length - 1] || '—',
+            promoCode: plans[0]?.promoCode || 'KAGE',
+            discount: 'No verified offer',
+            website: '',
+            type: 'Challenge',
+            countryCode: 'US',
+            likes: 1000,
+            years: 1,
+            yearsLabel: '1',
+            assets: ['Futures'],
+            accountSizes: sizes,
+            steps,
+            priceType: priceTypes,
+            allocPct: 0.5,
+            isNew: true,
+            isPopular: false,
+            comingSoon: false,
+            plans,
+          },
+          meta
+        )
+      );
     }
   }
 
@@ -209,6 +213,12 @@ function slimFirmMeta(firms = []) {
       ...(typeof f.rating === 'number' ? { rating: f.rating } : {}),
       ...(typeof f.reviews === 'number' ? { reviews: f.reviews } : {}),
       ...(f.discount ? { discount: f.discount } : {}),
+      ...(f.countryCode ? { countryCode: f.countryCode } : {}),
+      ...(typeof f.years === 'number' ? { years: f.years, yearsLabel: f.yearsLabel || String(f.years) } : {}),
+      ...(Array.isArray(f.assets) && f.assets.length ? { assets: f.assets } : {}),
+      ...(Array.isArray(f.platforms) && f.platforms.length ? { platforms: f.platforms } : {}),
+      ...(typeof f.enabled === 'boolean' ? { enabled: f.enabled } : {}),
+      ...(f.logo ? { logo: f.logo } : {}),
     };
   }
   return map;

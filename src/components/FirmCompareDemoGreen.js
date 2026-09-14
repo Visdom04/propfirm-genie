@@ -177,8 +177,7 @@ const MID_COLS = [
 
 const ALL_COL_KEYS = MID_COLS.map(c => c.key);
 
-const ROW =
-  'cmp-edge-row grid items-stretch grid-cols-[280px_minmax(0,1fr)_118px_96px] max-md:grid-cols-[168px_minmax(0,1fr)_92px_72px]';
+const ROW = 'cmp-edge-row items-stretch';
 const PIN_FIRM =
   'cmp-edge-pin-firm flex min-w-0 items-center self-stretch bg-transparent';
 const PIN_PROMO =
@@ -187,9 +186,9 @@ const PIN_VISIT =
   'cmp-edge-pin-visit flex min-w-0 items-center justify-center self-stretch bg-transparent';
 const PIN_HEAD = 'cmp-edge-head py-3';
 const MID =
-  'cmp-mid relative min-w-0 overflow-x-auto overflow-y-hidden scrollbar-none bg-transparent';
+  'cmp-mid relative min-w-0 overflow-visible bg-transparent';
 const MID_CELL =
-  'relative box-border flex min-h-[64px] shrink-0 items-center justify-center border-r border-white/[0.06] last:border-r-0 px-3 py-2.5';
+  'cmp-mid-cell relative box-border flex min-h-[64px] shrink-0 items-center justify-center border-r border-white/[0.06] last:border-r-0 px-3 py-2.5';
 const TH =
   'flex min-h-[44px] flex-col items-center justify-center gap-0.5 whitespace-nowrap text-center text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-500';
 const CHIP_ON = 'border-[#3FB185]/50 bg-[#3FB185]/15 text-[#3FB185]';
@@ -351,21 +350,60 @@ function VerifiedBadge() {
   );
 }
 
-function RatingChip({ rating, reviews, idPrefix }) {
+function RatingChip({ rating, reviews, idPrefix, dense = false }) {
   if (reviews < 10) {
-    return <span className="text-[0.68rem] font-semibold text-[#3FB185]">Less than 10 reviews</span>;
+    return (
+      <span className={`font-semibold text-[#3FB185] ${dense ? 'text-[0.58rem]' : 'text-[0.68rem]'}`}>
+        {dense ? 'New' : 'Less than 10 reviews'}
+      </span>
+    );
   }
   return (
     <span
-      className="inline-flex max-w-full items-center gap-1 rounded-full border border-[#3FB185]/35 bg-[#3FB185]/10 px-2 py-[3px]"
+      className={`inline-flex max-w-full items-center gap-1 rounded-full border border-[#3FB185]/35 bg-[#3FB185]/10 ${
+        dense ? 'px-1.5 py-px' : 'px-2 py-[3px]'
+      }`}
       aria-label={`Rated ${rating} from ${Number(reviews).toLocaleString('en-US')} reviews`}
     >
-      <span className="shrink-0 text-[0.72rem] font-bold tabular-nums text-white">{Number(rating).toFixed(1)}</span>
-      <RatingStars rating={rating} idPrefix={idPrefix} />
-      <span className="shrink-0 text-[0.68rem] font-bold tabular-nums text-[#3FB185]">
+      <span className={`shrink-0 font-bold tabular-nums text-white ${dense ? 'text-[0.62rem]' : 'text-[0.72rem]'}`}>
+        {Number(rating).toFixed(1)}
+      </span>
+      {dense ? null : <RatingStars rating={rating} idPrefix={idPrefix} />}
+      <span className={`shrink-0 font-bold tabular-nums text-[#3FB185] ${dense ? 'text-[0.58rem]' : 'text-[0.68rem]'}`}>
         [{Number(reviews).toLocaleString('en-US')}]
       </span>
     </span>
+  );
+}
+
+function FirmIdentity({ firm, planId, favorites, toggleFavorite, dense = false, className = '' }) {
+  const liked = favorites.has(firm.name);
+  return (
+    <div className={`flex min-w-0 items-start gap-1.5 ${className}`.trim()}>
+      <div className="flex min-w-0 flex-1 flex-col items-start justify-center gap-0.5 pt-0.5">
+        <span className="cmp-firm-name block w-full truncate font-bold leading-tight tracking-tight text-slate-50">
+          {firm.name}
+        </span>
+        <RatingChip rating={firm.rating} reviews={firm.reviews} idPrefix={planId} dense={dense} />
+      </div>
+      <button
+        type="button"
+        className={`btn-bare grid size-7 shrink-0 place-items-center rounded-md ${
+          liked ? 'text-[#3FB185]' : 'text-slate-400 hover:bg-white/5 hover:text-white'
+        }`}
+        onClick={() => toggleFavorite(firm.name)}
+        aria-label={liked ? `Remove ${firm.name} from bookmarks` : `Bookmark ${firm.name}`}
+        aria-pressed={liked}
+        disabled={!liked && favorites.size >= MAX_FAVORITES ? true : undefined}
+      >
+        <Bookmark
+          size={15}
+          strokeWidth={1.85}
+          fill={liked ? 'currentColor' : 'transparent'}
+          aria-hidden
+        />
+      </button>
+    </div>
   );
 }
 
@@ -685,7 +723,7 @@ function FilterDropdown({ id, label, valueLabel, open, onToggle, options, select
     <div className="relative shrink-0">
       <button
         type="button"
-        className={`btn-bare inline-flex h-10 items-center gap-1.5 rounded-xl border px-3 text-[0.78rem] font-semibold ${
+        className={`btn-bare inline-flex h-10 items-center gap-1.5 rounded-xl border px-3 text-[0.78rem] font-semibold max-md:h-8 max-md:gap-1 max-md:rounded-lg max-md:px-2.5 max-md:text-[0.7rem] ${
           selected.length ? `border-[#3FB185]/50 bg-[#3FB185]/12 text-[#3FB185]` : 'border-white/10 bg-white/5 text-white/80'
         } ${open ? 'border-[#3FB185]/60' : ''}`}
         onClick={() => onToggle(open ? null : id)}
@@ -765,15 +803,15 @@ function ToggleSwitch({ label, checked, onChange }) {
           ) : null}
         </span>
       </button>
-      <span className="whitespace-nowrap text-[0.78rem] font-semibold text-white/75">{label}</span>
+      <span className="whitespace-nowrap text-[0.78rem] font-semibold text-white/75 max-md:text-[0.68rem]">{label}</span>
     </label>
   );
 }
 
 function HeadLabel({ label, label2 }) {
-  if (!label2) return <span>{label}</span>;
+  if (!label2) return <span className="cmp-head-text">{label}</span>;
   return (
-    <span className="flex flex-col items-center leading-[1.15] text-center">
+    <span className="cmp-head-text flex flex-col items-center leading-[1.15] text-center">
       <span>{label}</span>
       <span>{label2}</span>
     </span>
@@ -837,9 +875,6 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
   const [copiedKey, setCopiedKey] = useState(null);
   const toolbarRef = useRef(null);
   const boardRef = useRef(null);
-  const masterMidRef = useRef(null);
-  const midScrollLeft = useRef(0);
-  const syncingScroll = useRef(false);
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 900px)');
@@ -880,35 +915,8 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
 
   const getMidPanes = useCallback(() => {
     const root = boardRef.current;
-    if (!root) return [];
-    return Array.from(root.querySelectorAll('.cmp-mid'));
+    return root ? [root] : [];
   }, []);
-
-  const setMasterMidRef = useCallback(el => {
-    masterMidRef.current = el;
-  }, []);
-
-  const applyMidScroll = useCallback(
-    (left, source) => {
-      midScrollLeft.current = left;
-      getMidPanes().forEach(pane => {
-        if (pane !== source && pane.scrollLeft !== left) pane.scrollLeft = left;
-      });
-    },
-    [getMidPanes]
-  );
-
-  const onMidScroll = useCallback(
-    e => {
-      if (syncingScroll.current) return;
-      syncingScroll.current = true;
-      applyMidScroll(e.currentTarget.scrollLeft, e.currentTarget);
-      requestAnimationFrame(() => {
-        syncingScroll.current = false;
-      });
-    },
-    [applyMidScroll]
-  );
 
   const uniqueCountries = useMemo(
     () => [...new Set(firms.map(f => f.countryCode).filter(Boolean))].sort(),
@@ -1172,40 +1180,6 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
     return rows;
   }, [topMode, favorites, facet, sort, search, applyDiscount, firms, filterBounds]);
 
-  useEffect(() => {
-    const left = midScrollLeft.current;
-    const id = requestAnimationFrame(() => applyMidScroll(left, null));
-    return () => cancelAnimationFrame(id);
-  }, [filtered, visibleMidCols, applyMidScroll]);
-
-  useEffect(() => {
-    const root = boardRef.current;
-    if (!root) return undefined;
-
-    const onWheel = e => {
-      const mid = e.target instanceof Element ? e.target.closest('.cmp-mid') : null;
-      if (!mid || !root.contains(mid)) return;
-      const horizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-      const shiftVertical = e.shiftKey && Math.abs(e.deltaY) > 0;
-      if (!horizontal && !shiftVertical) return;
-      const delta = horizontal ? e.deltaX : e.deltaY;
-      if (!delta) return;
-      e.preventDefault();
-      const max = Math.max(0, mid.scrollWidth - mid.clientWidth);
-      const next = Math.min(Math.max(mid.scrollLeft + delta, 0), max);
-      syncingScroll.current = true;
-      applyMidScroll(next, null);
-      requestAnimationFrame(() => {
-        syncingScroll.current = false;
-      });
-    };
-
-    root.addEventListener('wheel', onWheel, { passive: false });
-    return () => {
-      root.removeEventListener('wheel', onWheel);
-    };
-  }, [applyMidScroll]);
-
   const favCount = favorites.size;
   const activeFilterCount = countActiveFilters(facet, filterBounds);
   const draftFilterCount = countActiveFilters(draft, filterBounds);
@@ -1229,11 +1203,11 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
         <div className="min-w-0 flex-1">
           <div className="cmp-workbench">
             <div
-              className="cmp-chrome relative z-[3] flex flex-col gap-3 rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 px-4 py-3 sm:px-[18px] sm:py-3.5"
+              className="cmp-chrome relative z-[3] flex flex-col gap-3 rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 px-4 py-3 sm:px-[18px] sm:py-3.5 max-md:gap-2 max-md:px-2 max-md:py-2"
               ref={toolbarRef}
             >
               <div
-                className={`scrollbar-none relative flex min-w-0 flex-nowrap items-center gap-2 ${
+                className={`scrollbar-none relative flex min-w-0 flex-nowrap items-center gap-2 max-md:gap-1.5 ${
                   openDropdown ? 'overflow-visible' : 'overflow-x-auto'
                 }`}
                 role="toolbar"
@@ -1241,7 +1215,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
               >
                 <button
                   type="button"
-                  className={`btn-bare relative inline-flex h-10 shrink-0 items-center gap-2 rounded-xl border px-3.5 text-[0.78rem] font-semibold ${
+                  className={`btn-bare relative inline-flex h-10 shrink-0 items-center gap-2 rounded-xl border px-3.5 text-[0.78rem] font-semibold max-md:h-8 max-md:gap-1 max-md:rounded-lg max-md:px-2.5 max-md:text-[0.7rem] ${
                     sidebarOpen
                       ? 'border-[#3FB185]/60 bg-[#3FB185]/15 text-[#3FB185]'
                       : 'border-white/10 bg-white/5 text-white/80'
@@ -1299,7 +1273,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
 
                 <button
                   type="button"
-                  className={`btn-bare inline-flex h-10 shrink-0 items-center rounded-full px-5 text-[0.82rem] font-bold ${
+                  className={`btn-bare inline-flex h-10 shrink-0 items-center rounded-full px-5 text-[0.82rem] font-bold max-md:h-8 max-md:px-3 max-md:text-[0.7rem] ${
                     topMode === 'all'
                       ? 'bg-[#3FB185] text-[#0a0f0d]'
                       : 'border border-white/10 bg-white/5 text-white/80'
@@ -1311,7 +1285,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                 </button>
                 <button
                   type="button"
-                  className={`btn-bare inline-flex h-10 shrink-0 items-center gap-1.5 rounded-xl border px-3 text-[0.78rem] font-semibold ${
+                  className={`btn-bare inline-flex h-10 shrink-0 items-center gap-1.5 rounded-xl border px-3 text-[0.78rem] font-semibold max-md:h-8 max-md:gap-1 max-md:rounded-lg max-md:px-2.5 max-md:text-[0.7rem] ${
                     topMode === 'favorites'
                       ? 'border-[#3FB185]/60 bg-[#3FB185]/15 text-[#3FB185]'
                       : 'border-white/10 bg-white/5 text-white/80'
@@ -1323,7 +1297,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                   {favCount}/{MAX_FAVORITES}
                 </button>
 
-                <label className="ml-auto flex h-10 w-[min(100%,280px)] min-w-[200px] shrink-0 items-center gap-2 rounded-xl border border-white/10 bg-black/30 px-3 focus-within:border-[#3FB185]/45">
+                <label className="ml-auto flex h-10 w-[min(100%,280px)] min-w-[200px] shrink-0 items-center gap-2 rounded-xl border border-white/10 bg-black/30 px-3 focus-within:border-[#3FB185]/45 max-md:h-8 max-md:min-w-[148px] max-md:px-2">
                   <svg className="shrink-0 text-white/40" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
                     <path d="M21 21l-4.3-4.3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -1351,24 +1325,29 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                 </label>
               </div>
 
-              <div className="flex min-w-0 items-center gap-3">
-                <p className="m-0 shrink-0 text-[0.92rem] font-semibold text-[#3FB185]">
-                  {filtered.length.toLocaleString('en-US')} prop firm challenges
+              <div className="flex min-w-0 items-center gap-3 max-md:gap-2">
+                <p className="m-0 shrink-0 text-[0.92rem] font-semibold text-[#3FB185] max-md:text-[0.72rem]">
+                  <span className="md:hidden">{filtered.length.toLocaleString('en-US')} challenges</span>
+                  <span className="max-md:hidden">
+                    {filtered.length.toLocaleString('en-US')} prop firm challenges
+                  </span>
                 </p>
-                <TableScrollSlider getMidPanes={getMidPanes} masterRef={masterMidRef} />
+                <TableScrollSlider getMidPanes={getMidPanes} masterRef={boardRef} />
                 <div className="relative shrink-0">
                   <button
                     type="button"
-                    className="btn-bare inline-flex items-center gap-1.5 text-[0.78rem] font-semibold text-white/70 hover:text-white"
+                    className="btn-bare inline-flex max-w-[7.25rem] items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2 py-1 text-[0.68rem] font-semibold text-white/70 hover:text-white sm:max-w-none sm:border-0 sm:bg-transparent sm:px-0 sm:py-0 sm:text-[0.78rem]"
                     onClick={() => {
                       setOpenDropdown(openDropdown === 'sort' ? null : 'sort');
                       setCustomizeOpen(false);
                     }}
                     aria-expanded={openDropdown === 'sort'}
                     aria-haspopup="listbox"
+                    aria-label={`Sorted by ${sortLabel(sort)}`}
                   >
-                    <span>
-                      Sorted by: <span className="text-white">{sortLabel(sort)}</span>
+                    <span className="min-w-0 truncate">
+                      <span className="max-sm:hidden">Sorted by: </span>
+                      <span className="text-white">{sortLabel(sort)}</span>
                     </span>
                     <span className="inline-flex flex-col text-[7px] leading-[0.65]" aria-hidden>
                       <span>▲</span>
@@ -1404,7 +1383,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                 <div className="relative shrink-0">
                   <button
                     type="button"
-                    className={`btn-bare grid size-9 place-items-center rounded-xl border ${
+                    className={`btn-bare grid size-9 place-items-center rounded-xl border max-md:size-8 max-md:rounded-lg ${
                       customizeOpen
                         ? 'border-[#3FB185]/60 bg-[#3FB185]/15 text-[#3FB185]'
                         : 'border-white/10 bg-white/5 text-white/70'
@@ -1452,6 +1431,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
               </div>
             </div>
 
+            <div className="cmp-board-clip">
             <div
               className={`cmp-edge-board scrollbar-pfg relative z-[1] mt-0 flex w-full min-w-0 flex-col border border-t-0 border-white/10 bg-[#060c0a] ${
                 filtered.length ? '' : 'rounded-b-2xl'
@@ -1467,11 +1447,12 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                     sortKey="firm"
                     sort={sort}
                     onSort={cycleSort}
-                    className="w-full items-start pl-4 text-left"
+                    className="cmp-firm-head w-full items-start pl-4 text-left"
                   />
                 </div>
-                <div className={`${MID} flex items-center bg-[#060c0a]`} id="cmp-mid-scroller" ref={setMasterMidRef} onScroll={onMidScroll} role="presentation">
+                <div className={`${MID} flex items-center bg-[#060c0a]`} id="cmp-mid-scroller" role="presentation">
                   <div className="flex min-h-[52px] w-max items-center">
+                    <div className="cmp-firm-meta-mid" aria-hidden />
                     {visibleMidCols.map(col =>
                       col.sort ? (
                         <SortHead
@@ -1500,11 +1481,13 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                     )}
                   </div>
                 </div>
+                <div className="cmp-edge-cta">
                 <div className={`${PIN_PROMO} ${PIN_HEAD} bg-[#060c0a]`} role="columnheader">
                   <SortHead label="Promo" sortKey="promo" sort={sort} onSort={cycleSort} className="w-full justify-center" />
                 </div>
                 <div className={`${PIN_VISIT} ${PIN_HEAD} bg-[#060c0a]`} role="columnheader">
                   <span className={`${TH} w-full`}>Visit</span>
+                </div>
                 </div>
               </div>
 
@@ -1543,8 +1526,8 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                     >
                       <div className={`${PIN_FIRM}`} role="cell">
                         <div className="flex w-full min-w-0 items-start gap-3">
-                          <div className="relative mt-0.5 shrink-0" style={{ width: 40, height: 40 }}>
-                            <div className="size-10 overflow-hidden rounded-full bg-black ring-1 ring-white/15">
+                          <div className="cmp-firm-logo relative mt-0.5 shrink-0">
+                            <div className="cmp-firm-logo__mark overflow-hidden rounded-full bg-black ring-1 ring-white/15">
                               {logoSrc ? (
                                 <img
                                   src={logoSrc}
@@ -1561,44 +1544,31 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                             </div>
                             {f.reviews >= 10 && f.rating >= 4 ? <VerifiedBadge /> : null}
                           </div>
-                          <div className="flex min-w-0 flex-1 flex-col items-start justify-center gap-1 pt-0.5">
-                            <span className="block w-full truncate text-[0.92rem] font-bold leading-tight tracking-tight text-slate-50">
-                              {f.name}
-                            </span>
-                            <RatingChip rating={f.rating} reviews={f.reviews} idPrefix={`r-${p.id}`} />
-                          </div>
-                          <button
-                            type="button"
-                            className={`btn-bare grid size-7 shrink-0 place-items-center rounded-md ${
-                              favorites.has(f.name)
-                                ? 'text-[#3FB185]'
-                                : 'text-slate-400 hover:bg-white/5 hover:text-white'
-                            }`}
-                            onClick={() => toggleFavorite(f.name)}
-                            aria-label={
-                              favorites.has(f.name)
-                                ? `Remove ${f.name} from bookmarks`
-                                : `Bookmark ${f.name}`
-                            }
-                            aria-pressed={favorites.has(f.name)}
-                            disabled={!favorites.has(f.name) && favorites.size >= MAX_FAVORITES ? true : undefined}
-                          >
-                            <Bookmark
-                              size={15}
-                              strokeWidth={1.85}
-                              fill={favorites.has(f.name) ? 'currentColor' : 'transparent'}
-                              aria-hidden
-                            />
-                          </button>
+                          <FirmIdentity
+                            className="cmp-firm-meta"
+                            firm={f}
+                            planId={`r-${p.id}`}
+                            favorites={favorites}
+                            toggleFavorite={toggleFavorite}
+                          />
                         </div>
                       </div>
 
-                      <div className={`${MID}`} onScroll={onMidScroll} role="presentation">
+                      <div className={`${MID}`} role="presentation">
                         <div className="flex min-h-full w-max items-stretch">
+                          <FirmIdentity
+                            className="cmp-firm-meta-mid"
+                            firm={f}
+                            planId={`r-mid-${p.id}`}
+                            favorites={favorites}
+                            toggleFavorite={toggleFavorite}
+                            dense
+                          />
                           {visibleMidCols.map(col => renderMidCell(col, p, applyDiscount))}
                         </div>
                       </div>
 
+                      <div className="cmp-edge-cta">
                       <div className={`${PIN_PROMO} px-2`} role="cell">
                         <div className="w-full overflow-hidden rounded-lg border border-dashed border-[#3FB185]/35">
                           <div className="bg-[#3FB185] px-1.5 py-0.5 text-center text-[0.62rem] font-bold leading-tight text-[#0a0f0d]">
@@ -1631,15 +1601,17 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                           </span>
                         )}
                       </div>
+                      </div>
                     </div>
                   );
                 })
               )}
             </div>
+            </div>
 
             {filtered.length > 0 ? (
               <div className="cmp-scroll-track flex min-w-0 items-center rounded-b-2xl border border-t-0 border-white/10">
-                <TableScrollSlider getMidPanes={getMidPanes} masterRef={masterMidRef} />
+                <TableScrollSlider getMidPanes={getMidPanes} masterRef={boardRef} />
               </div>
             ) : null}
           </div>
