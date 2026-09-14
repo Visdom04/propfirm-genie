@@ -13,7 +13,7 @@ import CompareFilterSidebar, {
 import { PfgPrimary } from '@/components/green/PfgControls';
 import { firmLogo } from '@/lib/firmLogos';
 import { summarizeFirm } from '@/lib/firmOverview';
-import PlatformLogo from '@/components/green/PlatformLogo';
+import PlatformMarks from '@/components/green/PlatformMarks';
 import { compareFirmNames, defaultSortDir } from '@/lib/firmSort';
 import { salePriceOf } from '@/lib/planPrice';
 import './FirmOverviewTable.css';
@@ -349,18 +349,6 @@ function ToolbarIcon({ name }) {
     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
       <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
-  );
-}
-
-function PlatformMarks({ names }) {
-  const list = names || [];
-  if (!list.length) return <span className="text-slate-500">—</span>;
-  return (
-    <div className="flex flex-wrap items-center justify-center gap-1">
-      {list.map(name => (
-        <PlatformLogo key={name} name={name} size={26} />
-      ))}
-    </div>
   );
 }
 

@@ -1,7 +1,8 @@
 'use client';
 
 import { createPortal } from 'react-dom';
-import { useMemo, useState, useCallback, useEffect, useRef, useId } from 'react';
+import { useMemo, useState, useCallback, useEffect, useLayoutEffect, useRef, useId, memo } from 'react';
+import { useWindowVirtualizer } from '@tanstack/react-virtual';
 import { Bookmark, Check, Copy, Star } from 'lucide-react';
 import { firms as staticFirms, ACCOUNT_SIZE_OPTIONS, PRICE_OPTIONS } from '@/data/firms';
 import CompareFilterSidebar, {
@@ -665,6 +666,109 @@ function renderMidCell(col, p, applyDiscount) {
   }
 }
 
+const ChallengeRow = memo(function ChallengeRow({
+  index,
+  firm: f,
+  plan: p,
+  visibleMidCols,
+  applyDiscount,
+  favorites,
+  toggleFavorite,
+  copiedKey,
+  copyCode,
+}) {
+  const href = visitUrl(f);
+  const even = index % 2 === 1;
+  const logoSrc = firmLogo(f.name, f.logo);
+  const code = p.promoCode || f.promoCode || 'KAGE';
+  const copyKey = p.id || `${f.name}:${code}`;
+  const copied = copiedKey === copyKey;
+  const off = promoOffLabel(f, p);
+  return (
+    <div className={`${ROW} group ${even ? 'cmp-edge-row--even' : ''}`} role="row">
+      <div className={`${PIN_FIRM}`} role="cell">
+        <div className="flex w-full min-w-0 items-start gap-2">
+          <div className="cmp-firm-logo relative mt-0.5 shrink-0">
+            <div className="cmp-firm-logo__mark overflow-hidden rounded-full bg-black ring-1 ring-white/15">
+              {logoSrc ? (
+                <img
+                  src={logoSrc}
+                  alt=""
+                  width={80}
+                  height={80}
+                  className="size-full object-cover object-center"
+                />
+              ) : (
+                <span className="grid size-full place-items-center text-[0.58rem] font-bold text-white/50">
+                  {f.name.slice(0, 2)}
+                </span>
+              )}
+            </div>
+            {f.reviews >= 10 && f.rating >= 4 ? <VerifiedBadge /> : null}
+          </div>
+          <FirmIdentity
+            className="cmp-firm-meta"
+            firm={f}
+            planId={`r-${p.id}`}
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
+          />
+        </div>
+      </div>
+
+      <div className={`${MID}`} role="presentation">
+        <div className="flex min-h-full w-max items-stretch">
+          <FirmIdentity
+            className="cmp-firm-meta-mid"
+            firm={f}
+            planId={`r-mid-${p.id}`}
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
+            dense
+          />
+          {visibleMidCols.map(col => renderMidCell(col, p, applyDiscount))}
+        </div>
+      </div>
+
+      <div className="cmp-edge-cta">
+        <div className={`${PIN_PROMO} px-2`} role="cell">
+          <div className="w-full overflow-hidden rounded-lg border border-dashed border-[#3FB185]/35">
+            <div className="bg-[#3FB185] px-1.5 py-0.5 text-center text-[0.62rem] font-bold leading-tight text-[#0a0f0d]">
+              {off}
+            </div>
+            <button
+              type="button"
+              className={`${COPY_BTN} flex w-full items-center justify-center gap-1 bg-[#08120e]! px-1.5 py-1.5 text-[0.68rem] font-bold text-white! hover:bg-[#0e1c16]!`}
+              onClick={() => copyCode(copyKey, code)}
+              aria-label={`Copy promo code ${code}`}
+            >
+              {copied ? <Check size={11} /> : <Copy size={11} />}
+              {copied ? 'Copied' : code}
+            </button>
+          </div>
+        </div>
+        <div className={`${PIN_VISIT} px-2`} role="cell">
+          {href ? (
+            <PfgPrimary
+              href={href}
+              compact
+              className="cmp-view-btn h-8 rounded-full! px-3.5"
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+            >
+              View Firm
+            </PfgPrimary>
+          ) : (
+            <span className="inline-flex h-8 items-center rounded-full bg-white/5 px-3 text-[0.72rem] font-bold text-slate-500">
+              —
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+});
+
 function ToolbarIcon({ name }) {
   const s = { width: 16, height: 16, viewBox: '0 0 24 24', fill: 'none', 'aria-hidden': true };
   const stroke = 'currentColor';
@@ -871,6 +975,8 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
   const boardRef = useRef(null);
   const workbenchRef = useRef(null);
   const headRailRef = useRef(null);
+  const listRef = useRef(null);
+  const [listOffset, setListOffset] = useState(0);
 
   useEffect(() => {
     const board = boardRef.current;
@@ -1186,6 +1292,31 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
 
     return rows;
   }, [topMode, favorites, facet, sort, search, applyDiscount, firms, filterBounds]);
+
+  const rowVirtualizer = useWindowVirtualizer({
+    count: filtered.length,
+    estimateSize: () => 88,
+    overscan: 12,
+    scrollMargin: listOffset,
+    getItemKey: index => filtered[index]?.plan?.id ?? index,
+  });
+
+  useLayoutEffect(() => {
+    const node = listRef.current;
+    if (!node) return undefined;
+    const update = () => {
+      const top = node.getBoundingClientRect().top + window.scrollY;
+      setListOffset(Math.round(top));
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(node);
+    window.addEventListener('resize', update);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', update);
+    };
+  }, [filtered.length, visibleMidCols]);
 
   const favCount = favorites.size;
   const activeFilterCount = countActiveFilters(facet, filterBounds);
@@ -1517,103 +1648,59 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                   </div>
                 </div>
               ) : (
-                filtered.map(({ firm: f, plan: p }, i) => {
-                  const href = visitUrl(f);
-                  const even = i % 2 === 1;
-                  const logoSrc = firmLogo(f.name, f.logo);
-                  const code = p.promoCode || f.promoCode || 'KAGE';
-                  const copyKey = p.id || `${f.name}:${code}`;
-                  const copied = copiedKey === copyKey;
-                  const off = promoOffLabel(f, p);
-                  return (
-                    <div
-                      key={p.id}
-                      className={`${ROW} group ${even ? 'cmp-edge-row--even' : ''}`}
-                      role="row"
-                      style={{ animationDelay: `${Math.min(i, 12) * 0.04}s` }}
-                    >
-                      <div className={`${PIN_FIRM}`} role="cell">
-                        <div className="flex w-full min-w-0 items-start gap-2">
-                          <div className="cmp-firm-logo relative mt-0.5 shrink-0">
-                            <div className="cmp-firm-logo__mark overflow-hidden rounded-full bg-black ring-1 ring-white/15">
-                              {logoSrc ? (
-                                <img
-                                  src={logoSrc}
-                                  alt=""
-                                  width={80}
-                                  height={80}
-                                  className="size-full object-cover object-center"
-                                />
-                              ) : (
-                                <span className="grid size-full place-items-center text-[0.58rem] font-bold text-white/50">
-                                  {f.name.slice(0, 2)}
-                                </span>
-                              )}
-                            </div>
-                            {f.reviews >= 10 && f.rating >= 4 ? <VerifiedBadge /> : null}
-                          </div>
-                          <FirmIdentity
-                            className="cmp-firm-meta"
-                            firm={f}
-                            planId={`r-${p.id}`}
-                            favorites={favorites}
-                            toggleFavorite={toggleFavorite}
+                <div className="cmp-virtual-sizer">
+                  <div className={`${ROW} cmp-virtual-width-probe`} aria-hidden>
+                    <div className={PIN_FIRM} />
+                    <div className={MID}>
+                      <div className="flex w-max items-stretch">
+                        {visibleMidCols.map(col => (
+                          <div
+                            key={col.key}
+                            className={MID_CELL}
+                            style={{ flex: `0 0 ${col.min}px`, minWidth: col.min }}
                           />
-                        </div>
-                      </div>
-
-                      <div className={`${MID}`} role="presentation">
-                        <div className="flex min-h-full w-max items-stretch">
-                          <FirmIdentity
-                            className="cmp-firm-meta-mid"
-                            firm={f}
-                            planId={`r-mid-${p.id}`}
-                            favorites={favorites}
-                            toggleFavorite={toggleFavorite}
-                            dense
-                          />
-                          {visibleMidCols.map(col => renderMidCell(col, p, applyDiscount))}
-                        </div>
-                      </div>
-
-                      <div className="cmp-edge-cta">
-                      <div className={`${PIN_PROMO} px-2`} role="cell">
-                        <div className="w-full overflow-hidden rounded-lg border border-dashed border-[#3FB185]/35">
-                          <div className="bg-[#3FB185] px-1.5 py-0.5 text-center text-[0.62rem] font-bold leading-tight text-[#0a0f0d]">
-                            {off}
-                          </div>
-                          <button
-                            type="button"
-                            className={`${COPY_BTN} flex w-full items-center justify-center gap-1 bg-[#08120e]! px-1.5 py-1.5 text-[0.68rem] font-bold text-white! hover:bg-[#0e1c16]!`}
-                            onClick={() => copyCode(copyKey, code)}
-                            aria-label={`Copy promo code ${code}`}
-                          >
-                            {copied ? <Check size={11} /> : <Copy size={11} />}
-                            {copied ? 'Copied' : code}
-                          </button>
-                        </div>
-                      </div>
-                      <div className={`${PIN_VISIT} px-2`} role="cell">
-                        {href ? (
-                          <PfgPrimary
-                            href={href}
-                            compact
-                            className="cmp-view-btn h-8 rounded-full! px-3.5"
-                            target="_blank"
-                            rel="noopener noreferrer sponsored"
-                          >
-                            View Firm
-                          </PfgPrimary>
-                        ) : (
-                          <span className="inline-flex h-8 items-center rounded-full bg-white/5 px-3 text-[0.72rem] font-bold text-slate-500">
-                            —
-                          </span>
-                        )}
-                      </div>
+                        ))}
                       </div>
                     </div>
-                  );
-                })
+                    <div className="cmp-edge-cta">
+                      <div className={PIN_PROMO} />
+                      <div className={PIN_VISIT} />
+                    </div>
+                  </div>
+                  <div
+                    className="cmp-virtual-list"
+                    ref={listRef}
+                    style={{ height: rowVirtualizer.getTotalSize() }}
+                  >
+                    {rowVirtualizer.getVirtualItems().map(virtualRow => {
+                      const item = filtered[virtualRow.index];
+                      if (!item) return null;
+                      return (
+                        <div
+                          key={virtualRow.key}
+                          data-index={virtualRow.index}
+                          ref={rowVirtualizer.measureElement}
+                          className="cmp-virtual-row"
+                          style={{
+                            top: virtualRow.start - listOffset,
+                          }}
+                        >
+                          <ChallengeRow
+                            index={virtualRow.index}
+                            firm={item.firm}
+                            plan={item.plan}
+                            visibleMidCols={visibleMidCols}
+                            applyDiscount={applyDiscount}
+                            favorites={favorites}
+                            toggleFavorite={toggleFavorite}
+                            copiedKey={copiedKey}
+                            copyCode={copyCode}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               )}
             </div>
             </div>

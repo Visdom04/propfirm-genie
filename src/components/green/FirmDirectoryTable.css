@@ -123,10 +123,15 @@
     transform-origin: center;
   }
 
-  .dir-platforms img,
-  .dir-platforms span {
+  .dir-platforms img {
     width: 20px !important;
     height: 20px !important;
+  }
+
+  .dir-platforms .platform-more {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 0.48rem !important;
   }
 
   .dir-row .rounded-full.border.px-2 {

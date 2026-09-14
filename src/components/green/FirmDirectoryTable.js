@@ -7,7 +7,7 @@ import { COUNTRY_LABELS } from '@/components/CompareFilterSidebar';
 import { discountBadge } from '@/lib/compareHighlights';
 import { firmLogo } from '@/lib/firmLogos';
 import { compareFirmNames } from '@/lib/firmSort';
-import PlatformLogo from '@/components/green/PlatformLogo';
+import PlatformMarks from '@/components/green/PlatformMarks';
 import { PfgGhost, PfgPrimary } from '@/components/green/PfgControls';
 import './FirmDirectoryTable.css';
 
@@ -666,16 +666,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
                       ))}
                     </div>
 
-                    <div className="dir-platforms flex flex-wrap items-center justify-center gap-1">
-                      {(f.platforms || []).slice(0, 4).map(name => (
-                        <PlatformLogo key={name} name={name} size={26} />
-                      ))}
-                      {(f.platforms || []).length > 4 ? (
-                        <span className="grid size-[26px] place-items-center rounded-full border border-white/15 text-[0.52rem] font-bold text-white/60">
-                          +{(f.platforms || []).length - 4}
-                        </span>
-                      ) : null}
-                    </div>
+                    <PlatformMarks names={f.platforms} className="dir-platforms" />
 
                     <div className="w-full text-center">
                       <div className="text-[0.95rem] font-extrabold text-white">{f.maxAlloc}</div>

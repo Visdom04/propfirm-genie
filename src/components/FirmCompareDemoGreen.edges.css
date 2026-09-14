@@ -51,6 +51,40 @@
   background: #060c0a;
 }
 
+.cmp-virtual-sizer {
+  width: max-content;
+  min-width: 100%;
+}
+
+.cmp-virtual-list {
+  position: relative;
+  width: 100%;
+}
+
+.cmp-virtual-row {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.cmp-virtual-row > .cmp-edge-row {
+  width: 100%;
+}
+
+.cmp-virtual-width-probe {
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cmp-virtual-width-probe .cmp-mid-cell {
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
 .cmp-edge-row {
   display: grid;
   grid-template-columns: var(--cmp-firm) max-content var(--cmp-promo) var(--cmp-visit);

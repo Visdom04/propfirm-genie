@@ -74,6 +74,7 @@ src/components/green/PfgControls.js
 src/components/green/FirmDirectoryTable.js
 src/components/green/FirmDirectoryTable.css
 src/components/green/PlatformLogo.js
+src/components/green/PlatformMarks.js
 src/components/green/TableScrollSlider.js
 src/components/compare/CompareFirmsH2H.js
 src/components/compare/CompareFirmsH2H.css
@@ -196,13 +197,13 @@ Affiliate / KAGE checkout stays on **Challenges** (per-plan Price pin) and direc
 
 H1: Compare Prop **Challenges**. Pin columns: Firm (left) · Promo + **View Firm** (right). Mid columns include raw payout freq. Profit split and Price use a smaller numeral than the other mid cells (smaller again on mobile). Mobile Promo / View Firm is a compact sticky stack (`--cmp-cta` in `FirmCompareDemoGreen.edges.css`).
 
-The list is **page-length** (the window scrolls). Do not restore `max-height` on `.cmp-workbench` or `overflow-y: auto` on `.cmp-edge-board`. Column widths (`--cmp-firm`, `--cmp-promo`, `--cmp-visit`, `--cmp-cta`) live on `.cmp-workbench` so the sticky header rail matches body columns. Filters + headers stick under the nav (`.cmp-sticky-top`).
+The list is **page-length** (the window scrolls). Body rows are **window-virtualized**: the page still contains every matching plan, but only on-screen rows (plus a small overscan) are in the DOM. Do not mount all ~200 plan rows at once, and do not switch to paged “load more.” Do not restore `max-height` on `.cmp-workbench` or `overflow-y: auto` on `.cmp-edge-board`. Position virtual rows with `top`, never `transform` — a transform on the row breaks sticky Firm / Promo / View Firm. Column widths (`--cmp-firm`, `--cmp-promo`, `--cmp-visit`, `--cmp-cta`) live on `.cmp-workbench` so the sticky header rail matches body columns. Filters + headers stick under the nav (`.cmp-sticky-top`).
 
 ### `/firms`
 
 `FirmDirectoryTable` inside `GreenPageShell`. One row per firm, ranked.
 
-H1: Browse Prop **Firms**. Same page-length list as Challenges (`.dir-workbench { max-height: none }`, `.dir-board` is `overflow-x: auto; overflow-y: clip`). Filters + headers stick (`.dir-sticky-top`). Do not box the directory in `calc(100dvh …)`.
+H1: Browse Prop **Firms**. Same page-length list as Challenges (`.dir-workbench { max-height: none }`, `.dir-board` is `overflow-x: auto; overflow-y: clip`). Filters + headers stick (`.dir-sticky-top`). Do not box the directory in `calc(100dvh …)`. Platforms: 3 marks + clickable **+N** (same `PlatformMarks` as Overview).
 
 ### `/overview`
 
@@ -210,7 +211,7 @@ H1: Browse Prop **Firms**. Same page-length list as Challenges (`.dir-workbench 
 
 H1: Prop Firm **Overview**. Pin: Firm (left) · **View firm** (right). No Price pin.
 
-Page-length list + sticky chrome/headers, same rules as Challenges (`--ov-firm` / `--ov-price` on `.ov-workbench`).
+Page-length list + sticky chrome/headers, same rules as Challenges (`--ov-firm` / `--ov-price` on `.ov-workbench`). Platforms show 3 marks, then **+N** — click to load the rest in a popover.
 
 Mid: account size range, plan types, platforms, S2F, eval from, activation, all-in, drawdown, max loss, days to pass, news, split, **compact payout**, max funded, discount, overview blurb.
 
@@ -238,6 +239,7 @@ npm run dev
 ```
 
 - [ ] `/challenges` — one row per plan; Promo + View Firm on the right; page scroll (no inner table box); payout cell is the raw sheet text.
+- [ ] `/challenges` still one long page (~200 plans) but only ~20–40 rows in the DOM while scrolling; sticky Firm / Promo / View Firm still line up.
 - [ ] `/challenges` mobile — Promo / View Firm stay compact; Profit split % and Price $ are smaller than other mid cells.
 - [ ] `/` and `/demo-2` → `/challenges`.
 - [ ] `/overview` — no Price pin; **View firm** on Apex opens `https://propfirmgenie.com/firm/apex`; page scroll like Challenges.
