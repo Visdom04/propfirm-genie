@@ -11,7 +11,6 @@ import CompareFilterSidebar, {
   normalizeDrawdown,
 } from '@/components/CompareFilterSidebar';
 import { PfgPrimary } from '@/components/green/PfgControls';
-import TableScrollSlider from '@/components/green/TableScrollSlider';
 import { firmLogo } from '@/lib/firmLogos';
 import { summarizeFirm } from '@/lib/firmOverview';
 import PlatformLogo from '@/components/green/PlatformLogo';
@@ -31,19 +30,19 @@ const FAV_KEY = 'cmp-overview-favs';
 const COLS_KEY = 'cmp-overview-cols-v2';
 
 const MID_COLS = [
-  { key: 'size', label: 'Account', label2: 'size', min: 92 },
+  { key: 'size', label: 'Account size', min: 120 },
   { key: 'platforms', label: 'Platforms', min: 160 },
-  { key: 's2f', label: 'Straight', label2: 'to funded', min: 108 },
-  { key: 'evalPrice', label: 'Eval', label2: 'from', min: 96 },
-  { key: 'activation', label: 'Activation', label2: 'fee', min: 128 },
-  { key: 'allIn', label: 'All-in', label2: 'from', min: 96 },
-  { key: 'drawdown', label: 'Drawdown', label2: 'type', min: 168 },
-  { key: 'maxLoss', label: 'Max', label2: 'loss', min: 96 },
-  { key: 'days', label: 'Days', label2: 'to pass', min: 96 },
-  { key: 'news', label: 'News', label2: 'trading', min: 96 },
-  { key: 'split', label: 'Profit', label2: 'split', min: 96 },
-  { key: 'payout', label: 'Payout', label2: 'freq.', min: 168 },
-  { key: 'accounts', label: 'Max', label2: 'funded', min: 96 },
+  { key: 's2f', label: 'Straight to funded', min: 128 },
+  { key: 'evalPrice', label: 'Eval from', min: 104 },
+  { key: 'activation', label: 'Activation fee', min: 132 },
+  { key: 'allIn', label: 'All-in from', min: 104 },
+  { key: 'drawdown', label: 'Drawdown type', min: 140 },
+  { key: 'maxLoss', label: 'Max loss', min: 104 },
+  { key: 'days', label: 'Days to pass', min: 112 },
+  { key: 'news', label: 'News trading', min: 112 },
+  { key: 'split', label: 'Profit split', min: 104 },
+  { key: 'payout', label: 'Payout freq.', min: 132 },
+  { key: 'accounts', label: 'Max funded', min: 104 },
   { key: 'discount', label: 'Discount', min: 168 },
   { key: 'description', label: 'Overview', min: 200 },
 ];
@@ -80,7 +79,7 @@ const MID_CELL_BASE =
   'relative box-border flex h-full shrink-0 self-stretch border-r border-white/[0.06] last:border-r-0 px-3 py-2.5';
 const MID_CELL = `${MID_CELL_BASE} items-center justify-center`;
 const TH =
-  'min-h-[52px] flex-col items-center justify-center gap-0.5 text-center text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90';
+  'min-h-[40px] flex-col items-center justify-center gap-0.5 whitespace-nowrap text-center text-[0.62rem] font-semibold uppercase tracking-[0.04em] text-slate-400/90';
 const CHIP_ON = 'border-[#3FB185]/50 bg-[#3FB185]/15 text-[#3FB185]';
 const CHIP_OFF = 'border-white/10 bg-black/20 text-slate-200 hover:border-emerald-500/35';
 
@@ -112,13 +111,7 @@ function formatMoney(n) {
 }
 
 function HeadLabel({ label, label2 }) {
-  if (!label2) return <span>{label}</span>;
-  return (
-    <span className="flex flex-col items-center leading-[1.15] text-center">
-      <span>{label}</span>
-      <span>{label2}</span>
-    </span>
-  );
+  return <span className="whitespace-nowrap">{label2 ? `${label} ${label2}` : label}</span>;
 }
 
 function SortArrows({ active, direction }) {
@@ -562,7 +555,21 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
   const [visibleCols, setVisibleCols] = useState(() => new Set(ALL_COL_KEYS));
   const [openDropdown, setOpenDropdown] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
+  const workbenchRef = useRef(null);
   const boardRef = useRef(null);
+  const headRailRef = useRef(null);
+
+  useEffect(() => {
+    const board = boardRef.current;
+    const rail = headRailRef.current;
+    if (!board || !rail) return undefined;
+    const sync = () => {
+      rail.scrollLeft = board.scrollLeft;
+    };
+    sync();
+    board.addEventListener('scroll', sync, { passive: true });
+    return () => board.removeEventListener('scroll', sync);
+  }, []);
 
   useEffect(() => {
     try {
@@ -683,7 +690,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
   }, [filtered, sort]);
 
   const visibleMidCols = MID_COLS.filter(c => visibleCols.has(c.key));
-  const colMin = col => (isMobile ? Math.max(84, Math.round(col.min * 0.82)) : col.min);
+  const colMin = col => (isMobile ? Math.max(108, Math.round(col.min * 0.9)) : col.min);
 
   const cycleSort = key => {
     setSort(prev => {
@@ -691,11 +698,6 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
       return { key, dir: prev.dir === 'asc' ? 'desc' : 'asc' };
     });
   };
-
-  const getMidPanes = useCallback(() => {
-    const root = boardRef.current;
-    return root ? [root] : [];
-  }, []);
 
   const toggleFavorite = name => {
     setFavorites(prev => {
@@ -866,7 +868,8 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         </div>
 
         <div className="min-w-0 flex-1">
-          <div className="ov-workbench">
+          <div className="ov-workbench" ref={workbenchRef}>
+          <div className="ov-sticky-top">
           <div className="ov-chrome ov-no-print flex flex-col gap-3 rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 px-4 py-3 sm:px-[18px] sm:py-3.5 max-md:gap-1.5 max-md:px-1.5 max-md:py-1.5">
             <div className="ov-spotlight flex min-w-0 flex-wrap items-end gap-2 rounded-2xl border border-[#3FB185]/40 bg-[#07140f] px-3.5 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_32px_rgba(0,0,0,0.35)] max-md:gap-1 max-md:rounded-lg max-md:px-1.5 max-md:py-1.5">
               <p className="m-0 w-full text-[0.68rem] font-bold uppercase tracking-[0.1em] text-[#3FB185]/80 max-md:hidden">Spotlight two firms</p>
@@ -1084,7 +1087,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                             })
                           }
                         />
-                        {col.label2 ? `${col.label} ${col.label2}` : col.label}
+                        {col.label}
                       </label>
                     ))}
                   </div>
@@ -1093,12 +1096,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
               </div>
             </div>
           </div>
-
-          <div className="ov-board-clip">
-          <div
-            ref={boardRef}
-            className={`ov-board scrollbar-pfg border border-t-0 border-white/10 bg-[#060c0a] ${sorted.length ? '' : 'rounded-b-2xl'}`}
-          >
+          <div className="ov-head-rail scrollbar-none" ref={headRailRef}>
             <div className={`${ROW} ov-row--head`} role="row">
               <div className={`${PIN_FIRM} ${PIN_HEAD} bg-[#060c0a]`} role="columnheader">
                 <button
@@ -1115,7 +1113,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                   {visibleMidCols.map(col => (
                     <div
                       key={col.key}
-                      className={`${MID_CELL} ${TH} ${col.label2 ? 'whitespace-normal' : 'whitespace-nowrap'}`}
+                      className={`${MID_CELL} ${TH} whitespace-nowrap`}
                       style={{ flex: `0 0 ${colMin(col)}px`, minWidth: colMin(col) }}
                     >
                       <span className="inline-flex items-center gap-0.5">
@@ -1137,11 +1135,17 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                 className={`${PIN_ACTION} ${PIN_HEAD} justify-center bg-[#060c0a] text-center text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90`}
                 role="columnheader"
               >
-                <span className="md:hidden">View</span>
-                <span className="max-md:hidden">View firm</span>
+                View Firm
               </div>
             </div>
+          </div>
+          </div>
 
+          <div className="ov-board-clip">
+          <div
+            ref={boardRef}
+            className="ov-board scrollbar-none rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]"
+          >
             {sorted.length === 0 ? (
               <p className="px-5 py-10 text-center text-sm text-white/45">No firms match these filters.</p>
             ) : (
@@ -1229,8 +1233,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <span className="md:hidden">View</span>
-                          <span className="max-md:hidden">View firm</span>
+                          View Firm
                         </PfgPrimary>
                       ) : (
                         <span className="inline-flex h-8 items-center rounded-full bg-white/5 px-3 text-[0.75rem] font-bold text-slate-500">
@@ -1244,12 +1247,6 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
             )}
           </div>
           </div>
-
-          {sorted.length > 0 ? (
-            <div className="ov-scroll-track ov-no-print flex min-w-0 items-center rounded-b-2xl border border-t-0 border-white/10">
-              <TableScrollSlider getMidPanes={getMidPanes} masterRef={boardRef} />
-            </div>
-          ) : null}
           </div>
         </div>
       </div>

@@ -1,7 +1,9 @@
 .dir-workbench {
+  --pfg-nav-h: 3.5rem;
   display: flex;
   flex-direction: column;
-  max-height: calc(100dvh - 3.5rem);
+  min-width: 0;
+  max-height: none;
 }
 
 .dir-chrome {
@@ -9,7 +11,28 @@
   background: #08120e;
 }
 
+.dir-sticky-top {
+  position: sticky;
+  top: var(--pfg-nav-h, 3.5rem);
+  z-index: 12;
+  min-width: 0;
+  background: #08120e;
+}
+
+.dir-head-rail {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background: #060c0a;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 @media (max-width: 767px) {
+  .dir-workbench {
+    --pfg-nav-h: 2.75rem;
+  }
+
   .dir-chrome-bar {
     flex-wrap: nowrap;
     gap: 4px;
@@ -17,16 +40,16 @@
 }
 
 .dir-board {
-  flex: 1 1 auto;
-  min-height: 12rem;
-  overflow: auto;
+  flex: 0 0 auto;
+  min-height: 0;
+  overflow-x: auto;
+  overflow-y: clip;
   -webkit-overflow-scrolling: touch;
   background: #060c0a;
 }
 
 .dir-head {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 8;
   isolation: isolate;
   width: max-content;
@@ -39,7 +62,7 @@
 @media (max-width: 767px) {
   .dir-cols {
     min-width: 820px;
-    grid-template-columns: minmax(148px, 1.15fr) minmax(88px, 0.75fr) minmax(78px, 0.7fr) 48px minmax(84px, 0.7fr) minmax(86px, 0.7fr) minmax(72px, 0.6fr) 84px 68px;
+    grid-template-columns: minmax(148px, 1.15fr) minmax(88px, 0.75fr) minmax(78px, 0.7fr) 48px minmax(84px, 0.7fr) minmax(86px, 0.7fr) minmax(72px, 0.6fr) 84px 108px;
     column-gap: 6px;
   }
 
@@ -115,6 +138,19 @@
     min-height: 24px !important;
     padding: 2px 6px !important;
     font-size: 0.58rem !important;
+  }
+
+  .dir-view-btn {
+    width: 100%;
+    min-height: 26px !important;
+    padding: 0 6px !important;
+    font-size: 0.58rem !important;
+    gap: 2px !important;
+  }
+
+  .dir-view-btn > span:last-child {
+    width: 16px !important;
+    height: 16px !important;
   }
 
   .dir-row .text-\[0\.68rem\].font-bold,

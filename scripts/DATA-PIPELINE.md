@@ -95,7 +95,9 @@ npm run sync:firms            # optional: bake into firms.js
 
 **Enabled** hides a firm on every page without deleting rows. `YES` / `true` / blank = show. `NO` / `false` / `hide` = drop from `/firms`, `/overview`, `/challenges`, and `/compare`. Plans rows can stay on the Plans tab.
 
-**Logo** is a public image URL (Supabase storage link is fine). Paste it, sync, and that firm’s mark updates. Sheet URL wins over the built-in logo map — useful for a brand-new firm.
+**Logo** is a public image URL (Supabase storage is the usual host). Paste it, sync, and that firm’s mark updates. An `https://` cell wins over `src/lib/firmLogos.js` — use that for a brand-new firm. Overwrite the same Storage object to refresh art without changing the sheet.
+
+**Platforms** are names only, not URLs. Upload `{Exact Name}.webp` to `genie-assets/platforms/` and use that spelling in the cell. Unknown names try `genie-assets/platforms/{Name}.webp`.
 
 Blank Country / Years / Assets / Platforms = keep the last known value. Do **not** add Rank to this tab.
 

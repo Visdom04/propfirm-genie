@@ -39,6 +39,8 @@ Nav labels: Challenges · Firms · Overview · Head to head (`src/components/gre
 - Put a Price / KAGE CTA on the Overview pin. Price belongs on Challenges (per plan) and still appears as Eval / All-in mid-columns on Overview.
 - Rename sheet headers (`Payout Freq.`, `List Price`, `Discount %`, `Promo CODE`, `Max Allocation`, `Rating`, `Reviews`, …).
 - Commit contractor PDFs, `PROPFIRM_LOGO/`, or `demo-2-handoff/` (stale — it still talks about `/demo-2`).
+- Box `/challenges`, `/overview`, or `/firms` in `max-height` / inner `overflow-y: auto`. The window scrolls; the board is `overflow-x: auto; overflow-y: clip`.
+- Put `--cmp-firm` / `--ov-firm` / `--dir-*` column vars only on the table board. They must sit on the **workbench** so the extracted sticky header rail lines up. The rail is `overflow: hidden; min-width: 0` and copies `scrollLeft` from the board. Extracting headers without that is what stacked/misaligned the titles.
 
 ## Copy these files
 
@@ -70,6 +72,9 @@ src/components/green/GreenPageShell.js
 src/components/green/SiteNav.js
 src/components/green/PfgControls.js
 src/components/green/FirmDirectoryTable.js
+src/components/green/FirmDirectoryTable.css
+src/components/green/PlatformLogo.js
+src/components/green/TableScrollSlider.js
 src/components/compare/CompareFirmsH2H.js
 src/components/compare/CompareFirmsH2H.css
 ```
@@ -103,7 +108,13 @@ scripts/lib/plan-price.mjs
 scripts/lib/firm-plans-parser.mjs
 ```
 
-Logos: `src/lib/firmLogos.js` points at Supabase `genie-assets`. Local fallbacks live under `public/firm/`.
+Logos: `src/lib/firmLogos.js` and `src/lib/platformLogos.js` point at the public Supabase bucket `genie-assets`. Local fallbacks live under `public/firm/`.
+
+**Firm marks (Apex, a new prop firm, a rebrand):** upload `{Firm Name}.webp` to `genie-assets/firms/`. Paste the public URL in the Firms tab **Logo** column. An `https://` Logo cell wins over the built-in map — that is how you add a firm that is not in `FIRM_LOGOS` yet. Overwrite the same file to refresh art without changing the sheet.
+
+**Platform marks (NinjaTrader, a new broker):** there is no per-platform URL column. Upload `{Exact Name}.webp` to `genie-assets/platforms/`. Put that same name in the firm’s **Platforms** cell (`NinjaTrader, Tradovate, Rithmic`). Unknown names try `genie-assets/platforms/{Name}.webp` and fall back to initials if the file is missing.
+
+Do not put image files in the Google Sheet. Do not put a platform URL in the firm **Logo** column.
 
 ## Sheet sync (ops + agent)
 
@@ -183,19 +194,23 @@ Affiliate / KAGE checkout stays on **Challenges** (per-plan Price pin) and direc
 
 `src/app/challenges/page.js` → `DemoHeroGreen` → `FirmCompareDemoGreen`.
 
-H1: Compare Prop **Challenges**. Pin columns: Firm + Price (sale, strikethrough, KAGE). Mid columns include raw payout freq.
+H1: Compare Prop **Challenges**. Pin columns: Firm (left) · Promo + **View Firm** (right). Mid columns include raw payout freq. Profit split and Price use a smaller numeral than the other mid cells (smaller again on mobile). Mobile Promo / View Firm is a compact sticky stack (`--cmp-cta` in `FirmCompareDemoGreen.edges.css`).
+
+The list is **page-length** (the window scrolls). Do not restore `max-height` on `.cmp-workbench` or `overflow-y: auto` on `.cmp-edge-board`. Column widths (`--cmp-firm`, `--cmp-promo`, `--cmp-visit`, `--cmp-cta`) live on `.cmp-workbench` so the sticky header rail matches body columns. Filters + headers stick under the nav (`.cmp-sticky-top`).
 
 ### `/firms`
 
 `FirmDirectoryTable` inside `GreenPageShell`. One row per firm, ranked.
 
-H1: Browse Prop **Firms**.
+H1: Browse Prop **Firms**. Same page-length list as Challenges (`.dir-workbench { max-height: none }`, `.dir-board` is `overflow-x: auto; overflow-y: clip`). Filters + headers stick (`.dir-sticky-top`). Do not box the directory in `calc(100dvh …)`.
 
 ### `/overview`
 
 `FirmOverviewTable` + `summarizeFirm()` in `firmOverview.js`.
 
 H1: Prop Firm **Overview**. Pin: Firm (left) · **View firm** (right). No Price pin.
+
+Page-length list + sticky chrome/headers, same rules as Challenges (`--ov-firm` / `--ov-price` on `.ov-workbench`).
 
 Mid: account size range, plan types, platforms, S2F, eval from, activation, all-in, drawdown, max loss, days to pass, news, split, **compact payout**, max funded, discount, overview blurb.
 
@@ -222,14 +237,16 @@ H1: Compare **Head to Head**.
 npm run dev
 ```
 
-- [ ] `/challenges` — one row per plan; Price + KAGE still there; payout cell is the raw sheet text.
+- [ ] `/challenges` — one row per plan; Promo + View Firm on the right; page scroll (no inner table box); payout cell is the raw sheet text.
+- [ ] `/challenges` mobile — Promo / View Firm stay compact; Profit split % and Price $ are smaller than other mid cells.
 - [ ] `/` and `/demo-2` → `/challenges`.
-- [ ] `/overview` — no Price pin; **View firm** on Apex opens `https://propfirmgenie.com/firm/apex`.
+- [ ] `/overview` — no Price pin; **View firm** on Apex opens `https://propfirmgenie.com/firm/apex`; page scroll like Challenges.
 - [ ] Overview payout: Apex = `5 winning days` (not `$100 · $200 · $250…`). Tradeify / FundedNext are short cadence lists, not a paragraph dump.
-- [ ] `/firms` directory still lists firms.
+- [ ] `/firms` — directory lists firms; page scroll, not a boxed inner scroller.
 - [ ] `/compare` still highlights two picked plans.
 - [ ] `/demo-4` → `/firms`, `/compare-page-2` → `/overview`, `/compare-firms` → `/compare`.
 - [ ] After a dummy TSV edit: `validate:firms` → `sync:firms` → Challenges price/payout updates.
+- [ ] New firm logo: paste a Supabase `genie-assets/firms/…` URL in **Logo**, sync, mark appears. New platform: upload `platforms/{Name}.webp` and add the name to **Platforms**.
 
 ## Stack
 

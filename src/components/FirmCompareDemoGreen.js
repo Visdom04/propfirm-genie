@@ -11,7 +11,7 @@ import CompareFilterSidebar, {
   isRangeActive,
   normalizeDrawdown,
 } from '@/components/CompareFilterSidebar';
-import { PfgGhost } from '@/components/green/PfgControls';
+import { PfgPrimary } from '@/components/green/PfgControls';
 import TableScrollSlider from '@/components/green/TableScrollSlider';
 import { discountBadge } from '@/lib/compareHighlights';
 import { firmLogo } from '@/lib/firmLogos';
@@ -154,24 +154,24 @@ const INFO_COPY = {
 };
 
 const MID_COLS = [
-  { key: 'planType', label: 'Plan', tip: 'planType', sort: true, min: 112 },
-  { key: 'steps', label: 'Steps', tip: 'steps', sort: true, min: 96 },
-  { key: 'accountSize', label: 'Account', label2: 'size', tip: 'accountSize', sort: true, min: 92 },
-  { key: 'maxLossType', label: 'Drawdown', label2: 'type', tip: 'maxLossType', sort: true, min: 96 },
+  { key: 'planType', label: 'Plan', tip: 'planType', sort: true, min: 120 },
+  { key: 'steps', label: 'Steps', tip: 'steps', sort: true, min: 88 },
+  { key: 'accountSize', label: 'Account size', tip: 'accountSize', sort: true, min: 120 },
+  { key: 'maxLossType', label: 'Drawdown type', tip: 'maxLossType', sort: true, min: 132 },
   { key: 'activationFee', label: 'Activation fee', tip: 'activationFee', sort: true, min: 144 },
-  { key: 'profitTarget', label: 'Profit', label2: 'target', tip: 'profitTarget', sort: true, min: 96 },
-  { key: 'maxLoss', label: 'Max', label2: 'drawdown', tip: 'maxLoss', sort: true, min: 96 },
-  { key: 'maxLots', label: 'Max', label2: 'contract', sub: 'Minis / Micros', tip: 'maxLots', sort: true, min: 108 },
+  { key: 'profitTarget', label: 'Profit target', tip: 'profitTarget', sort: true, min: 120 },
+  { key: 'maxLoss', label: 'Max drawdown', tip: 'maxLoss', sort: true, min: 128 },
+  { key: 'maxLots', label: 'Max contract', sub: 'Minis / Micros', tip: 'maxLots', sort: true, min: 120 },
   {
     key: 'consistency',
     label: 'Consistency rule',
     sub: 'Eval / Funded',
     tip: 'consistency',
     sort: true,
-    min: 176,
+    min: 160,
   },
-  { key: 'payoutFreq', label: 'Payout freq.', tip: 'payoutFreq', sort: true, min: 208 },
-  { key: 'profitSplit', label: 'Profit split', tip: 'profitSplit', sort: true, min: 144 },
+  { key: 'payoutFreq', label: 'Payout freq.', tip: 'payoutFreq', sort: true, min: 132 },
+  { key: 'profitSplit', label: 'Profit split', tip: 'profitSplit', sort: true, min: 120 },
   { key: 'price', label: 'Price', tip: 'price', sort: true, min: 108 },
 ];
 
@@ -190,7 +190,7 @@ const MID =
 const MID_CELL =
   'cmp-mid-cell relative box-border flex min-h-[64px] shrink-0 items-center justify-center border-r border-white/[0.06] last:border-r-0 px-3 py-2.5';
 const TH =
-  'flex min-h-[44px] flex-col items-center justify-center gap-0.5 whitespace-nowrap text-center text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-500';
+  'flex min-h-[40px] flex-col items-center justify-center gap-0.5 whitespace-nowrap text-center text-[0.62rem] font-semibold uppercase tracking-[0.04em] text-slate-500';
 const CHIP_ON = 'border-[#3FB185]/50 bg-[#3FB185]/15 text-[#3FB185]';
 const CHIP_OFF = 'border-white/10 bg-black/20 text-slate-200 hover:border-emerald-500/35';
 
@@ -379,8 +379,8 @@ function RatingChip({ rating, reviews, idPrefix, dense = false }) {
 function FirmIdentity({ firm, planId, favorites, toggleFavorite, dense = false, className = '' }) {
   const liked = favorites.has(firm.name);
   return (
-    <div className={`flex min-w-0 items-start gap-1.5 ${className}`.trim()}>
-      <div className="flex min-w-0 flex-1 flex-col items-start justify-center gap-0.5 pt-0.5">
+    <div className={`flex w-max max-w-full min-w-0 items-start gap-1 ${className}`.trim()}>
+      <div className="flex min-w-0 flex-col items-start justify-center gap-0.5 pt-0.5">
         <span className="cmp-firm-name block w-full truncate font-bold leading-tight tracking-tight text-slate-50">
           {firm.name}
         </span>
@@ -419,7 +419,7 @@ function splitDrawdown(value) {
 function RatingStars({ rating, idPrefix = 'star' }) {
   const rounded = Math.round(Math.min(5, Math.max(0, Number(rating) || 0)) * 2) / 2;
   return (
-    <span className="inline-flex items-center gap-0.5 leading-none" aria-hidden>
+    <span className="cmp-rating-stars inline-flex items-center gap-0.5 leading-none" aria-hidden>
       {[1, 2, 3, 4, 5].map(n => {
         const state = rounded >= n ? 'full' : rounded >= n - 0.5 ? 'half' : 'empty';
         const clipId = `${idPrefix}-half-${n}`;
@@ -451,14 +451,14 @@ function ProfitSplitBar({ pct }) {
   const numericOnly = /^\d+(\.\d+)?$/.test(raw);
   const fillNum = numericOnly ? Number(raw) : Number(String(raw).match(/[\d.]+/)?.[0] || 0);
   if (!numericOnly && raw) {
-    return <span className="font-bold text-white">{raw.includes('%') ? raw : `${raw}%`}</span>;
+    return <span className="cmp-profit-split-value font-bold text-white">{raw.includes('%') ? raw : `${raw}%`}</span>;
   }
   const fill = Math.min(100, Math.max(0, fillNum || 0));
   const segs = 10;
   const lit = Math.round((fill / 100) * segs);
   return (
-    <div className="flex min-w-[110px] items-center gap-2.5">
-      <span className="text-[0.95rem] font-extrabold text-white">{fill}%</span>
+    <div className="cmp-profit-split flex min-w-[110px] items-center gap-2.5">
+      <span className="cmp-profit-split-value text-[0.78rem] font-extrabold text-white">{fill}%</span>
       <div className="flex min-w-14 flex-1 items-center gap-0.5" role="presentation" aria-hidden>
         {Array.from({ length: segs }, (_, i) => (
           <span
@@ -618,7 +618,7 @@ function renderMidCell(col, p, applyDiscount) {
     }
     case 'profitSplit':
       return (
-        <div key={col.key} className={MID_CELL} style={style}>
+        <div key={col.key} className={`${MID_CELL} cmp-profit-split-cell`} style={style}>
           <ProfitSplitBar pct={p.profitSplitLabel || p.profitSplit} />
         </div>
       );
@@ -646,9 +646,9 @@ function renderMidCell(col, p, applyDiscount) {
       const display = applyDiscount ? sale : list;
       const showWas = applyDiscount && list > sale;
       return (
-        <div key={col.key} className={`${wrap} flex-col gap-0.5`} style={style}>
+        <div key={col.key} className={`${wrap} cmp-price-cell flex-col gap-0.5`} style={style}>
           <span className="inline-flex items-center gap-1">
-            <span className="text-[0.95rem] font-extrabold tabular-nums tracking-tight">{formatMoney(display)}</span>
+            <span className="cmp-price-value text-[0.78rem] font-extrabold tabular-nums tracking-tight">{formatMoney(display)}</span>
             {p.priceNote ? <InfoTip text={p.priceNote} label="Other price options for this plan" /> : null}
           </span>
           {showWas ? (
@@ -809,20 +809,14 @@ function ToggleSwitch({ label, checked, onChange }) {
 }
 
 function HeadLabel({ label, label2 }) {
-  if (!label2) return <span className="cmp-head-text">{label}</span>;
-  return (
-    <span className="cmp-head-text flex flex-col items-center leading-[1.15] text-center">
-      <span>{label}</span>
-      <span>{label2}</span>
-    </span>
-  );
+  return <span className="cmp-head-text whitespace-nowrap">{label2 ? `${label} ${label2}` : label}</span>;
 }
 
 function SortHead({ label, label2, sortKey, sort, onSort, className = '', sub, tip, style }) {
   return (
     <div
       role="columnheader"
-      className={`${TH} ${label2 || sub ? 'whitespace-normal' : ''} ${className}`.trim()}
+      className={`${TH} ${className}`.trim()}
       style={style}
       aria-sort={sort.key === sortKey ? (sort.dir === 'desc' ? 'descending' : 'ascending') : 'none'}
     >
@@ -844,7 +838,7 @@ function SortHead({ label, label2, sortKey, sort, onSort, className = '', sub, t
 
 function StaticHead({ label, label2, sub, tip, className = '', style }) {
   return (
-    <div role="columnheader" className={`${TH} ${label2 || sub ? 'whitespace-normal' : ''} ${className}`.trim()} style={style}>
+    <div role="columnheader" className={`${TH} ${className}`.trim()} style={style}>
       <div className="flex items-center gap-0.5">
         <span className="uppercase">
           <HeadLabel label={label} label2={label2} />
@@ -875,6 +869,20 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
   const [copiedKey, setCopiedKey] = useState(null);
   const toolbarRef = useRef(null);
   const boardRef = useRef(null);
+  const workbenchRef = useRef(null);
+  const headRailRef = useRef(null);
+
+  useEffect(() => {
+    const board = boardRef.current;
+    const rail = headRailRef.current;
+    if (!board || !rail) return undefined;
+    const sync = () => {
+      rail.scrollLeft = board.scrollLeft;
+    };
+    sync();
+    board.addEventListener('scroll', sync, { passive: true });
+    return () => board.removeEventListener('scroll', sync);
+  }, []);
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 900px)');
@@ -914,8 +922,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
   }, []);
 
   const getMidPanes = useCallback(() => {
-    const root = boardRef.current;
-    return root ? [root] : [];
+    return [boardRef.current, headRailRef.current].filter(Boolean);
   }, []);
 
   const uniqueCountries = useMemo(
@@ -1201,7 +1208,8 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
         />
 
         <div className="min-w-0 flex-1">
-          <div className="cmp-workbench">
+          <div className="cmp-workbench" ref={workbenchRef}>
+            <div className="cmp-sticky-top">
             <div
               className="cmp-chrome relative z-[3] flex flex-col gap-3 rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 px-4 py-3 sm:px-[18px] sm:py-3.5 max-md:gap-2 max-md:px-2 max-md:py-2"
               ref={toolbarRef}
@@ -1414,7 +1422,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                               checked={visibleCols.has(col.key)}
                               onChange={() => toggleCol(col.key)}
                             />
-                            <span>{col.label2 ? `${col.label} ${col.label2}` : col.label}</span>
+                            <span>{col.label}</span>
                           </label>
                         ))}
                       </div>
@@ -1430,16 +1438,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                 </div>
               </div>
             </div>
-
-            <div className="cmp-board-clip">
-            <div
-              className={`cmp-edge-board scrollbar-pfg relative z-[1] mt-0 flex w-full min-w-0 flex-col border border-t-0 border-white/10 bg-[#060c0a] ${
-                filtered.length ? '' : 'rounded-b-2xl'
-              }`}
-              ref={boardRef}
-              role="table"
-              aria-label="Compare prop firm challenges: size, drawdown, contracts, payouts, promo, and visit"
-            >
+            <div className="cmp-head-rail scrollbar-none" ref={headRailRef}>
               <div className={`${ROW} cmp-edge-row--head m-0`} role="row">
                 <div className={`${PIN_FIRM} ${PIN_HEAD} bg-[#060c0a]`} role="columnheader">
                   <SortHead
@@ -1486,11 +1485,20 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                   <SortHead label="Promo" sortKey="promo" sort={sort} onSort={cycleSort} className="w-full justify-center" />
                 </div>
                 <div className={`${PIN_VISIT} ${PIN_HEAD} bg-[#060c0a]`} role="columnheader">
-                  <span className={`${TH} w-full`}>Visit</span>
+                  <span className={`${TH} w-full`}>View Firm</span>
                 </div>
                 </div>
               </div>
+            </div>
+            </div>
 
+            <div className="cmp-board-clip">
+            <div
+              className="cmp-edge-board scrollbar-none relative z-[1] mt-0 flex w-full min-w-0 flex-col rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]"
+              ref={boardRef}
+              role="table"
+              aria-label="Compare prop firm challenges: size, drawdown, contracts, payouts, promo, and visit"
+            >
               {filtered.length === 0 ? (
                 <div className="block px-6 py-10 text-center text-sm text-slate-400" role="row">
                   <div role="cell">
@@ -1525,7 +1533,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                       style={{ animationDelay: `${Math.min(i, 12) * 0.04}s` }}
                     >
                       <div className={`${PIN_FIRM}`} role="cell">
-                        <div className="flex w-full min-w-0 items-start gap-3">
+                        <div className="flex w-full min-w-0 items-start gap-2">
                           <div className="cmp-firm-logo relative mt-0.5 shrink-0">
                             <div className="cmp-firm-logo__mark overflow-hidden rounded-full bg-black ring-1 ring-white/15">
                               {logoSrc ? (
@@ -1587,14 +1595,15 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                       </div>
                       <div className={`${PIN_VISIT} px-2`} role="cell">
                         {href ? (
-                          <PfgGhost
+                          <PfgPrimary
                             href={href}
+                            compact
+                            className="cmp-view-btn h-8 rounded-full! px-3.5"
                             target="_blank"
                             rel="noopener noreferrer sponsored"
-                            className="min-h-8 px-3 py-1.5 text-[0.72rem]"
                           >
-                            Visit
-                          </PfgGhost>
+                            View Firm
+                          </PfgPrimary>
                         ) : (
                           <span className="inline-flex h-8 items-center rounded-full bg-white/5 px-3 text-[0.72rem] font-bold text-slate-500">
                             —
@@ -1608,12 +1617,6 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
               )}
             </div>
             </div>
-
-            {filtered.length > 0 ? (
-              <div className="cmp-scroll-track flex min-w-0 items-center rounded-b-2xl border border-t-0 border-white/10">
-                <TableScrollSlider getMidPanes={getMidPanes} masterRef={boardRef} />
-              </div>
-            ) : null}
           </div>
         </div>
       </div>

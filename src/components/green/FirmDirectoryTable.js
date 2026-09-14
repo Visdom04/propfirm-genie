@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Check, ChevronDown, Copy, Filter, Flame, Heart, Sparkles } from 'lucide-react';
 import { firms as staticFirms } from '@/data/firms';
 import { COUNTRY_LABELS } from '@/components/CompareFilterSidebar';
@@ -8,7 +8,7 @@ import { discountBadge } from '@/lib/compareHighlights';
 import { firmLogo } from '@/lib/firmLogos';
 import { compareFirmNames } from '@/lib/firmSort';
 import PlatformLogo from '@/components/green/PlatformLogo';
-import { PfgGhost } from '@/components/green/PfgControls';
+import { PfgGhost, PfgPrimary } from '@/components/green/PfgControls';
 import './FirmDirectoryTable.css';
 
 const BTN =
@@ -19,7 +19,7 @@ const MAX_FAVORITES = 5;
 const PAGE_SIZE = 10;
 const FAV_KEY = 'demo4-favs';
 const COLS =
-  'dir-cols grid min-w-[1180px] grid-cols-[minmax(200px,1.15fr)_minmax(128px,0.85fr)_minmax(110px,0.75fr)_72px_minmax(132px,0.9fr)_minmax(118px,0.8fr)_minmax(96px,0.7fr)_118px_92px] items-center gap-x-3';
+  'dir-cols grid min-w-[1220px] grid-cols-[minmax(200px,1.15fr)_minmax(128px,0.85fr)_minmax(110px,0.75fr)_72px_minmax(132px,0.9fr)_minmax(118px,0.8fr)_minmax(96px,0.7fr)_118px_132px] items-center gap-x-3';
 
 const FLAGS = { US: '🇺🇸', AE: '🇦🇪', CY: '🇨🇾', CZ: '🇨🇿', GB: '🇬🇧', CA: '🇨🇦', AU: '🇦🇺', LC: '🇱🇨' };
 const NUMERIC_SORT = new Set(['reviews', 'years', 'alloc', 'platforms', 'promo']);
@@ -261,6 +261,20 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
   const [selPlatforms, setSelPlatforms] = useState([]);
   const [selAssets, setSelAssets] = useState([]);
   const [ready, setReady] = useState(false);
+  const boardRef = useRef(null);
+  const headRailRef = useRef(null);
+
+  useEffect(() => {
+    const board = boardRef.current;
+    const rail = headRailRef.current;
+    if (!board || !rail) return undefined;
+    const sync = () => {
+      rail.scrollLeft = board.scrollLeft;
+    };
+    sync();
+    board.addEventListener('scroll', sync, { passive: true });
+    return () => board.removeEventListener('scroll', sync);
+  }, []);
 
   useEffect(() => {
     try {
@@ -395,6 +409,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
   return (
     <div className="w-full">
       <div className="dir-workbench">
+      <div className="dir-sticky-top">
       <div className="dir-chrome rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 px-4 py-3 sm:px-[18px] sm:py-3.5 max-md:px-1.5 max-md:py-1.5">
       <div className="dir-chrome-bar flex flex-nowrap items-center gap-2 max-md:gap-1">
         <button
@@ -546,8 +561,7 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
         </div>
       ) : null}
       </div>
-
-      <div className="dir-board scrollbar-pfg rounded-b-2xl border border-t-0 border-white/10">
+      <div className="dir-head-rail scrollbar-none" ref={headRailRef}>
         <div className="dir-head px-3 pb-2 pt-1">
           <div className={COLS}>
             <SortHead label="Firm" col="name" sort={sort} dir={dir} onSort={onSort} align="left" />
@@ -559,11 +573,17 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
             <SortHead label="Max allocations" col="alloc" sort={sort} dir={dir} onSort={onSort} />
             <SortHead label="Promo" col="promo" sort={sort} dir={dir} onSort={onSort} />
             <span className="w-full text-center text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">
-              Visit
+              View Firm
             </span>
           </div>
         </div>
+      </div>
+      </div>
 
+      <div
+        className="dir-board scrollbar-none rounded-b-2xl border border-t-0 border-white/10"
+        ref={boardRef}
+      >
         <div className="px-3 pb-3 pt-2">
         {visible.length === 0 ? (
           <p className="rounded-2xl border border-white/10 bg-[#0c1612] px-5 py-10 text-center text-sm text-white/45">
@@ -686,18 +706,19 @@ export default function FirmDirectoryTable({ firms = staticFirms }) {
 
                     <div className="flex justify-center">
                       {coming ? (
-                        <PfgGhost disabled className="min-h-9 cursor-default px-3 py-1.5 text-[0.75rem] opacity-60">
+                        <PfgGhost disabled className="min-h-8 cursor-default px-3 py-1.5 text-[0.75rem] opacity-60">
                           Coming soon
                         </PfgGhost>
                       ) : (
-                        <PfgGhost
+                        <PfgPrimary
                           href={href}
+                          compact
+                          className="dir-view-btn h-8 rounded-full! px-3.5"
                           target="_blank"
                           rel="noopener noreferrer sponsored"
-                          className="min-h-9 px-3 py-1.5 text-[0.75rem]"
                         >
-                          Visit
-                        </PfgGhost>
+                          View Firm
+                        </PfgPrimary>
                       )}
                     </div>
                   </div>

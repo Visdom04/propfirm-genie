@@ -1,8 +1,12 @@
 /* Freeze labels inside the table pane so they cannot overlay half-scrolled rows. */
 .ov-workbench {
+  --pfg-nav-h: 3.5rem;
+  --ov-firm: 268px;
+  --ov-price: 168px;
   display: flex;
   flex-direction: column;
-  max-height: calc(100dvh - 3.5rem);
+  min-width: 0;
+  max-height: none;
 }
 
 .ov-chrome {
@@ -10,26 +14,42 @@
   background: #08120e;
 }
 
+.ov-sticky-top {
+  position: sticky;
+  top: var(--pfg-nav-h, 3.5rem);
+  z-index: 12;
+  min-width: 0;
+  background: #08120e;
+}
+
+.ov-head-rail {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background: #060c0a;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .ov-board-clip {
-  flex: 1 1 auto;
-  min-height: 12rem;
+  flex: 0 0 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .ov-board {
-  --ov-firm: 280px;
-  --ov-price: 168px;
-  flex: 1 1 auto;
-  min-height: 12rem;
+  flex: 0 0 auto;
+  min-height: 0;
   padding: 0 0 8px;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: clip;
   -webkit-overflow-scrolling: touch;
   background: #060c0a;
 }
 
-.ov-board .cmp-mid {
+.ov-workbench .cmp-mid {
   display: flex;
   width: max-content;
   min-width: 0;
@@ -104,12 +124,12 @@
 
 .ov-pin-firm::after {
   left: 100%;
-  width: 14px;
+  width: 0;
 }
 
 .ov-pin-price::before {
   right: 100%;
-  width: 14px;
+  width: 0;
 }
 
 .ov-pin-price::after {
@@ -118,8 +138,8 @@
 }
 
 .ov-row.ov-row--head {
-  position: sticky;
-  top: 0;
+  position: relative;
+  top: auto;
   z-index: 8;
   isolation: isolate;
   background: #060c0a;
@@ -159,7 +179,9 @@
 
 @media (max-width: 767px) {
   .ov-workbench {
-    max-height: calc(100dvh - 2.75rem);
+    --pfg-nav-h: 2.75rem;
+    --ov-firm: 140px;
+    --ov-price: 108px;
   }
 
   .ov-toolbar {
@@ -194,8 +216,6 @@
   }
 
   .ov-board {
-    --ov-firm: 152px;
-    --ov-price: 52px;
     padding: 0;
   }
 
@@ -289,14 +309,15 @@
     width: 100%;
     min-width: 0 !important;
     height: 26px !important;
-    gap: 0 !important;
+    gap: 2px !important;
     padding: 0 6px !important;
-    border-radius: 6px !important;
-    font-size: 0.62rem !important;
+    border-radius: 999px !important;
+    font-size: 0.58rem !important;
   }
 
   .ov-view-btn > span:last-child {
-    display: none !important;
+    width: 16px !important;
+    height: 16px !important;
   }
 }
 
@@ -318,7 +339,7 @@
     border: 1px solid #1b4b38 !important;
   }
 
-  .ov-board .cmp-mid {
+  .ov-workbench .cmp-mid {
     overflow: visible !important;
   }
 
