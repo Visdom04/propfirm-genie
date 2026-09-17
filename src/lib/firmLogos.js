@@ -32,14 +32,19 @@ export const FIRM_LOGOS = {
   Topstep: asset('Topstep.webp'),
   Tradeify: asset('Tradeify_new.webp'),
   'Traders Launch': asset('Traders%20Launch.webp'),
-  'YRM Prop': asset('YRM%20Prop.webp'),
   'IQ Capital': asset('IQ%20Capital.webp'),
   FundedSeat: asset('FundedSeat.webp'),
   FTMO: asset('FTMO.webp'),
   'The Trading Pit': asset('The%20Trading%20Pit.webp'),
   'Funded Futures Network': asset('Funded%20Futures%20Network.webp'),
+  BluSky: asset('Blusky.webp'),
+  Blusky: asset('Blusky.webp'),
+  'FXIFY Futures': asset('fxifyfutures.webp'),
+  Earn2Trade: asset('Earn2Trade.webp'),
 };
 
 export function firmLogo(name, fallback) {
-  return FIRM_LOGOS[name] || fallback || null;
+  const extra = String(fallback || '').trim();
+  if (/^https?:\/\//i.test(extra)) return extra;
+  return FIRM_LOGOS[name] || extra || null;
 }

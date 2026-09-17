@@ -16,6 +16,8 @@
     "@supabase/ssr": "^0.12.5",
     "@supabase/supabase-js": "^2.109.0",
     "@tailwindcss/postcss": "^4.3.2",
+    "@tanstack/react-virtual": "^3.14.13",
+    "@vercel/functions": "^3.9.7",
     "animejs": "^3.2.2",
     "framer-motion": "^12.42.2",
     "lucide-react": "^1.24.0",

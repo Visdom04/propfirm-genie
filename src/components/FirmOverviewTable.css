@@ -1,61 +1,439 @@
-/* One flat row — Firm and Price stay pinned, but they share the same surface as the mid columns. */
-.ov-board {
-  --ov-firm: 280px;
+/* Freeze labels inside the table pane so they cannot overlay half-scrolled rows. */
+.ov-workbench {
+  --pfg-nav-h: 3.5rem;
+  --ov-firm: 268px;
   --ov-price: 168px;
-  padding: 0 12px 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-height: none;
 }
 
-@media (max-width: 767px) {
-  .ov-board {
-    --ov-firm: 244px;
-    --ov-price: 148px;
-    padding: 0 10px 8px;
-  }
+.ov-chrome {
+  flex-shrink: 0;
+  background: #08120e;
 }
 
-.ov-board .cmp-mid {
+.ov-sticky-top {
+  position: sticky;
+  top: var(--pfg-nav-h, 3.5rem);
+  z-index: 12;
+  min-width: 0;
+  background: #08120e;
+}
+
+.ov-head-rail {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background: #060c0a;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ov-board-clip {
+  flex: 0 0 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.ov-board {
+  flex: 0 0 auto;
+  min-height: 0;
+  padding: 0 0 8px;
+  overflow-x: auto;
+  overflow-y: visible;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  background: #060c0a;
+}
+
+.ov-workbench .cmp-mid {
+  display: flex;
+  width: max-content;
+  min-width: 0;
+  overflow: visible;
   background: transparent;
   border: none;
 }
 
-.ov-row {
-  position: relative;
-  border: 1px solid transparent;
+.ov-board-head {
+  display: none;
 }
 
 .ov-row:not(.ov-row--head) {
+  position: relative;
+  z-index: 0;
   border-bottom-color: rgba(255, 255, 255, 0.05);
 }
 
-.ov-row--even:not(.ov-row--head) {
-  background: rgba(255, 255, 255, 0.02);
+.ov-row {
+  border: 1px solid transparent;
 }
 
-.ov-row:not(.ov-row--head):hover {
-  border-color: rgba(63, 177, 133, 0.38);
-  border-radius: 12px;
-  background: rgba(18, 32, 24, 0.65);
+.ov-row--even:not(.ov-row--head) {
+  background: #0a1210;
 }
 
 .ov-pin-firm,
 .ov-pin-price {
-  position: relative;
   box-sizing: border-box;
-  box-shadow: none;
+  overflow: visible;
+}
+
+.ov-pin-firm::before,
+.ov-pin-firm::after,
+.ov-pin-price::before,
+.ov-pin-price::after {
+  width: 0;
 }
 
 .ov-pin-firm {
+  position: sticky;
+  left: 0;
+  z-index: 4;
   padding: 12px 12px 12px 16px;
+  background: #060c0a;
+  box-shadow: 12px 0 0 0 #060c0a;
 }
 
 .ov-pin-price {
+  position: sticky;
+  right: 0;
+  z-index: 4;
   padding: 12px 16px 12px 12px;
+  background: #060c0a;
+  box-shadow: -12px 0 0 0 #060c0a;
 }
 
-.ov-row--head {
+.ov-row--even:not(.ov-row--head) .ov-pin-firm,
+.ov-row--even:not(.ov-row--head) .ov-pin-price {
+  background: #0a1210;
+}
+
+.ov-row--even:not(.ov-row--head) .ov-pin-firm {
+  box-shadow: 12px 0 0 0 #0a1210;
+}
+
+.ov-row--even:not(.ov-row--head) .ov-pin-price {
+  box-shadow: -12px 0 0 0 #0a1210;
+}
+
+.ov-row.ov-row--head {
+  position: relative;
+  top: auto;
+  z-index: 8;
+  isolation: isolate;
+  background: #060c0a;
   border-radius: 0;
   border-color: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 18px rgba(6, 12, 10, 0.92);
+}
+
+.ov-row--head .ov-pin-firm,
+.ov-row--head .ov-pin-price,
+.ov-row--head .cmp-mid {
+  background: #060c0a;
+}
+
+.ov-row--head .ov-pin-firm,
+.ov-row--head .ov-pin-price {
+  z-index: 9;
+}
+
+.ov-toolbar-row {
+  display: contents;
+}
+
+@media (hover: hover) {
+  .ov-row:not(.ov-row--head):hover {
+    border-color: rgba(63, 177, 133, 0.38);
+    border-radius: 0;
+    background: #121c18;
+  }
+
+  .ov-row:not(.ov-row--head):hover .ov-pin-firm,
+  .ov-row:not(.ov-row--head):hover .ov-pin-price {
+    background: #121c18;
+  }
+
+  .ov-row:not(.ov-row--head):hover .ov-pin-firm {
+    box-shadow: 12px 0 0 0 #121c18;
+  }
+
+  .ov-row:not(.ov-row--head):hover .ov-pin-price {
+    box-shadow: -12px 0 0 0 #121c18;
+  }
+}
+
+@media (max-width: 767px) {
+  .ov-workbench {
+    --pfg-nav-h: 2.75rem;
+    --ov-firm: 144px;
+    --ov-price: 112px;
+    overflow: hidden;
+  }
+
+  .ov-sticky-top {
+    position: relative;
+    top: auto;
+    flex-shrink: 0;
+  }
+
+  .ov-head-rail {
+    display: none;
+  }
+
+  .ov-board-clip {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .ov-board {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  .ov-board-head {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    background: #060c0a;
+  }
+
+  .ov-board-head .ov-pin-firm,
+  .ov-board-head .ov-pin-price {
+    z-index: 10;
+  }
+
+  .ov-toolbar {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .ov-toolbar-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .ov-toolbar-row--tools > .relative:first-of-type {
+    margin-left: auto;
+  }
+
+  .ov-spotlight .h-10 {
+    height: 28px;
+  }
+
+  .ov-spotlight .min-w-\[150px\] {
+    min-width: 0;
+  }
+
+  .ov-spotlight .text-\[0\.8rem\] {
+    font-size: 0.65rem;
+  }
+
+  .ov-row .ov-pin-firm,
+  .ov-row .ov-pin-price {
+    position: sticky;
+    transform: none;
+    will-change: auto;
+    overflow: visible;
+    isolation: isolate;
+  }
+
+  .ov-row .ov-pin-firm {
+    left: 0;
+    z-index: 6;
+    box-shadow: 12px 0 0 0 #060c0a;
+  }
+
+  .ov-row .ov-pin-price {
+    right: 0;
+    z-index: 6;
+    box-shadow: -12px 0 0 0 #060c0a;
+  }
+
+  .ov-row--even .ov-pin-firm {
+    box-shadow: 12px 0 0 0 #0a1210;
+  }
+
+  .ov-row--even .ov-pin-price {
+    box-shadow: -12px 0 0 0 #0a1210;
+  }
+
+  .ov-row--head .ov-pin-firm {
+    box-shadow: 12px 0 0 0 #060c0a;
+  }
+
+  .ov-row--head .ov-pin-price {
+    box-shadow: -12px 0 0 0 #060c0a;
+  }
+
+  .ov-row .cmp-mid {
+    position: relative;
+    z-index: 0;
+  }
+
+  .ov-pin-firm::before,
+  .ov-pin-firm::after,
+  .ov-pin-price::before,
+  .ov-pin-price::after {
+    width: 0;
+  }
+
+  .ov-pin-firm {
+    padding: 4px 4px 4px 6px;
+  }
+
+  .ov-pin-price {
+    padding: 4px !important;
+  }
+
+  .ov-firm-logo,
+  .ov-firm-logo > div {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    border-radius: 8px !important;
+    border-width: 1.5px !important;
+    padding: 1px !important;
+  }
+
+  .ov-plans,
+  .ov-stars,
+  .ov-rated-badge {
+    display: none !important;
+  }
+
+  .ov-firm-meta {
+    gap: 1px;
+  }
+
+  .ov-firm-name,
+  .ov-firm-meta .truncate {
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: unset;
+    font-size: 0.68rem;
+    line-height: 1.15;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .ov-pin-firm > .flex {
+    gap: 2px !important;
+    justify-content: flex-start;
+  }
+
+  .ov-firm-link {
+    color: inherit;
+    flex: 0 1 auto !important;
+    max-width: calc(100% - 24px);
+    gap: 6px !important;
+  }
+
+  .ov-firm-meta {
+    flex: 0 1 auto !important;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .ov-pin-firm .text-xs,
+  .ov-pin-firm .text-\[0\.7rem\],
+  .ov-pin-firm .text-\[0\.72rem\] {
+    font-size: 0.56rem;
+  }
+
+  .ov-pin-firm .gap-3\.5 {
+    gap: 6px;
+  }
+
+  .ov-fav {
+    width: 22px !important;
+    height: 22px !important;
+    margin-left: 0 !important;
+  }
+
+  .ov-fav svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .ov-board .px-3.py-2\.5 {
+    padding: 4px 5px !important;
+  }
+
+  .ov-row .min-h-\[88px\],
+  .ov-board .min-h-\[88px\] {
+    min-height: 48px !important;
+  }
+
+  .ov-board .text-\[0\.82rem\] {
+    font-size: 0.68rem;
+  }
+
+  .ov-board .text-\[0\.62rem\] {
+    font-size: 0.5rem;
+  }
+
+  .ov-scroll-track {
+    padding: 4px 8px 8px;
+  }
+
+  .ov-row--head .py-3 {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .ov-view-btn {
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex-shrink: 1 !important;
+    height: 26px !important;
+    gap: 2px !important;
+    padding: 0 6px !important;
+    border-radius: 999px !important;
+    font-size: 0.58rem !important;
+  }
+
+  .ov-view-btn > span:first-child {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ov-view-btn > span:last-child {
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0;
+  }
+
+  .ov-chrome,
+  .ov-board {
+    border-radius: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+  }
 }
 
 @media print {
@@ -65,12 +443,23 @@
     display: none !important;
   }
 
+  .ov-workbench {
+    position: static !important;
+    max-height: none !important;
+  }
+
   .ov-board {
     overflow: visible !important;
+    max-height: none !important;
     border: 1px solid #1b4b38 !important;
   }
 
-  .ov-board .cmp-mid {
+  .ov-workbench .cmp-mid {
     overflow: visible !important;
+  }
+
+  .ov-pin-firm,
+  .ov-pin-price {
+    position: static;
   }
 }

@@ -2,8 +2,10 @@
 
 Site: https://propfirm-genie-two.vercel.app/
 
-Apps Script **pushes** Plans + Firms TSV to `/api/sync-firms` on genie-two (and also plum if that host still has the API).  
+Apps Script **pushes** Plans + Firms TSV to `/api/sync-firms` on genie-two, and optionally to Prop Firm Genie (`propfirm-genie.vercel.app`). Plum is retired — do not point `SYNC_URL_ALSO` at it.  
 Sheet can stay **private** (no “Anyone with link” needed).
+
+`propfirmgenie.com` does not have `/api/sync-firms` yet. Keep the optional push on the Vercel app until that route exists on the .com host.
 
 ## Vercel env
 
@@ -34,12 +36,10 @@ After this branch is **pushed + Vercel deployed**:
 
 1. Paste latest `scripts/google-apps-script/SyncToVercel.gs` (keep your real `SYNC_SECRET`)
 2. Confirm `SYNC_URL` is `https://propfirm-genie-two.vercel.app/api/sync-firms`
-3. Optional: `SYNC_URL_ALSO` for plum
+3. Confirm `SYNC_URL_ALSO` is `https://propfirm-genie.vercel.app/api/sync-firms` (optional; must not fail the run)
 4. Reload the spreadsheet → menu **PropFirm Sync**
-2. Reload the spreadsheet → menu **PropFirm Sync**
-3. **Strip ALL dropdowns** (clears red Invalid triangles)
-4. **Import plans from URL** → recreates tab, **no dropdowns**
-5. Optional: **Diagnose sheet** → Apps Script Logs show per-column HAS_DROPDOWN
+5. **Strip ALL dropdowns** (clears red Invalid triangles)
+6. Optional: **Diagnose sheet** → Apps Script Logs show per-column HAS_DROPDOWN
 
 **Do NOT** click Google Sheets **Convert to table** — Tables invent dropdowns and cause red “Invalid input” on Min Days / Daily DD / News / List Price.
 

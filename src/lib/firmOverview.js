@@ -116,7 +116,6 @@ export function summarizeFirm(firm, { applyDiscount = true } = {}) {
   const drawdowns = uniq(plans.map(p => p.maxLossType));
   const payouts = uniq(plans.map(p => compactPayout(p.payoutFreq))).filter(Boolean);
   const minDays = plans.map(p => p.minTradingDays).filter(d => d != null);
-  const maxLosses = plans.map(p => parseMoney(p.maxLoss)).filter(n => n != null);
   const types = uniq(plans.map(p => p.planType));
   const badge = discountBadge(firm, cheapest);
 
@@ -125,13 +124,17 @@ export function summarizeFirm(firm, { applyDiscount = true } = {}) {
     const byType = new Map();
     for (const p of plans) {
       const type = p.planType || 'Plan';
-      if (!byType.has(type)) byType.set(type, []);
-      byType.get(type).push(p.accountSize);
+      if (!byType.has(type)) byType.set(type, { sizes: [], notes: [] });
+      const group = byType.get(type);
+      group.sizes.push(p.accountSize);
+      const note = String(p.info || '').trim();
+      if (note) group.notes.push(note);
     }
-    for (const [type, sizes] of byType) {
+    for (const [type, group] of byType) {
       planGroups.push({
         type,
-        sizes: uniq(sizes).sort((a, b) => sizeRank(a) - sizeRank(b)),
+        sizes: uniq(group.sizes).sort((a, b) => sizeRank(a) - sizeRank(b)),
+        notes: uniq(group.notes),
       });
     }
   }
@@ -180,7 +183,6 @@ export function summarizeFirm(firm, { applyDiscount = true } = {}) {
     allIn,
     allInNote: act == null && evalPrice != null ? 'Eval only' : null,
     drawdownLabel: drawdowns.length ? drawdowns.join(' · ') : '—',
-    maxLossLabel: rangeLabel(maxLosses),
     daysToPass: minDays.length ? rangeLabel(minDays, n => (n === 1 ? '1 day' : `${n} days`)) : '—',
     news,
     maxAccounts: firm.maxAccounts || '—',

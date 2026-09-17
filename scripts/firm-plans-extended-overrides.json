@@ -67,11 +67,6 @@
     "dailyDrawdown": "None",
     "newsTrading": "none"
   },
-  "YRM": {
-    "minTradingDays": "None",
-    "dailyDrawdown": "None",
-    "newsTrading": "none"
-  },
   "DayTraders": {
     "minTradingDays": "None",
     "dailyDrawdown": "None",

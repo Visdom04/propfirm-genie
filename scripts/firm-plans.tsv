@@ -1,189 +1,309 @@
-Firm	Plan Type	Account Size	Drawdown Type	Activation Fee	Profit Target	Max Drawdown	Max Contract	Consistency Rule Eval, Funded	Payout Freq.	Profit Split	Price	Promo CODE	Account Category	Min Trading Days	Daily Drawdown	News Trading	List Price	Discount %	Price Note
-Lucid Trading	Flex	25k	EOD	None	$1,250	$1,000	2 / 20	50% / None	Every 5 Days	90%	$55	KAGE	Challenge	2	None	both	$79	30	
-Lucid Trading	Direct	25k	EOD	None	— (Straight to Funded)	$1,000	2 / 20	None / 20%	Every 8 Days	90%	$230	KAGE	S2F	8	None	both	$329	30	
-Lucid Trading	Pro	25k	EOD	None	$1,250	$1,000	2 / 20	None / 40%	Every 3 Days	90%	$76	KAGE	Challenge	1	None	both	$108	30	
-Lucid Trading	Daily	25k	EOD	None	$1,250	$1,000	2 / 20	50% / None	Every 1 Day	90%	$73	KAGE	Challenge	2	$600	none	$122	40	$13 less with Intraday drawdown
-Lucid Trading	Daily Intraday	25k	Intraday	None	$1,250	$1,000	2 / 20	50% / None	Every 1 Day	90%	$60	KAGE	Challenge	2	$600	none	$100	40	$15 more with DLL off
-Lucid Trading	Flex	50k	EOD	None	$3,000	$2,000	4 / 40	50% / None	Every 5 Days	90%	$95	KAGE	Challenge	2	None	both	$136	30	
-Lucid Trading	Pro	50k	EOD	None	$3,000	$2,000	4 / 40	None / 40%	Every 3 Days	90%	$120	KAGE	Challenge	1	$1,200	both	$172	30	
-Lucid Trading	Daily	50k	EOD	None	$3,000	$2,000	4 / 40	50% / None	Every 1 Day	90%	$99	KAGE	Challenge	2	$1,200	none	$165	40	$17 less with Intraday drawdown
-Lucid Trading	Daily Intraday	50k	Intraday	None	$3,000	$2,000	4 / 40	50% / None	Every 1 Day	90%	$82	KAGE	Challenge	2	$1,200	none	$136	40	$20 more with DLL off
-Lucid Trading	Direct	50k	EOD	None	— (Straight to Funded)	$2,000	4 / 40	None / 20%	Every 10 Days	90%	$361	KAGE	S2F	10	$1,200	both	$515	30	
-Lucid Trading	Direct	100k	EOD	None	— (Straight to Funded)	$3,500	6 / 60	None / 20%	Every 5 Days	90%	$490	KAGE	S2F	None	$2,100	both	$700	30	
-Lucid Trading	Flex	100k	EOD	None	$6,000	$3,000	6 / 60	50% / None	Every 5 Days	90%	$181	KAGE	Challenge	2	None	both	$258	30	
-Lucid Trading	Daily	100k	EOD	None	$6,000	$3,000	6 / 60	50% / None	Every 1 Day	90%	$167	KAGE	Challenge	2	$1,800	none	$279	40	$30 less with Intraday drawdown
-Lucid Trading	Daily Intraday	100k	Intraday	None	$6,000	$3,000	6 / 60	50% / None	Every 1 Day	90%	$137	KAGE	Challenge	2	$1,800	none	$229	40	$35 more with DLL off
-Lucid Trading	Pro	100k	EOD	None	$6,000	$3,000	6 / 60	None / 40%	Every 3 Days	90%	$190	KAGE	Challenge	1	$1,800	both	$272	30	
-Lucid Trading	Direct	150k	EOD	None	— (Straight to Funded)	$5,000	10 / 100	None / 20%	Every 5 Days	90%	$585	KAGE	S2F	None	$3,000	both	$836	30	
-Lucid Trading	Daily	150k	EOD	None	$9,000	$4,500	10 / 100	50% / None	Every 1 Day	90%	$232	KAGE	Challenge	2	$2,700	none	$386	40	$39 less with Intraday drawdown
-Lucid Trading	Daily Intraday	150k	Intraday	None	$9,000	$4,500	10 / 100	50% / None	Every 1 Day	90%	$193	KAGE	Challenge	2	$2,700	none	$322	40	$45 more with DLL off
-Lucid Trading	Pro	150k	EOD	None	$9,000	$4,500	10 / 100	None / 40%	Every 3 Days	90%	$255	KAGE	Challenge	1	$2,700	both	$365	30	
-Lucid Trading	Flex	150k	EOD	None	$9,000	$4,500	10 / 100	50% / None	Every 5 Days	90%	$260	KAGE	Challenge	2	None	both	$372	30	
-Tradeify	Growth	25k	EOD	None	$1,500	$1,000	1 / 10	None / 35%	5 days with Minimum profits of $100	90%	$59.40	KAGE	Challenge	None	None	both			
-Tradeify	Select Daily	25k	EOD	None	$1,500	$1,000	1 / 10	40%	Daily eligibility after meeting buffer requirement	90%	$65.40	KAGE	Challenge	None	None	both			
-Tradeify	Select Flex	25k	EOD	None	$1,500	$1,000	1 / 10	40%	5 Winning Days | 25K Account: $100 minimum profit per day	90%	$65.40	KAGE	Challenge	None	None	both			
-Tradeify	Lightning	25k	EOD	None	— (Instant Funded)	$1,000	1 / 10	None / 20%	Not Fixed (Payout Profit Goals are the profits required between payout requests.)	90%	$207	KAGE	S2F	None	None	both			
-Tradeify	Growth	50k	EOD	None	$3,000	$2,000	4 / 40	None / 35%	5 days with Minimum profits of $150	90%	$87	KAGE	Challenge	None	None	both			
-Tradeify	Select Daily	50k	EOD	None	$3,000	$2,000	4 / 40	40%	Daily eligibility after meeting buffer requirement	90%	$99	KAGE	Challenge	None	None	both			
-Tradeify	Select Flex	50k	EOD	None	$3,000	$2,000	4 / 40	40%	5 Winning Days | 50K Account: $150 minimum profit per day	90%	$99	KAGE	Challenge	None	None	both			
-Tradeify	Lightning	50k	EOD	None	— (Instant Funded)	$2,000	4 / 40	None / 20%	Not Fixed (Payout Profit Goals are the profits required between payout requests.)	90%	$295.20	KAGE	S2F	None	None	both			
-Tradeify	Growth	100k	EOD	None	$6,000	$3,500	8 / 80	None / 35%	5 days with Minimum profits of $200	90%	$153	KAGE	Challenge	None	None	both			
-Tradeify	Select Daily	100k	EOD	None	$6,000	$3,000	8 / 80	40%	Daily eligibility after meeting buffer requirement	90%	$159	KAGE	Challenge	None	None	both			
-Tradeify	Select Flex	100k	EOD	None	$6,000	$3,000	8 / 80	40%	5 Winning Days | 100K Account: $200 minimum profit per day	90%	$159	KAGE	Challenge	None	None	both			
-Tradeify	Lightning	100k	EOD	None	— (Instant Funded)	$4,000	8 / 80	None / 20%	Not Fixed (Payout Profit Goals are the profits required between payout requests.)	90%	$396	KAGE	S2F	None	None	both			
-Tradeify	Growth	150k	EOD	None	$9,000	$5,000	12 / 120	None / 35%	5 days with Minimum profits of $250	90%	$221.40	KAGE	Challenge	None	None	both			
-Tradeify	Select Daily	150k	EOD	None	$9,000	$4,500	12 / 120	40%	Daily eligibility after meeting buffer requirement	90%	$221.40	KAGE	Challenge	None	None	both			
-Tradeify	Select Flex	150k	EOD	None	$9,000	$4,500	12 / 120	40%	5 Winning Days | 150K Account: $250 minimum profit per day	90%	$221.40	KAGE	Challenge	None	None	both			
-Tradeify	Lightning	150k	EOD	None	— (Instant Funded)	$5,250	12 / 120	None / 20%	Not Fixed (Payout Profit Goals are the profits required between payout requests.)	90%	$477.60	KAGE	S2F	None	None	both			
-Take Profit Trader	Test	25k	EOD	$130.00 | Free when using KAGE code	$1,500	$1,500	3 / 30	50% / None	Daily Payout	80%	$90.00	KAGE	Challenge	None	None	both			
-Take Profit Trader	Test	50k	EOD	$130.00 | Free when using KAGE code	$3,000	$2,000	6 / 60	50% / None	Daily Payout	80%	$102.00	KAGE	Challenge	None	None	both			
-Take Profit Trader	Test	75k	EOD	$130.00 | Free when using KAGE code	$4,500	$2,500	9 / 90	50% / None	Daily Payout	80%	$147	KAGE	Challenge	None	None	both			
-Take Profit Trader	Test	100k	EOD	$130.00 | Free when using KAGE code	$6,000	$3,000	12 / 120	50% / None	Daily Payout	80%	$198	KAGE	Challenge	None	None	both			
-Take Profit Trader	Test	150k	EOD	$130.00 | Free when using KAGE code	$9,000	$4,500	15 / 150	50% / None	Daily Payout	80%	$216	KAGE	Challenge	None	None	both			
-My Funded Futures	Builder	25k	EOD	None	$1,500	$1,000	2 / 20	None / 50%	Every 48 hours	80%	$52.50	KAGE	Challenge	None	None	both			
-My Funded Futures	Rapid	25k	EOD(intraday trailing)	None	$1,500	$1,000	3 / 30	50%	24h after first trade	90%	$54.50	KAGE	Challenge	None	None	both			
-My Funded Futures	Flex	25k	EOD	None	$1,500	$1,000	2 / 20	50%	5 winning days	80%	$85.50	KAGE	Challenge	None	None	both			
-My Funded Futures	Builder	50k	EOD	None	$3,000	$2000 (Default) or $1500 (Add-on)	4 / 40	None / 50%	Every 48 hours	80%	$76.50	KAGE	Challenge	None	None	both			
-My Funded Futures	Rapid	50k	EOD(intraday trailing)	None	$3,000	$2,000	5 / 50	50%	24h after first trade	90%	$78.50	KAGE	Challenge	None	None	both			
-My Funded Futures	Pro	50k	EOD	None	$3,000	$2,000	3 / 30	50%	14 Days	80%	$113.50	KAGE	Challenge	None	None	both			
-My Funded Futures	Flex	50k	EOD	None	$3,000	$2,000	3 / 30	50%	5 winning days	80%	$137.70	KAGE	Challenge	None	None	both			
-My Funded Futures	Rapid	100k	EOD(intraday trailing)	None	$6,000	$3,000	8 / 80	50%	24h after first trade	90%	$133.50	KAGE	Challenge	None	None	both			
-My Funded Futures	Pro	100k	EOD	None	$6,000	$3,000	6 / 60	50%	14 Days	80%	$172	KAGE	Challenge	None	None	both			
-My Funded Futures	Rapid	150k	EOD	None	$9,000	$4,500	10 / 100	50%	24h after first trade	90%	$173.50	KAGE	Challenge	None	None	both			
-My Funded Futures	Pro	150k	EOD(intraday trailing)	None	$9,000	$4,500	9 / 90	50%	14 Days	80%	$238.50	KAGE	Challenge	None	None	both			
-Apex Trader Funding	Intraday Standard	25k	Intraday	$69	$1,500	$1,000	4 / 40	None / 50%	5 winning days of $100	100%	$19.90	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	EOD Standard	25k	EOD	$89	$1,500	$1,000	4 / 40	None / 50%	5 winning days of $100	100%	$39	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	Intraday No Activation Fee	25k	Intraday	None	$1,500	$1,000	4 / 40	None / 50%	5 winning days of $100	100%	$69	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	EOD No Activation Fee	25k	EOD	None	$1,500	$1,000	4 / 40	None / 50%	5 winning days of $100	100%	$89	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	Intraday Standard	50k	Intraday	$79	$3,000	$2,000	6 / 60	None / 50%	5 winning days of $200	100%	$24.90	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	EOD Standard	50k	EOD	$99	$3,000	$2,000	6 / 60	None / 50%	5 winning days of $250	100%	$45	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	Intraday No Activation Fee	50k	Intraday	None	$3,000	$2,000	6 / 60	None / 50%	5 winning days of $200	100%	$49	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	EOD No Activation Fee	50k	EOD	None	$3,000	$2,000	6 / 60	None / 50%	5 winning days of $250	100%	$109	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	Intraday Standard	100k	Intraday	$99	$6,000	$3,000	8 / 80	None / 50%	5 winning days of $250	100%	$39.90	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	EOD Standard	100k	EOD	$119	$6,000	$3,000	8 / 80	None / 50%	5 winning days of $300	100%	$59	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	Intraday No Activation Fee	100k	Intraday	None	$6,000	$3,000	8 / 80	None / 50%	5 winning days of $250	100%	$109	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	EOD No Activation Fee	100k	EOD	None	$6,000	$3,000	8 / 80	None / 50%	5 winning days of $300	100%	$139	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	Intraday Standard	150k	Intraday	$129	$9,000	$4,000	12 / 120	None / 50%	5 winning days of $300	100%	$59.90	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	EOD Standard	150k	EOD	$149	$9,000	$4,000	12 / 120	None / 50%	5 winning days of $350	100%	$109	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	Intraday No Activation Fee	150k	Intraday	None	$9,000	$4,000	12 / 120	None / 50%	5 winning days of $300	100%	$169	KAGE	Challenge	1	$1,000	both			
-Apex Trader Funding	EOD No Activation Fee	150k	EOD	None	$9,000	$4,000	12 / 120	None / 50%	5 winning days of $350	100%	$229	KAGE	Challenge	1	$1,000	both			
-Legends Trading	Apprentice	50k	EOD	$99	$3,000	$2,000	2 / 20	None / 35%	Weekly (7 days of +$200)	90%	$29.50	KAGE	Challenge	None	None	none			
-Legends Trading	Apprentice	100k	EOD	$129	$6,000	$3,000	4 / 40	None / 35%	Weekly (7 days of +$200)	90%	$53.50	KAGE	Challenge	None	None	none			
-Legends Trading	Apprentice	150k	EOD	$149	$9,000	$4,500	6 / 60	None / 35%	Weekly (7 days of +$200)	90%	$69	KAGE	Challenge	None	None	none			
-Legends Trading	Elite	25k	EOD	None	$1,500	$1,250	2 / 20	40% / 40%	Weekly (5 winning days $100+)	90%	$95.20	KAGE	Challenge	None	None	none			
-Legends Trading	Elite	50k	EOD	None	$2,700	$2,200	4 / 40	40% / 40%	Weekly (5 winning days $150+)	90%	$120.80	KAGE	Challenge	None	None	none			
-Legends Trading	Elite	100k	EOD	None	$6,000	$3,000	8 / 80	40% / 40%	Weekly (5 winning days $200+)	90%	$181.60	KAGE	Challenge	None	None	none			
-Legends Trading	Elite	150k	EOD	None	$9,000	$4,500	12 / 120	40% / 40%	Weekly (5 winning days $250+)	90%	$277.60	KAGE	Challenge	None	None	none			
-Phidias Propfirm	Express to Live	25k	Static	$83	$1,500	$500	2 / 20	None	LIVE after bonus payout (cash→live)	80%	$44	KAGE	S2F	None	None	none			
-Phidias Propfirm	Express to Live	50k	Static	$149	$2,500	$650	5 / 50	None	LIVE after bonus payout (cash→live)	80%	$139	KAGE	S2F	None	None	none			
-Phidias Propfirm	Express to Live	100k	Static	$149	$3,500	$800	7 / 70	None	LIVE after bonus payout (cash→live)	80%	$159	KAGE	S2F	None	None	none			
-Phidias Propfirm	Express to Live	150k	Static	$169	$4,500	$1,000	9 / 90	None	LIVE after bonus payout (cash→live)	80%	$199	KAGE	S2F	None	None	none			
-Phidias Propfirm	Fundamental	50k	EOD	$149	$4,000	$2,500	10 / 100	None / 30%	10 trading days (funded); min payout $500	80%	$65.60	KAGE	Challenge	None	None	none			
-Phidias Propfirm	Fundamental	100k	EOD	$149	$6,000	$3,000	14 / 140	None / 30%	10 trading days (funded); min payout $500	80%	$109.20	KAGE	Challenge	None	None	none			
-Phidias Propfirm	Fundamental	150k	EOD	$169	$9,000	$4,500	17 / 170	None / 30%	10 trading days (funded); min payout $500	80%	$168	KAGE	Challenge	None	None	none			
-Phidias Propfirm	Premium	50k	EOD	$149	$4,000	$2,500	10 / 100	None / 30%	5 trading days (funded); min payout $500	75%→100% progressive	$131.60	KAGE	Challenge	None	None	none			
-Phidias Propfirm	Premium	100k	EOD	$149	$6,000	$3,000	14 / 140	None / 30%	5 trading days (funded); min payout $500	75%→100% progressive	$164.40	KAGE	Challenge	None	None	none			
-Phidias Propfirm	Premium	150k	EOD	$169	$9,000	$4,500	17 / 170	None / 30%	5 trading days (funded); min payout $500	75%→100% progressive	$285	KAGE	Challenge	None	None	none			
-E8 Futures	Signature	25k	EOD	None	$1,500	$1,000	2	None / 35% (35% best day rule on sim funded (performance accounts) only)	5 Winning days of 0.3%+ (N/A first payout)	80%	$82.50	KAGE	Challenge	None	None	both			
-E8 Futures	Signature	50k	EOD	None	$3,000	$2,000	4	None / 35% (35% best day rule on sim funded (performance accounts) only)	3 Days	80%	$112.50	KAGE	Challenge	None	None	both			
-E8 Futures	Signature	100k	EOD	None	$6,000	$4,000	8	None / 35% (35% best day rule on sim funded (performance accounts) only)	3 Days	80%	$195	KAGE	Challenge	None	None	both			
-E8 Futures	Signature	150k	EOD	None	$9,000	$6,000	12	None / 35% (35% best day rule on sim funded (performance accounts) only)	3 Days	80%	$292.50	KAGE	Challenge	None	None	both			
-E8 Futures	Daily Trailing (max $1,000)	50k	EOD	None	$3,000	$1,500	4	40%	Daily · min $100	80%	$106.80	KAGE	Challenge	None	None	both			
-E8 Futures	Daily Trailing (max $3,000)	50k	EOD	None	$3,000	$1,500	4	40%	Daily · min $100	80%	$196.80	KAGE	Challenge	None	None	both			
-E8 Futures	Daily Trailing (max $1,600)	100k	Trailing	None	$6,500	$3,000	8	40%	Daily · min $100	80%	$166.80	KAGE	Challenge	None	None	both			
-E8 Futures	Daily Trailing (max $5,000)	100k	Trailing	None	$6,500	$3,000	8	40%	Daily · min $100	80%	$352.80	KAGE	Challenge	None	None	both			
-E8 Futures	Daily Static (max $2,100)	200k	Static	None	$13,500	$6,000	12	40%	Daily · min $100	80%	$334.80	KAGE	Challenge	None	None	both			
-E8 Futures	Daily Static (max $7,000)	200k	Static	None	$13,500	$6,000	12	40%	Daily · min $100	80%	$652.80	KAGE	Challenge	None	None	both			
-Nexgen ProTrader Funding	Evaluation	25k	EOD	$119	$1,250	$1,750	5 / 5	None / 30%	8 trading days (funded)	90% → 100% after 16 payouts	$14.90	KAGE	Challenge	None	None	none			
-Nexgen ProTrader Funding	Evaluation	50k	EOD	$129	$2,750	$2,250	10 / 10	None / 30%	8 trading days (funded)	90% → 100% after 16 payouts	$24.90	KAGE	Challenge	None	None	none			
-Nexgen ProTrader Funding	Evaluation	75k	EOD	$159	$4,250	$2,750	12 / 12	None / 30%	8 trading days (funded)	90% → 100% after 16 payouts	$29.90	KAGE	Challenge	None	None	none			
-Nexgen ProTrader Funding	Evaluation	100k	EOD	$179	$5,500	$3,300	14 / 14	None / 30%	8 trading days (funded)	90% → 100% after 16 payouts	$31.90	KAGE	Challenge	None	None	none			
-Nexgen ProTrader Funding	Evaluation	150k	EOD	$199	$8,500	$4,800	17 / 17	None / 30%	8 trading days (funded)	90% → 100% after 16 payouts	$39.90	KAGE	Challenge	None	None	none			
-Nexgen ProTrader Funding	Instant	25k	EOD	None	— (Instant)	$1,750	5 / 5	None / 30%	7 days min to payout	90% → 100% after 16 payouts	$149.50	KAGE	S2F	None	None	none			
-Nexgen ProTrader Funding	Instant	50k	EOD	None	— (Instant)	$2,250	10 / 10	None / 30%	7 days min to payout	90% → 100% after 16 payouts	$199.50	KAGE	S2F	None	None	none			
-Nexgen ProTrader Funding	Instant	75k	EOD	None	— (Instant)	$2,750	12 / 12	None / 30%	7 days min to payout	90% → 100% after 16 payouts	$249.50	KAGE	S2F	None	None	none			
-Nexgen ProTrader Funding	Instant	100k	EOD	None	— (Instant)	$3,300	14 / 14	None / 30%	7 days min to payout	90% → 100% after 16 payouts	$299.50	KAGE	S2F	None	None	none			
-Nexgen ProTrader Funding	Instant	150k	EOD	None	— (Instant)	$4,800	17 / 17	None / 30%	7 days min to payout	90% → 100% after 16 payouts	$399.50	KAGE	S2F	None	None	none			
-Bulenox	Option 1 (No Scaling)	25k	Intraday	$143 (Master one-time)	$1,500	$1,500 (TDA)	3	None / 40% (Master)	10 days (Weekly Wed; 1st–3rd cap $1,000; reserve $1,600)	100% first $10k, then 90%	$145	KAGE	Challenge	None	None	none			
-Bulenox	Option 2 (EOD/Scaling/DLL)	25k	EOD	$143 (Master one-time)	$1,500	$1,500 (TDA)	3 (scaling: $0–$1.5k→2; $1.5k+→3)	None / 40% (Master)	10 days (Weekly Wed; 1st–3rd cap $1,000; reserve $1,600)	100% first $10k, then 90%	$145	KAGE	Challenge	None	None	none			
-Bulenox	Option 1 (No Scaling)	50k	Intraday	$148 (Master one-time)	$3,000	$2,500 (TDA)	7	None / 40% (Master)	10 days (Weekly Wed; 1st–3rd cap $1,500; reserve $2,600)	100% first $10k, then 90%	$125	KAGE	Challenge	None	None	none			
-Bulenox	Option 2 (EOD/Scaling/DLL)	50k	EOD	$148 (Master one-time)	$3,000	$2,500 (TDA)	7 (scaling: ≤$1.5k→2; $1.5–4k→4; $4k+→7)	None / 40% (Master)	10 days (Weekly Wed; 1st–3rd cap $1,500; reserve $2,600)	100% first $10k, then 90%	$125	KAGE	Challenge	None	None	none			
-Bulenox	Option 1 (No Scaling)	100k	Intraday	$248 (Master one-time)	$6,000	$3,000 (TDA)	12	None / 40% (Master)	10 days (Weekly Wed; 1st–3rd cap $1,750; reserve $3,100)	100% first $10k, then 90%	$155	KAGE	Challenge	None	None	none			
-Bulenox	Option 2 (EOD/Scaling/DLL)	100k	EOD	$248 (Master one-time)	$6,000	$3,000 (TDA)	12 (scaling: ≤$2k→3; $2–3k→5; $3–5k→8; $5k+→12)	None / 40% (Master)	10 days (Weekly Wed; 1st–3rd cap $1,750; reserve $3,100)	100% first $10k, then 90%	$155	KAGE	Challenge	None	None	none			
-Bulenox	Option 1 (No Scaling)	150k	Intraday	$498 (Master one-time)	$9,000	$4,500 (TDA)	15	None / 40% (Master)	10 days (Weekly Wed; 1st–3rd cap $2,000; reserve $4,600)	100% first $10k, then 90%	$325	KAGE	Challenge	None	None	none			
-Bulenox	Option 2 (EOD/Scaling/DLL)	150k	EOD	$498 (Master one-time)	$9,000	$4,500 (TDA)	15 (scaling: ≤$4k→5; $4–8k→8; $8–12k→10; $12k+→15)	None / 40% (Master)	10 days (Weekly Wed; 1st–3rd cap $2,000; reserve $4,600)	100% first $10k, then 90%	$325	KAGE	Challenge	None	None	none			
-Bulenox	Option 1 (No Scaling)	250k	Intraday	$898 (Master one-time)	$15,000	$5,500 (TDA)	25	None / 40% (Master)	10 days (Weekly Wed; 1st–3rd cap $2,500; reserve $5,600)	100% first $10k, then 90%	$535	KAGE	Challenge	None	None	none			
-Bulenox	Option 2 (EOD/Scaling/DLL)	250k	EOD	$898 (Master one-time)	$15,000	$5,500 (TDA)	25 (scaling: ≤$5k→6; $5–12k→12; $12–20k→18; $20k+→25)	None / 40% (Master)	10 days (Weekly Wed; 1st–3rd cap $2,500; reserve $5,600)	100% first $10k, then 90%	$535	KAGE	Challenge	None	None	none			
-Purdia	Pro	100k	Intraday (trailing)	$130	$6,000	$3,000	10 (100 micros)	None / None	10 days (then Daily LFA; 5 profitable ≥$200; SFA→LFA $3,000)	90%	$199 (monthly)	KAGE	Challenge	None	None	none			
-Purdia	EOD	50k	EOD (DLL $1,000)	$130	$3,000	$2,000	10 (100 micros)	None / None	10 days (then Daily LFA; 5 profitable ≥$200; SFA→LFA $2,000)	70%	$179 (monthly)	KAGE	Challenge	None	None	none			
-Purdia	EOD	100k	EOD (DLL $2,000)	$130	$6,000	$3,000	10 (100 micros)	None / None	10 days (then Daily LFA; 5 profitable ≥$200; SFA→LFA $3,000)	70%	$299 (monthly)	KAGE	Challenge	None	None	none			
-Purdia	Instant	25k	EOD	None	$1,000 (SFA→LFA)	$750	2	None / None	10 days (then Daily LFA; 5 profitable ≥$125; first payout $1,000)	90%	$349 (one-time)	KAGE	S2F	None	None	none			
-Purdia	Instant	50k	EOD	None	$2,000 (SFA→LFA)	$1,500	5	None / None	10 days (then Daily LFA; 5 profitable ≥$200; first payout $1,000)	90%	$549 (one-time)	KAGE	S2F	None	None	none			
-Purdia	Instant	100k	EOD	None	$3,000 (SFA→LFA)	$3,000	10	None / None	10 days (then Daily LFA; 5 profitable ≥$200; first payout $1,000)	90%	$849 (one-time)	KAGE	S2F	None	None	none			
-YRM	Challenge	25k	EOD (trailing)	$0	$1,500	$1,000	2 (20 micros)	50% / 35%	6 days (caps 1st→4th+: $1,000 / $1,500 / $2,500 / $3,500+)	90%	$69	KAGE	Challenge	None	None	none	$99	30	
-YRM	Challenge	50k	EOD (trailing)	$0	$3,000	$2,000	5 (50 micros)	50% / 35%	6 days (caps 1st→4th+: $1,500 / $2,000 / $2,500 / $4,000+)	90%	$92	KAGE	Challenge	None	None	none	$132	30	
-YRM	Challenge	100k	EOD (trailing)	$0	$6,000	$3,000	10 (100 micros)	50% / 35%	6 days (caps 1st→4th+: $2,000 / $2,500 / $3,000 / $5,000+)	90%	$162	KAGE	Challenge	None	None	none	$232	30	
-YRM	Challenge	150k	EOD (trailing)	$0	$9,000	$4,500	15 (150 micros)	50% / 35%	6 days (caps 1st→4th+: $2,500 / $3,000 / $3,500 / $6,000+)	90%	$209	KAGE	Challenge	None	None	none	$298	30	
-DayTraders	S2L	50k	Intraday (trailing)	None	$3,000	$2,000	2 (20 micros)	25% / None	8 days (min day $200)	80%	$179	KAGE	Challenge	None	None	both	$329	46	
-DayTraders	S2L	150k	Intraday (trailing)	None	$8,500	$4,500	3 (30 micros)	25% / None	8 days (min day $300)	80%	$319	KAGE	Challenge	None	None	both	$469	32	
-DayTraders	S2L	300k	Intraday (trailing)	None	$15,000	$7,000	4 (40 micros)	25% / None	8 days (min day $400)	80%	$449	KAGE	Challenge	None	None	both	$599	25	
-DayTraders	Trailing	25k	Intraday (trailing)	$99	$1,500	$1,500	6 (60 micros)	50% / 30%	8 days (min day $100; max payout $1,000)	100%	$37.35	KAGE	Challenge	None	None	both	$249	85	
-DayTraders	Trailing 2K	50k	Intraday (trailing)	$99	$3,000	$2,000	10 (100 micros)	50% / 30%	8 days (min day $200; max payout $2,000)	100%	$70.35	KAGE	Challenge	None	None	both	$469	85	
-DayTraders	Trailing 2.5K	50k	Intraday (trailing)	$99	$3,000	$2,500	10 (100 micros)	50% / 30%	8 days (min day $200; max payout $2,000)	100%	$56.85	KAGE	Challenge	None	None	both	$379	85	
-DayTraders	Trailing	150k	Intraday (trailing)	$99	$8,500	$4,500	24 (240 micros)	50% / 30%	8 days (min day $300; max payout $3,500)	100%	$104.85	KAGE	Challenge	None	None	both	$699	85	
-DayTraders	Trailing	300k	Intraday (trailing)	$99	$15,000	$7,000	40 (400 micros)	50% / 30%	8 days (min day $400; max payout $5,000)	100%	$131.85	KAGE	Challenge	None	None	both	$879	85	
-DayTraders	EOD	25k	EOD (trailing)	$99	$1,500	$1,500	6 (60 micros)	50% / 30%	8 days (min day $100; max payout $1,000)	100%	$46.35	KAGE	Challenge	None	None	both	$309	85	
-DayTraders	EOD	150k	EOD (trailing)	$99	$8,500	$4,000	24 (240 micros)	50% / 30%	8 days (min day $300; max payout $3,500)	100%	$134.85	KAGE	Challenge	None	None	both	$899	85	
-DayTraders	EOD	300k	EOD (trailing)	$99	$15,000	$6,500	40 (400 micros)	50% / 30%	8 days (min day $400; max payout $5,000)	100%	$239.85	KAGE	Challenge	None	None	both	$1,599	85	
-DayTraders	Static	25k	Static	$99	$2,500	$750	4 (40 micros)	50% / 30%	8 days (min day $100; max payout $1,000)	100%	$30	KAGE	Challenge	None	None	both	$150	80	
-DayTraders	Static	50k	Static	$99	$3,750	$1,000	6 (60 micros)	50% / 30%	8 days (min day $200; max payout $2,000)	100%	$40	KAGE	Challenge	None	None	both	$200	80	
-DayTraders	Static	100k	Static	$99	$5,750	$1,500	8 (80 micros)	50% / 30%	8 days (min day $300; max payout $3,500)	100%	$65	KAGE	Challenge	None	None	both	$325	80	
-DayTraders	Static	150k	Static	$99	$6,750	$1,750	8 (80 micros)	50% / 30%	8 days (min day $300; max payout $3,500)	100%	$80	KAGE	Challenge	None	None	both	$400	80	
-DayTraders	S2F (Instant)	25k	EOD (trailing)	None	None	$1,000	2 (20 micros)	None / 20%	8 days (min day $100; max payout $1,000)	100%	$222	KAGE	S2F	None	None	both	$370	40	
-DayTraders	S2F (Instant)	50k	EOD (trailing)	None	None	$2,500	10 (100 micros)	None / 20%	8 days (min day $200; max payout $2,000)	100%	$342	KAGE	S2F	None	None	both	$570	40	
-DayTraders	S2F (Instant)	150k	EOD (trailing)	None	None	$6,000	24 (240 micros)	None / 20%	8 days (min day $300; max payout $3,000)	100%	$495	KAGE	S2F	None	None	both	$825	40	
-FundedNext	Legacy	25k	EOD	None	$1,250	$1,000	2 (20 micros)	40% / None	5 days (Weekly; bench ≥$100; 50% profits max $3,000 before 30 days; 100% after)	80%	$71.99	KAGE	Challenge	None	None	both	$79.99	10	
-FundedNext	Legacy	50k	EOD	None	$3,000	$2,000	3 (30 micros)	40% / None	5 days (Weekly; bench ≥$200; 50% profits max $6,000 before 30 days; 100% after)	80%	$179.99	KAGE	Challenge	None	None	both	$199.99	10	
-FundedNext	Legacy	100k	EOD	None	$6,000	$3,000	5 (50 micros)	40% / None	5 days (Weekly; bench ≥$200; 50% profits max $6,000 before 30 days; 100% after)	80%	$215.99	KAGE	Challenge	None	None	both	$239.99	10	
-FundedNext	Flex	50k	EOD	None	$2,500	$1,500	3 (30 micros)	40% / None	5 days (Weekly; bench ≥$200; 50% profits max $1,500 before 30 days; Live after 5 payouts)	95%	$60.30	KAGE	Challenge	None	None	both	$133.99	55	
-FundedNext	Flex	100k	EOD	None	$5,000	$2,500	5 (50 micros)	40% / None	5 days (Weekly; bench ≥$200; 50% profits max $2,500 before 30 days; Live after 5 payouts)	95%	$112.50	KAGE	Challenge	None	None	both	$249.99	55	
-FundedNext	Flex	150k	EOD	None	$8,000	$4,000	8 (80 micros)	40% / None	5 days (Weekly; bench ≥$250; 50% profits max $4,000 before 30 days; Live after 5 payouts)	95%	$217.80	KAGE	Challenge	None	None	both	$483.99	55	
-FundedNext	Rapid Pro	25k	EOD	None	$1,500	$1,000	2 (10 micros)	None / 40%	On request (min profit/cycle $500; max $800; conclude after 5)	90%	$79.99	KAGE	Challenge	None	None	both	$159.98	50	
-FundedNext	Rapid Pro	50k	EOD	None	$3,000	$2,000	4 (40 micros)	None / 40%	On request (min profit/cycle $500; max $1,200; conclude after 5)	90%	$149.99	KAGE	Challenge	None	None	both	$299.98	50	
-FundedNext	Rapid Pro	100k	EOD	None	$5,000	$2,500	6 (60 micros)	None / 40%	On request (min profit/cycle $500; max $2,500; conclude after 5)	90%	$249.99	KAGE	Challenge	None	None	both	$499.98	50	
-FundedNext	Rapid Daily	25k	EOD (DLL $500 eval)	None	$1,500	$1,000	2 (10 micros)	None / None	Daily (above buffer $26,100; min profit/cycle $500; max $800; conclude after 5)	90%	$79.99	KAGE	Challenge	None	None	both	$159.98	50	
-FundedNext	Rapid Daily	50k	EOD (DLL $1,000 eval)	None	$3,000	$2,000	4 (40 micros)	None / None	Daily (above buffer $52,100; min profit/cycle $500; max $1,200; conclude after 5)	90%	$149.99	KAGE	Challenge	None	None	both	$299.98	50	
-FundedNext	Rapid Daily	100k	EOD (DLL $1,250 eval)	None	$5,000	$2,500	6 (60 micros)	None / None	Daily (above buffer $102,600; min profit/cycle $500; max $2,500; conclude after 5)	90%	$249.99	KAGE	Challenge	None	None	both	$499.98	50	
-IQ Capital	Instant DLL	50k	EOD	None	None	$2,000	5 / 50	None / 30%	Every 10 Days	90%	$349	KAGE	S2F	None	$1,000	both	$1745	80	
-IQ Capital	Core DLL	50k	EOD	None	$3,000	$2,000	5 / 50	None / 30%	Every 10 Days	90%	$178	KAGE	Challenge	None	$1,000	both	$374	80	
-IQ Capital	Rapid	50k	EOD	None	$3,000	$2,000	5 / 50	40% / None	Every 3 Days	80%	$135	KAGE	Challenge	3	$1,000	both	$675	80	
-IQ Capital	Instant	50k	EOD	None	None	$3,000	5 / 50	None / 30%	Every 10 Days	90%	$349	KAGE	S2F	None	None	both	$1745	80	
-IQ Capital	Core	50k	EOD	None	$3,000	$3,000	5 / 50	None / 30%	Every 10 Days	90%	$178	KAGE	Challenge	None	None	both	$374	80	
-IQ Capital	Core	100k	EOD	None	$6,000	$6,000	10 / 100	None / 30%	Every 10 Days	90%	$244	KAGE	Challenge	None	None	both	$624	80	
-IQ Capital	Core DLL	100k	EOD	None	$6,000	$3,000	10 / 100	None / 30%	Every 10 Days	90%	$244	KAGE	Challenge	None	$1,500	both	$624	80	
-IQ Capital	Rapid	100k	EOD	None	$6,000	$3,000	10 / 100	40% / None	Every 3 Days	80%	$225	KAGE	Challenge	3	$1,500	both	$1125	80	
-IQ Capital	Instant	100k	EOD	None	None	$5,000	10 / 100	None / 30%	Every 10 Days	90%	$699	KAGE	S2F	None	None	both	$3495	80	
-Topstep	Standard — Standard Path	50k	EOD	None	$3,000	$2,000	5 / 50	50%	Every 5 Days	90%	$198	KAGE	Challenge	2	None	both			
-Topstep	Standard — Consistency Path	50k	EOD	None	$3,000	$2,000	5 / 50	50%	Every 5 Days	90%	$198	KAGE	Challenge	2	None	both			
-Topstep	No Activation Fee — Standard Path	50k	EOD	None	$3,000	$2,000	5 / 50	50%	Every 5 Days	90%	$109	KAGE	Challenge	2	None	both			
-Topstep	No Activation Fee — Consistency Path	50k	EOD	None	$3,000	$2,000	5 / 50	50%	Every 5 Days	90%	$109	KAGE	Challenge	2	None	both			
-Topstep	No Activation Fee — Standard Path	100k	EOD	None	$6,000	$3,000	10 / 100	50%	Every 5 Days	90%	$159	KAGE	Challenge	2	None	both			
-Topstep	No Activation Fee — Consistency Path	100k	EOD	None	$6,000	$3,000	10 / 100	50%	Every 5 Days	90%	$159	KAGE	Challenge	2	None	both			
-Topstep	Standard — Standard Path	100k	EOD	None	$6,000	$3,000	10 / 100	50%	Every 5 Days	90%	$248	KAGE	Challenge	2	None	both			
-Topstep	Standard — Consistency Path	100k	EOD	None	$6,000	$3,000	10 / 100	50%	Every 5 Days	90%	$248	KAGE	Challenge	2	None	both			
-Topstep	Standard — Standard Path	150k	EOD	None	$9,000	$4,500	15 / 150	50%	Every 5 Days	90%	$298	KAGE	Challenge	2	None	both			
-Topstep	Standard — Consistency Path	150k	EOD	None	$9,000	$4,500	15 / 150	50%	Every 5 Days	90%	$298	KAGE	Challenge	2	None	both			
-Topstep	No Activation Fee — Standard Path	150k	EOD	None	$9,000	$4,500	15 / 150	50%	Every 5 Days	90%	$209	KAGE	Challenge	2	None	both			
-Topstep	No Activation Fee — Consistency Path	150k	EOD	None	$9,000	$4,500	15 / 150	50%	Every 5 Days	90%	$209	KAGE	Challenge	2	None	both			
-Traders Launch	55% Split NYC	100k	EOD	None	$2,000	$800	0 / 5	40% / None	Every 1 Day	55%	$49 (monthly)	KAGE	Challenge	3	None	both			
-Traders Launch	80% Split 22-Hour	100k	EOD	None	$2,000	$1,000	2 / 20	40% / None	Every 1 Day	80%	$159 (monthly)	KAGE	Challenge	3	None	both			
-Traders Launch	80% Split NYC	100k	EOD	None	$2,000	$800	0 / 5	40% / None	Every 1 Day	80%	$99 (monthly)	KAGE	Challenge	3	None	both			
-Traders Launch	55% Split 22-Hour	100k	EOD	None	$2,000	$1,000	2 / 20	40% / None	Every 1 Day	55%	$79 (monthly)	KAGE	Challenge	3	None	both			
-Traders Launch	55% Split 22-Hour	200k	EOD	None	$4,000	$2,000	4 / 40	40% / None	Every 1 Day	55%	$149 (monthly)	KAGE	Challenge	3	None	both			
-Traders Launch	80% Split 22-Hour	200k	EOD	None	$4,000	$2,000	4 / 40	40% / None	Every 1 Day	80%	$299 (monthly)	KAGE	Challenge	3	None	both			
-Traders Launch	55% Split NYC	200k	EOD	None	$3,000	$1,000	1 / 10	40% / None	Every 1 Day	55%	$74 (monthly)	KAGE	Challenge	3	None	both			
-Traders Launch	80% Split NYC	200k	EOD	None	$3,000	$1,000	1 / 10	40% / None	Every 1 Day	80%	$149 (monthly)	KAGE	Challenge	3	None	both			
-Traders Launch	80% Split 22-Hour	300k	EOD	None	$6,000	$3,000	6 / 60	40% / None	Every 1 Day	80%	$599 (monthly)	KAGE	Challenge	3	None	both			
-Traders Launch	55% Split NYC	300k	EOD	None	$5,000	$2,000	2 / 20	40% / None	Every 1 Day	55%	$139 (monthly)	KAGE	Challenge	3	None	both			
-Traders Launch	55% Split 22-Hour	300k	EOD	None	$6,000	$3,000	6 / 60	40% / None	Every 1 Day	55%	$299 (monthly)	KAGE	Challenge	3	None	both			
-Traders Launch	80% Split NYC	300k	EOD	None	$5,000	$2,000	2 / 20	40% / None	Every 1 Day	80%	$279 (monthly)	KAGE	Challenge	3	None	both			
+Firm	Plan Type	Account Size	Drawdown Type	Activation Fee	Profit Target	Max Drawdown	Max Contract	Consistency Rule Eval, Funded	Payout Freq.	Profit Split	Price	Promo CODE	Account Category	Min Trading Days	Daily Drawdown	News Trading	List Price	Discount %	Price Note	Info
+Lucid Trading	Flex	25k	EOD	None	$1,250	$1,000	2 / 20	50% / None	Every 5 Days	90%	$55	KAGE	Challenge	2	None	both	$79	30		
+Lucid Trading	Direct	25k	EOD	None	None	$1,000	2 / 20	None / 20%	Every 5 Days	90%	$230	KAGE	S2F	8	None	both	$329	30		
+Lucid Trading	Pro	25k	EOD	None	$1,250	$1,000	2 / 20	None / 40%	Every 3 Days	90%	$76	KAGE	Challenge	1	None	both	$108	30		
+Lucid Trading	Daily	25k	EOD	None	$1,250	$1,000	2 / 20	50% / None	Every 1 Day	90%	$73	KAGE	Challenge	2	$600	none	$122	40	$13 less with Intraday drawdown	
+Lucid Trading	Daily Intraday	25k	Intraday	None	$1,250	$1,000	2 / 20	50% / None	Every 1 Day	90%	$60	KAGE	Challenge	2	$600	none	$100	40	$15 more with DLL off	
+Lucid Trading	Flex	50k	EOD	None	$3,000	$2,000	4 / 40	50% / None	Every 5 Days	90%	$95	KAGE	Challenge	2	None	both	$136	30		
+Lucid Trading	Pro	50k	EOD	None	$3,000	$2,000	4 / 40	None / 40%	Every 3 Days	90%	$120	KAGE	Challenge	1	$1,200	both	$172	30		
+Lucid Trading	Daily	50k	EOD	None	$3,000	$2,000	4 / 40	50% / None	Every 1 Day	90%	$99	KAGE	Challenge	2	$1,200	none	$165	40	$17 less with Intraday drawdown	
+Lucid Trading	Daily Intraday	50k	Intraday	None	$3,000	$2,000	4 / 40	50% / None	Every 1 Day	90%	$82	KAGE	Challenge	2	$1,200	none	$136	40	$20 more with DLL off	
+Lucid Trading	Direct	50k	EOD	None	None	$2,000	4 / 40	None / 20%	Every 5 Days	90%	$361	KAGE	S2F	10	$1,200	both	$515	30		
+Lucid Trading	Direct	100k	EOD	None	None	$3,500	6 / 60	None / 20%	Every 5 Days	90%	$490	KAGE	S2F	None	$2,100	both	$700	30		
+Lucid Trading	Flex	100k	EOD	None	$6,000	$3,000	6 / 60	50% / None	Every 5 Days	90%	$181	KAGE	Challenge	2	None	both	$258	30		
+Lucid Trading	Daily	100k	EOD	None	$6,000	$3,000	6 / 60	50% / None	Every 1 Day	90%	$167	KAGE	Challenge	2	$1,800	none	$279	40	$30 less with Intraday drawdown	
+Lucid Trading	Daily Intraday	100k	Intraday	None	$6,000	$3,000	6 / 60	50% / None	Every 1 Day	90%	$137	KAGE	Challenge	2	$1,800	none	$229	40	$35 more with DLL off	
+Lucid Trading	Pro	100k	EOD	None	$6,000	$3,000	6 / 60	None / 40%	Every 3 Days	90%	$190	KAGE	Challenge	1	$1,800	both	$272	30		
+Lucid Trading	Direct	150k	EOD	None	None	$5,000	10 / 100	None / 20%	Every 5 Days	90%	$585	KAGE	S2F	None	$3,000	both	$836	30		
+Lucid Trading	Daily	150k	EOD	None	$9,000	$4,500	10 / 100	50% / None	Every 1 Day	90%	$232	KAGE	Challenge	2	$2,700	none	$386	40	$39 less with Intraday drawdown	
+Lucid Trading	Daily Intraday	150k	Intraday	None	$9,000	$4,500	10 / 100	50% / None	Every 1 Day	90%	$193	KAGE	Challenge	2	$2,700	none	$322	40	$45 more with DLL off	
+Lucid Trading	Pro	150k	EOD	None	$9,000	$4,500	10 / 100	None / 40%	Every 3 Days	90%	$256	KAGE	Challenge	1	$2,700	both	$365	30		
+Lucid Trading	Flex	150k	EOD	None	$9,000	$4,500	10 / 100	50% / None	Every 5 Days	90%	$260	KAGE	Challenge	2	None	both	$372	30		
+Tradeify	Growth	25k	EOD	None	$1,500	$1,000	1 / 10	None / 35%	5 days with Minimum profits of $100	90%	$50	KAGE	Challenge	None	None	both	$99	50		
+Tradeify	Select Daily	25k	EOD	None	$1,500	$1,000	1 / 10	40%	Daily eligibility after meeting buffer requirement	90%	$55	KAGE	Challenge	None	None	both	$109	50		
+Tradeify	Select Flex	25k	EOD	None	$1,500	$1,000	1 / 10	40%	5 Winning Days | 25K Account: $100 minimum profit per day	90%	$55	KAGE	Challenge	None	None	both	$109	50		
+Tradeify	Lightning	25k	EOD	None	None	$1,000	1 / 10	None / 20%	Not Fixed (Payout Profit Goals are the profits required between payout requests.)	90%	$173	KAGE	S2F	None	None	both	$345	50		
+Tradeify	Growth	50k	EOD	None	$3,000	$2,000	4 / 40	None / 35%	5 days with Minimum profits of $150	90%	$73	KAGE	Challenge	None	None	both	$145	50		
+Tradeify	Select Daily	50k	EOD	None	$3,000	$2,000	4 / 40	40%	Daily eligibility after meeting buffer requirement	90%	$83	KAGE	Challenge	None	None	both	$165	50		
+Tradeify	Select Flex	50k	EOD	None	$3,000	$2,000	4 / 40	40%	5 Winning Days | 50K Account: $150 minimum profit per day	90%	$83	KAGE	Challenge	None	None	both	$165	50		
+Tradeify	Lightning	50k	EOD	None	None	$2,000	4 / 40	None / 20%	Not Fixed (Payout Profit Goals are the profits required between payout requests.)	90%	$246	KAGE	S2F	None	None	both	$492	50		
+Tradeify	Growth	100k	EOD	None	$6,000	$3,500	8 / 80	None / 35%	5 days with Minimum profits of $200	90%	$128	KAGE	Challenge	None	None	both	$255	50		
+Tradeify	Select Daily	100k	EOD	None	$6,000	$3,000	8 / 80	40%	Daily eligibility after meeting buffer requirement	90%	$133	KAGE	Challenge	None	None	both	$265	50		
+Tradeify	Select Flex	100k	EOD	None	$6,000	$3,000	8 / 80	40%	5 Winning Days | 100K Account: $200 minimum profit per day	90%	$133	KAGE	Challenge	None	None	both	$265	50		
+Tradeify	Lightning	100k	EOD	None	None	$4,000	8 / 80	None / 20%	Not Fixed (Payout Profit Goals are the profits required between payout requests.)	90%	$330	KAGE	S2F	None	None	both	$660	50		
+Tradeify	Growth	150k	EOD	None	$9,000	$5,000	12 / 120	None / 35%	5 days with Minimum profits of $250	90%	$185	KAGE	Challenge	None	None	both	$369	50		
+Tradeify	Select Daily	150k	EOD	None	$9,000	$4,500	12 / 120	40%	Daily eligibility after meeting buffer requirement	90%	$185	KAGE	Challenge	None	None	both	$369	50		
+Tradeify	Select Flex	150k	EOD	None	$9,000	$4,500	12 / 120	40%	5 Winning Days | 150K Account: $250 minimum profit per day	90%	$185	KAGE	Challenge	None	None	both	$369	50		
+Tradeify	Lightning	150k	EOD	None	None	$5,250	12 / 120	None / 20%	Not Fixed (Payout Profit Goals are the profits required between payout requests.)	90%	$398	KAGE	S2F	None	None	both	$796	50		
+Take Profit Trader	Test	25k	EOD	$130.00 | Free when using code KAGE	$1,500	$1,500	3 / 30	50% / None	Daily Payout	80%	$90	KAGE	Challenge	3	None	both	$150	40		
+Take Profit Trader	Test	50k	EOD	$130.00 | Free when using code KAGE	$3,000	$2,000	6 / 60	50% / None	Daily Payout	80%	$102	KAGE	Challenge	3	None	both	$170	40		
+Take Profit Trader	Test	75k	EOD	$130.00 | Free when using code KAGE	$4,500	$2,500	9 / 90	50% / None	Daily Payout	80%	$147	KAGE	Challenge	3	None	both	$245	40		
+Take Profit Trader	Test	100k	EOD	$130.00 | Free when using code KAGE	$6,000	$3,000	12 / 120	50% / None	Daily Payout	80%	$198	KAGE	Challenge	3	None	both	$330	40		
+Take Profit Trader	Test	150k	EOD	$130.00 | Free when using code KAGE	$9,000	$4,500	15 / 150	50% / None	Daily Payout	80%	$216	KAGE	Challenge	3	None	both	$360	40		
+My Funded Futures	Builder	25k	EOD	None	$1,500	$1,000	2 / 20	None / 50%	Every 48 hours	80%	$53	KAGE	Challenge	1	None	both	$105	50		
+My Funded Futures	Builder	50k	EOD	None	$3,000	$2,000	4 / 40	None / 50%	Every 48 hours	80%	$77	KAGE	Challenge	1	None	both	$153	50		
+My Funded Futures	Rapid	25k	EOD / Intraday	None	$1,500	$1,000	3 / 30	50% / None	Daily	90%	$73	KAGE	Challenge	2	None	eval	$145	50		
+My Funded Futures	Rapid	50k	EOD / Intraday	None	$3,000	$2,000	5 / 50	50% / None	Daily	90%	$105	KAGE	Challenge	2	None	eval	$209	50		
+My Funded Futures	Rapid	100k	EOD / Intraday	None	$6,000	$3,000	8 / 80	50% / None	Daily	90%	$178	KAGE	Challenge	2	None	eval	$356	50		
+My Funded Futures	Rapid	150k	EOD / Intraday	None	$9,000	$4,500	10 / 100	50% / None	Daily	90%	$232	KAGE	Challenge	2	None	eval	$463	50		
+My Funded Futures	Rapid EOD	25k	EOD	None	$1,500	$1,000	2 / 20	30% / None	Daily	90%	$73	KAGE	Challenge	4		eval	$145	50		
+My Funded Futures	Rapid EOD	50k	EOD	None	$3,000	$2,000	3 / 30	30% / None	Daily	90%	$105	KAGE	Challenge	4		eval	$209	50		
+My Funded Futures	Pro	50k	EOD	None	$3,000	$2,000	3 / 30	50% / None	Every 14 days	80%	$133	KAGE	Challenge	2	None	eval	$265	50		
+My Funded Futures	Pro	100k	EOD	None	$6,000	$3,000	6 / 60	50% / None	Every 14 days	80%	$201	KAGE	Challenge	2	None	eval	$401	50		
+My Funded Futures	Pro	150k	EOD	None	$9,000	$4,500	9 / 90	50% / None	Every 14 days	80%	$279	KAGE	Challenge	2	None	eval	$557	50		
+Apex Trader Funding	Intraday Standard	25k	Intraday	$59	$1,500	$1,000	4 / 40	None / 50%	Every 5 Days	100%	$17	KAGE	Challenge	1	$1,000	both	$167	90		
+Apex Trader Funding	EOD Standard	25k	EOD	$119	$1,500	$1,000	4 / 40	None / 50%	Every 5 Days	100%	$45	KAGE	Challenge	1	$1,000	both	$450	90		
+Apex Trader Funding	Intraday No Activation Fee	25k	Intraday	None	$1,500	$1,000	4 / 40	None / 50%	Every 5 Days	100%	$69	KAGE	Challenge	1	$1,000	both	$690	90		
+Apex Trader Funding	EOD No Activation Fee	25k	EOD	None	$1,500	$1,000	4 / 40	None / 50%	Every 5 Days	100%	$99	KAGE	Challenge	1	$1,000	both	$990	90		
+Apex Trader Funding	Intraday Standard	50k	Intraday	$59	$3,000	$2,000	6 / 60	None / 50%	Every 5 Days	100%	$25	KAGE	Challenge	1	$1,000	both	$249	90		
+Apex Trader Funding	EOD Standard	50k	EOD	$139	$3,000	$2,000	6 / 60	None / 50%	Every 5 Days	100%	$55	KAGE	Challenge	1	$1,000	both	$550	90		
+Apex Trader Funding	Intraday No Activation Fee	50k	Intraday	None	$3,000	$2,000	6 / 60	None / 50%	Every 5 Days	100%	$49	KAGE	Challenge	1	$1,000	both	$490	90		
+Apex Trader Funding	EOD No Activation Fee	50k	EOD	None	$3,000	$2,000	6 / 60	None / 50%	Every 5 Days	100%	$119	KAGE	Challenge	1	$1,000	both	$1,190	90		
+Apex Trader Funding	Intraday Standard	100k	Intraday	$59	$6,000	$3,000	8 / 80	None / 50%	Every 5 Days	100%	$40	KAGE	Challenge	1	$1,000	both	$399	90		
+Apex Trader Funding	EOD Standard	100k	EOD	$149	$6,000	$3,000	8 / 80	None / 50%	Every 5 Days	100%	$99	KAGE	Challenge	1	$1,000	both	$990	90		
+Apex Trader Funding	Intraday No Activation Fee	100k	Intraday	None	$6,000	$3,000	8 / 80	None / 50%	Every 5 Days	100%	$59	KAGE	Challenge	1	$1,000	both	$590	90		
+Apex Trader Funding	EOD No Activation Fee	100k	EOD	None	$6,000	$3,000	8 / 80	None / 50%	Every 5 Days	100%	$159	KAGE	Challenge	1	$1,000	both	$1,590	90		
+Apex Trader Funding	Intraday Standard	150k	Intraday	$59	$9,000	$4,000	12 / 120	None / 50%	Every 5 Days	100%	$60	KAGE	Challenge	1	$1,000	both	$599	90		
+Apex Trader Funding	EOD Standard	150k	EOD	$159	$9,000	$4,000	12 / 120	None / 50%	Every 5 Days	100%	$189	KAGE	Challenge	1	$1,000	both	$1,890	90		
+Apex Trader Funding	Intraday No Activation Fee	150k	Intraday	None	$9,000	$4,000	12 / 120	None / 50%	Every 5 Days	100%	$169	KAGE	Challenge	1	$1,000	both	$1,690	90		
+Apex Trader Funding	EOD No Activation Fee	150k	EOD	None	$9,000	$4,000	12 / 120	None / 50%	Every 5 Days	100%	$249	KAGE	Challenge	1	$1,000	both	$2,490	90		
+Legends Trading	Apprentice	50k	EOD	$59	$3,000	$2,000	2 / 20	None / 35%	7 winning days ($200+)	90%	$35	KAGE	Challenge	1	None	both	$59	40		
+Legends Trading	Apprentice	100k	EOD	$79	$6,000	$3,000	4 / 40	None / 35%	7 winning days ($200+)	90%	$64	KAGE	Challenge	1	None	both	$107	40		
+Legends Trading	Apprentice	150k	EOD	$89	$9,000	$4,500	6 / 60	None / 35%	7 winning days ($200+)	90%	$83	KAGE	Challenge	1	None	both	$138	40		
+Legends Trading	Elite	25k	EOD	None	$1,500	$1,250	2 / 20	40% / 40%	5 winning days ($100+)	90%	$83	KAGE	Challenge	None	None	both	$119	30		
+Legends Trading	Elite	50k	EOD	None	$2,700	$2,200	4 / 40	40% / 40%	5 winning days ($150+)	90%	$106	KAGE	Challenge	None	None	both	$151	30		
+Legends Trading	Elite	100k	EOD	None	$6,000	$3,000	8 / 80	40% / 40%	5 winning days ($200+)	90%	$159	KAGE	Challenge	None	None	both	$227	30		
+Legends Trading	Elite	150k	EOD	None	$9,000	$4,500	12 / 120	40% / 40%	5 winning days ($250+)	90%	$243	KAGE	Challenge	None	None	both	$347	30		
+Phidias Propfirm	Express to Live	25k	Static	$83	$1,500	$500	2 / 20	None	Daily (Live)	80%	$44	KAGE	Challenge	None	None	both	$88	50		
+Phidias Propfirm	Express to Live	50k	Static	$149	$2,500	$650	5 / 50	None	Daily (Live)	80%	$139	KAGE	Challenge	None	None	both	$278	50		
+Phidias Propfirm	Express to Live	100k	Static	$149	$3,500	$800	7 / 70	None	Daily (Live)	80%	$159	KAGE	Challenge	None	None	both	$318	50		
+Phidias Propfirm	Express to Live	150k	Static	$169	$4,500	$1,000	9 / 90	None	Daily (Live)	80%	$199	KAGE	Challenge	None	None	both	$398	50		
+Phidias Propfirm	Fundamental	50k	EOD	$149	$4,000	$2,500	10 / 100	None / 30%	Every 10 Days	80%	$66	KAGE	Challenge	3	None	both	$164	60		
+Phidias Propfirm	Fundamental	100k	EOD	$149	$6,000	$3,000	14 / 140	None / 30%	Every 10 Days	80%	$109	KAGE	Challenge	3	None	both	$273	60		
+Phidias Propfirm	Fundamental	150k	EOD	$169	$9,000	$4,500	17 / 170	None / 30%	Every 10 Days	80%	$168	KAGE	Challenge	3	None	both	$420	60		
+Phidias Propfirm	Premium	50k	EOD	$149	$4,000	$2,500	10 / 100	None / 30%	Every 5 Days	75%  → 100%	$132	KAGE	Challenge	1	None	both	$329	60		
+Phidias Propfirm	Premium	100k	EOD	$149	$6,000	$3,000	14 / 140	None / 30%	Every 5 Days	75% → 100%	$164	KAGE	Challenge	1	None	both	$411	60		
+Phidias Propfirm	Premium	150k	EOD	$169	$9,000	$4,500	17 / 170	None / 30%	Every 5 Days	75% → 100%	$228	KAGE	Challenge	1	None	both	$570	60		
+E8 Futures	Signature	25k	EOD	None	$1,500	$1,000	2	None / 35%	On Demand	80%	$72	KAGE	Challenge	None	None	both	$110	35		
+E8 Futures	Signature	50k	EOD	None	$3,000	$2,000	4	None / 35%	On Demand	80%	$98	KAGE	Challenge	None	None	both	$150	35		
+E8 Futures	Signature	100k	EOD	None	$6,000	$3,000	8	None / 35%	On Demand	80%	$169	KAGE	Challenge	None	None	both	$260	35		
+E8 Futures	Signature	150k	EOD	None	$9,000	$4,500	12	None / 35%	On Demand	80%	$254	KAGE	Challenge	None	None	both	$390	35		
+E8 Futures	Zero Starter	50k	EOD	None	$3,000	$1,500	4	40% / None	Daily	80%	$116	KAGE	Challenge	None		both	$178	35		
+E8 Futures	Zero Starter	100k	EOD	None	$6,500	$3,000	8	40% / None	Daily	80%	$181	KAGE	Challenge	None		both	$278	35		
+E8 Futures	Zero Starter	200k	EOD	None	$13,500	$6,000	10	40% / None	Daily	80%	$363	KAGE	Challenge	None		both	$558	35		
+E8 Futures	Zero Max	50k	EOD	None	$3,000	$1,500	4	40% / None	Daily	80%	$213	KAGE	Challenge	None		both	$328	35		
+E8 Futures	Zero Max	100k	EOD	None	$6,500	$3,000	8	40% / None	Daily	80%	$382	KAGE	Challenge	None		both	$588	35		
+E8 Futures	Zero Max	200k	EOD	None	$13,500	$6,000	10	40% / None	Daily	80%	$707	KAGE	Challenge	None		both	$1,088	35		
+Nexgen ProTrader Funding	Rapid Eval	25k	EOD	$119	$1,500	$1,300	5 / 5	None / 30%	Every 5 days	90%	$15	KAGE	Challenge	None		none	$149	90		
+Nexgen ProTrader Funding	Rapid Eval	50k	EOD	$129	$3,000	$2,000	10 / 10	None / 30%	Every 5 days	90%	$25	KAGE	Challenge	None		none	$249	90		
+Nexgen ProTrader Funding	Rapid Eval	75k	EOD	$159	$4,500	$2,500	12 / 12	None / 30%	Every 5 days	90%	$33	KAGE	Challenge	None		none	$329	90		
+Nexgen ProTrader Funding	Rapid Eval	100k	EOD	$179	$6,000	$3,000	14 / 14	None / 30%	Every 5 days	90%	$35	KAGE	Challenge	None		none	$349	90		
+Nexgen ProTrader Funding	Rapid Eval	150k	EOD	$199	$9,000	$4,500	17 / 17	None / 30%	Every 5 days	90%	$45	KAGE	Challenge	None		none	$449	90		
+Nexgen ProTrader Funding	Instant	25k	EOD	None	None	$1,300	5 / 5	50%	Every 5 days	90%	$209	KAGE	S2F	5 Days	None	none	$349	40		
+Nexgen ProTrader Funding	Instant	50k	EOD	None	None	$2,000	10 / 10	50%	Every 5 days	90%	$239	KAGE	S2F	5 Days	None	none	$399	40		
+Nexgen ProTrader Funding	Instant	75k	EOD	None	None	$2,500	12 / 12	50%	Every 5 days	90%	$299	KAGE	S2F	5 Days	None	none	$499	40		
+Nexgen ProTrader Funding	Instant	100k	EOD	None	None	$3,000	14 / 14	50%	Every 5 days	90%	$389	KAGE	S2F	5 Days	None	none	$649	40		
+Nexgen ProTrader Funding	Instant	150k	EOD	None	None	$4,500	17 / 17	50%	Every 5 days	90%	$509	KAGE	S2F	5 Days	None	none	$849	40		
+Bulenox	Qualification Option 1 (No Scaling)	25k	Intraday	$143	$1,500	$1,500	3	None / 40%	Weekly (Wed)	100%	$16	KAGE	Challenge	None		none	$145.00	89		
+Bulenox	Qualification Option 2 (EOD/Scaling/DLL)	25k	EOD	$143	$1,500	$1,500	3	None / 40%	Weekly (Wed)	100%	$80	KAGE	Challenge	None		none	$145.00	45		
+Bulenox	Qualification Option 1 (No Scaling)	50k	Intraday	$148	$3,000	$2,500	7	None / 40%	Weekly (Wed)	100%	$19	KAGE	Challenge	None		none	$175.00	89		
+Bulenox	Qualification Option 2 (EOD/Scaling/DLL)	50k	EOD	$148	$3,000	$2,500	7	None / 40%	Weekly (Wed)	100%	$96	KAGE	Challenge	None		none	$175.00	45		
+Bulenox	Qualification Option 1 (No Scaling)	100k	Intraday	$248	$6,000	$3,000	12	None / 40%	Weekly (Wed)	100%	$24	KAGE	Challenge	None		none	$215.00	89		
+Bulenox	Qualification Option 2 (EOD/Scaling/DLL)	100k	EOD	$248	$6,000	$3,000	12	None / 40%	Weekly (Wed)	100%	$118	KAGE	Challenge	None		none	$215.00	45		
+Bulenox	Qualification Option 1 (No Scaling)	150k	Intraday	$498	$9,000	$4,500	15	None / 40%	Weekly (Wed)	100%	$36	KAGE	Challenge	None		none	$325.00	89		
+Bulenox	Qualification Option 2 (EOD/Scaling/DLL)	150k	EOD	$498	$9,000	$4,500	15	None / 40%	Weekly (Wed)	100%	$179	KAGE	Challenge	None		none	$325.00	45		
+Bulenox	Momentum Option 1 (Trailing)	25k	Intraday	None	$1,500	$1,000	3	None / 35%	Daily	100%	$52	KAGE	Challenge	None		none	$94.00	45		
+Bulenox	Momentum Option 2 (EOD/No Scaling)	25k	EOD	None	$1,500	$1,000	2	None / 35%	Daily	100%	$52	KAGE	Challenge	None		none	$94.00	45		
+Bulenox	Momentum Option 1 (Trailing)	50k	Intraday	None	$3,000	$2,250	7	None / 35%	Daily	100%	$79	KAGE	Challenge	None		none	$143.00	45		
+Bulenox	Momentum Option 2 (EOD/No Scaling)	50k	EOD	None	$3,000	$2,250	4	None / 35%	Daily	100%	$79	KAGE	Challenge	None		none	$143.00	45		
+Bulenox	Momentum Option 1 (Trailing)	100k	Intraday	None	$6,000	$4,000	12	None / 35%	Daily	100%	$136	KAGE	Challenge	None		none	$248.00	45		
+Bulenox	Momentum Option 2 (EOD/No Scaling)	100k	EOD	None	$6,000	$4,000	8	None / 35%	Daily	100%	$136	KAGE	Challenge	None		none	$248.00	45		
+Bulenox	Momentum Option 1 (Trailing)	150k	Intraday	None	$9,000	$5,500	15	None / 35%	Daily	100%	$197	KAGE	Challenge	None		none	$358.00	45		
+Bulenox	Momentum Option 2 (EOD/No Scaling)	150k	EOD	None	$9,000	$5,500	12	None / 35%	Daily	100%	$197	KAGE	Challenge	None		none	$358.00	45		
+Bulenox	Fast Track Option 1 (Trailing)	25k	Intraday	None	None	$1,000	3	20% / 25% / 30%	Daily	100%	$186	KAGE	S2F	None		none	$338	45		
+Bulenox	Fast Track Option 2 (EOD/No Scaling)	25k	EOD	None	None	$1,000	2	20% / 25% / 30%	Daily	100%	$186	KAGE	S2F	None		none	$338	45		
+Bulenox	Fast Track Option 1 (Trailing)	50k	Intraday	None	None	$2,250	7	20% / 25% / 30%	Daily	100%	$268	KAGE	S2F	None		none	$488	45		
+Bulenox	Fast Track Option 2 (EOD/No Scaling)	50k	EOD	None	None	$2,250	4	20% / 25% / 30%	Daily	100%	$268	KAGE	S2F	None		none	$488	45		
+Bulenox	Fast Track Option 1 (Trailing)	100k	Intraday	None	None	$4,000	12	20% / 25% / 30%	Daily	100%	$356	KAGE	S2F	None		both	$648	45		
+Bulenox	Fast Track Option 2 (EOD/No Scaling)	100k	EOD	None	None	$4,000	8	20% / 25% / 30%	Daily	100%	$356	KAGE	S2F	None		both	$648	45		
+Bulenox	Fast Track Option 1 (Trailing)	150k	Intraday	None	None	$5,500	15	20% / 25% / 30%	Daily	100%	$433	KAGE	S2F	None		both	$788	45		
+Bulenox	Fast Track Option 2 (EOD/No Scaling)	150k	EOD	None	None	$5,500	12	20% / 25% / 30%	Daily	100%	$433	KAGE	S2F	None		both	$788	45		
+DayTraders	Trailing	25k	Intraday	$5	$1,500	$1,500	6 / 60	50% / 30%	Every 8 Days	100%	$55	KAGE	Challenge	2	None	both	$55			
+DayTraders	Trailing	50k	Intraday	$5	$3,000	$2,500	10 / 100	50% / 30%	Every 8 Days	100%	$70	KAGE	Challenge	2		both	$70			
+DayTraders	Trailing	150k	Intraday	$5	$8,500	$4,500	20 / 200	50% / 30%	Every 8 Days	100%	$100	KAGE	Challenge	2	None	both	$100			
+DayTraders	Trailing	300k	Intraday	$5	$15,000	$7,000	40 / 400	50% / 30%	Every 8 Days	100%	$140	KAGE	Challenge	2	None	both	$140			
+DayTraders	EOD	25k	EOD	$5	$1,500	$1,000	6 / 60	50% / 30%	Every 8 Days	100%	$80	KAGE	Challenge	2	None	both	$80			
+DayTraders	EOD	50k	EOD	$5	$3,000	$2,000	10 / 100	50% / 30%	Every 8 Days	100%	$105	KAGE	Challenge	2		both	$105			
+DayTraders	EOD	150k	EOD	$5	$8,500	$4,000	12 / 120	50% / 30%	Every 8 Days	100%	$225	KAGE	Challenge	2	None	both	$225			
+DayTraders	EOD	300k	EOD	$5	$15,000	$6,500	40 / 400	50% / 30%	Every 8 Days	100%	$400	KAGE	Challenge	2	None	both	$400			
+DayTraders	Static	25k	Static	$5	$2,500	$750	4 / 40	50% / 30%	Every 8 Days	100%	$40	KAGE	Challenge	2	None	both	$40			
+DayTraders	Static	50k	Static	$5	$3,750	$1,000	6 / 60	50% / 30%	Every 8 Days	100%	$50	KAGE	Challenge	2	None	both	$50			
+DayTraders	Static	100k	Static	$5	$5,750	$1,500	8 / 80	50% / 30%	Every 8 Days	100%	$75	KAGE	Challenge	2	None	both	$75			
+DayTraders	Static	150k	Static	$5	$6,750	$1,750	8 / 80	50% / 30%	Every 8 Days	100%	$90	KAGE	Challenge	2	None	both	$90			
+DayTraders	S2F (Instant)	25k	EOD	None	None	$1,000	1 / 10	20%	Every 10 Days	100%	$222	KAGE	S2F	10	None	both	$222			
+DayTraders	S2F (Instant)	50k	EOD	None	None	$2,500	5 / 50	20%	Every 10 Days	100%	$342	KAGE	S2F	10	None	both	$342			
+DayTraders	S2F (Instant)	150k	EOD	None	None	$6,000	12 / 120	20%	Every 10 Days	100%	$495	KAGE	S2F	10	None	both	$495.00			
+DayTraders	S2L Core	50k	Intraday	None	$3,000	$2,000	2 / 20	25% / None	Daily	80%	$179	KAGE	Challenge	8		both	$179.00			
+DayTraders	S2L Edge	150k	Intraday	None	$8,500	$4,500	3 / 30	25% / None	Daily	80%	$319	KAGE	Challenge	8		both	$319.00			
+DayTraders	S2L Ultra	300k	Intraday	None	$15,000	$7,000	4 / 40	25% / None	Daily	80%	$449	KAGE	Challenge	8		both	$449.00			
+FundedNext Futures	Legacy	25k	EOD	None	$1,250	$1,000	2 / 20	40% / None	Every 5 Benchmark Days	80%	$72	KAGE	Challenge	None	None	both	$79.99	10		
+FundedNext Futures	Legacy	50k	EOD	None	$3,000	$2,000	3 / 30	40% / None	Every 5 Benchmark Days	80%	$180	KAGE	Challenge	None	None	both	$199.99	10		
+FundedNext Futures	Legacy	100k	EOD	None	$6,000	$3,000	5 / 50	40% / None	Every 5 Benchmark Days	80%	$216	KAGE	Challenge	None	None	both	$239.99	10		
+FundedNext Futures	Flex	50k	EOD	None	$2,500	$1,500	3 / 30	40% / None	Every 5 Benchmark Days	95%	$60	KAGE	Challenge	None	None	both	$133.99	55		
+FundedNext Futures	Flex	100k	EOD	None	$5,000	$2,500	5 / 50	40% / None	Every 5 Benchmark Days	95%	$112	KAGE	Challenge	None	None	both	$249.99	55		
+FundedNext Futures	Flex	150k	EOD	None	$8,000	$4,000	8 / 80	40% / None	Every 5 Benchmark Days	95%	$218	KAGE	Challenge	None	None	both	$483.99	55		
+FundedNext Futures	Rapid Pro	25k	EOD	None	$1,500	$1,000	2 / 20	None / 40%	Every 3 Days	90%	$80	KAGE	Challenge	1	None	both	$159.98	50		
+FundedNext Futures	Rapid Pro	50k	EOD	None	$3,000	$2,000	4 / 40	None / 40%	Every 3 Days	90%	$162	KAGE	Challenge	1	None	both	$299.98	46		
+FundedNext Futures	Rapid Pro	100k	EOD	None	$5,000	$2,500	6 / 60	None / 40%	Every 3 Days	90%	$280	KAGE	Challenge	1	None	both	$499.98	44		
+FundedNext Futures	Rapid Daily	25k	EOD	None	$1,500	$1,000	2 / 20	None / None	Daily	90%	$80	KAGE	Challenge	1	None	both	$159.98	50		
+FundedNext Futures	Rapid Daily	50k	EOD	None	$3,000	$2,000	4 / 40	None / None	Daily	90%	$171	KAGE	Challenge	1	None	both	$299.98	43		
+FundedNext Futures	Rapid Daily	100k	EOD	None	$5,000	$2,500	6 / 60	None / None	Daily	90%	$280	KAGE	Challenge	1	None	both	$499.98	44		
+The Trading Pit	Futures Prime	50k	EOD	None	$3,000	$2,000	5 / 50	40% / None	Every 7 Days	80%	$74	KAGE	Challenge	3		both	$99	25		
+The Trading Pit	Futures Prime	100k	EOD	None	$6,000	$3,000	10 / 100	40% / None	Every 7 Days	80%	$142	KAGE	Challenge	3		both	$189	25		
+The Trading Pit	Futures Prime	150k	EOD	None	$9,000	$4,500	15 / 150	40% / None	Every 7 Days	80%	$217	KAGE	Challenge	3		both	$289	25		
+Funded Futures Network	MAX Standard	25k	EOD	None	$2,000	$1,500	3 / 30	40% / 40%	Same Day	80%	$68	KAGE	Challenge	5		eval	$135	50		
+Funded Futures Network	MAX Standard	50k	EOD	None	$3,000	$2,000	4 / 40	40% / 40%	Same Day	80%	$80	KAGE	Challenge	5		eval	$160	50		
+Funded Futures Network	MAX Standard	100k	EOD	None	$6,000	$3,600	10 / 100	40% / 40%	Same Day	80%	$158	KAGE	Challenge	5		eval	$315	50		
+Funded Futures Network	MAX Standard	150k	EOD	None	$9,000	$5,000	15 / 150	40% / 40%	Same Day	80%	$183	KAGE	Challenge	5		eval	$365	50		
+Funded Futures Network	MAX Standard	250k	EOD	None	$15,000	$6,000	20 / 200	40% / 40%	Same Day	80%	$295	KAGE	Challenge	5		eval	$590	50		
+Funded Futures Network	STEADY	25k	EOD	None	$2,000	$1,200	3 / 30	52% / None	Every 5 Profit Days	90%	$75	KAGE	Challenge	2		eval	$149	50		
+Funded Futures Network	STEADY	50k	EOD	None	$3,000	$2,000	4 / 40	52% / None	Every 5 Profit Days	90%	$115	KAGE	Challenge	2		eval	$229	50		
+Funded Futures Network	STEADY	100k	EOD	None	$6,000	$3,200	10 / 100	52% / None	Every 5 Profit Days	90%	$154	KAGE	Challenge	2		eval	$308	50		
+Funded Futures Network	STEADY	150k	EOD	None	$9,000	$4,700	15 / 150	52% / None	Every 5 Profit Days	90%	$293	KAGE	Challenge	2		eval	$585	50		
+Funded Futures Network	STEADY	250k	EOD	None	$15,000	$5,500	20 / 200	52% / None	Every 5 Profit Days	90%	$375	KAGE	Challenge	2		eval	$750	50		
+Blue Guardian	Standard	25k	EOD	None	$1,500	$1,000	1 / 10	None / 40%	Every 3 Days	90%	$116	KAGE	Challenge	1		both	$154	25		DLL: None
+Blue Guardian	Standard	50k	EOD	None	$3,000	$2,000	4 / 40	None / 40%	Every 3 Days	90%	$157	KAGE	Challenge	1		both	$209	25		DLL: $1,000
+Blue Guardian	Standard	100k	EOD	None	$6,000	$3,500	8 / 80	None / 40%	Every 3 Days	90%	$248	KAGE	Challenge	1		both	$330	25		DLL: $2,000
+Blue Guardian	Standard	150k	EOD	None	$9,000	$5,000	12 / 120	None / 40%	Every 3 Days	90%	$318	KAGE	Challenge	1		both	$424	25		DLL: $3,000
+Blue Guardian	Reserve	25k	EOD	None	$1,500	$1,000	2 / 20	50% / None	5 Winning Days	90%	$83	KAGE	Challenge	2		both	$110	25		DLL: None
+Blue Guardian	Reserve	50k	EOD	None	$3,000	$2,000	4 / 40	50% / None	5 Winning Days	90%	$116	KAGE	Challenge	2		both	$154	25		DLL: None
+Blue Guardian	Reserve	100k	EOD	None	$6,000	$3,000	8 / 80	50% / None	5 Winning Days	90%	$186	KAGE	Challenge	2		both	$248	25		DLL: None
+Blue Guardian	Reserve	150k	EOD	None	$9,000	$4,500	12 / 120	50% / None	5 Winning Days	90%	$347	KAGE	Challenge	2		both	$462	25		DLL: None
+Blue Guardian	Express	50k	EOD	None	$3,000	$2,000	4 / 40	40% / None	Daily	90%	$103	KAGE	Challenge	3		both	$137	25		DLL: $1,000
+Blue Guardian	Express	100k	EOD	None	$6,000	$3,500	8 / 80	40% / None	Daily	90%	$172	KAGE	Challenge	3		both	$229	25		DLL: $2,000
+Blue Guardian	Express	150k	EOD	None	$9,000	$5,000	12 / 120	40% / None	Daily	90%	$259	KAGE	Challenge	3		both	$345	25		DLL: $3,000
+Blue Guardian	Direct	25k	EOD	None	None	$1,500	1 / 10	None / 20% 1st / 25% 2nd / 30% 3rd+	On Demand	90%	$230	KAGE	S2F	None		both	$307	25		DLL: $1,000
+Blue Guardian	Direct	50k	EOD	None	None	$2,000	4 / 40	None / 20% 1st / 25% 2nd / 30% 3rd+	On Demand	90%	$371	KAGE	S2F	None		both	$494	25		DLL: $1,250
+Blue Guardian	Direct	100k	EOD	None	None	$3,500	8 / 80	None / 20% 1st / 25% 2nd / 30% 3rd+	On Demand	90%	$494	KAGE	S2F	None		both	$659	25		DLL: $2,500
+Blue Guardian	Direct	150k	EOD	None	None	$4,500	12 / 120	None / 20% 1st / 25% 2nd / 30% 3rd+	On Demand	90%	$618	KAGE	S2F	None		both	$824	25		DLL: $3,000
+Topstep	Trading Combine Standard	50k	EOD	$149	$3,000	$2,000	5 / 50	55% / None or 40%	5 Winning Days / 3 Days	90%	$49	-	Challenge	2		both	$49	0		
+Topstep	Trading Combine Standard	100k	EOD	$149	$6,000	$3,000	10 / 100	55% / None or 40%	5 Winning Days / 3 Days	90%	$99	-	Challenge	2		both	$99	0		
+Topstep	Trading Combine Standard	150k	EOD	$149	$9,000	$4,500	15 / 150	55% / None or 40%	5 Winning Days / 3 Days	90%	$199	-	Challenge	2		both	$199	0		
+Topstep	No Activation Fee	50k	EOD	None	$3,000	$2,000	5 / 50	55% / None or 40%	5 Winning Days / 3 Days	90%	$95	-	Challenge	2		both	$95	0		
+Topstep	No Activation Fee	100k	EOD	None	$6,000	$3,000	10 / 100	55% / None or 40%	5 Winning Days / 3 Days	90%	$149	-	Challenge	2		both	$149	0		
+Topstep	No Activation Fee	150k	EOD	None	$9,000	$4,500	15 / 150	55% / None or 40%	5 Winning Days / 3 Days	90%	$229	-	Challenge	2		both	$229	0		
+FTMO	Growth	50k	EOD	None	$3,000	$2,000	5	40% / None	Every 4 Days	90%	$119	-	Challenge	None		both	$119	0		
+FTMO	Growth	100k	EOD	None	$6,000	$3,500	10	40% / None	Every 4 Days	90%	$169	-	Challenge	None		both	$169	0		
+FTMO	Growth	150k	EOD	None	$9,000	$5,000	15	40% / None	Every 4 Days	90%	$229	-	Challenge	None		both	$229	0		
+FTMO	Pro	50k	EOD	None	$3,000	$3,000	5	50% / None	Every 5 Days	90%	$139	-	Challenge	None		both	$139	0		
+FTMO	Pro	100k	EOD	None	$6,000	$4,500	10	50% / None	Every 5 Days	90%	$199	-	Challenge	None		both	$199	0		
+FTMO	Pro	150k	EOD	None	$9,000	$6,000	15	50% / None	Every 5 Days	90%	$269	-	Challenge	None		both	$269	0		
+Purdia Capital	Instant Funded	25k	EOD	None	$1,000	$750	2 / 20	None / None	Daily	90%	$175	KAGE	S2F	10		both	$349	50		
+Purdia Capital	Instant Funded	50k	EOD	None	$2,000	$1,500	5 / 50	None / None	Daily	90%	$220	KAGE	S2F	10		both	$549	60		
+Purdia Capital	Pioneer Pilot	100k	EOD	None	$5,500	$3,300	7 / 70	None / None	Daily	90%	$340	KAGE	S2F	7		both	$849	60		
+Purdia Capital	Static Instant Funded	100k	Static	None	$3,000	$3,000	3 / 30	None / None	Daily	90%	$600	KAGE	S2F	10		both	$1,499	60		
+Purdia Capital	Static Instant Funded	150k	Static	None	$5,000	$5,000	5 / 50	None / None	Daily	90%	$2,299	KAGE	S2F	10		both	$2,299	0		
+Purdia Capital	Pro Evaluation	100k	Intraday	$130	$6,000	$3,000	10 / 100	None / None	Daily	90%	$80	KAGE	Challenge	5		both	$199	60		
+Purdia Capital	EOD Evaluation	50k	EOD	$130	$3,000	$2,000	5 / 50	None / None	Daily	90%	$72	KAGE	Challenge	5		both	$179	60		
+Purdia Capital	EOD Evaluation	100k	EOD	$130	$6,000	$3,000	10 / 100	None / None	Daily	90%	$120	KAGE	Challenge	5		both	$299	60		
+Top One Futures	Elite	25k	EOD	$149	$1,500	$1,000	1 / 10	None / 25%	On Demand	90%	$41	KAGE	Challenge	None		both	$69	40		
+Top One Futures	Elite	50k	EOD	$149	$3,000	$2,000	3 / 30	None / 25%	On Demand	90%	$63	KAGE	Challenge	None		both	$105	40		
+Top One Futures	Elite	100k	EOD	$149	$6,000	$3,000	5 / 50	None / 25%	On Demand	90%	$125	KAGE	Challenge	None		both	$209	40		
+Top One Futures	Elite	150k	EOD	$149	$9,000	$4,500	7 / 70	None / 25%	On Demand	90%	$185	KAGE	Challenge	None		both	$309	40		
+Top One Futures	Elite Access	25k	EOD	$139	$1,500	$1,000	1 / 10	None / 40%	5 Profitable Days	90%	$39	KAGE	Challenge	1		eval	$39	0		
+Top One Futures	Elite Access	50k	EOD	$189	$3,000	$2,000	3 / 30	None / 40%	5 Profitable Days	90%	$39	KAGE	Challenge	1		eval	$39	0		
+Top One Futures	Elite Access	100k	EOD	$259	$6,000	$3,000	5 / 50	None / 40%	5 Profitable Days	90%	$39	KAGE	Challenge	1		eval	$39	0		
+Top One Futures	Elite Access	150k	EOD	$359	$9,000	$4,000	7 / 70	None / 40%	5 Profitable Days	90%	$39	KAGE	Challenge	1		eval	$39	0		
+Top One Futures	Elite Daily	25k	EOD	None	$1,500	$1,000	1 / 10	40% / None	Daily	90%	$89	KAGE	Challenge	None		eval	$178	50		
+Top One Futures	Elite Daily	50k	EOD	None	$3,000	$2,000	3 / 30	40% / None	Daily	90%	$109	KAGE	Challenge	None		eval	$218	50		
+Top One Futures	Elite Daily	100k	EOD	None	$6,000	$3,000	5 / 50	40% / None	Daily	90%	$199	KAGE	Challenge	None		eval	$398	50		
+Top One Futures	Elite Daily	150k	EOD	None	$9,000	$4,500	7 / 70	40% / None	Daily	90%	$275	KAGE	Challenge	None		eval	$549	50		
+Top One Futures	Instant Sim Funded	25k	EOD	None	None	$1,000	1 / 10	20%	On Demand	90%	$210	KAGE	S2F	None		both	$419	50		
+Top One Futures	Instant Sim Funded	50k	EOD	None	None	$2,000	3 / 30	20%	On Demand	90%	$340	KAGE	S2F	None		both	$679	50		
+Top One Futures	Instant Sim Funded	100k	EOD	None	None	$4,000	5 / 50	20%	On Demand	90%	$411	KAGE	S2F	None		both	$821	50		
+Top One Futures	Instant Sim Funded	150k	EOD	None	None	$5,250	7 / 70	20%	On Demand	90%	$470	KAGE	S2F	None		both	$939	50		
+Top One Futures	S2F Sim Pro	25k	Intraday	None	None	$750	1 / 10	20% ESS	Every 10 Days	90%	$154	KAGE	S2F	10		both	$257	40		
+Top One Futures	S2F Sim Pro	50k	Intraday	None	None	$1,500	4 / 40	20% ESS	Every 10 Days	90%	$253	KAGE	S2F	10		both	$421	40		
+Top One Futures	S2F Sim Pro	100k	Intraday	None	None	$3,000	8 / 80	20% ESS	Every 10 Days	90%	$379	KAGE	S2F	10		both	$632	40		
+Top One Futures	S2F Sim Pro	150k	Intraday	None	None	$4,500	12 / 120	20% ESS	Every 10 Days	90%	$436	KAGE	S2F	10		both	$727	40		
+Top One Futures	Ignite Instant Funding	25k	EOD	None	None	$1,000	1 / 10	15%	On Demand	90%	$98	KAGE	S2F	None		both	$218	55		
+Top One Futures	Ignite Instant Funding	50k	EOD	None	None	$2,000	3 / 30	15%	On Demand	90%	$179	KAGE	S2F	None		both	$398	55		
+Top One Futures	Ignite Instant Funding	100k	EOD	None	None	$4,000	5 / 50	15%	On Demand	90%	$253	KAGE	S2F	None		both	$563	55		
+Top One Futures	Ignite Instant Funding	150k	EOD	None	None	$6,000	7 / 70	15%	On Demand	90%	$360	KAGE	S2F	None		both	$799	55		
+IQ Capital	Core	50k	EOD	$129	$3,000	$2,000	5 / 50	None / 30%	Every 10 Days	90%	$49	KAGE	Challenge	None			$245	80		
+IQ Capital	Core	100k	EOD	$149	$6,000	$3,000	10 / 100	None / 30%	Every 10 Days	90%	$95	KAGE	Challenge	None			$475	80		
+IQ Capital	Rapid	50k	EOD	None	$3,000	$2,000	5 / 50	None / 40%	Every 3 Days	90%	$135	KAGE	Challenge	None			$675	80		
+IQ Capital	Rapid	100k	EOD	None	$6,000	$3,000	10 / 100	None / 40%	Every 3 Days	90%	$225	KAGE	Challenge	None			$1,125	80		
+IQ Capital	Instant Funding	50k	EOD	None	None	$2,000	5 / 50	30%	Every 10 Days	90%	$349	KAGE	S2F	10			$1,745	80		
+IQ Capital	Instant Funding	100k	EOD	None	None	$3,000	10 / 100	30%	Every 10 Days	90%	$699	KAGE	S2F	10			$3,495	80		
+FundedSeat	1-Step Flex	25k	EOD	None	$1,500	$1,000	2 / 20	50% / None	Every 4 Days	90%	$39	KAGE	Challenge	None			$78	50		
+FundedSeat	1-Step Flex	50k	EOD	None	$3,000	$2,000	4 / 40	50% / None	Every 4 Days	90%	$51	KAGE	Challenge	None			$102	50		
+FundedSeat	1-Step Flex	100k	EOD	None	$6,000	$3,000	6 / 60	50% / None	Every 4 Days	90%	$81	KAGE	Challenge	None			$162	50		
+FundedSeat	1-Step Flex	150k	EOD	None	$9,000	$4,500	10 / 100	50% / None	Every 4 Days	90%	$150	KAGE	Challenge	None			$300	50		
+FundedSeat	1-Step Sprint	25k	EOD	None	$1,500	$1,000	2 / 20	None / 25% 1st	Daily	90%	$40.50	KAGE	Challenge	1			$81	50		
+FundedSeat	1-Step Sprint	50k	EOD	None	$3,000	$2,000	4 / 40	None / 25% 1st	Daily	90%	$60	KAGE	Challenge	1			$120	50		
+FundedSeat	1-Step Sprint	100k	EOD	None	$6,000	$3,000	8 / 80	None / 25% 1st	Daily	90%	$90	KAGE	Challenge	1			$180	50		
+FundedSeat	1-Step Sprint	150k	EOD	None	$9,000	$4,500	12 / 120	None / 25% 1st	Daily	90%	$142.50	KAGE	Challenge	1			$285	50		
+FundedSeat	1-Step Daily	25k	EOD	None	$1,500	$1,000	2 / 20	35% / None	Daily	90%	$42	KAGE	Challenge	None			$84	50		
+FundedSeat	1-Step Daily	50k	EOD	None	$3,000	$2,000	4 / 40	35% / None	Daily	90%	$57	KAGE	Challenge	None			$114	50		
+FundedSeat	1-Step Daily	100k	EOD	None	$6,000	$3,000	8 / 80	35% / None	Daily	90%	$96	KAGE	Challenge	None			$192	50		
+FundedSeat	1-Step Daily	150k	EOD	None	$9,000	$4,500	12 / 120	35% / None	Daily	90%	$133.50	KAGE	Challenge	None			$267	50		
+FundedSeat	Daily Ultra 35% Tight	25k	EOD	None	$1,500	$750	2 / 20	35% / None	Daily	80%	$49.20	KAGE	Challenge	None			$98.40	50		
+FundedSeat	Daily Ultra 35% Tight	50k	EOD	None	$3,000	$1,500	4 / 40	35% / None	Daily	80%	$93	KAGE	Challenge	None			$186	50		
+FundedSeat	Daily Ultra 35% Tight	100k	EOD	None	$6,000	$2,250	8 / 80	35% / None	Daily	80%	$135	KAGE	Challenge	None			$270	50		
+FundedSeat	Daily Ultra 26%	25k	EOD	None	$1,500	$1,000	2 / 20	26% / None	Daily	80%	$69	KAGE	Challenge	None			$138	50		
+FundedSeat	Daily Ultra 26%	50k	EOD	None	$3,000	$2,000	4 / 40	26% / None	Daily	80%	$138	KAGE	Challenge	None			$276	50		
+FundedSeat	Daily Ultra 26%	100k	EOD	None	$6,000	$3,000	8 / 80	26% / None	Daily	80%	$207	KAGE	Challenge	None			$414	50		
+FundedSeat	Daily Ultra 35%	25k	EOD	None	$1,500	$1,000	2 / 20	35% / None	Daily	80%	$84	KAGE	Challenge	None			$168	50		
+FundedSeat	Daily Ultra 35%	50k	EOD	None	$3,000	$2,000	4 / 40	35% / None	Daily	80%	$168	KAGE	Challenge	None			$336	50		
+FundedSeat	Daily Ultra 35%	100k	EOD	None	$6,000	$3,000	8 / 80	35% / None	Daily	80%	$246	KAGE	Challenge	None			$492	50		
+FundedSeat	Instant Direct	25k	EOD	None	None	$1,000	1 / 10	None / 15% BTR	Daily	90%	$120	KAGE	S2F	None			$240	50		
+FundedSeat	Instant Direct	50k	EOD	None	None	$2,000	4 / 40	None / 15% BTR	Daily	90%	$180	KAGE	S2F	None			$360	50		
+FundedSeat	Instant Direct	100k	EOD	None	None	$3,000	8 / 80	None / 15% BTR	Daily	90%	$240	KAGE	S2F	None			$480	50		
+FundedSeat	Instant Bolt	25k	EOD	None	None	$1,000	1 / 10	None / 20% 1st	Daily	90%	$120	KAGE	S2F	None			$240	50		
+FundedSeat	Instant Bolt	50k	EOD	None	None	$2,000	4 / 40	None / 20% 1st	Daily	90%	$180	KAGE	S2F	None			$360	50		
+FundedSeat	Instant Bolt	100k	EOD	None	None	$3,000	8 / 80	None / 20% 1st	Daily	90%	$240	KAGE	S2F	None			$480	50		
+Traders Launch	55% Split 22-Hour	100k	EOD	None	$2,000	$1,000	2 / 20	40% / None	Daily	55%	$67.15	KAGE	Challenge	3		both	$79	15		
+Traders Launch	55% Split 22-Hour	200k	EOD	None	$4,000	$2,000	4 / 40	40% / None	Daily	55%	$126.65	KAGE	Challenge	3		both	$149	15		
+Traders Launch	55% Split 22-Hour	300k	EOD	None	$6,000	$3,000	6 / 60	40% / None	Daily	55%	$254.15	KAGE	Challenge	3		both	$299	15		
+Traders Launch	80% Split 22-Hour	100k	EOD	None	$2,000	$1,000	2 / 20	40% / None	Daily	80%	$135.15	KAGE	Challenge	3		both	$159	15		
+Traders Launch	80% Split 22-Hour	200k	EOD	None	$4,000	$2,000	4 / 40	40% / None	Daily	80%	$254.15	KAGE	Challenge	3		both	$299	15		
+Traders Launch	80% Split 22-Hour	300k	EOD	None	$6,000	$3,000	6 / 60	40% / None	Daily	80%	$509.15	KAGE	Challenge	3		both	$599	15		
+Traders Launch	55% Split NYC	100k	EOD	None	$2,000	$1,000	5 Micros	40% / None	Daily	55%	$41.65	KAGE	Challenge	3		both	$49	15		
+Traders Launch	55% Split NYC	200k	EOD	None	$3,000	$1,000	1 / 10	40% / None	Daily	55%	$62.90	KAGE	Challenge	3		both	$74	15		
+Traders Launch	55% Split NYC	300k	EOD	None	$5,000	$2,000	2 / 20	40% / None	Daily	55%	$118.15	KAGE	Challenge	3		both	$139	15		
+Traders Launch	80% Split NYC	100k	EOD	None	$2,000	$1,000	5 Micros	40% / None	Daily	80%	$84.15	KAGE	Challenge	3		both	$99	15		
+Traders Launch	80% Split NYC	200k	EOD	None	$3,000	$1,000	1 / 10	40% / None	Daily	80%	$126.65	KAGE	Challenge	3		both	$149	15		
+Traders Launch	80% Split NYC	300k	EOD	None	$5,000	$2,000	2 / 20	40% / None	Daily	80%	$237.15	KAGE	Challenge	3		both	$279	15		
+BluSky	Launch	50k	EOD	$99	$3,000	$2,000	5 / 50	50% / None	Daily	90%	$29.50	KAGE	Challenge	2		both	$59	50		
+BluSky	Launch	100k	EOD	$149	$6,000	$2,500	10 / 100	50% / None	Daily	90%	$34.50	KAGE	Challenge	2		both	$69	50		
+BluSky	Launch	200k	Static	$179	$6,000	$2,000	2 / 20	50% / None	Daily	90%	$39.50	KAGE	Challenge	2		both	$79	50		
+BluSky	Propel	25k	EOD	None	$1,500	$1,200	2 / 20	34% / None	Daily	90%	$105	KAGE	Challenge	3		both	$150	30		
+BluSky	Propel	50k	EOD	None	$3,000	$2,000	5 / 50	34% / None	Daily	90%	$112	KAGE	Challenge	3		both	$160	30		
+BluSky	Propel	100k	EOD	None	$6,000	$2,500	10 / 100	34% / None	Daily	90%	$154	KAGE	Challenge	3		both	$220	30		
+BluSky	Propel	150k	Static	None	$3,000	$1,000	1 / 10	34% / None	Daily	90%	$119	KAGE	Challenge	3		both	$170	30		
+BluSky	Propel	200k	Static	None	$6,000	$2,000	2 / 20	34% / None	Daily	90%	$189	KAGE	Challenge	3		both	$270	30		
+BluSky	Propel	300k	Static	None	$20,000	$5,000	5 / 50	21% / None	Daily	90%	$224	KAGE	Challenge	5		both	$320	30		
+BluSky	Orbit	50k	EOD	None	$3,000	$2,000	5 / 50	None / 40%	Every 3 Days	90%	$139.30	KAGE	Challenge	1		both	$199	30		
+BluSky	Orbit	100k	EOD	None	$6,000	$3,000	10 / 100	None / 40%	Every 3 Days	90%	$209.30	KAGE	Challenge	1		both	$299	30		
+BluSky	Orbit	150k	EOD	None	$9,000	$4,500	15 / 150	None / 40%	Every 3 Days	90%	$293.30	KAGE	Challenge	1		both	$419	30		
+BluSky	Orbit	200k	Static	None	$8,000	$3,000	3 / 30	None / 40%	Every 3 Days	90%	$293.30	KAGE	Challenge	1		both	$419	30		
+BluSky	Direct 2 Funded	3.5k	Static	None	None	$2,500	5 / 50	21%	Daily	50% then 80%	$599.20	KAGE	S2F	None		both	$749	20		
+BluSky	Instant Sim Funded	50k	Intraday	None	None	$2,000	5 / 50	21%	Daily	80%	$299	KAGE	S2F	None		both	$599	50.08		
+FXIFY Futures	Standard	50k	EOD	$125	$3,000	$2,000	3 / 30	30% / 30%	Every 14 Days	80%	$53.40	KAGE	Challenge	4		both	$89	10		
+FXIFY Futures	Standard	100k	EOD	$125	$6,000	$4,000	7 / 70	30% / 30%	Every 14 Days	80%	$89.40	KAGE	Challenge	4		both	$149	10		
+FXIFY Futures	Standard	150k	EOD	$125	$9,000	$6,000	12 / 120	30% / 30%	Every 14 Days	80%	$135.00	KAGE	Challenge	4		both	$225	10		
+FXIFY Futures	Expert	50k	EOD	None	$3,500	$2,500	5 / 50	None / 40%	Every 14 Days	90%	$89.40	KAGE	Challenge	3		both	$149	10		
+FXIFY Futures	Expert	100k	EOD	None	$7,000	$4,500	10 / 100	None / 40%	Every 14 Days	90%	$149.40	KAGE	Challenge	3		both	$249	10		
+FXIFY Futures	Expert	150k	EOD	None	$10,000	$6,000	15 / 150	None / 40%	Every 14 Days	90%	$209.40	KAGE	Challenge	3		both	$349	10		
+FXIFY Futures	Direct to Sim Live	15k	EOD	None	None	$600	1 / 10	20%	Every 14 Days	90%	$119.40	KAGE	S2F	None		both	$199	10		
+FXIFY Futures	Direct to Sim Live	30k	EOD	None	None	$1,200	2 / 20	20%	Every 14 Days	90%	$239.40	KAGE	S2F	None		both	$399	10		
+FXIFY Futures	Direct to Sim Live	60k	EOD	None	None	$2,400	3 / 30	20%	Every 14 Days	90%	$389.40	KAGE	S2F	None		both	$649	10		
+FXIFY Futures	Direct to Sim Live	80k	EOD	None	None	$3,000	5 / 50	20%	Every 14 Days	90%	$479.40	KAGE	S2F	None		both	$799	10		
+Earn2Trade	Trader Career Path	25k	EOD	$139	$1,750	$1,500	3 / 30	30% / None	Every 7 Days	50%-80%	$75	KAGE	Challenge	None		both	$150	50		
+Earn2Trade	Trader Career Path	50k	EOD	$139	$3,000	$2,000	6 / 60	30% / None	Every 7 Days	50%-80%	$95	KAGE	Challenge	None		both	$190	50		
+Earn2Trade	Trader Career Path	100k	EOD	$139	$6,000	$3,500	12 / 120	30% / None	Every 7 Days	50%-80%	$157.50	KAGE	Challenge	None		both	$315	50		
+Earn2Trade	Gauntlet Mini	50k	EOD	$139	$3,000	$2,000	6 / 60	30% / None	Every 7 Days	50%-80%	$85	KAGE	Challenge	None		both	$170	50		
+Earn2Trade	Gauntlet Mini	100k	EOD	$139	$6,000	$3,500	12 / 120	30% / None	Every 7 Days	50%-80%	$175	KAGE	Challenge	None		both	$350	50		
+Earn2Trade	Gauntlet Mini	150k	EOD	$139	$9,000	$4,500	15 / 150	30% / None	Every 7 Days	50%-80%	$187.50	KAGE	Challenge	None		both	$375	50		
+Earn2Trade	Gauntlet Mini	200k	EOD	$139	$11,000	$6,000	16 / 160	30% / None	Every 7 Days	50%-80%	$275	KAGE	Challenge	None		both	$550	50		
