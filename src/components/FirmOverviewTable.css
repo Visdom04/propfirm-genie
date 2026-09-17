@@ -44,7 +44,8 @@
   min-height: 0;
   padding: 0 0 8px;
   overflow-x: auto;
-  overflow-y: clip;
+  overflow-y: visible;
+  overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   background: #060c0a;
 }
@@ -58,10 +59,8 @@
   border: none;
 }
 
-.ov-scroll-track {
-  flex-shrink: 0;
-  background: #08120e;
-  padding: 10px 12px 12px;
+.ov-board-head {
+  display: none;
 }
 
 .ov-row:not(.ov-row--head) {
@@ -84,12 +83,20 @@
   overflow: visible;
 }
 
+.ov-pin-firm::before,
+.ov-pin-firm::after,
+.ov-pin-price::before,
+.ov-pin-price::after {
+  width: 0;
+}
+
 .ov-pin-firm {
   position: sticky;
   left: 0;
   z-index: 4;
   padding: 12px 12px 12px 16px;
   background: #060c0a;
+  box-shadow: 12px 0 0 0 #060c0a;
 }
 
 .ov-pin-price {
@@ -98,6 +105,7 @@
   z-index: 4;
   padding: 12px 16px 12px 12px;
   background: #060c0a;
+  box-shadow: -12px 0 0 0 #060c0a;
 }
 
 .ov-row--even:not(.ov-row--head) .ov-pin-firm,
@@ -105,36 +113,12 @@
   background: #0a1210;
 }
 
-.ov-pin-firm::before,
-.ov-pin-firm::after,
-.ov-pin-price::before,
-.ov-pin-price::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  background: inherit;
-  pointer-events: none;
+.ov-row--even:not(.ov-row--head) .ov-pin-firm {
+  box-shadow: 12px 0 0 0 #0a1210;
 }
 
-.ov-pin-firm::before {
-  right: 100%;
-  width: 48px;
-}
-
-.ov-pin-firm::after {
-  left: 100%;
-  width: 0;
-}
-
-.ov-pin-price::before {
-  right: 100%;
-  width: 0;
-}
-
-.ov-pin-price::after {
-  left: 100%;
-  width: 48px;
+.ov-row--even:not(.ov-row--head) .ov-pin-price {
+  box-shadow: -12px 0 0 0 #0a1210;
 }
 
 .ov-row.ov-row--head {
@@ -167,21 +151,66 @@
 @media (hover: hover) {
   .ov-row:not(.ov-row--head):hover {
     border-color: rgba(63, 177, 133, 0.38);
-    border-radius: 12px;
-    background: rgba(18, 32, 24, 0.65);
+    border-radius: 0;
+    background: #121c18;
   }
 
   .ov-row:not(.ov-row--head):hover .ov-pin-firm,
   .ov-row:not(.ov-row--head):hover .ov-pin-price {
     background: #121c18;
   }
+
+  .ov-row:not(.ov-row--head):hover .ov-pin-firm {
+    box-shadow: 12px 0 0 0 #121c18;
+  }
+
+  .ov-row:not(.ov-row--head):hover .ov-pin-price {
+    box-shadow: -12px 0 0 0 #121c18;
+  }
 }
 
 @media (max-width: 767px) {
   .ov-workbench {
     --pfg-nav-h: 2.75rem;
-    --ov-firm: 140px;
-    --ov-price: 108px;
+    --ov-firm: 144px;
+    --ov-price: 112px;
+    overflow: hidden;
+  }
+
+  .ov-sticky-top {
+    position: relative;
+    top: auto;
+    flex-shrink: 0;
+  }
+
+  .ov-head-rail {
+    display: none;
+  }
+
+  .ov-board-clip {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .ov-board {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  .ov-board-head {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    background: #060c0a;
+  }
+
+  .ov-board-head .ov-pin-firm,
+  .ov-board-head .ov-pin-price {
+    z-index: 10;
   }
 
   .ov-toolbar {
@@ -215,8 +244,53 @@
     font-size: 0.65rem;
   }
 
-  .ov-board {
-    padding: 0;
+  .ov-row .ov-pin-firm,
+  .ov-row .ov-pin-price {
+    position: sticky;
+    transform: none;
+    will-change: auto;
+    overflow: visible;
+    isolation: isolate;
+  }
+
+  .ov-row .ov-pin-firm {
+    left: 0;
+    z-index: 6;
+    box-shadow: 12px 0 0 0 #060c0a;
+  }
+
+  .ov-row .ov-pin-price {
+    right: 0;
+    z-index: 6;
+    box-shadow: -12px 0 0 0 #060c0a;
+  }
+
+  .ov-row--even .ov-pin-firm {
+    box-shadow: 12px 0 0 0 #0a1210;
+  }
+
+  .ov-row--even .ov-pin-price {
+    box-shadow: -12px 0 0 0 #0a1210;
+  }
+
+  .ov-row--head .ov-pin-firm {
+    box-shadow: 12px 0 0 0 #060c0a;
+  }
+
+  .ov-row--head .ov-pin-price {
+    box-shadow: -12px 0 0 0 #060c0a;
+  }
+
+  .ov-row .cmp-mid {
+    position: relative;
+    z-index: 0;
+  }
+
+  .ov-pin-firm::before,
+  .ov-pin-firm::after,
+  .ov-pin-price::before,
+  .ov-pin-price::after {
+    width: 0;
   }
 
   .ov-pin-firm {
@@ -248,15 +322,37 @@
     gap: 1px;
   }
 
+  .ov-firm-name,
   .ov-firm-meta .truncate {
     white-space: normal;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     text-overflow: unset;
     font-size: 0.68rem;
     line-height: 1.15;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .ov-pin-firm > .flex {
+    gap: 2px !important;
+    justify-content: flex-start;
+  }
+
+  .ov-firm-link {
+    color: inherit;
+    flex: 0 1 auto !important;
+    max-width: calc(100% - 24px);
+    gap: 6px !important;
+  }
+
+  .ov-firm-meta {
+    flex: 0 1 auto !important;
+    width: auto;
+    max-width: 100%;
   }
 
   .ov-pin-firm .text-xs,
@@ -272,6 +368,7 @@
   .ov-fav {
     width: 22px !important;
     height: 22px !important;
+    margin-left: 0 !important;
   }
 
   .ov-fav svg {
@@ -306,8 +403,11 @@
   }
 
   .ov-view-btn {
-    width: 100%;
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
     min-width: 0 !important;
+    flex-shrink: 1 !important;
     height: 26px !important;
     gap: 2px !important;
     padding: 0 6px !important;
@@ -315,9 +415,24 @@
     font-size: 0.58rem !important;
   }
 
+  .ov-view-btn > span:first-child {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .ov-view-btn > span:last-child {
     width: 16px !important;
     height: 16px !important;
+    flex-shrink: 0;
+  }
+
+  .ov-chrome,
+  .ov-board {
+    border-radius: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
   }
 }
 

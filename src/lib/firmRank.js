@@ -15,7 +15,6 @@ export const FIRM_RANK_ORDER = [
   'Top One Futures',
   'E8 Futures',
   'Purdia',
-  'YRM Prop',
   'DayTraders',
   'Funded Futures Network',
   'The Trading Pit',

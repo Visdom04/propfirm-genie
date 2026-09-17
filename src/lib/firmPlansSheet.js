@@ -13,7 +13,7 @@ import {
 export const FIRMS_SHEET_TAG = 'firms-sheet';
 
 /** Firms removed from all live pages — filtered from runtime catalog. */
-export const HIDDEN_FIRMS = new Set(['Earn2Trade']);
+export const HIDDEN_FIRMS = new Set(['One Up Trader', 'YRM Prop']);
 
 function withoutHiddenFirms(firms) {
   return firms.filter(f => !HIDDEN_FIRMS.has(f.name) && f.enabled !== false);

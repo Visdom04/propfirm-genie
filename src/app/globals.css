@@ -461,3 +461,55 @@ html {
 .pfg-dual-range input[type='range']:focus-visible::-moz-range-thumb {
   box-shadow: 0 0 0 3px rgba(8, 18, 14, 0.92), 0 0 0 5px rgba(63, 177, 133, 0.45);
 }
+
+/* Mobile table pages: one overflow pane like Prop Firm Match so sticky
+   left/right/top all share the same scroller. */
+@media (max-width: 767px) {
+  .pfg-table-page {
+    display: flex;
+    flex-direction: column;
+    height: calc(100dvh - var(--pfg-nav-h, 2.75rem));
+    max-height: calc(100dvh - var(--pfg-nav-h, 2.75rem));
+    overflow: hidden;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .pfg-table-page .cmp-chrome,
+  .pfg-table-page .ov-chrome,
+  .pfg-table-page .dir-chrome,
+  .pfg-table-page .cmp-edge-board,
+  .pfg-table-page .ov-board,
+  .pfg-table-page .dir-board {
+    border-radius: 0 !important;
+    border-left-width: 0 !important;
+    border-right-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .pfg-table-page > header {
+    flex-shrink: 0;
+  }
+
+  .pfg-table-page .cmp-page,
+  .pfg-table-page .ov-page,
+  .pfg-table-page .dir-page,
+  .pfg-table-page .cmp-workbench,
+  .pfg-table-page .ov-workbench,
+  .pfg-table-page .dir-workbench {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .pfg-table-page .ov-page > .flex,
+  .pfg-table-page .cmp-page > .flex {
+    min-height: 0;
+    align-items: stretch;
+    overflow: hidden;
+  }
+}

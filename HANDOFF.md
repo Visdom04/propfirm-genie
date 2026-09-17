@@ -1,6 +1,6 @@
 # Prop Firm Genie — four-page compare handoff
 
-Instruction file for a developer (or a coding agent) taking these pages into [propfirmgenie.com](https://propfirmgenie.com). Read this first. Then read `scripts/DATA-PIPELINE.md` before touching data.
+Instruction file for a developer (or a coding agent) taking these pages into [propfirmgenie.com](https://propfirmgenie.com). Read this first. Then read `scripts/DATA-PIPELINE.md` before touching data. Latest sheet-column priority and mobile table notes: [`DEVELOPER-PICKUP.md`](DEVELOPER-PICKUP.md).
 
 This is **not** the rest of the marketing site. Only the four live compare surfaces plus the sheet pipeline.
 

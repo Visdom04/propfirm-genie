@@ -16,6 +16,7 @@ import { summarizeFirm } from '@/lib/firmOverview';
 import PlatformMarks from '@/components/green/PlatformMarks';
 import { compareFirmNames, defaultSortDir } from '@/lib/firmSort';
 import { salePriceOf } from '@/lib/planPrice';
+import { bindTablePinScroll } from '@/lib/syncTablePins';
 import './FirmOverviewTable.css';
 
 function slugify(name) {
@@ -37,7 +38,6 @@ const MID_COLS = [
   { key: 'activation', label: 'Activation fee', min: 132 },
   { key: 'allIn', label: 'All-in from', min: 104 },
   { key: 'drawdown', label: 'Drawdown type', min: 140 },
-  { key: 'maxLoss', label: 'Max loss', min: 104 },
   { key: 'days', label: 'Days to pass', min: 112 },
   { key: 'news', label: 'News trading', min: 112 },
   { key: 'split', label: 'Profit split', min: 104 },
@@ -94,7 +94,6 @@ const INFO = {
   activation: 'Compact fee in the cell (None, one fee, or a range). Open the row’s i button for every plan.',
   allIn: 'Cheapest eval plus that path’s activation fee, when the fee is a number.',
   drawdown: 'Drawdown styles across this firm’s plans.',
-  maxLoss: 'Max loss range across account sizes.',
   days: 'Minimum trading days required to pass, if the firm sets one.',
   news: 'News trading: allowed, not allowed, or mixed by plan.',
   split: 'Trader profit split across plans.',
@@ -509,7 +508,6 @@ function sortValue(key, row) {
   }
   if (key === 'allIn') return row.allIn || 0;
   if (key === 'drawdown') return String(row.drawdownLabel || '');
-  if (key === 'maxLoss') return numFrom(row.maxLossLabel);
   if (key === 'days') return numFrom(row.daysToPass);
   if (key === 'news') {
     if (row.news === 'Allowed') return 2;
@@ -522,6 +520,52 @@ function sortValue(key, row) {
   if (key === 'discount') return numFrom(row.discountLabel);
   if (key === 'description') return String(f?.description || '');
   return Number(f?.likes) || 0;
+}
+
+function OverviewHeadRow({ sort, cycleSort, visibleMidCols, colMin }) {
+  return (
+    <div className={`${ROW} ov-row--head`} role="row">
+      <div className={`${PIN_FIRM} ${PIN_HEAD} bg-[#060c0a]`} role="columnheader">
+        <button
+          type="button"
+          className="btn-bare inline-flex items-center gap-0.5 pl-2 text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90 sm:pl-4"
+          onClick={() => cycleSort('firm')}
+        >
+          Firm
+          <SortArrows active={sort.key === 'firm'} direction={sort.dir} />
+        </button>
+      </div>
+      <div className={`${MID} ${PIN_HEAD} bg-[#060c0a]`} role="presentation">
+        <div className="flex h-full w-max items-stretch">
+          {visibleMidCols.map(col => (
+            <div
+              key={col.key}
+              className={`${MID_CELL} ${TH} whitespace-nowrap`}
+              style={{ flex: `0 0 ${colMin(col)}px`, minWidth: colMin(col) }}
+            >
+              <span className="inline-flex items-center gap-0.5">
+                <button
+                  type="button"
+                  className="btn-bare inline-flex items-center gap-0.5 uppercase"
+                  onClick={() => cycleSort(col.key)}
+                >
+                  <HeadLabel label={col.label} label2={col.label2} />
+                  <SortArrows active={sort.key === col.key} direction={sort.dir} />
+                </button>
+                <InfoTip text={INFO[col.key]} />
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div
+        className={`${PIN_ACTION} ${PIN_HEAD} justify-center bg-[#060c0a] text-center text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90`}
+        role="columnheader"
+      >
+        View Firm
+      </div>
+    </div>
+  );
 }
 
 export default function FirmOverviewTable({ firms: catalog = [] }) {
@@ -547,17 +591,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
   const boardRef = useRef(null);
   const headRailRef = useRef(null);
 
-  useEffect(() => {
-    const board = boardRef.current;
-    const rail = headRailRef.current;
-    if (!board || !rail) return undefined;
-    const sync = () => {
-      rail.scrollLeft = board.scrollLeft;
-    };
-    sync();
-    board.addEventListener('scroll', sync, { passive: true });
-    return () => board.removeEventListener('scroll', sync);
-  }, []);
+  useEffect(() => bindTablePinScroll(boardRef.current, headRailRef.current), []);
 
   useEffect(() => {
     try {
@@ -757,12 +791,6 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
             <span className="whitespace-normal break-words text-center">{row.drawdownLabel}</span>
           </div>
         );
-      case 'maxLoss':
-        return (
-          <div key={col.key} className={wrap} style={style}>
-            <span className="whitespace-normal break-words text-center">{row.maxLossLabel}</span>
-          </div>
-        );
       case 'days':
         return (
           <div key={col.key} className={wrap} style={style}>
@@ -832,8 +860,8 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
   };
 
   return (
-    <div className="relative w-full font-[family-name:var(--font-body)]">
-      <div className="flex w-full items-start">
+    <div className="ov-page relative w-full font-[family-name:var(--font-body)]">
+      <div className="flex min-h-0 w-full flex-1 items-start">
         <div className="ov-no-print">
         <CompareFilterSidebar
           open={sidebarOpen}
@@ -855,10 +883,10 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         />
         </div>
 
-        <div className="min-w-0 flex-1">
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col">
           <div className="ov-workbench" ref={workbenchRef}>
           <div className="ov-sticky-top">
-          <div className="ov-chrome ov-no-print flex flex-col gap-3 rounded-t-2xl border border-white/10 border-b-[#3FB185]/25 px-4 py-3 sm:px-[18px] sm:py-3.5 max-md:gap-1.5 max-md:px-1.5 max-md:py-1.5">
+          <div className="ov-chrome ov-no-print flex flex-col gap-3 rounded-none border border-x-0 border-white/10 border-b-[#3FB185]/25 px-1.5 py-1.5 md:gap-3 md:rounded-t-2xl md:border-x md:px-4 md:py-3 lg:px-[18px] lg:py-3.5">
             <div className="ov-spotlight flex min-w-0 flex-wrap items-end gap-2 rounded-2xl border border-[#3FB185]/40 bg-[#07140f] px-3.5 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_32px_rgba(0,0,0,0.35)] max-md:gap-1 max-md:rounded-lg max-md:px-1.5 max-md:py-1.5">
               <p className="m-0 w-full text-[0.68rem] font-bold uppercase tracking-[0.1em] text-[#3FB185]/80 max-md:hidden">Spotlight two firms</p>
               <FirmSpot
@@ -1085,55 +1113,18 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
             </div>
           </div>
           <div className="ov-head-rail scrollbar-none" ref={headRailRef}>
-            <div className={`${ROW} ov-row--head`} role="row">
-              <div className={`${PIN_FIRM} ${PIN_HEAD} bg-[#060c0a]`} role="columnheader">
-                <button
-                  type="button"
-                  className="btn-bare inline-flex items-center gap-0.5 pl-2 text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90 sm:pl-4"
-                  onClick={() => cycleSort('firm')}
-                >
-                  Firm
-                  <SortArrows active={sort.key === 'firm'} direction={sort.dir} />
-                </button>
-              </div>
-              <div className={`${MID} ${PIN_HEAD} bg-[#060c0a]`} role="presentation">
-                <div className="flex h-full w-max items-stretch">
-                  {visibleMidCols.map(col => (
-                    <div
-                      key={col.key}
-                      className={`${MID_CELL} ${TH} whitespace-nowrap`}
-                      style={{ flex: `0 0 ${colMin(col)}px`, minWidth: colMin(col) }}
-                    >
-                      <span className="inline-flex items-center gap-0.5">
-                        <button
-                          type="button"
-                          className="btn-bare inline-flex items-center gap-0.5 uppercase"
-                          onClick={() => cycleSort(col.key)}
-                        >
-                          <HeadLabel label={col.label} label2={col.label2} />
-                          <SortArrows active={sort.key === col.key} direction={sort.dir} />
-                        </button>
-                        <InfoTip text={INFO[col.key]} />
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div
-                className={`${PIN_ACTION} ${PIN_HEAD} justify-center bg-[#060c0a] text-center text-[0.62rem] font-semibold uppercase tracking-[0.06em] text-slate-400/90`}
-                role="columnheader"
-              >
-                View Firm
-              </div>
-            </div>
+            <OverviewHeadRow sort={sort} cycleSort={cycleSort} visibleMidCols={visibleMidCols} colMin={colMin} />
           </div>
           </div>
 
           <div className="ov-board-clip">
           <div
             ref={boardRef}
-            className="ov-board scrollbar-none rounded-b-2xl border border-t-0 border-white/10 bg-[#060c0a]"
+            className="ov-board scrollbar-none rounded-none border border-x-0 border-t-0 border-white/10 bg-[#060c0a] md:rounded-b-2xl md:border-x"
           >
+            <div className="ov-board-head">
+              <OverviewHeadRow sort={sort} cycleSort={cycleSort} visibleMidCols={visibleMidCols} colMin={colMin} />
+            </div>
             {sorted.length === 0 ? (
               <p className="px-5 py-10 text-center text-sm text-white/45">No firms match these filters.</p>
             ) : (
@@ -1145,7 +1136,14 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                   <div key={f.name} className={`${ROW} group ${even ? 'ov-row--even' : ''}`} role="row">
                     <div className={`${PIN_FIRM}`} role="cell">
                       <div className="flex w-full min-w-0 items-center gap-3.5">
-                        <div className="ov-firm-logo relative shrink-0" style={{ width: 44, height: 44 }}>
+                        {row.genieUrl ? (
+                          <a
+                            href={row.genieUrl}
+                            className="ov-firm-link flex min-w-0 flex-1 items-center gap-3.5 no-underline"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <div className="ov-firm-logo relative shrink-0" style={{ width: 44, height: 44 }}>
                           <div
                             className="overflow-hidden bg-black"
                             style={{
@@ -1169,9 +1167,9 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                               <Star size={9} fill="#fff" />
                             </span>
                           ) : null}
-                        </div>
-                        <div className="ov-firm-meta flex min-w-0 flex-1 flex-col items-start justify-center gap-1">
-                          <span className="block w-full truncate text-[0.95rem] font-bold leading-tight text-slate-50">
+                            </div>
+                            <div className="ov-firm-meta flex min-w-0 flex-1 flex-col items-start justify-center gap-1">
+                          <span className="ov-firm-name block w-full text-[0.95rem] font-bold leading-tight text-slate-50">
                             {f.name}
                           </span>
                           <span className="ov-plans block text-xs font-semibold leading-snug text-[#3FB185]/85">
@@ -1195,6 +1193,8 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                             )}
                           </div>
                         </div>
+                          </a>
+                        ) : null}
                         <button
                           type="button"
                           className={`ov-fav btn-bare grid size-7 shrink-0 place-items-center rounded-lg ${
@@ -1217,7 +1217,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                         <PfgPrimary
                           href={row.genieUrl}
                           compact
-                          className="ov-view-btn h-8 rounded-full! px-3.5"
+                          className="ov-view-btn h-8 rounded-full px-3.5 max-md:h-6 max-md:max-w-full max-md:min-w-0 max-md:shrink max-md:px-1.5"
                           target="_blank"
                           rel="noopener noreferrer"
                         >

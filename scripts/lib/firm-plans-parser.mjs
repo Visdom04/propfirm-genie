@@ -14,6 +14,9 @@ export const FIRM_NAME_MAP = {
   'The Trading Pit Futures': 'The Trading Pit',
   'Purdia Capital': 'Purdia',
   'FTMO Futures': 'FTMO',
+  Blusky: 'BluSky',
+  BLUSKY: 'BluSky',
+  FXIFY: 'FXIFY Futures',
 };
 
 export const CORE_HEADERS = [
@@ -118,6 +121,13 @@ export function parseOptionalNumber(raw) {
   if (!s || /^none$/i.test(s) || s === '—' || s === '-') return null;
   const m = s.match(/([\d.]+)/);
   return m ? Number(m[1]) : null;
+}
+
+export function parsePromoCode(raw) {
+  const s = String(raw || '').trim();
+  if (s === '-' || s === '—') return '-';
+  if (!s || /^none$/i.test(s)) return 'KAGE';
+  return s;
 }
 
 export function normalizeNewsTrading(raw) {
@@ -372,7 +382,7 @@ export function parseTsv(text, { fileLabel = 'firm-plans.tsv' } = {}) {
       payoutFreq: col(cols, idxMap, 'Payout Freq.', 9),
       profitSplit: col(cols, idxMap, 'Profit Split', 10),
       price: col(cols, idxMap, 'Price', 11),
-      promoCode: col(cols, idxMap, 'Promo CODE', 12) || 'KAGE',
+      promoCode: parsePromoCode(col(cols, idxMap, 'Promo CODE', 12)),
       accountCategory: col(cols, idxMap, 'Account Category'),
       minTradingDays: col(cols, idxMap, 'Min Trading Days'),
       dailyDrawdown: col(cols, idxMap, 'Daily Drawdown'),
@@ -561,7 +571,7 @@ export function rowToPlan(row) {
       price: sale,
       priceWas: listPrice || price.priceWas,
       priceType: price.priceType,
-      promoCode: row.promoCode || 'KAGE',
+      promoCode: parsePromoCode(row.promoCode),
       discount: listPrice && listPrice > sale ? 'Promo price with KAGE' : 'KAGE',
     },
   };
