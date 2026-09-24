@@ -2,6 +2,7 @@
 .cmp-workbench {
   --pfg-nav-h: 3.5rem;
   --cmp-firm: 228px;
+  --cmp-mid: 0px;
   --cmp-promo: 118px;
   --cmp-visit: 132px;
   --cmp-firm-name: 148px;
@@ -92,18 +93,36 @@
 
 .cmp-edge-row {
   display: grid;
-  grid-template-columns: var(--cmp-firm) max-content var(--cmp-promo) var(--cmp-visit);
+  grid-template-columns: var(--cmp-firm) var(--cmp-mid) var(--cmp-promo) var(--cmp-visit);
   width: max-content;
   min-width: 100%;
 }
 
 .cmp-workbench .cmp-mid {
   display: flex;
-  width: max-content;
-  min-width: 0;
-  overflow: visible;
+  width: var(--cmp-mid);
+  min-width: var(--cmp-mid);
+  max-width: var(--cmp-mid);
+  overflow: hidden;
   background: transparent;
   border: none;
+}
+
+.cmp-mid-track {
+  display: flex;
+  width: var(--cmp-mid);
+  min-width: var(--cmp-mid);
+  max-width: var(--cmp-mid);
+  align-items: stretch;
+}
+
+.cmp-mid-cell {
+  overflow: hidden;
+}
+
+.cmp-mid-cell > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .cmp-firm-logo {
@@ -242,7 +261,7 @@
   }
 
   .cmp-edge-row {
-    grid-template-columns: var(--cmp-firm) max-content var(--cmp-cta);
+    grid-template-columns: var(--cmp-firm) var(--cmp-mid) var(--cmp-cta);
   }
 
   .cmp-edge-cta {

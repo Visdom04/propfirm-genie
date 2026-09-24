@@ -17,6 +17,7 @@ import PlatformMarks from '@/components/green/PlatformMarks';
 import { compareFirmNames, defaultSortDir } from '@/lib/firmSort';
 import { salePriceOf } from '@/lib/planPrice';
 import { bindTablePinScroll } from '@/lib/syncTablePins';
+import { colTrack, midTrackPx } from '@/lib/tableColTrack';
 import './FirmOverviewTable.css';
 
 function slugify(name) {
@@ -66,8 +67,7 @@ function sortLabel(sort) {
   );
 }
 
-const ROW =
-  'ov-row grid w-max min-w-full items-stretch grid-cols-[var(--ov-firm)_max-content_var(--ov-price)]';
+const ROW = 'ov-row';
 const PIN_FIRM =
   'ov-pin-firm flex min-w-0 items-center self-stretch border-r border-white/[0.06]';
 const PIN_ACTION =
@@ -536,12 +536,12 @@ function OverviewHeadRow({ sort, cycleSort, visibleMidCols, colMin }) {
         </button>
       </div>
       <div className={`${MID} ${PIN_HEAD} bg-[#060c0a]`} role="presentation">
-        <div className="flex h-full w-max items-stretch">
+        <div className="ov-mid-track h-full">
           {visibleMidCols.map(col => (
             <div
               key={col.key}
               className={`${MID_CELL} ${TH} whitespace-nowrap`}
-              style={{ flex: `0 0 ${colMin(col)}px`, minWidth: colMin(col) }}
+              style={colTrack(colMin(col))}
             >
               <span className="inline-flex items-center gap-0.5">
                 <button
@@ -713,6 +713,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
 
   const visibleMidCols = MID_COLS.filter(c => visibleCols.has(c.key));
   const colMin = col => (isMobile ? Math.max(108, Math.round(col.min * 0.9)) : col.min);
+  const midPx = midTrackPx(visibleMidCols, colMin);
 
   const cycleSort = key => {
     setSort(prev => {
@@ -737,7 +738,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
     spotA && spotB ? `/compare?a=${slugify(spotA)}&b=${slugify(spotB)}` : null;
 
   const renderMid = (col, row) => {
-    const style = { flex: `0 0 ${colMin(col)}px`, minWidth: colMin(col) };
+    const style = colTrack(colMin(col));
     const wrap = `${MID_CELL_BASE} min-h-[88px] items-center justify-center text-center text-[0.82rem] font-bold leading-snug text-slate-50`;
     switch (col.key) {
       case 'size':
@@ -831,7 +832,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         const open = expanded.has(row.firm.name);
         const text = row.firm.description || '—';
         return (
-          <div key={col.key} className={`${MID_CELL} min-h-[88px] max-w-72 flex-col items-center justify-center text-center`} style={style}>
+          <div key={col.key} className={`${MID_CELL} min-h-[88px] flex-col items-center justify-center text-center`} style={style}>
             <p className={`m-0 text-[0.75rem] font-medium leading-snug text-slate-300 ${open ? '' : 'line-clamp-2'}`}>
               {text}
             </p>
@@ -884,7 +885,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
         </div>
 
         <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-          <div className="ov-workbench" ref={workbenchRef}>
+          <div className="ov-workbench" ref={workbenchRef} style={{ '--ov-mid': `${midPx}px` }}>
           <div className="ov-sticky-top">
           <div className="ov-chrome ov-no-print flex flex-col gap-3 rounded-none border border-x-0 border-white/10 border-b-[#3FB185]/25 px-1.5 py-1.5 md:gap-3 md:rounded-t-2xl md:border-x md:px-4 md:py-3 lg:px-[18px] lg:py-3.5">
             <div className="ov-spotlight flex min-w-0 flex-wrap items-end gap-2 rounded-2xl border border-[#3FB185]/40 bg-[#07140f] px-3.5 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_32px_rgba(0,0,0,0.35)] max-md:gap-1 max-md:rounded-lg max-md:px-1.5 max-md:py-1.5">
@@ -1208,7 +1209,7 @@ export default function FirmOverviewTable({ firms: catalog = [] }) {
                       </div>
                     </div>
                     <div className={`${MID}`}>
-                      <div className="flex h-full min-h-[88px] w-max items-stretch">
+                      <div className="ov-mid-track h-full min-h-[88px]">
                         {visibleMidCols.map(col => renderMid(col, row))}
                       </div>
                     </div>

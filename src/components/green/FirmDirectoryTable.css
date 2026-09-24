@@ -1,5 +1,6 @@
 .dir-workbench {
   --pfg-nav-h: 3.5rem;
+  --dir-firm: 200px;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -55,12 +56,32 @@
 }
 
 .dir-cols {
+  display: grid;
+  width: max-content;
+  min-width: 100%;
   align-items: stretch;
+  column-gap: 12px;
+  grid-template-columns:
+    var(--dir-firm, 200px)
+    128px
+    110px
+    72px
+    132px
+    118px
+    96px
+    118px
+    132px;
 }
 
 .dir-cols > * {
+  min-width: 0;
   min-height: 0;
   align-self: stretch;
+  overflow: hidden;
+}
+
+.dir-cols > .dir-pin-firm {
+  overflow: visible;
 }
 
 .dir-cols > *:not(.dir-pin-firm):not(.dir-cta) {
@@ -129,13 +150,16 @@
     border-right: 0 !important;
   }
 
-  .dir-firm-link {
-    color: inherit;
+  .dir-workbench {
+    --dir-firm: 144px;
   }
+}
 
-  .dir-promo {
-    overflow: visible !important;
-  }
+.dir-promo,
+.dir-visit {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .dir-head {
@@ -153,8 +177,16 @@
   .dir-cols {
     min-width: max-content !important;
     width: max-content;
-    grid-template-columns: 144px 92px 86px 52px 80px 92px 76px 108px;
     column-gap: 6px;
+    grid-template-columns:
+      var(--dir-firm, 144px)
+      92px
+      86px
+      52px
+      80px
+      92px
+      76px
+      108px;
   }
 
   .dir-firm-link {
