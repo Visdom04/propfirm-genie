@@ -2,6 +2,7 @@
 .ov-workbench {
   --pfg-nav-h: 3.5rem;
   --ov-firm: 268px;
+  --ov-mid: 0px;
   --ov-price: 168px;
   display: flex;
   flex-direction: column;
@@ -52,11 +53,32 @@
 
 .ov-workbench .cmp-mid {
   display: flex;
-  width: max-content;
-  min-width: 0;
-  overflow: visible;
+  width: var(--ov-mid);
+  min-width: var(--ov-mid);
+  max-width: var(--ov-mid);
+  overflow: hidden;
   background: transparent;
   border: none;
+}
+
+.ov-mid-track {
+  display: flex;
+  width: var(--ov-mid);
+  min-width: var(--ov-mid);
+  max-width: var(--ov-mid);
+  align-items: stretch;
+}
+
+.ov-mid-track > * {
+  overflow: hidden;
+}
+
+.ov-row {
+  display: grid;
+  grid-template-columns: var(--ov-firm) var(--ov-mid) var(--ov-price);
+  width: max-content;
+  min-width: 100%;
+  align-items: stretch;
 }
 
 .ov-board-head {

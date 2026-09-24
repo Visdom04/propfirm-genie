@@ -15,6 +15,7 @@ import CompareFilterSidebar, {
 import { PfgPrimary } from '@/components/green/PfgControls';
 import TableScrollSlider from '@/components/green/TableScrollSlider';
 import { bindTablePinScroll } from '@/lib/syncTablePins';
+import { colTrack, midTrackPx } from '@/lib/tableColTrack';
 import { discountBadge, formatDailyLoss, formatMinDays, newsLabel } from '@/lib/compareHighlights';
 import { firmLogo } from '@/lib/firmLogos';
 import { compareFirmNames, defaultSortDir } from '@/lib/firmSort';
@@ -582,7 +583,7 @@ function InfoTip({ tipKey, text: textProp, label = 'More info' }) {
 }
 
 function renderMidCell(col, p, applyDiscount) {
-  const style = { flex: `0 0 ${col.min}px`, minWidth: col.min };
+  const style = colTrack(col.min);
   const wrap = `${MID_CELL} text-center text-[0.82rem] font-semibold leading-snug text-slate-50`;
   switch (col.key) {
     case 'planType':
@@ -774,7 +775,7 @@ const ChallengeRow = memo(function ChallengeRow({
       </div>
 
       <div className={`${MID}`} role="presentation">
-        <div className="flex min-h-full w-max items-stretch">
+        <div className="cmp-mid-track min-h-full">
           <FirmIdentity
             className="cmp-firm-meta-mid"
             firm={f}
@@ -1030,7 +1031,7 @@ function CompareHeadRow({ sort, cycleSort, visibleMidCols }) {
         />
       </div>
       <div className={`${MID} flex items-center bg-[#060c0a]`} role="presentation">
-        <div className="flex min-h-[52px] w-max items-center">
+        <div className="cmp-mid-track min-h-[52px] items-center">
           <div className="cmp-firm-meta-mid" aria-hidden />
           {visibleMidCols.map(col =>
             col.sort ? (
@@ -1044,7 +1045,7 @@ function CompareHeadRow({ sort, cycleSort, visibleMidCols }) {
                 sort={sort}
                 onSort={cycleSort}
                 className={MID_CELL}
-                style={{ flex: `0 0 ${col.min}px`, minWidth: col.min }}
+                style={colTrack(col.min)}
               />
             ) : (
               <StaticHead
@@ -1054,7 +1055,7 @@ function CompareHeadRow({ sort, cycleSort, visibleMidCols }) {
                 sub={col.sub}
                 tip={col.tip}
                 className={MID_CELL}
-                style={{ flex: `0 0 ${col.min}px`, minWidth: col.min }}
+                style={colTrack(col.min)}
               />
             )
           )}
@@ -1107,6 +1108,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
   }, []);
 
   const visibleMidCols = useMemo(() => MID_COLS.filter(c => visibleCols.has(c.key)), [visibleCols]);
+  const midPx = useMemo(() => midTrackPx(visibleMidCols), [visibleMidCols]);
 
   useEffect(() => {
     setVisibleCols(loadVisibleCols());
@@ -1448,7 +1450,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
         />
 
         <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-          <div className="cmp-workbench" ref={workbenchRef}>
+          <div className="cmp-workbench" ref={workbenchRef} style={{ '--cmp-mid': `${midPx}px` }}>
             <div className="cmp-sticky-top">
             <div
               className="cmp-chrome relative z-[3] flex flex-col gap-3 rounded-none border border-x-0 border-white/10 border-b-[#3FB185]/25 px-1.5 py-2 md:gap-3 md:rounded-t-2xl md:border-x md:px-4 md:py-3 lg:px-[18px] lg:py-3.5"
@@ -1715,12 +1717,12 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                   <div className={`${ROW} cmp-virtual-width-probe`} aria-hidden>
                     <div className={PIN_FIRM} />
                     <div className={MID}>
-                      <div className="flex w-max items-stretch">
+                      <div className="cmp-mid-track">
                         {visibleMidCols.map(col => (
                           <div
                             key={col.key}
                             className={MID_CELL}
-                            style={{ flex: `0 0 ${col.min}px`, minWidth: col.min }}
+                            style={colTrack(col.min)}
                           />
                         ))}
                       </div>

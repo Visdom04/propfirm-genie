@@ -20,8 +20,7 @@ const STAR =
 const MAX_FAVORITES = 5;
 const PAGE_SIZE = 10;
 const FAV_KEY = 'demo4-favs';
-const COLS =
-  'dir-cols grid min-w-[1220px] grid-cols-[minmax(200px,1.15fr)_minmax(128px,0.85fr)_minmax(110px,0.75fr)_72px_minmax(132px,0.9fr)_minmax(118px,0.8fr)_minmax(96px,0.7fr)_118px_132px] items-stretch gap-x-3';
+const COLS = 'dir-cols';
 
 const FLAGS = { US: '🇺🇸', AE: '🇦🇪', CY: '🇨🇾', CZ: '🇨🇿', GB: '🇬🇧', CA: '🇨🇦', AU: '🇦🇺', LC: '🇱🇨' };
 const NUMERIC_SORT = new Set(['reviews', 'years', 'alloc', 'platforms', 'promo']);
