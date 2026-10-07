@@ -10,7 +10,8 @@
     "validate:firms": "node scripts/validate-firm-plans.mjs",
     "extend:firms": "node scripts/extend-firm-plans-cols.mjs",
     "sync:firms": "node scripts/sync-firm-plans.mjs",
-    "data:firms": "npm run extend:firms -- --write && npm run validate:firms && npm run sync:firms"
+    "data:firms": "npm run extend:firms -- --write && npm run validate:firms && npm run sync:firms",
+    "test:calc": "node src/lib/calc/calc.test.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.5",

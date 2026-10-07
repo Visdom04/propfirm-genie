@@ -21,6 +21,7 @@ import PlatformLogo from '@/components/green/PlatformLogo';
 import { listPriceOf, salePriceOf } from '@/lib/planPrice';
 import GreenPageShell from '@/components/green/GreenPageShell';
 import { FocusWord, PfgGhost, PfgPrimary } from '@/components/green/PfgControls';
+import Link from 'next/link';
 
 const STEPS = ['Firms', 'Account type', 'Size'];
 const BTN =
@@ -687,7 +688,10 @@ export default function CompareFirmsH2H({ firms = [], popularPairs = [] }) {
             <FocusWord>Head to Head</FocusWord>
           </h1>
           <p className="mx-auto m-0 max-w-xl text-[15px] leading-relaxed text-white/70">
-            Choose two firms, then a plan and size. Compare costs, drawdowns, splits, and rules.
+            Choose two firms, then a plan and size. Compare costs, drawdowns, splits, and rules.{' '}
+            <Link href="/tools" className="font-semibold text-[#3FB185] no-underline hover:underline">
+              Size a plan in Tools
+            </Link>
           </p>
         </header>
 

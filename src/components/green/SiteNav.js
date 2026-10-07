@@ -10,6 +10,7 @@ const LINKS = [
   { href: '/firms', label: 'Firms' },
   { href: '/overview', label: 'Overview' },
   { href: '/compare', label: 'Head to head' },
+  { href: '/tools', label: 'Tools' },
 ];
 
 export default function SiteNav() {

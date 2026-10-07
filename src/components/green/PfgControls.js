@@ -36,7 +36,7 @@ export function FocusWord({ children }) {
 
 export function PfgPrimary({ href, children, className = '', compact = false, ...props }) {
   const cls = compact
-    ? `${BTN} inline-flex h-8 shrink-0 items-center justify-center gap-1 overflow-hidden rounded-lg px-2.5 text-[0.75rem] font-semibold text-white! no-underline shadow-none! [background:linear-gradient(90deg,#3FB185,#1B4B38)] hover:brightness-110 ${className}`
+    ? `${BTN} inline-flex h-11 min-h-11 shrink-0 items-center justify-center gap-1 overflow-hidden rounded-lg px-2.5 text-[0.875rem] font-semibold text-white! no-underline shadow-none! [background:linear-gradient(90deg,#3FB185,#1B4B38)] hover:brightness-110 sm:h-8 sm:min-h-8 sm:text-[0.75rem] ${className}`
     : `${BTN} inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-5 py-3 text-[1rem] font-semibold text-white! no-underline [background:linear-gradient(90deg,#3FB185,#1B4B38)] hover:brightness-110 ${className}`;
   const arrow = compact ? <ArrowCircle className="size-5! -mr-0.5" /> : <ArrowCircle className="-mr-2" />;
   if (href) {
@@ -55,8 +55,10 @@ export function PfgPrimary({ href, children, className = '', compact = false, ..
   );
 }
 
-export function PfgGhost({ children, className = '', href, ...props }) {
-  const cls = `${BTN} inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full border border-[#3FB185]/70 bg-transparent! px-4 py-2 text-[0.82rem] font-semibold text-white! no-underline hover:bg-[#3FB185]/10! disabled:cursor-not-allowed disabled:opacity-40 ${className}`;
+export function PfgGhost({ children, className = '', href, compact = false, ...props }) {
+  const cls = compact
+    ? `${BTN} inline-flex h-11 min-h-11 items-center justify-center gap-1 rounded-full border border-[#3FB185]/70 bg-transparent! px-3 text-[0.875rem] font-semibold text-white! no-underline hover:bg-[#3FB185]/10! disabled:cursor-not-allowed disabled:opacity-40 sm:h-8 sm:min-h-8 sm:text-[0.75rem] ${className}`
+    : `${BTN} inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full border border-[#3FB185]/70 bg-transparent! px-4 py-2 text-[0.82rem] font-semibold text-white! no-underline hover:bg-[#3FB185]/10! disabled:cursor-not-allowed disabled:opacity-40 ${className}`;
   if (href) {
     return (
       <a className={cls} href={href} {...props}>
