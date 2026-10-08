@@ -1,10 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { TOOLS } from '@/lib/toolsCatalog';
 import FirmPlanPicker from './FirmPlanPicker';
-import { Actions, BookTabs, CALC_BODY } from './calculators';
+import { Actions, CALC_BODY } from './calculators';
 import { useFirmState } from './useFirmState';
 import { CHIP, Disclaimer } from './ui';
 
@@ -14,7 +14,6 @@ export default function ToolClient({ slug, firms, initialFirm }) {
   const state = useFirmState(firms, initialFirm);
   const Body = CALC_BODY[slug] || CALC_BODY['position-size'];
   const needsFirm = !FIRMLESS.has(slug);
-  const [book, setBook] = useState('futures');
 
   useEffect(() => {
     window.dispatchEvent(new CustomEvent('pfg_tools_used', { detail: { slug, firm: state.firmSlug } }));
@@ -37,10 +36,7 @@ export default function ToolClient({ slug, firms, initialFirm }) {
         />
       ) : null}
       {needsFirm ? <Actions firm={state.firm} plan={state.plan} /> : null}
-      {slug === 'position-size' || slug === 'dca' || slug === 'cheat-sheet' ? (
-        <BookTabs value={book} onChange={setBook} />
-      ) : null}
-      <Body plan={state.plan} custom={state.custom} firms={firms} book={book} />
+      <Body plan={state.plan} custom={state.custom} firms={firms} />
       <nav className="-mx-1 flex gap-1 overflow-x-auto px-1 scrollbar-none" aria-label="Other tools">
         {TOOLS.filter(t => t.slug !== slug).map(t => (
           <Link

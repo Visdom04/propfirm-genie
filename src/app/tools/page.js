@@ -6,9 +6,9 @@ import { BRAND_NAME } from '@/lib/brand';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: `Trading Calculators | ${BRAND_NAME}`,
+  title: `Perp Calculators | ${BRAND_NAME}`,
   description:
-    'Free futures and perp calculators for position size, blowout, consistency, growth, DCA, payouts, and challenge ROI — using live prop firm plan rules.',
+    'Free perp calculators for position size, blowout, consistency, growth, DCA, payouts, and challenge ROI — using live prop firm plan rules.',
 };
 
 export default async function ToolsPage() {

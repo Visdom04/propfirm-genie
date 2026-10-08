@@ -3,7 +3,7 @@ export const TOOLS = [
     slug: 'position-size',
     title: 'Position size',
     short: 'Size',
-    job: 'Contracts from risk, stop, lot cap, and remaining room.',
+    job: 'Units from risk, stop, size cap, and remaining room.',
   },
   {
     slug: 'blowout',
@@ -27,7 +27,7 @@ export const TOOLS = [
     slug: 'growth',
     title: 'Growth',
     short: 'Growth',
-    job: 'Simple vs compound path at your risk, win rate, and R:R — 252 trading days.',
+    job: 'Simple vs compound path at your risk, win rate, and R:R across 252 sessions.',
   },
   {
     slug: 'dca',
@@ -39,7 +39,7 @@ export const TOOLS = [
     slug: 'cheat-sheet',
     title: 'Sizing cheat sheet',
     short: 'Cheat sheet',
-    job: 'Sweet spot by room on a 20-point stop — futures or perp units.',
+    job: 'Sweet spot by room on a 20-point stop — perp units only.',
   },
   {
     slug: 'roi',

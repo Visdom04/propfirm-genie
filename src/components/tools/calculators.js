@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { BOOKS, instrumentById, instrumentsForBook } from '@/data/instruments';
+import { instrumentById, instrumentsForBook } from '@/data/instruments';
 import { positionSize } from '@/lib/calc/positionSize.mjs';
 import { drawdownRoom } from '@/lib/calc/drawdown.mjs';
 import { consistencyCheck } from '@/lib/calc/consistency.mjs';
@@ -27,14 +27,14 @@ import {
   pct,
 } from './ui';
 
-export function InstrumentChips({ value, onChange, book = 'futures' }) {
+export function InstrumentChips({ value, onChange, book = 'perps' }) {
   const list = instrumentsForBook(book);
   return (
-    <div role="listbox" aria-label="Contract">
+    <div role="listbox" aria-label="Perp">
       <OverflowRow
         items={list}
         getKey={i => i.id}
-        moreAria="More contracts"
+        moreAria="More perps"
         render={i => {
           const on = i.id === value;
           return (
@@ -54,18 +54,6 @@ export function InstrumentChips({ value, onChange, book = 'futures' }) {
   );
 }
 
-export function BookTabs({ value, onChange, compact = false }) {
-  return (
-    <ChoiceChips
-      label="Book"
-      options={BOOKS}
-      value={value}
-      onChange={onChange}
-      compact={compact}
-    />
-  );
-}
-
 export function PlanFacts({ plan, verified }) {
   if (!plan && !verified) return null;
   return (
@@ -76,7 +64,7 @@ export function PlanFacts({ plan, verified }) {
           <span className="text-white/20"> · </span>
           {plan.profitSplit}% split
           <span className="text-white/20"> · </span>
-          lots {plan.maxLots || '—'}
+          size {plan.maxLots || '—'}
         </>
       ) : null}
       {verified ? (
@@ -135,8 +123,8 @@ function useBookSymbol(book, fallback) {
   return [sym, setSym];
 }
 
-export function PositionSizeCalc({ plan, custom, book = 'futures' }) {
-  const [sym, setSym] = useBookSymbol(book, 'MNQ');
+export function PositionSizeCalc({ plan, custom, book = 'perps' }) {
+  const [sym, setSym] = useBookSymbol(book, 'NQ1');
   const inst = instrumentById(sym);
   const start = custom ? 50000 : plan?.accountDollars || 50000;
   const maxLoss = custom ? 2000 : plan?.maxLoss || 2000;
@@ -181,7 +169,7 @@ export function PositionSizeCalc({ plan, custom, book = 'futures' }) {
           <Field label="Stop (ticks)">
             <input className={FIELD} type="number" min="1" value={stopTicks} onChange={e => setStopTicks(+e.target.value)} inputMode="numeric" pattern="[0-9]*" autoComplete="off" enterKeyHint="done" />
           </Field>
-          <Field label="Max contracts">
+          <Field label="Max units">
             <input className={FIELD} type="number" min="1" value={maxContracts} onChange={e => setMaxContracts(+e.target.value)} inputMode="numeric" pattern="[0-9]*" autoComplete="off" enterKeyHint="done" />
           </Field>
           <Field label="Today P&L ($)">
@@ -198,11 +186,11 @@ export function PositionSizeCalc({ plan, custom, book = 'futures' }) {
         </p>
       </div>
       <Results>
-        <Stat label="Contracts" value={sized.contracts} hint={sized.capped ? `Raw ${sized.uncapped}, capped` : `${stopTicks} ticks × ${money(inst.tickValue, 2)}`} />
+        <Stat label="Units" value={sized.contracts} hint={sized.capped ? `Raw ${sized.uncapped}, capped` : `${stopTicks} ticks × ${money(inst.tickValue, 2)}`} />
         <Stat label="Risk amount" value={money(dollarRisk, 0)} hint={`${riskPct}% of ${money(start, 0)}`} />
         <Stat label="Actual risk" value={money(sized.actualRisk, 0)} />
         <Stat
-          label="Stop / contract"
+          label="Stop / unit"
           value={money(sized.stopPerContract, 2)}
           hint={`${stopTicks} ticks × ${money(inst.tickValue, 2)}`}
         />
@@ -437,8 +425,8 @@ const MODES = [
   { id: 'aggressive', label: 'Aggressive' },
 ];
 
-export function DcaCalc({ book = 'futures' }) {
-  const [sym, setSym] = useBookSymbol(book, 'MNQ');
+export function DcaCalc({ book = 'perps' }) {
+  const [sym, setSym] = useBookSymbol(book, 'NQ1');
   const inst = instrumentById(sym);
   const [entry, setEntry] = useState(21000);
   const [interval, setInterval] = useState(10);
@@ -518,20 +506,15 @@ export function DcaCalc({ book = 'futures' }) {
   );
 }
 
-export function CheatSheet({ book = 'futures' }) {
+export function CheatSheet() {
   const rooms = [300, 600, 750, 1000, 1500, 2000, 2500, 3000];
   const stop = 20;
-  const specs = book === 'perps'
-    ? [
-        { id: 'NQ1', pointValue: 1 },
-        { id: 'ES1', pointValue: 5 },
-      ]
-    : [
-        { id: 'MNQ', pointValue: 2 },
-        { id: 'NQ', pointValue: 20 },
-        { id: 'MES', pointValue: 5 },
-        { id: 'ES', pointValue: 50 },
-      ];
+  const specs = [
+    { id: 'NQ1', pointValue: 1 },
+    { id: 'ES1', pointValue: 5 },
+    { id: 'BTC', pointValue: 1 },
+    { id: 'ETH', pointValue: 1 },
+  ];
   const row = (pointValue, room) => {
     const per = pointValue * stop;
     const n = Math.max(1, Math.floor(room / per));
@@ -582,8 +565,8 @@ export function CheatSheet({ book = 'futures' }) {
         ))}
       </div>
       <p className="m-0 text-[0.75rem] leading-relaxed text-white/45">
-        Room = the smaller of daily loss and max drawdown. A 40-pt stop halves the contract count.
-        {book === 'perps' ? ' Two NQ1 units ≈ one MNQ; twenty ≈ one NQ.' : ''}
+        Room = the smaller of daily loss and max drawdown. A 40-pt stop halves the unit count.
+        NQ1 is $1/pt; ES1 is $5/pt.
       </p>
     </div>
   );
