@@ -70,7 +70,7 @@ function compactPayout(raw) {
 /** One overview row per firm, rolled up from its plans. */
 export function summarizeFirm(firm, { applyDiscount = true } = {}) {
   const plans = firm?.plans || [];
-  const comingSoon = Boolean(firm?.comingSoon) && !plans.length;
+  const comingSoon = Boolean(firm?.comingSoon);
   const challenge = plans.filter(p => categoryBucket(p) === 'Challenge');
   const s2f = plans.filter(p => categoryBucket(p) === 'S2F');
   const priced = [...challenge, ...plans].filter(p => salePriceOf(p) > 0);

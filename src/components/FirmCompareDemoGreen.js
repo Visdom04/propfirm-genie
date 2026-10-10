@@ -193,13 +193,15 @@ const PIN_PROMO =
   'cmp-edge-pin-promo flex min-w-0 items-center justify-center self-stretch bg-transparent';
 const PIN_VISIT =
   'cmp-edge-pin-visit flex min-w-0 items-center justify-center self-stretch bg-transparent';
-const PIN_HEAD = 'cmp-edge-head py-3';
+const PIN_HEAD = 'cmp-edge-head py-2.5';
 const MID =
   'cmp-mid relative min-w-0 overflow-visible bg-transparent';
 const MID_CELL =
   'cmp-mid-cell relative box-border flex min-h-[64px] shrink-0 items-center justify-center border-r border-white/[0.06] last:border-r-0 px-3 py-2.5';
 const TH =
-  'flex min-h-[40px] flex-col items-center justify-center gap-0.5 whitespace-nowrap text-center text-[0.62rem] font-semibold uppercase tracking-[0.04em] text-slate-500';
+  'flex min-h-[40px] flex-col items-center justify-center gap-0.5 whitespace-nowrap text-center text-[0.72rem] font-semibold uppercase tracking-[0.05em] text-slate-400';
+const TOOL_CHIP =
+  'btn-bare inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full border px-3.5 text-xs font-semibold max-md:h-8 max-md:gap-1 max-md:px-2.5 max-md:text-[0.7rem]';
 const CHIP_ON = 'border-[#3FB185]/50 bg-[#3FB185]/15 text-[#3FB185]';
 const CHIP_OFF = 'border-white/10 bg-black/20 text-slate-200 hover:border-emerald-500/35';
 
@@ -369,10 +371,10 @@ function VerifiedBadge() {
 }
 
 function RatingChip({ rating, reviews, idPrefix, dense = false }) {
-  if (reviews < 10) {
+  if (!(Number(rating) > 0)) {
     return (
-      <span className={`font-semibold text-[#3FB185] ${dense ? 'text-[0.58rem]' : 'text-[0.68rem]'}`}>
-        {dense ? 'New' : 'Less than 10 reviews'}
+      <span className={`font-semibold text-white/35 ${dense ? 'text-[0.58rem]' : 'text-[0.68rem]'}`}>
+        No reviews
       </span>
     );
   }
@@ -891,8 +893,8 @@ function FilterDropdown({ id, label, valueLabel, open, onToggle, options, select
     <div className="relative shrink-0">
       <button
         type="button"
-        className={`btn-bare inline-flex h-10 items-center gap-1.5 rounded-xl border px-3 text-[0.78rem] font-semibold max-md:h-8 max-md:gap-1 max-md:rounded-lg max-md:px-2.5 max-md:text-[0.7rem] ${
-          selected.length ? `border-[#3FB185]/50 bg-[#3FB185]/12 text-[#3FB185]` : 'border-white/10 bg-white/5 text-white/80'
+        className={`${TOOL_CHIP} ${
+          selected.length ? 'border-[#3FB185]/50 bg-[#3FB185]/12 text-[#3FB185]' : 'border-white/10 bg-white/10 text-white/80'
         } ${open ? 'border-[#3FB185]/60' : ''}`}
         onClick={() => onToggle(open ? null : id)}
         aria-expanded={open}
@@ -1465,7 +1467,7 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
               >
                 <button
                   type="button"
-                  className={`btn-bare relative inline-flex h-10 shrink-0 items-center gap-2 rounded-xl border px-3.5 text-[0.78rem] font-semibold max-md:h-8 max-md:gap-1 max-md:rounded-lg max-md:px-2.5 max-md:text-[0.7rem] ${
+                  className={`${TOOL_CHIP} relative ${
                     sidebarOpen
                       ? 'border-[#3FB185]/60 bg-[#3FB185]/15 text-[#3FB185]'
                       : 'border-white/10 bg-white/5 text-white/80'
@@ -1523,10 +1525,10 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
 
                 <button
                   type="button"
-                  className={`btn-bare inline-flex h-10 shrink-0 items-center rounded-full px-5 text-[0.82rem] font-bold max-md:h-8 max-md:px-3 max-md:text-[0.7rem] ${
+                  className={`btn-bare inline-flex h-9 shrink-0 items-center rounded-full px-5 text-xs font-bold max-md:h-8 max-md:px-3 max-md:text-[0.7rem] ${
                     topMode === 'all'
-                      ? 'bg-[#3FB185] text-[#0a0f0d]'
-                      : 'border border-white/10 bg-white/5 text-white/80'
+                      ? 'border border-transparent bg-[#3FB185] text-[#0a0f0d]'
+                      : 'border border-white/10 bg-white/10 text-white/80'
                   }`}
                   onClick={() => setTopMode('all')}
                   aria-pressed={topMode === 'all'}
@@ -1535,10 +1537,10 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                 </button>
                 <button
                   type="button"
-                  className={`btn-bare inline-flex h-10 shrink-0 items-center gap-1.5 rounded-xl border px-3 text-[0.78rem] font-semibold max-md:h-8 max-md:gap-1 max-md:rounded-lg max-md:px-2.5 max-md:text-[0.7rem] ${
+                  className={`${TOOL_CHIP} ${
                     topMode === 'favorites'
                       ? 'border-[#3FB185]/60 bg-[#3FB185]/15 text-[#3FB185]'
-                      : 'border-white/10 bg-white/5 text-white/80'
+                      : 'border-white/10 bg-white/10 text-white/80'
                   }`}
                   onClick={() => setTopMode(m => (m === 'favorites' ? 'all' : 'favorites'))}
                   aria-pressed={topMode === 'favorites'}
@@ -1547,18 +1549,18 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
                   {favCount}/{MAX_FAVORITES}
                 </button>
 
-                <label className="ml-auto flex h-10 w-[min(100%,280px)] min-w-[200px] shrink-0 items-center gap-2 rounded-xl border border-white/10 bg-black/30 px-3 focus-within:border-[#3FB185]/45 max-md:h-8 max-md:min-w-[148px] max-md:px-2">
+                <label className="ml-auto flex h-9 w-[min(100%,280px)] min-w-[200px] shrink-0 items-center gap-2 rounded-full border-0 bg-white/10 px-4 focus-within:bg-white/[0.14] max-md:h-8 max-md:min-w-[148px] max-md:px-2">
                   <svg className="shrink-0 text-white/40" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
                     <path d="M21 21l-4.3-4.3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                   <input
                     type="text"
-                    className="min-w-0 flex-1 border-0 bg-transparent text-[0.82rem] text-white outline-none placeholder:text-white/35"
-                    placeholder="Search for challenges..."
+                    className="min-w-0 flex-1 border-0 bg-transparent text-sm text-white outline-none placeholder:text-white/35"
+                    placeholder="Search challenges..."
                     value={search}
                     onChange={e => setSearch(e.target.value)}
-                    aria-label="Search for challenges"
+                    aria-label="Search challenges"
                     autoComplete="off"
                     spellCheck={false}
                   />
@@ -1576,11 +1578,8 @@ export default function FirmCompareDemo({ firms = staticFirms }) {
               </div>
 
               <div className="flex min-w-0 items-center gap-3 max-md:gap-2">
-                <p className="m-0 shrink-0 text-[0.92rem] font-semibold text-[#3FB185] max-md:text-[0.72rem]">
-                  <span className="md:hidden">{filtered.length.toLocaleString('en-US')} challenges</span>
-                  <span className="max-md:hidden">
-                    {filtered.length.toLocaleString('en-US')} prop firm challenges
-                  </span>
+                <p className="m-0 shrink-0 text-sm font-semibold text-[#3FB185] max-md:text-[0.72rem]">
+                  {filtered.length.toLocaleString('en-US')} challenges
                 </p>
                 <TableScrollSlider getMidPanes={getMidPanes} masterRef={boardRef} />
                 <div className="relative shrink-0">
