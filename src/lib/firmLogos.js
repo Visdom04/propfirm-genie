@@ -1,3 +1,5 @@
+import { logoConflictsWithOtherFirm } from '../../scripts/lib/firm-identity.mjs';
+
 const BASE = 'https://rtzkywwbsldinjgykqag.supabase.co/storage/v1/object/public/genie-assets/firms';
 const PUBLIC = 'https://rtzkywwbsldinjgykqag.supabase.co/storage/v1/object/public/genie-assets/public';
 
@@ -31,6 +33,7 @@ export const FIRM_LOGOS = {
   'Top One Futures': asset('Top%20One%20Futures.webp'),
   Topstep: asset('Topstep.webp'),
   Tradeify: asset('Tradeify_new.webp'),
+  'Tradeify 247': asset('Tradeify%20247.webp'),
   'Traders Launch': asset('Traders%20Launch.webp'),
   'IQ Capital': asset('IQ%20Capital.webp'),
   FundedSeat: asset('FundedSeat.webp'),
@@ -45,6 +48,12 @@ export const FIRM_LOGOS = {
 
 export function firmLogo(name, fallback) {
   const extra = String(fallback || '').trim();
-  if (/^https?:\/\//i.test(extra)) return extra;
-  return FIRM_LOGOS[name] || extra || null;
+  const mapped = FIRM_LOGOS[name];
+  if (/^https?:\/\//i.test(extra)) {
+    if (logoConflictsWithOtherFirm(name, extra, Object.keys(FIRM_LOGOS))) {
+      return mapped || extra;
+    }
+    return extra;
+  }
+  return mapped || extra || null;
 }

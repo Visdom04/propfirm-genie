@@ -50,7 +50,7 @@ function firmPromoCode(firm) {
 }
 
 function isComingSoon(firm) {
-  return Boolean(firm.comingSoon) && !(firm.plans || []).length;
+  return Boolean(firm.comingSoon);
 }
 
 function promoLabel(firm) {
@@ -204,9 +204,9 @@ function SortHead({ label, col, sort, dir, onSort, align = 'center' }) {
   return (
     <button
       type="button"
-      className={`${BTN} inline-flex w-full items-center gap-1 text-[0.62rem] font-semibold uppercase tracking-[0.12em] ${
+      className={`${BTN} inline-flex w-full items-center gap-1 text-[0.72rem] font-semibold uppercase tracking-[0.05em] ${
         align === 'left' ? 'justify-start text-left' : 'justify-center text-center'
-      } ${on ? 'text-white/80!' : 'text-white/35! hover:text-white/65!'}`}
+      } ${on ? 'text-slate-200!' : 'text-slate-400! hover:text-slate-200!'}`}
       aria-pressed={on}
       onClick={() => onSort(col)}
     >
@@ -225,7 +225,7 @@ function Chip({ active, onClick, children }) {
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={`${BTN} inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3.5 py-2 text-[0.78rem] font-semibold max-md:gap-0.5 max-md:px-2 max-md:py-1 max-md:text-[0.62rem] ${
+      className={`${BTN} inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full border px-3.5 text-xs font-semibold max-md:h-8 max-md:gap-0.5 max-md:px-2 max-md:text-[0.62rem] ${
         active
           ? 'border-[#3FB185]/70 bg-[#3FB185]/15 text-white'
           : 'border-white/12 bg-white/4 text-white/75 hover:border-white/20'
@@ -257,7 +257,7 @@ const ROW_TONE = 'border-white/10 bg-[#0c1612]';
 
 function DirectoryHead({ sort, dir, onSort }) {
   return (
-    <div className="dir-head px-3 pb-2 pt-1">
+    <div className="dir-head px-3 py-2.5">
       <div className={COLS}>
         <div className="dir-pin-firm">
           <SortHead label="Firm" col="name" sort={sort} dir={dir} onSort={onSort} align="left" />
@@ -270,7 +270,7 @@ function DirectoryHead({ sort, dir, onSort }) {
         <SortHead label="Max allocations" col="alloc" sort={sort} dir={dir} onSort={onSort} />
         <div className="dir-cta">
           <SortHead label="Promo" col="promo" sort={sort} dir={dir} onSort={onSort} />
-          <span className="w-full text-center text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35">
+          <span className="w-full text-center text-[0.72rem] font-semibold uppercase tracking-[0.05em] text-slate-400">
             View Firm
           </span>
         </div>

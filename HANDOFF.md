@@ -135,7 +135,7 @@ Do not put image files in the Google Sheet. Do not put a platform URL in the fir
 Two Google Sheet tabs:
 
 1. **Plans** → `scripts/firm-plans.tsv` — one row = one plan + account size.
-2. **Firms** → `scripts/firms-meta.tsv` — affiliate link, last verified, `isPopular`, **Max Allocation**, **Rating**, **Reviews**, **Country**, **Years**, **Assets**, **Platforms**, **Enabled**, **Logo**.
+2. **Firms** → `scripts/firms-meta.tsv` — affiliate link, last verified, `isPopular`, **Max Allocation**, **Rating**, **Reviews**, **Country**, **Years**, **Assets**, **Platforms**, **Enabled**, **Logo**, **Coming Soon**.
 
 After any sheet change:
 
