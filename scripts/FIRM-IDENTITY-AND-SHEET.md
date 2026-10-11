@@ -1,5 +1,7 @@
 # Sheet → site (developer notes)
 
+Scope: `/challenges`, `/firms`, `/overview`, and the Google Sheet. **Ignore `/tools` and the calculator** — unfinished, not part of this handoff.
+
 **PropFirm Sync** pushes the Google Sheet to Vercel (`POST /api/sync-firms`). That is production.
 
 `npm run dev` does **not** get that push. Locally it overlays `scripts/firms-meta.tsv`.
