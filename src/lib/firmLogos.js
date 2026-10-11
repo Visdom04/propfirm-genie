@@ -26,6 +26,7 @@ export const FIRM_LOGOS = {
   'Legends Trading': asset('Legends%20Trading.webp'),
   'Lucid Trading': asset('Lucid%20Trading.webp'),
   'My Funded Futures': asset('My%20Funded%20Futures.webp'),
+  'My Funded Perps': asset('My%20Funded%20Perps.webp'),
   'Nexgen ProTrader Funding': asset('Nexgen%20ProTrader%20Funding.webp'),
   'Phidias Propfirm': asset('Phidias%20Propfirm.webp'),
   Purdia: asset('Purdia.webp'),
@@ -44,6 +45,7 @@ export const FIRM_LOGOS = {
   Blusky: asset('Blusky.webp'),
   'FXIFY Futures': asset('fxifyfutures.webp'),
   Earn2Trade: asset('Earn2Trade.webp'),
+  'Vest Markets': asset('Vest%20Markets.webp'),
 };
 
 export function firmLogo(name, fallback) {

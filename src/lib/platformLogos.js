@@ -1,7 +1,12 @@
 const BASE = 'https://rtzkywwbsldinjgykqag.supabase.co/storage/v1/object/public/genie-assets/platforms';
+const FIRM_BASE = 'https://rtzkywwbsldinjgykqag.supabase.co/storage/v1/object/public/genie-assets/firms';
 
 function file(name) {
   return `${BASE}/${encodeURIComponent(name)}`;
+}
+
+function firmFile(name) {
+  return `${FIRM_BASE}/${encodeURIComponent(name)}`;
 }
 
 /** Maps firm.platforms names → public logo URLs. */
@@ -19,6 +24,8 @@ export const PLATFORM_LOGOS = {
   'MotiveWave Mobile': file('MotiveWave Mobile.webp'),
   MotiveWave: file('MotiveWave.webp'),
   MultiCharts: file('MultiCharts.webp'),
+  'My Funded Perps': firmFile('My Funded Perps.webp'),
+  MyFundedPerps: firmFile('My Funded Perps.webp'),
   NinjaTrader: file('NinjaTrader.webp'),
   ONYX: file('ONYX.webp'),
   Plus500: file('Plus500.webp'),
@@ -39,6 +46,8 @@ export const PLATFORM_LOGOS = {
   Volsys: file('Volsys.webp'),
   Volumetrica: file('Volumetrica.webp'),
   'Volumetrica IQC Trader': file('Volumetrica.webp'),
+  Vest: firmFile('Vest Markets.webp'),
+  'Vest Markets': firmFile('Vest Markets.webp'),
   WealthCharts: file('WealthCharts.webp'),
 };
 
@@ -56,6 +65,8 @@ export const PLATFORM_MARK = {
   ATAS: { abbr: 'A', tone: 'bg-[#3b1f2e]' },
   MotiveWave: { abbr: 'MW', tone: 'bg-[#1f3b32]' },
   'MotiveWave Mobile': { abbr: 'MW', tone: 'bg-[#1f3b32]' },
+  'My Funded Perps': { abbr: 'MP', tone: 'bg-[#0f2a22]' },
+  MyFundedPerps: { abbr: 'MP', tone: 'bg-[#0f2a22]' },
   Bookmap: { abbr: 'BM', tone: 'bg-[#3a2818]' },
   Jigsaw: { abbr: 'J', tone: 'bg-[#2c2c2c]' },
   'Sierra Chart': { abbr: 'SC', tone: 'bg-[#1e3a2f]' },
@@ -64,6 +75,8 @@ export const PLATFORM_MARK = {
   DeepDOM: { abbr: 'DD', tone: 'bg-[#1a3d4a]' },
   'Volumetrica IQC Trader': { abbr: 'VQ', tone: 'bg-[#2a3a1e]' },
   Volumetrica: { abbr: 'V', tone: 'bg-[#2a3a1e]' },
+  Vest: { abbr: 'VM', tone: 'bg-[#0d3328]' },
+  'Vest Markets': { abbr: 'VM', tone: 'bg-[#0d3328]' },
   'Project X': { abbr: 'PX', tone: 'bg-[#1e2a44]' },
   Plus500: { abbr: 'P5', tone: 'bg-[#2a2418]' },
   'CQG Web/Desktop': { abbr: 'CQ', tone: 'bg-[#3b2a58]' },
@@ -128,11 +141,15 @@ const ALIASES = {
   motivewavemobile: 'MotiveWave Mobile',
   motivewave: 'MotiveWave',
   multicharts: 'MultiCharts',
+  myfundedperps: 'My Funded Perps',
+  myfundedperp: 'My Funded Perps',
   onyx: 'ONYX',
   topstepx: 'TopstepX',
   tradesea: 'TradeSea',
   volfix: 'VolFix',
   volsys: 'Volsys',
+  vest: 'Vest Markets',
+  vestmarkets: 'Vest Markets',
   wealthcharts: 'WealthCharts',
   atas: 'ATAS',
   bookmap: 'Bookmap',
