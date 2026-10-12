@@ -67,10 +67,11 @@ Leftover: Overview gold star on the logo still needs reviews ≥ 10 **and** rati
 | `NO` / `live` | Live firm; show rating/reviews |
 | blank | Auto: Coming soon **only** if that firm has **no** Plans rows |
 
-1. Paste updated `scripts/google-apps-script/SyncToVercel.gs` into the bound script if needed, save.
-2. **PropFirm Sync → Add missing sheet columns**.
-3. Fill Coming Soon only where auto is wrong.
-4. **PropFirm Sync → Sync sheet → site now**.
+The bound Apps Script is **already updated** (`Coming Soon` is in `FIRMS_HEADERS`). Do not paste `SyncToVercel.gs` again.
+
+1. **PropFirm Sync → Add missing sheet columns** (adds Coming Soon if the tab does not have it yet).
+2. Fill Coming Soon only where auto is wrong.
+3. **PropFirm Sync → Sync sheet → site now**.
 
 `live` on Coming Soon = not coming soon. `live` on Enabled = show the firm.
 
