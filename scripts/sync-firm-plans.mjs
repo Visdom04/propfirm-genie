@@ -365,6 +365,13 @@ function applyFirmMeta(block, meta) {
   if (typeof meta.reviews === 'number') {
     next = next.replace(/reviews:\s*\d+/, `reviews: ${meta.reviews}`);
   }
+  if (typeof meta.comingSoon === 'boolean') {
+    if (/comingSoon:/.test(next)) {
+      next = next.replace(/comingSoon:\s*(true|false)/, `comingSoon: ${meta.comingSoon}`);
+    } else {
+      next = next.replace(/isPopular:\s*(true|false),/, m => `${m}\n    comingSoon: ${meta.comingSoon},`);
+    }
+  }
   if (meta.discount) {
     if (/discount:/.test(next)) {
       next = next.replace(/discount:\s*(?:'[^']*'|"[^"]*")/, `discount: ${jsString(meta.discount)}`);
