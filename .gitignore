@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Homepage crawler dumps. The starter rules copies stay in git:
+# the daily job has no disk of its own, so yesterday's page has to live here.
+/data/fineprint/pages/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

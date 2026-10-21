@@ -11,6 +11,8 @@
     "extend:firms": "node scripts/extend-firm-plans-cols.mjs",
     "sync:firms": "node scripts/sync-firm-plans.mjs",
     "data:firms": "npm run extend:firms -- --write && npm run validate:firms && npm run sync:firms",
+    "test:fineprint": "node src/lib/fineprint/diff.test.mjs && node src/lib/fineprint/fetch.test.mjs && node src/lib/fineprint/paragraphs.test.mjs",
+    "fineprint:starter": "node scripts/fineprint-starter.mjs",
     "test:firm-identity": "node scripts/lib/firm-identity.test.mjs"
   },
   "dependencies": {

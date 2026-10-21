@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-21T18:54:25.495Z",
+  "pages": [
+    {
+      "firm": "Apex Trader Funding",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "firm": "My Funded Perps",
+      "state": "unchanged"
+    },
+    {
+      "firm": "Tradeify",
+      "state": "waiting_for_rules_url"
+    },
+    {
+      "firm": "Lucid Trading",
+      "state": "waiting_for_rules_url"
+    },
+    {
+      "firm": "Vest Markets",
+      "state": "waiting_for_rules_url"
+    }
+  ]
+}
