@@ -1,25 +1,53 @@
 {
-  "checkedAt": "2026-10-21T18:54:25.495Z",
+  "checkedAt": "2026-10-23T18:24:59.285Z",
   "pages": [
     {
+      "id": "apex-eod-evaluations",
       "firm": "Apex Trader Funding",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
+      "id": "apex-eod-drawdown",
+      "firm": "Apex Trader Funding",
+      "state": "baseline"
+    },
+    {
+      "id": "apex-dll",
+      "firm": "Apex Trader Funding",
+      "state": "baseline"
+    },
+    {
+      "id": "apex-eod-payouts",
+      "firm": "Apex Trader Funding",
+      "state": "baseline"
+    },
+    {
+      "id": "apex-consistency",
+      "firm": "Apex Trader Funding",
+      "state": "baseline"
+    },
+    {
+      "id": "apex-eval-fees",
+      "firm": "Apex Trader Funding",
+      "state": "baseline"
+    },
+    {
+      "id": "mfp-rules",
       "firm": "My Funded Perps",
-      "state": "unchanged"
+      "state": "waiting_for_rules_url"
     },
     {
+      "id": "tradeify-rules",
       "firm": "Tradeify",
       "state": "waiting_for_rules_url"
     },
     {
+      "id": "lucid-rules",
       "firm": "Lucid Trading",
       "state": "waiting_for_rules_url"
     },
     {
+      "id": "vest-rules",
       "firm": "Vest Markets",
       "state": "waiting_for_rules_url"
     }

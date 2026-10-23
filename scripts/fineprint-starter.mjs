@@ -13,8 +13,8 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gateVersion, hashText, htmlToText } from '../src/lib/fineprint/diff.js';
-import { fetchFirstOk, fetchWithRetry, readerUrl } from '../src/lib/fineprint/fetch.js';
-import { pageIsBlocked, pageIsComplete, paragraphCards } from '../src/lib/fineprint/paragraphs.js';
+import { fetchFirstOk, fetchWithRetry, readerMirrors } from '../src/lib/fineprint/fetch.js';
+import { pageIsBlocked, pageIsComplete, pageIsMaintenance, paragraphCards } from '../src/lib/fineprint/paragraphs.js';
 import { readyStarterPages, STARTER_PAGES } from '../src/lib/fineprint/starter.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -47,7 +47,7 @@ async function main() {
 
   for (const page of STARTER_PAGES) {
     if (!page.ready || !page.url) {
-      report.push({ firm: page.firm, state: 'waiting_for_rules_url' });
+      report.push({ id: page.id, firm: page.firm, state: 'waiting_for_rules_url' });
       continue;
     }
     const file = path.join(pageDir, `${page.id}.txt`);
@@ -56,32 +56,39 @@ async function main() {
     const meta = await readJson(metaFile, {});
     let fetched = await fetchFirstOk([page.url]);
     let text = htmlToText(fetched.body || '');
-    if (pageIsBlocked(text) || !pageIsComplete(text) || fetched.status !== 200) {
-      const via = await fetchWithRetry(readerUrl(page.url), { retries: 1 });
-      const readerText = htmlToText(via.body || '');
-      if (via.status === 200 && via.body && !pageIsBlocked(readerText) && pageIsComplete(readerText)) {
-        fetched = { ...via, source: 'reader', watchedUrl: page.url };
-        text = readerText;
+    if (pageIsMaintenance(text) || pageIsBlocked(text) || !pageIsComplete(text) || fetched.status !== 200) {
+      for (const viaUrl of readerMirrors(page.url)) {
+        const via = await fetchWithRetry(viaUrl, { retries: 1 });
+        const readerText = htmlToText(via.body || '');
+        if (via.status === 200 && via.body && !pageIsMaintenance(readerText) && !pageIsBlocked(readerText) && pageIsComplete(readerText)) {
+          fetched = { ...via, source: 'reader', watchedUrl: page.url };
+          text = readerText;
+          break;
+        }
       }
     }
+    if (pageIsMaintenance(text)) {
+      report.push({ id: page.id, firm: page.firm, state: 'maintenance', status: fetched.status, source: fetched.source });
+      continue;
+    }
     if (pageIsBlocked(text) || fetched.status !== 200 || !fetched.body) {
-      report.push({ firm: page.firm, state: 'blocked', status: fetched.status, source: fetched.source });
+      report.push({ id: page.id, firm: page.firm, state: 'blocked', status: fetched.status, source: fetched.source });
       continue;
     }
     if (!pageIsComplete(text)) {
-      report.push({ firm: page.firm, state: 'incomplete', lines: text.split('\n').length, source: fetched.source });
+      report.push({ id: page.id, firm: page.firm, state: 'incomplete', lines: text.split('\n').length, source: fetched.source });
       continue;
     }
     const hash = hashText(text);
     if (!previous) {
       await writeFile(file, text);
       await writeFile(metaFile, JSON.stringify({ url: page.url, hash, state: 'baseline', checkedAt: detectedAt }, null, 2));
-      report.push({ firm: page.firm, state: 'baseline' });
+      report.push({ id: page.id, firm: page.firm, state: 'baseline' });
       continue;
     }
     const gate = gateVersion({ baseHash: hashText(previous), pendingHash: meta.pendingHash, hash });
     if (gate === 'unchanged') {
-      report.push({ firm: page.firm, state: 'unchanged' });
+      report.push({ id: page.id, firm: page.firm, state: 'unchanged' });
       continue;
     }
     if (gate === 'pending') {
@@ -89,7 +96,7 @@ async function main() {
       await mkdir(versionDir, { recursive: true });
       await writeFile(path.join(versionDir, `${hash}.txt`), text);
       await writeFile(metaFile, JSON.stringify({ ...meta, pendingHash: hash, pendingSince: detectedAt, state: 'pending', checkedAt: detectedAt }, null, 2));
-      report.push({ firm: page.firm, state: 'pending' });
+      report.push({ id: page.id, firm: page.firm, state: 'pending' });
       continue;
     }
     const cards = paragraphCards(previous, text, { ...page, detectedAt: meta.pendingSince || detectedAt });
@@ -102,15 +109,15 @@ async function main() {
       known.add(card.id);
       queued += 1;
     }
-    report.push({ firm: page.firm, state: queued ? 'published' : 'noise', cards: queued });
+    report.push({ id: page.id, firm: page.firm, state: queued ? 'published' : 'noise', cards: queued });
   }
 
   await writeFile(changesPath, `${JSON.stringify(changes, null, 2)}\n`);
   await writeFile(watchPath, `${JSON.stringify({ checkedAt: detectedAt, pages: report }, null, 2)}\n`);
   for (const row of report) {
-    console.log(`${row.firm}: ${row.state}${row.cards ? ` (${row.cards})` : ''}`);
+    console.log(`${row.firm}${row.id ? ` ${row.id}` : ''}: ${row.state}${row.cards ? ` (${row.cards})` : ''}`);
   }
-  console.log(`ready now: ${readyStarterPages().map(page => page.firm).join(', ')}`);
+  console.log(`ready now: ${readyStarterPages().map(page => page.id).join(', ')}`);
 }
 
 main().catch(error => {

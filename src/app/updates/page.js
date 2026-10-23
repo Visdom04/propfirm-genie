@@ -5,7 +5,7 @@ import { firmLogo } from '@/lib/firmLogos';
 import changes from '@/data/fineprint/changes.json';
 import starterWatch from '@/data/fineprint/starter-watch.json';
 
-const STARTER_FIRMS = STARTER_PAGES.map(page => page.firm);
+const STARTER_FIRMS = [...new Set(STARTER_PAGES.map(page => page.firm))];
 
 export const metadata = {
   title: 'Fine Print — a changelog for prop firm plans',
@@ -13,11 +13,11 @@ export const metadata = {
 };
 
 export default function UpdatesPage() {
-  const watchByFirm = new Map((starterWatch.pages || []).map(page => [page.firm, page]));
+  const watchById = new Map((starterWatch.pages || []).map(page => [page.id, page]));
   const pages = STARTER_PAGES.map(page => ({
     ...page,
     source: 'starter',
-    ...(watchByFirm.get(page.firm) || {}),
+    ...(watchById.get(page.id) || {}),
   }));
   const logos = Object.fromEntries(STARTER_FIRMS.map(name => [name, firmLogo(name)]));
   const cards = changes
@@ -33,8 +33,8 @@ export default function UpdatesPage() {
             A changelog for prop firm plans.
           </h1>
           <p className="m-0 max-w-[40rem] text-[1rem] leading-relaxed text-[#c5e6d6]/80">
-            Price, payout, and rule edits from {STARTER_FIRMS.length} firms. We keep the old line next to the new one,
-            and only publish when that new line is still on the firm’s own page.
+            Apex help-center pages first. Old line next to the new one. Publish only when the new line is still on the
+            firm’s page.
           </p>
         </header>
         <FinePrintBoard changes={cards} pages={pages} logos={logos} />

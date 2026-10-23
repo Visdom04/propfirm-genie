@@ -24,6 +24,11 @@ export function usableParagraph(line) {
   return !isNoiseLine(text);
 }
 
+/** The firm's own outage page. Still watched. Not a rules baseline. */
+export function pageIsMaintenance(text) {
+  return /we'll be right back|site temporarily offline|scheduled maintenance|undergoing maintenance/i.test(String(text || ''));
+}
+
 /** A challenge page or a cut-off download must not replace the stored copy. */
 export function pageIsBlocked(text) {
   return /just a moment|attention required|returned error 403|cf-browser-verification|checking your browser|enable javascript and cookies|cf-challenge/i.test(

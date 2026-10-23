@@ -1,9 +1,13 @@
 import assert from 'node:assert/strict';
-import { fetchFirstOk, isRetryable, needsReader, readerUrl } from './fetch.js';
+import { fetchFirstOk, isRetryable, needsReader, readerMirrors, readerUrl } from './fetch.js';
 import { snapshotFirmPlans } from './snapshot.js';
 import { WATCHED_FIRMS, WATCHED_PAGES } from './catalog.js';
 
 assert.equal(readerUrl('https://apextraderfunding.com/'), 'https://r.jina.ai/https://apextraderfunding.com/');
+assert.deepEqual(readerMirrors('https://apextraderfunding.com/help-center/'), [
+  'https://r.jina.ai/http://apextraderfunding.com/help-center/',
+  'https://r.jina.ai/https://apextraderfunding.com/help-center/',
+]);
 assert.equal(isRetryable(429), true);
 assert.equal(isRetryable(403), false);
 assert.equal(needsReader(403), true);

@@ -1,0 +1,54 @@
+Title: Evaluation Plan Fees and Access Explained
+URL Source: https://apextraderfunding.com/help-center/billing/evaluation-plan-fees-and-access-explained/
+Published Time: Fri, 23 Oct 2026 03:05:50 GMT
+Markdown Content:
+## Purchasing an Evaluation
+When you purchase an Evaluation, you pay a one-time fee for that specific account size and type.
+The Evaluation you select at checkout is the one you will receive. The fee cannot be refunded, transferred, or changed to a different account size or type after purchase.
+The fee is not a subscription and does not renew. Your purchase gives you access to trade that Evaluation for 30 calendar days.
+## 30-Day Access Period
+When you purchase an Evaluation, you receive 30 consecutive calendar days of access. The 30 calendar days run continuously, including weekends and holidays, and they are not based on trading days.
+At the end of the access period, the Evaluation expires automatically at 6:00 PM ET on Day 30. Once the 30-day period ends, there are no extensions, and the account is closed and expired. There are no recurring charges, and there is nothing to cancel.
+If you have not reached the profit target before expiration, the Evaluation ends, and your current balance does not carry over. There is no option to extend or continue trading the same account by making another payment. To continue, you must purchase and start a new Evaluation, which gives you a new 30-day access period with a new starting balance.
+Similarly, if the Evaluation reaches its maximum drawdown at any time during the 30-day period, it is permanently failed and closed. There are no reset options, and you would need to purchase a new Evaluation to try again.
+## No Cancellation Needed
+Unlike Legacy accounts, the new evaluation plans are not subscription-based and therefore do not need to be cancelled. The evaluation will simply expire on its access period end date, and you will not get rebilled.
+You can verify the expiration date of Intraday and EOD Evaluations by going to the Active Evaluations area of your dashboard: [Active Evals](https://dashboard.apextraderfunding.com/accounts/activeEvals)
+![Image 1](https://apextraderfunding.com/cdn-cgi/image/width=1435,height=415,fit=cover,gravity=auto,format=auto//app/uploads/zendesk-46723099925403-06e30cd275c789e0510219d56db8263e.png)
+## Passing the Evaluation
+If you reach the profit target and meet all Evaluation rules within your 30-day access period, your account is reviewed at market close (4:59:59 PM ET). If approved, the Evaluation is marked as Passed after 6 PM ET.
+Once your Evaluation is marked as Passed, you have 7 calendar days to activate your Performance Account (PA) by completing the PA Activation Fee.
+For a full timeline example (including passing on the final day of access), see:
+## **Data Fees Responsibility**
+**Am I responsible for data fees?**
+* **Level 1 Data**: Level 1 data (L1) is included in your fee; there are no additional charges.
+* **Depth of Market (DOM)**:
+* **Rithmic**: If you purchase DOM through Rithmic, it will**expire on the last day of the month**and will not auto-renew. You must manually purchase it again if needed, regardless of the purchase date.
+* **Tradovate**: If you purchase additional data feeds through Tradovate, you will need to**cancel those feeds directly through Tradovate**if you no longer wish to be billed.
+* **Wealthcharts:**If you purchase additional data feeds through Wealthcharts, you will need to**cancel those feeds directly through Wealthcharts**if you no longer wish to be billed.
+* * *
+## Frequently Asked Questions
+**Is the Evaluation a subscription?**
+No. When you purchase an Evaluation, you’re making a one-time payment for 30 days of access. There are no monthly charges and nothing renews automatically.
+**Do I need to cancel my Evaluation?**
+No cancellation is needed. The Evaluation simply expires on its own after 30 calendar days, and you won’t be charged again.
+**Do I get 30 trading days?**
+You receive 30 consecutive calendar days starting from the moment you purchase. Because this includes weekends and market holidays, the number of actual trading sessions available may vary.
+**Can I extend my Evaluation if I run out of time?**
+The 30-day access period cannot be extended. To start trading after the access period ends, you would need to purchase a new Evaluation which starts a fresh 30-day period with a new starting account balance.
+**What happens to my profit if my Evaluation expires?**
+If your Evaluation access period expires prior to reaching the profit target, the account closes and the balance does not transfer. A new Evaluation starts fresh with a new starting balance.
+**Can I change the account size or type after I purchase it?**
+No. The account size and type you choose at checkout cannot be modified later. If you want a different size or type, you would need to purchase a new Evaluation.
+**What happens if I reach the maximum drawdown?**
+If the drawdown is reached at any time during the 30-day period, the Evaluation is closed and considered failed. To try again, you simply purchase a new Evaluation.
+**Are there reset fees?**
+There are no reset fees. If an Evaluation fails, the only way to continue is by purchasing a new one.
+**When does the 7-day PA activation window begin?**
+The 7-day activation period begins when your Evaluation is officially marked as Passed after market close (after 6 PM ET), not when you hit the profit target during the day.
+**What if I reach my target profit on the last day of my Evaluation?**
+If you reach your target profit on the final day of your Evaluation, that is okay.
+As long as your account meets the target profit before the market close on the date of expiration, your Evaluation will be marked as Passed after the end-of-day reports are processed (before midnight on your access expiration date).
+Once it is marked as Passed, you will have 7 full calendar days to activate your Performance Account.
+**What happens if I don’t activate my PA within 7 days?**
+If the activation fee is not completed within 7 calendar days, the activation option expires and cannot be reopened. To qualify again, you would need to pass a new Evaluation.

@@ -1,0 +1,47 @@
+Title: EOD Evaluations
+URL Source: http://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-evaluations/
+Markdown Content:
+## EOD Evaluation at a Glance:
+* No intraday trailing drawdown
+* EOD Drawdown calculated once per day at market close and enforced following trading session
+* Daily Loss Limit (DLL) fixed during the trading session
+* Fixed position size during evaluation
+* No minimum trading days required, may pass in one trading day
+* 7 calendar days to activate PA after passing
+The End-of-Day (EOD) Evaluation is a 30-day assessment designed to measure profitability and risk management under an end-of-day drawdown model. Drawdown is calculated once per trading day at market close based on your EOD balance. Once established, the EOD Threshold is fixed and enforced during the next session.
+## Account Parameters
+Click the links below to a complete guide on each of the parameters of the EOD Evaluation accounts:
+25K 50K 100K 150K
+Profit Target$1,500$3,000$6,000$9,000
+Consistency Not Applied Not Applied Not Applied Not Applied
+Scaling Not Applied Not Applied Not Applied Not Applied
+## Passing the Evaluation
+To successfully pass an EOD Evaluation, traders must demonstrate profitability and compliance with the EOD drawdown rules. The evaluation is designed to confirm that traders can manage risk and build profit under the same EOD drawdown structure they will encounter in their funded Performance Account (PA), before additional scaling and consistency rules are introduced.
+To pass an evaluation, you must:
+* Reach the profit target
+* Not reach EOD Drawdown level at any point
+There is no minimum number of trading days required. You may pass as soon as the profit target is reached, provided all rules are respected. How to check if you passed the evaluation
+Once passed, you will have 7 calendar days to activate your corresponding EOD Performance Account (PA).
+## Trading Rules
+### 1. Do Not Breach the EOD Drawdown
+The End-of-Day (EOD) Threshold defines the lowest allowable account balance. The threshold is calculated once per day at market close, based on the account’s EOD balance. Once calculated, the threshold becomes active and enforceable during the next trading session.
+The account may experience temporary drawdowns throughout the trading session, but it may never touch the EOD Threshold level itself. If at any moment during the trading session the account balance touches or falls below the EOD Threshold, all open positions are automatically liquidated, and the evaluation is immediately failed. To continue trading, you would need to start over with a new evaluation purchase.
+### 2. No Prohibited Trading Activity
+You may not pass Evaluation Accounts by hedging them against each other. Evaluations must be completed using independent, directional trading, not offsetting positions across accounts.
+All trading must follow Apex Trader Funding risk and conduct guidelines. Engaging in prohibited activities, including hedging violations or any form of rule circumvention, will result in immediate account closure.
+* * *
+## Frequently Asked Questions
+**Can I pass the evaluation in one day?**
+Yes. You may pass as soon as the profit target is reached, provided all rules are followed.
+**Is there a time limit to reach the profit target?**
+Yes, the time limit to reach the profit target is set to 30 calendar days from the date of account purchase.
+**Does hitting the Daily Loss Limit fail my evaluation?**
+No. Reaching DLL pauses trading for the remainder of the session. Your account remains active.
+**What happens if I touch the EOD Threshold?**
+If the EOD Threshold is touched at any time, the evaluation fails.
+**When does the trading day reset?**
+The trading day resets at 6:00 PM ET.
+**Does DLL affect the EOD Threshold?**
+No. DLL and the EOD Threshold are separate rules.
+**Does the 30-day access period apply to the PA?**
+No. The 30-day access period applies to Evaluation accounts only.

@@ -1,24 +1,63 @@
 /**
- * The five firms we photograph first.
- * A firm with ready:false has no rules URL yet, so the daily run skips it.
- * Homepages are not allowed on this list.
+ * Fine Print cameras. Homepages are not allowed.
+ * Apex is live first. Other firms stay waiting until their rules URL is pinned.
  */
 export const STARTER_PAGES = [
   {
-    id: 'apex-eval-rules',
+    id: 'apex-eod-evaluations',
     firm: 'Apex Trader Funding',
     market: 'futures',
     kind: 'rules',
     ready: true,
-    url: 'https://support.apextraderfunding.com/hc/en-us/articles/31519769997083-Evaluation-Rules',
+    url: 'https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-evaluations/',
+  },
+  {
+    id: 'apex-eod-drawdown',
+    firm: 'Apex Trader Funding',
+    market: 'futures',
+    kind: 'rules',
+    ready: true,
+    url: 'https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-drawdown-explained/',
+  },
+  {
+    id: 'apex-dll',
+    firm: 'Apex Trader Funding',
+    market: 'futures',
+    kind: 'rules',
+    ready: true,
+    url: 'https://apextraderfunding.com/help-center/additional-helpful-items/daily-loss-limit-explained/',
+  },
+  {
+    id: 'apex-eod-payouts',
+    firm: 'Apex Trader Funding',
+    market: 'futures',
+    kind: 'rules',
+    ready: true,
+    url: 'https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-payouts/',
+  },
+  {
+    id: 'apex-consistency',
+    firm: 'Apex Trader Funding',
+    market: 'futures',
+    kind: 'rules',
+    ready: true,
+    url: 'https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/',
+  },
+  {
+    id: 'apex-eval-fees',
+    firm: 'Apex Trader Funding',
+    market: 'futures',
+    kind: 'pricing',
+    ready: true,
+    url: 'https://apextraderfunding.com/help-center/billing/evaluation-plan-fees-and-access-explained/',
   },
   {
     id: 'mfp-rules',
     firm: 'My Funded Perps',
     market: 'crypto',
     kind: 'rules',
-    ready: true,
-    url: 'https://docs.myfundedperpetuals.com/guides/challenges-and-rules',
+    ready: false,
+    url: '',
   },
   {
     id: 'tradeify-rules',

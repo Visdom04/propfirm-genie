@@ -1,0 +1,84 @@
+Title: EOD Payouts
+URL Source: http://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-payouts/
+Published Time: Fri, 23 Oct 2026 02:33:56 GMT
+Markdown Content:
+## EOD Payouts at a glance:
+* Up to weekly payouts with 100% payout split
+* Minimum 5 trading days that meet the required minimum daily profit
+* Minimum payout amount: $500
+* 50% consistency rule applies
+* Maximum 6 payouts per Performance Account
+Approved payouts are issued at a 100% payout split, you receive 100% of the approved payout amount. Payout eligibility depends on your account size, account type, trading activity, balance thresholds, and consistency requirements outlined below.
+## EOD Payout Requirements
+To request a payout, your EOD Performance Account must meet all of the following requirements.
+**EOD Performance Account Payouts**
+**Account Size****Min Trade Days****Min Daily Profit****Safety Net****Min Balance to Request****Max Payouts**
+25K 5$100$26,100$26,600 6
+50K 5$250$52,100$52,600 6
+100K 5$300$103,100$103,600 6
+150K 5$350$154,100$154,600 6
+## Minimum Trading Days
+Each account must complete at least 5 trading days before a payout can be requested.
+A qualifying trading day must meet the required minimum daily profit shown in the table above.
+This does not mean the days must be consecutive.
+For example, on a 25K EOD PA, at least 5 separate trading days must each show $100 or more in net profit in order to qualify.
+The earliest a payout can be requested is after 5 qualifying trading days, which allows for weekly payouts. However, there is no deadline to complete these days. You may take as long as needed to meet the requirement.
+## Minimum Daily Profit Per Account
+Each qualifying trading day must meet the minimum profit requirement for that account size and type.
+For example, on a 50K EOD PA, you need to have a minimum of 5 trading days with a minimum of $250 profit for each of the days.
+Only days that meet the minimum daily profit count toward the 5-day requirement.
+## 50% Consistency Requirement
+No single profitable trading day may account for 50% or more of total profit earned since your last approved payout. If this requirement is not satisfied, the payout request option will not be available until you reach 50% consistency.
+## Safety Net Requirement
+The Safety Net is calculated as your account’s drawdown limit plus $100. This threshold must be maintained for the lifetime of the Performance Account. Only profit above the safety net is eligible to be requested for a payout.
+## Minimum Payout Amount
+The minimum payout amount is $500 per request, regardless of account size.
+The “Minimum Balance to Request” shown in the table already reflects:
+* The starting balance
+* The Safety Net requirement
+* The $500 minimum payout amount
+If your balance is below that threshold, the payout option will not be available.
+## Maximum Payout Per Request
+Each Performance Account may receive a maximum of six payouts. Each payout number represents a sequential approved payout for that specific account. PAs are limited to the max payouts specified below, regardless of the total profit generated in the account. After 6 payouts, the PA is closed, and you will be able to obtain another PA by qualifying for another evaluation.
+**EOD Performance Account Max Payouts**
+**Payout #****$25,000****$50,000****$100,000****$150,000**
+**1**$1,000$1,500$2,000$2,500
+**2**$1,000$1,500$2,500$3,000
+**3**$1,000$2,000$2,500$3,000
+**4**$1,000$2,500$3,000$3,000
+**5**$1,000$2,500$4,000$4,000
+**6**$1,000$3,000$4,000$5,000
+## How to Submit a Payout Request
+For a step-by-step guide on how to check your payout eligibility and request a payout, please see:
+* * *
+## Frequently Asked Questions
+**How soon can I request a payout?**
+The earliest you can request a payout is after completing 5 qualifying trading days.
+A qualifying day is one that meets the required minimum daily profit for your account size and type. These days do not need to be consecutive. If you complete five qualifying days in one week, you may request a payout that same week.
+There is no deadline to complete them. You can take as long as needed.
+**Do the 5 trading days have to be consecutive?**
+No, the five qualifying days do not need to be back-to-back. They simply need to be five separate trading days that each meet the required minimum daily profit for your account.
+**Does each of the 5 days have to make the same profit?**
+Each qualifying day must meet the minimum daily profit requirement for your account.
+For example, on a $25K account, each qualifying day must generate at least $100 in net profit. It does not matter if other days are larger or smaller, only that five days meet or exceed the required amount.
+**Is there a time limit to complete the payout requirements?**
+No, there is no expiration or deadline to complete your five qualifying days. You may take as long as needed, provided your account remains active and in good standing.
+**What is the minimum payout amount?**
+The minimum payout amount is $500 per request for all account sizes.
+Your account must meet the minimum balance shown in the payout table, which already accounts for the Safety Net requirement and the $500 minimum payout.
+**What is the Safety Net?**
+The Safety Net is your account’s drawdown limit plus $100.
+Your balance must remain above this threshold in order to request a payout. The Safety Net remains in place for the lifetime of the Performance Account and does not disappear after your first payout.
+**What is the 50% consistency rule?**
+The 50% consistency rule requires that no single profitable trading day account for 50% or more of your total profit since your last approved payout.
+If one day represents too large a portion of your total profit, the payout request option will not appear. The account remains active, and you may continue trading until the percentage falls below 50%.
+See the full Consistency Rule article for calculation details
+**Can I keep trading after submitting a payout request?**
+Yes, You may continue trading immediately after submitting a payout request. There is no need to pause trading.
+However, you should trade as if the requested payout amount has already been removed from your balance. If your balance falls below the required threshold after submitting a request, the payout will be denied automatically.
+**What happens if my payout is denied?**
+If a payout request is denied due to eligibility requirements not being met, your account remains active.
+You may continue trading and submit a new payout request once all requirements are satisfied again.
+**How many payouts can I receive?**
+Each Performance Account may receive a maximum of six approved payouts.
+After the sixth payout, the account completes its payout cycle.

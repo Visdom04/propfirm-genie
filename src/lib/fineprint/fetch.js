@@ -15,6 +15,13 @@ export function readerUrl(url) {
   return `https://r.jina.ai/${url}`;
 }
 
+/** https://r.jina.ai/https://… often 403s. The http:// form can still return the article. */
+export function readerMirrors(url) {
+  const httpsForm = readerUrl(url);
+  const httpForm = `https://r.jina.ai/${String(url).replace(/^https:\/\//i, 'http://')}`;
+  return httpsForm === httpForm ? [httpsForm] : [httpForm, httpsForm];
+}
+
 export function isRetryable(status) {
   return status === 0 || status === 429 || status === 502 || status === 503;
 }
@@ -80,11 +87,14 @@ export async function fetchFirstOk(urls, { useReader = true, fetchFn = fetch, re
   }
   if (useReader && blocked) {
     for (const url of list) {
-      const via = await fetchWithRetry(readerUrl(url), { fetchFn, retries: 1, delayMs });
-      if (via.status === 200 && via.body && via.body.length > 400) {
-        return { ...via, source: 'reader', watchedUrl: url };
+      for (const viaUrl of readerMirrors(url)) {
+        const via = await fetchWithRetry(viaUrl, { fetchFn, retries: 1, delayMs });
+        const shell = /just a moment|attention required|enable javascript and cookies/i.test(via.body || '');
+        if (via.status === 200 && via.body && via.body.length > 400 && !shell) {
+          return { ...via, source: 'reader', watchedUrl: url };
+        }
+        last = { ...via, source: 'reader', watchedUrl: url };
       }
-      last = { ...via, source: 'reader', watchedUrl: url };
     }
   }
   return { ...last, source: 'failed' };

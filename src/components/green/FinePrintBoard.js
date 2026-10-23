@@ -472,11 +472,15 @@ function Hunk({ hunk, mode }) {
 }
 
 function starterStatus(firmPages) {
-  const state = firmPages.find(item => item.state)?.state;
-  if (state === 'baseline' || state === 'unchanged') return 'Watching';
-  if (state === 'pending') return 'Checking a change';
-  if (state === 'waiting_for_rules_url') return 'Rules page not set';
-  if (state === 'blocked' || state === 'incomplete') return 'Page blocked';
+  const states = firmPages.map(item => item.state).filter(Boolean);
+  if (states.includes('pending')) return 'Checking a change';
+  if (states.some(state => state === 'baseline' || state === 'unchanged' || state === 'changed' || state === 'noise')) {
+    if (states.some(state => state === 'blocked' || state === 'incomplete')) return 'Watching. Some pages blocked.';
+    return 'Watching';
+  }
+  if (states.includes('waiting_for_rules_url')) return 'Rules page not set';
+  if (states.includes('maintenance')) return 'Firm site is down. Still watching.';
+  if (states.some(state => state === 'blocked' || state === 'incomplete')) return 'Page blocked';
   return 'Not checked yet';
 }
 
