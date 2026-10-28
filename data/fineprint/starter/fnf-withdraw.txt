@@ -1,0 +1,96 @@
+-
+How can I withdraw my Performance Reward? | FundedNext Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Go to Website العربية Português do Brasil English Français Deutsch हिन्दी Italiano 日本語 fa-IR 简体中文 Español ภาษาไทย Türkçe Oʻzbekcha English
+Go to Website العربية Português do Brasil English Français Deutsch हिन्दी Italiano 日本語 fa-IR 简体中文 Español ภาษาไทย Türkçe Oʻzbekcha English
+Search for articles...
+- All Collections
+- Withdrawal & Rewards
+- How can I withdraw my Performance Reward?
+How can I withdraw my Performance Reward?
+Updated over 2 weeks ago
+Table of contents
+TL;DR: To withdraw your Performance Reward , confirm you're eligible, transfer your profit to your wallet from the Account Overview page, check your account model's cycle/consistency rule/Benchmark Day (or buffer) rules, then complete the withdrawal from the "Payout" section using your preferred method. The minimum withdrawal is $250 , and withdrawals can't be requested before the End of Day once you've started trading that day.
+To withdraw a Performance Reward from your FundedNext Account , follow these steps.
+Step 1: Check your eligibility
+Make sure you meet the Performance Reward eligibility criteria for your model:
+🔗 Legacy FundedNext Account
+🔗 Flex FundedNext Account
+🔗 Rapid Pro FundedNext Account
+🔗 Rapid Daily FundedNext Account
+🔗 Direct FundedNext Account
+​
+Step 2: Transfer profit to your wallet
+- From the "Account Overview" page, click "Proceed to Withdraw" if you're eligible.
+- Enter the amount you want to transfer — it must be at least $250 .
+- Click "Transfer Wallet" to move the amount to the "Payout" section.
+Note: For Legacy and Flex FundedNext Accounts, if your total profit is less than $500 , the "Proceed to Withdraw" button stays locked until you meet the minimum.
+Step 3: Check your model's withdrawal rules
+Legacy FundedNext Account:
+- With 30 or fewer Benchmark Days , you can withdraw up to 50% of your simulated profit , capped at 3,000(25K) or 6,000(50K and $100K) .
+- After 30 Benchmark Days , you can withdraw 100% — both the 50% limit and the cap are removed. (Which will breach the account)
+- Reward Share: 80%.
+Flex FundedNext Account:
+- After 5 Benchmark Days , you can withdraw up to 50% of your simulated profit (minimum $250), capped at 1,500(50K) , 2,500(100K) , or 4,000(150K) .
+- After 5 withdrawal the account gets concluded.
+- You can move toward live trading as early as 1 5 withdrawals from Flex Account.
+- Reward Share: 95%.
+Rapid Pro FundedNext Account:
+- Once you meet the 40% Consistency Rule and have $500 profit in the cycle, you can withdraw a maximum of 800(25K) , 1,200(50K) , or 2,500(100K) .
+- Reward Share: 90%.
+Rapid Daily FundedNext Account:
+- Once your EOD balance reaches the buffer level ( $26,100 / $52,100 / $102,600 ) with $500 profit in the cycle, any profit above the buffer is withdrawable, up to 800(25K) , 1,200(50K) , or 2,500(100K) .
+- Reward Share: 90%.
+Direct FundedNext Account:
+- Once you meet the 20% Perpetual Consistency Rule
+- Your EOD balance reaches the buffer level ( $52,100 )
+- $800 profit in the cycle, you can withdraw a maximum of 1,200 .
+- Reward Share: 90%.
+If you request more than your model's maximum, you'll receive an error. Once you've started trading on a given day, no withdrawal can be requested before the End of Day (EOD).
+Step 4: Withdraw from the "Payout" section
+After transferring to your wallet, complete your withdrawal from the "Payout" section by selecting your preferred withdrawal method.
+What are the necessary adjustments after the withdrawal of the first Performance Reward?
+- If this is your first Performance Reward, your maximum loss limit will be set to your initial account balance. For example, if your account size is $50,000, after the withdrawal of your Performance Reward (Rapid & Legacy), the Maximum Loss Limit will also lock to $50,000.
+- For the Bolt FundedNext Account, the maximum loss limit will be set to $50,100 after the first withdrawal of the Performance Reward.
+- For the Flex FundedNext Account, the maximum loss limit will be set to $50,100, $100,100 & $150,100 after the first withdrawal of the Performance Reward.
+- For Rapid Pro and Daily FundedNext Account, the maximum loss limit will be set to $25,100, $50,100 & $100,100 after the first withdrawal of the Performance Reward.
+- For the Direct Account, the maximum loss limit will be set to $50,100 after the first withdrawal of the Performance Reward.
+Note: Effective 10 July 2026, Rapid and Bolt accounts will no longer be available for new purchases or account resets.
+🔗 See: What will be my Reward Share from the Futures FundedNext Account?
+Related Articles
+- FundedNext Futures Rapid Pro FundedNext Account: All Rules
+- FundedNext Futures Rapid Daily FundedNext Account All Rules
+- FundedNext Futures Flex Challenge All Rules
+- FundedNext Futures Flex FundedNext Account All Rules
+- FundedNext Futures Direct Account: All Rules
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+-
+-
+-
+-
+-

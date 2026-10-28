@@ -1,0 +1,62 @@
+-
+) -->
+Qualification Account — Help Center — Bulenox
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+BULENOX - applies the best available discount to Qualification, Fast Track, and Momentum Qualification Accounts
+Home Accounts & Pricing FAQ Help Center Contact En
+Login
+Help Center How can we help?
+General Information Qualification Account Fast Track Account Momentum Account Master Account Funded Account Connection Payment Warning General Information Qualification Account Fast Track Account Momentum Account Master Account Funded Account Connection Payment Warning Qualification Account
+The Qualification Account is where your journey with Bulenox begins. You trade in live market conditions, at your own pace, without risking your own capital, and once you reach the profit target, the path to a Master Account opens.
+Rules Copy link
+Everything you need to know before your first trade
+Trading Days
+There is no minimum trading day requirement to pass the Qualification Account. You can complete the challenge in as little as one day.
+- A trader is not required to trade every day.
+- A trading day is counted only when a trader opens at least one trade.
+Trading Hours
+The trading day starts at 5:00 PM and ends at 4:00 PM the following day, North American Central Time (CT). Weekends and public holidays are not counted as trading days. All positions must be closed by 3:59 PM (CT).
+⚠️ Holding positions overnight is strictly prohibited.
+Maximum Position Size
+The maximum position size depends on the account type you select. Traders may hold several positions at the same time.
+Contracts
+Standard and micro contracts can be traded simultaneously. One standard contract is equivalent to ten micro contracts.
+Trade Copiers & Third-Party Software
+If a trader chooses to connect to Rithmic through a Third-Party API or Trader Composite Software, a $100 monthly fee applies.
+Third-Party API and Trader Composite Software are provided by independent companies and are not operated or controlled by Bulenox. We are not responsible for their availability, performance, outages, malfunctions, or for any interruptions or losses resulting from their use.
+Objective
+Your objective is to reach the profit target and qualify for a Master Account.
+🎯 One clear goal, no time pressure, and full control over your own schedule.
+Instruments & Commissions
+Status: Professional or Non-Professional
+Option 1 — No Scaling Account (Trailing Drawdown)
+Option 2 — EOD Account
+Commissions
+Reset
+Minimum number of trading days
+Multiple Accounts
+- Home
+- Accounts & Pricing
+- FAQ
+- Help Center
+- Contact
+- Privacy Policy
+- Terms of Use
+- Risk Disclosure
+- Affiliate Program
+Bulenox LLC
+1201 N Orange St, Ste 7149
+Wilmington, DE 19801
+Futures and options trading has large potential rewards, but also large potential risk. You must be aware of the risks and be willing to accept them in order to invest in the futures and options markets. Don’t trade with money you can’t afford to lose. This website is neither a solicitation nor an offer to buy or sell futures and options. No representation is being made that any account will or is likely to achieve profits or losses similar to those discussed on this website. The past performance of any trading system or methodology is not necessarily indicative of future results.
+© 2026 bulenox.com . All rights reserved. Designed by

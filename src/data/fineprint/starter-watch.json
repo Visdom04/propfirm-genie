@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-26T18:51:39.208Z",
+  "checkedAt": "2026-10-28T12:59:58.070Z",
   "pages": [
     {
       "id": "apex-eod-evaluations",
@@ -18,7 +18,9 @@
     {
       "id": "apex-eod-pa",
       "firm": "Apex Trader Funding",
-      "state": "baseline"
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
     },
     {
       "id": "apex-eod-payouts",
@@ -35,6 +37,11 @@
       "source": "failed"
     },
     {
+      "id": "apex-intraday-evaluations-index",
+      "firm": "Apex Trader Funding",
+      "state": "baseline"
+    },
+    {
       "id": "apex-intraday-drawdown",
       "firm": "Apex Trader Funding",
       "state": "blocked",
@@ -44,9 +51,7 @@
     {
       "id": "apex-intraday-pa",
       "firm": "Apex Trader Funding",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "apex-intraday-payouts",
@@ -59,14 +64,14 @@
       "id": "apex-dll",
       "firm": "Apex Trader Funding",
       "state": "blocked",
-      "status": 200,
+      "status": 429,
       "source": "failed"
     },
     {
       "id": "apex-consistency",
       "firm": "Apex Trader Funding",
       "state": "blocked",
-      "status": 200,
+      "status": 429,
       "source": "failed"
     },
     {
@@ -80,13 +85,69 @@
       "id": "apex-pa-activation",
       "firm": "Apex Trader Funding",
       "state": "blocked",
-      "status": 429,
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "apex-no-activation-eval",
+      "firm": "Apex Trader Funding",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "apex-scaling-pa",
+      "firm": "Apex Trader Funding",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "apex-eval-contracts",
+      "firm": "Apex Trader Funding",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "apex-request-payout",
+      "firm": "Apex Trader Funding",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "apex-inactivity",
+      "firm": "Apex Trader Funding",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "apex-prohibited",
+      "firm": "Apex Trader Funding",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "apex-hours",
+      "firm": "Apex Trader Funding",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "apex-pa-cap",
+      "firm": "Apex Trader Funding",
+      "state": "blocked",
+      "status": 200,
       "source": "failed"
     },
     {
       "id": "mfp-rules",
       "firm": "My Funded Perps",
-      "state": "unchanged"
+      "state": "pending"
     },
     {
       "id": "mfp-elite",
@@ -107,7 +168,7 @@
       "id": "tradeify-rules",
       "firm": "Tradeify",
       "state": "blocked",
-      "status": 200,
+      "status": 429,
       "source": "failed"
     },
     {
@@ -149,7 +210,7 @@
       "id": "tradeify-dll",
       "firm": "Tradeify",
       "state": "blocked",
-      "status": 429,
+      "status": 200,
       "source": "failed"
     },
     {
@@ -197,22 +258,22 @@
     {
       "id": "lucid-eval",
       "firm": "Lucid Trading",
-      "state": "pending"
+      "state": "baseline"
     },
     {
       "id": "lucid-drawdown",
       "firm": "Lucid Trading",
-      "state": "pending"
+      "state": "baseline"
     },
     {
       "id": "lucid-dll",
       "firm": "Lucid Trading",
-      "state": "pending"
+      "state": "baseline"
     },
     {
       "id": "lucid-payouts",
       "firm": "Lucid Trading",
-      "state": "pending"
+      "state": "baseline"
     },
     {
       "id": "lucid-pro-consistency",
@@ -272,17 +333,167 @@
     {
       "id": "vest-account-tiers",
       "firm": "Vest Markets",
-      "state": "unchanged"
+      "state": "baseline"
     },
     {
       "id": "vest-loss-limits",
       "firm": "Vest Markets",
-      "state": "unchanged"
+      "state": "baseline"
     },
     {
       "id": "vest-claiming-profit",
       "firm": "Vest Markets",
-      "state": "unchanged"
+      "state": "baseline"
+    },
+    {
+      "id": "tpt-rule-1",
+      "firm": "Take Profit Trader",
+      "state": "baseline"
+    },
+    {
+      "id": "tpt-rule-3",
+      "firm": "Take Profit Trader",
+      "state": "baseline"
+    },
+    {
+      "id": "tpt-rule-5",
+      "firm": "Take Profit Trader",
+      "state": "baseline"
+    },
+    {
+      "id": "tpt-pro-rules",
+      "firm": "Take Profit Trader",
+      "state": "baseline"
+    },
+    {
+      "id": "tpt-multi-accounts",
+      "firm": "Take Profit Trader",
+      "state": "baseline"
+    },
+    {
+      "id": "tpt-payout-system",
+      "firm": "Take Profit Trader",
+      "state": "baseline"
+    },
+    {
+      "id": "tpt-profit-split",
+      "firm": "Take Profit Trader",
+      "state": "baseline"
+    },
+    {
+      "id": "tpt-subscriptions",
+      "firm": "Take Profit Trader",
+      "state": "baseline"
+    },
+    {
+      "id": "tpt-sub-nav",
+      "firm": "Take Profit Trader",
+      "state": "baseline"
+    },
+    {
+      "id": "tpt-commissions",
+      "firm": "Take Profit Trader",
+      "state": "baseline"
+    },
+    {
+      "id": "fnf-dll",
+      "firm": "FundedNext Futures",
+      "state": "baseline"
+    },
+    {
+      "id": "fnf-consistency",
+      "firm": "FundedNext Futures",
+      "state": "baseline"
+    },
+    {
+      "id": "fnf-flex-rules",
+      "firm": "FundedNext Futures",
+      "state": "baseline"
+    },
+    {
+      "id": "fnf-prohibited",
+      "firm": "FundedNext Futures",
+      "state": "baseline"
+    },
+    {
+      "id": "fnf-prices",
+      "firm": "FundedNext Futures",
+      "state": "baseline"
+    },
+    {
+      "id": "fnf-reward-share",
+      "firm": "FundedNext Futures",
+      "state": "baseline"
+    },
+    {
+      "id": "fnf-withdraw",
+      "firm": "FundedNext Futures",
+      "state": "baseline"
+    },
+    {
+      "id": "fnf-flex-reward",
+      "firm": "FundedNext Futures",
+      "state": "baseline"
+    },
+    {
+      "id": "legends-eval",
+      "firm": "Legends Trading",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "legends-eod-update",
+      "firm": "Legends Trading",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "legends-master-rules",
+      "firm": "Legends Trading",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "legends-payouts",
+      "firm": "Legends Trading",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "legends-master-fees",
+      "firm": "Legends Trading",
+      "state": "blocked",
+      "status": 200,
+      "source": "failed"
+    },
+    {
+      "id": "bulenox-qualification",
+      "firm": "Bulenox",
+      "state": "baseline"
+    },
+    {
+      "id": "bulenox-master",
+      "firm": "Bulenox",
+      "state": "baseline"
+    },
+    {
+      "id": "bulenox-fast-track",
+      "firm": "Bulenox",
+      "state": "baseline"
+    },
+    {
+      "id": "bulenox-momentum",
+      "firm": "Bulenox",
+      "state": "baseline"
+    },
+    {
+      "id": "bulenox-pricing",
+      "firm": "Bulenox",
+      "state": "baseline"
     }
   ]
 }

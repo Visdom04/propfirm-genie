@@ -1,0 +1,57 @@
+-
+) -->
+Momentum Account — Help Center — Bulenox
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+BULENOX - applies the best available discount to Qualification, Fast Track, and Momentum Qualification Accounts
+Home Accounts & Pricing FAQ Help Center Contact En
+Login
+Help Center How can we help?
+General Information Qualification Account Fast Track Account Momentum Account Master Account Funded Account Connection Payment Warning General Information Qualification Account Fast Track Account Momentum Account Master Account Funded Account Connection Payment Warning Momentum Account
+One payment covers both stages. Pass Momentum once and your Momentum Master is activated free of charge — there is no activation fee.
+Momentum qualification is valid for 30 calendar days from activation.
+Account Parameters Copy link
+Option 1 (Trailing Drawdown)
+Account Size One-Time Fee Profit Target Trailing Drawdown Contract Limit
+$25,000 $94 $1,500 $1,000 3 minis (30 micros)
+$50,000 $143 $3,000 $2,000 7 minis (70 micros)
+$100,000 $248 $6,000 $3,000 12 minis (120 micros)
+$150,000 $358 $9,000 $4,500 15 minis (150 micros)
+Option 2 (EOD Drawdown / No scaling)
+Account Size One-Time Fee Profit Target EOD Drawdown Daily Loss Limit Contract Limit
+$25,000 $94 $1,500 $1,000 $600 2 minis (20 micros)
+$50,000 $143 $3,000 $2,000 $1,200 4 minis (40 micros)
+$100,000 $248 $6,000 $3,000 $2,500 8 minis (80 micros)
+$150,000 $358 $9,000 $4,500 $3,300 12 minis (120 micros)
+Rules
+Momentum Master — Activation
+Momentum Master — Payout Eligibility
+Qualifying Profitable Days
+35% Consistency Rule
+Minimum Balance and Request
+Payout Caps
+Subsequent Payouts
+- Home
+- Accounts & Pricing
+- FAQ
+- Help Center
+- Contact
+- Privacy Policy
+- Terms of Use
+- Risk Disclosure
+- Affiliate Program
+Bulenox LLC
+1201 N Orange St, Ste 7149
+Wilmington, DE 19801
+Futures and options trading has large potential rewards, but also large potential risk. You must be aware of the risks and be willing to accept them in order to invest in the futures and options markets. Don’t trade with money you can’t afford to lose. This website is neither a solicitation nor an offer to buy or sell futures and options. No representation is being made that any account will or is likely to achieve profits or losses similar to those discussed on this website. The past performance of any trading system or methodology is not necessarily indicative of future results.
+© 2026 bulenox.com . All rights reserved. Designed by

@@ -1,0 +1,82 @@
+-
+What will be my Reward Share from the Futures FundedNext Account? | FundedNext Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Go to Website العربية Português do Brasil English Français Deutsch हिन्दी Italiano 日本語 fa-IR 简体中文 Español ภาษาไทย Türkçe Oʻzbekcha English
+Go to Website العربية Português do Brasil English Français Deutsch हिन्दी Italiano 日本語 fa-IR 简体中文 Español ภาษาไทย Türkçe Oʻzbekcha English
+Search for articles...
+- All Collections
+- Withdrawal & Rewards
+- What will be my Reward Share from the Futures FundedNext Account?
+What will be my Reward Share from the Futures FundedNext Account?
+Updated over 2 weeks ago
+Table of contents
+TL;DR: After receiving a FundedNext Account of any model and size, traders are eligible for a Reward Share up to 95% based on the account model and on the withdrawn portion of their account growth. The Performance Reward is calculated based on the approved withdrawal amount. 90% for Rapid Pro & Daily and Direct, and 95% for the Flex. Challenges subject to the applicable withdrawal limits and rules .
+For the Futures Flex Account , traders get a 95% Reward Share , allowing them to retain a higher portion of their profits.
+After receiving a Rapid, Legacy , or Bolt FundedNext Account , traders become eligible for an 80% Reward Share on their account growth.
+For the Futures Direct Account , traders receive a 90% Reward Share from the beginning.
+In Rapid Pro and Daily FundedNext Account , traders will receive a 90% Reward Share from the beginning.
+Example 1:
+A trader with a $25K Legacy FundedNext Account makes $3,000 growth and decides to withdraw $1,500 before 30 Benchmark Days (the 50% amount, which is under the cap).
+Account balance after withdrawal: $26,500
+Reward Share applied on withdrawal: $1,500 × 80% = $1,200
+Example 2:
+A trader with a $25K Rapid FundedNext Account makes $1,500 growth and decides to withdraw $800 (maximum withdrawal amount).
+Account balance after withdrawal: $25,700
+Reward Share applied on withdrawal: $800 × 80% = $640
+Example 3:
+A trader with a $50K Bolt FundedNext Account makes $3,000 growth and decides to withdraw $1,200 (maximum withdrawal amount).
+Account balance after withdrawal: $51,800
+Reward Share applied on withdrawal: $1,200 × 80% = $960
+Example 4:
+A trader with a $50K Flex FundedNext Account with a 95% Reward Share makes $3,000 growth and decides to withdraw $1,500 (the 50% amount, which is under the limit).
+Account balance after withdrawal: $51,500
+Reward Share applied on withdrawal: $1,500 × 95% = $1,425
+Example 5:
+A trader with a $50K Rapid Pro FundedNext Account makes $3,000 growth and decides to withdraw $1,200 (maximum withdrawal limit).
+Account balance after withdrawal: $51,800
+Reward Share applied on withdrawal: $1,200 × 90% = $1,080
+Example 6:
+A trader with a $50K Rapid Daily FundedNext Account makes $3,000 growth and decides to withdraw $900 (above the buffer).
+Account balance after withdrawal: $52,100
+Reward Share applied on withdrawal: $900 × 90% = $810
+Example 7:
+A trader with a $50K Direct Account makes $3,000 growth and decides to withdraw $900 (above the buffer).
+Account balance after withdrawal: $52,100
+Reward Share applied on withdrawal: $900 × 90% = $810
+Related Articles
+- FundedNext Futures Legacy FundedNext Account: All Rules
+- What is FundedNext Futures Rapid Pro & Daily Challenge?
+- FundedNext Futures Rapid Pro FundedNext Account: All Rules
+- FundedNext Futures Flex FundedNext Account All Rules
+- How can I withdraw my Performance Reward?
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+-
+-
+-
+-
+-

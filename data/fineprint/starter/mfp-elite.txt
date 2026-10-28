@@ -1,0 +1,372 @@
+Elite Accounts - MyFundedPerps Documentation
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Documentation Index
+Fetch the complete documentation index at: /llms.txt
+Use this file to discover all available pages before exploring further.
+Skip to main content
+MyFundedPerps Documentation home page
+Search rules, guides, and API...
+⌘ K
+- Trading Platform
+- Create API Key
+- Create API Key
+Search...
+Navigation
+Guides
+Elite Accounts
+Buyers Guide
+Developers Guide
+Overview
+- MyFundedPerps Documentation
+Guides
+- Guides
+- Getting Started
+- Trading Guide
+- Tradable Assets
+- Asset Exposure Limits
+- Trading Calculators
+- Custom Scripts
+- Commissions and Fees
+- Trading Journal
+- Challenges and Rules
+- Elite Accounts
+- Competitions
+- Launch competition
+- October competition
+- Copy Trading Guide
+- Affiliate Program
+- Second Chance Offer
+- Troubleshooting and FAQ
+- Glossary
+Challenge Lifecycle
+- Challenge Lifecycle
+- Buying a Challenge
+- Evaluation Progress
+- Breaches and Next Steps
+- Becoming Funded
+- Payouts
+- Billing and Rewards
+Settings
+- Settings
+- Profile Settings
+- Security Settings
+- Public Profile Settings
+- Language Settings
+- Appearance Settings
+- Streamer Mode Settings
+- Trading Settings
+- Copy Trading Settings
+- API Key Settings
+- Notification Settings
+- Certificates
+- Purchase History
+On this page
+Back to top
+- Sizes and prices
+- No DLL purchase limit
+- DLL options
+- Elite prize accounts
+- Evaluation rules
+- How static drawdown works
+- Leverage and exposure
+- Fees
+- Accounts per order
+- Sim Funded
+- High-impact news restriction
+- No Live stage
+- Funded allocation
+- Payouts
+- Withdrawals and your loss cushion
+- Lifetime payout cap
+Guides
+Elite Accounts
+Copy page Copy page
+Elite plan sizes, prices, and daily loss limit options, evaluation and Sim Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts.
+Copy page Copy page
+Elite is a 1-Step evaluation with a static maximum loss limit, no consistency
+rule, and boosted leverage on NAS100, SP500, US30, gold, and oil. It comes in $5K, $10K,
+$25K, and $50K account sizes, and every size has two options: 3% DLL ,
+which adds a 3% daily loss limit at a lower price, or No DLL , which has no
+daily loss limit. Passing leads to a Sim Funded Elite account with the same
+rules. Open the
+challenge selector and choose the
+Elite tab to buy.
+​
+Sizes and prices
+Detail Elite $5K Elite $10K Elite $25K Elite $50K
+Starting balance $5,000 $10,000 $25,000 $50,000
+One-time price, 3% DLL $49 $95 $249 $495
+One-time price, No DLL $99 $194 $482 $965
+With 90/10 upgrade, 3% DLL $59 $114 $299 $594
+With 90/10 upgrade, No DLL $119 $233 $578 $1,158
+Funded accounts at the funded cap 20 10 4 2
+These are list prices. Checkout shows the current price and any discount before
+you pay. The 90/10 upgrade is optional and chosen at checkout; its rows show the
+total price with the upgrade. The funded count row assumes every account is the
+same size; see Funded allocation for mixed sizes.
+You can hold up to $100,000 of active Elite evaluations , in any mix of
+sizes and both DLL options, within the
+per-order account limits . Checkout blocks an Elite order
+that would go over it. When an Elite evaluation passes or fails, its size no
+longer counts. See
+Maximum active evaluation allocation .
+Elite No DLL purchases also have a limit of $250,000 in total account size in
+any rolling 7-day period; see No DLL purchase limit .
+An Elite No DLL order must fit both limits. Funded Elite accounts have their
+own limit; see
+Funded allocation .
+​
+No DLL purchase limit
+Elite No DLL evaluations have a weekly purchase limit of $250,000 in total
+account size per rolling 7-day period. The limit covers all Elite No DLL
+account sizes combined, so you could buy ten $ 25K accounts, five $50K accounts,
+or any mix totaling $ 250,000 or less within any 7 days. An order that brings
+the total to exactly $250,000 is allowed.
+- The limit counts account size, not price or number of accounts.
+- Each purchase counts for 7 days (168 hours) from the time you bought it. You
+can buy again as earlier purchases roll out of the window; there is no fixed
+weekly reset.
+- Failed, reset, or deleted accounts still count until 7 days after their
+purchase.
+- Refunded purchases still count until 7 days after their purchase. A refund
+does not return any of the limit.
+- Failed or abandoned payments do not count. If a payment marked failed later
+goes through, that purchase counts for 7 days from when it completed.
+- Elite 3% DLL accounts are unaffected and stay under their usual limits.
+If an order would go over the limit, checkout does not take payment. It shows
+how much you bought in the last 7 days, how much remains, a countdown, and the
+exact date and time in your timezone when the selected order fits. It also
+offers a Try Elite 3% DLL button that switches checkout to the same size
+with the 3% daily loss limit. Most traders buy well under this amount in a
+typical week and will not notice any difference.
+​
+DLL options
+Elite pricing cards start with 3% DLL enabled and keep that option until
+you change it. Turn off the daily loss limit toggle on a card to choose
+No DLL for that size. You can also choose the option at checkout. The two options
+are identical except for the daily loss limit:
+Option Daily loss limit Everything else
+3% DLL 3% of starting balance, measured from the day’s starting equity Same Elite rules on this page
+No DLL None Same Elite rules on this page
+A 3% DLL account follows the same 3% rule as Select, Prime, and Signature:
+- The floor is the day’s starting equity, including open-position profit or
+loss, minus 3% of the starting balance. On an Elite $50K account the
+allowance is $1,500.
+- Equity that reaches the floor breaches the account, fails it, and closes its
+positions.
+- The day boundary matches the other plans; see
+Challenges and Rules .
+- The rule applies in both the evaluation and Sim Funded stages, together with
+the static maximum loss limit.
+The option is part of the account you buy. You cannot add or remove the daily
+loss limit after purchase.
+​
+Elite prize accounts
+Elite accounts can also be won in giveaways. A won Elite account follows the
+same Elite rules as a bought No DLL account of its size, with no daily loss
+limit. Giveaways can also award a
+$1K Elite account, which cannot be bought. On a $1K Elite account the profit
+target is $100, the maximum loss limit is $50, and the minimum payout
+request is $30 before the split ($24 to you on 80/20).
+​
+Evaluation rules
+Rule Elite $5K Elite $10K Elite $25K Elite $50K
+Profit target (10%) $500 $1,000 $2,500 $5,000
+Maximum loss limit (5%) $250 $500 $1,250 $2,500
+Static loss threshold $4,750 $9,500 $23,750 $47,500
+Drawdown model Static Static Static Static
+Daily loss limit, 3% DLL $150 $300 $750 $1,500
+Daily loss limit, No DLL None None None None
+Consistency rule None None None None
+The profit target and the maximum loss limit (MLL) use account equity,
+including open-position profit or loss. There is no minimum trading-day count
+or evaluation time limit.
+The plan adds no evaluation rules beyond this table. Platform-wide rules still
+apply, including the trading policy , prohibited trading
+activity, account inactivity, market exposure caps, and the platform terms.
+​
+How static drawdown works
+The loss threshold is the starting balance minus the MLL, and it is fixed for
+the life of the account. It does not trail profits, intraday highs, or
+end-of-day highs.
+For example, an Elite $25K account has a $1,250 MLL, so its loss threshold is
+$23,750. If equity grows to $27,000, the threshold stays at $23,750, leaving
+$3,250 of room. Equity that reaches $23,750 breaches the account, fails it,
+and closes its positions.
+​
+Leverage and exposure
+Elite accounts use boosted leverage on NAS100, SP500, US30, gold, and oil. Each cap
+is a multiple of the account’s starting balance and applies to each account
+separately, in both the evaluation and Sim Funded stages:
+Markets Maximum leverage Elite $5K exposure Elite $10K exposure Elite $25K exposure Elite $50K exposure
+NAS100, SP500 40x $200,000 $400,000 $1,000,000 $2,000,000
+US30 25x $125,000 $250,000 $625,000 $1,250,000
+Gold (XAU) 20x $100,000 $200,000 $500,000 $1,000,000
+Oil (CL, BRENTOIL) 10x $50,000 $100,000 $250,000 $500,000
+- Exposure is the full value of your open positions in that group, long plus
+short. NAS100 and SP500 share the indices cap, US30 has its own cap, and CL
+and BRENTOIL share the oil cap. Positions still open on the retiring GOLD
+market count toward the gold cap together with XAU.
+- The account’s total exposure across every market is capped at 40x its
+starting balance.
+- Every other market keeps its normal maximum leverage, shown on the
+Market Exposure Caps page.
+Choose Elite and your account size there to see the current group caps,
+account exposure limit, and market caps for that size.
+- Market exposure caps still apply on top of
+the Elite caps. Each Elite account has its own market exposure cap: your
+other Elite accounts of the same size do not share or use up its capacity.
+The order ticket shows the limit for the selected market as Account
+Exposure Cap , and the leverage selector goes up to the Elite maximum for that
+market. An order that would exceed the leverage or an exposure cap is
+rejected. Reducing or closing a position is always allowed.
+​
+Fees
+Elite accounts pay reduced fees on four markets, in both the evaluation and
+Sim Funded stages:
+Markets Elite commission per fill Elite daily swap rate Standard commission Standard daily swap rate
+NAS100, SP500 0.001% 0.01% 0.005% 0.015%
+Gold, WTI Oil 0.001% 0.015% 0.005% 0.015%
+- On a $10,000 fill in NAS100, SP500, Gold, or WTI Oil, the Elite commission
+is $0.10 instead of $0.50.
+- A NAS100 or SP500 position worth $10,000 pays $1.00 in swap fees over 24
+hourly charges, instead of $1.50.
+- Every other market, including other indices, other commodities such as
+silver and Brent, crypto, forex, and stocks, uses the standard rates.
+Read Commissions and Fees for how commissions
+and hourly swap fees are calculated.
+​
+Accounts per order
+One order can include up to 10 accounts at $5K or $10K, up to 4 at $25K, or
+up to 2 at $50K, all of the same size and option. You can place as many
+orders as you like.
+​
+Sim Funded
+Passing the evaluation leads to a Sim Funded Elite account. It keeps the same
+rules as the evaluation, without the profit target:
+- the same starting balance;
+- the same 5% static MLL and loss threshold, which does not move after a
+withdrawal;
+- the same leverage and exposure caps;
+- the same daily loss limit option: a 3% daily loss limit on a 3% DLL
+account, or none on a No DLL account;
+- no consistency rule.
+Sim Funded accounts use simulated capital and simulated execution, like every
+funded account.
+​
+High-impact news restriction
+The high-impact news restriction applies to Sim Funded Elite accounts. During
+the evaluation, news trading is not restricted.
+Time from the release What you can do
+More than 10 minutes before Trade normally. A position already open can be held through the release.
+10 minutes to 2 minutes before No new exposure in the affected market: no new positions, no adding, and no reversing.
+2 minutes before to 2 minutes after No manual trades of any kind. Close or reduce a position before this window if you want to be flat.
+Restricted events are every event classified as high impact (red folder) on
+the economic calendar, including FOMC decisions and statements, CPI, PPI,
+Non-Farm Payrolls, GDP, Retail Sales, employment reports, PCE inflation, and
+ECB, BOE, and BOJ rate decisions. For individual stocks and equity perpetuals,
+the company’s earnings announcements are restricted too. Read the full policy
+in the FAQ under
+Is news trading allowed on funded? .
+Profit from trades that break the restriction can be excluded during payout
+review.
+​
+No Live stage
+Elite has no Live stage and no promotion to live trading. Elite accounts
+remain Sim Funded.
+​
+Funded allocation
+Each customer can hold up to $100,000 of active Sim Funded Elite
+allocation , summed by the original starting size of each funded Elite
+account across every size and both options. That allows 20 × $5K,
+10 × $10K, 4 × $25K, 2 × $50K, or any mix that totals $100,000 or less. Profits, losses, and withdrawals do not
+change the allocation an account uses. A funded account that fails or is
+closed stops using allocation.
+Elite is its own model type, so Elite allocation also counts toward the
+$300K maximum funded allocation
+across all models.
+Active Elite evaluations are limited separately from funded Elite allocation,
+so you can pass more Elite evaluations than can be funded at once. When a
+passed evaluation would take
+your Elite funded allocation above $100,000, or your total above $300,000,
+it keeps its Passed status and enters Funding Review after identity
+verification and agreement signing, instead of being funded automatically.
+Review does not guarantee funding, and any approval must still fit within both
+limits. If a funded account fails or closes while the evaluation waits and it
+then fits within both limits, it is funded automatically. See Becoming Funded .
+​
+Payouts
+Payout term Elite $5K Elite $10K Elite $25K Elite $50K
+Profit split 80/20, or 90/10 80/20, or 90/10 80/20, or 90/10 80/20, or 90/10
+When you can request On demand On demand On demand On demand
+Profit you can request All profit All profit All profit All profit
+Minimum, before the split $50 $100 $250 $500
+Minimum you receive $40 ($45 on 90/10) $80 ($90 on 90/10) $200 ($225 on 90/10) $400 ($450 on 90/10)
+These payout terms are the same for the 3% DLL and No DLL options. The split is
+80% to you and 20% to MyFundedPerps, or 90% to you with the 90/10 upgrade.
+- On demand: you can request from your first day funded. Elite has no
+waiting period, minimum trading days, consistency requirement, or profit
+target before a request, and no daily request limit: you can request again
+as soon as your previous request finishes. The account must be flat with no
+pending request. See Payouts .
+- Requesting is not payment: every request is reviewed, and trading on the
+account is locked while it is pending. Review and delivery take time, so a
+request does not mean an immediate transfer.
+- All profit: you can request all of your profit above the starting
+balance. Profit you leave in the account when a payout is approved stays
+available, so you can request it in a later payout. For example, an Elite
+$25K account at $27,000 that withdraws $1,000 gross keeps $1,000 of
+profit that it can request next time.
+- Minimum: the minimum is measured before the split, as the gross amount
+deducted from the account. On $25K, a $250 gross minimum pays you $200.
+- 90/10 upgrade: choose it at checkout to receive 90% of each payout
+instead of 80%. It is part of the account you buy and cannot be added to an
+existing account.
+Payouts remain subject to plan terms, eligibility, and review.
+​
+Withdrawals and your loss cushion
+A payout deducts its full gross amount from the balance, which reduces the room
+above the loss threshold by the same amount. The threshold itself does not
+move.
+For example, an Elite $25K account at $27,000 equity with no open positions
+has $2,000 of profit and $3,250 of room above its $23,750 threshold.
+Requesting all of it deducts $2,000 gross and pays you $1,600 ($1,800 with
+the 90/10 upgrade). The balance
+returns to $25,000, the threshold stays at $23,750, and the room above it
+returns to the original $1,250.
+Select, Prime, and Signature work differently: their loss threshold locks to
+the starting balance on the first withdrawal. Elite never has that lock.
+On a 3% DLL account, a withdrawal also never lowers the daily loss floor below
+where it started that day. See
+Daily loss limit after a withdrawal .
+​
+Lifetime payout cap
+Elite payouts count toward the
+$100,000 lifetime payout cap
+per user, combined across every plan and counted after the profit split. This
+is separate from the $100,000 Elite funded allocation cap: the payout cap
+limits the money you can receive, while the funded cap limits the total
+starting size of your active Sim Funded Elite accounts.
+Challenges and Rules
+Competitions
+website
+Powered by This documentation is built and hosted on Mintlify, a developer documentation platform

@@ -1,0 +1,184 @@
+-
+What are the prohibited trading strategies of FundedNext Futures? | FundedNext Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Go to Website العربية Português do Brasil English Français Deutsch हिन्दी Italiano 日本語 fa-IR 简体中文 Español ภาษาไทย Türkçe Oʻzbekcha English
+Go to Website العربية Português do Brasil English Français Deutsch हिन्दी Italiano 日本語 fa-IR 简体中文 Español ภาษาไทย Türkçe Oʻzbekcha English
+Search for articles...
+- All Collections
+- Trading Rules and Guidelines
+- What are the prohibited trading strategies of FundedNext Futures?
+What are the prohibited trading strategies of FundedNext Futures?
+Updated over a month ago
+Table of contents
+At FundedNext Futures , we seek traders who demonstrate discipline, consistency, and the ability to trade sustainably over the long term. Our goal is to provide traders with the opportunity to trade within the Challenge Accounts or FundedNext Accounts, where they can showcase a structured approach, manage risk effectively, and maintain trading integrity. We do not support those who attempt to exploit the simulated environment or engage in unsustainable trading practices.
+The Challenge Accounts and FundedNext Accounts operate in a simulated market. Certain trading strategies may take advantage of these simulated conditions but fail to perform in real-market scenarios. Any such prohibited practices, regardless of the stage, will result in account suspension and disqualification from further participation.
+FundedNext Futures is designed for traders seeking a long-term trading relationship, not short-term exploitation. If you aim to build a sustainable trading career, we encourage you to trade responsibly, follow risk management principles, and refine a strategy that aligns with real-world market conditions.
+To ensure a fair, transparent, and ethical trading environment, we strictly prohibit the following activities:
+What is Exploiting Platform Errors?
+Exploiting platform errors in Futures Trading refers to taking advantage of system glitches, price discrepancies, or execution delays to secure risk-free profits. This involves manipulating flaws in the trading platform, such as delayed price updates or technical errors, to execute trades at prices that do not reflect real-time market conditions.
+Why is Exploiting Platform Errors prohibited in FundedNext Futures?
+This practice disrupts fair trading and provides an unfair advantage over traders following ethical practices. When an error occurs, such as incorrect pricing due to lagging data feeds, some traders exploit this flaw to enter or exit trades at outdated or incorrect prices. Since these prices are not valid in the live market, such actions create an artificial edge, allowing traders to benefit from system inefficiencies rather than actual market movements.
+What is Account Sharing?
+Account sharing occurs when a trader manages multiple accounts or allows another individual to trade on their behalf. This practice is strictly prohibited, as it disrupts fair competition and undermines the integrity of both the Challenge Account and the FundedNext Account.
+Why is Account Sharing prohibited in FundedNext Futures?
+Trading is meant to evaluate an individual’s skill and decision-making ability. When traders engage in account sharing, it compromises integrity, making it difficult to distinguish genuinely skilled traders from those relying on external support. This creates an unfair advantage and undermines transparency in the trading environment.
+What is Account Rolling?
+Account rolling is a high-risk practice in which multiple Challenge Accounts are purchased with the intention of quickly progressing to FundedNext Accounts, often by intentionally sacrificing some accounts while focusing on passing others. This approach relies on probability rather than skill, disregarding proper risk management and market analysis. It resembles gambling more than trading, as success depends on sheer luck rather than a structured strategy.
+Why is Account Rolling prohibited in FundedNext Futures?
+To maintain fairness and transparency, account rolling is actively monitored. Violations may result in restrictions on purchasing new accounts or adjustments to the lifetime allocation limit. These measures ensure that only traders who genuinely develop and apply sound, sustainable trading strategies can progress, reinforcing a platform built on skill, discipline, and long-term success.
+What are Multi-Order Spam and Coordinated Trading Exploits?
+Multi-order spam and coordinated trading exploits involve placing and canceling numerous orders in the Depth of Market (DOM) to manipulate market activity or collaborating with others to artificially influence order flow. These actions create misleading signals and distort genuine supply and demand dynamics, disrupting market integrity and fairness.
+Why are Multi-Order Spam and Coordinated Trading Exploits prohibited?
+Multi-order placements in the DOM (spam) and coordinated trading manipulation distort market conditions and misrepresent true supply and demand. Since simulation trading replicates real-market conditions, such activities mislead other traders by creating fake market participation and deceptive order flow. At FundedNext Futures, these practices compromise fairness, disrupt evaluations, and fail to assess traders' ability to perform in live markets. Enforcing these rules ensures a realistic, ethical, and transparent trading environment.
+​
+Example:
+A trader places hundreds of fake Bid/Ask Orders (Limit Orders) in the DOM, creating false buying interest. Other traders react, pushing the price higher, at which point the trader cancels their buy orders and sells at the inflated price. In a simulation environment, this manipulates market dynamics, misleads participants, and undermines the evaluation process by distorting real trading behavior.
+What is Abusing Slow Data Feed?
+Abusing slow data feed is a practice where traders exploit delayed price updates to execute trades at outdated prices, gaining an unfair advantage over those relying on real-time data. This practice disrupts fair competition and compromises the integrity of the trading environment.
+Why is the Abusing Slow Data Feed prohibited in FundedNext Futures?
+A slow data feed can cause price updates to lag behind actual market conditions. Some traders take advantage of this delay by comparing prices across multiple platforms and entering trades based on outdated information before their trading platform updates. This can lead to unfair trade executions and manipulative trading behavior, distorting the market evaluation process.
+Example :
+A trader notices that their platform is displaying a stock price that is $1 lower than the actual market price due to a delayed data feed. They quickly place a buy order at the incorrect price, and once the platform updates, they sell at the corrected price for a guaranteed profit, exploiting the system rather than relying on real trading skills.
+What are Account Flipping and Inconsistent Contract Execution?
+Account flipping and inconsistent contract execution involve using high margin to rapidly grow or blow up accounts through reckless, oversized positions. This high-risk approach lacks strategy and discipline, making it unsustainable and prone to failure.
+Why are Account Flipping and Inconsistent Contract Execution prohibited in FundedNext Futures?
+Some traders attempt to quickly multiply their account balance by taking extremely high-risk positions, using maximum leverage for fast gains. If successful, they withdraw profits and repeat the process with a new account. If unsuccessful, they abandon the account and start over, avoiding the consequences of poor risk management. This method undermines long-term consistency and goes against responsible trading principles.
+Example :
+A trader qualifies for a FundedNext Account and immediately places an all-in trade, risking the entire account balance on one position. If the trade is successful, they withdraw profits. If it fails, they open another account and repeat the process, making no effort to refine their trading strategy or follow sustainable risk management practices.
+What are Copy & Group Trading?
+- Copy trading refers to replicating trades from another trader or using signal services to execute trades.
+- Group trading occurs when multiple traders collaborate—often in real-time—to achieve specific rewards by executing similar trades simultaneously.
+Why are the Copy & Group Trading (generally) prohibited in FundedNext Futures?
+At FundedNext Futures, we evaluate each trader based on their individual trading ability, focusing on independent decision-making, proper risk management, and long-term consistency.
+Relying on others—either through signal services or coordination with other traders—misrepresents a trader’s true capabilities and undermines fair competition. That’s why unauthorized copy trading or group trading is strictly prohibited.
+What is allowed in FundedNext Futures for Copy & Group Trading?
+FundedNext supports flexibility for traders who manage their own accounts. The following forms of copy trading are permitted:
+- Copy trading within FundedNext is allowed. Traders can freely copy trades between their own FundedNext accounts.​
+- Copy trading between FundedNext and other prop firms is allowed if the trader owns all accounts involved. FundedNext may request verification that all accounts involved are registered under the exact same name as per FundedNext records; any variation in spelling or identity will not be accepted.​
+- Use of any copy trading tools is allowed, including:
+- Tradovate’s built-in copy trading feature
+- NinjaTrader modules like Replikanto
+- Any third-party platforms, as long as they are used for copying one’s own trades only
+What can they not do in FundedNext Futures for Copy & Group Trading?
+To preserve the integrity of our evaluation process, the following actions are strictly prohibited:
+- Traders cannot make group trades or coordinate trades with other traders, whether inside or outside FundedNext.
+- Traders cannot subscribe to any trading signal services or use external signals to guide their trading decisions.
+- Traders are not allowed to copy trades from another person’s account within FundedNext, even through automated tools or trade copiers.
+Example of Prohibited Behavior:
+A trader joins a signal group where a provider sends trade instructions. Instead of performing an independent analysis, the trader blindly copies those trades to pass the Challenge. This results in unearned success based on someone else’s skill and violates our evaluation principles.
+What is Micro-Scalping?
+Micro-scalping is defined as the practice of opening and closing trades within seconds to repeatedly capitalize on small price fluctuations. While FundedNext does not breach or terminate your account solely for this activity, we do have a clear and balanced policy to address it, which you can review here .
+What are Spoofing Strategies?
+Spoofing is a market manipulation technique where a trader places large fake orders (pending orders) to create a false impression of supply or demand, influencing other traders' decisions. These fake orders are canceled before execution, allowing the trader to take advantage of price movements.
+Why are Spoofing Strategies prohibited in FundedNext Futures?
+Spoofing is not allowed because it misleads traders by showing fake demand or supply, making them take trades based on false information. This kind of market manipulation creates an unfair trading environment in the live phase and goes against our rules.
+Example :
+A trader wants to place a buy order. But the price was higher than expected, and they placed multiple large sell orders to make it look like strong selling pressure was building up. This tricks other traders into thinking the price might drop, encouraging them to sell. Once the trader gets a favorable price, the trader quickly cancels all the fake sell orders and executes a buy order, having manipulated the market to their advantage.
+What are Order Book Shaping/Layering Strategies?
+Layering occurs when a trader places multiple buy or sell orders at different price levels to create a false sense of market depth. These orders are not meant to be executed but are intended to mislead other traders into making decisions based on manipulated market conditions.
+Why are Order Book Shaping/Layering Strategies in FundedNext Futures prohibited in FundedNext Futures?
+Layering is prohibited because it gives a false impression of liquidity, tricking traders into making moves based on fake market orders. It disrupts fair trading and goes against FundedNext's principles.
+Example :
+A trader places several buy orders at different price levels, making it seem like there is strong buying interest. Other traders see this and start buying as well. Once the price goes up, the trader cancels all the fake orders and sells at a higher price.
+What are the Bracket Strategies?
+Bracket trading is a strategy where traders set predefined buy & sell (limit/stop orders) to take advantage of any-sided market movement and also set profit-taking and stop-loss levels to manage risk and lock in gains automatically. Exploiting the lack of slippage or using tight brackets to benefit from favorable trade executions is prohibited. Such practices are not allowed under our trading policies.
+Why are Bracket Strategies prohibited in FundedNext Futures?
+Exploiting no slippage and using tight bracket orders is prohibited and considered a no-brainer trading strategy because it gives traders an unfair advantage. When the market moves quickly, especially in instruments like the NQ, placing orders with minimal price differences can result in favorable executions that don't reflect live market conditions or are not considered true trading intelligence.
+Example :
+Imagine a trader sets a buy stop at 12,900 and a sell stop at 12,850 for Nasdaq futures (NQ), with take-profit levels at 12,930 and 12,820. If the price spikes upward and the buy order triggers, hitting the take-profit at 12,930 without any slippage, the trader profits from a small, atypical price move. This is prohibited because it exploits live trading conditions, it doesn't reflect the trading intelligence, and it gives the trader an unfair advantage.
+What is Grid Trading?
+Grid trading in the Futures market involves placing multiple long and short orders at predefined price levels to capitalize on market fluctuations. This strategy aims to capture small price movements within a set range, allowing traders to profit from volatility without relying on market direction. However, due to frequent order placements, Grid Trading can create excessive market activity and disrupt fair trading conditions.
+Why is Grid Trading prohibited in FundedNext Futures?
+Grid trading is prohibited because it can lead to market manipulation and create artificial trading activity. This strategy also significantly increases risk, as a strong market movement in one direction can trigger multiple consecutive losses. Additionally, grid trading is not sustainable in highly volatile or trending markets, where rapid price swings can lead to margin calls and substantial losses. FundedNext Futures prioritizes fair trading practices and risk-conscious strategies, which is why grid trading is not allowed.
+Example:
+A trader places multiple buy orders at $100, $105, and $110 and sell orders at $115, $120, and $125. If the market moves between these levels, the trader profits. However, if the market drops sharply below $100, all buy orders lose value at once, leading to significant losses. This demonstrates the high-risk exposure of grid trading and why it is not permitted.
+What is Wash Trading?
+Wash trading in Futures occurs when a trader places bids and asks simultaneously or in quick succession to create artificial market activity without taking on actual market risk. This practice is used to mislead other traders, manipulate prices, or inflate trading volume without genuine market intent.
+Why is Wash Trading prohibited in FundedNext Futures?
+Wash trading distorts market transparency by artificially inflating trading volume and misleading traders into believing there is genuine interest in an asset. This manipulates price movement and disrupts fair market conditions. FundedNext prohibits wash trading to maintain a transparent and trustworthy trading environment, where traders compete based on genuine market conditions rather than artificial activity.
+Example :
+A trader continuously buys and sells the same futures contract at nearly identical prices, generating a high number of trades without actually changing their market position. This artificially boosts the asset’s trading volume, making it seem more active than it truly is. As a result, other traders may believe there is a strong interest in the asset when, in reality, the activity is fabricated.
+What is Simulated-Execution Exploitation?
+Simulated-Execution Exploitation is a prohibited trading practice characterized by a sustained pattern of positions exhibiting little to no adverse market movement, indicating that profits were generated primarily through execution advantages within the simulated environment rather than through genuine market risk-taking.
+FundedNext Futures operates on simulated execution using live exchange market data. While market prices reflect real-time exchange activity, simulated fills may occasionally occur at prices, sizes, or execution speeds that would not have been achievable in the live exchange order book due to factors such as market depth, queue priority, and available liquidity.
+Why is Simulated-Execution Exploitation prohibited in FundedNext Futures?
+What is Tick Scalping?
+Tick scalping is the repeated practice of opening and closing positions within a very short window to collect a few ticks of profit per trade from favourable simulated fills, often at large or maximum position size. An occasional fast exit driven by genuine market conditions is not considered a violation in itself.
+Why is Tick Scalping prohibited in FundedNext Futures?
+Tick scalping becomes a concern when a strategy relies primarily on capturing minimal price fluctuations through large position sizes, favorable simulated fills, or execution characteristics that would be difficult to replicate in a live market environment. Such activity does not reflect sustainable trading skill and may be considered an exploitation of the simulated environment rather than a demonstration of genuine market analysis or risk management.
+What is Latency Arbitrage?
+Latency arbitrage is a high-risk trading strategy that exploits price delays between platforms, relying on speed advantages rather than market analysis. This strategy takes advantage of discrepancies in market data updates, allowing traders to enter or exit positions before others react.
+Why is Latency Arbitrage prohibited in FundedNext Futures?
+A trader using a faster price feed can enter trades before the slower feed updates, gaining an unfair advantage by accessing price movements ahead of other market participants. This distorts fair pricing and disrupts trading integrity. Since latency arbitrage does not reflect actual trading skills and relies on exploiting system inefficiencies, FundedNext Futures prohibits this practice to ensure a level playing field.
+Example :
+A trader notices that a price update on one platform is delayed by twenty milliseconds. They quickly place a trade before the lagging platform adjusts, securing a better price than traders using standard feeds. This creates an unfair advantage and manipulates pricing dynamics.
+What is Reverse Hedging and Coordinated Hedging?
+Hedging manipulation is any strategy that opens offsetting positions on the same or an equivalent instrument to artificially neutralise directional risk. Because both legs track the same underlying, one is guaranteed to win and the other is guaranteed to lose, whatever the market does. FundedNext Futures prohibits two forms of this: reverse hedging and coordinated hedging.
+Reverse Hedging
+Reverse hedging is when a single trader, a single beneficial owner, holds both sides of the offset, buying one and selling the other. Because the same person controls both legs, both the winning and losing outcomes accrue to them. It can be done across the trader's own accounts or within a single account.
+Coordinated Hedging
+Coordinated hedging is when two or more separate account holders coordinate to hold opposite sides of the same trade. No single account is internally hedged, so each looks like an ordinary directional trade. Whichever way the market moves, the group's winners are engineered to earn more than its losers forfeit. The profit comes from collusion and the reward structure, not from trading skill.
+The Key Difference
+In reverse hedging, one owner controls both sides, and the offset sits within a single person's account or accounts. In coordinated hedging, several distinct owners act together, no single account shows a hedge on its own, and the coordination is identifiable across the accounts involved.
+Why Both Are Prohibited
+Both misrepresent genuine trading performance. The offsetting positions make the outcome predetermined regardless of market direction, so neither the trader nor the group demonstrates real skill or risk management. This undermines the integrity of the evaluation and violates FundedNext Futures' principles of fair competition. Coordinated hedging additionally involves collusion between accounts to extract funds from the firm. To prevent manipulation, both practices are prohibited.
+Examples:
+- Reverse hedging (across accounts): A trader opens a buy on NQ in Account A and a sell on MNQ in Account B, both under their control. Regardless of market movement, one account profits and the other loses.
+- Reverse hedging (single account): A trader buys 1 NQ contract and sells 7 MNQ contracts in the same account. Because NQ and MNQ track the same underlying at matched notional, the positions partially offset each other, neutralizing directional risk and circumventing genuine exposure.
+- Coordinated hedging (two coordinating account holders): Account holders A and B are separate individuals acting together. At the same time, A buys 5 NQ and B sells 3 NQ or 3 ES (Correlated Symbol). Each account, viewed alone, looks like a normal directional trade. If NQ rises, A moves toward its target while B fails; if NQ falls, the reverse.
+- Coordinated hedging (scaled ring): Ten coordinating account holders open accounts; five go long NQ, and five go short NQ at matched size and timing. Whichever way the market moves, roughly five accounts hit profit and five fail, a predetermined outcome produced by collusion rather than trading skill.
+What is Hedging with Correlated Instruments?
+Hedging with correlated instruments means holding opposing positions, one long and one short, at the same time on two different underlyings that move together within the same Asset Group.
+​
+Because correlated assets closely follow the same market trends, taking opposite positions on them offsets most of the overall risk: one trade gains while the other loses, artificially reducing genuine exposure. This can be done across multiple accounts or within a single account.
+Why is Hedging with Correlated Instruments prohibited in FundedNext Futures?
+FundedNext evaluates traders on their ability to navigate real market risk and demonstrate a sustainable edge. Taking opposite positions on heavily correlated markets removes most of that risk, with one position absorbing the loss while the other books a profit. This masks genuine risk exposure and exploits the simulated environment, making it difficult to assess real trading skill. To maintain a fair and skill-based evaluation, this practice is prohibited.
+Example :
+A trader buys S&P 500 (ES) Futures while simultaneously selling Dow Jones (YM) Futures. Both are closely linked US equity indices, so buying one while selling the other acts as an artificial safety net with near-zero real market risk.
+What is Gapped or Illiquid Market Trading?
+Gapped or illiquid market trading involves placing trades during low liquidity periods or exploiting large price gaps to gain an unfair advantage. This method relies on market inefficiencies rather than strategic trading skills.
+Why is Gapped or Illiquid Market Trading prohibited in FundedNext Futures?
+Traders may attempt to place orders in gapped or illiquid market conditions, seeking to benefit from price inefficiencies. However, this exposes them to unpredictable execution, high slippage, and potential market manipulation. Trading in low-liquidity environments or before major market events can distort fair price discovery and disrupt market stability.
+Example :
+A trader places a buy limit order right at the time of a new week's opening, anticipating a price surge. The order got filled, and the market opens after a large gap, and the fill index price is not relevant to the market index price. However, if the market moves against them, they face unexpected slippage and losses, demonstrating the high-risk nature of this approach.
+What is 2% Price Limit?
+A price limit is the maximum price range permitted for a futures contract during a trading session. These limits are imposed by the CME to promote safer trading and reduce excessive volatility. When the market reaches this limit, different outcomes may occur, including temporary trading halts, continuation under limit conditions, or a complete stop in trading for the rest of the session, depending on the product and regulatory guidelines.
+Why is trading within the 2% price limit prohibited?
+Trading within 2% of the CME price limit creates higher risk and potential liquidity issues, as market conditions become unstable near these thresholds. If the price approaches the limit, execution becomes unpredictable, and price gaps may lead to forced liquidations, slippage, and increased account drawdowns. To ensure responsible risk management and market stability, trading in this zone is strictly prohibited, and violations may result in account suspension or restrictions. Click here to know more.
+Related Articles
+- What Trading Platforms Does FundedNext Futures Offer?
+- FundedNext Futures — Most Frequently Asked Questions
+- What is copy & group trading policy at FundedNext Futures?
+- Does FundedNext Futures Allow High-Frequency Trading (HFT)?
+- What is the Disciplined Trader Program of FundedNext Futures, and how does it help traders build consistency?
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+-
+-
+-
+-
+-

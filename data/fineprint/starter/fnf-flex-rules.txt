@@ -1,0 +1,155 @@
+-
+FundedNext Futures Flex FundedNext Account All Rules | FundedNext Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Go to Website العربية Português do Brasil English Français Deutsch हिन्दी Italiano 日本語 fa-IR 简体中文 Español ภาษาไทย Türkçe Oʻzbekcha English
+Go to Website العربية Português do Brasil English Français Deutsch हिन्दी Italiano 日本語 fa-IR 简体中文 Español ภาษาไทย Türkçe Oʻzbekcha English
+Search for articles...
+- All Collections
+- Flex Challenge
+- FundedNext Futures Flex FundedNext Account All Rules
+FundedNext Futures Flex FundedNext Account All Rules
+Updated this week
+Table of contents
+TL;DR: On the Flex FundedNext Account there is no Consistency Rule and no daily loss limit , but the Maximum Loss Limit still applies — 1,500(50K) , 2,500(100K) , 4,000(150K) . To withdraw a Performance Reward , you need 5 Benchmark Days and $500 profit in the cycle. You earn a 95% Reward Share (one of the highest available), withdraw a minimum of $250 (up to 50% of profit, capped by size), and the account concludes after 5 Performance Rewards . You can earn Rising Trader, Champion Trader, and Limitless Trader certificates.
+A Performance Reward is your share of the profits you earn for your skill and effort while trading a FundedNext Account after passing the Flex Challenge. (At FundedNext Futures, what other firms call a "payout" is called a Performance Reward .) Here are all the rules that apply once you're funded.
+Is there a Consistency Rule on the Flex FundedNext Account?
+No. Unlike the Challenge Phase, there is no Consistency Rule on the Flex FundedNext Account. You have full flexibility in how much you earn on any given day.
+What are the contract limits on the Flex FundedNext Account?
+Your contract limit is fixed at account creation and does not increase with profit. Flex applies the same limits on the FundedNext Account as during the Challenge:
+Account Size
+Maximum Contracts
+$50,000
+3 e-mini / 30 micro e-mini
+$100,000
+5 e-mini / 50 micro e-mini
+$150,000
+8 e-mini / 80 micro e-mini
+You can mix e-mini and micro e-mini contracts using the 1:10 ratio . If you exceed the limit, only the excess contracts are violations: profit from them is deducted , and losses still count.
+🔗 See: What is the contract limit policy at FundedNext Futures?
+Is a buffer required on the Flex FundedNext Account?
+No. The Flex FundedNext Account does not use a buffer rule. Withdrawal eligibility is based on Benchmark Days instead (see below). The buffer rule applies only to the Rapid Daily model.
+What is the Maximum Loss Limit on the Flex FundedNext Account?
+The Maximum Loss Limit (MLL) continues to apply on your funded account, using the same Trailing End-of-Day (EOD) system as the Challenge:
+Account Size
+Maximum Loss Limit
+MLL Locks At
+$50,000
+$1,500
+$50,100
+$100,000
+$2,500
+$100,100
+$150,000
+$4,000
+$150,100
+Important notes:
+- The MLL adjusts at the end of each trading day , not in real time.
+- It stops trailing and locks once your balance reaches the lock point for your size ($50,100 / $100,100 / $150,100).
+- A floating loss that breaches the MLL during a live trade breaches your account instantly .
+- Your first withdrawal resets the MLL to the lock point for your size ($50,100 / $100,100 / $150,100).
+🔗 See: What is the maximum loss limit at FundedNext Futures and how does it work?
+Is there a daily loss limit on the Flex FundedNext Account?
+No. There is no daily loss limit on the Flex FundedNext Account. The Maximum Loss Limit remains your primary risk guardrail.
+What are the Performance Reward eligibility criteria for the Flex FundedNext Account?
+Before each withdrawal, you must meet the criteria for your account size:
+Criteria
+$50K Account
+$100K Account
+$150K Account
+Benchmark Days
+5 days of $200
+5 days of $200
+5 days of $250
+Minimum Profit (current cycle)
+$500
+$500
+$500
+Minimum Withdrawal
+$250
+$250
+$250
+Maximum Withdrawal
+Up to 50% (max $1,500)
+Up to 50% (max $2,500)
+Up to 50% (max $4,000)
+Reward Share
+95%
+95%
+95%
+A Benchmark Day is a trading day where your profit meets the benchmark amount for your size ( $200 for $50K and $100K; $250 for $150K). You need at least 5 Benchmark Days before every withdrawal.
+🔗 See: What are Benchmark Days at FundedNext Futures?
+How much can I withdraw, and how often, from the Flex FundedNext Account?
+You can withdraw up to 50% of your accumulated profit per cycle, capped by size ( $1,500 / $2,500 / $4,000 ), with a $250 minimum and at least $500 profit in the current cycle. Withdrawals are requested per cycle, after meeting your 5 Benchmark Days.
+What is my Reward Share from the Flex FundedNext Account?
+You receive a 95% Reward Share of the requested Performance Reward — one of the highest reward shares among all models.
+🔗 See: What will be my Reward Share from the Futures FundedNext Account?
+What is the Flex FundedNext Account withdrawal journey?
+- Trade and accumulate at least 5 Benchmark Days and $500 profit in the cycle.
+- Request a withdrawal (minimum $250 , up to 50% of profit capped by size), receiving a 95% Reward Share .
+- Your first withdrawal resets the MLL to your account initial balance + $100.
+- After your 5th Performance Reward , the Flex FundedNext Account is concluded .
+What certificates will I receive from the Flex FundedNext Account?
+FundedNext Futures awards certificates to recognize your achievements:
+Certificate
+How you earn it
+Rising Trader
+Completing the Challenge Phase
+Champion Trader
+Withdrawing a Performance Reward
+Limitless Trader
+Receiving your 5th Performance Reward
+Certificates are issued automatically — log in to your FundedNext Dashboard , open the Certificates section on the left, and click to generate. Your certificate is sent to your registered email.
+🔗 See: Does FundedNext Futures offer any Certificates?
+What trading rules must I follow on the Flex FundedNext Account?
+All prohibited strategy rules continue to apply on your Flex FundedNext Account, just as during the Challenge Phase. Breaking any of these can result in a breach.
+🔗 See: What are the prohibited trading strategies of FundedNext Futures?
+What is the Micro-Scalping policy for the Flex FundedNext Account?
+Micro-scalping is opening and closing trades within 10 seconds to capture small, rapid price movements. FundedNext Futures monitors a Micro-Scalping threshold across all account types.
+On your FundedNext Account :
+- The Micro-Scalping percentage is the share of your total recorded profit from trades closed within 10 seconds, evaluated per cycle .
+- Only profitable trades count — you can close losing trades any time without affecting this rule.
+- At 30% , you receive a compliance warning (no deduction).
+- At 40% or above , the Micro-Scalping portion of your profit for that cycle is deducted in full . Your account is never terminated for micro-scalping, and future micro-scalping profit is subject to the same ongoing deduction.
+- If that deduction equals or exceeds your net profit for the cycle, no Performance Reward is issued and withdrawal is disabled for that cycle. A full breakdown appears in your dashboard.
+🔗 See: What is the Micro-Scalping policy in FundedNext Futures?
+How do I request my Performance Reward from the [Model] FundedNext Account?
+Once you've met all the eligibility criteria, you can request your Performance Reward at the end of the trading day by transferring your profits to your wallet.
+Please note: placing a trade on the same day removes the transfer-to-wallet option for that day. So if you intend to request your Performance Reward, do it on a day when you haven't opened a new trade — otherwise you'll need to wait until the next eligible day to transfer.
+🔗 See: How can I withdraw my Performance Reward?
+Related Articles
+- FundedNext Futures Legacy FundedNext Account: All Rules
+- FundedNext Futures Rapid Pro FundedNext Account: All Rules
+- FundedNext Futures Rapid Daily FundedNext Account All Rules
+- FundedNext Futures Flex Challenge All Rules
+- FundedNext Futures Direct Account: All Rules
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+-
+-
+-
+-
+-

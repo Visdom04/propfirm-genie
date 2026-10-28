@@ -1,0 +1,72 @@
+- What are the Performance Reward eligibility criteria for Flex FundedNext Account? | FundedNext Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+July 29, 2026
+Table of contents
+TL;DR: In Futures Flex FundedNext Account, to be eligible for the withdrawal of a Performance Reward, at least 5 benchmark days and a minimum of $500 in profits within the current cycle are required.
+To withdraw Performance Rewards from a Futures Flex FundedNext Account, traders must meet certain requirements.
+A Performance Reward is a trader's share of gains for their skill and effort while trading in a FundedNext Account after passing the Flex Challenge. At FundedNext Futures , you can withdraw up to 50% of your accumulated profit (up to a maximum cap depending on account size) after every 5 benchmark days.
+Eligibility Criteria by Account Size
+Criteria
+Flex 50K Account
+Flex 100K Account
+Flex 150K Account
+Benchmark Days
+5 days of $200
+5 days of $200
+5 days of $250
+Minimum Profit
+$500
+$500
+$500
+Minimum Withdrawal
+$250
+$250
+$250
+Maximum Withdrawal
+Up to 50% of profit (max $1,500)
+Up to 50% of profit (max $2,500)
+Up to 50% of profit (max $4,000)
+Reward Share
+95%
+95%
+95%
+Maximum Loss Limit Locks
+Locks at $50,100 after first payout
+Locks at $100,100 after first payout
+Locks at $150,100 after first payout
+Key Takeaway
+- The first withdrawal resets the maximum loss limit (MLL) back to $50,100, $100,100 & $150,100 for $50K, $100K and $150K accounts.
+- After 5 Performance Reward Withdrawals , the Flex FundedNext Account will be concluded.
+- The term " payout " is known as " Performance Reward " in FundedNext Futures.
+Related Articles
+- FundedNext Futures Rapid Daily FundedNext Account All Rules
+- What is FundedNext Futures Flex Challenge?
+- FundedNext Futures Flex Challenge All Rules
+- FundedNext Futures Flex FundedNext Account All Rules
+- How can I withdraw my Performance Reward?
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents

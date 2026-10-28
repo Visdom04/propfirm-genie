@@ -1,0 +1,308 @@
+Payouts - MyFundedPerps Documentation
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Documentation Index
+Fetch the complete documentation index at: /llms.txt
+Use this file to discover all available pages before exploring further.
+Skip to main content
+MyFundedPerps Documentation home page
+Search rules, guides, and API...
+⌘ K
+- Trading Platform
+- Create API Key
+- Create API Key
+Search...
+Navigation
+Challenge Lifecycle
+Payouts
+Buyers Guide
+Developers Guide
+Overview
+- MyFundedPerps Documentation
+Guides
+- Guides
+- Getting Started
+- Trading Guide
+- Tradable Assets
+- Asset Exposure Limits
+- Trading Calculators
+- Custom Scripts
+- Commissions and Fees
+- Trading Journal
+- Challenges and Rules
+- Elite Accounts
+- Competitions
+- Launch competition
+- October competition
+- Copy Trading Guide
+- Affiliate Program
+- Second Chance Offer
+- Troubleshooting and FAQ
+- Glossary
+Challenge Lifecycle
+- Challenge Lifecycle
+- Buying a Challenge
+- Evaluation Progress
+- Breaches and Next Steps
+- Becoming Funded
+- Payouts
+- Billing and Rewards
+Settings
+- Settings
+- Profile Settings
+- Security Settings
+- Public Profile Settings
+- Language Settings
+- Appearance Settings
+- Streamer Mode Settings
+- Trading Settings
+- Copy Trading Settings
+- API Key Settings
+- Notification Settings
+- Certificates
+- Purchase History
+On this page
+Back to top
+- Payout request availability
+- Daily payout window
+- Minimum and profit split
+- Lifetime payout cap
+- Complete Rise onboarding
+- Clear the payout gates
+- Understand the amount
+- Permanent max loss limit after the first withdrawal
+- Daily loss limit after a withdrawal
+- Split cash and store credit
+- Submit and wait for review
+Challenge Lifecycle
+Payouts
+Copy page Copy page
+Read funded payout terms, complete Rise onboarding, clear eligibility gates, submit a request, and understand its effect on the account.
+Copy page Copy page
+Payouts are available from the
+Payouts panel for an active
+funded account. Select the intended account before reviewing or submitting a
+request.
+​
+Payout request availability
+Payout requests opened on September 11, 2026 at 12:00 a.m. Eastern Daylight
+Time (04:00 UTC) for all existing and newly funded accounts. Every request
+must meet the normal payout requirements below.
+​
+Daily payout window
+Each funded account can submit one payout request per day. Elite accounts are
+the exception: they have no daily limit, so you can request again as soon as
+your previous request finishes. Checkout shows Elite payout frequency as
+On Demand . See Elite Accounts .
+On every other plan, the allowance resets
+at 12:00 a.m. (midnight) New York time ( America/New_York ), the same time
+as the daily loss reset .
+This is 04:00 UTC during Eastern Daylight Time (EDT) and 05:00 UTC during
+Eastern Standard Time (EST) .
+The allowance follows calendar days, rather than a rolling 24-hour wait from
+your previous request. The payout panel shows the next window in your local
+time and in Eastern time. Two funded accounts held by the same trader each
+have their own daily allowance.
+Midnight renews the request allowance; it does not approve or pay an existing
+request. A pending request must finish and all eligibility gates must be clear
+before you can submit another one.
+Submitted requests cannot be cancelled. If a request is rejected, that day’s
+allowance is restored, so you can submit a new request right away once all
+eligibility gates are clear. Every request is subject to review and approval.
+Daily or on-demand request availability does not guarantee immediate payment;
+review and delivery can take longer than the request window.
+​
+Minimum and profit split
+On Select, Prime, and Signature, the minimum is $100 of gross profit before
+the split . This pays $80 with an 80/20 split or $90 with a 90/10 split. The request form accepts your net share
+and shows the gross account deduction before you confirm.
+$1K and $2.5K Select prize accounts use their own terms: a 90/10 profit split
+and a minimum request of $30 on $1K or $50 on $2.5K. Payout Terms on
+the account shows the split and minimum that apply.
+Elite accounts use an 80/20 split, or 90/10 with the upgrade, and a minimum of
+1% of the account size before the split: $50 on $5K, $100 on $10K,
+$250 on $25K, and $500 on $50K ($40, $80, $200, and $400 to you
+on 80/20, or $45, $90, $225, and $450 on 90/10). A $1K Elite prize
+account has a $30 minimum before the split ($24 to you). See
+Elite Accounts .
+Select, Prime, Signature, and Elite have no minimum trading-day or
+qualifying-day requirement, consistency gate, or payout count cap per account.
+The lifetime payout cap below still applies.
+​
+Lifetime payout cap
+Each user can receive at most $100,000 in total lifetime payouts across
+all MyFundedPerps accounts. The cap is per user, combined across every
+account and model type (Select, Prime, Signature, and Elite), not per account.
+The cap counts the payout amount you actually receive after the profit split,
+not the gross amount deducted from the account. Purchasing new accounts or
+resetting existing accounts does not reset it.
+The lifetime cap is separate from the per-request rules on this page. The
+plan’s gross minimum and, outside Elite, the daily request allowance still
+apply to every request, and staying within them does not raise the lifetime cap. It is also
+separate from the $100K funded allocation limit per model type, which limits
+the starting size of your active funded accounts rather than the money you
+receive.
+The Payout Split Calculator
+can help you compare hypothetical amounts. Its fee-refund option does not
+promise a refund or confirm payout eligibility. Read the
+calculator guide
+for an example and its limits.
+​
+Complete Rise onboarding
+Only payouts with a cash portion need Rise. If you choose 100% store credit,
+you can submit without a Rise account or invitation. Store-credit-only accounts
+skip Rise setup entirely.
+For cash delivery, enter the email you want paid to, send the
+invitation, then accept it and create the Rise account. The invitation email
+comes from Rise after you select Send Invitation . Check your inbox and
+spam folder, then follow the invitation to complete setup. The panel shows
+when setup is accepted or needs attention. If the invitation could not be
+completed, contact support from the panel.
+Check the email carefully. Approved payouts are delivered to the connected
+Rise account. While Streamer Mode is on, the Rise
+email is blurred everywhere it appears, including the confirmation after the
+invitation is sent and the payout panel once Rise is connected. Press and hold
+Hold to peek next to the Rise Email field to check the address before you
+send the invitation.
+​
+Clear the payout gates
+The request form explains the first condition that is not yet satisfied.
+Before requesting:
+- keep the funded account active;
+- wait for any pending request to finish and, except on Elite, for the next
+daily window;
+- close every open position;
+- cancel resting orders and wait for working orders to settle;
+- have at least the plan’s minimum in available gross profit in the current
+cycle ($100 on Select, Prime, and Signature).
+Payouts use realized balance. Close positions and settle orders before relying
+on the displayed request amount.
+​
+Understand the amount
+The requested amount is your profit-split share. The confirmation shows both
+your requested amount and the gross amount deducted from the funded account.
+New payout requests use whole cents. Max rounds your available share down
+to the nearest cent. If you enter more than two decimal places, the submitted
+amount rounds to the nearest cent; an exact half-cent rounds to the even cent.
+For example, $330.108976 becomes $330.11. The rounded request must still fit
+within your available share.
+On approval, the full gross amount leaves the account balance and a new payout
+cycle starts. Any undistributed profit retained below that new cycle baseline
+is a balance buffer rather than available profit for another withdrawal. This
+retained buffer cannot be withdrawn in later cycles. Elite accounts are the
+exception: profit you leave in an Elite account stays available for a later
+payout. See Elite Accounts .
+​
+Permanent max loss limit after the first withdrawal
+This lock applies to Select, Prime, and Signature. Elite accounts have no
+lock: their MLL floor never moves, including after withdrawals. See
+Elite Accounts .
+Before the first withdrawal, the max loss limit (MLL) is starting balance minus
+the plan’s static drawdown allowance. On the first withdrawal it becomes
+exactly the starting balance , permanently. Later withdrawals never lower
+or raise it. You receive an in-app notice and an email explaining the lock.
+For example, a $100K Signature account starts with an MLL floor of $94,000.
+After its first withdrawal the floor is $100,000. Equity at $100,000 is allowed;
+equity at $99,999 breaches and closes the account. Equity includes open-position
+profit or loss. Withdrawing $3,200 at an 80/20 split deducts $4,000 gross from
+the account, so withdrawing all $4,000 profit leaves no loss buffer above the
+locked floor.
+The 3% daily loss rule continues to apply. The dashboard shows both loss floors.
+Check them before opening another position.
+Before submitting, review Balance After Payout , Max Loss Floor After
+Payout , and Loss Buffer After Payout directly below the amount field.
+Elite requests show the gross deduction and Balance After Payout only,
+because their floor does not change.
+The preview updates as you change the requested amount and appears again in
+confirmation. The loss buffer is the projected balance minus the permanent
+max loss floor, using the full gross deduction rather than just your share.
+A zero-buffer warning appears when the payout leaves no room above the floor.
+If the projected balance falls below the floor, an explicit breach warning
+appears and submission is blocked, including when the entered amount exceeds
+the available payout. Reduce your request to retain room for trading losses
+and fees. This buffer
+only measures the max loss floor; the daily loss rule still applies. Cash and
+store-credit allocation do not change the buffer.
+​
+Daily loss limit after a withdrawal
+A withdrawal never counts as a daily loss. On plans with a daily loss limit,
+a payout first uses up any profit you made earlier in the same trading day.
+That withdrawn profit no longer adds room under the daily loss limit, so the
+daily loss floor never drops below where it started that day.
+For example, a $5K account with a 3% daily loss limit ($150) starts the day
+at $5,000, so its daily loss floor is $4,850. It gains $280, then withdraws
+$280 gross. The balance returns to $5,000 and the daily loss floor stays at
+$4,850. If the withdrawal is larger than the day’s profit, the floor moves
+down only by the extra amount, so the withdrawal still does not count as a
+loss.
+​
+Split cash and store credit
+Yes, funded payouts can still be redeemed for store credit. On most
+accounts you can take 100% as cash through Rise, 100% as store credit, or any
+split between the two.
+Use the slider, a preset, or enter the store-credit amount. The request panel
+shows each part before you confirm.
+If you split a payout, the cash part must be at least $1.00, the smallest
+amount Rise can send. To take less than $1.00 as cash, convert the whole
+request to store credit instead.
+Some accounts are paid in store credit only. $1K and $2.5K Select accounts,
+for example, cannot take any part of a payout as cash. On these accounts the request panel
+shows Paid as Store Credit in place of the slider, and the whole requested
+amount is converted to store credit. Payout Terms lists the payout method as
+Store credit only . These payouts do not receive the store-credit boost
+because the accounts already have a 90/10 split, so a $30 request grants $30
+in store credit. Eligible payouts from these accounts are automatically approved
+when you submit, and the store credit is added immediately. The gross account
+deduction and new payout cycle also take effect immediately. Requests that need
+verification or have unresolved trading reviews remain pending for review.
+On other accounts, the store-credit portion receives a 5% boost. For example, converting $100 of
+a payout grants $105 in store credit. The boosted credit cannot be withdrawn
+as cash. It is added when the payout is paid, while any cash portion is sent
+through Rise.
+Like all store credit, it expires 45 days after it is added. See
+Store Credit Expiry .
+The full requested amount still counts toward the payout-cycle deduction. The
+boost increases the store-credit value you receive; it does not increase the
+amount deducted from the funded account.
+If you chose store credit by mistake, contact support before spending any of
+that credit.
+​
+Submit and wait for review
+Eligible $1K and $2.5K Select store-credit-only payouts complete on submission.
+Other payout requests go through review. Requests may be reviewed
+automatically or by staff. Frequent requests can take longer to review.
+Requests submitted between 12:00 AM and 9:00 AM ET can also take a few extra
+hours. If one is still pending after a few minutes, the request panel shows
+when to expect an update. While a request is under review,
+trading on that funded account is locked. Do not submit another request or try
+to change the supporting balance.
+Payout History shows the requested amount, cash and boosted store-credit parts,
+request and decision dates, current status, and the gross deduction for a paid
+payout. A paid payout can also show a certificate action. To earn a case by
+sharing a paid payout, use
+Share to Claim
+on Rewards.
+Eligibility is checked again when the request is submitted. If account state
+changed, review the updated blocker and try again only after it is resolved.
+Becoming Funded
+Billing and Rewards
+website
+Powered by This documentation is built and hosted on Mintlify, a developer documentation platform

@@ -1,0 +1,42 @@
+Title: Rule 5: Be Consistent
+URL Source: http://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15170316538013-Rule-5-Be-Consistent
+Markdown Content:
+![Image 1](https://takeprofittraderhelp.zendesk.com/system/photos/15144920255645/photo_2023-11-29_13-23-57.jpg)
+Vlada
+1 month ago Updated
+Before funding traders, Take Profit Trader must ensure they demonstrate consistency.
+There are two requirements that determine whether your performance is considered consistent.
+### 1. Minimum Number of Trading Days
+To show that you can make money and manage risk, you must trade for a **minimum of 3 trading days.**
+A trading day is defined as any day in which you place **at least one trade**.
+You may take as long as you want to complete the test, but you **must** meet the 3-day minimum.
+If you reach your profit target in only 2 days, you still need 1 additional active trading days.
+This rule exists because a trader needs to demonstrate skill and discipline, not just a few lucky trades.
+### 2. Profit Consistency (Percentage of Profits Rule)
+To prevent the evaluation from being treated like a lottery ticket, your best trading day must be**below****50% of your total net profits**.
+This is based on **your highest profit day's****net P/L****.**
+Use the formula:
+**Highest profit day / Net P/L = Consistency Percentage**
+This percentage must be **below 50%** to qualify for a PRO account.
+If your consistency percentage is above 50%, you do not meet the consistency rule. However, _you have not failed the test account_; you simply need to increase your total profit goal to pass the consistency rule.
+### Updated Profit Goal (Automatic Adjustment)
+Your consistency threshold adjusts automatically based on **your highest profit day's net P/L.**
+To determine your updated profit requirement, use:
+**Updated Profit Goal > High Profit Day's Net P/L × 2**
+This updated goal appears directly in your dashboard.
+### Example
+Account size: $50,000
+Required profit target: $3,000
+Your results:
+Day 1: +$2,000
+Day 2: +$600
+Day 3: +$500
+**Highest Profit Day's Net P/L** = $2,000
+* **Consistency percentage (High Profit Day's Net P/L / total profit):**
+* $2,000 / $3,100 = 65% (too high)
+You need to increase your net P/L until your highest day becomes less than 50% of total net profits.
+* **Updated required profit > (High Profit Day's Net P/L × 2):**
+* $2,000 × 2 = $4,000
+* $2,000 / $4,001 < 50%
+So in this example, **you must make more than $4000 to meet the consistency rule.**
+This ensures your performance is not dominated by a single trading day.

@@ -1,0 +1,37 @@
+Title: Claiming Profit | Vest Markets
+URL Source: http://docs.vestmarkets.com/vest-capital/claiming-profit
+Markdown Content:
+⌘Ctrl k
+* [Platform Overview](http://docs.vestmarkets.com/)
+* [Resources](http://docs.vestmarkets.com/resources)
+1. [Platform Overview](http://docs.vestmarkets.com/)
+2. [Vest Capital](http://docs.vestmarkets.com/vest-capital/overview)
+## Claiming Profit
+Claim Profit moves profit from a **Live Funded Account** to your **Primary Account**. It's the first of two steps if you want to move funds all the way out to an external wallet.
+**Claim Profit is not the same as a Withdrawal.** Claim Profit moves funds from a Funded Account to your Primary Account. Withdrawal moves funds from your Primary Account to an external wallet. See [Withdrawals](http://docs.vestmarkets.com/platform/withdrawals) for that second step.
+This flow works identically whether your Live Funded Account came from a passed evaluation or an Instant Account purchase.
+* * *
+### How to Claim Profit[](http://docs.vestmarkets.com/vest-capital/claiming-profit#how-to-claim-profit)
+### Submit a Claim Profit request[](http://docs.vestmarkets.com/vest-capital/claiming-profit#submit-a-claim-profit-request)
+From your Live Funded Account Portfolio page, submit a Claim Profit request. You may need to close open positions or orders first. Your profit split, 80% or 90% with evaluation, 95% flat on Instant, whichever applies to your account, will be credited to your Primary Account in 24 hours.
+### Funds arrive in your Primary Account[](http://docs.vestmarkets.com/vest-capital/claiming-profit#funds-arrive-in-your-primary-account)
+Once processed, the USDC is credited to your Primary Account. From here, it's yours to trade with, hold, or withdraw.
+### Withdraw to an external wallet (optional)[](http://docs.vestmarkets.com/vest-capital/claiming-profit#withdraw-to-an-external-wallet-optional)
+If you want funds outside Vest entirely, withdraw USDC from your Primary Account to any wallet address on a supported chain. See [Withdrawals](http://docs.vestmarkets.com/platform/withdrawals#how-to-withdraw) for the full flow.
+* * *
+### Profit Split[](http://docs.vestmarkets.com/vest-capital/claiming-profit#profit-split)
+Your rate depends on your account type: **80% or 90% with evaluation** (whichever you chose at purchase) or **95% flat on Instant**. It's set at purchase and does not change when your account goes Live. Applied flat at the point of every claim, with no further fees or deductions.
+* * *
+### Processing Time & Frequency[](http://docs.vestmarkets.com/vest-capital/claiming-profit#processing-time-and-frequency)
+* **24 hours** for every claim, regardless of how old the account is.
+* **Irrevocable once initiated,** a Claim Profit request cannot be reversed.
+* Claim as often as you like. There's no cap on frequency and no cap on the amount you can claim.
+Last updated 29 days ago
+Was this helpful?
+* [How to Claim Profit](http://docs.vestmarkets.com/vest-capital/claiming-profit#how-to-claim-profit)
+* [Submit a Claim Profit request](http://docs.vestmarkets.com/vest-capital/claiming-profit#submit-a-claim-profit-request)
+* [Funds arrive in your Primary Account](http://docs.vestmarkets.com/vest-capital/claiming-profit#funds-arrive-in-your-primary-account)
+* [Withdraw to an external wallet (optional)](http://docs.vestmarkets.com/vest-capital/claiming-profit#withdraw-to-an-external-wallet-optional)
+* [Profit Split](http://docs.vestmarkets.com/vest-capital/claiming-profit#profit-split)
+* [Processing Time & Frequency](http://docs.vestmarkets.com/vest-capital/claiming-profit#processing-time-and-frequency)
+Was this helpful?
