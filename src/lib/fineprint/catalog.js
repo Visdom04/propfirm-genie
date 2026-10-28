@@ -112,6 +112,7 @@ export const MARKET_LABEL = {
 export const KIND_LABEL = {
   pricing: 'Price',
   rules: 'Rules',
+  payouts: 'Payouts',
   faq: 'FAQ',
 };
 

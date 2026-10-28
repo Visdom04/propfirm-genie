@@ -9,7 +9,7 @@ const LABELS = [
   { pattern: /\b(drawdown|daily loss|max(?:imum)? loss|loss limit)\b/i, label: 'Drawdown', kind: 'rules' },
   { pattern: /\bmin(?:imum)? trad(?:ing)? days\b/i, label: 'Minimum trading days', kind: 'rules' },
   { pattern: /\bconsistency\b/i, label: 'Consistency rule', kind: 'rules' },
-  { pattern: /\bpayout\b/i, label: 'Payout terms', kind: 'rules' },
+  { pattern: /\bpayout\b/i, label: 'Payout terms', kind: 'payouts' },
   { pattern: /\b(price|fee|cost|activation)\b/i, label: 'Fee', kind: 'pricing' },
 ];
 
@@ -109,6 +109,7 @@ function cardFrom(before, after, meta, beforeText, afterText) {
     facts: [
       {
         label: named?.label || 'Rule wording',
+        kind: named?.kind || meta.kind || 'rules',
         stage: 'published page',
         verdict: 'neutral',
         before: before || '—',

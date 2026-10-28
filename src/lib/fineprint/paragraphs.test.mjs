@@ -54,10 +54,21 @@ assert.equal(inserted[0].facts[0].beforeLine, '');
 assert.match(inserted[0].summary, /News trading is forbidden/);
 assert.ok(!inserted.some(card => /\$167/.test(card.summary) && /News trading/.test(card.summary)));
 
-assert.deepEqual([...new Set(readyStarterPages().map(page => page.firm))], ['Apex Trader Funding']);
-assert.ok(readyStarterPages().length >= 1);
-assert.equal(new Set(STARTER_PAGES.map(page => page.firm)).size, 5);
-assert.ok(STARTER_PAGES.filter(page => !page.ready).every(page => page.url === ''));
-assert.ok(!STARTER_PAGES.some(page => /support\.apextraderfunding\.com/.test(page.url)));
+assert.deepEqual(
+  [...new Set(readyStarterPages().map(page => page.firm))].sort(),
+  ['Apex Trader Funding', 'Lucid Trading', 'My Funded Perps', 'Tradeify', 'Vest Markets'],
+);
+assert.ok(readyStarterPages().every(page => page.url));
+assert.ok(!STARTER_PAGES.some(page => /support\.apextraderfunding\.com|help\.lucidtrading\.com/.test(page.url)));
+const starterIds = readyStarterPages().map(page => page.id);
+assert.equal(starterIds.length, new Set(starterIds).size);
+assert.ok(starterIds.includes('apex-pa-activation'));
+assert.ok(starterIds.includes('apex-intraday-payouts'));
+assert.ok(starterIds.includes('tradeify-select-payouts'));
+assert.ok(starterIds.includes('tradeify-trailing'));
+assert.ok(starterIds.includes('lucid-flex-eval'));
+assert.ok(starterIds.includes('lucid-daily-payouts'));
+assert.ok(starterIds.includes('lucid-direct-payouts'));
+assert.ok(starterIds.includes('mfp-elite'));
 
 console.log('paragraphs.test.mjs ok');

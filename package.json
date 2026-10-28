@@ -11,8 +11,9 @@
     "extend:firms": "node scripts/extend-firm-plans-cols.mjs",
     "sync:firms": "node scripts/sync-firm-plans.mjs",
     "data:firms": "npm run extend:firms -- --write && npm run validate:firms && npm run sync:firms",
-    "test:fineprint": "node src/lib/fineprint/diff.test.mjs && node src/lib/fineprint/fetch.test.mjs && node src/lib/fineprint/paragraphs.test.mjs",
+    "test:fineprint": "node src/lib/fineprint/kind.test.mjs && node src/lib/fineprint/diff.test.mjs && node src/lib/fineprint/fetch.test.mjs && node src/lib/fineprint/paragraphs.test.mjs && node src/lib/fineprint/cameras.test.mjs",
     "fineprint:starter": "node scripts/fineprint-starter.mjs",
+    "fineprint:sitemap": "node scripts/fineprint-sitemap.mjs",
     "test:firm-identity": "node scripts/lib/firm-identity.test.mjs"
   },
   "dependencies": {
@@ -27,11 +28,13 @@
     "next": "16.2.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "tailwindcss": "^4.3.2"
+    "tailwindcss": "^4.3.2",
+    "three": "^0.186.1"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",
     "@types/react": "^19.2.17",
+    "@types/three": "^0.186.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
     "typescript": "^6.0.3"

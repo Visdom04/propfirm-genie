@@ -1,0 +1,242 @@
+[
+  {
+    "id": "lucid-demo-dll",
+    "pageId": "lucid-demo",
+    "demo": true,
+    "detectedAt": "2026-10-23T14:10:00.000Z",
+    "publishedAt": "2026-10-23T14:10:00.000Z",
+    "firm": "Lucid Trading",
+    "market": "futures",
+    "kind": "rules",
+    "product": "LucidPro",
+    "title": "Lucid Trading drawdown",
+    "summary": "Was “$50,000 accounts have a $1,200 Daily Loss Limit.” Now “$50,000 accounts have a $1,000 Daily Loss Limit.”",
+    "sourceUrl": "https://support.lucidtrading.com/en/articles/12890122-lucidpro-daily-loss-limit",
+    "facts": [
+      {
+        "label": "Daily loss limit",
+        "stage": "demo",
+        "verdict": "good",
+        "before": "$1,200",
+        "after": "$1,000",
+        "beforeLine": "$50,000 accounts have a $1,200 Daily Loss Limit.",
+        "afterLine": "$50,000 accounts have a $1,000 Daily Loss Limit."
+      }
+    ],
+    "hunks": [
+      {
+        "before": ["$50,000 accounts have a $1,200 Daily Loss Limit."],
+        "after": ["$50,000 accounts have a $1,000 Daily Loss Limit."],
+        "removed": ["$50,000 accounts have a $1,200 Daily Loss Limit."],
+        "added": ["$50,000 accounts have a $1,000 Daily Loss Limit."]
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "lucid-demo-target",
+    "pageId": "lucid-demo",
+    "demo": true,
+    "detectedAt": "2026-10-22T18:40:00.000Z",
+    "publishedAt": "2026-10-22T18:40:00.000Z",
+    "firm": "Lucid Trading",
+    "market": "futures",
+    "kind": "rules",
+    "product": "LucidPro",
+    "title": "Lucid Trading profit target",
+    "summary": "Was “$50,000 profit target $3,000.” Now “$50,000 profit target $2,500.”",
+    "sourceUrl": "https://support.lucidtrading.com/en/articles/12890029-lucidpro-evaluation-account",
+    "facts": [
+      {
+        "label": "Profit target",
+        "stage": "demo",
+        "verdict": "good",
+        "before": "$3,000",
+        "after": "$2,500",
+        "beforeLine": "Account size $50,000. Profit target $3,000. Max loss limit $2,000.",
+        "afterLine": "Account size $50,000. Profit target $2,500. Max loss limit $2,000."
+      }
+    ],
+    "hunks": [
+      {
+        "before": ["Account size $50,000. Profit target $3,000. Max loss limit $2,000."],
+        "after": ["Account size $50,000. Profit target $2,500. Max loss limit $2,000."],
+        "removed": ["Account size $50,000. Profit target $3,000. Max loss limit $2,000."],
+        "added": ["Account size $50,000. Profit target $2,500. Max loss limit $2,000."]
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "lucid-demo-payout",
+    "pageId": "lucid-demo",
+    "demo": true,
+    "detectedAt": "2026-10-21T11:05:00.000Z",
+    "publishedAt": "2026-10-21T11:05:00.000Z",
+    "firm": "Lucid Trading",
+    "market": "futures",
+    "kind": "payouts",
+    "product": "LucidPro",
+    "title": "Lucid Trading payout terms",
+    "summary": "Was “Payouts require a 5-day trading minimum.” Now “Payouts may be requested after 3 trading days.”",
+    "sourceUrl": "https://support.lucidtrading.com/en/",
+    "facts": [
+      {
+        "label": "Payout terms",
+        "kind": "payouts",
+        "stage": "demo",
+        "verdict": "good",
+        "before": "5-day trading minimum",
+        "after": "3 trading days",
+        "beforeLine": "Payouts require a 5-day trading minimum.",
+        "afterLine": "Payouts may be requested after 3 trading days."
+      }
+    ],
+    "hunks": [
+      {
+        "before": ["Payouts require a 5-day trading minimum."],
+        "after": ["Payouts may be requested after 3 trading days."],
+        "removed": ["Payouts require a 5-day trading minimum."],
+        "added": ["Payouts may be requested after 3 trading days."]
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "apex-demo-consistency",
+    "pageId": "apex-demo",
+    "demo": true,
+    "detectedAt": "2026-10-20T16:20:00.000Z",
+    "publishedAt": "2026-10-20T16:20:00.000Z",
+    "firm": "Apex Trader Funding",
+    "market": "futures",
+    "kind": "rules",
+    "product": "EOD",
+    "title": "Apex consistency window",
+    "summary": "Was “Best day cannot exceed 50% of total profits.” Now “Best day cannot exceed 40% of total profits.”",
+    "sourceUrl": "https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/",
+    "facts": [
+      {
+        "label": "Consistency window",
+        "stage": "demo",
+        "verdict": "worse",
+        "before": "50%",
+        "after": "40%",
+        "beforeLine": "Best day cannot exceed 50% of total profits.",
+        "afterLine": "Best day cannot exceed 40% of total profits."
+      }
+    ],
+    "hunks": [
+      {
+        "before": ["Best day cannot exceed 50% of total profits."],
+        "after": ["Best day cannot exceed 40% of total profits."],
+        "removed": ["Best day cannot exceed 50% of total profits."],
+        "added": ["Best day cannot exceed 40% of total profits."]
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "tradeify-demo-dll",
+    "pageId": "tradeify-demo",
+    "demo": true,
+    "detectedAt": "2026-10-19T13:00:00.000Z",
+    "publishedAt": "2026-10-19T13:00:00.000Z",
+    "firm": "Tradeify",
+    "market": "futures",
+    "kind": "rules",
+    "product": "Growth",
+    "title": "Tradeify daily loss",
+    "summary": "Was “$50,000 Growth daily loss limit $2,000.” Now “$50,000 Growth daily loss limit $1,500.”",
+    "sourceUrl": "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit",
+    "facts": [
+      {
+        "label": "Daily loss limit",
+        "stage": "demo",
+        "verdict": "worse",
+        "before": "$2,000",
+        "after": "$1,500",
+        "beforeLine": "$50,000 Growth daily loss limit $2,000.",
+        "afterLine": "$50,000 Growth daily loss limit $1,500."
+      }
+    ],
+    "hunks": [
+      {
+        "before": ["$50,000 Growth daily loss limit $2,000."],
+        "after": ["$50,000 Growth daily loss limit $1,500."],
+        "removed": ["$50,000 Growth daily loss limit $2,000."],
+        "added": ["$50,000 Growth daily loss limit $1,500."]
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "mfp-demo-payout",
+    "pageId": "mfp-demo",
+    "demo": true,
+    "detectedAt": "2026-10-18T09:45:00.000Z",
+    "publishedAt": "2026-10-18T09:45:00.000Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "kind": "payouts",
+    "product": "Elite",
+    "title": "MFP payout cycle",
+    "summary": "Was “Payouts process every 14 days.” Now “Payouts process every 7 days.”",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Payout cycle",
+        "kind": "payouts",
+        "stage": "demo",
+        "verdict": "good",
+        "before": "14 days",
+        "after": "7 days",
+        "beforeLine": "Payouts process every 14 days.",
+        "afterLine": "Payouts process every 7 days."
+      }
+    ],
+    "hunks": [
+      {
+        "before": ["Payouts process every 14 days."],
+        "after": ["Payouts process every 7 days."],
+        "removed": ["Payouts process every 14 days."],
+        "added": ["Payouts process every 7 days."]
+      }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "vest-demo-limits",
+    "pageId": "vest-demo",
+    "demo": true,
+    "detectedAt": "2026-10-17T19:10:00.000Z",
+    "publishedAt": "2026-10-17T19:10:00.000Z",
+    "firm": "Vest Markets",
+    "market": "crypto",
+    "kind": "rules",
+    "product": "Capital",
+    "title": "Vest loss limits",
+    "summary": "Was “Max daily loss 4% of starting balance.” Now “Max daily loss 3% of starting balance.”",
+    "sourceUrl": "https://docs.vestmarkets.com/vest-capital/loss-limits",
+    "facts": [
+      {
+        "label": "Daily loss",
+        "stage": "demo",
+        "verdict": "worse",
+        "before": "4%",
+        "after": "3%",
+        "beforeLine": "Max daily loss 4% of starting balance.",
+        "afterLine": "Max daily loss 3% of starting balance."
+      }
+    ],
+    "hunks": [
+      {
+        "before": ["Max daily loss 4% of starting balance."],
+        "after": ["Max daily loss 3% of starting balance."],
+        "removed": ["Max daily loss 4% of starting balance."],
+        "added": ["Max daily loss 3% of starting balance."]
+      }
+    ],
+    "status": "published"
+  }
+]

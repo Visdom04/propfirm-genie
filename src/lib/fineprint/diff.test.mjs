@@ -37,6 +37,10 @@ assert.ok(price.hunks.some(hunk => hunk.added.includes('Reward cycle On demand')
 
 const html = htmlToText('<style>body{}</style><p>Daily loss <b>$1,000</b></p><script>alert(1)</script>');
 assert.equal(html, 'Daily loss $1,000');
+assert.match(
+  htmlToText('<p>Daily loss $1,000</p><p>This Font Software is licensed under the SIL Open Font License, Version 1.1. Copyright (c) 2023, Intercom, Inc.</p>'),
+  /^Daily loss \$1,000$/,
+);
 assert.equal(
   htmlToText(`<p>Daily loss $1,000</p><p>${JSON.stringify({ docsConfig: { collectionId: 'abc' } })}${'x'.repeat(700)}</p>`),
   'Daily loss $1,000',
@@ -141,6 +145,7 @@ assert.equal(publish('x', 'x'), null);
 assert.equal(isNoiseLine('{"docsConfig":{"theme":"mint"}}'), true);
 assert.equal(isNoiseLine('![Image 42](https://t.co/i/adsct?payout=1)'), true);
 assert.equal(isNoiseLine(`Payout ${'x'.repeat(700)}`), true);
+assert.equal(isNoiseLine('This Font Software is licensed under the SIL Open Font License, Version 1.1. Copyright (c) 2023, Intercom, Inc.'), true);
 
 const wording = ['Payout cycle Monthly', 'Payout cycle On demand'];
 const homepage = detectChange(...wording, { ...meta, kind: 'pricing' });

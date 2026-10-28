@@ -1,8 +1,20 @@
 'use client';
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { KIND_LABEL } from '@/lib/fineprint/catalog';
+import { coverPages, emptyCover, isCovered, loadCoverage, subscribeCoverage } from '@/lib/fineprint/coverage';
+import { deskToChange, loadDesk, subscribeDesk } from '@/lib/fineprint/desk';
+import { factKind } from '@/lib/fineprint/kind';
+import FpSelect, { FpDateSelect } from './FpSelect';
 import './fineprint.css';
+
+const LOCAL_MARK = {
+  'Apex Trader Funding': '/firm/apex-trader-funding.png',
+  Tradeify: '/firm/tradeify.png',
+};
+
+const PAGE_SIZE = 8;
 
 const VERDICT = {
   good: { label: 'Good for traders', className: 'bg-[#3FB185]/18 text-[#b7efd3]' },
@@ -14,13 +26,21 @@ const MARKETS = [
   { id: 'crypto', label: 'Perp' },
 ];
 
+const FACETS = [
+  { id: 'all', label: 'All kinds' },
+  { id: 'pricing', label: 'Price' },
+  { id: 'rules', label: 'Rules' },
+  { id: 'payouts', label: 'Payouts' },
+];
+
 const RANGES = [
   { id: 'today', label: 'Today', days: 0 },
+  { id: '3', label: '3d', days: 3 },
   { id: '7', label: '7d', days: 7 },
-  { id: '14', label: '14d', days: 14 },
+  { id: '9', label: '9d', days: 9 },
   { id: '30', label: '30d', days: 30 },
   { id: '90', label: '90d', days: 90 },
-  { id: 'all', label: 'All', days: Infinity },
+  { id: 'all', label: 'All time', days: Infinity },
 ];
 
 function dayKey(iso) {
@@ -79,22 +99,58 @@ function monthCells(cursor) {
   return cells;
 }
 
-function dateParts(iso) {
-  const date = new Date(iso);
-  return {
-    mon: date.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' }).toUpperCase(),
-    day: String(date.getUTCDate()).padStart(2, '0'),
-  };
+function rowKind(change, fact) {
+  return factKind(change, fact);
 }
 
-function FirmMark({ name, logo, className = 'size-5' }) {
-  if (logo) {
-    return <img src={logo} alt="" width={20} height={20} className={`fp-logo ${className}`} />;
+function hitsQuery(change, fact, needle) {
+  if (!needle) return true;
+  return [change.firm, change.product, change.title, fact?.label, fact?.before, fact?.after]
+    .join(' ')
+    .toLowerCase()
+    .includes(needle);
+}
+
+function dateParts(iso) {
+  const key = dayKey(iso);
+  const [y, m, d] = key.split('-').map(Number);
+  if (!y || !m || !d) return { mon: '—', day: '—' };
+  const date = new Date(Date.UTC(y, m - 1, d));
+  const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+  return { mon: months[date.getUTCMonth()], day: String(d).padStart(2, '0') };
+}
+
+function firmInitials(name) {
+  const first = String(name || '?').split(/\s+/).find(Boolean) || '?';
+  return first.slice(0, 2).toUpperCase();
+}
+
+function FirmMark({ name, logo, className = 'shrink-0' }) {
+  const local = LOCAL_MARK[name];
+  const incoming = logo;
+  const [src, setSrc] = useState(local || incoming || '');
+  useEffect(() => {
+    setSrc(local || incoming || '');
+  }, [local, incoming]);
+  if (!src) {
+    return (
+      <span className={`fp-logo is-fallback grid place-items-center font-bold ${className}`}>
+        {firmInitials(name)}
+      </span>
+    );
   }
   return (
-    <span className={`fp-logo grid place-items-center text-[10px] font-bold text-[#9ddec4] ${className}`}>
-      {String(name || '?').slice(0, 1)}
-    </span>
+    <img
+      src={src}
+      alt=""
+      width={20}
+      height={20}
+      className={`fp-logo ${className}`}
+      onError={() => {
+        if (local && src !== local) setSrc(local);
+        else setSrc('');
+      }}
+    />
   );
 }
 
@@ -294,6 +350,126 @@ function ChangesCalendar({ changes, logos, day, onPickDay, onOpenChange }) {
   );
 }
 
+function attentionLine(change) {
+  const fact = change.facts?.[0];
+  const bits = [fact?.label || KIND_LABEL[rowKind(change, fact)] || change.kind];
+  if (change.product) bits.push(change.product);
+  if (change.demo) bits.push('demo');
+  return bits.join(' · ');
+}
+
+function attentionRank(change) {
+  if (change.facts?.some(fact => fact.verdict === 'worse')) return 0;
+  if (change.demo || change.status === 'needs_review') return 1;
+  return 2;
+}
+
+function impactLabel(change) {
+  if (change.facts?.some(fact => fact.verdict === 'worse')) return 'High impact';
+  if (change.facts?.some(fact => fact.verdict === 'good')) return 'Good';
+  return 'Update';
+}
+
+function AttentionQueue({ changes, logos, onOpen, onReviewAll }) {
+  const items = [...changes]
+    .filter(change => change.status === 'published' || change.status === 'needs_review')
+    .sort((a, b) => attentionRank(a) - attentionRank(b) || String(b.detectedAt).localeCompare(String(a.detectedAt)))
+    .slice(0, 7);
+
+  return (
+    <section className="fp-alert" aria-label="Attention required">
+      <div className="fp-alert-head">
+        <h2 className="fp-h2">Attention required</h2>
+        <button type="button" className="fp-alert-all btn-bare" onClick={onReviewAll}>
+          Review all
+          <span aria-hidden>↗</span>
+        </button>
+      </div>
+      <p className="fp-sub">Unreviewed updates, highest impact first</p>
+      {items.length ? (
+        <ul className="fp-alert-list">
+          {items.map(change => {
+            const impact = impactLabel(change);
+            return (
+              <li key={change.id}>
+                <button type="button" className="fp-alert-item btn-bare" onClick={() => onOpen(change.id)}>
+                  <FirmMark name={change.firm} logo={change.logo || logos[change.firm]} className="fp-alert-logo" />
+                  <span className="fp-alert-copy">
+                    <b>{change.firm}</b>
+                    <small>{attentionLine(change)}</small>
+                  </span>
+                  <span className={`fp-alert-impact is-${impact === 'High impact' ? 'high' : 'note'}`}>
+                    <span className="fp-alert-impact-copy">{impact}</span>
+                    <span aria-hidden>↗</span>
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p className="fp-empty fp-alert-empty">No unreviewed updates in this filter.</p>
+      )}
+    </section>
+  );
+}
+
+function WatchRail({ pages, logos, selected, onPick, onReset }) {
+  const watching = useMemo(() => {
+    const map = new Map();
+    for (const page of pages) {
+      const row = map.get(page.firm) || { firm: page.firm, cameras: 0, live: 0 };
+      if (page.url) row.cameras += 1;
+      if (page.hash || page.fetchSource === 'ok' || page.ready) row.live += 1;
+      map.set(page.firm, row);
+    }
+    return [...map.values()];
+  }, [pages]);
+
+  return (
+    <section className="fp-watch-pane" aria-label="Firm coverage">
+      <div className="fp-watch-head">
+        <div>
+          <h2 className="fp-h2">Coverage</h2>
+          <p className="fp-sub">
+            {watching.length} {watching.length === 1 ? 'firm' : 'firms'}
+          </p>
+        </div>
+        <button type="button" className="fp-reset btn-bare" onClick={onReset}>
+          Clear filters
+        </button>
+      </div>
+      <p className="fp-watch-kicker">Watching</p>
+      <ul className="fp-watch">
+        {watching.map(item => (
+          <li key={item.firm}>
+            <button
+              type="button"
+              className="fp-watch-item btn-bare"
+              aria-pressed={selected === item.firm}
+              onClick={() => onPick(item.firm)}
+            >
+              <FirmMark name={item.firm} logo={logos[item.firm]} />
+              <span className="fp-watch-copy">
+                <b>{item.firm}</b>
+                <small>
+                  {item.cameras
+                    ? `${item.cameras} ${item.cameras === 1 ? 'camera' : 'cameras'}`
+                    : 'Listed · not crawled'}
+                </small>
+              </span>
+              <span className={`fp-dot${item.cameras ? ' on' : ''}`} aria-hidden />
+            </button>
+          </li>
+        ))}
+      </ul>
+      <a className="fp-desk-link" href="/updates/admin">
+        News desk
+      </a>
+    </section>
+  );
+}
+
 function FirmCarousel({ names, selected, logos, onPick }) {
   const track = useRef(null);
   const shift = useRef(0);
@@ -353,14 +529,6 @@ function IconBtn({ label, disabled, onClick, dir = 'next' }) {
         />
       </svg>
     </button>
-  );
-}
-
-function Chevron({ open = false }) {
-  return (
-    <svg className={`fp-chevron ${open ? 'open' : ''}`} width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   );
 }
 
@@ -471,34 +639,81 @@ function Hunk({ hunk, mode }) {
   );
 }
 
-function starterStatus(firmPages) {
-  const states = firmPages.map(item => item.state).filter(Boolean);
-  if (states.includes('pending')) return 'Checking a change';
-  if (states.some(state => state === 'baseline' || state === 'unchanged' || state === 'changed' || state === 'noise')) {
-    if (states.some(state => state === 'blocked' || state === 'incomplete')) return 'Watching. Some pages blocked.';
-    return 'Watching';
-  }
-  if (states.includes('waiting_for_rules_url')) return 'Rules page not set';
-  if (states.includes('maintenance')) return 'Firm site is down. Still watching.';
-  if (states.some(state => state === 'blocked' || state === 'incomplete')) return 'Page blocked';
-  return 'Not checked yet';
-}
-
-export default function FinePrintBoard({ changes, pages, logos = {} }) {
+export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }) {
+  const [desk, setDesk] = useState([]);
+  const [cover, setCover] = useState(emptyCover);
   const [market, setMarket] = useState('all');
   const [firm, setFirm] = useState('all');
   const [range, setRange] = useState('all');
   const [day, setDay] = useState(null);
   const [query, setQuery] = useState('');
-  const [openId, setOpenId] = useState(null);
+  const [facet, setFacet] = useState('all');
+  const [inspect, setInspect] = useState(null);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    setDesk(loadDesk());
+    return subscribeDesk(setDesk);
+  }, []);
+
+  useEffect(() => {
+    setCover(loadCoverage());
+    return subscribeCoverage(setCover);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.add('fp-thin-root');
+    return () => document.documentElement.classList.remove('fp-thin-root');
+  }, []);
+
+  const changes = useMemo(() => {
+    const extras = desk.filter(item => item.status === 'published').map(deskToChange);
+    const seen = new Set(seed.map(item => item.id));
+    return [...seed, ...extras.filter(item => !seen.has(item.id))];
+  }, [seed, desk]);
+
+  function openChange(id, fact) {
+    const change = changes.find(item => item.id === id);
+    if (!change) return;
+    const nextFact = fact || change.facts?.[0] || { label: change.title, before: '', after: '' };
+    setInspect({ change, fact: nextFact });
+  }
+
+  useEffect(() => {
+    if (!inspect) return undefined;
+    function onKey(event) {
+      if (event.key === 'Escape') setInspect(null);
+    }
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [inspect]);
+
+  const extraLogos = useMemo(() => {
+    return Object.fromEntries((cover.extra || []).filter(item => item.logo).map(item => [item.firm, item.logo]));
+  }, [cover.extra]);
+  const marks = { ...logos, ...extraLogos };
+
+  const coverList = useMemo(() => coverPages(cover), [cover]);
+  const boardPages = useMemo(() => {
+    const seen = new Set();
+    return [...pages, ...coverList].filter(item => {
+      if (!isCovered(item.firm, cover)) return false;
+      if (market !== 'all' && item.market !== market) return false;
+      if (seen.has(item.firm) && item.source === 'cover') return false;
+      seen.add(item.firm);
+      return true;
+    });
+  }, [pages, coverList, cover, market]);
 
   const firmNames = useMemo(() => {
-    return [...new Set(pages.filter(page => market === 'all' || page.market === market).map(page => page.firm))];
-  }, [market, pages]);
+    return [...new Set(boardPages.map(page => page.firm))];
+  }, [boardPages]);
 
+  const needle = query.trim().toLowerCase();
   const visible = changes
     .filter(change => {
       if (change.status !== 'published' || change.firm === 'FundingPips') return false;
+      if (!isCovered(change.firm, cover)) return false;
       if (market !== 'all' && change.market !== market) return false;
       if (firm !== 'all' && change.firm !== firm) return false;
       if (!inRange(change.detectedAt, range, day)) return false;
@@ -506,19 +721,44 @@ export default function FinePrintBoard({ changes, pages, logos = {} }) {
     })
     .sort((a, b) => String(b.detectedAt).localeCompare(String(a.detectedAt)));
 
-  const watchByFirm = useMemo(() => {
-    const groups = new Map();
-    for (const page of pages) {
-      if (market !== 'all' && page.market !== market) continue;
-      const list = groups.get(page.firm) || [];
-      list.push(page);
-      groups.set(page.firm, list);
-    }
-    const needle = query.trim().toLowerCase();
-    return [...groups.entries()]
-      .filter(([name]) => !needle || name.toLowerCase().includes(needle))
-      .sort(([a], [b]) => a.localeCompare(b));
-  }, [pages, market, query]);
+  const rows = visible.flatMap(change => {
+    const facts = change.facts?.length
+      ? change.facts
+      : [{ label: change.title || 'Change', before: '', after: '' }];
+    return facts
+      .map((fact, index) => ({ change, fact, index }))
+      .filter(row => (facet === 'all' || rowKind(row.change, row.fact) === facet) && hitsQuery(row.change, row.fact, needle));
+  });
+
+  const attentionChanges = [];
+  const seenAttention = new Set();
+  for (const row of rows) {
+    if (seenAttention.has(row.change.id)) continue;
+    seenAttention.add(row.change.id);
+    attentionChanges.push(row.change);
+  }
+
+  const calendarChanges = visible.filter(
+    change => facet === 'all' || (change.facts || []).some(fact => rowKind(change, fact) === facet),
+  );
+
+  const pageCount = Math.max(1, Math.ceil(rows.length / PAGE_SIZE));
+  const safePage = Math.min(page, pageCount);
+  const paged = rows.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+
+  useEffect(() => {
+    setPage(1);
+  }, [market, firm, range, day, query, facet]);
+
+  function resetFilters() {
+    setMarket('all');
+    setFirm('all');
+    setRange('all');
+    setDay(null);
+    setQuery('');
+    setFacet('all');
+    setPage(1);
+  }
 
   const pickDay = useCallback(key => {
     setDay(key);
@@ -536,7 +776,7 @@ export default function FinePrintBoard({ changes, pages, logos = {} }) {
 
   return (
     <div className="fp">
-      <div className="fp-filters" role="toolbar" aria-label="Fine Print filters">
+      <div className="fp-filters" role="toolbar" aria-label="Market filters">
         {MARKETS.map(item => (
           <Chip key={item.id} pressed={market === item.id} onClick={() => pickMarket(item.id)}>
             {item.label}
@@ -547,208 +787,294 @@ export default function FinePrintBoard({ changes, pages, logos = {} }) {
       <FirmCarousel
         names={firmNames}
         selected={firm}
-        logos={logos}
+        logos={marks}
         onPick={name => setFirm(current => (current === name ? 'all' : name))}
       />
 
-      <ChangesCalendar
-        changes={changes.filter(change => {
-          if (change.status !== 'published' || change.firm === 'FundingPips') return false;
-          if (market !== 'all' && change.market !== market) return false;
-          if (firm !== 'all' && change.firm !== firm) return false;
-          return true;
-        })}
-        logos={logos}
-        day={day}
-        onPickDay={pickDay}
-        onOpenChange={id => {
-          setOpenId(id);
-          window.requestAnimationFrame(() => {
-            document.getElementById(`change-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          });
-        }}
-      />
+      <div className="fp-top">
+        <ChangesCalendar
+          changes={calendarChanges}
+          logos={marks}
+          day={day}
+          onPickDay={pickDay}
+          onOpenChange={id => openChange(id)}
+        />
+        <AttentionQueue
+          changes={attentionChanges}
+          logos={marks}
+          onOpen={id => {
+            const hit = rows.find(row => row.change.id === id);
+            openChange(id, hit?.fact);
+          }}
+          onReviewAll={() => {
+            setDay(null);
+            setRange('all');
+            window.requestAnimationFrame(() => {
+              document.getElementById('fp-latest')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+          }}
+        />
+      </div>
 
-      <section className="fp-split" aria-label="Updates and tracked firms">
-        <div>
+      <div className="fp-ledger-grid">
+        <section id="fp-latest" className="fp-ledger" aria-label="Change feed">
           <div className="fp-pane-head">
             <div>
               <h2 className="fp-h2">Latest updates</h2>
-              <p className="fp-sub">Newest first. Open a row for the exact wording.</p>
-            </div>
-            <div className="fp-range fp-range-time" role="group" aria-label="Time range">
-              {RANGES.map(item => (
-                <Chip
-                  key={item.id}
-                  pressed={range === item.id}
-                  onClick={() => {
-                    setDay(null);
-                    setRange(item.id);
-                  }}
-                >
-                  {item.label}
-                </Chip>
-              ))}
-            </div>
-          </div>
-
-          <ol className="fp-feed">
-            {visible.map(change => (
-              <li key={change.id}>
-                <UpdateRow
-                  change={change}
-                  logo={change.logo || logos[change.firm]}
-                  open={openId === change.id}
-                  onToggle={() => setOpenId(current => (current === change.id ? null : change.id))}
-                />
-              </li>
-            ))}
-          </ol>
-          {visible.length === 0 ? (
-            <p className="fp-empty">
-              {range === 'day' ? 'Nothing on this day.' : 'Nothing in this window. Try All, or clear a firm.'}
-            </p>
-          ) : null}
-        </div>
-
-        <aside className="fp-side" aria-label="Tracked firms">
-          <div className="fp-pane-head">
-            <div>
-              <h2 className="fp-h2">Tracked firms</h2>
               <p className="fp-sub">
-                {watchByFirm.length} {watchByFirm.length === 1 ? 'firm' : 'firms'} we watch. Click one to filter.
+                {rows.length} {rows.length === 1 ? 'change' : 'changes'}
               </p>
             </div>
-            <div className="fp-range">
-              <Chip
-                pressed={false}
-                disabled={firm === 'all' && !query}
-                ariaLabel="Clear firm filter and search"
-                onClick={() => {
-                  setFirm('all');
-                  setQuery('');
-                }}
-              >
-                Clear
-              </Chip>
-            </div>
           </div>
-          <label className="fp-search">
-            <span className="sr-only">Search firms</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-              <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8" />
-              <path d="M20 20l-3.2-3.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-            </svg>
-            <input
-              value={query}
-              onChange={event => setQuery(event.target.value)}
-              placeholder="Search firms…"
-              autoComplete="off"
+          <div className="fp-search-tools">
+            <label className="fp-search fp-ledger-search">
+              <span className="sr-only">Search firm, field, or value</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8" />
+                <path d="M20 20l-3.2-3.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              </svg>
+              <input
+                value={query}
+                onChange={event => setQuery(event.target.value)}
+                placeholder="Search firm, field, or value"
+                autoComplete="off"
+              />
+              {query ? (
+                <button type="button" className="fp-search-clear btn-bare" aria-label="Clear search" onClick={() => setQuery('')}>
+                  ×
+                </button>
+              ) : null}
+            </label>
+            <FpDateSelect
+              range={range}
+              day={day}
+              ranges={RANGES}
+              onRange={id => {
+                setDay(null);
+                setRange(id);
+              }}
+              onPick={pickDay}
+              onClear={() => {
+                setDay(null);
+                setRange('all');
+              }}
             />
-            {query ? (
-              <button type="button" className="fp-search-clear btn-bare" aria-label="Clear search" onClick={() => setQuery('')}>
-                ×
-              </button>
-            ) : null}
-          </label>
-          <ul className="fp-watch">
-            {watchByFirm.map(([name, firmPages]) => {
-              const plans = firmPages.find(item => item.source === 'plans');
-              const starter = firmPages.every(item => item.source === 'starter');
-              const live = firmPages.some(item =>
-                ['baseline', 'unchanged', 'pending', 'changed', 'noise', 'rebaseline'].includes(item.state),
-              );
-              return (
-                <li key={name}>
-                  <button
-                    type="button"
-                    className="fp-watch-item btn-bare"
-                    aria-pressed={firm === name}
-                    aria-label={`Filter changelog to ${name}`}
-                    onClick={() => setFirm(current => (current === name ? 'all' : name))}
-                  >
-                    <span className={`fp-dot ${live ? 'on' : ''}`} aria-hidden />
-                    <FirmMark name={name} logo={logos[name]} className="size-7 shrink-0" />
-                    <span className="min-w-0 flex-1">
-                      <b>{name}</b>
-                      <small>{starter ? starterStatus(firmPages) : `${plans?.planCount || 0} plans${live ? '' : ' · blocked'}`}</small>
-                    </span>
-                    <Chevron />
-                  </button>
+            <FpSelect
+              ariaLabel="Firms"
+              logo
+              value={firm}
+              options={[
+                { id: 'all', label: 'All firms' },
+                ...firmNames.map(name => ({ id: name, label: name, logo: marks[name] })),
+              ]}
+              onChange={setFirm}
+            />
+            <FpSelect ariaLabel="Kind" value={facet} options={FACETS} onChange={setFacet} />
+          </div>
+          <div className="fp-feed-wrap">
+            <div className="fp-feed-head">
+              <span>Date</span>
+              <span>Firm</span>
+              <span>Changed</span>
+              <span>Previous</span>
+              <span>Current</span>
+            </div>
+            <ol className="fp-feed">
+              {paged.map(row => (
+                <li key={`${row.change.id}-${row.index}`}>
+                  <UpdateRow
+                    change={row.change}
+                    fact={row.fact}
+                    logo={row.change.logo || marks[row.change.firm]}
+                    open={inspect?.change.id === row.change.id && inspect?.fact?.label === row.fact.label}
+                    anchor={row.index === 0 && safePage === 1}
+                    onToggle={() => openChange(row.change.id, row.fact)}
+                  />
                 </li>
-              );
-            })}
-          </ul>
-        </aside>
-      </section>
+              ))}
+            </ol>
+          </div>
+          {rows.length === 0 ? (
+            <p className="fp-empty">
+              {day
+                ? 'No facts on this day.'
+                : facet === 'pricing'
+                  ? 'No price facts in this window.'
+                  : facet === 'payouts'
+                    ? 'No payout facts in this window.'
+                    : facet === 'rules'
+                      ? 'No rule facts in this window.'
+                      : firm !== 'all'
+                        ? `No published facts for ${firm} yet.`
+                        : 'No facts in this window.'}
+            </p>
+          ) : pageCount > 1 ? (
+            <nav className="fp-pages" aria-label="Change pages">
+              {Array.from({ length: pageCount }, (_, index) => index + 1).map(num => (
+                <button
+                  key={num}
+                  type="button"
+                  className="fp-page btn-bare"
+                  aria-current={num === safePage ? 'page' : undefined}
+                  onClick={() => setPage(num)}
+                >
+                  {num}
+                </button>
+              ))}
+            </nav>
+          ) : null}
+        </section>
+        <WatchRail
+          pages={boardPages}
+          logos={marks}
+          selected={firm}
+          onPick={name => setFirm(current => (current === name ? 'all' : name))}
+          onReset={resetFilters}
+        />
+      </div>
+      {inspect ? (
+        <ChangeInspector
+          change={inspect.change}
+          fact={inspect.fact}
+          logo={inspect.change.logo || marks[inspect.change.firm]}
+          onClose={() => setInspect(null)}
+        />
+      ) : null}
     </div>
   );
 }
 
-function UpdateRow({ change, logo, open, onToggle }) {
+function UpdateRow({ change, fact, logo, open, anchor, onToggle }) {
   const parts = dateParts(change.detectedAt);
-  const kind = KIND_LABEL[change.kind] || change.kind;
+  const kind = KIND_LABEL[rowKind(change, fact)] || fact?.kind || change.kind;
+  const tone = fact?.verdict === 'worse' ? 'is-worse' : fact?.verdict === 'good' ? 'is-good' : '';
   return (
-    <article id={`change-${change.id}`} className={`fp-row ${open ? 'open' : ''}`}>
-      <button type="button" className="fp-row-btn btn-bare" aria-expanded={open} onClick={onToggle}>
+    <article id={anchor ? `change-${change.id}` : undefined} className={`fp-row ${open ? 'open' : ''}`}>
+      <button
+        type="button"
+        className="fp-row-btn btn-bare"
+        aria-expanded={open}
+        onClick={event => {
+          event.stopPropagation();
+          onToggle();
+        }}
+      >
         <time className="fp-date" dateTime={change.detectedAt}>
           <span>{parts.mon}</span>
           <strong>{parts.day}</strong>
         </time>
-        <FirmMark name={change.firm} logo={logo} className="fp-logo shrink-0" />
-        <span className="fp-row-copy">
-          <span className="fp-row-meta">
+        <span className="fp-cell-firm">
+          <FirmMark name={change.firm} logo={logo} className="fp-logo shrink-0" />
+          <span className="min-w-0">
             <b>{change.firm}</b>
-            <span className={`fp-kind kind-${change.kind}`}>{kind}</span>
-            {change.status === 'needs_review' ? <span className="fp-kind kind-review">Review</span> : null}
+            <small>
+              {[change.product, change.demo ? 'demo' : null].filter(Boolean).join(' · ')}
+            </small>
           </span>
-          <span className="fp-row-sum">{change.summary || change.title}</span>
         </span>
-        <Chevron open={open} />
+        <span className="fp-cell-field">
+          <b>{fact?.label || kind}</b>
+          <small>
+            {kind}
+            {change.demo ? ' · Demo' : ''}
+          </small>
+        </span>
+        <span className="fp-cell-prev">{fact?.before || '—'}</span>
+        <span className={`fp-cell-now ${tone}`}>{fact?.after || '—'}</span>
+        <span className="fp-cell-delta">
+          {fact?.before || '—'} → {fact?.after || '—'}
+        </span>
       </button>
-      {open ? <UpdateDetail change={change} /> : null}
     </article>
   );
 }
 
-function UpdateDetail({ change }) {
+function ChangeInspector({ change, fact, logo, onClose }) {
+  const [ready, setReady] = useState(false);
   const [textOpen, setTextOpen] = useState(false);
-  return (
-    <div className="fp-detail">
-      {change.facts?.length ? (
-        <ul className="fp-facts">
-          {change.facts.map(fact => {
-            const verdict = VERDICT[fact.verdict];
-            return (
-              <li key={`${fact.label}-${fact.before}`}>
-                <p>
-                  <span className="font-medium">{fact.label}</span>
-                  {verdict ? <span className={`fp-verdict ${verdict.className}`}>{verdict.label}</span> : null}
-                </p>
-                <p className="fp-ba">
-                  {fact.before} → {fact.after}
-                </p>
-              </li>
-            );
-          })}
-        </ul>
-      ) : null}
-      <div className="fp-detail-actions">
-        {change.sourceUrl ? (
-          <a
-            className="fp-chip"
-            href={change.sourceUrl}
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
-            Live page
-          </a>
-        ) : null}
+  const kindId = rowKind(change, fact);
+  const kind = KIND_LABEL[kindId] || kindId;
+  const verdict = VERDICT[fact?.verdict];
+  const detected = String(change.detectedAt || '').slice(0, 10);
+
+  useEffect(() => {
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!ready) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [ready]);
+
+  if (!ready) return null;
+
+  return createPortal(
+    <div className="fp-inspect-layer">
+      <button type="button" className="fp-inspect-scrim btn-bare" aria-label="Close inspector" onClick={onClose} />
+      <aside className="fp-inspect" role="dialog" aria-modal="true" aria-labelledby="fp-inspect-title">
+        <div className="fp-inspect-top">
+          <p className="fp-inspect-kicker">Change inspector</p>
+          <button type="button" className="fp-inspect-close btn-bare" onClick={onClose}>
+            Close
+          </button>
+        </div>
+        <h2 id="fp-inspect-title" className="fp-inspect-title">
+          {fact?.label || change.title}
+        </h2>
+        <div className="fp-inspect-firm">
+          <FirmMark name={change.firm} logo={logo} className="fp-logo shrink-0" />
+          <span>
+            <b>{change.firm}</b>
+            <small>{[change.product, change.demo ? 'demo' : null].filter(Boolean).join(' · ')}</small>
+          </span>
+        </div>
+        <div className="fp-inspect-chips">
+          <span className={`fp-kind kind-${kindId}`}>{kind}</span>
+          {verdict ? <span className={`fp-verdict ${verdict.className}`}>{verdict.label}</span> : null}
+          {change.demo ? <span className="fp-kind kind-review">Demo</span> : null}
+        </div>
+        <div className="fp-inspect-pair">
+          <div>
+            <p>Previous value</p>
+            <b>{fact?.before || '—'}</b>
+          </div>
+          <div className={fact?.verdict === 'worse' ? 'is-worse' : 'is-good'}>
+            <p>New observed value</p>
+            <b>{fact?.after || '—'}</b>
+          </div>
+        </div>
+        <dl className="fp-inspect-meta">
+          <div>
+            <dt>Change category</dt>
+            <dd>{kind}</dd>
+          </div>
+          <div>
+            <dt>First detected</dt>
+            <dd>{detected || '—'}</dd>
+          </div>
+          <div>
+            <dt>Source</dt>
+            <dd>
+              {change.sourceUrl ? (
+                <a href={change.sourceUrl} target="_blank" rel="nofollow noopener noreferrer">
+                  {change.demo ? 'Demo page' : 'Live page'}
+                </a>
+              ) : (
+                'Not provided'
+              )}
+            </dd>
+          </div>
+        </dl>
         <Chip pressed={textOpen} ariaLabel={textOpen ? 'Hide exact text' : 'Exact text'} onClick={() => setTextOpen(value => !value)}>
           {textOpen ? 'Hide exact text' : 'Exact text'}
         </Chip>
-      </div>
-      {textOpen ? <DiffView hunks={change.hunks} /> : null}
-    </div>
+        {textOpen ? <DiffView hunks={change.hunks} /> : null}
+      </aside>
+    </div>,
+    document.body,
   );
 }

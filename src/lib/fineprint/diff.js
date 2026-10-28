@@ -15,6 +15,9 @@ const NOISE = [
   /data-code="/i,
   /^[[{]/,
   /^!\[/,
+  /SIL Open Font License/i,
+  /Reserved Font Name/i,
+  /Intercom, Inc/i,
 ];
 
 // Hydration JSON and minified blobs, not sentences a trader reads.
@@ -66,7 +69,13 @@ export function htmlToText(html) {
   return decodeEntities(stripped)
     .split('\n')
     .map(line => line.replace(/\s+/g, ' ').trim())
-    .filter(line => line && line.length <= MAX_LINE && !/^[[{]/.test(line))
+    .filter(line => {
+      if (!line || line.length > MAX_LINE) return false;
+      if (/^[[{]/.test(line)) return false;
+      if (/SIL Open Font License|Reserved Font Name|Intercom, Inc/i.test(line)) return false;
+      if (/^\{"@context"/i.test(line)) return false;
+      return true;
+    })
     .join('\n');
 }
 

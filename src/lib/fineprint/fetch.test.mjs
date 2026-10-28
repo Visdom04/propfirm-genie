@@ -11,6 +11,7 @@ assert.deepEqual(readerMirrors('https://apextraderfunding.com/help-center/'), [
 assert.equal(isRetryable(429), true);
 assert.equal(isRetryable(403), false);
 assert.equal(needsReader(403), true);
+assert.equal(needsReader(429), true);
 assert.equal(needsReader(200), false);
 
 const calls = [];

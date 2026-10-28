@@ -27,7 +27,7 @@ export function isRetryable(status) {
 }
 
 export function needsReader(status) {
-  return status === 0 || status === 403 || status === 503;
+  return status === 0 || status === 403 || status === 429 || status === 503;
 }
 
 export function delay(ms) {

@@ -13,9 +13,9 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gateVersion, hashText, htmlToText } from '../src/lib/fineprint/diff.js';
-import { fetchFirstOk, fetchWithRetry, readerMirrors } from '../src/lib/fineprint/fetch.js';
+import { delay, fetchFirstOk, fetchWithRetry, readerMirrors } from '../src/lib/fineprint/fetch.js';
 import { pageIsBlocked, pageIsComplete, pageIsMaintenance, paragraphCards } from '../src/lib/fineprint/paragraphs.js';
-import { readyStarterPages, STARTER_PAGES } from '../src/lib/fineprint/starter.js';
+import { crawlGapMs, readyStarterPages, STARTER_PAGES } from '../src/lib/fineprint/starter.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const pageDir = path.join(root, 'data/fineprint/starter');
@@ -50,6 +50,7 @@ async function main() {
       report.push({ id: page.id, firm: page.firm, state: 'waiting_for_rules_url' });
       continue;
     }
+    if (report.length) await delay(crawlGapMs(page));
     const file = path.join(pageDir, `${page.id}.txt`);
     const metaFile = `${file}.meta.json`;
     const previous = await readText(file);
