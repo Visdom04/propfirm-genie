@@ -1,6 +1,6 @@
 import SiteNav from '@/components/green/SiteNav';
 
-export default function GreenPageShell({ children, className = '' }) {
+export default function GreenPageShell({ children, className = '', navTrailing = null }) {
   return (
     <div
       className={`relative min-h-screen bg-[#0a0f0d] font-[family-name:var(--font-dm)] text-white scheme-dark [--pfg-nav-h:3.5rem] max-md:[--pfg-nav-h:2.75rem] ${className}`.trim()}
@@ -34,7 +34,7 @@ export default function GreenPageShell({ children, className = '' }) {
         className="pointer-events-none fixed bottom-0 left-1/3 size-[480px] rounded-full bg-teal-800/20 blur-[140px]"
       />
       <div className="relative z-[1]">
-        <SiteNav />
+        <SiteNav trailing={navTrailing} />
         {children}
       </div>
     </div>

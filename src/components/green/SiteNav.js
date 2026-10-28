@@ -10,9 +10,11 @@ const LINKS = [
   { href: '/firms', label: 'Firms' },
   { href: '/overview', label: 'Overview' },
   { href: '/compare', label: 'Head to head' },
+  { href: '/giveaway', label: 'Giveaway' },
+  { href: '/updates', label: 'Market intelligence' },
 ];
 
-export default function SiteNav() {
+export default function SiteNav({ trailing = null }) {
   const pathname = usePathname() || '';
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
@@ -72,6 +74,8 @@ export default function SiteNav() {
             );
           })}
         </div>
+
+        {trailing ? <div className="hidden shrink-0 items-center gap-2 md:flex">{trailing}</div> : null}
 
         <div className="relative ml-auto md:hidden">
           <button

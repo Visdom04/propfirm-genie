@@ -1,0 +1,48 @@
+name: Fine print daily check
+
+on:
+  schedule:
+    # 09:00 IST. GitHub only fires this on the default branch.
+    # A new paragraph becomes a card only after the next run matches it.
+    - cron: '30 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fineprint-starter
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Check the publisher still refuses a bad card
+        run: npm run test:fineprint
+
+      - name: Photograph the rules pages
+        run: npm run fineprint:starter
+
+      - name: Commit the saved pages and any new cards
+        run: |
+          git add -- data/fineprint/starter src/data/fineprint/changes.json
+          if git diff --cached --quiet; then
+            echo "Same pages as yesterday. Not committing a clock tick."
+            exit 0
+          fi
+          git add -- src/data/fineprint/starter-watch.json
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Record the daily rules-page check."
+          git push
