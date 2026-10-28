@@ -33,12 +33,16 @@ const SKIP = [
 ];
 
 const KEEP = [
-  { kind: 'pricing', pattern: /pricing|account-tiers|eval(?:uation)?-plan-fees|activation|elite-accounts|commissions-and-fees/i },
-  { kind: 'payouts', pattern: /payout|claiming-profit/i },
+  {
+    kind: 'pricing',
+    pattern:
+      /pricing|account-tiers|eval(?:uation)?-plan-fees|activation|elite-accounts|commissions-and-fees|commissions-on-test|account-sizes-and-their-prices|test-subscriptions|navigating-your-subscriptions|fees-after-qualifying|accounts-pricing|help-center\/fast-track|help-center\/momentum/i,
+  },
+  { kind: 'payouts', pattern: /payout|claiming-profit|profit-split|reward-share|performance-reward|help-center\/master/i },
   {
     kind: 'rules',
     pattern:
-      /evaluat|drawdown|daily-loss|dll|consistency|loss-limit|challenges-and-rules|trailing|lightning-funded|select-eval|growth-eval|select-vs-growth|hedging|permitted-times|performance-accounts|funded-account|payout-policy|payout-objectives|essential-trading-rules|scaling-levels|position-sizing|no-activation-fee|how-to-request-a-payout|inactivity-policy|prohibited-activities|futures-trading-times|lucidflex|luciddaily|luciddirect|lucidpro|lucidmaxx/i,
+      /evaluat|drawdown|daily-loss|dll|consistency|loss-limit|challenges-and-rules|trailing|lightning-funded|select-eval|growth-eval|select-vs-growth|hedging|permitted-times|performance-accounts|funded-account|payout-policy|payout-objectives|essential-trading-rules|scaling-levels|position-sizing|no-activation-fee|how-to-request-a-payout|inactivity-policy|prohibited-activities|futures-trading-times|lucidflex|luciddaily|luciddirect|lucidpro|lucidmaxx|rule-\d-|pro-account-rules|multiple-accounts|maximum-loss|benchmark-days|contract-limits|prohibited-trading|help-center\/qualification|help-center\/funded|apprentice-plan-update|master-account-rules|fundednext-account-all-rules/i,
   },
 ];
 

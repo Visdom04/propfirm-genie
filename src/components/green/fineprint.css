@@ -19,7 +19,6 @@
 
 .fp-thin-root,
 .fp,
-.fp-select-menu,
 .fp-watch,
 .fp-alert-list,
 .fp-cal-pop,
@@ -33,7 +32,6 @@
 
 .fp-thin-root::-webkit-scrollbar,
 .fp::-webkit-scrollbar,
-.fp-select-menu::-webkit-scrollbar,
 .fp-watch::-webkit-scrollbar,
 .fp-alert-list::-webkit-scrollbar,
 .fp-cal-pop::-webkit-scrollbar,
@@ -47,7 +45,6 @@
 
 .fp-thin-root::-webkit-scrollbar-track,
 .fp::-webkit-scrollbar-track,
-.fp-select-menu::-webkit-scrollbar-track,
 .fp-watch::-webkit-scrollbar-track,
 .fp-alert-list::-webkit-scrollbar-track,
 .fp-cal-pop::-webkit-scrollbar-track,
@@ -60,7 +57,6 @@
 
 .fp-thin-root::-webkit-scrollbar-thumb,
 .fp::-webkit-scrollbar-thumb,
-.fp-select-menu::-webkit-scrollbar-thumb,
 .fp-watch::-webkit-scrollbar-thumb,
 .fp-alert-list::-webkit-scrollbar-thumb,
 .fp-cal-pop::-webkit-scrollbar-thumb,
@@ -663,8 +659,7 @@ button.fp-cal-day:focus-visible {
 
 @media (min-width: 980px) {
   .fp-ledger-grid {
-    grid-template-columns: minmax(0, 1fr) 280px;
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -750,6 +745,25 @@ button.fp-cal-day:focus-visible {
   font-size: 0.78rem;
   font-weight: 650;
   text-decoration: none;
+}
+
+.fp-admin-gate {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  margin-top: 16px;
+  border: 1px solid var(--fp-line);
+  border-radius: 999px;
+  padding: 0 14px;
+  color: var(--fp-mute);
+  font-size: 0.78rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.fp-admin-gate:hover {
+  border-color: var(--fp-mark);
+  color: var(--fp-ink);
 }
 
 .fp-desk-head {
@@ -1535,7 +1549,7 @@ button.fp-cal-day:focus-visible {
 
 .fp-search-tools {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 9.5rem) minmax(10rem, 14rem) minmax(7.5rem, 9.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 9.5rem) minmax(10rem, 14rem) minmax(7.5rem, 9.5rem) auto;
   gap: 8px;
   align-items: stretch;
   margin-bottom: 10px;
@@ -1604,7 +1618,9 @@ button.fp-cal-day:focus-visible {
 .fp-select-menu {
   position: fixed;
   z-index: 220;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
   margin: 0;
   padding: 8px;
   border: 1px solid var(--fp-line);
@@ -1612,6 +1628,23 @@ button.fp-cal-day:focus-visible {
   background: oklch(0.145 0.028 155);
   box-shadow: 0 16px 40px oklch(0.06 0.02 155 / 0.72);
   color: var(--fp-ink);
+  scrollbar-width: thin;
+  scrollbar-color: #3fb185 #0a0f0d;
+}
+
+.fp-select-menu::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.fp-select-menu::-webkit-scrollbar-track {
+  background: #0a0f0d;
+  border-radius: 99px;
+}
+
+.fp-select-menu::-webkit-scrollbar-thumb {
+  background: #3fb185;
+  border-radius: 99px;
 }
 
 .fp-select-menu ul {

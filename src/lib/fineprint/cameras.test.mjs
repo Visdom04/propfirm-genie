@@ -14,6 +14,12 @@ assert.equal(classifyCameraUrl('https://tradeify.co/post/payout-policy-explained
 assert.equal(classifyCameraUrl('https://lucidtrading.com/product/50k-eval/').reason, 'noise_page');
 assert.equal(classifyCameraUrl('https://apextraderfunding.com/help-center/legacy-payouts/legacy-pa-payout-parameters/').reason, 'noise_page');
 assert.equal(classifyCameraUrl('https://apextraderfunding.com/help-center/additional-helpful-items/scaling-levels-pa-explained/').keep, true);
+assert.equal(classifyCameraUrl('https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15170316538013-Rule-5-Be-Consistent').keep, true);
+assert.equal(classifyCameraUrl('https://helpfutures.fundednext.com/en/articles/17230292-daily-loss-limit-and-maximum-loss-limit-at-fundednext-futures').keep, true);
+assert.equal(classifyCameraUrl('https://helpfutures.fundednext.com/en/articles/17229848-fundednext-futures-flex-fundednext-account-all-rules').keep, true);
+assert.equal(classifyCameraUrl('https://knowledge.thelegendstrading.com/en/articles/12099683-payout-process-payout-policy').kind, 'payouts');
+assert.equal(classifyCameraUrl('https://bulenox.com/help-center/qualification').keep, true);
+assert.equal(classifyCameraUrl('https://takeprofittrader.com/').reason, 'homepage');
 
 const xml = `<?xml version="1.0"?>
 <urlset>

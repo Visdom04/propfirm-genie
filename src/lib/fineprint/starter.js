@@ -9,6 +9,10 @@ const TRADEIFY = 'Tradeify';
 const LUCID = 'Lucid Trading';
 const MFP = 'My Funded Perps';
 const VEST = 'Vest Markets';
+const TPT = 'Take Profit Trader';
+const FNF = 'FundedNext Futures';
+const LEGENDS = 'Legends Trading';
+const BULENOX = 'Bulenox';
 
 function page(id, firm, market, kind, url) {
   return { id, firm, market, kind, ready: true, url };
@@ -75,6 +79,38 @@ export const STARTER_PAGES = [
   page('vest-account-tiers', VEST, 'crypto', 'pricing', 'https://docs.vestmarkets.com/vest-capital/account-tiers'),
   page('vest-loss-limits', VEST, 'crypto', 'rules', 'https://docs.vestmarkets.com/vest-capital/loss-limits'),
   page('vest-claiming-profit', VEST, 'crypto', 'rules', 'https://docs.vestmarkets.com/vest-capital/claiming-profit'),
+
+  page('tpt-rule-1', TPT, 'futures', 'rules', 'https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15169070804125-Rule-1-Hit-Your-Profit-Target'),
+  page('tpt-rule-3', TPT, 'futures', 'rules', 'https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15170265979165-Rule-3-Do-Not-Hit-End-Of-Day-EOD-Maximum-Trailing-Drawdown'),
+  page('tpt-rule-5', TPT, 'futures', 'rules', 'https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15170316538013-Rule-5-Be-Consistent'),
+  page('tpt-pro-rules', TPT, 'futures', 'rules', 'https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15171769361053-PRO-Account-Rules'),
+  page('tpt-multi-accounts', TPT, 'futures', 'rules', 'https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15172695563933-Rules-for-Multiple-Accounts'),
+  page('tpt-payout-system', TPT, 'futures', 'payouts', 'https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15172296875165-Payout-System'),
+  page('tpt-profit-split', TPT, 'futures', 'payouts', 'https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15172219527581-PRO-Account-Profit-Split-Withdrawal-Rules'),
+  page('tpt-subscriptions', TPT, 'futures', 'pricing', 'https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15141145057053-Test-Subscriptions'),
+  page('tpt-sub-nav', TPT, 'futures', 'pricing', 'https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15170412478749-Navigating-Your-Subscriptions'),
+  page('tpt-commissions', TPT, 'futures', 'pricing', 'https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15172548967069-Commissions-on-Test-and-PRO-accounts'),
+
+  page('fnf-dll', FNF, 'futures', 'rules', 'https://helpfutures.fundednext.com/en/articles/17230292-daily-loss-limit-and-maximum-loss-limit-at-fundednext-futures'),
+  page('fnf-consistency', FNF, 'futures', 'rules', 'https://helpfutures.fundednext.com/en/articles/17230245-is-there-any-consistency-rule-to-be-followed-in-the-fundednext-futures-challenge-fundednext-account'),
+  page('fnf-flex-rules', FNF, 'futures', 'rules', 'https://helpfutures.fundednext.com/en/articles/17229848-fundednext-futures-flex-fundednext-account-all-rules'),
+  page('fnf-prohibited', FNF, 'futures', 'rules', 'https://helpfutures.fundednext.com/en/articles/14298337-what-are-the-prohibited-trading-strategies-of-fundednext-futures'),
+  page('fnf-prices', FNF, 'futures', 'pricing', 'https://helpfutures.fundednext.com/en/articles/17228899-what-are-the-available-account-sizes-and-their-prices-in-fundednext-futures'),
+  page('fnf-reward-share', FNF, 'futures', 'payouts', 'https://helpfutures.fundednext.com/en/articles/17242096-what-will-be-my-reward-share-from-the-futures-fundednext-account'),
+  page('fnf-withdraw', FNF, 'futures', 'payouts', 'https://helpfutures.fundednext.com/en/articles/17242064-how-can-i-withdraw-my-performance-reward'),
+  page('fnf-flex-reward', FNF, 'futures', 'payouts', 'https://helpfutures.fundednext.com/en/articles/14878865-what-are-the-performance-reward-eligibility-criteria-for-flex-fundednext-account'),
+
+  page('legends-eval', LEGENDS, 'futures', 'rules', 'https://knowledge.thelegendstrading.com/en/articles/12099518-apprentice-evaluation-guidelines'),
+  page('legends-eod-update', LEGENDS, 'futures', 'rules', 'https://knowledge.thelegendstrading.com/en/articles/13512545-apprentice-plan-update-eod-tracking-one-day-pass-no-scaling-effective-now'),
+  page('legends-master-rules', LEGENDS, 'futures', 'rules', 'https://knowledge.thelegendstrading.com/en/articles/12099648-master-account-rules-guidelines'),
+  page('legends-payouts', LEGENDS, 'futures', 'payouts', 'https://knowledge.thelegendstrading.com/en/articles/12099683-payout-process-payout-policy'),
+  page('legends-master-fees', LEGENDS, 'futures', 'pricing', 'https://knowledge.thelegendstrading.com/en/articles/12099628-fees-after-qualifying-for-a-master-account'),
+
+  page('bulenox-qualification', BULENOX, 'futures', 'rules', 'https://bulenox.com/help-center/qualification'),
+  page('bulenox-master', BULENOX, 'futures', 'payouts', 'https://bulenox.com/help-center/master'),
+  page('bulenox-fast-track', BULENOX, 'futures', 'pricing', 'https://bulenox.com/help-center/fast-track'),
+  page('bulenox-momentum', BULENOX, 'futures', 'pricing', 'https://bulenox.com/help-center/momentum'),
+  page('bulenox-pricing', BULENOX, 'futures', 'pricing', 'https://bulenox.com/accounts-pricing'),
 ];
 
 if (STARTER_PAGES.some(item => !isAllowedCameraUrl(item.url))) {
@@ -86,6 +122,6 @@ export function readyStarterPages() {
 }
 
 export function crawlGapMs(page) {
-  if (page?.firm === APEX || page?.firm === TRADEIFY) return 1200;
+  if (page?.firm === APEX || page?.firm === TRADEIFY || page?.firm === TPT || page?.firm === LEGENDS || page?.firm === BULENOX) return 1200;
   return 400;
 }

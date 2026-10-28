@@ -76,7 +76,7 @@ export default function FpSelect({ value, options, onChange, ariaLabel, logo, fo
               bottom: box.bottom,
               left: box.left,
               width: menuClass === 'is-cal' ? Math.max(box.width, 292) : box.width,
-              maxHeight: box.maxHeight,
+              maxHeight: Math.min(box.maxHeight, 320),
             }}
           >
             <ul role="listbox" aria-label={ariaLabel}>
@@ -165,7 +165,7 @@ export function FpDateSelect({ range, day, ranges, onRange, onPick, onClear }) {
               bottom: box.bottom,
               left: Math.min(box.left, window.innerWidth - 300),
               width: 292,
-              maxHeight: box.maxHeight,
+              maxHeight: Math.min(box.maxHeight, 480),
             }}
           >
             <div className="fp-date-chips" role="group" aria-label="Time range">

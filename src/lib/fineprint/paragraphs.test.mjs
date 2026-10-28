@@ -56,7 +56,17 @@ assert.ok(!inserted.some(card => /\$167/.test(card.summary) && /News trading/.te
 
 assert.deepEqual(
   [...new Set(readyStarterPages().map(page => page.firm))].sort(),
-  ['Apex Trader Funding', 'Lucid Trading', 'My Funded Perps', 'Tradeify', 'Vest Markets'],
+  [
+    'Apex Trader Funding',
+    'Bulenox',
+    'FundedNext Futures',
+    'Legends Trading',
+    'Lucid Trading',
+    'My Funded Perps',
+    'Take Profit Trader',
+    'Tradeify',
+    'Vest Markets',
+  ],
 );
 assert.ok(readyStarterPages().every(page => page.url));
 assert.ok(!STARTER_PAGES.some(page => /support\.apextraderfunding\.com|help\.lucidtrading\.com/.test(page.url)));
@@ -70,5 +80,9 @@ assert.ok(starterIds.includes('lucid-flex-eval'));
 assert.ok(starterIds.includes('lucid-daily-payouts'));
 assert.ok(starterIds.includes('lucid-direct-payouts'));
 assert.ok(starterIds.includes('mfp-elite'));
+assert.ok(starterIds.includes('tpt-rule-5'));
+assert.ok(starterIds.includes('fnf-flex-rules'));
+assert.ok(starterIds.includes('legends-payouts'));
+assert.ok(starterIds.includes('bulenox-qualification'));
 
 console.log('paragraphs.test.mjs ok');

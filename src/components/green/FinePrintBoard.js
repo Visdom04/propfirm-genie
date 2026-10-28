@@ -414,62 +414,6 @@ function AttentionQueue({ changes, logos, onOpen, onReviewAll }) {
   );
 }
 
-function WatchRail({ pages, logos, selected, onPick, onReset }) {
-  const watching = useMemo(() => {
-    const map = new Map();
-    for (const page of pages) {
-      const row = map.get(page.firm) || { firm: page.firm, cameras: 0, live: 0 };
-      if (page.url) row.cameras += 1;
-      if (page.hash || page.fetchSource === 'ok' || page.ready) row.live += 1;
-      map.set(page.firm, row);
-    }
-    return [...map.values()];
-  }, [pages]);
-
-  return (
-    <section className="fp-watch-pane" aria-label="Firm coverage">
-      <div className="fp-watch-head">
-        <div>
-          <h2 className="fp-h2">Coverage</h2>
-          <p className="fp-sub">
-            {watching.length} {watching.length === 1 ? 'firm' : 'firms'}
-          </p>
-        </div>
-        <button type="button" className="fp-reset btn-bare" onClick={onReset}>
-          Clear filters
-        </button>
-      </div>
-      <p className="fp-watch-kicker">Watching</p>
-      <ul className="fp-watch">
-        {watching.map(item => (
-          <li key={item.firm}>
-            <button
-              type="button"
-              className="fp-watch-item btn-bare"
-              aria-pressed={selected === item.firm}
-              onClick={() => onPick(item.firm)}
-            >
-              <FirmMark name={item.firm} logo={logos[item.firm]} />
-              <span className="fp-watch-copy">
-                <b>{item.firm}</b>
-                <small>
-                  {item.cameras
-                    ? `${item.cameras} ${item.cameras === 1 ? 'camera' : 'cameras'}`
-                    : 'Listed · not crawled'}
-                </small>
-              </span>
-              <span className={`fp-dot${item.cameras ? ' on' : ''}`} aria-hidden />
-            </button>
-          </li>
-        ))}
-      </ul>
-      <a className="fp-desk-link" href="/updates/admin">
-        News desk
-      </a>
-    </section>
-  );
-}
-
 function FirmCarousel({ names, selected, logos, onPick }) {
   const track = useRef(null);
   const shift = useRef(0);
@@ -870,6 +814,9 @@ export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }
               onChange={setFirm}
             />
             <FpSelect ariaLabel="Kind" value={facet} options={FACETS} onChange={setFacet} />
+            <button type="button" className="fp-reset btn-bare" onClick={resetFilters}>
+              Clear filters
+            </button>
           </div>
           <div className="fp-feed-wrap">
             <div className="fp-feed-head">
@@ -923,14 +870,10 @@ export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }
               ))}
             </nav>
           ) : null}
+          <a className="fp-admin-gate" href="/updates/admin">
+            Check admin access
+          </a>
         </section>
-        <WatchRail
-          pages={boardPages}
-          logos={marks}
-          selected={firm}
-          onPick={name => setFirm(current => (current === name ? 'all' : name))}
-          onReset={resetFilters}
-        />
       </div>
       {inspect ? (
         <ChangeInspector
