@@ -80,6 +80,7 @@ Settings
 - Certificates
 - Purchase History
 On this page
+Back to top
 - Evaluation rules
 - Select prize accounts
 - Daily loss reset time
@@ -108,9 +109,9 @@ equity.
 ​
 Evaluation rules
 Plan Profit target Daily loss limit Static maximum drawdown
-1-Step Select 9% 3% 3%
-1-Step Prime 12% 3% 5%
-1-Step Signature 10% 3% 6%
+Select 9% 3% 3%
+Prime 12% 3% 5%
+Signature 10% 3% 6%
 Elite, 3% DLL 10% 3% 5%
 Elite, No DLL 10% None 5%
 The profit target and loss rules use account equity, including
@@ -120,7 +121,7 @@ daylight saving time, with a dollar allowance of 3% of starting balance.
 ​
 Select prize accounts
 $1K and $2.5K Select accounts are prizes from giveaways and promotions. They
-cannot be bought. They follow the 1-Step Select rules above. On a $2.5K
+cannot be bought. They follow the Select rules above. On a $2.5K
 account, for example, the profit target is $2,725 and the drawdown floor is
 $2,425. Funded payouts on these accounts use a 90/10 split and are paid
 entirely as store credit. See

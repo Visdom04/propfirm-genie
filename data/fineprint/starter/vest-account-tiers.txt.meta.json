@@ -1,6 +1,8 @@
 {
   "url": "https://docs.vestmarkets.com/vest-capital/account-tiers",
   "hash": "f452363ef773e2414638ef695d489a23d7a0ca8990c7011d7d23f0ad6c2940f5",
-  "state": "baseline",
-  "checkedAt": "2026-10-28T12:59:58.070Z"
+  "state": "pending",
+  "checkedAt": "2026-10-29T10:20:43.210Z",
+  "pendingHash": "b6b0f6078bd91f14b624c0cef0e4c32a597c122a560a77c9795aaabbed8c2865",
+  "pendingSince": "2026-10-29T10:20:43.210Z"
 }

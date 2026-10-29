@@ -1,6 +1,8 @@
 {
   "url": "https://support.lucidtrading.com/en/articles/12945805-lucidflex-consistency-percentage",
   "hash": "aa3349b2db113c24530a9d08b3da44a47418928695b1bb77e3a4fcef0299abc4",
-  "state": "baseline",
-  "checkedAt": "2026-10-28T12:59:58.070Z"
+  "state": "pending",
+  "checkedAt": "2026-10-29T10:20:43.210Z",
+  "pendingHash": "c362bc9419225eb881198daddbb9025e978cf7a50bd4bb566eeef433a844913b",
+  "pendingSince": "2026-10-29T10:20:43.210Z"
 }

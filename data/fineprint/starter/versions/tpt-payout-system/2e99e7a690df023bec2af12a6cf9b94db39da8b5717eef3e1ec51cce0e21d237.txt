@@ -1,0 +1,25 @@
+Title: Payout System
+URL Source: http://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15172296875165-Payout-System
+Markdown Content:
+![Image 1](https://takeprofittraderhelp.zendesk.com/system/photos/15144920255645/photo_2023-11-29_13-23-57.jpg)
+Vlada
+3 days ago Updated
+As you know we pride ourselves on having the fastest payouts in the industry. To utilize that, we provide you with three payout options - Instant payouts through Plaid, PayPal or Wise.
+1. ### US Banks - Plaid
+Automated payouts through Plaid work for US. banks only. This is an automated payout process that you complete directly from your user dashboard at [takeprofittrader.com](https://takeprofittrader.com/)
+We use Plaid.com to process payments automatically to US. bank accounts.
+You will be asked to connect your US. bank account through Plaid and the funds will be sent to you in real-time or through ACH transfer (depending on what your bank supports).
+Please note for LLC payouts, you must use the Wise option to send funds either to your Wise account or to any other U.S. or international bank account. You may also use PayPal if you have set up an account for your LLC.
+2. ### International Payouts - Routable, PayPal or Wise.
+**Routable**
+Routable is a global payment platform that allows you to send international payments directly to your local bank account.
+Routable supports 140+ currencies across 220+ countries and territories.
+**PayPal**
+PayPal is an online payment system that allows you to send and receive money around the world.
+**WISE**
+For international bank wires through Wise, you will need to create a Wise account. Wise is a financial technology company that specializes in cross-border payment transfers.
+Wise covers 160 countries worldwide and is a convenient way for you to receive international transfers.
+Note: Only trading and affiliate profits will be paid out by one of the methods described above.
+To comply with anti-money laundering (AML) policies, TakeProfit only allows bank account connections through a third-party system called Plaid if the bank account belongs to the individual registered at TakeProfit. If the information on your TakeProfitTrader.com account does not match the legal owner of the bank account, you will not be able to connect or receive payouts to that account.
+The same rule applies to Wise and PayPal payouts. If the information provided for a Wise or PayPal payout does not match the details of the user registered at TakeProfitTrader.com, the payout will be delayed for review or denied.
+For more information on how to request a payout, please follow [these steps](https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15965203144477-How-to-Withdraw-from-the-Wallet).

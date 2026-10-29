@@ -1,1 +1,46 @@
-[]
+[
+  {
+    "id": "mfp-rules-1400495f1d53",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-10-28T12:59:58.070Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Was “cannot be bought. They follow the 1-Step Select rules above. On a $2.5K”. Now “cannot be bought. They follow the Select rules above. On a $2.5K”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "neutral",
+        "before": "cannot be bought. They follow the 1-Step Select rules above. On a $2.5K",
+        "after": "cannot be bought. They follow the Select rules above. On a $2.5K",
+        "beforeLine": "cannot be bought. They follow the 1-Step Select rules above. On a $2.5K",
+        "afterLine": "cannot be bought. They follow the Select rules above. On a $2.5K"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "cannot be bought. They follow the 1-Step Select rules above. On a $2.5K"
+        ],
+        "after": [
+          "cannot be bought. They follow the Select rules above. On a $2.5K"
+        ],
+        "removed": [
+          "cannot be bought. They follow the 1-Step Select rules above. On a $2.5K"
+        ],
+        "added": [
+          "cannot be bought. They follow the Select rules above. On a $2.5K"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishReason": "paragraph_confirmed",
+    "publishedAt": "2026-10-29T10:20:43.210Z",
+    "confirmedAt": "2026-10-29T10:20:43.210Z"
+  }
+]

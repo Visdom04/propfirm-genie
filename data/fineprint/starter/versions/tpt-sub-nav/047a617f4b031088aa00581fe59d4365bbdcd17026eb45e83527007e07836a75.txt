@@ -1,0 +1,44 @@
+Title: Navigating Your Subscriptions
+URL Source: http://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15170412478749-Navigating-Your-Subscriptions
+Markdown Content:
+![Image 1](https://takeprofittraderhelp.zendesk.com/system/photos/15144920255645/photo_2023-11-29_13-23-57.jpg)
+Vlada
+1 month ago Updated
+### What a Subscription Means
+A subscription is your pathway toward earning a specific PRO account.
+Under one subscription, you can make multiple attempts (resets) to reach that PRO account without creating a new user.
+Your Take Profit Trader login gives you one user profile.
+Inside that profile, you can have:
+* multiple subscriptions
+* multiple trading accounts
+* multiple attempts under each subscription
+Each subscription represents its own “Journey to Profit.”
+### Viewing Your Subscriptions
+When you log in, you will see all your subscriptions in one list.
+Each subscription displays:
+* subscription status (active or disabled)
+* renewal date
+* trading accounts created under that subscription
+Subscriptions renew each month on the same calendar day as the original purchase of the first account under this subscription until passed or canceled.
+![Image 2](https://takeprofittraderhelp.zendesk.com/hc/article_attachments/31771231672605)
+### Access After Cancellation
+If you cancel a subscription, you still keep full access for the remainder of the billing cycle.
+This ensures that you always receive the full month you paid for.
+### Opening a Subscription Dashboard
+Clicking on a subscription opens the trading dashboard for that specific journey.
+From there, you can view:
+* your trading accounts
+* account metrics
+* platform credentials
+* progress toward targets
+* your “How Am I Doing?” section
+* your NinjaTrader license key
+You can switch between subscriptions by using the navigation that lists your “Journey to Profit” paths.
+![Image 3](https://takeprofittraderhelp.zendesk.com/hc/article_attachments/31771231675421)
+### Viewing All Accounts Under a Subscription
+Each subscription can contain multiple trading accounts if you choose to reset.
+To view all accounts under one subscription:
+* click the arrow next to the subscription name
+* all accounts created during past attempts will expand in a list
+This allows you to review each attempt individually, check trades, and analyze your performance history.
+![Image 4](https://takeprofittraderhelp.zendesk.com/hc/article_attachments/31771250404509)

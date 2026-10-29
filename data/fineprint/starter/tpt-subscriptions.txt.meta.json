@@ -1,6 +1,8 @@
 {
   "url": "https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15141145057053-Test-Subscriptions",
   "hash": "1546e36d7c61b2cfc3accbc89e87f00979eeb707a702a167edfaeadadfdc898b",
-  "state": "baseline",
-  "checkedAt": "2026-10-28T12:59:58.070Z"
+  "state": "pending",
+  "checkedAt": "2026-10-29T10:20:43.210Z",
+  "pendingHash": "3256e438a837278ae8257e497c028325a1c9ef5e724b0b57017a742f5715c631",
+  "pendingSince": "2026-10-29T10:20:43.210Z"
 }

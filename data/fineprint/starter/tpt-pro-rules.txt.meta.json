@@ -1,6 +1,8 @@
 {
   "url": "https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15171769361053-PRO-Account-Rules",
   "hash": "178c5d6252b1abc213091d0eadb851108c111b735783881c3488a3ee4d1028c6",
-  "state": "baseline",
-  "checkedAt": "2026-10-28T12:59:58.070Z"
+  "state": "pending",
+  "checkedAt": "2026-10-29T10:20:43.210Z",
+  "pendingHash": "800e4ccc33f56734483b76de29f77343204778d4ac2ca2c41828bcf1d1ae814e",
+  "pendingSince": "2026-10-29T10:20:43.210Z"
 }
