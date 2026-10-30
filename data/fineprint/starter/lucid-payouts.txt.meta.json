@@ -1,8 +1,6 @@
 {
   "url": "https://support.lucidtrading.com/en/articles/12890092-lucidpro-payouts",
-  "hash": "d3660fbd25e5acd4843a27322eadcb0db2b0c6534bd62448c6a951a6a843f63c",
-  "state": "pending",
-  "checkedAt": "2026-10-29T10:20:43.210Z",
-  "pendingHash": "6231cd6165fd8aae8aed297bf713682e041d19cb1d10b8f1d64228925a616f43",
-  "pendingSince": "2026-10-29T10:20:43.210Z"
+  "hash": "6231cd6165fd8aae8aed297bf713682e041d19cb1d10b8f1d64228925a616f43",
+  "state": "noise",
+  "checkedAt": "2026-10-30T10:23:04.229Z"
 }

@@ -1,0 +1,14 @@
+Title: Commissions on Test and PRO accounts
+URL Source: http://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15172548967069-Commissions-on-Test-and-PRO-accounts
+Final URL: https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15172548967069-Commissions-on-Test-and-PRO-accounts
+Markdown Content:
+![Image 1](https://takeprofittraderhelp.zendesk.com/system/photos/15144920255645/photo_2023-11-29_13-23-57.jpg)
+Vlada
+August 08, 2026 08:15 Updated
+Commissions are the same for all of our permitted products.
+### **Futures Contracts**
+* $4.50 per round trip per contract
+### **Micros**
+* $1.50 per round trip per contract.
+It's important to note that these commissions are not imposed by a third party; rather, they are established and regulated by TakeProfitTrader. Commissions are integral to live trading, and as such, we strive for uniformity in our traders' requirements when engaging in trading activities within the SIM environment. These commission rates are applicable to both test and PRO accounts.
+For detailed information on PRO+ commissions, please refer to a[separate article.](https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15172012844957-Commissions)

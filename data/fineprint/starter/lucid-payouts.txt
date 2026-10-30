@@ -21,7 +21,7 @@ LucidPro Payouts
 LucidPro payouts allow traders to withdraw profits with a 90/10 split after meeting requirements like minimum profit, consistency rules, and buffer balance thresholds.
 A
 Written by AJ
-Updated this week
+Updated over a week ago
 Table of contents
 General Requirements
 To be eligible for a payout from a LucidPro account:

@@ -1,8 +1,6 @@
 {
   "url": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
-  "hash": "59c32a86e874f148c2911e862e32615a9592911cd3ac2ae217334574e35746ab",
-  "state": "pending",
-  "checkedAt": "2026-10-29T10:20:43.210Z",
-  "pendingHash": "19aaafb341958f7e0baecee6ac9336571f39fa5eecc15f8da9bb006bbfe1487b",
-  "pendingSince": "2026-10-29T10:20:43.210Z"
+  "hash": "19aaafb341958f7e0baecee6ac9336571f39fa5eecc15f8da9bb006bbfe1487b",
+  "state": "changed",
+  "checkedAt": "2026-10-30T10:23:04.229Z"
 }

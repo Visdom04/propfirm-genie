@@ -1,0 +1,46 @@
+Title: Inactivity Policy on Performance Accounts (PA)
+URL Source: http://apextraderfunding.com/help-center/billing/inactivity-policy-on-performance-accounts-pa/
+Final URL: https://apextraderfunding.com/help-center/billing/inactivity-policy-on-performance-accounts-pa/
+Markdown Content:
+## Inactivity Policy
+For Performance Accounts (PAs) to remain active, you must record at least 2 trading days with $50 or more in net profit within every rolling 30-day period. This applies to all Intraday and EOD PAs, as well as promotional Legacy accounts purchased after March 1st, 2026. (For Legacy Evaluations purchased prior to March 1st, 2026, see here: [Legacy PA Inactivity Policy](https://apextraderfunding.com/help-center/performance-accounts-pa/legacy-pa-inactivity-policy/))
+This requirement is measured continuously. Each day, the system checks the most recent 30-calendar-day lookback period to ensure there are two qualifying trading days.
+## Courtesy Notifications
+Courtesy notifications will be sent out on days 15 and 20 of inactivity, reminding you that the account is in the dormant phase, and that there is a time limit before it is permanently closed.
+* **After 15 days of inactivity,** the first courtesy notification will be sent out reminding you that you have had 15 days without the two required qualifying trading days.
+* At this point the account moves into the dormant phase, and can be found in the Dormant PAs section of your user dashboard: [Dormant PAs](https://dashboard.apextraderfunding.com/accounts/pasDormant)
+![Image 1](https://apextraderfunding.com/cdn-cgi/image/width=452,height=104,fit=cover,gravity=auto,format=auto//app/uploads/zendesk-47259602019611-bcd716e52f12273feb3abf685b6345ba.png)
+* **After 20 days of inactivity** (5 days after the first notice), the second courtesy notification will be sent out reminding you that the account has now had 20 days without the two required qualifying trading days.
+* The account remains in the dormant phase, and can still be found under the Dormant PAs section of your user dashboard.
+These are courtesy reminders that there is a limited time left to meet the activity threshold before the account is permanently closed.
+## Account Closure Due To Inactivity
+**If 30 consecutive calendar days pass without meeting this activity threshold**, the account will be closed due to inactivity.
+If a Performance Account is closed due to inactivity:
+* Access to the account is permanently removed
+* Any accumulated rewards or payout eligibility are forfeited
+Closed accounts cannot be reinstated.
+The purpose of this rule is to ensure active participation and consistent engagement with the account.
+* * *
+## FAQs
+**What does “rolling 30 days” mean?**
+The system continuously looks back at the most recent 30 consecutive calendar days. Calendar days include weekends and holidays, which are all counted as part of the rolling 30 days.
+If within that window there are fewer than 2 qualifying profit days, the account becomes eligible for inactivity closure.
+**When does the inactivity count begin for a new PA?**
+For a brand-new PA, the purchase date is day 1 of the initial 30-day period. This is based on the calendar day in Eastern Time (ET), regardless of whether the trading session is open or closed.
+After that, the rolling 30 days activity requirement continues, where each day, the system looks back at the most recent 30 calendar days to check for two qualifying trading days.
+**Which trading session does my activity count toward?**
+A qualifying trading day counts on the date assigned to that trading session, which may differ from the calendar date when you placed the trades.
+For example, trades placed at 8:00 PM ET would be part of the following day’s trading session. The session’s net profit is recorded after it closes, and if the trading session ends with at least $50 in net profit, that qualifying day is assigned to the date the session ends.
+**Can I still meet the inactivity requirement on the 30th day?**
+Yes, if your second qualifying trading day is assigned to a date within the 30-day period. However, waiting until the 30th day is not recommended. The system checks the most recent 30 calendar days again the next day. If your first qualifying day has fallen outside that period, only one qualifying day remains, and your PA becomes eligible for inactivity closure.
+**Does placing trades without reaching $50 profit prevent closure?**
+No. Trading alone does not prevent inactivity closure. The account must record at least 2 trading days with $50 or more in net profit within each 30-day period.
+**How is inactivity calculated?**
+We use the earlier of your 2 most recent qualifying days and count how many days have passed since that date up to today.
+For example, if your last 2 qualifying days are April 10 and April 23, we start counting from April 10, since it’s the earlier of the two.
+**Does a “breakeven” trading day count?**
+No. The day must close with at least $50 in profit to qualify.
+**Can Inactivity closure be reversed?**
+No. Once an account is closed due to inactivity, it cannot be reinstated.
+**Does this apply to Legacy accounts?**
+Yes, this applies to promotional Legacy Performance Accounts purchased after March 1st, 2026 ONLY. For Legacy Performance Accounts purchased prior to March 1st, 2026, follow the previous inactivity policy found here: [Legacy PA Inactivity Policy](https://apextraderfunding.com/help-center/performance-accounts-pa/legacy-pa-inactivity-policy/?_gl=1*pd8174*_gcl_au*MTgwMTA3NTgzNi4xNzczMTQxMTcw)

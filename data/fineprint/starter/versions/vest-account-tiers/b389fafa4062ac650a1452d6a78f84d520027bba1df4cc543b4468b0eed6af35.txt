@@ -1,0 +1,164 @@
+Title: Account Tiers | Vest Markets
+URL Source: http://docs.vestmarkets.com/vest-capital/account-tiers
+Final URL: https://docs.vestmarkets.com/vest-capital/account-tiers
+Markdown Content:
+⌘Ctrl k
+* [Platform Overview](https://docs.vestmarkets.com/)
+* [Resources](https://docs.vestmarkets.com/resources)
+1. [Platform Overview](https://docs.vestmarkets.com/)
+2. [Vest Capital](https://docs.vestmarkets.com/vest-capital/overview)
+## Account Tiers
+Full pricing and configuration reference for both Vest Capital paths.
+* * *
+### With Evaluation[](https://docs.vestmarkets.com/vest-capital/account-tiers#with-evaluation)
+1-Step evaluation accounts are priced from four independent choices. The fixed 2-Step configuration is described separately below:
+* **Tier** — Silver ($5,000), Gold ($10,000), or Platinum ($25,000)
+* **Profit Target** — 10% or 20% of capital
+* **Daily Loss Limit** — 3%, 4%, or none
+* **Profit split** — 80/20 or 90/10 (you/Vest)
+**1-Step**
+Priced from four independent choices:
+* **Tier** — Silver ($5,000), Gold ($10,000), or Platinum ($25,000)
+* **Profit Target** — 10% or 20% of capital
+* **Daily Loss Limit** — 3%, 4%, or none
+* **Profit split** — 80/20 or 90/10 (you/Vest)
+There are 12 combinations of profit target, daily loss limit and profit split across 3 capital sizes: 36 available 1-Step configurations. Select 1-Step and configure these options in the purchase flow.
+Example configurations
+Examples of available 1-Step settings:
+**1-Step**
+10% Target, 3% Daily Loss Limit, 80/20 split
+**1-Step, Higher Profit Target**
+20% Target, 3% Daily Loss Limit, 80/20 split
+**1-Step, No Daily Loss Limit**
+10% Target, no Daily Loss Limit, 80/20 split
+All combinations in the pricing matrix are available in the 1-Step configuration controls.
+#### Full pricing matrix[](https://docs.vestmarkets.com/vest-capital/account-tiers#full-pricing-matrix)
+One-time fee by Profit Target, Daily Loss Limit, and profit split:
+10%
+3%
+80/20
+$40
+$80
+$210
+10%
+3%
+90/10
+$48
+$96
+$252
+10%
+4%
+80/20
+$60
+$110
+$280
+10%
+4%
+90/10
+$72
+$132
+$330
+10%
+none
+80/20
+$75
+$150
+$375
+10%
+none
+90/10
+$90
+$180
+$450
+20%
+3%
+80/20
+$25
+$50
+$130
+20%
+3%
+90/10
+$30
+$60
+$156
+20%
+4%
+80/20
+$33
+$65
+$170
+20%
+4%
+90/10
+$40
+$78
+$204
+20%
+none
+80/20
+$50
+$95
+$250
+20%
+none
+90/10
+$60
+$114
+$300
+#### **2-Step**[](https://docs.vestmarkets.com/vest-capital/account-tiers#id-2-step)
+One fixed configuration per tier. Priced lower than the equivalent 1-Step account, in exchange for a two-stage Profit Goal.
+Silver
+$5,000
+$15
+Gold
+$10,000
+$35
+Platinum
+$25,000
+$90
+Fixed on every 2-Step account:
+* **Profit Goal** — two stages: 10% of capital, then a further 5%
+* **Daily Loss Limit** — 3%
+* **Profit split** — 80/20 (you/Vest)
+* **Max. Drawdown** — 6% (see below)
+Select 2-Step in the evaluation purchase flow to see its fixed settings and pricing.
+#### Max. Drawdown[](https://docs.vestmarkets.com/vest-capital/account-tiers#max.-drawdown)
+Fixed at **6% of capital**, the same across every combination on a given tier. None of the four purchase choices affect it.
+**Silver**
+$5,000
+$300
+$4,700
+**Gold**
+$10,000
+$600
+$9,400
+**Platinum**
+$25,000
+$1,500
+$23,500
+* * *
+### Instant Accounts[](https://docs.vestmarkets.com/vest-capital/account-tiers#instant-accounts)
+No tiers, no configuration. Priced by capital size. Live the moment payment clears.
+$500
+$10
+$10
+2%
+$5,000
+$200
+$200
+4%
+$10,000
+$400
+$400
+4%
+$25,000
+$1,000
+$1,000
+4%
+Payment always equals Max. Drawdown. But the rate isn't uniform. It's 2% on the $500 size only; the other three run 4%.
+Last updated 1 month ago
+Was this helpful?
+* [With Evaluation](https://docs.vestmarkets.com/vest-capital/account-tiers#with-evaluation)
+* [Instant Accounts](https://docs.vestmarkets.com/vest-capital/account-tiers#instant-accounts)
+Was this helpful?

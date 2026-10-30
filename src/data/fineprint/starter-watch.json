@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-29T10:20:43.210Z",
+  "checkedAt": "2026-10-30T10:23:04.229Z",
   "pages": [
     {
       "id": "apex-eod-evaluations",
@@ -32,9 +32,7 @@
     {
       "id": "apex-intraday-evaluations",
       "firm": "Apex Trader Funding",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "apex-intraday-evaluations-index",
@@ -46,9 +44,7 @@
     {
       "id": "apex-intraday-drawdown",
       "firm": "Apex Trader Funding",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "apex-intraday-pa",
@@ -61,14 +57,14 @@
       "id": "apex-intraday-payouts",
       "firm": "Apex Trader Funding",
       "state": "blocked",
-      "status": 200,
+      "status": 429,
       "source": "failed"
     },
     {
       "id": "apex-dll",
       "firm": "Apex Trader Funding",
       "state": "blocked",
-      "status": 429,
+      "status": 200,
       "source": "failed"
     },
     {
@@ -95,9 +91,7 @@
     {
       "id": "apex-no-activation-eval",
       "firm": "Apex Trader Funding",
-      "state": "blocked",
-      "status": 429,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "apex-scaling-pa",
@@ -109,50 +103,37 @@
     {
       "id": "apex-eval-contracts",
       "firm": "Apex Trader Funding",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "apex-request-payout",
       "firm": "Apex Trader Funding",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "apex-inactivity",
       "firm": "Apex Trader Funding",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "apex-prohibited",
       "firm": "Apex Trader Funding",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "apex-hours",
       "firm": "Apex Trader Funding",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "apex-pa-cap",
       "firm": "Apex Trader Funding",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "mfp-rules",
       "firm": "My Funded Perps",
-      "state": "published",
-      "cards": 1
+      "state": "pending"
     },
     {
       "id": "mfp-elite",
@@ -162,7 +143,8 @@
     {
       "id": "mfp-payouts",
       "firm": "My Funded Perps",
-      "state": "pending"
+      "state": "published",
+      "cards": 5
     },
     {
       "id": "mfp-fees",
@@ -172,93 +154,67 @@
     {
       "id": "tradeify-rules",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "tradeify-pricing",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 429,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "tradeify-select-vs-growth",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "tradeify-growth-eval",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "tradeify-select-eval",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "tradeify-lightning",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "tradeify-dll",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "tradeify-trailing",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "tradeify-consistency",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "tradeify-hours",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "tradeify-growth-payouts",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "tradeify-select-payouts",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "tradeify-lightning-payouts",
       "firm": "Tradeify",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "lucid-eval",
@@ -278,7 +234,8 @@
     {
       "id": "lucid-payouts",
       "firm": "Lucid Trading",
-      "state": "pending"
+      "state": "noise",
+      "cards": 0
     },
     {
       "id": "lucid-pro-consistency",
@@ -288,7 +245,8 @@
     {
       "id": "lucid-flex-eval",
       "firm": "Lucid Trading",
-      "state": "pending"
+      "state": "noise",
+      "cards": 0
     },
     {
       "id": "lucid-flex-drawdown",
@@ -303,7 +261,8 @@
     {
       "id": "lucid-flex-consistency",
       "firm": "Lucid Trading",
-      "state": "pending"
+      "state": "noise",
+      "cards": 0
     },
     {
       "id": "lucid-daily-eval",
@@ -383,9 +342,7 @@
     {
       "id": "tpt-profit-split",
       "firm": "Take Profit Trader",
-      "state": "blocked",
-      "status": 429,
-      "source": "failed"
+      "state": "pending"
     },
     {
       "id": "tpt-subscriptions",
@@ -400,9 +357,7 @@
     {
       "id": "tpt-commissions",
       "firm": "Take Profit Trader",
-      "state": "blocked",
-      "status": 429,
-      "source": "failed"
+      "state": "pending"
     },
     {
       "id": "fnf-dll",
@@ -422,7 +377,7 @@
     {
       "id": "fnf-prohibited",
       "firm": "FundedNext Futures",
-      "state": "unchanged"
+      "state": "pending"
     },
     {
       "id": "fnf-prices",
@@ -442,14 +397,12 @@
     {
       "id": "fnf-flex-reward",
       "firm": "FundedNext Futures",
-      "state": "unchanged"
+      "state": "pending"
     },
     {
       "id": "legends-eval",
       "firm": "Legends Trading",
-      "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "state": "baseline"
     },
     {
       "id": "legends-eod-update",
@@ -476,7 +429,7 @@
       "id": "legends-master-fees",
       "firm": "Legends Trading",
       "state": "blocked",
-      "status": 429,
+      "status": 200,
       "source": "failed"
     },
     {

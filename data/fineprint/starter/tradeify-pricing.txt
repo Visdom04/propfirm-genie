@@ -1,0 +1,89 @@
+Title: Tradeify Pricing Reference
+URL Source: http://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+Final URL: https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+Markdown Content:
+**Tradeify Pricing Reference** — This article is a comprehensive pricing guide for Tradeify Futures Prop trading accounts. All plans are **one-time purchases** with no recurring billing.
+## Account Types Overview
+Tradeify offers three account types, all available in 25K, 50K, 100K, and 150K sizes:
+## Growth Evaluation Pricing
+Growth Evaluations are one-time purchases. Pass the evaluation to get funded. Resets are available if your account fails.
+Growth 25K costs $99, and a reset costs $60. Growth 50K costs $145, and a reset costs $95. Growth 100K costs $255, and a reset costs $169. Growth 150K costs $369, and a reset costs $229.
+**Account Size****Price (One-Time)****Reset Fee**
+Growth 25K$99$60
+Growth 50K$145$95
+Growth 100K$255$169
+Growth 150K$369$229
+## Select Evaluation Pricing
+Select Evaluations are one-time purchases. Pass the evaluation and choose between Select Daily or Select Flex payout paths. Resets are available if your account fails.
+#### **Select Evaluation with 40% Consistency:**
+With the standard 40% consistency rule, Select 25K costs $109, and a reset costs $75. Select 50K costs $165, and a reset costs $109. Select 100K costs $265, and a reset costs $169. Select 150K costs $369, and a reset costs $239. Select 300K (limited release) costs $349 (V2; V1 was $449), and resets are not available.
+**Account Size****Price****Reset Fee**
+Select 25K$109$75
+Select 50K$165$109
+Select 100K$265$169
+Select 150K$369$239
+Select 300K (limited release)$349 (V2; V1 was $449)Not available
+**Select Evaluation with 50% Consistency Add-on:**
+​
+The 50% Consistency Add-on raises your consistency limit from 40% to 50%, allowing a single day to account for up to half of your total profit — meaning you can pass your evaluation in as little as 2 trading days instead of 3.
+With the 50% Consistency Add-on, Select 25K costs $135, and a reset costs $90. Select 50K costs $205, and a reset costs $135. Select 100K costs $329, and a reset costs $209. Select 150K costs $459, and a reset costs $299. The 50% Consistency Add-on is not available on the Select 300K.
+**Account Size****Price****Reset Fee**
+Select 25K$135$90
+Select 50K$205$135
+Select 100K$329$209
+Select 150K$459$299
+Select 300K (limited release)Not available Not available
+The Select 300K is a limited release: no resets, KYC required before purchase, maximum 3 lifetime purchases per user, with V1 and V2 counted together, and it does not count toward the 15-evaluation monthly limit. Details: [300K Select Account](https://help.tradeify.co/en/articles/16497699-300k-select-account).
+## Lightning Funded Pricing
+Lightning Funded accounts are one-time purchases with no evaluation required. You are funded instantly. No resets are available — if the account fails, a new one must be purchased.
+Lightning 25K costs $345. Lightning 50K costs $492. Lightning 100K costs $660. Lightning 150K costs $796.
+## Bundle Discounts
+Tradeify offers a 5-account bundle discount on select Evaluations. At checkout, tick the **Bundle and save** option to buy 5 qualifying accounts of the same type and size in one order and receive an automatic 5% discount. This is the only way to buy more than one account in a single checkout — there is no option to buy 2, 3, or 4 together.
+### Eligible Bundle Accounts
+All 5 accounts in a bundle must be the same account type and size. 100K and 150K sizes and Lightning Funded accounts are not currently eligible for bundle pricing.
+### How the Discount Works
+## Activation Fees
+There are **no activation fees** for any current Tradeify account type. The purchase price covers everything needed to start trading.
+## Platform and Data Fees
+## Trading Commission Fees
+All trades incur commission fees. These are per-contract, round-trip (open + close) fees charged by the exchange and broker. Common instruments:
+The round-trip commission per contract is $5.76 for ES (E-mini S&P 500), $5.76 for NQ (E-mini Nasdaq), $1.82 for MES (Micro E-mini S&P), $1.82 for MNQ (Micro E-mini Nasdaq), $5.98 for CL (Crude Oil), and $6.20 for GC (Gold).
+**Instrument****Round-Trip Commission**
+ES (E-mini S&P 500)$5.76
+NQ (E-mini Nasdaq)$5.76
+MES (Micro E-mini S&P)$1.82
+MNQ (Micro E-mini Nasdaq)$1.82
+CL (Crude Oil)$5.98
+GC (Gold)$6.20
+**Important:** Trading 10 micro contracts costs significantly more in commissions than 1 mini contract (e.g., 10 MES = $18.20 vs 1 ES = $5.76). For a full list of commission fees by instrument, see the Trading Commission Fees article.
+## Profit Splits
+## Refund Policy
+All sales are final. Tradeify does not offer refunds on any purchases. This includes account purchases, resets, and any other fees. Please review all account details before purchasing. **One exception:** if a promo or discount code was not applied to your purchase, that is handled separately — contact support with your transaction details and we will get it corrected.
+## Frequently Asked Questions
+### Are Tradeify accounts subscription-based or one-time purchases?
+All Tradeify accounts are one-time purchases. There is no recurring billing or monthly subscription. You pay once and trade until you pass (evaluations) or for the life of the account (Lightning Funded).
+### What is the cheapest Tradeify account?
+The Growth 25K Evaluation is the most affordable option. Check the pricing tables above for current prices. Promo codes may offer additional discounts — check the Tradeify website for any active promotions.
+### What is the difference between Growth, Select, and Lightning?
+**Growth:** Evaluation required. Has Daily Loss Limit. No consistency rule during the evaluation (35% on funded payouts). Most affordable option. **Select:** Evaluation required. No DLL during evaluation. 40% consistency during evaluation only. Choose Daily or Flex payout paths after passing. **Lightning:** No evaluation — funded instantly. Progressive consistency (20% → 25% → 30%). No resets available. Higher price point.
+### Can I get a refund if my account fails?
+No. All sales are final per our Terms of Service. If a Growth or Select evaluation fails, you can purchase a reset at a reduced price to try again. Lightning Funded accounts do not have resets — a new account must be purchased.
+### Are there any hidden fees?
+No hidden fees. The only costs are: (1) the account purchase price, (2) trading commissions on each trade, and (3) optional reset fees if your evaluation fails. Market data is free as long as you sign the Non-Professional Agreement. All brokers (Tradovate, Rithmic, WealthCharts) are the same price — no platform surcharges.
+### Do you offer promo codes or discounts?
+Tradeify periodically offers promotional discounts. Check the Tradeify website or dashboard for any currently active promo codes. Promo codes are entered at checkout. Tradeify also offers a permanent 5-account bundle discount on Growth 25K, Growth 50K, Select 25K, and Select 50K Evaluations — see the Bundle Discounts section above. If you completed a purchase and a promo code was not applied — you forgot to enter it, or you entered it and were still charged the full amount — contact support with your transaction details. This is handled separately from the refund policy.
+### Can I buy multiple accounts at a discount?
+Yes. Tradeify offers a 5-account bundle discount on Growth 25K, Growth 50K, Select 25K, and Select 50K Evaluations. At checkout, tick the Bundle and save option to buy 5 of the same eligible account in one order and the 5% bundle discount applies automatically. It also stacks with any active promo code. The discount only applies in a single transaction and won't apply retroactively to a separate, later order. See the Bundle Discounts section above for full details.
+### Can I buy 2, 3, or 4 accounts in one order?
+No. The only multi-account checkout is the 5-account Bundle and save option. To buy any other number, purchase accounts individually (one per checkout) at full price. Growth evaluations have no purchase limit; Select evaluations are limited to 15 per 30-day period (300K purchases do not count). The 5-account cap applies to active Sim Funded accounts per household.
+### What is the profit split?
+Sim Funded accounts (Growth, Select, Lightning) use a 90/10 profit split — you keep 90% of your profits, Tradeify receives 10%. Elite Live accounts use an 80/20 split. This applies from your very first payout.
+### What platforms can I trade on?
+At checkout, you select one of three brokers: Tradovate, Rithmic, or WealthCharts. Each broker gives access to different trading platforms. Tradovate gives access to NinjaTrader and TradingView. Rithmic gives access to Tradesea, Quantower, Sierra Chart, and R|Trader. WealthCharts is its own broker and platform — it can only be used to access the WealthCharts platform. See the Supported Platforms article for details.
+* * *
+Related Articles
+* [Welcome to Tradeify](https://help.tradeify.co/en/articles/10468258-welcome-to-tradeify)
+* [Which Plan is Right for You?](https://help.tradeify.co/en/articles/10468265-which-plan-is-right-for-you)
+* [Rules: Daily Loss Limit](https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit)
+* [Lightning Funded Accounts](https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts)
+* [Tradeify Elite Program](https://help.tradeify.co/en/articles/12969284-tradeify-elite-program)

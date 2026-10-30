@@ -1,0 +1,14 @@
+Title: How Many Paid/Funded Accounts Am I Allowed to Have?
+URL Source: http://apextraderfunding.com/help-center/performance-accounts-pa/how-many-paid-funded-accounts-am-i-allowed-to-have/
+Final URL: https://apextraderfunding.com/help-center/performance-accounts-pa/how-many-paid-funded-accounts-am-i-allowed-to-have/
+Markdown Content:
+What is the limit on trading accounts that I can have between me, someone in my house, a company I own, on **Tradovate**, **Rithmic, and WealthCharts**?
+The total limit is 20 **active** PA accounts across all people in the same house, companies, and connections, whether the accounts are with Rithmic, Tradovate, or WealthCharts.
+For example, you have an LLC with 5 PA accounts, your personal **Rithmic** account has 3 PAs, your personal **Tradovate** account has 4 PAs, and your wife/husband/significant other can have up to 8 accounts. This totals 20 PA accounts in the same household.
+Copy trading across PA accounts under your personal name and business name is allowed. However, the hedging rule still applies; all PAs must trade in the same direction and not hedge against correlated assets.
+You CANNOT exceed a total of 20 active PA accounts.
+If you have more than 20 PA accounts, you will be ineligible for payout and may be subject to:
+* forfeiture of all funds
+* closure of all performance accounts
+* permanent ban from Apex Trader Funding
+**There are no limits to Evaluation accounts.**

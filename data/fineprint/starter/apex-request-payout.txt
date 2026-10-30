@@ -1,0 +1,43 @@
+Title: How to Request a Payout
+URL Source: http://apextraderfunding.com/help-center/additional-helpful-items/how-to-request-a-payout/
+Final URL: https://apextraderfunding.com/help-center/additional-helpful-items/how-to-request-a-payout/
+Markdown Content:
+This guide walks you through how to request a payout from your Performance Account, where to find your payout request, and what happens after you submit it.
+## Before You Start
+Before requesting a payout, make sure:
+* Your payout method and personal details are up to date in your dashboard (see [Payout Method](https://apextraderfunding.com/help-center/additional-helpful-items/payout-method-information/?_gl=1*krd6kj*_gcl_au*MTgwMTA3NTgzNi4xNzczMTQxMTcw))
+* You are requesting from the correct Performance Account.
+Additionally, if you are not sure whether you are currently eligible, all eligibility criteria will be shown directly on your Account Details page: [Account Details](https://dashboard.apextraderfunding.com/member/account/summary)
+## Real-Time Payout Checks
+For Tradovate, payout eligibility will be checked using the account’s current real-time balance and whether it has any open positions at the time of the payout request. Both conditions must be met before the request can be submitted.
+* Minimum Current Balance: The current Tradovate balance for the account must meet the required minimum payout balance.
+* No Open Positions: The account must have no open positions when the payout request is submitted.
+* Check Unavailable: If the real-time balance or position data cannot be retrieved due to Tradovate maintenance or an issue, you will see an error message. Please wait and try again later.
+These checks are in addition to the existing payout eligibility requirements and do not change the minimum payout balance or payout amounts.
+_These checks currently apply to Tradovate accounts only._
+## How to Request a Payout
+Open the Account Details page within your dashboard, and navigate to the Payout tab:
+![Image 1](https://apextraderfunding.com/cdn-cgi/image/width=1280,height=784,fit=cover,gravity=auto,format=auto//app/uploads/zendesk-46884326359579-f84fbb079e5cce277b374765f5ba035d.png)
+From the Account Details tab, first select the correct PA that you wish to request a payout from.
+If all payout eligibility criteria have been met, you will see the following “ELIGIBLE FOR PAYOUT” message, and the “Request Payout” link will be available. Click on that link to get started:
+![Image 2](https://apextraderfunding.com/cdn-cgi/image/width=1012,height=686,fit=cover,gravity=auto,format=auto//app/uploads/zendesk-46884326359579-1e9ba0c40e86e3845141bac16615e06b.png)
+In the Request Payout pop-up:
+1. Enter the payout amount you wish to request
+2. View and agree to the “I agree to payout request agreement” disclaimer
+3. And hit Submit
+![Image 3](https://apextraderfunding.com/cdn-cgi/image/width=980,height=637,fit=cover,gravity=auto,format=auto//app/uploads/zendesk-46884326359579-44323f8c51ff4054b4545a58f01973c1.png)
+If the request was submitted correctly, you will see a “Payout request submitted successfully”:
+![Image 4](https://apextraderfunding.com/cdn-cgi/image/width=994,height=661,fit=cover,gravity=auto,format=auto//app/uploads/zendesk-46884326359579-ddd787f72c78042e4f734380cf669886.png)
+To check status, you can scroll down to the Payout History section of the Account Details page:
+![Image 5](https://apextraderfunding.com/cdn-cgi/image/width=1005,height=509,fit=cover,gravity=auto,format=auto//app/uploads/zendesk-46884326359579-a14f4767eadba119e3fe3f883b36556d.png)
+## After You Submit a Payout Request
+Once you submit a payout request, you may continue trading immediately. There is no need to pause trading while your payout is under review.
+However, you should trade as if the requested funds have already been removed from your balance. This helps ensure your account remains above the required minimum threshold.
+If your balance falls below the required minimum after submitting a payout request, the request will be denied automatically. There is no need to cancel or edit the request. You may continue trading until eligibility is met again.
+* * *
+## Common Issues and Quick Fixes
+### I do not see the Request Payout button
+This usually means one of the following:
+* You are not currently eligible for a payout.
+* You are not in the correct account type (must be a Performance Account).
+* You are within a restricted period based on payout requirements.

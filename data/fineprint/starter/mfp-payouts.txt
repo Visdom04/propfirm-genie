@@ -176,6 +176,12 @@ comes from Rise after you select Send Invitation . Check your inbox and
 spam folder, then follow the invitation to complete setup. The panel shows
 when setup is accepted or needs attention. If the invitation could not be
 completed, contact support from the panel.
+If you have a payout waiting and haven’t accepted the invitation yet, Rise
+sends you a fresh invitation a day after the first one, then again on each of
+the next two days. Each new invitation replaces the previous one, so accept
+the most recent. We also email you on the first day with steps to find it, and
+once more a few days later as a final reminder. Reminders stop as soon as you
+accept the invitation.
 Check the email carefully. Approved payouts are delivered to the connected
 Rise account. While Streamer Mode is on, the Rise
 email is blurred everywhere it appears, including the confirmation after the

@@ -1,0 +1,46 @@
+Title: Rules: Permitted Times to Trade
+URL Source: http://help.tradeify.co/en/articles/10495876-rules-permitted-times-to-trade
+Final URL: https://help.tradeify.co/en/articles/10495876-rules-permitted-times-to-trade
+Markdown Content:
+## Permitted Trading Times
+**Summary:** All positions must be closed by 4:45 PM Eastern Time each trading day. You cannot hold positions overnight or swing trade. This applies to ALL account types including Live.
+**Applies to:** All Tradeify account types (Evaluation, Sim Funded, and Live)
+## Why This Rule Exists
+Tradeify evaluates traders based on intraday trading performance. Overnight positions carry additional market risk that cannot be managed during closed hours. This rule ensures consistent risk management across all accounts.
+## Trading Hours
+A Tradeify trading day follows CME futures market hours:
+## Position Closing Deadline
+All positions must be closed by **4:45 PM Eastern Time** Monday through Friday, before the daily maintenance break.
+**Important:** Holiday market hours are announced in our [Discord](https://discord.gg/Tradeify) server. Check before trading on holidays.
+## What Happens If Positions Are Open at Close
+If you have open positions when the market closes, Tradeify will automatically close them for you. This automatic closure will NOT result in account failure or loss of your account. However, you may experience slippage or unfavorable fills.
+## No Overnight or Swing Trading
+You cannot hold positions overnight or across multiple trading days. Each trading day is independent:
+## Understanding Trading Days
+A trading day at Tradeify spans from 6:00 PM ET to 5:00 PM ET the next calendar day. This is important for counting trading days:
+**Rithmic accounts and holiday half-days:** On the Rithmic broker, holiday half-day (shortened) sessions are recorded at the next full market close. The day still counts as a trading day, but the credit (and any payout based on it) may not post until the following full session closes. For example, a Friday holiday half-day is recorded at the following Monday's market close.
+## Frequently Asked Questions
+**Q: What time zone does Tradeify use?**
+A: Eastern Time (ET). This is Eastern Standard Time (EST) in winter and Eastern Daylight Time (EDT) in summer.
+**Q: Can I hold positions through the 5-6 PM maintenance break?**
+A: No. All positions must be closed by 4:45 PM ET before the maintenance break.
+**Q: Will my account fail if I forget to close positions?**
+A: No. Tradeify will automatically close any open positions at market close. This does not fail your account, but you may experience unfavorable fills.
+**Q: Does this rule apply to Live accounts?**
+A: Yes. The no overnight positions rule applies to ALL Tradeify account types, including Live accounts.
+**Q: How do I know if a holiday has shortened hours?**
+A: Holiday market hour announcements are always posted in our Discord server. On shortened days, you must close all positions by 12:59 PM ET.
+**Q: I traded on Rithmic during a holiday half-day. Why can't I request a payout yet?**
+A: The day still counts as a trading day, but Rithmic records holiday half-day sessions at the next full market close. Your payout becomes available once that session is recorded. For a Friday holiday half-day, that is the following Monday's market close.
+**Q: Can I stay positioned overnight?**
+A: Only within a single trading session - you can never hold a position from one session into the next. A Tradeify trading session runs from 6:00 PM ET to 4:45 PM ET the next calendar day - that's nearly 23 hours. You can hold a position for the entire session. For example, opening a position at 8:00 PM Monday and closing it at 2:00 PM Tuesday is perfectly fine - that's one continuous session.
+What you cannot do:
+**Q: Can I hold positions over the weekend?**
+A: No. All positions must be closed before Friday's market close (4:45 PM ET). You cannot carry positions from Friday into the Sunday evening session.
+* * *
+Related Articles
+* [What is a Trading Day?](https://help.tradeify.co/en/articles/10468225-what-is-a-trading-day)
+* [Essential Trading Rules Overview](https://help.tradeify.co/en/articles/12268167-essential-trading-rules-overview)
+* [Common FAQs](https://help.tradeify.co/en/articles/12268494-common-faqs)
+* [Premier Trading League — Full Competition Guide](https://help.tradeify.co/en/articles/16829567-premier-trading-league-full-competition-guide)
+* [Premier Trading League: Step-by-Step Dashboard Walkthrough](https://help.tradeify.co/en/articles/16848411-premier-trading-league-step-by-step-dashboard-walkthrough)

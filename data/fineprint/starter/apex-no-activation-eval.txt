@@ -1,0 +1,44 @@
+Title: No Activation Fee Evaluations
+URL Source: http://apextraderfunding.com/help-center/uncategorized/no-activation-fee-evaluations/
+Final URL: https://apextraderfunding.com/help-center/uncategorized/no-activation-fee-evaluations/
+Markdown Content:
+## At a Glance:
+* No PA activation Fee after qualifying
+* Same rules and structure as standard Evaluations
+* Available for both Intraday and EOD products
+* Available as single purchases and selected 5-Pack bundles
+## What Is a No Activation Fee Evaluation?
+No Activation Fee Evaluation streamlines the transition from Evaluation to Performance Account.
+Once the Evaluation is passed successfully, the corresponding Performance Account can be activated without any additional activation payment.
+No Activation Fee Evaluations follow the same rules, drawdown structure, access period, and qualification process as standard Evaluations.
+No Activation Fee Account Size Intraday Evaluation Intraday 5-Pack EOD Evaluation EOD 5-Pack
+$25k Yes Yes Yes Yes
+$50k Yes Yes Yes Yes
+$100k Yes Yes Yes No
+$150k Yes Yes Yes No
+## How No Activation Fee Evaluations Work
+The Evaluation is traded normally during the standard 30-day access period.
+If the account reaches the profit target and all Evaluation rules are respected, the account becomes eligible for Performance Account activation after market close.
+With an All-In Evaluation, the activation process works the same as a standard Evaluation, except the total price to activate the PA is set at $0. Complete guide on [PA activation process](https://apextraderfunding.com/help-center/billing/pa-activation-process-deadline-explained/).
+![Image 1](https://apextraderfunding.com/cdn-cgi/image/width=1024,height=355,fit=cover,gravity=auto,format=auto//app/uploads/image-56.png)
+Additional details about Evaluation access periods and PA activation windows can be found here: [30 Day Access Period](https://apextraderfunding.com/help-center/billing/evaluation-plan-fees-and-access-explained/#h_01KJKAV5AKGWFK6HY9FAXZ2JN3)
+## Choosing an Evaluation
+Current pricing can be viewed directly from the product selector during checkout.
+Go to [Products](https://apextraderfunding.com/#products) then
+* Choose account size
+* Select Intraday or EOD Evaluations
+* Select between Standard / No Activation Fee
+* Compare available options before purchase
+![Image 2](https://apextraderfunding.com/cdn-cgi/image/width=907,height=682,fit=cover,gravity=auto,format=auto//app/uploads/image-57.png)
+## Frequently Asked Questions
+**What makes a No Activation Fee Evaluation different from a standard Evaluation?**
+The transition from Evaluation to Performance Account is simplified because no additional activation payment is required after passing. No Activation Fee Evaluations follow the same rules, drawdown structure, access period, and qualification requirements as standard Evaluations.
+**Do No Activation Fee Evaluations still have a 30-day access period?**
+Yes, the standard 30-day Evaluation access period still applies. Additional details about Evaluation access periods and PA activation windows can be found here: [30 Day Access Period](https://apextraderfunding.com/help-center/billing/evaluation-plan-fees-and-access-explained/#h_01KJKAV5AKGWFK6HY9FAXZ2JN3).
+**What happens if the Evaluation fails?**
+If the Evaluation fails, it closes under the standard Evaluation rules.
+**Are all 5 accounts separate?**
+Yes, where available. Eligible account sizes may also be purchased as discounted 5-Pack bundles. Use [Products](https://apextraderfunding.com/#products) page to check availability and choose your evaluation size.
+**Do No Activation Fee Evaluations still follow the normal PA activation timeline?**
+Yes, the standard PA activation timeline still applies after passing. The only difference is that no additional activation payment is required. At checkout, the PA fee is $0. Complete guide on [PA activation process](https://apextraderfunding.com/help-center/billing/pa-activation-process-deadline-explained/).
+“

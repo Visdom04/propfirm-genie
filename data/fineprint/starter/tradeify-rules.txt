@@ -1,0 +1,77 @@
+Title: Essential Trading Rules Overview
+URL Source: http://help.tradeify.co/en/articles/12268167-essential-trading-rules-overview
+Final URL: https://help.tradeify.co/en/articles/12268167-essential-trading-rules-overview
+Markdown Content:
+## Core Trading Rules by Account Type:
+### Evaluation Accounts (Growth and Select)
+## Daily Loss Limits
+## Drawdown Protection Types
+What is a Trailing Drawdown? Understanding a trailing drawdown involves knowing it as a dynamic loss limit mechanism. It calculates maximum allowable losses "trailing" or adjusting with your account's peak value, integrating into Tradeify's risk management strategy.
+A trailing drawdown is your account's maximum permissible loss limit. The limit trails your highest end-of-day balance (the high water mark) and only moves up, never down. It is enforced in real time against your net liquidation value, which includes unrealized P&L on open positions - breaching this limit even momentarily results in account failure, reinforcing disciplined trading practices.
+**All Evaluation Accounts - End-of-Day Trailing Drawdown:**
+## Simulated Funded Accounts
+### Daily Loss Limits
+## Drawdown Types:
+**All Funded Accounts (Select, Growth, Lightning) - End-of-Day Trailing Drawdown:**
+**Lightning Funded Specifics:**
+## Universal Rules (All Account Types)
+### Position Holding Requirements
+All positions must be closed before the market closes each day. **_No swing trading or holding positions overnight is allowed._**
+## Daily Close Requirements
+## Trading Hours
+## Automatic Position Closure
+Any positions left open when the market closes will be automatically closed by Tradeify. This **will not** result in account failure or penalties.
+## Trading Day Definition
+A trading day runs from **6:00 PM ET to 5:00 PM ET** the next calendar day.
+**Important:** If you trade during different market sessions on the same calendar day (for example, at 1:00 AM and again at 7:00 PM), these count as **two separate trading days** for rule compliance purposes.
+## Position Limits
+### Maximum Contract Limits
+Account Size Mini Contracts Micro Equivalent
+$25k 1 contract 10 micros
+$50k 4 contracts 40 micros
+$100k 8 contracts 80 micros
+$150k 12 contracts 120 micros
+## Contract Size Conversion
+## Position Scaling
+## Prohibited Activities
+## Algorithmic Trading
+**Allowed if:**
+- You own the strategy exclusively
+- Not shared with other traders/firms
+- Not high-frequency trading
+- Can prove ownership if requested
+## Microscalping Guidelines
+## Payout Eligibility Rules
+Payout trading day requirements vary by account type:
+## Consistency Rule Quick Guide:
+**What it means:** No single day's profit should be too large compared to your total profits.
+**Select Evaluation:** 40% limit (during evaluation phase only)
+**Growth Funded:** 35% limit (the Growth Evaluation has no consistency rule)
+**Lightning Funded:** 20% for the first payout, 25% for the second, 30% from the third (accounts bought after September 12, 2025)
+**Example:** If your biggest day was $2,000 profit and you follow the 20% rule, you need at least $10,000 total profit to be eligible for payouts.
+## Good Faith Trading
+**Core Principle:** Trade honestly and don't exploit platform errors.
+**Violations Include:**
+- Taking advantage of price display errors
+- Exploiting system delays
+- Any strategy designed to create platform errors
+**Consequences:** Account termination for violations
+## News Trading Policy
+**Allowed:** Yes, but at your own risk.
+​**Restrictions:** None - news trading is allowed on all accounts
+​**Details:** See full news trading policy for complete guidelines
+## Need Clarification?
+**Have questions about specific rules?**
+- Check our detailed rule articles
+- Ask in our Discord community
+- Contact support for clarification
+Remember: These rules exist to help you become a consistently profitable trader. Following them closely will set you up for long-term success with Tradeify!
+**Detailed Rule Articles:**
+Your current Trailing Max Drawdown floor is now shown directly on your Tradeify dashboard - it appears as the "Trailing Max Drawdown" figure and updates once per day, at the end of each trading day. For real-time intraday monitoring during the trading day, you can also use the "Distance to Drawdown" feature in the Tradovate platform to visualize and manage your drawdown threshold.
+* * *
+Related Articles
+* [Which Plan is Right for You?](https://help.tradeify.co/en/articles/10468265-which-plan-is-right-for-you)
+* [Rules: Daily Loss Limit](https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit)
+* [Rules: Trailing Max Drawdowns](https://help.tradeify.co/en/articles/10495897-rules-trailing-max-drawdowns)
+* [GROWTH™ Evaluation Accounts](https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts)
+* [Lightning Funded Accounts](https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts)

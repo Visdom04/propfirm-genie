@@ -1,5 +1,205 @@
 [
   {
+    "id": "mfp-payouts-d4fbe437c9cc",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-10-29T10:20:43.210Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “once more a few days later as a final reminder. Reminders stop as soon as you”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "neutral",
+        "before": "—",
+        "after": "once more a few days later as a final reminder. Reminders stop as soon as you",
+        "beforeLine": "",
+        "afterLine": "once more a few days later as a final reminder. Reminders stop as soon as you"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "once more a few days later as a final reminder. Reminders stop as soon as you"
+        ],
+        "removed": [],
+        "added": [
+          "once more a few days later as a final reminder. Reminders stop as soon as you"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishReason": "paragraph_confirmed",
+    "publishedAt": "2026-10-30T10:23:04.229Z",
+    "confirmedAt": "2026-10-30T10:23:04.229Z"
+  },
+  {
+    "id": "mfp-payouts-4299ca2a6f9f",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-10-29T10:20:43.210Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “the most recent. We also email you on the first day with steps to find it, and”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "neutral",
+        "before": "—",
+        "after": "the most recent. We also email you on the first day with steps to find it, and",
+        "beforeLine": "",
+        "afterLine": "the most recent. We also email you on the first day with steps to find it, and"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "the most recent. We also email you on the first day with steps to find it, and"
+        ],
+        "removed": [],
+        "added": [
+          "the most recent. We also email you on the first day with steps to find it, and"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishReason": "paragraph_confirmed",
+    "publishedAt": "2026-10-30T10:23:04.229Z",
+    "confirmedAt": "2026-10-30T10:23:04.229Z"
+  },
+  {
+    "id": "mfp-payouts-b2c3ee8f74c0",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-10-29T10:20:43.210Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “the next two days. Each new invitation replaces the previous one, so accept”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "neutral",
+        "before": "—",
+        "after": "the next two days. Each new invitation replaces the previous one, so accept",
+        "beforeLine": "",
+        "afterLine": "the next two days. Each new invitation replaces the previous one, so accept"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "the next two days. Each new invitation replaces the previous one, so accept"
+        ],
+        "removed": [],
+        "added": [
+          "the next two days. Each new invitation replaces the previous one, so accept"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishReason": "paragraph_confirmed",
+    "publishedAt": "2026-10-30T10:23:04.229Z",
+    "confirmedAt": "2026-10-30T10:23:04.229Z"
+  },
+  {
+    "id": "mfp-payouts-15a58f13b62a",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-10-29T10:20:43.210Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “sends you a fresh invitation a day after the first one, then again on each of”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "neutral",
+        "before": "—",
+        "after": "sends you a fresh invitation a day after the first one, then again on each of",
+        "beforeLine": "",
+        "afterLine": "sends you a fresh invitation a day after the first one, then again on each of"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "sends you a fresh invitation a day after the first one, then again on each of"
+        ],
+        "removed": [],
+        "added": [
+          "sends you a fresh invitation a day after the first one, then again on each of"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishReason": "paragraph_confirmed",
+    "publishedAt": "2026-10-30T10:23:04.229Z",
+    "confirmedAt": "2026-10-30T10:23:04.229Z"
+  },
+  {
+    "id": "mfp-payouts-30323a626b9c",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-10-29T10:20:43.210Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "payouts",
+    "title": "My Funded Perps payout terms",
+    "summary": "Now “If you have a payout waiting and haven’t accepted the invitation yet, Rise”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Payout terms",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "neutral",
+        "before": "—",
+        "after": "If you have a payout waiting and haven’t accepted the invitation yet, Rise",
+        "beforeLine": "",
+        "afterLine": "If you have a payout waiting and haven’t accepted the invitation yet, Rise"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "If you have a payout waiting and haven’t accepted the invitation yet, Rise"
+        ],
+        "removed": [],
+        "added": [
+          "If you have a payout waiting and haven’t accepted the invitation yet, Rise"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishReason": "paragraph_confirmed",
+    "publishedAt": "2026-10-30T10:23:04.229Z",
+    "confirmedAt": "2026-10-30T10:23:04.229Z"
+  },
+  {
     "id": "mfp-rules-1400495f1d53",
     "pageId": "mfp-rules",
     "detectedAt": "2026-10-28T12:59:58.070Z",
