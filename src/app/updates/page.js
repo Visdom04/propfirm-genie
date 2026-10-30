@@ -12,8 +12,9 @@ const STARTER_FIRMS = [...new Set(STARTER_PAGES.map(page => page.firm))];
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Market intelligence',
-  description: 'A command center for tracking prop firm rules, pricing, and payouts.',
+  title: 'Prop Firm Rule Changes',
+  description:
+    'Daily tracker of prop firm rule changes: drawdown, daily loss limit, payout and price updates at Apex, Topstep, Tradeify and more, marked better or worse for traders.',
 };
 
 export default async function UpdatesPage() {

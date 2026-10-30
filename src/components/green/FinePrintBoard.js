@@ -374,34 +374,6 @@ function ChangesCalendar({ changes, logos, day, onPickDay, onOpenChange }) {
   );
 }
 
-// Decorative: the latest real changes drift behind the title, over a grid.
-function HeroBackdrop({ items }) {
-  const line = item => {
-    const before = valueText(item.fact?.before, item.fact?.unit);
-    const after = valueText(item.fact?.after, item.fact?.unit);
-    const move = before && after ? ` ${before} → ${after}` : '';
-    return { ...item, text: `${item.firm} · ${item.fact?.label || 'Rule change'}${move}` };
-  };
-  const ticker = items.map(line);
-  const rows = ticker.length ? [ticker, [...ticker].reverse()] : [];
-  return (
-    <div className="fp-hero-bg" aria-hidden>
-      <div className="fp-hero-grid" />
-      {rows.map((row, index) => (
-        <div key={index} className={`fp-hero-tape${index ? ' is-reverse' : ''}`}>
-          <div className="fp-hero-track">
-            {[...row, ...row].map((item, i) => (
-              <span key={`${item.id}-${i}`} className={`fp-hero-tick ${VERDICT[verdictOf(item.fact?.verdict)].tone}`}>
-                {item.text}
-              </span>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function TrendingNews({ items, logos, onOpen }) {
   return (
     <section className="fp-card fp-trend" aria-label="Trending">
@@ -687,12 +659,6 @@ export default function FinePrintBoard({ changes = [], pages, logos = {}, cover 
   const firmCount = new Set(rows.map(row => row.change.firm)).size;
   const demo = rows.some(row => row.change.demo);
 
-  const tickerItems = changes
-    .filter(change => change.status === 'published' && isCovered(change.firm, cover))
-    .sort((a, b) => String(b.detectedAt).localeCompare(String(a.detectedAt)))
-    .slice(0, 12)
-    .map(change => ({ id: change.id, firm: change.firm, fact: change.facts?.[0] }));
-
   const trendingItems = changes
     .filter(change => change.status === 'published' && change.trending && change.firm !== 'FundingPips')
     .filter(change => isCovered(change.firm, cover))
@@ -717,9 +683,11 @@ export default function FinePrintBoard({ changes = [], pages, logos = {}, cover 
   return (
     <div className="fp">
       <header className="fp-hero">
-        <HeroBackdrop items={tickerItems} />
+        <div className="fp-hero-bg" aria-hidden>
+          <div className="fp-hero-grid" />
+        </div>
         <div className="fp-hero-in">
-          <h1 className="fp-title">Market intelligence</h1>
+          <h1 className="fp-title">Prop Firm Rule Changes</h1>
           <p className="fp-stats" aria-live="polite">
             <span>
               {rows.length} {rows.length === 1 ? 'change' : 'changes'}
@@ -739,6 +707,7 @@ export default function FinePrintBoard({ changes = [], pages, logos = {}, cover 
               </Chip>
             ))}
           </div>
+          <FirmTicker names={firmNames} selected={firm} logos={marks} onPick={name => setFirm(current => (current === name ? 'all' : name))} />
         </div>
       </header>
 
@@ -775,7 +744,6 @@ export default function FinePrintBoard({ changes = [], pages, logos = {}, cover 
                 </button>
               ) : null}
             </label>
-            <FirmTicker names={firmNames} selected={firm} logos={marks} onPick={name => setFirm(current => (current === name ? 'all' : name))} />
             <FpSelect ariaLabel="Kind" value={facet} options={FACETS} onChange={setFacet} />
             <FpDateSelect
               range={range}

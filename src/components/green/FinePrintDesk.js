@@ -183,7 +183,7 @@ export default function FinePrintDesk({ firms, logos = {}, queue = [], cover: in
           ))}
           <div className="ops-group">
             <button type="button" className="ops-group-head" aria-expanded="true">
-              Market intelligence
+              Rule changes
             </button>
             <div className="ops-sub">
               {TABS.map(item => (
@@ -217,7 +217,7 @@ export default function FinePrintDesk({ firms, logos = {}, queue = [], cover: in
       <div className="ops-main">
         <header className="ops-top">
           <p className="ops-crumb">
-            Admin <span aria-hidden>›</span> Market intelligence <span aria-hidden>›</span> <b>{current.label}</b>
+            Admin <span aria-hidden>›</span> Rule changes <span aria-hidden>›</span> <b>{current.label}</b>
           </p>
           <a className="ops-ghost" href="/updates" target="_blank" rel="noreferrer">
             View live page ↗

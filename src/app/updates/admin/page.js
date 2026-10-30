@@ -11,7 +11,7 @@ const FIRMS = STOCK_COVER.map(item => item.firm);
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Market intelligence admin',
+  title: 'Rule changes admin',
   robots: { index: false, follow: false },
 };
 
