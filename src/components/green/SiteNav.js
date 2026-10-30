@@ -11,7 +11,7 @@ const LINKS = [
   { href: '/overview', label: 'Overview' },
   { href: '/compare', label: 'Head to head' },
   { href: '/giveaway', label: 'Giveaway' },
-  { href: '/updates', label: 'Market intelligence' },
+  { href: '/updates', label: 'Rule Changes' },
 ];
 
 export default function SiteNav({ trailing = null }) {

@@ -2398,8 +2398,8 @@ button.fp-cal-day:focus-visible {
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 70% 80% at 50% 0%, oklch(0.32 0.08 160 / 0.55), transparent 70%),
-    linear-gradient(180deg, oklch(0.2 0.045 160) 0%, oklch(0.19 0.04 160) 55%, oklch(0.19 0.04 160 / 0) 100%);
+    radial-gradient(ellipse 70% 90% at 50% 10%, oklch(0.42 0.1 160 / 0.45), transparent 70%),
+    linear-gradient(180deg, oklch(0.3 0.07 160) 0%, oklch(0.26 0.06 160) 55%, oklch(0.24 0.05 160 / 0) 100%);
 }
 
 .fp-hero-grid {
@@ -2424,34 +2424,10 @@ button.fp-cal-day:focus-visible {
 
 
 
-.fp-hero-tape {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
-  opacity: 0.38;
-}
 
-.fp-hero-tape:first-of-type {
-  top: 18px;
-}
 
-.fp-hero-tape.is-reverse {
-  bottom: 16px;
-}
 
-.fp-hero-track {
-  display: flex;
-  width: max-content;
-  gap: 40px;
-  animation: fp-tape 80s linear infinite;
-}
 
-.fp-hero-tape.is-reverse .fp-hero-track {
-  animation-direction: reverse;
-  animation-duration: 95s;
-}
 
 @keyframes fp-tape {
   to {
@@ -2459,31 +2435,9 @@ button.fp-cal-day:focus-visible {
   }
 }
 
-.fp-hero-tick {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--fp-mute);
-  font-size: 0.78rem;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
 
-.fp-hero-tick::before {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--fp-mute);
-  content: '';
-}
 
-.fp-hero-tick.is-worse::before {
-  background: var(--fp-bad);
-}
 
-.fp-hero-tick.is-good::before {
-  background: var(--fp-good);
-}
 
 @media (max-width: 639px) {
   .fp-hero {
@@ -2491,16 +2445,12 @@ button.fp-cal-day:focus-visible {
     padding: 44px 16px 40px;
   }
 
-  .fp-hero-tape {
-    opacity: 0.28;
-  }
 
 
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fp-hero-grid,
-  .fp-hero-track {
+  .fp-hero-grid {
     animation: none;
   }
 
@@ -2612,7 +2562,7 @@ button.fp-cal-day:focus-visible {
 
 @container (min-width: 900px) {
   .fp-line {
-    grid-template-columns: minmax(200px, 260px) minmax(0, 1fr) minmax(8rem, 9.5rem) minmax(8rem, 9.5rem) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(8rem, 10rem) minmax(8rem, 10rem) auto;
     align-items: center;
   }
 
@@ -3548,4 +3498,23 @@ img.fp-logo {
 
 .fp-faq-item:last-child {
   border-radius: 0 0 16px 16px;
+}
+
+/* Firm logo carousel lives in the header now. */
+
+.fp-hero .fp-firms {
+  width: min(1100px, 100%);
+  margin-top: 28px;
+}
+
+.fp-hero .fp-firms .fp-chip {
+  background: rgb(255 255 255 / 0.07);
+}
+
+.fp-hero .fp-firms .fp-chip:hover {
+  background: rgb(255 255 255 / 0.12);
+}
+
+.fp-hero-in {
+  width: 100%;
 }
