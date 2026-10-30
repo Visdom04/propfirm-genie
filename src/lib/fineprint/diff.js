@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { NUMBER, judgeChange, maskNumbers } from './terms.js';
 
 // Promo and markup. Always noise, even next to a trading word.
 const NOISE = [
@@ -195,48 +196,17 @@ export function diffTexts(before, after) {
   return hunks;
 }
 
-const NUMBER = /\$?\d[\d,]*(?:\.\d+)?%?/g;
-
-// First match wins, so specific terms sit above the generic fee words.
-// better: which direction helps the trader. null means we do not judge.
-const TERMS = [
-  { pattern: /\bprofit target\b/i, label: 'Profit target', better: 'lower' },
-  { pattern: /\bprofit split\b/i, label: 'Profit split', better: 'higher' },
-  { pattern: /\b(drawdown|daily loss|max(?:imum)? loss|loss limit)\b/i, label: 'Drawdown', better: 'higher' },
-  { pattern: /\bmin(?:imum)? trad(?:ing)? days\b/i, label: 'Minimum trading days', better: 'lower' },
-  { pattern: /\bconsistency\b/i, label: 'Consistency rule', better: null },
-  { pattern: /\bpayout\b/i, label: 'Payout terms', better: null },
-  { pattern: /\b(price|fee|cost|activation)\b/i, label: 'Fee', better: 'lower' },
-];
-
-function toNumber(token) {
-  return Number(String(token).replace(/[$,%]/g, ''));
-}
-
-function maskNumbers(line) {
-  return line.replace(NUMBER, '#');
-}
-
 /** Same sentence, one number moved. Pairing across lines is how unrelated values got matched. */
 function numericFact(before, after) {
-  if (maskNumbers(before) !== maskNumbers(after)) return null;
-  const a = before.match(NUMBER) || [];
-  const b = after.match(NUMBER) || [];
-  // Two amounts on one line is a list price beside a sale price. Do not pick one.
-  if (a.length !== 1 || b.length !== 1) return null;
-  const index = a.findIndex((value, i) => value !== b[i]);
-  if (index === -1) return null;
-  const term = TERMS.find(item => item.pattern.test(before));
-  if (!term) return null;
-  const from = toNumber(a[index]);
-  const to = toNumber(b[index]);
-  const verdict = !term.better || from === to ? 'neutral' : (to > from) === (term.better === 'higher') ? 'good' : 'worse';
+  const judged = judgeChange(before, after);
+  if (!judged) return null;
   return {
-    label: term.label,
+    label: judged.label,
     stage: 'published page',
-    verdict,
-    before: a[index],
-    after: b[index],
+    verdict: judged.verdict,
+    before: judged.before,
+    after: judged.after,
+    unit: judged.unit,
     beforeLine: before,
     afterLine: after,
   };
@@ -271,7 +241,7 @@ export function factsFromHunks(hunks) {
     facts.push({
       label: 'Rule wording',
       stage: 'published page',
-      verdict: 'neutral',
+      verdict: 'unscored',
       before: removed[0],
       after: added[0],
       beforeLine: removed[0],

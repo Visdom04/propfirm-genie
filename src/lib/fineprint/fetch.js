@@ -1,33 +1,29 @@
-const UA =
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
+// The checker says who it is. Sites that block bots stay blocked: we report
+// them on Watch health and never route around the block.
+export const BOT_UA = 'PropFirmGenieBot/1.0 (+https://propfirm-genie.vercel.app/updates; rules-change monitor)';
 
 export const FETCH_HEADERS = {
-  'user-agent': UA,
-  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+  'user-agent': BOT_UA,
+  accept: 'text/html,application/xhtml+xml;q=0.9,*/*;q=0.8',
   'accept-language': 'en-US,en;q=0.9',
-  'upgrade-insecure-requests': '1',
-  'sec-fetch-dest': 'document',
-  'sec-fetch-mode': 'navigate',
-  'sec-fetch-site': 'none',
 };
 
-export function readerUrl(url) {
-  return `https://r.jina.ai/${url}`;
-}
+// A real bot wall says so in its <title> or carries the challenge script.
+// Plain body text is not enough: help-center widgets ship strings like "Just a moment…".
+const CHALLENGE_TITLE = /<title[^>]*>[^<]*(just a moment|attention required|checking your browser)/i;
+const CHALLENGE_MARK = /cf-browser-verification|cf_chl_|\/cdn-cgi\/challenge-platform/i;
 
-/** https://r.jina.ai/https://… often 403s. The http:// form can still return the article. */
-export function readerMirrors(url) {
-  const httpsForm = readerUrl(url);
-  const httpForm = `https://r.jina.ai/${String(url).replace(/^https:\/\//i, 'http://')}`;
-  return httpsForm === httpForm ? [httpsForm] : [httpForm, httpsForm];
+export function isChallengePage(body) {
+  return CHALLENGE_TITLE.test(body || '') || CHALLENGE_MARK.test(body || '');
 }
 
 export function isRetryable(status) {
-  return status === 0 || status === 429 || status === 502 || status === 503;
+  return status === 0 || status === 502 || status === 503;
 }
 
-export function needsReader(status) {
-  return status === 0 || status === 403 || status === 429 || status === 503;
+/** A bot wall, not a missing page. */
+export function isBlockedStatus(status) {
+  return status === 401 || status === 403 || status === 429;
 }
 
 export function delay(ms) {
@@ -63,39 +59,77 @@ export async function fetchWithRetry(url, { retries = 2, delayMs = 400, fetchFn 
   return last;
 }
 
+/** Disallow rules for our bot (or *) from one robots.txt body. */
+export function robotsRules(text) {
+  const groups = [];
+  let current = null;
+  for (const raw of String(text || '').split('\n')) {
+    const line = raw.replace(/#.*/, '').trim();
+    const match = line.match(/^(user-agent|disallow|allow)\s*:\s*(.*)$/i);
+    if (!match) continue;
+    const [, key, value] = match;
+    if (key.toLowerCase() === 'user-agent') {
+      if (!current || current.rules.length) {
+        current = { agents: [], rules: [] };
+        groups.push(current);
+      }
+      current.agents.push(value.toLowerCase());
+    } else if (current) {
+      current.rules.push({ allow: key.toLowerCase() === 'allow', path: value });
+    }
+  }
+  const ours = groups.find(group => group.agents.some(agent => agent && 'propfirmgeniebot'.startsWith(agent)));
+  const any = groups.find(group => group.agents.includes('*'));
+  return (ours || any)?.rules || [];
+}
+
+/** Longest matching rule wins; an empty Disallow allows everything. */
+export function robotsAllows(rules, url) {
+  let path;
+  try {
+    const parsed = new URL(url);
+    path = parsed.pathname + parsed.search;
+  } catch {
+    return false;
+  }
+  let best = null;
+  for (const rule of rules) {
+    if (!rule.path) continue;
+    const pattern = new RegExp(`^${rule.path.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\\\$$/, '$')}`);
+    if (pattern.test(path) && (!best || rule.path.length > best.path.length)) best = rule;
+  }
+  return !best || best.allow;
+}
+
+const robotsCache = new Map();
+
+export async function robotsAllowsUrl(url, { fetchFn = fetch } = {}) {
+  let origin;
+  try {
+    origin = new URL(url).origin;
+  } catch {
+    return false;
+  }
+  if (!robotsCache.has(origin)) {
+    const res = await fetchOnce(`${origin}/robots.txt`, { fetchFn, timeoutMs: 10000 });
+    // No robots.txt, or one we cannot read, means no stated restriction.
+    robotsCache.set(origin, res.status === 200 ? robotsRules(res.body) : []);
+  }
+  return robotsAllows(robotsCache.get(origin), url);
+}
+
 /**
- * Walk a URL ladder. Direct 200 wins. Cloudflare 403/DNS miss falls back to
- * the public reader so the firm still gets a text snapshot. A 404 does not:
- * a dead page should show as blocked, not be papered over by the reader.
+ * Walk a URL ladder. Direct 200 with real content wins. A bot wall (challenge
+ * page, 401/403/429) comes back as source 'blocked'; anything else 'failed'.
  */
-export async function fetchFirstOk(urls, { useReader = true, fetchFn = fetch, retries = 2, delayMs = 400 } = {}) {
+export async function fetchFirstOk(urls, { fetchFn = fetch, retries = 2, delayMs = 400 } = {}) {
   const list = (urls || []).filter(Boolean);
   let last = { status: 0, finalUrl: list[0] || '', body: '', source: 'failed' };
   let blocked = false;
   for (const url of list) {
-    last = { ...(await fetchWithRetry(url, { fetchFn, retries, delayMs })), source: 'direct' };
-    if (last.status === 200 && last.body) {
-      // Cloudflare often answers 200 with a challenge shell. That is not the article.
-      if (/just a moment|attention required|cf-browser-verification|checking your browser/i.test(last.body)) {
-        blocked = true;
-      } else {
-        return last;
-      }
-    } else if (needsReader(last.status)) {
-      blocked = true;
-    }
+    last = await fetchWithRetry(url, { fetchFn, retries, delayMs });
+    if (last.status === 200 && last.body && !isChallengePage(last.body)) return { ...last, source: 'direct' };
+    if (isBlockedStatus(last.status) || (last.status === 200 && isChallengePage(last.body))) blocked = true;
   }
-  if (useReader && blocked) {
-    for (const url of list) {
-      for (const viaUrl of readerMirrors(url)) {
-        const via = await fetchWithRetry(viaUrl, { fetchFn, retries: 1, delayMs });
-        const shell = /just a moment|attention required|enable javascript and cookies/i.test(via.body || '');
-        if (via.status === 200 && via.body && via.body.length > 400 && !shell) {
-          return { ...via, source: 'reader', watchedUrl: url };
-        }
-        last = { ...via, source: 'reader', watchedUrl: url };
-      }
-    }
-  }
-  return { ...last, source: 'failed' };
+  return { ...last, source: blocked ? 'blocked' : 'failed' };
 }

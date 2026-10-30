@@ -18,6 +18,7 @@ export function emptyDeskItem(firms = []) {
     verdict: '',
     sourceUrl: '',
     demo: false,
+    trending: false,
     status: 'draft',
   };
 }
@@ -75,6 +76,7 @@ export function deskToChange(item) {
     title: String(item.title || `${item.firm} ${label}`).trim(),
     summary: String(item.notes || (before && after ? `Was “${before}”. Now “${after}”.` : label)).trim(),
     demo: Boolean(item.demo),
+    trending: Boolean(item.trending),
     sourceUrl: item.sourceUrl || '',
     facts: [fact],
     hunks:
@@ -89,5 +91,27 @@ export function deskToChange(item) {
           ]
         : [],
     status: item.status === 'published' ? 'published' : 'draft',
+  };
+}
+
+export function changeToDeskItem(change) {
+  const fact = change?.facts?.[0] || {};
+  return {
+    id: change.id,
+    firm: change.firm || '',
+    product: change.product || '',
+    market: change.market || 'futures',
+    kind: fact.kind || change.kind || 'rules',
+    date: String(change.detectedAt || new Date().toISOString()).slice(0, 10),
+    title: change.title || '',
+    label: fact.label || '',
+    before: fact.before || '',
+    after: fact.after || '',
+    notes: change.summary || '',
+    verdict: fact.verdict || '',
+    sourceUrl: change.sourceUrl || '',
+    demo: Boolean(change.demo),
+    trending: Boolean(change.trending),
+    status: change.status === 'published' ? 'published' : 'draft',
   };
 }

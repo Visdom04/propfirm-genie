@@ -9,6 +9,7 @@
     "market": "futures",
     "kind": "rules",
     "product": "LucidPro",
+    "trending": true,
     "title": "Lucid Trading drawdown",
     "summary": "Was “$50,000 accounts have a $1,200 Daily Loss Limit.” Now “$50,000 accounts have a $1,000 Daily Loss Limit.”",
     "sourceUrl": "https://support.lucidtrading.com/en/articles/12890122-lucidpro-daily-loss-limit",
@@ -16,11 +17,13 @@
       {
         "label": "Daily loss limit",
         "stage": "demo",
-        "verdict": "good",
+        "verdict": "worse",
         "before": "$1,200",
         "after": "$1,000",
         "beforeLine": "$50,000 accounts have a $1,200 Daily Loss Limit.",
-        "afterLine": "$50,000 accounts have a $1,000 Daily Loss Limit."
+        "afterLine": "$50,000 accounts have a $1,000 Daily Loss Limit.",
+        "kind": "rules",
+        "unit": "$"
       }
     ],
     "hunks": [
@@ -50,11 +53,13 @@
       {
         "label": "Profit target",
         "stage": "demo",
-        "verdict": "good",
+        "verdict": "better",
         "before": "$3,000",
         "after": "$2,500",
         "beforeLine": "Account size $50,000. Profit target $3,000. Max loss limit $2,000.",
-        "afterLine": "Account size $50,000. Profit target $2,500. Max loss limit $2,000."
+        "afterLine": "Account size $50,000. Profit target $2,500. Max loss limit $2,000.",
+        "kind": "rules",
+        "unit": "$"
       }
     ],
     "hunks": [
@@ -75,29 +80,30 @@
     "publishedAt": "2026-10-21T11:05:00.000Z",
     "firm": "Lucid Trading",
     "market": "futures",
-    "kind": "payouts",
+    "kind": "rules",
     "product": "LucidPro",
     "title": "Lucid Trading payout terms",
-    "summary": "Was “Payouts require a 5-day trading minimum.” Now “Payouts may be requested after 3 trading days.”",
+    "summary": "Was “Payouts require a minimum of 5 trading days.” Now “Payouts require a minimum of 3 trading days.”",
     "sourceUrl": "https://support.lucidtrading.com/en/",
     "facts": [
       {
-        "label": "Payout terms",
-        "kind": "payouts",
+        "label": "Minimum trading days",
+        "kind": "rules",
         "stage": "demo",
-        "verdict": "good",
-        "before": "5-day trading minimum",
-        "after": "3 trading days",
-        "beforeLine": "Payouts require a 5-day trading minimum.",
-        "afterLine": "Payouts may be requested after 3 trading days."
+        "verdict": "better",
+        "before": "5",
+        "after": "3",
+        "beforeLine": "Payouts require a minimum of 5 trading days.",
+        "afterLine": "Payouts require a minimum of 3 trading days.",
+        "unit": "days"
       }
     ],
     "hunks": [
       {
-        "before": ["Payouts require a 5-day trading minimum."],
-        "after": ["Payouts may be requested after 3 trading days."],
-        "removed": ["Payouts require a 5-day trading minimum."],
-        "added": ["Payouts may be requested after 3 trading days."]
+        "before": ["Payouts require a minimum of 5 trading days."],
+        "after": ["Payouts require a minimum of 3 trading days."],
+        "removed": ["Payouts require a minimum of 5 trading days."],
+        "added": ["Payouts require a minimum of 3 trading days."]
       }
     ],
     "status": "published"
@@ -112,26 +118,29 @@
     "market": "futures",
     "kind": "rules",
     "product": "EOD",
+    "trending": true,
     "title": "Apex consistency window",
-    "summary": "Was “Best day cannot exceed 50% of total profits.” Now “Best day cannot exceed 40% of total profits.”",
+    "summary": "Was “Consistency rule: your best day cannot exceed 50% of total profits.” Now “Consistency rule: your best day cannot exceed 40% of total profits.”",
     "sourceUrl": "https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/",
     "facts": [
       {
-        "label": "Consistency window",
+        "label": "Consistency rule",
         "stage": "demo",
         "verdict": "worse",
         "before": "50%",
         "after": "40%",
-        "beforeLine": "Best day cannot exceed 50% of total profits.",
-        "afterLine": "Best day cannot exceed 40% of total profits."
+        "beforeLine": "Consistency rule: your best day cannot exceed 50% of total profits.",
+        "afterLine": "Consistency rule: your best day cannot exceed 40% of total profits.",
+        "kind": "rules",
+        "unit": "%"
       }
     ],
     "hunks": [
       {
-        "before": ["Best day cannot exceed 50% of total profits."],
-        "after": ["Best day cannot exceed 40% of total profits."],
-        "removed": ["Best day cannot exceed 50% of total profits."],
-        "added": ["Best day cannot exceed 40% of total profits."]
+        "before": ["Consistency rule: your best day cannot exceed 50% of total profits."],
+        "after": ["Consistency rule: your best day cannot exceed 40% of total profits."],
+        "removed": ["Consistency rule: your best day cannot exceed 50% of total profits."],
+        "added": ["Consistency rule: your best day cannot exceed 40% of total profits."]
       }
     ],
     "status": "published"
@@ -157,7 +166,9 @@
         "before": "$2,000",
         "after": "$1,500",
         "beforeLine": "$50,000 Growth daily loss limit $2,000.",
-        "afterLine": "$50,000 Growth daily loss limit $1,500."
+        "afterLine": "$50,000 Growth daily loss limit $1,500.",
+        "kind": "rules",
+        "unit": "$"
       }
     ],
     "hunks": [
@@ -180,27 +191,29 @@
     "market": "crypto",
     "kind": "payouts",
     "product": "Elite",
+    "trending": true,
     "title": "MFP payout cycle",
-    "summary": "Was “Payouts process every 14 days.” Now “Payouts process every 7 days.”",
+    "summary": "Was “Payout cycle: every 14 days.” Now “Payout cycle: every 7 days.”",
     "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
     "facts": [
       {
         "label": "Payout cycle",
         "kind": "payouts",
         "stage": "demo",
-        "verdict": "good",
-        "before": "14 days",
-        "after": "7 days",
-        "beforeLine": "Payouts process every 14 days.",
-        "afterLine": "Payouts process every 7 days."
+        "verdict": "better",
+        "before": "14",
+        "after": "7",
+        "beforeLine": "Payout cycle: every 14 days.",
+        "afterLine": "Payout cycle: every 7 days.",
+        "unit": "days"
       }
     ],
     "hunks": [
       {
-        "before": ["Payouts process every 14 days."],
-        "after": ["Payouts process every 7 days."],
-        "removed": ["Payouts process every 14 days."],
-        "added": ["Payouts process every 7 days."]
+        "before": ["Payout cycle: every 14 days."],
+        "after": ["Payout cycle: every 7 days."],
+        "removed": ["Payout cycle: every 14 days."],
+        "added": ["Payout cycle: every 7 days."]
       }
     ],
     "status": "published"
@@ -220,13 +233,15 @@
     "sourceUrl": "https://docs.vestmarkets.com/vest-capital/loss-limits",
     "facts": [
       {
-        "label": "Daily loss",
+        "label": "Daily loss limit",
         "stage": "demo",
         "verdict": "worse",
         "before": "4%",
         "after": "3%",
         "beforeLine": "Max daily loss 4% of starting balance.",
-        "afterLine": "Max daily loss 3% of starting balance."
+        "afterLine": "Max daily loss 3% of starting balance.",
+        "kind": "rules",
+        "unit": "%"
       }
     ],
     "hunks": [

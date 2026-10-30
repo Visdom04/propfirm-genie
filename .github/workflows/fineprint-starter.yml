@@ -35,6 +35,9 @@ jobs:
 
       - name: Photograph the rules pages
         run: npm run fineprint:starter
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
       - name: Commit the saved pages and any new cards
         run: |

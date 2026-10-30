@@ -27,6 +27,7 @@ assert.equal(cards.length, 3);
 assert.ok(cards.every(card => before.includes(card.facts[0].beforeLine)));
 assert.ok(cards.every(card => after.includes(card.facts[0].afterLine)));
 assert.equal(cards[0].status, 'published');
+assert.equal(cards[0].trending, false);
 assert.match(cards[0].summary, /\$167/);
 assert.match(cards[0].summary, /\$149/);
 
@@ -58,13 +59,26 @@ assert.deepEqual(
   [...new Set(readyStarterPages().map(page => page.firm))].sort(),
   [
     'Apex Trader Funding',
+    'BluSky',
+    'Blue Guardian',
     'Bulenox',
+    'DayTraders',
+    'Earn2Trade',
+    'FTMO',
+    'FXIFY Futures',
     'FundedNext Futures',
+    'IQ Capital',
     'Legends Trading',
     'Lucid Trading',
+    'My Funded Futures',
     'My Funded Perps',
+    'Phidias Propfirm',
     'Take Profit Trader',
+    'The Trading Pit',
+    'Top One Futures',
+    'Topstep',
     'Tradeify',
+    'Traders Launch',
     'Vest Markets',
   ],
 );

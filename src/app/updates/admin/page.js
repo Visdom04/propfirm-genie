@@ -1,22 +1,40 @@
-import GreenPageShell from '@/components/green/GreenPageShell';
+import { redirect } from 'next/navigation';
 import FinePrintDesk from '@/components/green/FinePrintDesk';
+import { currentAdmin } from '@/lib/fineprint/admin';
 import { STOCK_COVER } from '@/lib/fineprint/coverage';
+import { UNWATCHABLE } from '@/lib/fineprint/starter';
+import { readChangeLog, readCoverage, readWatch, storeMode } from '@/lib/fineprint/store';
 import { firmLogo } from '@/lib/firmLogos';
 
 const FIRMS = STOCK_COVER.map(item => item.firm);
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
-  title: 'News desk',
-  description: 'Draft and publish manual Fine Print updates.',
+  title: 'Market intelligence admin',
+  robots: { index: false, follow: false },
 };
 
-export default function UpdatesAdminPage() {
+export default async function UpdatesAdminPage() {
+  const admin = await currentAdmin();
+  if (!admin) redirect('/login?next=/updates/admin');
   const logos = Object.fromEntries(FIRMS.map(name => [name, firmLogo(name)]));
+  const [queue, cover, watch, mode] = await Promise.all([
+    readChangeLog({ includeHidden: true }),
+    readCoverage(),
+    readWatch(),
+    storeMode(),
+  ]);
   return (
-    <GreenPageShell>
-      <main className="mx-auto w-full max-w-[960px] px-4 pb-20 pt-8 sm:px-8 max-md:pt-5">
-        <FinePrintDesk firms={FIRMS} logos={logos} />
-      </main>
-    </GreenPageShell>
+    <FinePrintDesk
+      firms={FIRMS}
+      logos={logos}
+      queue={queue}
+      cover={cover}
+      watch={watch}
+      unwatchable={UNWATCHABLE}
+      mode={mode}
+      admin={admin.email}
+    />
   );
 }

@@ -1,0 +1,258 @@
+Challenges and Rules - MyFundedPerps Documentation
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Documentation Index
+Fetch the complete documentation index at: /llms.txt
+Use this file to discover all available pages before exploring further.
+Skip to main content
+MyFundedPerps Documentation home page
+Search rules, guides, and API...
+⌘ K
+- Trading Platform
+- Create API Key
+- Create API Key
+Search...
+Navigation
+Guides
+Challenges and Rules
+Buyers Guide
+Developers Guide
+Overview
+- MyFundedPerps Documentation
+Guides
+- Guides
+- Getting Started
+- Trading Guide
+- Tradable Assets
+- Asset Exposure Limits
+- Trading Calculators
+- Custom Scripts
+- Commissions and Fees
+- Trading Journal
+- Challenges and Rules
+- Elite Accounts
+- Competitions
+- Launch competition
+- October competition
+- Copy Trading Guide
+- Affiliate Program
+- Second Chance Offer
+- Troubleshooting and FAQ
+- Glossary
+Challenge Lifecycle
+- Challenge Lifecycle
+- Buying a Challenge
+- Evaluation Progress
+- Breaches and Next Steps
+- Becoming Funded
+- Payouts
+- Billing and Rewards
+Settings
+- Settings
+- Profile Settings
+- Security Settings
+- Public Profile Settings
+- Language Settings
+- Appearance Settings
+- Streamer Mode Settings
+- Trading Settings
+- Copy Trading Settings
+- API Key Settings
+- Notification Settings
+- Certificates
+- Purchase History
+On this page
+Back to top
+- Evaluation rules
+- Select prize accounts
+- Daily loss reset time
+- Static drawdown and the withdrawal lock
+- Account states
+- After an evaluation passes
+- Maximum active evaluation allocation
+- Maximum funded allocation
+- Funded accounts and payouts
+Guides
+Challenges and Rules
+Copy page Copy page
+Understand evaluation stages, profit targets, loss and drawdown rules, account states, funded progression, and payout-specific requirements.
+Copy page Copy page
+Every sold challenge is a 1-Step evaluation. Select, Prime, and Signature use
+one profit target, a 3% daily loss limit, and static maximum drawdown. Elite
+uses one profit target and static maximum drawdown, with a choice of a 3% daily
+loss limit (3% DLL) or no daily loss limit (No DLL) when you buy, and has its
+own leverage, exposure, allocation, and payout terms; see
+Elite Accounts . To see the market exposure caps and
+maximum leverage for a specific product and account size, choose them on
+Market Exposure Caps . There is
+no minimum trading-day count
+or evaluation time limit. All percentages use starting balance, never current
+equity.
+​
+Evaluation rules
+Plan Profit target Daily loss limit Static maximum drawdown
+1-Step Select 9% 3% 3%
+1-Step Prime 12% 3% 5%
+1-Step Signature 10% 3% 6%
+Elite, 3% DLL 10% 3% 5%
+Elite, No DLL 10% None 5%
+The profit target and loss rules use account equity, including
+open-position profit or loss. On plans with a daily loss limit, daily loss is
+measured from start-of-day equity at midnight America/New_York, including
+daylight saving time, with a dollar allowance of 3% of starting balance.
+​
+Select prize accounts
+$1K and $2.5K Select accounts are prizes from giveaways and promotions. They
+cannot be bought. They follow the 1-Step Select rules above. On a $2.5K
+account, for example, the profit target is $2,725 and the drawdown floor is
+$2,425. Funded payouts on these accounts use a 90/10 split and are paid
+entirely as store credit. See
+Payouts for
+their minimum request.
+​
+Daily loss reset time
+On Select, Prime, Signature, and 3% DLL Elite accounts, the daily loss limit resets at 12:00 a.m. (midnight) New York time
+( America/New_York ) every day. This is 04:00 UTC during Eastern Daylight
+Time (EDT) and 05:00 UTC during Eastern Standard Time (EST) . The reset
+follows New York’s daylight saving changes, so it is not a fixed UTC time.
+The new trading day’s equity, including open-position profit or loss, becomes
+the daily-loss reference. The dollar loss allowance remains a percentage of
+starting balance. A daily reset does not reopen a failed account or reset the
+maximum loss limit.
+The hourly swap fee charged at midnight covers the hour before the reset, so it
+counts toward the trading day that just ended. The new day’s reference equity
+is taken after that fee is charged.
+​
+Static drawdown and the withdrawal lock
+The initial MLL floor is starting balance minus the static drawdown allowance.
+It does not follow intraday or end-of-day highs. On the first withdrawal from
+a Select, Prime, or Signature funded account, the floor locks permanently to
+starting balance. It never moves again, including after later withdrawals.
+Before this lock, reaching a loss floor breaches the account. After the lock,
+equity exactly at the MLL floor is allowed; falling below it breaches. The
+daily-loss floor remains inclusive. The dashboard shows both loss floors.
+A withdrawal never restores the original buffer.
+Elite has no withdrawal lock. An Elite account’s MLL floor stays at starting
+balance minus 5% for the life of the account, including after withdrawals, and
+reaching it breaches the account. See
+Elite Accounts .
+Loss-limit monitoring continues while the account is active, including after
+trades settle or hourly swap fees are charged. A confirmed loss-limit breach
+changes the account to Failed and stops further trading.
+Through the API, a position closed by liquidation reports close_reason
+liquidation , and a position closed because the account reached a final state
+reports system . Resting exits canceled by a liquidation report
+cancel_reason liquidation .
+New Stop Loss orders follow the market’s chart source: Last Price for Binance,
+Bybit and Hyperliquid, and the venue’s mid price for Veranta and Ostium, which
+publish no trades. This does not change the price references used for
+loss-limit or liquidation checks. Existing orders
+keep their original trigger policy until canceled and replaced.
+A detected Stop Loss crossing remains valid if the price moves back before
+execution. The exit still needs a fresh execution price, so placing a stop does
+not guarantee a fill before a loss-limit breach. See
+Take Profit and Stop Loss orders .
+​
+Account states
+Competition trading uses a separate market exposure allowance from your
+purchased challenges. Matching competition accounts share a capped allowance
+for each market, product, and size. Competition positions do not consume your
+purchased-account allowance. See Asset Exposure Limits
+for the calculation and rejection behavior.
+State Meaning
+Active The account can trade, subject to its rules and any temporary locks.
+Passed The evaluation reached its passing conditions. Trading stops on the completed evaluation while the next stage is prepared.
+Failed A rule breach or authorized account decision ended the account.
+Funded The platform issued a funded-stage account after the required review, identity, and agreement flow.
+Closed or archived The account remains in history but is no longer active.
+​
+After an evaluation passes
+The account switcher’s Active filter keeps your passed evaluation visible
+until its funded account is issued. The evaluation still shows Passed and
+cannot take new orders. Once the funded account is issued, use the Passed
+filter or clear the filters to find the completed evaluation.
+A competition account counts as Active while the competition runs. To keep
+it out of the account switcher, open Filter and check Hide Competition
+Accounts . The account keeps trading and stays in the competition; uncheck the
+option to show it again. API sandbox accounts work the same way with Hide
+Sandbox Accounts .
+Follow the action shown on the dashboard. Depending on the account and current
+workflow, you may need to complete identity verification, review and sign the
+customer agreement, or wait for a funding review before the funded account is
+available in the account switcher.
+​
+Maximum active evaluation allocation
+You can hold up to $100K in active evaluations per model type . Prime,
+Select, Signature, and Elite each have their own allowance, and both Elite
+options share the Elite allowance. Checkout adds the original sizes of your
+active evaluations in that model, plus the order you are placing, and blocks an
+order that would go over $100K. Exactly $100K is allowed.
+For example, two active $50K Elite evaluations use the whole Elite allowance,
+so another Elite evaluation is blocked, but you can still buy Prime, Select, or
+Signature. With $75K of active Prime evaluations, a $25K Prime purchase is
+allowed and a $50K one is not. When an evaluation passes or fails, its size
+no longer counts, so you can buy again in that model.
+Evaluation and funded allocation are separate. Holding $100K funded in a
+model does not reduce the $100K you can hold in active evaluations of that
+model, and it does not raise it either. This limit applies to new purchases
+only; it never closes or fails an account you already have.
+​
+Maximum funded allocation
+You can hold up to $300K in total funded allocation , with a maximum of
+$100K per model type . Prime, Select, Signature, and Elite are separate
+model types. Original account sizes add together within each model, even when
+you use several smaller accounts. A passed account that would exceed
+either limit enters Funding Review after identity verification and agreement
+completion instead of receiving automatic funding. If a funded account later
+fails or closes and the waiting account then fits within both limits, it is
+funded automatically.
+For example, $100K in Prime, $100K in Select, and $100K in Signature totals $300K.
+Another $100K Prime account requires Funding Review. Passing an evaluation
+never bypasses these limits.
+See Becoming Funded .
+​
+Funded accounts and payouts
+The dashboard’s Constraints panel shows Payout Rules only for funded accounts.
+Evaluation and other non-funded accounts show their applicable trading rules
+without the Payout Rules section.
+A funded account can submit one payout request per Eastern calendar day, except
+on Elite, which has no daily limit. The
+minimum is $100 before the profit split ($80 to the trader on 80/20, or $90
+on 90/10). Elite minimums are $50, $100, $250, and $500 before the split
+on its $5K, $10K, $25K, and $50K sizes, and $30 on a $1K Elite prize
+account; see Elite Accounts .
+A rejected request restores the allowance, and submitted requests
+cannot be cancelled. Each account has its own allowance, even when one trader holds
+several accounts.
+Each user can receive at most $100,000 in total lifetime payouts, combined
+across all accounts and model types and counted after the profit split. New
+purchases and resets do not reset this cap. Read
+Lifetime Payout Cap .
+Payout requests require a flat account and temporarily lock trading while the
+request is pending. Read Payouts for the
+window, gross deduction, and the permanent MLL lock on Select, Prime, and
+Signature.
+Read the Challenge Lifecycle for the steps from
+purchase through evaluation, funding, and payouts.
+Trading Journal
+Elite Accounts
+website
+Powered by This documentation is built and hosted on Mintlify, a developer documentation platform

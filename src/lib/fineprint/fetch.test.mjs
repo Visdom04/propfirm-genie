@@ -1,34 +1,25 @@
 import assert from 'node:assert/strict';
-import { fetchFirstOk, isRetryable, needsReader, readerMirrors, readerUrl } from './fetch.js';
+import { BOT_UA, FETCH_HEADERS, fetchFirstOk, isBlockedStatus, isChallengePage, isRetryable, robotsAllows, robotsRules } from './fetch.js';
 import { snapshotFirmPlans } from './snapshot.js';
 import { WATCHED_FIRMS, WATCHED_PAGES } from './catalog.js';
 
-assert.equal(readerUrl('https://apextraderfunding.com/'), 'https://r.jina.ai/https://apextraderfunding.com/');
-assert.deepEqual(readerMirrors('https://apextraderfunding.com/help-center/'), [
-  'https://r.jina.ai/http://apextraderfunding.com/help-center/',
-  'https://r.jina.ai/https://apextraderfunding.com/help-center/',
-]);
-assert.equal(isRetryable(429), true);
-assert.equal(isRetryable(403), false);
-assert.equal(needsReader(403), true);
-assert.equal(needsReader(429), true);
-assert.equal(needsReader(200), false);
+// Honest identity, no browser disguise.
+assert.equal(FETCH_HEADERS['user-agent'], BOT_UA);
+assert.match(BOT_UA, /^PropFirmGenieBot\//);
+assert.ok(!Object.keys(FETCH_HEADERS).some(key => key.startsWith('sec-fetch')));
+
+assert.equal(isRetryable(503), true);
+assert.equal(isRetryable(429), false);
+assert.equal(isBlockedStatus(403), true);
+assert.equal(isBlockedStatus(404), false);
 
 const calls = [];
 const fetchFn = async url => {
   calls.push(url);
-  if (url.includes('r.jina.ai')) {
-    return {
-      status: 200,
-      url,
-      text: async () => 'A'.repeat(500),
-    };
-  }
-  if (url.includes('gone.example')) {
-    return { status: 404, url, text: async () => 'not found' };
-  }
-  if (url.includes('blocked.example')) {
-    return { status: 403, url, text: async () => 'denied' };
+  if (url.includes('gone.example')) return { status: 404, url, text: async () => 'not found' };
+  if (url.includes('blocked.example')) return { status: 403, url, text: async () => 'denied' };
+  if (url.includes('wall.example')) {
+    return { status: 200, url, text: async () => '<title>Just a moment...</title><p>Checking your browser</p>' };
   }
   return { status: 200, url, text: async () => '<p>Live page $99</p>' };
 };
@@ -37,28 +28,31 @@ const live = await fetchFirstOk(['https://ok.example/'], { fetchFn, retries: 0, 
 assert.equal(live.source, 'direct');
 assert.match(live.body, /Live page/);
 
-const challengeFn = async url => {
-  calls.push(url);
-  if (url.includes('r.jina.ai')) {
-    return { status: 200, url, text: async () => 'A'.repeat(500) };
-  }
-  return { status: 200, url, text: async () => '<title>Just a moment...</title><p>Checking your browser</p>' };
-};
-calls.length = 0;
-const challenged = await fetchFirstOk(['https://wall.example/rules'], { fetchFn: challengeFn, retries: 0, delayMs: 0 });
-assert.equal(challenged.source, 'reader');
-assert.equal(challenged.body.length, 500);
-
-const blocked = await fetchFirstOk(['https://blocked.example/'], { fetchFn, retries: 0, delayMs: 0 });
-assert.equal(blocked.source, 'reader');
-assert.equal(blocked.body.length, 500);
-assert.ok(calls.some(url => url.startsWith('https://r.jina.ai/')));
-
-calls.length = 0;
+// A bot wall is reported, never routed around through a third party.
+assert.equal((await fetchFirstOk(['https://wall.example/rules'], { fetchFn, retries: 0, delayMs: 0 })).source, 'blocked');
+assert.equal((await fetchFirstOk(['https://blocked.example/'], { fetchFn, retries: 0, delayMs: 0 })).source, 'blocked');
 const gone = await fetchFirstOk(['https://gone.example/'], { fetchFn, retries: 0, delayMs: 0 });
 assert.equal(gone.source, 'failed');
 assert.equal(gone.status, 404);
-assert.ok(!calls.some(url => url.startsWith('https://r.jina.ai/')));
+assert.ok(calls.every(url => !url.includes('r.jina.ai')));
+
+// GitBook ships "Just a moment…" as a chat string. That is not a wall.
+assert.equal(isChallengePage('<title>Loss Limits | Vest</title><script>{"hold":"Just a moment…"}</script>'), false);
+assert.equal(isChallengePage('<title>Just a moment...</title>'), true);
+assert.equal(isChallengePage('<script src="/cdn-cgi/challenge-platform/h/b/orchestrate"></script>'), true);
+
+const robots = robotsRules(`User-agent: *
+Disallow: /help-center/
+Allow: /help-center/public/
+
+User-agent: GPTBot
+Disallow: /`);
+assert.equal(robotsAllows(robots, 'https://x.com/help-center/rules'), false);
+assert.equal(robotsAllows(robots, 'https://x.com/help-center/public/rules'), true);
+assert.equal(robotsAllows(robots, 'https://x.com/pricing'), true);
+assert.equal(robotsAllows(robotsRules('User-agent: PropFirmGenieBot\nDisallow: /'), 'https://x.com/a'), false);
+assert.equal(robotsAllows(robotsRules('User-agent: *\nDisallow:'), 'https://x.com/a'), true);
+assert.equal(robotsAllows(robotsRules(''), 'https://x.com/a'), true);
 
 const snap = snapshotFirmPlans({
   name: 'Apex Trader Funding',

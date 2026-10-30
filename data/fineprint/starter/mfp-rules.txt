@@ -80,6 +80,7 @@ Settings
 - Certificates
 - Purchase History
 On this page
+Back to top
 - Evaluation rules
 - Select prize accounts
 - Daily loss reset time
