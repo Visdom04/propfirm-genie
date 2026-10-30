@@ -3,9 +3,9 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { KIND_LABEL } from '@/lib/fineprint/catalog';
-import { coverPages, emptyCover, isCovered, loadCoverage, subscribeCoverage } from '@/lib/fineprint/coverage';
-import { deskToChange, loadDesk, subscribeDesk } from '@/lib/fineprint/desk';
+import { coverPages, emptyCover, isCovered } from '@/lib/fineprint/coverage';
 import { factKind } from '@/lib/fineprint/kind';
+import { deltaLabel, verdictOf } from '@/lib/fineprint/terms';
 import FpSelect, { FpDateSelect } from './FpSelect';
 import './fineprint.css';
 
@@ -15,11 +15,6 @@ const LOCAL_MARK = {
 };
 
 const PAGE_SIZE = 8;
-
-const VERDICT = {
-  good: { label: 'Good for traders', className: 'bg-[#3FB185]/18 text-[#b7efd3]' },
-  worse: { label: 'Worse for traders', className: 'bg-[oklch(0.45_0.12_25_/_0.35)] text-[oklch(0.86_0.08_25)]' },
-};
 
 const MARKETS = [
   { id: 'futures', label: 'Futures' },
@@ -125,6 +120,40 @@ function firmInitials(name) {
   return first.slice(0, 2).toUpperCase();
 }
 
+const VERDICT = {
+  better: { label: 'Better for traders', tone: 'is-good' },
+  worse: { label: 'Worse for traders', tone: 'is-worse' },
+  unscored: { label: 'Changed', tone: 'is-neutral' },
+};
+
+function Verdict({ value }) {
+  const verdict = VERDICT[verdictOf(value)];
+  return <span className={`fp-verdict ${verdict.tone}`}>{verdict.label}</span>;
+}
+
+// A judged fact carries a unit. Raw paragraphs are too long to show as a value.
+function valueText(raw, unit) {
+  if (!raw || raw === '—') return '';
+  if (unit === 'days') return `${raw} ${raw === '1' ? 'day' : 'days'}`;
+  if (unit === 'contracts') return `${raw} ${raw === '1' ? 'contract' : 'contracts'}`;
+  return raw.length > 28 ? '' : raw;
+}
+
+function ValueMove({ fact }) {
+  const before = valueText(fact?.before, fact?.unit);
+  const after = valueText(fact?.after, fact?.unit);
+  if (!before || !after) return <span className="fp-move is-wording">Wording changed</span>;
+  const delta = fact.unit ? deltaLabel(fact.before, fact.after) : '';
+  return (
+    <span className="fp-move">
+      <s>{before}</s>
+      <span aria-hidden>→</span>
+      <b>{after}</b>
+      {delta ? <small>{delta}</small> : null}
+    </span>
+  );
+}
+
 function FirmMark({ name, logo, className = 'shrink-0' }) {
   const local = LOCAL_MARK[name];
   const incoming = logo;
@@ -194,7 +223,6 @@ function ChangesCalendar({ changes, logos, day, onPickDay, onOpenChange }) {
     return map;
   }, [changes, cursor]);
 
-  const monthCount = [...byDay.values()].reduce((sum, list) => sum + list.length, 0);
   const canNext = cursor.y < now.y || (cursor.y === now.y && cursor.m < now.m);
   const [today] = useState(() => dayKey(new Date().toISOString()));
   const openList = day ? byDay.get(day) || [] : [];
@@ -254,10 +282,7 @@ function ChangesCalendar({ changes, logos, day, onPickDay, onOpenChange }) {
     <section ref={calRef} className="fp-cal" aria-label="Changes by day">
       <div className="fp-cal-head">
         <div>
-          <h2 className="fp-h2">Changes by day</h2>
-          <p className="fp-sub">
-            {monthCount} {monthCount === 1 ? 'change' : 'changes'} in {monthLabel(cursor)}
-          </p>
+          <h2 className="fp-h2">{monthLabel(cursor)}</h2>
         </div>
         <div className="fp-cal-navs">
           <IconBtn label="Previous month" dir="prev" onClick={() => setCursor(current => shiftMonth(current, -1))} />
@@ -282,7 +307,7 @@ function ChangesCalendar({ changes, logos, day, onPickDay, onOpenChange }) {
           const list = byDay.get(key) || [];
           const firms = [...new Set(list.map(item => item.firm))];
           const shown = firms.slice(0, 2);
-          const extra = list.length > shown.length ? list.length - shown.length : 0;
+          const extra = firms.length - shown.length;
           const num = Number(key.slice(8, 10));
           const selected = day === key;
           const todayClass = key === today ? ' is-today' : '';
@@ -310,9 +335,8 @@ function ChangesCalendar({ changes, logos, day, onPickDay, onOpenChange }) {
                 {shown.map(name => (
                   <FirmMark key={name} name={name} logo={logos[name]} className="fp-cal-logo" />
                 ))}
-                {extra ? <span className="fp-cal-more">+{extra}</span> : null}
+                {extra > 0 ? <span className="fp-cal-more">+{extra}</span> : null}
               </span>
-              <span className="fp-cal-count">{list.length}</span>
             </button>
           );
         })}
@@ -350,112 +374,89 @@ function ChangesCalendar({ changes, logos, day, onPickDay, onOpenChange }) {
   );
 }
 
-function attentionLine(change) {
-  const fact = change.facts?.[0];
-  const bits = [fact?.label || KIND_LABEL[rowKind(change, fact)] || change.kind];
-  if (change.product) bits.push(change.product);
-  if (change.demo) bits.push('demo');
-  return bits.join(' · ');
-}
-
-function attentionRank(change) {
-  if (change.facts?.some(fact => fact.verdict === 'worse')) return 0;
-  if (change.demo || change.status === 'needs_review') return 1;
-  return 2;
-}
-
-function impactLabel(change) {
-  if (change.facts?.some(fact => fact.verdict === 'worse')) return 'High impact';
-  if (change.facts?.some(fact => fact.verdict === 'good')) return 'Good';
-  return 'Update';
-}
-
-function AttentionQueue({ changes, logos, onOpen, onReviewAll }) {
-  const items = [...changes]
-    .filter(change => change.status === 'published' || change.status === 'needs_review')
-    .sort((a, b) => attentionRank(a) - attentionRank(b) || String(b.detectedAt).localeCompare(String(a.detectedAt)))
-    .slice(0, 7);
-
+// Decorative: the latest real changes drift behind the title, over a grid.
+function HeroBackdrop({ items }) {
+  const line = item => {
+    const before = valueText(item.fact?.before, item.fact?.unit);
+    const after = valueText(item.fact?.after, item.fact?.unit);
+    const move = before && after ? ` ${before} → ${after}` : '';
+    return { ...item, text: `${item.firm} · ${item.fact?.label || 'Rule change'}${move}` };
+  };
+  const ticker = items.map(line);
+  const rows = ticker.length ? [ticker, [...ticker].reverse()] : [];
   return (
-    <section className="fp-alert" aria-label="Attention required">
-      <div className="fp-alert-head">
-        <h2 className="fp-h2">Attention required</h2>
-        <button type="button" className="fp-alert-all btn-bare" onClick={onReviewAll}>
-          Review all
-          <span aria-hidden>↗</span>
-        </button>
-      </div>
-      <p className="fp-sub">Unreviewed updates, highest impact first</p>
-      {items.length ? (
-        <ul className="fp-alert-list">
-          {items.map(change => {
-            const impact = impactLabel(change);
-            return (
-              <li key={change.id}>
-                <button type="button" className="fp-alert-item btn-bare" onClick={() => onOpen(change.id)}>
-                  <FirmMark name={change.firm} logo={change.logo || logos[change.firm]} className="fp-alert-logo" />
-                  <span className="fp-alert-copy">
-                    <b>{change.firm}</b>
-                    <small>{attentionLine(change)}</small>
-                  </span>
-                  <span className={`fp-alert-impact is-${impact === 'High impact' ? 'high' : 'note'}`}>
-                    <span className="fp-alert-impact-copy">{impact}</span>
-                    <span aria-hidden>↗</span>
-                  </span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      ) : (
-        <p className="fp-empty fp-alert-empty">No unreviewed updates in this filter.</p>
-      )}
+    <div className="fp-hero-bg" aria-hidden>
+      <div className="fp-hero-grid" />
+      {rows.map((row, index) => (
+        <div key={index} className={`fp-hero-tape${index ? ' is-reverse' : ''}`}>
+          <div className="fp-hero-track">
+            {[...row, ...row].map((item, i) => (
+              <span key={`${item.id}-${i}`} className={`fp-hero-tick ${VERDICT[verdictOf(item.fact?.verdict)].tone}`}>
+                {item.text}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function TrendingNews({ items, logos, onOpen }) {
+  return (
+    <section className="fp-card fp-trend" aria-label="Trending">
+      <h2 className="fp-h2">Trending</h2>
+      {items.length ? null : <p className="fp-empty">No trending changes yet.</p>}
+      <ol className="fp-trend-list">
+        {items.slice(0, 6).map(change => {
+          const fact = change.facts?.[0];
+          const before = valueText(fact?.before, fact?.unit);
+          const after = valueText(fact?.after, fact?.unit);
+          return (
+            <li key={change.id}>
+              <button type="button" className="fp-trend-item btn-bare" onClick={() => onOpen(change.id, fact)}>
+                <FirmMark name={change.firm} logo={change.logo || logos[change.firm]} className="fp-logo shrink-0" />
+                <span>
+                  <b>{change.firm}</b>
+                  <small>
+                    {fact?.label || change.title}
+                    {before && after ? ` · ${before} → ${after}` : ''}
+                  </small>
+                </span>
+                <Verdict value={fact?.verdict} />
+              </button>
+            </li>
+          );
+        })}
+      </ol>
     </section>
   );
 }
 
-function FirmCarousel({ names, selected, logos, onPick }) {
-  const track = useRef(null);
-  const shift = useRef(0);
-  const loop = names.length > 6;
+// Firm chips drift on a loop; hover or focus pauses it. The second copy is hidden from keyboard and screen readers.
+function FirmTicker({ names, selected, logos, onPick }) {
+  const loop = names.length > 3;
   const chips = loop ? [...names, ...names] : names;
-  const seconds = Math.max(28, names.length * 1.6);
-
-  function nudge(dir) {
-    shift.current += dir * 280;
-    if (track.current) track.current.style.setProperty('--fp-shift', `${shift.current}px`);
-  }
-
   return (
-    <div className="fp-carousel">
-      <IconBtn label="Previous firms" dir="prev" onClick={() => nudge(1)} />
-      <div className="fp-carousel-mask">
-        <div
-          ref={track}
-          className={`fp-carousel-track${loop ? ' fp-carousel-track--loop' : ''}`}
-          style={{ '--fp-marquee': `${seconds}s` }}
-          role="listbox"
-          aria-label="Firms"
-        >
-          {chips.map((name, index) => {
-            const clone = loop && index >= names.length;
-            return (
-              <Chip
-                key={`${clone ? 'b' : 'a'}-${name}`}
-                pressed={selected === name}
-                ariaLabel={name}
-                tabIndex={clone ? -1 : undefined}
-                inert={clone}
-                onClick={() => onPick(name)}
-              >
-                <FirmMark name={name} logo={logos[name]} />
-                {name}
-              </Chip>
-            );
-          })}
-        </div>
+    <div className="fp-firms" role="group" aria-label="Firms">
+      <div className={`fp-firms-track${loop ? ' is-loop' : ''}`} style={{ '--fp-firms-time': `${Math.max(30, names.length * 5)}s` }}>
+        {chips.map((name, index) => {
+          const clone = index >= names.length;
+          return (
+            <Chip
+              key={`${clone ? 'b' : 'a'}-${name}`}
+              pressed={selected === name}
+              ariaLabel={name}
+              tabIndex={clone ? -1 : undefined}
+              inert={clone}
+              onClick={() => onPick(name)}
+            >
+              <FirmMark name={name} logo={logos[name]} />
+              {name}
+            </Chip>
+          );
+        })}
       </div>
-      <IconBtn label="Next firms" dir="next" onClick={() => nudge(-1)} />
     </div>
   );
 }
@@ -583,9 +584,7 @@ function Hunk({ hunk, mode }) {
   );
 }
 
-export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }) {
-  const [desk, setDesk] = useState([]);
-  const [cover, setCover] = useState(emptyCover);
+export default function FinePrintBoard({ changes = [], pages, logos = {}, cover = emptyCover() }) {
   const [market, setMarket] = useState('all');
   const [firm, setFirm] = useState('all');
   const [range, setRange] = useState('all');
@@ -596,25 +595,9 @@ export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    setDesk(loadDesk());
-    return subscribeDesk(setDesk);
-  }, []);
-
-  useEffect(() => {
-    setCover(loadCoverage());
-    return subscribeCoverage(setCover);
-  }, []);
-
-  useEffect(() => {
     document.documentElement.classList.add('fp-thin-root');
     return () => document.documentElement.classList.remove('fp-thin-root');
   }, []);
-
-  const changes = useMemo(() => {
-    const extras = desk.filter(item => item.status === 'published').map(deskToChange);
-    const seen = new Set(seed.map(item => item.id));
-    return [...seed, ...extras.filter(item => !seen.has(item.id))];
-  }, [seed, desk]);
 
   function openChange(id, fact) {
     const change = changes.find(item => item.id === id);
@@ -671,16 +654,11 @@ export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }
       : [{ label: change.title || 'Change', before: '', after: '' }];
     return facts
       .map((fact, index) => ({ change, fact, index }))
-      .filter(row => (facet === 'all' || rowKind(row.change, row.fact) === facet) && hitsQuery(row.change, row.fact, needle));
+      .filter(row => {
+        if (facet !== 'all' && rowKind(row.change, row.fact) !== facet) return false;
+        return hitsQuery(row.change, row.fact, needle);
+      });
   });
-
-  const attentionChanges = [];
-  const seenAttention = new Set();
-  for (const row of rows) {
-    if (seenAttention.has(row.change.id)) continue;
-    seenAttention.add(row.change.id);
-    attentionChanges.push(row.change);
-  }
 
   const calendarChanges = visible.filter(
     change => facet === 'all' || (change.facts || []).some(fact => rowKind(change, fact) === facet),
@@ -695,7 +673,6 @@ export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }
   }, [market, firm, range, day, query, facet]);
 
   function resetFilters() {
-    setMarket('all');
     setFirm('all');
     setRange('all');
     setDay(null);
@@ -703,6 +680,25 @@ export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }
     setFacet('all');
     setPage(1);
   }
+
+  const filtered = firm !== 'all' || range !== 'all' || Boolean(day) || Boolean(needle) || facet !== 'all';
+  const worse = rows.filter(row => verdictOf(row.fact.verdict) === 'worse').length;
+  const better = rows.filter(row => verdictOf(row.fact.verdict) === 'better').length;
+  const firmCount = new Set(rows.map(row => row.change.firm)).size;
+  const demo = rows.some(row => row.change.demo);
+
+  const tickerItems = changes
+    .filter(change => change.status === 'published' && isCovered(change.firm, cover))
+    .sort((a, b) => String(b.detectedAt).localeCompare(String(a.detectedAt)))
+    .slice(0, 12)
+    .map(change => ({ id: change.id, firm: change.firm, fact: change.facts?.[0] }));
+
+  const trendingItems = changes
+    .filter(change => change.status === 'published' && change.trending && change.firm !== 'FundingPips')
+    .filter(change => isCovered(change.firm, cover))
+    .filter(change => market === 'all' || change.market === market)
+    .filter(change => firm === 'all' || change.firm === firm)
+    .sort((a, b) => String(b.detectedAt).localeCompare(String(a.detectedAt)));
 
   const pickDay = useCallback(key => {
     setDay(key);
@@ -720,22 +716,33 @@ export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }
 
   return (
     <div className="fp">
-      <div className="fp-filters" role="toolbar" aria-label="Market filters">
-        {MARKETS.map(item => (
-          <Chip key={item.id} pressed={market === item.id} onClick={() => pickMarket(item.id)}>
-            {item.label}
-          </Chip>
-        ))}
-      </div>
+      <header className="fp-hero">
+        <HeroBackdrop items={tickerItems} />
+        <div className="fp-hero-in">
+          <h1 className="fp-title">Market intelligence</h1>
+          <p className="fp-stats" aria-live="polite">
+            <span>
+              {rows.length} {rows.length === 1 ? 'change' : 'changes'}
+            </span>
+            {worse ? <span className="is-worse">{worse} worse for traders</span> : null}
+            {better ? <span className="is-good">{better} better for traders</span> : null}
+            {firmCount ? (
+              <span>
+                {firmCount} {firmCount === 1 ? 'firm' : 'firms'}
+              </span>
+            ) : null}
+          </p>
+          <div className="fp-seg" role="group" aria-label="Market">
+            {MARKETS.map(item => (
+              <Chip key={item.id} pressed={market === item.id} onClick={() => pickMarket(item.id)}>
+                {item.label}
+              </Chip>
+            ))}
+          </div>
+        </div>
+      </header>
 
-      <FirmCarousel
-        names={firmNames}
-        selected={firm}
-        logos={marks}
-        onPick={name => setFirm(current => (current === name ? 'all' : name))}
-      />
-
-      <div className="fp-top">
+      <div className="fp-overview">
         <ChangesCalendar
           changes={calendarChanges}
           logos={marks}
@@ -743,36 +750,15 @@ export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }
           onPickDay={pickDay}
           onOpenChange={id => openChange(id)}
         />
-        <AttentionQueue
-          changes={attentionChanges}
-          logos={marks}
-          onOpen={id => {
-            const hit = rows.find(row => row.change.id === id);
-            openChange(id, hit?.fact);
-          }}
-          onReviewAll={() => {
-            setDay(null);
-            setRange('all');
-            window.requestAnimationFrame(() => {
-              document.getElementById('fp-latest')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-          }}
-        />
+        <TrendingNews items={trendingItems} logos={marks} onOpen={openChange} />
       </div>
 
-      <div className="fp-ledger-grid">
-        <section id="fp-latest" className="fp-ledger" aria-label="Change feed">
-          <div className="fp-pane-head">
-            <div>
-              <h2 className="fp-h2">Latest updates</h2>
-              <p className="fp-sub">
-                {rows.length} {rows.length === 1 ? 'change' : 'changes'}
-              </p>
-            </div>
-          </div>
-          <div className="fp-search-tools">
-            <label className="fp-search fp-ledger-search">
-              <span className="sr-only">Search firm, field, or value</span>
+      <section id="fp-latest" className="fp-ledger" aria-label="Change feed">
+        {demo ? <p className="fp-sample">Sample data. Live tracking starts soon.</p> : null}
+        <div className="fp-board">
+          <div className="fp-line" role="toolbar" aria-label="Filters">
+            <label className="fp-search">
+              <span className="sr-only">Search firm, rule, or value</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
                 <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8" />
                 <path d="M20 20l-3.2-3.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -780,7 +766,7 @@ export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }
               <input
                 value={query}
                 onChange={event => setQuery(event.target.value)}
-                placeholder="Search firm, field, or value"
+                placeholder="Search firm, rule, or value"
                 autoComplete="off"
               />
               {query ? (
@@ -789,6 +775,8 @@ export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }
                 </button>
               ) : null}
             </label>
+            <FirmTicker names={firmNames} selected={firm} logos={marks} onPick={name => setFirm(current => (current === name ? 'all' : name))} />
+            <FpSelect ariaLabel="Kind" value={facet} options={FACETS} onChange={setFacet} />
             <FpDateSelect
               range={range}
               day={day}
@@ -803,78 +791,59 @@ export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }
                 setRange('all');
               }}
             />
-            <FpSelect
-              ariaLabel="Firms"
-              logo
-              value={firm}
-              options={[
-                { id: 'all', label: 'All firms' },
-                ...firmNames.map(name => ({ id: name, label: name, logo: marks[name] })),
-              ]}
-              onChange={setFirm}
-            />
-            <FpSelect ariaLabel="Kind" value={facet} options={FACETS} onChange={setFacet} />
-            <button type="button" className="fp-reset btn-bare" onClick={resetFilters}>
-              Clear filters
-            </button>
+            {filtered ? (
+              <button type="button" className="fp-reset btn-bare" onClick={resetFilters}>
+                Clear
+              </button>
+            ) : null}
           </div>
-          <div className="fp-feed-wrap">
-            <div className="fp-feed-head">
-              <span>Date</span>
-              <span>Firm</span>
-              <span>Changed</span>
-              <span>Previous</span>
-              <span>Current</span>
-            </div>
-            <ol className="fp-feed">
-              {paged.map(row => (
-                <li key={`${row.change.id}-${row.index}`}>
-                  <UpdateRow
-                    change={row.change}
-                    fact={row.fact}
-                    logo={row.change.logo || marks[row.change.firm]}
-                    open={inspect?.change.id === row.change.id && inspect?.fact?.label === row.fact.label}
-                    anchor={row.index === 0 && safePage === 1}
-                    onToggle={() => openChange(row.change.id, row.fact)}
-                  />
-                </li>
-              ))}
-            </ol>
+          <div className="fp-feed-head" aria-hidden>
+            <span>Date</span>
+            <span>Firm</span>
+            <span>Rule</span>
+            <span>Change</span>
+            <span>Impact</span>
           </div>
+          <ol className="fp-feed">
+            {paged.map(row => (
+              <li key={`${row.change.id}-${row.index}`}>
+                <UpdateRow
+                  change={row.change}
+                  fact={row.fact}
+                  logo={row.change.logo || marks[row.change.firm]}
+                  open={inspect?.change.id === row.change.id && inspect?.fact?.label === row.fact.label}
+                  anchor={row.index === 0 && safePage === 1}
+                  onToggle={() => openChange(row.change.id, row.fact)}
+                />
+              </li>
+            ))}
+          </ol>
           {rows.length === 0 ? (
             <p className="fp-empty">
               {day
-                ? 'No facts on this day.'
-                : facet === 'pricing'
-                  ? 'No price facts in this window.'
-                  : facet === 'payouts'
-                    ? 'No payout facts in this window.'
-                    : facet === 'rules'
-                      ? 'No rule facts in this window.'
-                      : firm !== 'all'
-                        ? `No published facts for ${firm} yet.`
-                        : 'No facts in this window.'}
+                ? 'No changes on this day.'
+                : firm !== 'all'
+                  ? `No changes for ${firm} yet.`
+                  : 'No changes match these filters.'}
             </p>
-          ) : pageCount > 1 ? (
-            <nav className="fp-pages" aria-label="Change pages">
-              {Array.from({ length: pageCount }, (_, index) => index + 1).map(num => (
-                <button
-                  key={num}
-                  type="button"
-                  className="fp-page btn-bare"
-                  aria-current={num === safePage ? 'page' : undefined}
-                  onClick={() => setPage(num)}
-                >
-                  {num}
-                </button>
-              ))}
-            </nav>
           ) : null}
-          <a className="fp-admin-gate" href="/updates/admin">
-            Check admin access
-          </a>
-        </section>
-      </div>
+        </div>
+        {pageCount > 1 ? (
+          <nav className="fp-pages" aria-label="Change pages">
+            {Array.from({ length: pageCount }, (_, index) => index + 1).map(num => (
+              <button
+                key={num}
+                type="button"
+                className="fp-page btn-bare"
+                aria-current={num === safePage ? 'page' : undefined}
+                onClick={() => setPage(num)}
+              >
+                {num}
+              </button>
+            ))}
+          </nav>
+        ) : null}
+      </section>
       {inspect ? (
         <ChangeInspector
           change={inspect.change}
@@ -890,7 +859,6 @@ export default function FinePrintBoard({ changes: seed = [], pages, logos = {} }
 function UpdateRow({ change, fact, logo, open, anchor, onToggle }) {
   const parts = dateParts(change.detectedAt);
   const kind = KIND_LABEL[rowKind(change, fact)] || fact?.kind || change.kind;
-  const tone = fact?.verdict === 'worse' ? 'is-worse' : fact?.verdict === 'good' ? 'is-good' : '';
   return (
     <article id={anchor ? `change-${change.id}` : undefined} className={`fp-row ${open ? 'open' : ''}`}>
       <button
@@ -910,23 +878,15 @@ function UpdateRow({ change, fact, logo, open, anchor, onToggle }) {
           <FirmMark name={change.firm} logo={logo} className="fp-logo shrink-0" />
           <span className="min-w-0">
             <b>{change.firm}</b>
-            <small>
-              {[change.product, change.demo ? 'demo' : null].filter(Boolean).join(' · ')}
-            </small>
+            {change.product ? <small>{change.product}</small> : null}
           </span>
         </span>
         <span className="fp-cell-field">
           <b>{fact?.label || kind}</b>
-          <small>
-            {kind}
-            {change.demo ? ' · Demo' : ''}
-          </small>
+          <small>{kind}</small>
         </span>
-        <span className="fp-cell-prev">{fact?.before || '—'}</span>
-        <span className={`fp-cell-now ${tone}`}>{fact?.after || '—'}</span>
-        <span className="fp-cell-delta">
-          {fact?.before || '—'} → {fact?.after || '—'}
-        </span>
+        <ValueMove fact={fact} />
+        <Verdict value={fact?.verdict} />
       </button>
     </article>
   );
@@ -937,7 +897,6 @@ function ChangeInspector({ change, fact, logo, onClose }) {
   const [textOpen, setTextOpen] = useState(false);
   const kindId = rowKind(change, fact);
   const kind = KIND_LABEL[kindId] || kindId;
-  const verdict = VERDICT[fact?.verdict];
   const detected = String(change.detectedAt || '').slice(0, 10);
 
   useEffect(() => {
@@ -972,22 +931,23 @@ function ChangeInspector({ change, fact, logo, onClose }) {
           <FirmMark name={change.firm} logo={logo} className="fp-logo shrink-0" />
           <span>
             <b>{change.firm}</b>
-            <small>{[change.product, change.demo ? 'demo' : null].filter(Boolean).join(' · ')}</small>
+            {change.product ? <small>{change.product}</small> : null}
           </span>
         </div>
         <div className="fp-inspect-chips">
+          <Verdict value={fact?.verdict} />
           <span className={`fp-kind kind-${kindId}`}>{kind}</span>
-          {verdict ? <span className={`fp-verdict ${verdict.className}`}>{verdict.label}</span> : null}
+          {change.trending ? <span className="fp-kind kind-trend">Trending</span> : null}
           {change.demo ? <span className="fp-kind kind-review">Demo</span> : null}
         </div>
         <div className="fp-inspect-pair">
           <div>
             <p>Previous value</p>
-            <b>{fact?.before || '—'}</b>
+            <b>{valueText(fact?.before, fact?.unit) || fact?.before || '—'}</b>
           </div>
-          <div className={fact?.verdict === 'worse' ? 'is-worse' : 'is-good'}>
+          <div>
             <p>New observed value</p>
-            <b>{fact?.after || '—'}</b>
+            <b>{valueText(fact?.after, fact?.unit) || fact?.after || '—'}</b>
           </div>
         </div>
         <dl className="fp-inspect-meta">

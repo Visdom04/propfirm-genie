@@ -11,6 +11,19 @@ export const STOCK_COVER = [
   { firm: 'FundedNext Futures', market: 'futures' },
   { firm: 'Legends Trading', market: 'futures' },
   { firm: 'Bulenox', market: 'futures' },
+  { firm: 'My Funded Futures', market: 'futures' },
+  { firm: 'Top One Futures', market: 'futures' },
+  { firm: 'Phidias Propfirm', market: 'futures' },
+  { firm: 'Topstep', market: 'futures' },
+  { firm: 'Blue Guardian', market: 'futures' },
+  { firm: 'DayTraders', market: 'futures' },
+  { firm: 'IQ Capital', market: 'futures' },
+  { firm: 'Traders Launch', market: 'futures' },
+  { firm: 'The Trading Pit', market: 'futures' },
+  { firm: 'FTMO', market: 'futures' },
+  { firm: 'BluSky', market: 'futures' },
+  { firm: 'FXIFY Futures', market: 'futures' },
+  { firm: 'Earn2Trade', market: 'futures' },
 ];
 
 export function defaultShown() {

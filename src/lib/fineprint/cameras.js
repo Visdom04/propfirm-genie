@@ -29,7 +29,7 @@ const SKIP = [
   /tradovate-platform|tradovate-charting/i,
   /custom-scripts|trading-journal|api-reference|\/settings\//i,
   /incident-reports|exchange-notices|audits/i,
-  /cross-margin|deposits|withdrawals|funding$/i,
+  /cross-margin|deposits|withdrawals|\/funding$/i,
 ];
 
 const KEEP = [
@@ -91,6 +91,15 @@ export function classifyCameraUrl(url) {
 
 export function isAllowedCameraUrl(url) {
   return classifyCameraUrl(url).keep;
+}
+
+/**
+ * A page a person opened and confirmed states rules with numbers. It skips the
+ * keyword list (help-center slugs vary too much) but never the hard bans.
+ */
+export function isAllowedVerifiedUrl(url) {
+  const { reason } = classifyCameraUrl(url);
+  return reason === 'rule_or_price' || reason === 'unknown';
 }
 
 export function extractSitemapLocs(xml) {

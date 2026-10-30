@@ -2,7 +2,7 @@
  * Fine Print cameras. Homepages are not allowed.
  * One official help/docs URL per product surface.
  */
-import { isAllowedCameraUrl } from './cameras.js';
+import { isAllowedCameraUrl, isAllowedVerifiedUrl } from './cameras.js';
 
 const APEX = 'Apex Trader Funding';
 const TRADEIFY = 'Tradeify';
@@ -16,6 +16,11 @@ const BULENOX = 'Bulenox';
 
 function page(id, firm, market, kind, url) {
   return { id, firm, market, kind, ready: true, url };
+}
+
+// Opened by hand on 2026-10-31 and confirmed to state rules with numbers.
+function verified(id, firm, kind, url) {
+  return { id, firm, market: 'futures', kind, ready: true, url, verified: true };
 }
 
 export const STARTER_PAGES = [
@@ -111,9 +116,91 @@ export const STARTER_PAGES = [
   page('bulenox-fast-track', BULENOX, 'futures', 'pricing', 'https://bulenox.com/help-center/fast-track'),
   page('bulenox-momentum', BULENOX, 'futures', 'pricing', 'https://bulenox.com/help-center/momentum'),
   page('bulenox-pricing', BULENOX, 'futures', 'pricing', 'https://bulenox.com/accounts-pricing'),
+
+  verified('mff-rapid-50k', 'My Funded Futures', 'rules', 'https://help.myfundedfutures.com/en/articles/13134709-rapid-plan-50k-a-comprehensive-look'),
+  verified('mff-eod-drawdown', 'My Funded Futures', 'rules', 'https://help.myfundedfutures.com/en/articles/8348565-end-of-day-eod-drawdown-explained'),
+  verified('mff-intraday-drawdown', 'My Funded Futures', 'rules', 'https://help.myfundedfutures.com/en/articles/12802721-intraday-drawdown-explained'),
+  verified('mff-consistency', 'My Funded Futures', 'rules', 'https://help.myfundedfutures.com/en/articles/11994562-consistency-rule-at-my-fundedfutures'),
+  verified('mff-payouts', 'My Funded Futures', 'payouts', 'https://help.myfundedfutures.com/en/articles/13745661-payout-policy-overview-best-and-fastest-prop-firm-payouts'),
+
+  verified('t1f-elite-eval', 'Top One Futures', 'rules', 'https://help.toponefutures.com/en/articles/11020730-overview-of-the-elite-evaluation'),
+  verified('t1f-daily-loss', 'Top One Futures', 'rules', 'https://help.toponefutures.com/en/articles/10907081-daily-drawdown-what-you-need-to-know'),
+  verified('t1f-elite-drawdown', 'Top One Futures', 'rules', 'https://help.toponefutures.com/en/articles/10907134-understanding-the-drawdown-in-elite-accounts'),
+  verified('t1f-consistency', 'Top One Futures', 'rules', 'https://help.toponefutures.com/en/articles/10907263-consistency-rule-in-elite-sim-funded-accounts-explained'),
+  verified('t1f-elite-payouts', 'Top One Futures', 'payouts', 'https://help.toponefutures.com/en/articles/12717928-elite-sim-funded-account-payout-requirements'),
+  verified('t1f-activation-fee', 'Top One Futures', 'pricing', 'https://help.toponefutures.com/en/articles/10907249-activation-fee-for-your-elite-sim-funded-account'),
+
+  verified('phidias-rules', 'Phidias Propfirm', 'rules', 'https://phidiaspropfirm.com/rules'),
+
+  verified('topstep-combine-rules', 'Topstep', 'rules', 'https://help.topstep.com/en/articles/8284197-trading-combine-parameters'),
+  verified('topstep-max-loss-limit', 'Topstep', 'rules', 'https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit'),
+  verified('topstep-daily-loss-limit', 'Topstep', 'rules', 'https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account'),
+  verified('topstep-consistency', 'Topstep', 'rules', 'https://help.topstep.com/en/articles/8284208-consistency-at-topstep'),
+  verified('topstep-payouts', 'Topstep', 'payouts', 'https://help.topstep.com/en/articles/8284233-topstep-payout-policy'),
+  verified('topstep-pricing', 'Topstep', 'pricing', 'https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions'),
+
+  verified('bgf-standard-rules', 'Blue Guardian', 'rules', 'https://helpfutures.blueguardian.com/en/articles/15654479-standard-account-rules'),
+  verified('bgf-reserve-rules', 'Blue Guardian', 'rules', 'https://helpfutures.blueguardian.com/en/articles/15678716-reserve-account-rules'),
+  verified('bgf-express-rules', 'Blue Guardian', 'rules', 'https://helpfutures.blueguardian.com/en/articles/15679143-express-account-rules'),
+  verified('bgf-direct-rules', 'Blue Guardian', 'rules', 'https://helpfutures.blueguardian.com/en/articles/15679519-direct-account-rules'),
+  verified('bgf-payouts', 'Blue Guardian', 'payouts', 'https://helpfutures.blueguardian.com/en/articles/15772960-payout-policy'),
+  verified('bgf-contract-limits', 'Blue Guardian', 'rules', 'https://helpfutures.blueguardian.com/en/articles/15773431-contract-limits-funded-scaling-system'),
+
+  verified('daytraders-eod-evaluation', 'DayTraders', 'rules', 'https://daytraders.com/help/articles/17684729-eod-evaluation'),
+  verified('daytraders-eod-dll', 'DayTraders', 'rules', 'https://daytraders.com/help/articles/17684742-eod-daily-loss-limit'),
+  verified('daytraders-eod-drawdown', 'DayTraders', 'rules', 'https://daytraders.com/help/articles/17684746-eod-drawdown'),
+  verified('daytraders-eod-consistency', 'DayTraders', 'rules', 'https://daytraders.com/help/articles/17684741-eod-consistency'),
+  verified('daytraders-eod-payouts', 'DayTraders', 'payouts', 'https://daytraders.com/help/articles/17684739-eod-payouts'),
+  verified('daytraders-fees', 'DayTraders', 'pricing', 'https://daytraders.com/help/articles/17704120-market-data-add-ons-and-fees'),
+
+  verified('iqcapital-core-challenge', 'IQ Capital', 'rules', 'https://support.iqcapital.io/en/articles/14964304-core-futures-challenge'),
+  verified('iqcapital-core-dll-challenge', 'IQ Capital', 'rules', 'https://support.iqcapital.io/en/articles/16087436-core-dll-futures-challenge'),
+  verified('iqcapital-rapid-challenge', 'IQ Capital', 'rules', 'https://support.iqcapital.io/en/articles/16087696-rapid-futures-challenge'),
+  verified('iqcapital-core-funded', 'IQ Capital', 'rules', 'https://support.iqcapital.io/en/articles/14964929-core-futures-funding'),
+  verified('iqcapital-drawdown-eod', 'IQ Capital', 'rules', 'https://support.iqcapital.io/en/articles/15001850-max-drawdown-end-of-day'),
+  verified('iqcapital-payouts-rapid', 'IQ Capital', 'payouts', 'https://support.iqcapital.io/en/articles/16987970-performance-rewards-rapid-futures'),
+
+  verified('traderslaunch-faq', 'Traders Launch', 'rules', 'https://traderslaunch.com/faq'),
+  verified('traderslaunch-futures-rules', 'Traders Launch', 'rules', 'https://traderslaunch.com/futures/rules'),
+  verified('traderslaunch-payouts', 'Traders Launch', 'payouts', 'https://traderslaunch.com/payout-rules'),
+  verified('traderslaunch-pricing', 'Traders Launch', 'pricing', 'https://traderslaunch.com/pricing'),
+
+  verified('ttp-futures-prime-how-it-works', 'The Trading Pit', 'rules', 'https://support.thetradingpit.com/en/articles/836068-futures-prime-how-it-works'),
+  verified('ttp-futures-prime-rules', 'The Trading Pit', 'rules', 'https://support.thetradingpit.com/en/articles/836071-futures-prime-rules'),
+  verified('ttp-futures-prime-daily-pause', 'The Trading Pit', 'rules', 'https://support.thetradingpit.com/how-does-the-daily-pause-work-on-futures-prime-accounts'),
+  verified('ttp-futures-prime-rewards', 'The Trading Pit', 'payouts', 'https://support.thetradingpit.com/en/articles/836079-futures-prime-rewards'),
+
+  verified('ftmo-futures-objectives', 'FTMO', 'rules', 'https://ftmo.com/en/futures/trading-objectives-and-rules/'),
+  verified('ftmo-futures-growth-vs-pro', 'FTMO', 'rules', 'https://ftmo.com/en/futures/faq/how-do-the-growth-and-pro-products-differ/'),
+  verified('ftmo-futures-sim-payout', 'FTMO', 'payouts', 'https://ftmo.com/en/futures/faq/how-do-i-withdraw-my-payout-from-a-sim-funded-account/'),
+
+  verified('blusky-evaluation-rules', 'BluSky', 'rules', 'https://help.blusky.pro/en/articles/12434059-evaluation-rules'),
+  verified('blusky-propel-plans', 'BluSky', 'rules', 'https://help.blusky.pro/en/articles/16300862-propel-plans-phases-rules-and-costs'),
+  verified('blusky-launch-plans', 'BluSky', 'pricing', 'https://help.blusky.pro/en/articles/16300846-launch-plans-phases-rules-and-costs'),
+  verified('blusky-sim-funded-rules', 'BluSky', 'rules', 'https://help.blusky.pro/en/articles/17297032-sim-funded-accounts-rules'),
+  verified('blusky-payouts', 'BluSky', 'payouts', 'https://help.blusky.pro/en/articles/12434429-payouts'),
+  verified('blusky-sim-funded-payouts', 'BluSky', 'payouts', 'https://help.blusky.pro/en/articles/12292284-sim-funded-payouts'),
+
+  verified('fxify-futures-evaluation', 'FXIFY Futures', 'rules', 'https://intercom.help/fxify-futures/en/articles/10235823-fxify-futures-trading-evaluation-process'),
+  verified('fxify-futures-funded-params', 'FXIFY Futures', 'rules', 'https://intercom.help/fxify-futures/en/articles/10236063-funded-account-parameters'),
+  verified('fxify-futures-payouts', 'FXIFY Futures', 'payouts', 'https://intercom.help/fxify-futures/en/articles/10236826-fxify-futures-payout-policy-for-standard-and-expert-accounts'),
+  verified('fxify-futures-programs', 'FXIFY Futures', 'pricing', 'https://intercom.help/fxify-futures/en/articles/10235623-what-types-of-programs-do-we-offer'),
+
+  verified('e2t-daily-loss', 'Earn2Trade', 'rules', 'https://help.earn2trade.com/en/articles/3395926-how-is-my-daily-loss-calculated'),
+  verified('e2t-eod-drawdown', 'Earn2Trade', 'rules', 'https://help.earn2trade.com/en/articles/5372687-how-does-end-of-day-drawdown-work'),
+  verified('e2t-consistency', 'Earn2Trade', 'rules', 'https://help.earn2trade.com/en/articles/3849975-what-is-the-maintain-consistency-rule'),
+  verified('e2t-withdrawal-policy', 'Earn2Trade', 'payouts', 'https://help.earn2trade.com/en/articles/5452472-what-is-the-withdrawal-policy'),
+  verified('e2t-fee-schedule', 'Earn2Trade', 'pricing', 'https://help.earn2trade.com/en/articles/8320643-fee-schedule-in-e2t-evaluations-and-on-funded-accounts'),
 ];
 
-if (STARTER_PAGES.some(item => !isAllowedCameraUrl(item.url))) {
+// Firms we tried to add and could not watch, with the reason. Shown on Watch health.
+export const UNWATCHABLE = [
+  { firm: 'E8 Futures', reason: 'Help center refuses automated requests (HTTP 403).' },
+  { firm: 'Funded Futures Network', reason: 'Help center refuses automated requests (HTTP 403).' },
+  { firm: 'Purdia', reason: 'Knowledge base only renders in a browser; a plain download is an empty shell.' },
+];
+
+if (STARTER_PAGES.some(item => !(item.verified ? isAllowedVerifiedUrl(item.url) : isAllowedCameraUrl(item.url)))) {
   throw new Error('A starter camera points at a homepage, coupon page, or dead help host.');
 }
 
@@ -123,5 +210,5 @@ export function readyStarterPages() {
 
 export function crawlGapMs(page) {
   if (page?.firm === APEX || page?.firm === TRADEIFY || page?.firm === TPT || page?.firm === LEGENDS || page?.firm === BULENOX) return 1200;
-  return 400;
+  return 1000;
 }

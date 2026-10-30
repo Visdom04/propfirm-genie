@@ -1,17 +1,8 @@
 import { diffTexts, hashText, isNoiseLine } from './diff.js';
+import { judgeChange, labelFor } from './terms.js';
 
 const MIN_PARAGRAPH = 40;
 const MIN_LINES = 8;
-
-const LABELS = [
-  { pattern: /\bprofit target\b/i, label: 'Profit target', kind: 'rules' },
-  { pattern: /\bprofit split\b/i, label: 'Profit split', kind: 'rules' },
-  { pattern: /\b(drawdown|daily loss|max(?:imum)? loss|loss limit)\b/i, label: 'Drawdown', kind: 'rules' },
-  { pattern: /\bmin(?:imum)? trad(?:ing)? days\b/i, label: 'Minimum trading days', kind: 'rules' },
-  { pattern: /\bconsistency\b/i, label: 'Consistency rule', kind: 'rules' },
-  { pattern: /\bpayout\b/i, label: 'Payout terms', kind: 'payouts' },
-  { pattern: /\b(price|fee|cost|activation)\b/i, label: 'Fee', kind: 'pricing' },
-];
 
 function clip(line) {
   const text = String(line || '').trim();
@@ -80,16 +71,13 @@ function pairParagraphs(removed, added) {
   return { pairs, leftoverRemoved, leftoverAdded: added.filter((_, i) => !used.has(i)) };
 }
 
-function labelFor(before, after) {
-  const text = `${before} ${after}`;
-  return LABELS.find(item => item.pattern.test(text)) || null;
-}
-
 function cardFrom(before, after, meta, beforeText, afterText) {
   if (before && !beforeText.includes(before)) return null;
   if (after && !afterText.includes(after)) return null;
   if (!before && !after) return null;
-  const named = labelFor(before, after);
+  // A judged number shows as "$1,200 → $1,000". Anything else keeps the whole paragraph.
+  const judged = judgeChange(before, after);
+  const named = judged || labelFor(`${before} ${after}`);
   const summary = before && after
     ? `Was “${clip(before)}”. Now “${clip(after)}”.`
     : after
@@ -111,9 +99,10 @@ function cardFrom(before, after, meta, beforeText, afterText) {
         label: named?.label || 'Rule wording',
         kind: named?.kind || meta.kind || 'rules',
         stage: 'published page',
-        verdict: 'neutral',
-        before: before || '—',
-        after: after || '—',
+        verdict: judged?.verdict || 'unscored',
+        before: judged?.before || before || '—',
+        after: judged?.after || after || '—',
+        unit: judged?.unit,
         beforeLine: before,
         afterLine: after,
       },
@@ -127,7 +116,9 @@ function cardFrom(before, after, meta, beforeText, afterText) {
       },
     ],
     status: 'published',
-    publishReason: 'paragraph_confirmed',
+    publishedAt: meta.detectedAt || null,
+    trending: false,
+    publishReason: 'auto',
   };
 }
 

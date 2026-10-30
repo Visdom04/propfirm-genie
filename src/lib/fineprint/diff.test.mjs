@@ -31,7 +31,7 @@ assert.ok(price);
 assert.equal(price.status, 'needs_review');
 assert.equal(price.facts[0].before, '$44');
 assert.equal(price.facts[0].after, '$39');
-assert.equal(price.facts[0].verdict, 'good');
+assert.equal(price.facts[0].verdict, 'better');
 assert.ok(price.hunks.some(hunk => hunk.removed.includes('Reward cycle Monthly')));
 assert.ok(price.hunks.some(hunk => hunk.added.includes('Reward cycle On demand')));
 
@@ -107,14 +107,14 @@ const publish = (a, b) => {
 
 // More drawdown helps the trader, and it is not a price.
 const drawdown = publish('Max drawdown $2,000', 'Max drawdown $2,500').change.facts[0];
-assert.deepEqual([drawdown.label, drawdown.verdict], ['Drawdown', 'good']);
+assert.deepEqual([drawdown.label, drawdown.verdict], ['Drawdown', 'better']);
 
 // Numbers pair inside one sentence only.
 const split = publish('Profit split 80%\nDaily loss 5%', 'Profit split 80%\nDaily loss 4%\nConsistency 40%').change.facts;
 assert.equal(split.length, 1);
-assert.deepEqual([split[0].label, split[0].before, split[0].after, split[0].verdict], ['Drawdown', '5%', '4%', 'worse']);
-assert.equal(publish('Profit target $3,000', 'Profit target $2,500').change.facts[0].verdict, 'good');
-assert.equal(publish('Consistency rule 40%', 'Consistency rule 30%').change.facts[0].verdict, 'neutral');
+assert.deepEqual([split[0].label, split[0].before, split[0].after, split[0].verdict], ['Daily loss limit', '5%', '4%', 'worse']);
+assert.equal(publish('Profit target $3,000', 'Profit target $2,500').change.facts[0].verdict, 'better');
+assert.equal(publish('Consistency rule 40%', 'Consistency rule 30%').change.facts[0].verdict, 'worse');
 
 // A trading term keeps the line even when it says "review".
 const review = publish('Payout review takes 5 days', 'Payout review takes 10 days');

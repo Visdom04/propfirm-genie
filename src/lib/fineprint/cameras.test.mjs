@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { classifyCameraUrl, extractSitemapLocs, isAllowedCameraUrl, reviewSitemap } from './cameras.js';
+import { classifyCameraUrl, extractSitemapLocs, isAllowedCameraUrl, isAllowedVerifiedUrl, reviewSitemap } from './cameras.js';
 import { STARTER_PAGES } from './starter.js';
 
 assert.equal(classifyCameraUrl('https://apextraderfunding.com/').reason, 'homepage');
@@ -37,7 +37,11 @@ assert.equal(reviewed.keep.length, 0);
 assert.equal(reviewed.already.length, 1);
 assert.equal(reviewed.skip.some(row => /blog/.test(row.url)), true);
 
-assert.ok(STARTER_PAGES.every(page => isAllowedCameraUrl(page.url)));
+// Hand-verified pages skip the keyword list but never the homepage / skip / dead-host bans.
+assert.ok(STARTER_PAGES.every(page => (page.verified ? isAllowedVerifiedUrl(page.url) : isAllowedCameraUrl(page.url))));
+assert.equal(isAllowedVerifiedUrl('https://topstep.com/'), false);
+assert.equal(isAllowedVerifiedUrl('https://example.com/blog/payout-news'), false);
+assert.equal(isAllowedVerifiedUrl('https://support.iqcapital.io/en/articles/14964929-core-futures-funding'), true);
 const ids = STARTER_PAGES.map(page => page.id);
 assert.equal(ids.length, new Set(ids).size);
 assert.equal(STARTER_PAGES.map(page => page.url).length, new Set(STARTER_PAGES.map(page => page.url)).size);
