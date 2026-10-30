@@ -2397,15 +2397,17 @@ button.fp-cal-day:focus-visible {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, #030504 0%, oklch(0.14 0.03 160) 55%, oklch(0.2 0.05 160 / 0.55) 100%);
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 0%, oklch(0.32 0.08 160 / 0.55), transparent 70%),
+    linear-gradient(180deg, oklch(0.2 0.045 160) 0%, oklch(0.19 0.04 160) 55%, oklch(0.19 0.04 160 / 0) 100%);
 }
 
 .fp-hero-grid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgb(110 231 183 / 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(110 231 183 / 0.07) 1px, transparent 1px);
+    linear-gradient(rgb(110 231 183 / 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(110 231 183 / 0.1) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 80% 90% at 50% 40%, #000 30%, transparent 75%);
   animation: fp-grid-drift 24s linear infinite;
@@ -3505,39 +3507,39 @@ img.fp-logo {
 .fp-card,
 .fp-faq-list {
   border-color: rgb(255 255 255 / 0.08);
-  background: #0a0e0c;
+  background: #101713;
 }
 
 .fp-board > .fp-line {
-  background: #0d1511;
+  background: #131c17;
 }
 
 .fp-feed .fp-row,
 .fp-feed > li:nth-child(even) .fp-row {
   border-color: #292f2c;
-  background: #121a16;
+  background: #18221d;
 }
 
 .fp-feed > li:nth-child(even) .fp-row {
-  background: #0f1514;
+  background: #151e19;
 }
 
 .fp-overview .fp-cal-day.is-empty {
-  border-color: #1f2623;
-  background: #111814;
+  border-color: #26302b;
+  background: #17201b;
 }
 
 .fp-overview button.fp-cal-day {
-  background: #142019;
+  background: #1a2820;
 }
 
 .fp-trend .fp-trend-list > li + li,
 .fp-faq-item + .fp-faq-item {
-  border-top-color: #1f2623;
+  border-top-color: #26302b;
 }
 
 .fp-faq-item {
-  background: #121a16;
+  background: #18221d;
 }
 
 .fp-faq-item:first-child {
