@@ -1,0 +1,171 @@
+Performance Rewards Rapid — Futures | IQ Capital Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+IQ Capital Home Dashboard English Deutsch English
+Search ⌘ K
+- General Informations
+- Trading Rules
+- Futures Accounts
+- Crypto Accounts
+- CFD Accounts
+- Performance-Rewards
+- Elite Accounts
+All Collections Performance-Rewards Performance Rewards Rapid — Futures Performance Rewards Rapid — Futures
+Written by Theo T.
+Updated over 3 weeks ago
+Copy for LLM
+IQ Capital's Rapid plan for Futures accounts offers two variants: 1D (daily payout eligibility) and 3D (payout every 3 days, 40% consistency requirement, no Daily Loss Limit, larger payout caps).
+​
+​
+When can I request a Performance Reward?
+A Performance Reward can only be requested once all of the following conditions are met:
+- At least 1 active trading day (1D) / at least 3 active trading days per cycle (3D)
+- Must comply with the Scalping Rule
+- 1D only: Maximum one violation of the Daily Loss Limit
+- 3D only: No Daily Loss Limit applies
+A maximum of 5 payouts can be requested; after that, the account will be closed.
+​
+​
+Funded Rules — 1D vs. 3D
+Rule
+1D
+3D
+Payout frequency
+Every day
+Every 3 days
+Consistency requirement
+None
+40%
+Daily Loss Limit
+1.000$ 50K-Account
+1.500$ 100K-Account
+Max. 1 violation allowed
+No Daily Loss Limit
+Scalping Rule
+Must comply
+Must comply
+Max Payout Caps.
+up to $1.500/ $2.000
+up to $2.000/ $3.000
+Max. number of payouts
+5
+5
+Profit split
+80/20
+80/20
+What counts as an active trading day?
+- At least one trade has been placed.
+- There is no minimum profit requirement per trading day.
+​
+When does a Trading Day end?
+The trading day ends daily at 4:45 PM (EDT) / 10:45 PM (CET Berlin). Performance rewards can be claimed after the first active trading day (1D) or after the third active trading day of the cycle (3D).
+​
+​
+Drawdown adjustment after the first payout
+After the first Performance Reward, the End-of-Day (EOD) drawdown is adjusted to the starting balance and remains fixed at that level permanently. This applies to both 1D and 3D.
+Performance Reward limits
+Minimum: No minimum
+Payout Caps — 1D vs. 3D
+Account
+Reward
+1D
+3D
+$50,000
+Reward 1–2
+$1,000
+$2,000
+Reward 3–5
+$1,500
+$2,000
+$100,000
+Reward 1–2
+$1,500
+$2,000
+Reward 3–5
+$2,000
+$3,000
+Can I withdraw all my profits at once?
+For each Performance Reward request, a maximum of 50% of the total profits can be withdrawn, subject to the payout caps above. The remaining profits stay in the account as a trading buffer. This applies to both 1D and 3D.
+Example (100K Account – First Performance Reward, 1D)
+- Total profit: $6,000
+- Maximum payout (50% rule): $1,500
+Although 50% of $6,000 equals $3,000, the payout is capped at $1,500 because this is the maximum allowed for Reward 1–2 on a $100,000 Account under 1D. The remaining profits stay in the account as a trading buffer.
+​
+​
+Example (100K Account – First Performance Reward, 3D)
+- Total profit: $6,000
+- Maximum payout (50% rule): $2,000
+Although 50% of $6,000 equals $3,000, the payout is capped at $2,000 because this is the maximum allowed for Reward 1–2 on a $100,000 Account under 3D. The remaining profits stay in the account as a trading buffer.
+​
+​
+After the first Performance Reward
+For every subsequent Performance Reward, at least 50% new profits must be generated since the last payout. This applies to both 1D and 3D.
+​
+Example 1
+- Balance after payout: $102,000
+- New Performance Reward request: $1,000
+- Requirement: At least $500 in new profits since the last payout
+Result: Eligible for payout.
+​
+Example 2
+- Balance after payout: $105,000
+- New Performance Reward request: $1,500
+- Requirement: At least $750 in new profits since the last payout
+Result: Eligible for payout.
+​
+​
+What happens to consistency after a Performance Reward?
+After each Performance Reward, consistency is fully reset. It is then recalculated based on the best trading day within the new trading cycle. Under 3D, the 40% consistency requirement applies to each new cycle.
+​
+​
+Profit Split Structure
+From the very first $1 in profit:
+- 80% goes to the trader
+- 20% goes to the company
+This provides a consistent 80/20 profit split with no tiered structure, for both 1D and 3D.
+​
+Example If you generate $2,000 in total profit:
+- You request a 50% payout ($1,000)
+- The 80/20 split is applied to the payout amount.
+Result:
+- Trader: $800
+- Company: $200
+Payout methods
+Performance Rewards are available via:
+- Crypto (USDC – ERC-20)
+- Bank Transfer
+Did this answer your question? Disappointed Reaction Neutral Reaction Smiley Reaction
+On this page
+- When can I request a Performance Reward?
+- Funded Rules — 1D vs. 3D
+- What counts as an active trading day?
+- When does a Trading Day end?
+- Drawdown adjustment after the first payout
+- Performance Reward limits
+- Payout Caps — 1D vs. 3D
+- Can I withdraw all my profits at once?
+- Example (100K Account – First Performance Reward, 1D)
+- Example (100K Account – First Performance Reward, 3D)
+- After the first Performance Reward
+- What happens to consistency after a Performance Reward?
+- Profit Split Structure
+- Payout methods
+IQ Capital Help Center

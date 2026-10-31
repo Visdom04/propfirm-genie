@@ -1,0 +1,69 @@
+Consistency Rule in Elite Sim Funded Accounts Explained | Top One Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+Top One Futures Home
+Top One Futures Home
+Search for articles...
+- All Collections
+- Elite Accounts
+- Consistency Rule in Elite Sim Funded Accounts Explained
+Consistency Rule in Elite Sim Funded Accounts Explained
+This article will explain how the 25% consistency rule works in the Elite Sim Funded accounts
+Updated over 4 weeks ago
+Table of contents
+At Top One Futures, we prioritize disciplined and sustainable trading practices. One of our key risk management guidelines is the Consistency Rule , set at 25% on Elite Sim Funded accounts (20% for Instant Sim Funded Accounts) that have been upgraded from Evaluation accounts. Note: there is no consistency rule in the Elite Evaluation phase .
+Please note: for the purposes of consistency rule calculation, a trading day ends at 5:00pm EST .
+What is the Consistency Rule?
+To become eligible for a payout, the Consistency Rule requires that no single trading day's profit accounts for more than 25% of your total profits . After a payout is taken on an Elite Sim Funded account, your total profits reset, and the consistency rule begins again based on new profits moving forward. This ensures that traders demonstrate steady performance rather than relying on one or two highly volatile trading sessions.
+How is the 25% Consistency Rule Calculated?
+The rule is based on your total profits over the entire period of having your account. No single day's profit should exceed 25% of the total profits. The consistency rule is calculated from the first day of trading until you receive a payout. After each payout, the consistency rule resets and you will need to maintain the same consistency % to qualify for the next payout.
+For example:
+- If your total profit is $10,000, then no single trading day should account for more than $2,500 (25% of $10,000).
+- If one of your trading days results in a $3,000 profit while your total profits are $10,000, you wouldn't meet the consistency rule, and would not be eligible for a payout. Once your total profits reach $12,000, you would then meet the consistency rule (25% of $12,000 = $3,000).
+Example: Passing the 25% Consistency Rule
+Let's say you're trading a $100K account and earn the following profits:
+Trading day
+Profit
+Day 1
+$2,200
+Day 2
+$1,800
+Day 3
+$2,500
+Day 4
+$2,000
+Day 5
+$1,500
+Total profit
+$10,000
+Highest day
+$2,500
+Now calculate your consistency score: $2,500 / $10,000 x 100 = 25% . In this case, your highest day accounts for 25% of your total profit, which meets the rule. This means you would qualify for a payout.
+How Can I Ensure Compliance with the Consistency Rule?
+- Plan your trades carefully to avoid making excessive profits in a single day.
+- Spread your gains evenly over multiple trading days.
+- Avoid trading with high risk or taking highly volatile trades that can lead to outsized profits.
+- Monitor your progress regularly to ensure no single trading day surpasses the 25% threshold.
+Related articles
+- Elite Sim Funded Account: Payout Requirements
+- No Consistency Rule in Evaluation Accounts
+- What Are the Requirements to Request a Payout?
+- Overview of the Elite Evaluation
+Related Articles
+- Consistency Rule in Instant Sim Funded Accounts Explained
+- Overview of the Instant Sim Funded Program
+- 🏆 Elite Sim Funded Account: Payout Requirements
+- 📈 Instant Sim Funded Account: Payout Requirements
+- Elite ACCESS – Funded Consistency Rule (40%)
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+Intercom We run on Intercom

@@ -1,0 +1,116 @@
+Daily Drawdown: What You Need to Know | Top One Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+Top One Futures Home
+Top One Futures Home
+Search for articles...
+- All Collections
+- General Rules
+- Daily Drawdown: What You Need to Know
+Daily Drawdown: What You Need to Know
+The Daily Loss Limit per account type and size, what happens when you hit it, and how it is calculated from your previous day's close.
+Updated this week
+Table of contents
+The daily drawdown , also called the Daily Loss Limit (DLL) , is a fixed dollar amount set per account type and size, roughly 1% to 2.5% of your account balance depending on the program. It helps manage risk and ensures responsible trading. This article shows the limit for each account size and explains what happens when you hit it and how it is calculated.
+💡 Prefer to trade without a Daily Loss Limit? The No Daily Loss Limit add-on is available at checkout for Elite ACCESS, Elite ACCESS Intraday, Elite Daily and Ignite accounts, for about 30% more than the base price. On Elite ACCESS and Elite ACCESS Intraday, the evaluation price stays the same and the extra is added to the activation fee instead. The add-on can only be chosen during the initial checkout. Learn more: No Daily Loss Limit Add-On .
+Daily drawdown per account size
+Account type
+$25,000
+$50,000
+$100,000
+$150,000
+Instant Sim Funded (purchased before 7/27/2026)
+$625
+$1,250
+$2,500
+$3,750
+Instant Sim Funded 2.0 (purchased on and after 7/27/2026)
+$625
+$1,250
+$2,500
+$3,000
+Elite Evaluation / Sim Funded
+$625
+$1,250
+$2,500
+$3,750
+IGNITE Instant Funded
+$500
+$1,000
+$2,000
+$3,000
+Elite ACCESS Evaluation phase
+None
+None
+None
+None
+Elite ACCESS Funded
+$500
+$1,000
+$1,250
+$1,750
+Elite ACCESS Intraday Evaluation phase
+None
+None
+None
+None
+Elite ACCESS Intraday Funded
+$500
+$1,000
+$1,250
+$1,750
+Elite Daily V2 Evaluation / Sim Funded
+$500
+$1,000
+$1,250
+n/a
+X-Ultra (Evaluation and Funded)
+n/a
+$1,000
+$1,500
+$2,000
+What happens if you hit the daily drawdown?
+Event
+What happens
+Soft breach
+Trading is paused for the rest of the day
+Resume trading
+You can continue the next day, as long as your account has not exceeded the Max Trailing Drawdown
+Session open
+When the new trading session starts, account reactivation is not instantaneous. System processing may take up to 5 to 10 minutes before trading is re-enabled
+X-Ultra exception
+On X-Ultra accounts, reaching the DLL is a hard breach and the account fails immediately. See the X-Ultra Daily Loss Limit (DLL) article
+How is it calculated?
+The Daily Loss Limit is a dynamic value calculated from your previous day's closing balance . To find your breach level for the current day, subtract the allowed daily loss from that balance.
+Example
+Value
+Daily loss allowed
+$625
+Previous day's close
+$26,000
+Breach level for today
+$26,000 - $625 = $25,375
+If your account's equity drops to $25,375 at any point during the current trading day, the system will automatically execute market orders to liquidate all of your open positions.
+Related articles
+- Understanding the Drawdown Lock
+- Maximum Contracts Explained
+- Prohibited Trading Practices
+- Top One Futures Account Comparison: Elite vs. Instant vs. Ignite
+Related Articles
+- Elite Daily V2 – Daily Loss Limit (DLL) - Funded Phase
+- Elite Daily V2 – Max Loss Limit (MLL)
+- Elite ACCESS – Daily Loss Limit (DLL)
+- Elite Daily V2 – Daily Loss Limit (DLL) - Evaluation Phase
+- Elite ACCESS Intraday - Daily Loss Limit (DLL)
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+Intercom We run on Intercom

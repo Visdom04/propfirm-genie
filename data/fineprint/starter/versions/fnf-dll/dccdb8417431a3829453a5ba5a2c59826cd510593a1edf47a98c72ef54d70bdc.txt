@@ -1,0 +1,149 @@
+-
+Daily Loss Limit and Maximum Loss Limit at FundedNext Futures | FundedNext Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Go to Website العربية Português do Brasil English Français Deutsch हिन्दी Italiano 日本語 fa-IR 简体中文 Español ภาษาไทย Türkçe Oʻzbekcha English
+Go to Website العربية Português do Brasil English Français Deutsch हिन्दी Italiano 日本語 fa-IR 简体中文 Español ภาษาไทย Türkçe Oʻzbekcha English
+Search for articles...
+- All Collections
+- Trading Rules and Guidelines
+- Daily Loss Limit and Maximum Loss Limit at FundedNext Futures
+Daily Loss Limit and Maximum Loss Limit at FundedNext Futures
+Important Notice: As of October 11, Legacy Accounts are no longer available for purchase. Existing Legacy Accounts are also not eligible for resets.
+Updated over a week ago
+Table of contents
+TL;DR: FundedNext Futures has two loss limits. The daily loss limit caps how much you can lose in a single day (closed + floating losses, plus commissions and fees); hitting it is a soft breach — trading pauses until the next day. The Maximum Loss Limit (MLL) is the total you can lose before your account is permanently breached (a hard breach). Both use a trailing End-of-Day (EOD) system, rising with profits and locking once the MLL reaches your initial balance (initial + $100 for Flex and Rapid Pro & Daily).
+FundedNext Futures uses two distinct risk limits. Understanding both is essential to protecting your account.
+Part 1 — The Daily Loss Limit
+The daily loss limit is the maximum you can lose in a single trading day . It includes both closed and floating (unrealized) losses , plus broker commissions and fees.
+Hitting the daily loss limit is a soft breach : trading is disabled for the rest of the day and automatically resets at the start of the next trading day . Your account is not lost.
+Which models have a daily loss limit?
+Model
+Daily Loss Limit
+Rapid Daily ($25K / $50K / $100K)
+$500 / $1,000 / $1,250
+Rapid Pro (only if the Add-On is selected)
+$500 / $1,000 / $1,250
+Legacy
+None
+Flex
+None
+Direct Account
+$1,000
+The daily loss limit applies equally to the Challenge Account and the FundedNext Account .
+How is the daily loss limit calculated?
+The following are all counted toward your daily loss:
+- Commissions (per side / contract)
+- Regulatory and exchange fees (round-turn)
+- Profit/Loss from both closed and running (floating) trades
+Floating losses count: if an open trade moves into a loss and hits the limit, trading is disabled even if the trade is still open.
+Example — $50,000 account with a $1,000 daily loss limit
+- Start of day: Balance $50,000 → daily loss limit level (equity floor) = $49,000 , permitted loss = $1,000 .
+- If you take $800 in closed losses, you can still absorb up to $200 in floating losses before hitting the limit.
+- If equity reaches $49,000 , you hit a soft breach — trading is disabled for the day and resets to $1,000 permitted loss the next day.
+It trails with profit: if Day 1 ends at $51,500 (after $1,500 profit), the daily loss limit level trails up to $51,500 − $1,000 = $50,500 . So on the next day, equity reaching $50,500 or lower triggers the soft breach.
+Part 2 — The Maximum Loss Limit (MLL)
+The Maximum Loss Limit (MLL) is the total amount you can lose in your Challenge Account or FundedNext Account before the account is permanently breached (a hard breach ).
+The MLL follows a trailing EOD system :
+- It moves up as your balance increases, but never moves down with losses.
+- It updates once per day at the end of the trading day (05:00 PM CT) — not in real time.
+- Once it reaches your initial balance , it locks and no longer increases. (For Flex, Rapid Pro & Daily, and Direct Account it locks at initial balance + $100.)
+- If your floating loss reaches the MLL during a live trade, your account is breached instantly .
+Maximum Loss Limit by model and size
+Account Size
+Legacy
+Flex
+Rapid Pro & Daily
+Direct
+$25,000
+$1,000
+—
+$1,000
+—
+$50,000
+$2,000
+$1,500
+$2,000
+$2,000
+$100,000
+$3,000
+$2,500
+$2,500
+—
+$150,000
+—
+$4,000
+—
+—
+Where the MLL locks (stops trailing)
+- Legacy: at the initial balance — $25,000 / $50,000 / $100,000 .
+- Flex: $50,100 / $100,100 / $150,100 .
+- Rapid Pro & Daily: $25,100 / $50,100 / $100,100 .
+- Direct : $50,100
+Example — how the MLL adjusts over time ($100K Legacy, MLL $3,000)
+- Day 1: Balance rises to $101,000 → MLL = $101,000 − $3,000 = $98,000 .
+- Day 2: Balance rises to $103,000 → MLL = $103,000 − $3,000 = $100,000 . This equals the initial balance, so the MLL locks at $100,000 .
+- Day 3: Balance drops to $101,000 → MLL stays at $100,000 (never moves down).
+- Day 4: Balance rises to $106,000 → MLL stays locked at $100,000 .
+If the balance ever falls below $100,000, the account is permanently breached .
+Daily Loss Limit vs Maximum Loss Limit — at a glance
+Daily Loss Limit
+Maximum Loss Limit
+What it caps
+Loss in a single day
+Total loss on the account
+Breach type
+Soft — pauses until next day
+Hard — account permanently breached
+Which models
+Rapid Daily; Rapid Pro (with Add-On)
+All models
+Trailing
+Trails from highest EOD balance
+Trails from highest EOD balance, locks at initial (or +$100)
+Can I set my own daily loss limit?
+Yes — if you'd like a daily loss limit even on a model that doesn't include one by default (or want a tighter one than your model's), Tradovate's risk settings let you turn on a manual daily loss limit. This is entirely your choice — it's an optional, self-imposed guardrail to help you manage risk and stay disciplined.
+Setting a manual daily loss limit in Tradovate doesn't change your account's official rules — your model's actual daily loss limit (if any) and the Maximum Loss Limit still apply as normal. Think of it as an extra personal safety net you control.
+🔗 See: How to find the risk settings in Tradovate?
+Key takeaways
+- The daily loss limit = a soft breach (recoverable next day); the MLL = a hard breach (permanent).
+- Both include floating losses — an open trade can trigger either limit intraday.
+- Both trail with EOD profit ; the MLL locks at your initial balance (initial + $100 for Flex and Rapid Pro & Daily).
+🔗 See: What is a soft breach and a hard breach in FundedNext Futures?
+🔗 See: What happens if my account is breached, and can I get it back?
+Related Articles
+- What is FundedNext Futures Legacy Challenge?
+- FundedNext Futures Legacy Challenge All Rules
+- FundedNext Futures Legacy FundedNext Account: All Rules
+- Contract Limits and Contract Types at FundedNext Futures
+- What are Benchmark Days at FundedNext Futures?
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+-
+-
+-
+-
+-

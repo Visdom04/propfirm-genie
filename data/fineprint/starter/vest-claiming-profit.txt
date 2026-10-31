@@ -1,0 +1,89 @@
+-
+-
+-
+-
+-
+-
+-
+-
+-
+- Claiming Profit | Vest Markets
+-
+-
+-
+-
+-
+-
+⌘ Ctrl k
+- Platform Overview
+- Resources
+- Home
+-
+Welcome
+- About Vest Markets
+- Getting Started
+- FAQ
+-
+Trading
+- Markets
+- Order Types
+- Cross Margin & Leverage
+- Funding
+- Temporary Leverage Limits (TLL)
+-
+Platform
+- Deposits
+- Withdrawals
+- Perpetual Contract Specifications
+- Exchange Notices
+-
+Vest Capital
+- Overview
+- Account Tiers
+- Loss Limits
+- Claiming Profit
+- Trading Competition
+Powered by GitBook
+On this page
+For the complete documentation index, see llms.txt . This page is also available as Markdown .
+Copy
+On this page
+- Platform Overview
+- Vest Capital
+Claiming Profit
+Claim Profit moves profit from a Live Funded Account to your Primary Account . It's the first of two steps if you want to move funds all the way out to an external wallet.
+Claim Profit is not the same as a Withdrawal. Claim Profit moves funds from a Funded Account to your Primary Account. Withdrawal moves funds from your Primary Account to an external wallet. See Withdrawals for that second step.
+This flow works identically whether your Live Funded Account came from a passed evaluation or an Instant Account purchase.
+How to Claim Profit
+1
+Submit a Claim Profit request
+From your Live Funded Account Portfolio page, submit a Claim Profit request. You may need to close open positions or orders first.
+Your profit split, 80% or 90% with evaluation, 95% flat on Instant, whichever applies to your account, will be credited to your Primary Account in 24 hours.
+2
+Funds arrive in your Primary Account
+Once processed, the USDC is credited to your Primary Account. From here, it's yours to trade with, hold, or withdraw.
+3
+Withdraw to an external wallet (optional)
+If you want funds outside Vest entirely, withdraw USDC from your Primary Account to any wallet address on a supported chain. See Withdrawals for the full flow.
+Profit Split
+Your rate depends on your account type: 80% or 90% with evaluation (whichever you chose at purchase) or 95% flat on Instant . It's set at purchase and does not change when your account goes Live. Applied flat at the point of every claim, with no further fees or deductions.
+Processing Time & Frequency
+-
+24 hours for every claim, regardless of how old the account is.
+-
+Irrevocable once initiated, a Claim Profit request cannot be reversed.
+-
+Claim as often as you like. There's no cap on frequency and no cap on the amount you can claim.
+Previous Loss Limits
+Next Trading Competition
+Last updated 1 month ago
+Was this helpful?
+x-twitter discord linkedin
+Vest Markets
+- How to Claim Profit
+- Submit a Claim Profit request
+- Funds arrive in your Primary Account
+- Withdraw to an external wallet (optional)
+- Profit Split
+- Processing Time & Frequency
+Was this helpful?

@@ -1,0 +1,36 @@
+Funded Account Parameters | Fxify Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content Funded Account Parameters
+November 11, 2025
+Table of contents
+Welcome to the Funded Level at FXIFY Futures! Once you successfully pass the evaluation (either through the Standard or Expert account), you will be promoted to the Funded stage at FXIFY Futures. Traders who prefer to skip the evaluation can also choose the Sim Live plan , which allows direct entry into a simulated live funded account by paying a one-time fee, offering immediate access with standard risk parameters.
+Here’s what you need to know to maintain and manage your account effectively:
+Funded Account Rules and Guidelines
+Max Drawdown Limits
+- Standard Accounts → 4% of starting balance
+- Expert Accounts → 4%–5% of starting balance
+- Sim Live Accounts → 3.5%–4% of starting balance, depending on account size
+Consistency Rule
+- Standard Accounts → 30% consistency rule (applies to both Challenge and Funded stages).
+- Expert Accounts → 40% consistency rule (applies to Funded stage only).
+- Sim Live Accounts → 20% consistency rule
+Daily Loss Limit
+- Standard Accounts → 2% of account balance
+- Expert Accounts → 3% of account balance
+- Sim Live Accounts → 2.5% of account balance
+Account Payouts and Withdrawals
+- Withdrawals may be initiated 14 days after your first trade on the funded account.
+- Thereafter, payouts can be made every 14 days from the last withdrawal date, provided the buffer zone and payout policy requirements are met.
+- There's a payout cap on each account depending on the account size, after which accounts may be upgraded into real live trading accounts .
+Account Resets
+Funded accounts cannot be reset. Once at this stage, traders must follow the rules to maintain their accounts.
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents

@@ -32,7 +32,7 @@ Search for articles...
 - Trading Rules and Guidelines
 - What are the prohibited trading strategies of FundedNext Futures?
 What are the prohibited trading strategies of FundedNext Futures?
-Updated over a month ago
+September 30, 2026
 Table of contents
 At FundedNext Futures , we seek traders who demonstrate discipline, consistency, and the ability to trade sustainably over the long term. Our goal is to provide traders with the opportunity to trade within the Challenge Accounts or FundedNext Accounts, where they can showcase a structured approach, manage risk effectively, and maintain trading integrity. We do not support those who attempt to exploit the simulated environment or engage in unsustainable trading practices.
 The Challenge Accounts and FundedNext Accounts operate in a simulated market. Certain trading strategies may take advantage of these simulated conditions but fail to perform in real-market scenarios. Any such prohibited practices, regardless of the stage, will result in account suspension and disqualification from further participation.
@@ -171,10 +171,10 @@ Why is trading within the 2% price limit prohibited?
 Trading within 2% of the CME price limit creates higher risk and potential liquidity issues, as market conditions become unstable near these thresholds. If the price approaches the limit, execution becomes unpredictable, and price gaps may lead to forced liquidations, slippage, and increased account drawdowns. To ensure responsible risk management and market stability, trading in this zone is strictly prohibited, and violations may result in account suspension or restrictions. Click here to know more.
 Related Articles
 - What Trading Platforms Does FundedNext Futures Offer?
+- What Are the Trading Hours in FundedNext Futures?
 - FundedNext Futures — Most Frequently Asked Questions
 - What is copy & group trading policy at FundedNext Futures?
 - Does FundedNext Futures Allow High-Frequency Trading (HFT)?
-- What is the Disciplined Trader Program of FundedNext Futures, and how does it help traders build consistency?
 Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
 Table of contents
 -

@@ -1,0 +1,226 @@
+Direct Account Rules | Blue Guardian | Futures
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+< Go to website English Français Deutsch Ελληνικά हिन्दी Italiano Português Español English
+< Go to website English Français Deutsch Ελληνικά हिन्दी Italiano Português Español English
+Search for articles...
+- All Collections
+- Account Model
+- Direct Account Rules
+Direct Account Rules
+Direct account rules guidelines
+Updated over a week ago
+Table of contents
+Quick Overview
+The Blue Guardian Futures Direct Account is designed for traders who want to skip the evaluation process and start trading on a funded account immediately.
+Balance
+$25,000
+$50,000
+$100,000
+$150,000
+Profit Target
+-
+-
+-
+-
+Max Position Size
+1 Mini/ 10 Micro's
+4 Mini's/40 Micro's
+8 Mini's/ 80 Micro's
+12 Mini's/ 120 Micro's
+Daily Loss Limit
+$1,000
+$1,250
+$2,500
+$3,000
+Max Drawdown
+$1,500
+$2,000
+$3,500
+$4,500
+Drawdown Mode
+EOD
+EOD
+EOD
+EOD
+Position Scaling
+Yes
+Yes
+Yes
+Yes
+Consistency
+20%
+20%
+20%
+20%
+News Trading
+Allowed
+Allowed
+Allowed
+Allowed
+Payouts
+Instant Payout
+Instant Payout
+Instant Payout
+Instant Payout
+Overview of Direct Account Rules
+The Blue Guardian Futures Direct Account is designed for traders who want immediate access to funded trading without going through an evaluation phase.
+Traders can start trading instantly from day one while following all trading rules, payout conditions, and risk management requirements.
+Below is a complete overview of the rules, trading conditions, and payout requirements for the Direct account model.
+Profit Target
+With the Direct Account , there is no profit target or evaluation phase. Traders receive immediate access to a funded account and can begin trading right away.
+To begin trading, traders are only required to sign their Trader Agreement/Contract once the account is issued.
+Drawdown Limits
+Daily Loss Limit
+Direct Accounts purchased on or after July 21 include a fixed Daily Loss Limit based on the account size:
+- $25,000 Account: $1,000
+- $50,000 Account: $1,250
+- $100,000 Account: $2,500
+- $150,000 Account: $3,000
+If your balance or equity falls below the applicable daily loss limit, all open positions will be automatically closed and your account will be temporarily disabled for the remainder of the trading day.
+Please note that exceeding the daily loss limit is considered a soft breach , not a hard breach. Your account will be automatically reinstated at the start of the next trading day , allowing you to continue trading.
+Note: Direct Accounts purchased before July 21, 2026 will continue under the previous rules with no Daily Loss Limit . For $50K Direct Accounts purchased between July 21–26, 2026 , the Daily Loss Limit remains $1,500 .
+Maximum Overall Drawdown (EOD)
+Direct Accounts use an End-of-Day (EOD) trailing drawdown , with the drawdown allowance determined by your account size.
+​
+Your maximum loss limit moves up when you achieve a new highest end-of-day closing balance . It does not trail unrealized profits during the trading session or move back down after a losing day.
+​
+The maximum loss limit stops trailing once it reaches your starting balance plus $100 . After this, the limit remains fixed, even as your account balance continues to grow.
+Account Size
+EOD Balance Required to Stop Trailing
+Fixed Maximum Loss Limit
+$25,000
+$26,600
+$25,100
+$50,000
+$52,100
+$50,100
+$100,000
+$103,600
+$100,100
+$150,000
+$154,600
+$150,100
+Example: On a $50,000 account, once your end-of-day closing balance reaches $52,100, your maximum loss limit locks at $50,100. Any further profits increase the distance between your balance and this fixed limit.
+Is there a monthly fee or activation fee?
+No. Blue Guardian Futures does not require any monthly subscription fees or activation fees before receiving your funded account.
+The only payment required is the initial account purchase fee at checkout.
+News Trading Rule
+News trading is allowed on Direct Accounts.
+Traders are free to open, manage and close trades during high-impact news events. However, we strongly advise traders to remain cautious during volatile market conditions, as slippage and spread widening may occur.
+Stop Loss Rules
+At Blue Guardian Futures, using a Stop Loss is not mandatory, but it is strongly encouraged as part of proper risk management.
+The purpose is to promote disciplined trading and prevent reckless behavior such as intentionally relying on the account’s trailing threshold or maximum loss limits as a substitute for a stop loss.
+Trading without a clear risk management plan, using excessive sizing, inconsistent contract sizes, or “all-in” strategies may be considered gambling and can lead to account review.
+We encourage all traders to:
+- Define their risk before entering a trade
+- Use consistent position sizing
+- Follow a structured trading plan
+- Avoid martingale or loss-recovery strategies
+Successful trading is built on consistency, discipline, and proper risk management, not on relying solely on account limits to control losses.
+Can I use copy trading or trade copiers?
+Copy trading is allowed at Blue Guardian Futures, including the use of third-party copier software , provided all copied trades are between accounts legally owned by the same trader . This includes copying between your own Blue Guardian Futures accounts and your own external accounts .
+Copying trades from other traders , signal providers, trade groups, or allowing third parties to manage or execute trades on your behalf is strictly prohibited and may result in account review or termination.
+Microscalping Rule
+At Blue Guardian Futures , scalping is allowed; however, micro scalping is restricted . Less than 50% of your total profits may come from trades held for under 10 seconds .
+This rule applies during both the Evaluation and Funded phases. Excessive reliance on ultra-short duration trades may result in profit removal, payout review or further account action.
+Consistency Rule
+At Blue Guardian Futures Direct Accounts, a Scaling Consistency Rule applies on all payout requests.
+This means that one trading day cannot account for more than the allowed percentage of your total profits within a payout cycle. If your highest profit day is equal to or greater than the required consistency percentage, the payout request option will remain unavailable until additional profits are made and your consistency falls within the required threshold.
+Violating the consistency rule does not breach or terminate your account. You will simply need to continue trading until your profit distribution becomes compliant.
+Consistency Structure:
+- 1st Payout: 20% consistency
+- 2nd Payout: 25% consistency
+- 3rd Payout and onwards: 30% consistency
+Example (1st payout):
+If you make $1,000 in one trading day, your total profits must reach at least $5,000 to meet the 20% consistency requirement .
+How does payouts affect Direct Drawdown?
+After any payout/withdrawal , the drawdown floor will locked at your starting balance + $100 . This ensures the account remains active and prevents traders from withdrawing down to the exact breach level.
+Examples:
+- $25,000 Account: Drawdown locks at $25,100
+- $50,000 Account: Drawdown locks at $50,100
+- $100,000 Account: Drawdown locks at $100,100
+- $150,000 Account: Drawdown locks at $150,100
+Rewards and Payout Structure
+Payout cap
+The payout cap on Blue Guardian Futures Direct Accounts varies depending on your account size and is designed to support steady account growth while rewarding long-term consistency.
+For the Blue Guardian Futures Direct model, payouts follow a tiered cap structure . This means the first three payouts are subject to an initial payout cap, while from the fourth payout onward , traders unlock a higher payout cap based on their account size.
+This structure encourages traders to build consistency early while progressively gaining access to greater payout flexibility.
+Account Size
+Payouts 1-3
+Payouts 4+
+$25,000
+$1,000 (fixed)
+$1,000 (fixed)
+$50,000
+$2,000
+$2,500
+$100,000
+$2,500
+$3,000
+$150,000
+$3,000
+$3,500
+Payout Profit Goals
+A payout target is a specific profit threshold that must be reached before a payout can be requested, just like the consistency rule this resets upon payout request.
+Account Size
+1st Payout Profit
+Goal
+2nd+ Payout Goal
+$25,000
+$1,500
+$1,000
+$50,000
+$3,000
+$2,000
+$100,000
+$6,000
+$3,500
+$150,000
+$9,000
+$4,500
+Example :
+To qualify for your first payout, you must meet the consistency rule and generate a profit of $3,000 on your account. For your second payout, an additional profit of $2,000 is required. To request your third payout, you’ll need to earn a further $2,000 in profit.
+Buffer Balance (Payout Threshold)
+On Direct Accounts , there is no profit buffer requirement .
+Traders can request a payout once they have met the required consistency rule and payout target , subject to the account’s payout cap.
+This gives traders greater flexibility, allowing payouts as soon as they meet the required conditions.
+Profit Split
+Funded traders receive a 90% profit split .
+Example:
+If a trader earns $1,000 in profit , the payout would be:
+- Trader receives $900
+- Firm receives $100
+Payout Schedule
+- Payout Frequency: Instant payout after meeting the consistency and payout profit goal.
+- Processing Time: 24 business hours
+- Withdrawal Methods: Rise or Crypto
+- Minimum Withdrawal : $500 via crypto and $500 via rise
+For any additional questions or assistance, please contact the Blue Guardian support team through live chat or via email at [email protected] . We’re always happy to help.
+Related Articles
+- Standard Account Rules
+- Reserve Account Rules
+- Express Account Rules
+- What is the Blue Guardian Futures Live Account?
+- Legacy Account Models (Old account)
+Related Articles
+- Standard Account Rules
+- Reserve Account Rules
+- Express Account Rules
+- What is the Blue Guardian Futures Live Account?
+- Legacy Account Models (Old account)
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+Trade like a Guardian
+-
+-
+-

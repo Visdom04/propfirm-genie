@@ -1,0 +1,92 @@
+Rapid Futures Challenge | IQ Capital Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+IQ Capital Home Dashboard English Deutsch English
+Search ⌘ K
+- General Informations
+- Trading Rules
+- Futures Accounts
+- Crypto Accounts
+- CFD Accounts
+- Performance-Rewards
+- Elite Accounts
+All Collections Futures Accounts Futures Challenges Rapid Futures Challenge Rapid Futures Challenge
+Written by Theo T.
+Updated this week
+Copy for LLM
+What is a Rapid Futures Challenge Account?
+The Rapid Futures Challenge Account is the stage before the Funded Account. It allows you to prove your trading skills with lower capital requirements and slightly more flexible rules.
+Are profits withdrawable?
+No, the Challenge Account is fully based on simulated capital. All profits generated are only used for qualification purposes and cannot be withdrawn.
+Rapid Futures Challenge Account Sizes & Rules
+Rule
+$50,000 Account
+$100,000 Account
+Profit Target
+$3,000
+$6,000
+Max Drawdown
+$2,000
+$3,000
+Daily Loss Limit (DLL)
+None
+None
+Max Position Loss
+None
+None
+Consistency
+40%
+40%
+Max Position Size
+5 Minis / 50 Micros
+10 Minis / 100 Micros
+Extension Fee
+$19
+$ 0 *
+$19
+$ 0 *
+Duration
+30 Days
+90 Days*
+30 Days
+90 Days*
+Inactivity Rule*
+8 calendar day
+8 calendar day
+Max Accounts
+5
+5
+*For accounts purchased on or after October 26, 2022, at 6:00 PM (18:00)
+What happens after passing?
+Once you reach the profit target, you can activate the account directly in the dashboard. You will then receive a new Rapid Funded Account of the same size, where performance rewards can be claimed after one active trading day with an 80/20 profit split. The account will be closed after a maximum of five payouts.
+​
+​
+Duration (for accounts purchased before October 22, 2026 at 6:00 PM)
+A Challenge Account is valid for 30 days. You may manually extend it in the dashboard for an additional 30 days for $19. If no extension is purchased, access to the account will permanently expire.
+Inactivity Rule (for accounts purchased on or after October 22, 2026, at 6:00 PM)
+At least one trade must be executed within 8 calendar days. Failure to do so will result in the account being closed.
+Did this answer your question? Disappointed Reaction Neutral Reaction Smiley Reaction
+On this page
+- What is a Rapid Futures Challenge Account?
+- Are profits withdrawable?
+- Rapid Futures Challenge Account Sizes & Rules
+- What happens after passing?
+IQ Capital Help Center

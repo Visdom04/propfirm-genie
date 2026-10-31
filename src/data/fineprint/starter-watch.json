@@ -1,461 +1,1275 @@
 {
-  "checkedAt": "2026-10-30T10:23:04.229Z",
+  "checkedAt": "2026-10-31T09:54:24.806Z",
   "pages": [
     {
       "id": "apex-eod-evaluations",
       "firm": "Apex Trader Funding",
+      "url": "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-evaluations/",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-eod-drawdown",
       "firm": "Apex Trader Funding",
+      "url": "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-drawdown-explained/",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-eod-pa",
       "firm": "Apex Trader Funding",
+      "url": "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-performance-accounts-pa/",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-eod-payouts",
       "firm": "Apex Trader Funding",
+      "url": "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-payouts/",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-intraday-evaluations",
       "firm": "Apex Trader Funding",
-      "state": "baseline"
+      "url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-evaluations/",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-intraday-evaluations-index",
       "firm": "Apex Trader Funding",
+      "url": "https://apextraderfunding.com/help-center/evaluation-accounts-ea/intraday-trailing-drawdown-evaluations/",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-intraday-drawdown",
       "firm": "Apex Trader Funding",
-      "state": "baseline"
+      "url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-intraday-pa",
       "firm": "Apex Trader Funding",
+      "url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-performance-accounts-pa/",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-intraday-payouts",
       "firm": "Apex Trader Funding",
+      "url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-payouts/",
       "state": "blocked",
-      "status": 429,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-dll",
       "firm": "Apex Trader Funding",
+      "url": "https://apextraderfunding.com/help-center/additional-helpful-items/daily-loss-limit-explained/",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-consistency",
       "firm": "Apex Trader Funding",
+      "url": "https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-eval-fees",
       "firm": "Apex Trader Funding",
+      "url": "https://apextraderfunding.com/help-center/billing/evaluation-plan-fees-and-access-explained/",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-pa-activation",
       "firm": "Apex Trader Funding",
+      "url": "https://apextraderfunding.com/help-center/billing/pa-activation-process-deadline-explained/",
       "state": "blocked",
-      "status": 429,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-no-activation-eval",
       "firm": "Apex Trader Funding",
-      "state": "baseline"
+      "url": "https://apextraderfunding.com/help-center/uncategorized/no-activation-fee-evaluations/",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-scaling-pa",
       "firm": "Apex Trader Funding",
+      "url": "https://apextraderfunding.com/help-center/additional-helpful-items/scaling-levels-pa-explained/",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-eval-contracts",
       "firm": "Apex Trader Funding",
-      "state": "baseline"
+      "url": "https://apextraderfunding.com/help-center/additional-helpful-items/position-sizing-evaluation/",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-request-payout",
       "firm": "Apex Trader Funding",
-      "state": "baseline"
+      "url": "https://apextraderfunding.com/help-center/additional-helpful-items/how-to-request-a-payout/",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-inactivity",
       "firm": "Apex Trader Funding",
-      "state": "baseline"
+      "url": "https://apextraderfunding.com/help-center/billing/inactivity-policy-on-performance-accounts-pa/",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-prohibited",
       "firm": "Apex Trader Funding",
-      "state": "baseline"
+      "url": "https://apextraderfunding.com/help-center/getting-started/prohibited-activities/",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-hours",
       "firm": "Apex Trader Funding",
-      "state": "baseline"
+      "url": "https://apextraderfunding.com/help-center/getting-started/futures-trading-times/",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "apex-pa-cap",
       "firm": "Apex Trader Funding",
-      "state": "baseline"
+      "url": "https://apextraderfunding.com/help-center/performance-accounts-pa/how-many-paid-funded-accounts-am-i-allowed-to-have/",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "mfp-rules",
       "firm": "My Funded Perps",
-      "state": "pending"
+      "url": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+      "state": "pending",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "mfp-elite",
       "firm": "My Funded Perps",
-      "state": "unchanged"
+      "url": "https://docs.myfundedperpetuals.com/guides/elite-accounts",
+      "state": "pending",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "mfp-payouts",
       "firm": "My Funded Perps",
-      "state": "published",
-      "cards": 5
+      "url": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+      "state": "pending",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "mfp-fees",
       "firm": "My Funded Perps",
-      "state": "unchanged"
+      "url": "https://docs.myfundedperpetuals.com/guides/commissions-and-fees",
+      "state": "pending",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "tradeify-rules",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/12268167-essential-trading-rules-overview",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tradeify-pricing",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tradeify-select-vs-growth",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/13252431-select-vs-growth-choosing-your-evaluation-type",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tradeify-growth-eval",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tradeify-select-eval",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tradeify-lightning",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tradeify-dll",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tradeify-trailing",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/10495897-rules-trailing-max-drawdowns",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tradeify-consistency",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/10468320-rules-consistency-rule",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tradeify-hours",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/10495876-rules-permitted-times-to-trade",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tradeify-growth-payouts",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/11083796-growth-funded-account-payout-policy",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tradeify-select-payouts",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/12853966-select-flex-and-select-daily-payout-policies",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tradeify-lightning-payouts",
       "firm": "Tradeify",
-      "state": "baseline"
+      "url": "https://help.tradeify.co/en/articles/10495932-lightning-funded-account-payout-policy",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "lucid-eval",
       "firm": "Lucid Trading",
-      "state": "unchanged"
+      "url": "https://support.lucidtrading.com/en/articles/12890029-lucidpro-evaluation-account",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-drawdown",
       "firm": "Lucid Trading",
-      "state": "unchanged"
+      "url": "https://support.lucidtrading.com/en/articles/12890136-lucidpro-drawdown",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-dll",
       "firm": "Lucid Trading",
-      "state": "unchanged"
+      "url": "https://support.lucidtrading.com/en/articles/12890122-lucidpro-daily-loss-limit",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-payouts",
       "firm": "Lucid Trading",
-      "state": "noise",
-      "cards": 0
+      "url": "https://support.lucidtrading.com/en/articles/12890092-lucidpro-payouts",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-pro-consistency",
       "firm": "Lucid Trading",
-      "state": "unchanged"
+      "url": "https://support.lucidtrading.com/en/articles/12890109-lucidpro-consistency-percentage",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-flex-eval",
       "firm": "Lucid Trading",
-      "state": "noise",
-      "cards": 0
+      "url": "https://support.lucidtrading.com/en/articles/12945790-lucidflex-evaluation-account",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-flex-drawdown",
       "firm": "Lucid Trading",
-      "state": "unchanged"
+      "url": "https://support.lucidtrading.com/en/articles/12945815-lucidflex-drawdown",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-flex-payouts",
       "firm": "Lucid Trading",
-      "state": "unchanged"
+      "url": "https://support.lucidtrading.com/en/articles/12945796-lucidflex-payouts",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-flex-consistency",
       "firm": "Lucid Trading",
-      "state": "noise",
-      "cards": 0
+      "url": "https://support.lucidtrading.com/en/articles/12945805-lucidflex-consistency-percentage",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-daily-eval",
       "firm": "Lucid Trading",
-      "state": "unchanged"
+      "url": "https://support.lucidtrading.com/en/articles/15996664-luciddaily-evaluation",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-daily-funded",
       "firm": "Lucid Trading",
-      "state": "unchanged"
+      "url": "https://support.lucidtrading.com/en/articles/15997244-luciddaily-funded-account",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-daily-payouts",
       "firm": "Lucid Trading",
-      "state": "unchanged"
+      "url": "https://support.lucidtrading.com/en/articles/15997266-luciddaily-payouts",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-direct-funded",
       "firm": "Lucid Trading",
-      "state": "unchanged"
+      "url": "https://support.lucidtrading.com/en/articles/12890148-luciddirect-funded-account",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-direct-payouts",
       "firm": "Lucid Trading",
-      "state": "unchanged"
+      "url": "https://support.lucidtrading.com/en/articles/12890164-luciddirect-payout-objectives",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "lucid-hedging",
       "firm": "Lucid Trading",
-      "state": "unchanged"
+      "url": "https://support.lucidtrading.com/en/articles/11404734-prohibited-hedging",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "vest-account-tiers",
       "firm": "Vest Markets",
-      "state": "pending"
+      "url": "https://docs.vestmarkets.com/vest-capital/account-tiers",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "vest-loss-limits",
       "firm": "Vest Markets",
-      "state": "pending"
+      "url": "https://docs.vestmarkets.com/vest-capital/loss-limits",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "vest-claiming-profit",
       "firm": "Vest Markets",
-      "state": "pending"
+      "url": "https://docs.vestmarkets.com/vest-capital/claiming-profit",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "tpt-rule-1",
       "firm": "Take Profit Trader",
-      "state": "pending"
+      "url": "https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15169070804125-Rule-1-Hit-Your-Profit-Target",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tpt-rule-3",
       "firm": "Take Profit Trader",
-      "state": "pending"
+      "url": "https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15170265979165-Rule-3-Do-Not-Hit-End-Of-Day-EOD-Maximum-Trailing-Drawdown",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tpt-rule-5",
       "firm": "Take Profit Trader",
-      "state": "pending"
+      "url": "https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15170316538013-Rule-5-Be-Consistent",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tpt-pro-rules",
       "firm": "Take Profit Trader",
-      "state": "pending"
+      "url": "https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15171769361053-PRO-Account-Rules",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tpt-multi-accounts",
       "firm": "Take Profit Trader",
-      "state": "pending"
+      "url": "https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15172695563933-Rules-for-Multiple-Accounts",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tpt-payout-system",
       "firm": "Take Profit Trader",
-      "state": "pending"
+      "url": "https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15172296875165-Payout-System",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tpt-profit-split",
       "firm": "Take Profit Trader",
-      "state": "pending"
+      "url": "https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15172219527581-PRO-Account-Profit-Split-Withdrawal-Rules",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tpt-subscriptions",
       "firm": "Take Profit Trader",
-      "state": "pending"
+      "url": "https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15141145057053-Test-Subscriptions",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tpt-sub-nav",
       "firm": "Take Profit Trader",
-      "state": "pending"
+      "url": "https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15170412478749-Navigating-Your-Subscriptions",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "tpt-commissions",
       "firm": "Take Profit Trader",
-      "state": "pending"
+      "url": "https://takeprofittraderhelp.zendesk.com/hc/en-us/articles/15172548967069-Commissions-on-Test-and-PRO-accounts",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "fnf-dll",
       "firm": "FundedNext Futures",
-      "state": "unchanged"
+      "url": "https://helpfutures.fundednext.com/en/articles/17230292-daily-loss-limit-and-maximum-loss-limit-at-fundednext-futures",
+      "state": "pending",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "fnf-consistency",
       "firm": "FundedNext Futures",
-      "state": "unchanged"
+      "url": "https://helpfutures.fundednext.com/en/articles/17230245-is-there-any-consistency-rule-to-be-followed-in-the-fundednext-futures-challenge-fundednext-account",
+      "state": "pending",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "fnf-flex-rules",
       "firm": "FundedNext Futures",
-      "state": "unchanged"
+      "url": "https://helpfutures.fundednext.com/en/articles/17229848-fundednext-futures-flex-fundednext-account-all-rules",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "fnf-prohibited",
       "firm": "FundedNext Futures",
-      "state": "pending"
+      "url": "https://helpfutures.fundednext.com/en/articles/14298337-what-are-the-prohibited-trading-strategies-of-fundednext-futures",
+      "state": "posted",
+      "cards": 2,
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "fnf-prices",
       "firm": "FundedNext Futures",
-      "state": "unchanged"
+      "url": "https://helpfutures.fundednext.com/en/articles/17228899-what-are-the-available-account-sizes-and-their-prices-in-fundednext-futures",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "fnf-reward-share",
       "firm": "FundedNext Futures",
-      "state": "unchanged"
+      "url": "https://helpfutures.fundednext.com/en/articles/17242096-what-will-be-my-reward-share-from-the-futures-fundednext-account",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "fnf-withdraw",
       "firm": "FundedNext Futures",
-      "state": "unchanged"
+      "url": "https://helpfutures.fundednext.com/en/articles/17242064-how-can-i-withdraw-my-performance-reward",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "fnf-flex-reward",
       "firm": "FundedNext Futures",
-      "state": "pending"
+      "url": "https://helpfutures.fundednext.com/en/articles/14878865-what-are-the-performance-reward-eligibility-criteria-for-flex-fundednext-account",
+      "state": "posted",
+      "cards": 1,
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "legends-eval",
       "firm": "Legends Trading",
-      "state": "baseline"
+      "url": "https://knowledge.thelegendstrading.com/en/articles/12099518-apprentice-evaluation-guidelines",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "legends-eod-update",
       "firm": "Legends Trading",
+      "url": "https://knowledge.thelegendstrading.com/en/articles/13512545-apprentice-plan-update-eod-tracking-one-day-pass-no-scaling-effective-now",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "legends-master-rules",
       "firm": "Legends Trading",
+      "url": "https://knowledge.thelegendstrading.com/en/articles/12099648-master-account-rules-guidelines",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "legends-payouts",
       "firm": "Legends Trading",
+      "url": "https://knowledge.thelegendstrading.com/en/articles/12099683-payout-process-payout-policy",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "legends-master-fees",
       "firm": "Legends Trading",
+      "url": "https://knowledge.thelegendstrading.com/en/articles/12099628-fees-after-qualifying-for-a-master-account",
       "state": "blocked",
-      "status": 200,
-      "source": "failed"
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
     },
     {
       "id": "bulenox-qualification",
       "firm": "Bulenox",
-      "state": "unchanged"
+      "url": "https://bulenox.com/help-center/qualification",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "bulenox-master",
       "firm": "Bulenox",
-      "state": "unchanged"
+      "url": "https://bulenox.com/help-center/master",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "bulenox-fast-track",
       "firm": "Bulenox",
-      "state": "unchanged"
+      "url": "https://bulenox.com/help-center/fast-track",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "bulenox-momentum",
       "firm": "Bulenox",
-      "state": "unchanged"
+      "url": "https://bulenox.com/help-center/momentum",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     },
     {
       "id": "bulenox-pricing",
       "firm": "Bulenox",
-      "state": "unchanged"
+      "url": "https://bulenox.com/accounts-pricing",
+      "state": "unchanged",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "mff-rapid-50k",
+      "firm": "My Funded Futures",
+      "url": "https://help.myfundedfutures.com/en/articles/13134709-rapid-plan-50k-a-comprehensive-look",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "mff-eod-drawdown",
+      "firm": "My Funded Futures",
+      "url": "https://help.myfundedfutures.com/en/articles/8348565-end-of-day-eod-drawdown-explained",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "mff-intraday-drawdown",
+      "firm": "My Funded Futures",
+      "url": "https://help.myfundedfutures.com/en/articles/12802721-intraday-drawdown-explained",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "mff-consistency",
+      "firm": "My Funded Futures",
+      "url": "https://help.myfundedfutures.com/en/articles/11994562-consistency-rule-at-my-fundedfutures",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "mff-payouts",
+      "firm": "My Funded Futures",
+      "url": "https://help.myfundedfutures.com/en/articles/13745661-payout-policy-overview-best-and-fastest-prop-firm-payouts",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "t1f-elite-eval",
+      "firm": "Top One Futures",
+      "url": "https://help.toponefutures.com/en/articles/11020730-overview-of-the-elite-evaluation",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "t1f-daily-loss",
+      "firm": "Top One Futures",
+      "url": "https://help.toponefutures.com/en/articles/10907081-daily-drawdown-what-you-need-to-know",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "t1f-elite-drawdown",
+      "firm": "Top One Futures",
+      "url": "https://help.toponefutures.com/en/articles/10907134-understanding-the-drawdown-in-elite-accounts",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "t1f-consistency",
+      "firm": "Top One Futures",
+      "url": "https://help.toponefutures.com/en/articles/10907263-consistency-rule-in-elite-sim-funded-accounts-explained",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "t1f-elite-payouts",
+      "firm": "Top One Futures",
+      "url": "https://help.toponefutures.com/en/articles/12717928-elite-sim-funded-account-payout-requirements",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "t1f-activation-fee",
+      "firm": "Top One Futures",
+      "url": "https://help.toponefutures.com/en/articles/10907249-activation-fee-for-your-elite-sim-funded-account",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "phidias-rules",
+      "firm": "Phidias Propfirm",
+      "url": "https://phidiaspropfirm.com/rules",
+      "state": "blocked",
+      "status": 403,
+      "source": "blocked",
+      "lastOkAt": null,
+      "failStreak": 1
+    },
+    {
+      "id": "topstep-combine-rules",
+      "firm": "Topstep",
+      "url": "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "topstep-max-loss-limit",
+      "firm": "Topstep",
+      "url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "topstep-daily-loss-limit",
+      "firm": "Topstep",
+      "url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "topstep-consistency",
+      "firm": "Topstep",
+      "url": "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "topstep-payouts",
+      "firm": "Topstep",
+      "url": "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "topstep-pricing",
+      "firm": "Topstep",
+      "url": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "bgf-standard-rules",
+      "firm": "Blue Guardian",
+      "url": "https://helpfutures.blueguardian.com/en/articles/15654479-standard-account-rules",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "bgf-reserve-rules",
+      "firm": "Blue Guardian",
+      "url": "https://helpfutures.blueguardian.com/en/articles/15678716-reserve-account-rules",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "bgf-express-rules",
+      "firm": "Blue Guardian",
+      "url": "https://helpfutures.blueguardian.com/en/articles/15679143-express-account-rules",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "bgf-direct-rules",
+      "firm": "Blue Guardian",
+      "url": "https://helpfutures.blueguardian.com/en/articles/15679519-direct-account-rules",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "bgf-payouts",
+      "firm": "Blue Guardian",
+      "url": "https://helpfutures.blueguardian.com/en/articles/15772960-payout-policy",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "bgf-contract-limits",
+      "firm": "Blue Guardian",
+      "url": "https://helpfutures.blueguardian.com/en/articles/15773431-contract-limits-funded-scaling-system",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "daytraders-eod-evaluation",
+      "firm": "DayTraders",
+      "url": "https://daytraders.com/help/articles/17684729-eod-evaluation",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "daytraders-eod-dll",
+      "firm": "DayTraders",
+      "url": "https://daytraders.com/help/articles/17684742-eod-daily-loss-limit",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "daytraders-eod-drawdown",
+      "firm": "DayTraders",
+      "url": "https://daytraders.com/help/articles/17684746-eod-drawdown",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "daytraders-eod-consistency",
+      "firm": "DayTraders",
+      "url": "https://daytraders.com/help/articles/17684741-eod-consistency",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "daytraders-eod-payouts",
+      "firm": "DayTraders",
+      "url": "https://daytraders.com/help/articles/17684739-eod-payouts",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "daytraders-fees",
+      "firm": "DayTraders",
+      "url": "https://daytraders.com/help/articles/17704120-market-data-add-ons-and-fees",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "iqcapital-core-challenge",
+      "firm": "IQ Capital",
+      "url": "https://support.iqcapital.io/en/articles/14964304-core-futures-challenge",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "iqcapital-core-dll-challenge",
+      "firm": "IQ Capital",
+      "url": "https://support.iqcapital.io/en/articles/16087436-core-dll-futures-challenge",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "iqcapital-rapid-challenge",
+      "firm": "IQ Capital",
+      "url": "https://support.iqcapital.io/en/articles/16087696-rapid-futures-challenge",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "iqcapital-core-funded",
+      "firm": "IQ Capital",
+      "url": "https://support.iqcapital.io/en/articles/14964929-core-futures-funding",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "iqcapital-drawdown-eod",
+      "firm": "IQ Capital",
+      "url": "https://support.iqcapital.io/en/articles/15001850-max-drawdown-end-of-day",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "iqcapital-payouts-rapid",
+      "firm": "IQ Capital",
+      "url": "https://support.iqcapital.io/en/articles/16987970-performance-rewards-rapid-futures",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "traderslaunch-faq",
+      "firm": "Traders Launch",
+      "url": "https://traderslaunch.com/faq",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "traderslaunch-futures-rules",
+      "firm": "Traders Launch",
+      "url": "https://traderslaunch.com/futures/rules",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "traderslaunch-payouts",
+      "firm": "Traders Launch",
+      "url": "https://traderslaunch.com/payout-rules",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "traderslaunch-pricing",
+      "firm": "Traders Launch",
+      "url": "https://traderslaunch.com/pricing",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "ttp-futures-prime-how-it-works",
+      "firm": "The Trading Pit",
+      "url": "https://support.thetradingpit.com/en/articles/836068-futures-prime-how-it-works",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "ttp-futures-prime-rules",
+      "firm": "The Trading Pit",
+      "url": "https://support.thetradingpit.com/en/articles/836071-futures-prime-rules",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "ttp-futures-prime-daily-pause",
+      "firm": "The Trading Pit",
+      "url": "https://support.thetradingpit.com/how-does-the-daily-pause-work-on-futures-prime-accounts",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "ttp-futures-prime-rewards",
+      "firm": "The Trading Pit",
+      "url": "https://support.thetradingpit.com/en/articles/836079-futures-prime-rewards",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "ftmo-futures-objectives",
+      "firm": "FTMO",
+      "url": "https://ftmo.com/en/futures/trading-objectives-and-rules/",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "ftmo-futures-growth-vs-pro",
+      "firm": "FTMO",
+      "url": "https://ftmo.com/en/futures/faq/how-do-the-growth-and-pro-products-differ/",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "ftmo-futures-sim-payout",
+      "firm": "FTMO",
+      "url": "https://ftmo.com/en/futures/faq/how-do-i-withdraw-my-payout-from-a-sim-funded-account/",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "blusky-evaluation-rules",
+      "firm": "BluSky",
+      "url": "https://help.blusky.pro/en/articles/12434059-evaluation-rules",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "blusky-propel-plans",
+      "firm": "BluSky",
+      "url": "https://help.blusky.pro/en/articles/16300862-propel-plans-phases-rules-and-costs",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "blusky-launch-plans",
+      "firm": "BluSky",
+      "url": "https://help.blusky.pro/en/articles/16300846-launch-plans-phases-rules-and-costs",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "blusky-sim-funded-rules",
+      "firm": "BluSky",
+      "url": "https://help.blusky.pro/en/articles/17297032-sim-funded-accounts-rules",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "blusky-payouts",
+      "firm": "BluSky",
+      "url": "https://help.blusky.pro/en/articles/12434429-payouts",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "blusky-sim-funded-payouts",
+      "firm": "BluSky",
+      "url": "https://help.blusky.pro/en/articles/12292284-sim-funded-payouts",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "fxify-futures-evaluation",
+      "firm": "FXIFY Futures",
+      "url": "https://intercom.help/fxify-futures/en/articles/10235823-fxify-futures-trading-evaluation-process",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "fxify-futures-funded-params",
+      "firm": "FXIFY Futures",
+      "url": "https://intercom.help/fxify-futures/en/articles/10236063-funded-account-parameters",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "fxify-futures-payouts",
+      "firm": "FXIFY Futures",
+      "url": "https://intercom.help/fxify-futures/en/articles/10236826-fxify-futures-payout-policy-for-standard-and-expert-accounts",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "fxify-futures-programs",
+      "firm": "FXIFY Futures",
+      "url": "https://intercom.help/fxify-futures/en/articles/10235623-what-types-of-programs-do-we-offer",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "e2t-daily-loss",
+      "firm": "Earn2Trade",
+      "url": "https://help.earn2trade.com/en/articles/3395926-how-is-my-daily-loss-calculated",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "e2t-eod-drawdown",
+      "firm": "Earn2Trade",
+      "url": "https://help.earn2trade.com/en/articles/5372687-how-does-end-of-day-drawdown-work",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "e2t-consistency",
+      "firm": "Earn2Trade",
+      "url": "https://help.earn2trade.com/en/articles/3849975-what-is-the-maintain-consistency-rule",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "e2t-withdrawal-policy",
+      "firm": "Earn2Trade",
+      "url": "https://help.earn2trade.com/en/articles/5452472-what-is-the-withdrawal-policy",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
+    },
+    {
+      "id": "e2t-fee-schedule",
+      "firm": "Earn2Trade",
+      "url": "https://help.earn2trade.com/en/articles/8320643-fee-schedule-in-e2t-evaluations-and-on-funded-accounts",
+      "state": "baseline",
+      "lastOkAt": "2026-10-31T09:54:24.806Z",
+      "failStreak": 0
     }
   ]
 }

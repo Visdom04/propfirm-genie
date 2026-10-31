@@ -1,0 +1,120 @@
+Max. Drawdown (End-of-Day) | IQ Capital Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+IQ Capital Home Dashboard English Deutsch English
+Search ⌘ K
+- General Informations
+- Trading Rules
+- Futures Accounts
+- Crypto Accounts
+- CFD Accounts
+- Performance-Rewards
+- Elite Accounts
+All Collections Trading Rules Key-Trading-Rules Max. Drawdown (End-of-Day) Max. Drawdown (End-of-Day)
+Written by Theo T.
+September 16, 2026
+Copy for LLM
+How does the maximum drawdown work?
+The maximum drawdown is adjusted daily after the New York close (EOD, approx. 5:15 PM EST). If your equity falls below this limit, the account will be closed.
+The maximum drawdown trails your account balance until the initial balance of $10,000, $50,000, $100,000, or $200,000 is reached. Once this level is reached, the drawdown remains fixed permanently.
+In Funding, the drawdown is adjusted to the starting balance after a Performance Reward payout and remains fixed at that level permanently.
+Phase 1: Before the limit freezes
+Drawdown is trailing first.
+- The drawdown amount stays fixed: 6% of starting balance
+- The drawdown limit sits 6% below your highest end-of-day equity
+- The limit only moves up
+- The limit never moves down
+Example: 100K account
+Starting balance: $100,000
+​ Max drawdown (6%): $6,000
+​ Initial drawdown limit: $94,000
+Day 1 (profit)
+End-of-day equity: $102,000
+New drawdown limit: $96,000 ($102,000 − $6,000)
+Day 2 (loss)
+End-of-day equity: $100,500
+Drawdown limit stays at $96,000
+It is not adjusted downward.
+Day 3 (profit)
+End-of-day equity: $103,000
+New drawdown limit: $97,000 ($103,000 − $6,000)
+Phase 2: After the first performance reward
+The first payout is capped at $1,500 .
+After that, the drawdown limit is moved to the starting balance and freezes there .
+From that point:
+- Drawdown limit = starting balance
+- On a 100K account it stays at $100,000 permanently
+- The buffer is no longer 6% below current balance
+- Available buffer = current equity minus starting balance
+- That is simply the profit still left on the account after the payout
+If equity falls to or below starting balance, the account is closed.
+Example: 100K account after the first payout
+Equity before the payout is $103,000.
+You withdraw the maximum first payout of $1,500 .
+- Equity after payout: $101,500
+- Drawdown limit: $100,000 (frozen at starting balance)
+- Available buffer: $1,500
+- Not $6,000. Not 6% of $101,500.
+If equity later rises to $106,000 with no further payout:
+- The limit stays at $100,000
+- Available buffer: $6,000
+After the first payout, the limit no longer trails upward.
+Quick comparison
+Before the first payout
+After the first payout
+Drawdown amount
+6% of starting balance
+only the remaining profit
+Drawdown limit
+highest EOD equity minus 6%
+fixed at starting balance
+Limit moves up
+yes
+no
+Limit moves down
+never
+never
+First payout
+not taken yet
+maximum $1,500
+Account closes when
+EOD equity is below the trailing limit
+EOD equity is at or below starting balance
+Common mistakes
+Wrong: “My drawdown is always 6% below my current balance.”
+​ Right: That only applies before the limit is frozen, and only against the highest end-of-day equity.
+Wrong: Drawdown and drawdown limit are the same thing.
+​ Right: Drawdown is the distance. The limit is the equity level at which the account ends.
+Wrong: After the first payout I have $6,000 of room again because this is a 100K account.
+​ Right: After the payout you only have as much room as the profit left on the account.
+Wrong: The Challenge works differently.
+​ Right: The drawdown logic is the same in Challenge and Funded. A payout and the freeze to starting balance happen once the first withdrawal is made.
+The limits in your dashboard always take priority. Percentages and account sizes can differ by product line (Crypto/CFD or Futures).
+Did this answer your question? Disappointed Reaction Neutral Reaction Smiley Reaction
+On this page
+- How does the maximum drawdown work?
+- Phase 1: Before the limit freezes
+- Example: 100K account
+- Phase 2: After the first performance reward
+- Example: 100K account after the first payout
+- Quick comparison
+- Common mistakes
+IQ Capital Help Center

@@ -1,0 +1,169 @@
+-
+Is there any consistency rule to be followed in the FundedNext Futures Challenge & FundedNext Account? | FundedNext Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Go to Website العربية Português do Brasil English Français Deutsch हिन्दी Italiano 日本語 fa-IR 简体中文 Español ภาษาไทย Türkçe Oʻzbekcha English
+Go to Website العربية Português do Brasil English Français Deutsch हिन्दी Italiano 日本語 fa-IR 简体中文 Español ภาษาไทย Türkçe Oʻzbekcha English
+Search for articles...
+- All Collections
+- Trading Rules and Guidelines
+- Is there any consistency rule to be followed in the FundedNext Futures Challenge & FundedNext Account?
+Is there any consistency rule to be followed in the FundedNext Futures Challenge & FundedNext Account?
+Important Notice: As of October 11, Legacy Accounts are no longer available for purchase. Existing Legacy Accounts are also not eligible for resets.
+Updated over a week ago
+Table of contents
+The Consistency Rule encourages steady, repeatable trading rather than relying on one big day. How it applies depends on which phase you're in and which model you're trading . Here's the full breakdown.
+Consistency Rule at a glance
+Model
+Challenge Phase
+FundedNext Account
+Legacy
+✅ 40%
+❌ None
+Flex
+✅ 40%
+❌ None
+Rapid Pro
+❌ None
+✅ 40%
+Rapid Daily
+❌ None
+❌ None (uses buffer rule)
+Direct
+N/A
+✅ 20%
+The Consistency Rule in the Challenge Phase (Legacy & Flex)
+During the Challenge Phase , Legacy and Flex apply a 40% Consistency Rule : your profit on any single day cannot exceed 40% of your total profit target . If it does, the total profit required to pass is recalculated .
+Formula: 40% × Profit Target = Daily Profit Threshold
+Recalculation: Required Total Profit = Highest Daily Profit ÷ 40%
+Example — $50,000 Legacy Challenge (Profit Target: $3,000):
+- Daily threshold: 40% × $3,000 = $1,200 .
+- If you earn $1,500 in a day: $1,500 ÷ 0.40 = $3,750 . You'd now need $3,750 total to pass instead of $3,000.
+Rapid Pro and Rapid Daily have no consistency rule during the Challenge Phase — you can hit the target in a single day or across multiple days.
+The Consistency Rule on the FundedNext Account (Rapid Pro)
+Once funded, the 40% Consistency Rule applies only to the Rapid Pro FundedNext Account . Here it works as a withdrawal gate : if your biggest single-day profit is more than 40% of your total profit, you must keep trading until your results are more consistent.
+There's no fixed number of days — it depends on your performance — but it takes at least 3 days to satisfy. Once your highest profit day is 40% or less of total profit, you're eligible to withdraw.
+Formula: Highest Profit Contribution = (Highest Profit Day ÷ Total Profit) × 100%
+- 40% or less → consistency met (withdrawal eligible).
+- More than 40% → not met (keep trading).
+Example — Rapid Pro FundedNext Account:
+Day
+Profit Made
+Total Profit
+Highest Profit Day
+Highest Profit Contribution
+Within Rule?
+1
+$1,500
+$1,500
+$1,500
+100.00%
+❌
+2
+$1,200
+$2,700
+$1,500
+55.56%
+❌
+3
+$1,800
+$4,500
+$1,800
+40.00%
+✅
+The trader meets the rule on Day 3 , becoming eligible for a withdrawal.
+The Consistency Rule on the FundedNext Account (Direct Account)
+The FundedNext Futures Direct Account uses a 20% Perpetual Consistency Rule as a withdrawal gate: your highest single-day profit ever recorded on the account must stay at 20% or less of your current cycle's total profit . If your best day is more than 20% of the cycle total, you must keep trading until the cycle grows enough to bring it back within range.
+What makes it perpetual is that your best day carries forward across every cycle — once set, it becomes the figure every future cycle is measured against, until you record an even bigger day.
+Formula: Highest Profit Contribution = (Highest Profit Day Ever ÷ Current Cycle Total) × 100%
+- 20% or less → consistency met.
+- More than 20% → not met (keep trading).
+Because 20% is one-fifth, your cycle total simply needs to reach at least 5× your best day ever to stay consistent.
+Example — FundedNext Futures FNF Direct Account (best day ever: $500):
+Day
+Profit Made
+Cycle Total
+Best Day Ever
+Highest Profit Contribution
+Within Rule?
+1
+$500
+$500
+$500
+100.00%
+❌
+2
+$450
+$950
+$500
+52.63%
+❌
+3
+$400
+$1,350
+$500
+37.04%
+❌
+4
+$350
+$1,700
+$500
+29.41%
+❌
+5
+$500
+$2,200
+$500
+22.73%
+❌
+6
+$300
+$2,500
+$500
+20.00%
+✅
+The trader meets the rule on Day 6 , when the cycle total reaches $2,500 — exactly 5× the $500 best day — becoming eligible to withdraw.
+To know more, see: What is the Perpetual Consistency Rule and how does it work?
+Which accounts have no consistency rule?
+- Legacy FundedNext Account — no consistency rule once funded (withdrawals use Benchmark Days).
+- Flex FundedNext Account — no consistency rule once funded (withdrawals use Benchmark Days).
+- Rapid Pro Challenge Account - no consistency rule in the Challenge Phase.
+- Rapid Daily — no consistency rule at any stage (withdrawals use the buffer rule).
+🔗 See: What are Benchmark Days at FundedNext Futures?
+🔗 See: FundedNext Futures Rapid Daily FundedNext Account — All Rules
+Related Articles
+- What is FundedNext Futures Legacy Challenge?
+- FundedNext Futures Legacy Challenge All Rules
+- FundedNext Futures Legacy FundedNext Account: All Rules
+- What are Benchmark Days at FundedNext Futures?
+- Daily Loss Limit and Maximum Loss Limit at FundedNext Futures
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+-
+-
+-
+-
+-

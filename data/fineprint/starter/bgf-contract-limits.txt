@@ -1,0 +1,186 @@
+Contract Limits & Funded Scaling System | Blue Guardian | Futures
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+< Go to website English Français Deutsch Ελληνικά हिन्दी Italiano Português Español English
+< Go to website English Français Deutsch Ελληνικά हिन्दी Italiano Português Español English
+Search for articles...
+- All Collections
+- Trader Evaluations
+- Contract Limits & Funded Scaling System
+Contract Limits & Funded Scaling System
+What are the Contract Limits & How does Funded Scaling work?
+Updated over a week ago
+Table of contents
+Blue Guardian Futures uses a structured contract limit system across all account types to help traders manage risk effectively while scaling responsibly. Contract limits define the maximum number of contracts you can hold at one time. This applies to both Mini and Micro contracts .
+Equivalent ratio: 1 Mini = 10 Micros
+This means traders can mix contracts as long as they stay within the total equivalent risk limit. Example: A trader on a $50K Standard Account with a 4 Mini / 40 Micro limit can hold:
+- 4 Minis
+- 40 Micros
+- 2 Minis + 20 Micros
+- Any equivalent combination within the limit
+Standard Account Contract Limits (Flat Structure)
+Standard Accounts use fixed contract limits across both Evaluation and Funded phases.
+This means your maximum position size remains the same from start to finish.
+Account Size
+Max Minis
+Max Micros
+$25,000
+1
+10
+$50,000
+4
+40
+$100,000
+8
+80
+$150,000
+12
+120
+Direct Account Contract Limits (Flat Structure)
+Direct Accounts follow the same contract structure as Standard Accounts.
+Since Direct Accounts are instant funded , traders receive full contract access immediately.
+Account Size
+Max Minis
+Max Micros
+$25,000
+1
+10
+$50,000
+4
+40
+$100,000
+8
+80
+$150,000
+12
+120
+Express Evaluation Contract Limits
+Express Accounts provide full contract access during evaluation .
+This allows traders to trade at full size while working toward qualification.
+Account Size
+Max Minis
+Max Micros
+$25,000
+1
+10
+$50,000
+4
+40
+$100,000
+8
+80
+$150,000
+12
+120
+Express funded scaling example
+Example:
+A trader passes a $100K Express Account .
+During evaluation, they had access to 8 Minis / 80 Micros . Once funded, they start at 3 Minis / 30 Micros . If the trader grows the account balance by $1,500+ and holds that profit through EOD, the account unlocks:
+4 Minis / 40 Micros, If they continue growing to the next trigger: 5 Minis / 50 Micros and so on.
+Reserve Evaluation Contract Limits
+Reserve Accounts provide full contract access during evaluation .
+This allows traders to trade at full size while working toward qualification.
+Account Size
+Max Minis
+Max Micros
+$25,000
+2
+20
+$50,000
+4
+40
+$100,000
+8
+80
+$150,000
+12
+120
+Reserve and Express Funded Scaling System
+Once you qualify for funded on Reserve or Express, your contract limits are reduced initially and increase progressively as your account balance grows.
+Scaling is updated at End of Day (EOD) based on your closing balance.
+Starting Funded Limits
+Account Size
+Starting Minis
+Starting Micros
+$25,000
+1
+10
+$50,000
+2
+20
+$100,000
+3
+30
+$150,000
+3
+30
+Scaling Trigger Table
+Trigger
+$25K
+$50K
+$100K
+$150K
+Starting
+1 / 10
+2 / 20
+3 / 30
+3 / 30
++$1,500
+2 / 20
+3 / 30
+4 / 40
+4 / 40
++$2,000
+—
+4 / 40
+5 / 50
+5 / 50
++$3,000
+—
+—
+8 / 80
+8 / 80
++$4,500
+—
+—
+—
+12 / 120
+Reserve funded scaling example
+Example:
+A trader passes a $100K Reserve Account .
+During evaluation, they had access to 8 Minis / 80 Micros . Once funded, they start at 3 Minis / 30 Micros . If the trader grows the account balance by $1,500+ and holds that profit through EOD, the account unlocks:
+4 Minis / 40 Micros, If they continue growing to the next trigger: 5 Minis / 50 Micros and so on.
+Important Notes
+- Scaling only applies to Funded Reserve & Express Accounts
+- Standard and Direct Accounts do not use scaling
+- Contract limits are based on simultaneous open positions
+- Orders exceeding the contract limit will be automatically rejected
+- If your EOD balance falls below a scaling trigger, your contract tier may be reduced accordingly
+For any additional questions or assistance, please contact the Blue Guardian support team through live chat or via email at [email protected] . We’re always happy to help.
+Related Articles
+- Standard Account Rules
+- Reserve Account Rules
+- Express Account Rules
+- Direct Account Rules
+- Legacy Account Models (Old account)
+Related Articles
+- Standard Account Rules
+- Reserve Account Rules
+- Express Account Rules
+- Direct Account Rules
+- Legacy Account Models (Old account)
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+Trade like a Guardian
+-
+-
+-

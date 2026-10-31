@@ -1,0 +1,312 @@
+Reserve Account Rules | Blue Guardian | Futures
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+< Go to website English Français Deutsch Ελληνικά हिन्दी Italiano Português Español English
+< Go to website English Français Deutsch Ελληνικά हिन्दी Italiano Português Español English
+Search for articles...
+- All Collections
+- Account Model
+- Reserve Account Rules
+Reserve Account Rules
+Updated yesterday
+Table of contents
+Quick Overview
+The Blue Guardian Futures Reserve Evaluation is designed for traders who prefer higher payout potential with no daily loss limits , while still following our trading rules and risk parameters.
+Balance
+$25,000
+$50,000
+$100,000
+$150,000
+Profit Target
+$1,500
+$3,000
+$6,000
+$9,000
+Max Position Size
+2 Mini's/20 Micro's on evaluation
+progressive scaling system on funded
+4 Mini's/40 Micro's on evaluation
+progressive scaling system on funded
+8 Mini's/ 80 Micro's on evaluation
+progressive scaling system on funded
+12 Mini's/ 120 Micro's on evaluation
+progressive scaling system on funded
+Daily Loss Limit
+-
+-
+-
+-
+Max Drawdown
+$1,000
+$2,000
+$3,000
+$4,500
+Drawdown Mode
+EOD
+EOD
+EOD
+EOD
+Position Scaling
+Yes
+Yes
+Yes
+Yes
+Consistency
+50% on challenge only
+​
+Optional 40% for a lower price
+50% on challenge only
+​
+Optional 40% for a lower price
+50% on challenge only
+​
+Optional 40% for a lower price
+50% on challenge only
+​
+Optional 40% for a lower price
+News Trading
+Allowed
+Allowed
+Allowed
+Allowed
+Payouts
+Instant Payout
+Instant Payout
+Instant Payout
+Instant Payout
+Overview of Reserve Account Rules
+The Blue Guardian Futures Reserve Challenge is designed for traders who prefer a flexible trading model with no daily loss limits and higher payout potential.
+Traders can qualify for funded trading by completing the one-phase evaluation process, reaching the required profit target while complying with all trading rules and risk management requirements.
+Below is a complete overview of the rules, trading conditions, and payout requirements for the Reserve account model.
+Profit Target
+Traders must achieve a 6% profit target on phase 1 while respecting all trading rules and risk limits.
+​
+Once the target is reached, the account will undergo a final review . After successful verification, the trader will move forward as a Funded Trader .
+Daily Loss Limit
+Reserve Accounts have no Daily Loss Limit by default. Traders can select an optional Daily Loss Limit at checkout for a lower price.
+​
+If the optional Daily Loss Limit is selected, the limits below apply. All traders must continue to manage their risk carefully and remain within the overall trailing drawdown limit.
+​
+The optional checkout Daily Loss Limits are:
+- $25,000 Account: $600
+- $50,000 Account: $1,200
+- $100,000 Account: $1,700
+- $150,000 Account: $3,000
+With the optional Daily Loss Limit selected, exceeding the applicable limit will result in a soft breach.
+Maximum Trailing Drawdown
+Reserve Accounts use an End-of-Day (EOD) trailing drawdown , with the drawdown allowance determined by your account size.
+​
+Your maximum loss limit moves up when you achieve a new highest end-of-day closing balance . It does not trail unrealized profits during the trading session or move back down after a losing day.
+​
+During the evaluation, the maximum loss limit never stops trailing . It keeps following your highest end-of-day closing balance for the entire challenge.
+On a funded account, the maximum loss limit stops trailing once it reaches your starting balance plus $100 . After this, the limit remains fixed, even as your account balance continues to grow.
+Account Size
+EOD Balance Required to Stop Trailing
+Fixed Maximum Loss Limit
+$25,000
+$26,100
+$25,100
+$50,000
+$52,100
+$50,100
+$100,000
+$103,100
+$100,100
+$150,000
+$154,600
+$150,100
+Example (funded): On a $50,000 funded account, once your end-of-day closing balance reaches $52,100, your maximum loss limit locks at $50,100. Any further profits increase the distance between your balance and this fixed limit.
+Is there a monthly fee or activation fee?
+No. Blue Guardian Futures does not require any monthly subscription fees or activation fees before receiving your funded account.
+The only payment required is the initial account purchase fee at checkout.
+News Trading Rule
+News trading is allowed on both Challenge and Funded Accounts.
+Traders are free to open, manage and close trades during high-impact news events. However, we strongly advise traders to remain cautious during volatile market conditions, as slippage and spread widening may occur.
+Stop Loss Rules
+At Blue Guardian Futures, using a Stop Loss is not mandatory, but it is strongly encouraged as part of proper risk management.
+The purpose is to promote disciplined trading and prevent reckless behavior such as intentionally relying on the account’s trailing threshold or maximum loss limits as a substitute for a stop loss.
+Trading without a clear risk management plan, using excessive sizing, inconsistent contract sizes, or “all-in” strategies may be considered gambling and can lead to account review.
+We encourage all traders to:
+- Define their risk before entering a trade
+- Use consistent position sizing
+- Follow a structured trading plan
+- Avoid martingale or loss-recovery strategies
+Successful trading is built on consistency, discipline, and proper risk management, not on relying solely on account limits to control losses.
+Can I use copy trading or trade copiers?
+Copy trading is allowed at Blue Guardian Futures, including the use of third-party copier software , provided all copied trades are between accounts legally owned by the same trader . This includes copying between your own Blue Guardian Futures accounts and your own external accounts .
+Copying trades from other traders , signal providers, trade groups, or allowing third parties to manage or execute trades on your behalf is strictly prohibited and may result in account review or termination.
+Microscalping Rule
+At Blue Guardian Futures , scalping is allowed; however, micro scalping is restricted . Less than 50% of your total profits may come from trades held for under 10 seconds .
+This rule applies during both the Evaluation and Funded phases. Excessive reliance on ultra-short duration trades may result in profit removal, payout review or further account action.
+Consistency Rule
+For Blue Guardian Futures Reserve Accounts , a 50% consistency rule applies on Challenge Accounts only .This means that your highest-profit trading day cannot account for more than 50% of your total profits .
+To successfully complete the Challenge , you must not only reach the required profit target but also satisfy the 50% consistency requirement . If the consistency rule has not been met, the account will not be eligible to pass until your profit distribution becomes compliant.
+Violating the consistency rule does not breach or terminate your account . You simply need to continue trading until your highest-profit day represents less than 50% of your total profits .
+Example
+If your highest-profit trading day is $2,000 , your total profits must exceed $4,000 before you satisfy the 50% consistency requirement.
+Optional 40% Consistency Add-On
+Traders who prefer a lower-priced Reserve evaluation can select the optional “40% Consistency” add-on during checkout.
+​
+When this add-on is selected, the standard 50% Consistency Rule is replaced by a 40% Consistency Rule. This means your highest-profit trading day cannot account for more than 40% of your total profits.
+​
+For example, if your highest-profit day is $2,000, your total profits must reach at least $5,000 to satisfy the 40% requirement.
+The Consistency Rule applies only during the Challenge phase. Funded Reserve Accounts do not have a Consistency Rule.
+Consistency Cushion
+To give traders a little more flexibility, the Reserve Account includes a 1% Consistency Cushion . This means your largest profitable trading day can make up up to 51% of your total profits , instead of being strictly limited to 50%. The 1% Consistency Cushion applies to the standard 50% Consistency Rule only, allowing the highest profit day to represent up to 51% of total profits.
+The cushion is there to help traders who narrowly exceed the consistency limit by a small amount, so they don’t have to take an extra trading day just because they were slightly over.
+While this flexibility may allow some traders to complete the evaluation in as little as two trading days, we always recommend focusing on consistent trading rather than trying to pass as quickly as possible.
+Example
+Account Size
+Profit Target
+Standard 50% Limit
+Maximum with 1% Cushion
+$25,000
+$1,500
+$750
+$765
+$50,000
+$3,000
+$1,500
+$1,530
+$100,000
+$6,000
+$3,000
+$3,060
+$150,000
+$9,000
+$4,500
+$4,590
+Example: On a $50,000 Reserve Account , the profit target is $3,000 . Normally, your largest profitable day could not exceed $1,500 (50% of the profit target). With the 1% Consistency Cushion , your largest profitable day can be up to $1,530 and still meet the consistency requirement.
+Important: The values in the table above are provided as examples based on reaching the exact profit target.
+The Consistency Cushion is not a fixed dollar amount . It is applied as a 1% tolerance to the consistency calculation, so the maximum allowable profit for your largest trading day will adjust based on your total profits at the time.
+How does payouts affect Reserve Drawdown?
+After any payout/withdrawal , the drawdown floor will locked at your starting balance + $100 . This ensures the account remains active and prevents traders from withdrawing down to the exact breach level.
+Examples:
+- $25,000 Account: Drawdown locks at $25,100
+- $50,000 Account: Drawdown locks at $50,100
+- $100,000 Account: Drawdown locks at $100,100
+- $150,000 Account: Drawdown locks at $150,100
+Rewards and Payout Structure
+Payout cap
+The payout cap on Blue Guardian Futures Reserve Accounts varies depending on your account size and is designed to promote steady, sustainable account growth while rewarding consistency over time.
+Payouts follow a fixed cap structure , meaning the same payout cap applies to every payout request . Traders may request up to 50% of their profits , subject to the maximum payout cap assigned to their account size.
+This structure provides clear and consistent payout limits while allowing traders to build and scale their accounts steadily.
+Account Size
+Cap Per Request
+$25,000
+50% of profit, up to $1,000
+$50,000
+50% of profit, up to $2,000
+$100,000
+50% of profit, up to $2,500
+$150,000
+50% of profit, up to $3,000
+Example
+If a trader on a $50,000 Reserve Account makes $3,000 in total profit , they may request up to $1,500 .
+If they make $4,000 in total profit , they may request up to $2,000 .
+If they make $5,000 in total profit , 50% would equal $2,500, but the maximum payout is still $2,000 because of the account’s payout cap.
+Minimum Winning Days
+To become eligible for a payout on Reserve account, traders must complete at least 5 winning days . Each winning day must meet the minimum profit threshold based on account size:
+- $25,000: $100
+- $50,000: $150
+- $100,000: $200
+- $150,000: $250
+Winning days do not need to be consecutive. The winning day counter resets after each approved payout .
+Reserve Payout Eligibility – Net Profit Requirement
+Reserve Accounts purchased before July 27, 2026 will remain under their original payout rules for the life of the account.
+For Reserve Accounts purchased on or after July 27, 2026 , the following requirements apply for payouts 2–5 :
+- Complete 5 winning days at the minimum required amount.
+- Reach the required net profit since the last approved payout .
+Account Size
+Winning Day Minimum
+Net Profit Required
+Payout Cap
+$25,000
+$100
+$500
+$1,000
+$50,000
+$150
+$750
+$2,000
+$100,000
+$200
+$1,000
+$2,500
+$150,000
+$250
+$1,250
+$3,000
+How is Net Profit Calculated?
+Net profit includes all profits and losses since the last approved payout .
+For example, on a $50,000 account, if you make $900 in profit but have $150 in losses, your net profit is $750 ($900 - $150 = $750), which meets the $750 net-profit requirement. If your net profit is below $750, you must continue trading until the required amount is reached.
+A trader with a $50,000 Reserve Account completes 5 winning days and makes $900 in profit but also has a $300 losing day during the same payout cycle, making their net profit $600 ($900 - $300 = $600). Since this is below the required $750 net profit, the trader must continue trading until their net profit reaches at least $750.
+Does This Change the Payout Amount?
+No. The payout calculation remains the same. Traders may request up to 50% of their total accumulated profit , subject to their account’s payout cap.
+The net-profit requirement is only used to determine payout eligibility .
+After a Payout
+Once a payout is approved, both the 5 winning-day count and net-profit requirement reset for the next payout cycle.
+Profit Split
+Funded traders receive a 90% profit split .
+Example:
+If a trader earns $1,000 in profit , the payout would be:
+- Trader receives $900
+- Firm receives $100
+Payout Schedule
+- Payout Frequency: Instant payout after meeting the winning days requirement.
+- Processing Time: 24 business hours
+- Withdrawal Methods: Rise or Crypto
+- Minimum Withdrawal : $500 via crypto and $500 via rise
+Reserve Account Reset Fees
+Reserve accounts can be reset after a breach, allowing traders to restart their evaluation without purchasing a new account.
+​
+The reset fee is calculated at 10% less of the base-discounted amount paid for the account . Since Reserve accounts are available across three different challenge types, the exact reset fee will vary depending on the challenge selected, the account size and any promotional discount or coupon applied at the time of purchase.
+Reserve Funded Account Reactivation
+Traders with a Reserve funded account may reactivate a breached account by paying a reactivation fee, without repeating the evaluation process, provided the conditions below are met.
+​
+Eligibility and Conditions
+- Before the first payout only: The account must have breached before receiving its first payout. Once a payout has been received, the account is no longer eligible.
+- Maximum of two reactivations: Each eligible account can be reactivated up to two times . After this, a new evaluation must be completed.
+- 30-day window: Reactivation must be purchased within 30 calendar days of the account’s breach.
+- Reactivation timing: Once the fee is paid, the account will be reactivated at the start of the next trading session .
+Reactivation Fees
+Please refer to the table below for the applicable Reserve funded account reactivation (reset) fees by account size.
+Account Size
+Reactivation Fee
+$25,000
+$299
+$50,000
+$599
+$100,000
+$750
+$150,000
+$899
+Please note: Reactivation is available for all Reserve funded accounts that meet these conditions, regardless of when the account was issued.
+For any additional questions or assistance, please contact the Blue Guardian support team through live chat or via email at [email protected] . We’re always happy to help.
+Related Articles
+- Standard Account Rules
+- Express Account Rules
+- Direct Account Rules
+- What is the Blue Guardian Futures Live Account?
+- Legacy Account Models (Old account)
+Related Articles
+- Standard Account Rules
+- Express Account Rules
+- Direct Account Rules
+- What is the Blue Guardian Futures Live Account?
+- Legacy Account Models (Old account)
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+Trade like a Guardian
+-
+-
+-

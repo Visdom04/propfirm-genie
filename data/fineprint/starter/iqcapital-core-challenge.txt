@@ -1,0 +1,105 @@
+Core Futures Challenge | IQ Capital Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+IQ Capital Home Dashboard English Deutsch English
+Search ⌘ K
+- General Informations
+- Trading Rules
+- Futures Accounts
+- Crypto Accounts
+- CFD Accounts
+- Performance-Rewards
+- Elite Accounts
+All Collections Futures Accounts Futures Challenges Core Futures Challenge Core Futures Challenge
+Written by Theo T.
+Updated this week
+Copy for LLM
+What is a Core Futures Challenge Account?
+The Core Futures Challenge Account is the stage before the Funded Account. It allows you to prove your trading skills with lower capital requirements and slightly more flexible rules.
+Our Core plan is built around the Max-Position-Loss . Instead of a daily loss limit, your risk is capped per position: a single position may not lose more than 1% in the Challenge and 0.5% in Funding. This keeps individual trades controlled while giving you the freedom to trade throughout the day.
+Are profits withdrawable?
+No, the Challenge Account is fully based on simulated capital. All profits generated are only used for qualification purposes and cannot be withdrawn.
+Core Challenge Account Sizes & Rules
+Rule
+$50,000 Account
+$100,000 Account
+Profit Target
+$3,000
+$6,000
+Max Drawdown
+$3,000
+$6,000
+Max Position Loss
+1%*
+1%*
+Breach logic*
+2x Soft / 3rd Hard
+2x Soft / 3rd Hard
+Daily Loss Limit (DLL)
+No Limit
+No Limit
+Consistency
+None
+None
+Max Position Size
+5 Minis / 50 Micros
+10 Minis / 100 Micros
+Extension Fee
+$19
+$ 0**
+$19
+$0**
+Duration
+30 Days
+90 Days **
+30 Days
+90 Days **
+Inactivity Rule **
+8 calendar day
+8 calendar day
+Max Accounts
+10
+10
+*A soft breach means the position is automatically closed, but the account remains active. A hard breach means the account is closed.
+​ ** For accounts purchased on or after October 26, 2022, at 6:00 PM (18:00)
+What happens after passing?
+Once you reach the profit target, you can directly activate the account in the dashboard by paying the activation fee.
+You will then receive a new Core Funded Account with the same account size.
+There is no time limit for activating a passed Challenge.
+What happens if I violate a rule?
+If you breach the account, you may restart the Challenge Account.
+Duration (for accounts purchased before October 22, 2026 at 6:00 PM)
+A Challenge Account is valid for 30 days. You may manually extend it in the dashboard for an additional 30 days for $19. If no extension is purchased, access to the account will permanently expire.
+​ *older accounts are unfortunately still technically tied to the old data feed for $39
+Inactivity Rule (for accounts purchased on or after October 22, 2026, at 6:00 PM)
+At least one trade must be executed within 8 calendar days. Failure to do so will result in the account being closed.
+​
+​
+Did this answer your question? Disappointed Reaction Neutral Reaction Smiley Reaction
+On this page
+- What is a Core Futures Challenge Account?
+- Are profits withdrawable?
+- Core Challenge Account Sizes & Rules
+- What happens after passing?
+- What happens if I violate a rule?
+- Duration (for accounts purchased before October 22, 2026 at 6:00 PM)
+- Inactivity Rule (for accounts purchased on or after October 22, 2026, at 6:00 PM)
+IQ Capital Help Center

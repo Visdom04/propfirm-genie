@@ -1,5 +1,135 @@
 [
   {
+    "id": "fnf-flex-reward-5c2b4346b3c3",
+    "pageId": "fnf-flex-reward",
+    "detectedAt": "2026-10-30T10:23:04.229Z",
+    "firm": "FundedNext Futures",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "FundedNext Futures rules",
+    "summary": "Was “- FundedNext Futures Rapid Daily FundedNext Account All Rules”. Now “- FundedNext Futures Rapid Pro FundedNext Account: All Rules”.",
+    "sourceUrl": "https://helpfutures.fundednext.com/en/articles/14878865-what-are-the-performance-reward-eligibility-criteria-for-flex-fundednext-account",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "- FundedNext Futures Rapid Daily FundedNext Account All Rules",
+        "after": "- FundedNext Futures Rapid Pro FundedNext Account: All Rules",
+        "beforeLine": "- FundedNext Futures Rapid Daily FundedNext Account All Rules",
+        "afterLine": "- FundedNext Futures Rapid Pro FundedNext Account: All Rules"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "- FundedNext Futures Rapid Daily FundedNext Account All Rules"
+        ],
+        "after": [
+          "- FundedNext Futures Rapid Pro FundedNext Account: All Rules"
+        ],
+        "removed": [
+          "- FundedNext Futures Rapid Daily FundedNext Account All Rules"
+        ],
+        "added": [
+          "- FundedNext Futures Rapid Pro FundedNext Account: All Rules"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-10-31T09:54:24.806Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-10-31T09:54:24.806Z"
+  },
+  {
+    "id": "fnf-prohibited-9dff83279f87",
+    "pageId": "fnf-prohibited",
+    "detectedAt": "2026-10-30T10:23:04.229Z",
+    "firm": "FundedNext Futures",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "FundedNext Futures consistency rule",
+    "summary": "Was “- What is the Disciplined Trader Program of FundedNext Futures, and how does it help traders build consistency?”.",
+    "sourceUrl": "https://helpfutures.fundednext.com/en/articles/14298337-what-are-the-prohibited-trading-strategies-of-fundednext-futures",
+    "facts": [
+      {
+        "label": "Consistency rule",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "- What is the Disciplined Trader Program of FundedNext Futures, and how does it help traders build consistency?",
+        "after": "—",
+        "beforeLine": "- What is the Disciplined Trader Program of FundedNext Futures, and how does it help traders build consistency?",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "- What is the Disciplined Trader Program of FundedNext Futures, and how does it help traders build consistency?"
+        ],
+        "after": [],
+        "removed": [
+          "- What is the Disciplined Trader Program of FundedNext Futures, and how does it help traders build consistency?"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-10-31T09:54:24.806Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-10-31T09:54:24.806Z"
+  },
+  {
+    "id": "fnf-prohibited-a528e7790c74",
+    "pageId": "fnf-prohibited",
+    "detectedAt": "2026-10-30T10:23:04.229Z",
+    "firm": "FundedNext Futures",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "FundedNext Futures rules",
+    "summary": "Now “- What Are the Trading Hours in FundedNext Futures?”.",
+    "sourceUrl": "https://helpfutures.fundednext.com/en/articles/14298337-what-are-the-prohibited-trading-strategies-of-fundednext-futures",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- What Are the Trading Hours in FundedNext Futures?",
+        "beforeLine": "",
+        "afterLine": "- What Are the Trading Hours in FundedNext Futures?"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- What Are the Trading Hours in FundedNext Futures?"
+        ],
+        "removed": [],
+        "added": [
+          "- What Are the Trading Hours in FundedNext Futures?"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-10-31T09:54:24.806Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-10-31T09:54:24.806Z"
+  },
+  {
     "id": "mfp-payouts-d4fbe437c9cc",
     "pageId": "mfp-payouts",
     "detectedAt": "2026-10-29T10:20:43.210Z",

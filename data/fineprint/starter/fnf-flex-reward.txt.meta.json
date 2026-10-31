@@ -1,8 +1,6 @@
 {
   "url": "https://helpfutures.fundednext.com/en/articles/14878865-what-are-the-performance-reward-eligibility-criteria-for-flex-fundednext-account",
-  "hash": "d72522f1dbc9f250d7178ceb16aaa09d9f662db6d43debac05d73c43e0deaf22",
-  "state": "pending",
-  "checkedAt": "2026-10-30T10:23:04.229Z",
-  "pendingHash": "52a0770d17390ed6a8ffe8d9b117e5658b8c5caccd8a88872b90ec2b207b782b",
-  "pendingSince": "2026-10-30T10:23:04.229Z"
+  "hash": "52a0770d17390ed6a8ffe8d9b117e5658b8c5caccd8a88872b90ec2b207b782b",
+  "state": "changed",
+  "checkedAt": "2026-10-31T09:54:24.806Z"
 }

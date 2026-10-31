@@ -1,0 +1,30 @@
+FXIFY Futures Trading Evaluation Process | Fxify Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content FXIFY Futures Trading Evaluation Process
+November 11, 2025
+Table of contents
+Our Trading Evaluation is designed to help traders refine their skills and develop strong trading habits while working toward securing a funded account. Traders who successfully pass the evaluation will earn the title of FXIFY Futures Funded Trader and gain access to exciting funding opportunities.
+How It Works
+To participate in a Trading Evaluation, you'll need to subscribe to a Standard or Expert monthly plan . Evaluations can be reset at any time if needed.
+Alternatively, traders may choose the Sim to Live Plan , which is a one-time payment option with no recurring subscription fees. This plan allows traders to progress directly to a Sim Live Account without having to pass the evaluation. Please note that resets are not available on the Sim to Live Plan.
+Passing the Evaluation
+To pass, you must achieve and maintain a Profit Target of 6% – 7% , depending on whether you have selected a Standard or Expert . Reaching this goal demonstrates your trading consistency and ability to manage risk effectively.
+Failure Condition
+There’s only one way to fail - by allowing your account balance to hit or exceed the Maximum Loss Limit (MLL) . The MLL is set between 4% – 5% , depending on which account type has been selected. This rule applies across Standard, Expert, and Sim to Live plans.
+Daily Loss Limits
+- Standard Plan – 2%
+- Expert Plan – 3%
+- Sim to Live Plan – 2.5%
+Hitting the daily loss limit is only considered a soft breach , meaning your account will be set to read-only for the rest of the trading day. You can resume trading the next day.
+Closing Trades
+All trades must be closed by 4:59 PM ET each day on Evaluation and Funded Accounts . If you forget, our system will automatically close your positions. However, we recommend closing trades manually to remain fully aware of your P&L (Profit and Loss) .
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents

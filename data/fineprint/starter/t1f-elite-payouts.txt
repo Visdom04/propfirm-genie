@@ -1,0 +1,100 @@
+🏆 Elite Sim Funded Account: Payout Requirements | Top One Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+Top One Futures Home
+Top One Futures Home
+Search for articles...
+- All Collections
+- Elite Accounts
+- 🏆 Elite Sim Funded Account: Payout Requirements
+🏆 Elite Sim Funded Account: Payout Requirements
+Congratulations on your Elite Sim Funded Account! This account is designed to reward consistent, profitable traders. To be eligible to request a payout, you must meet three key requirements.
+Updated over 4 weeks ago
+Table of contents
+Congratulations on your Elite Sim Funded Account ! This account is designed to reward consistent, profitable traders. To be eligible to request a payout, you must meet three key requirements: a profit target , the 25% consistency rule , and the maximum payout amount per request.
+In short: reach the profit target (6% for your first payout, 5% for the second, 4% from the third onwards), keep your best day under 25% of total profit, and request no more than the maximum per withdrawal for your account size.
+1. The Profit Target
+You must reach a specific profit target to be eligible for each payout. This target is dynamic , meaning it changes for your first three payouts to encourage consistent growth.
+Payout
+Profit target
+First payout
+6% of your initial account balance
+Second payout
+5% on top of your new balance (after the first payout is deducted)
+Third payout (and all future payouts)
+4% on top of your new balance (after the previous payout is deducted)
+Example using a $50,000 account
+Payout
+Balance
+Target
+Balance needed
+First payout
+$50,000
+6% of $50,000 = $3,000
+$53,000
+Second payout (after a $1,500 payout)
+$51,500 ($53,000 - $1,500)
+5% of $51,500 = $2,575
+$54,075
+Third payout (after a $1,000 payout)
+$53,075 ($54,075 - $1,000)
+4% of $53,075 = $2,123
+$55,198
+2. The 25% Consistency Rule
+This is a key performance metric. It ensures that your profits are earned steadily, rather than from a single "lucky" day. The rule: your single best trading day's profit cannot account for more than 25% of your total accumulated profit at the time of your payout request. The formula: (Best Day's Profit / Total Profit) x 100 = Your Consistency Score.
+Example
+Total profit
+Best day
+Calculation
+Result
+Example 1
+$3,000
+$600
+($600 / $3,000) x 100 = 20%
+PASS (20% is less than 25%)
+Example 2
+$3,000
+$1,000
+($1,000 / $3,000) x 100 = 33.3%
+FAIL (33.3% is greater than 25%)
+"I failed... how do I fix my score?" If your best day is too high, you must "fix" your score by accumulating more profits. You need to make that best day equal 25% of a new, larger total profit. Using Example 2:
+- Your best day is $1,000.
+- To find the profit target you need: $1,000 / 0.25 = $4,000
+- You must grow your total profit to $4,000 (without having another day better than $1,000) to meet the 25% rule.
+3. Maximum Payout Amount
+To ensure consistent growth and risk management, there is a maximum amount you can withdraw per payout request . This limit is based on your account size.
+Account size
+Maximum per withdrawal
+$25,000
+$1,500
+$50,000
+$2,500
+$100,000
+$3,000
+$150,000
+$3,500
+If your profit exceeds this amount, you can simply request the maximum, and the remaining profit will stay in your account to be withdrawn in a future payout request.
+Related articles
+- Consistency Rule in Elite Sim Funded Accounts Explained
+- What Are the Requirements to Request a Payout?
+- Maximum Payout Until Live Explained
+- Understanding the Profit Split on Sim Funded Accounts
+- Elite Sim Funded Account Reset Explained
+Related Articles
+- Consistency Rule in Elite Sim Funded Accounts Explained
+- Overview of the Instant Sim Funded Program
+- 🔥 Ignite Accounts : Payout Requirements
+- 📈 Instant Sim Funded Account: Payout Requirements
+- Elite ACCESS – Buffer + Profit target
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+Intercom We run on Intercom

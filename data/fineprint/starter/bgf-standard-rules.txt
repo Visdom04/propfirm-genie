@@ -1,0 +1,244 @@
+Standard Account Rules | Blue Guardian | Futures
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+< Go to website English Français Deutsch Ελληνικά हिन्दी Italiano Português Español English
+< Go to website English Français Deutsch Ελληνικά हिन्दी Italiano Português Español English
+Search for articles...
+- All Collections
+- Account Model
+- Standard Account Rules
+Standard Account Rules
+Standard account rules guidelines
+Updated this week
+Table of contents
+Quick Overview
+The Blue Guardian Futures Standard Evaluation is designed for traders who prefer a structured trading model with the flexibility to pass in as little as one trading day , while following our trading rules and risk parameters.
+Balance
+$25,000
+$50,000
+$100,000
+$150,000
+Profit Target
+$1,500
+$3,000
+$6,000
+$9,000
+Max Position Size
+1 Mini/10 Micro's
+4 Mini's/40 Micro's
+8 Mini's/ 80 Micro's
+12 Mini's/ 120 Micro's
+Daily Loss Limit
+-
+$1,000
+$2,000
+$3,000
+Breach Type
+-
+Soft Breach
+Soft Breach
+Soft Breach
+Max Drawdown
+$1,000
+$2,000
+$3,500
+$5,000
+Drawdown Mode
+EOD
+EOD
+EOD
+EOD
+Position Scaling
+Yes
+Yes
+Yes
+Yes
+Consistency
+40% on funded account
+40% on funded account
+40% on funded account
+40% on funded account
+News Trading
+Allowed
+Allowed
+Allowed
+Allowed
+Payouts
+3 Days
+3 Days
+3 Days
+3 Days
+Overview of Standard Account Rules
+The Blue Guardian Futures Standard Challenge is designed for traders who prefer a structured trading model with the flexibility to pass in as little as one trading day .
+Traders can qualify for funded trading by completing the one-phase evaluation process , reaching the required profit target while complying with all trading rules and risk management requirements.
+Below is a complete overview of the rules, trading conditions and payout requirements for the Standard account model .
+Profit Target
+Traders must achieve the phase 1 profit target for their account size: $1,500 on $25,000, $3,000 on $50,000, $6,000 on $100,000, and $9,000 on $150,000, while respecting all trading rules and risk limits.
+​
+Once the target is reached, the account will undergo a final review . After successful verification, the trader will move forward as a Funded Trader .
+Drawdown Limits
+Daily Loss Limit
+For Standard Accounts , the maximum daily loss limit is 2% of the initial balance , except for $25,000 accounts , which do not have a daily loss limit. If your balance or equity falls below the daily loss threshold, the system will automatically close all open trades and temporarily disable the account.
+Please note that breaching the daily drawdown is considered a soft breach , not a hard breach. The account will be automatically reinstated on the next trading day, allowing you to continue trading.
+Maximum Overall Drawdown (EOD)
+Standard Accounts use an End-of-Day (EOD) trailing drawdown , with the drawdown allowance determined by your account size.
+​
+Your maximum loss limit moves up when you achieve a new highest end-of-day closing balance . It does not trail unrealized profits during the trading session or move back down after a losing day.
+​
+During the evaluation, the maximum loss limit never stops trailing . It keeps following your highest end-of-day closing balance for the entire challenge.
+On a funded account, the maximum loss limit stops trailing once it reaches your starting balance plus $100 . After this, the limit remains fixed, even as your account balance continues to grow.
+Account Size
+EOD Balance Required to Stop Trailing
+Fixed Maximum Loss Limit
+$25,000
+$26,100
+$25,100
+$50,000
+$52,100
+$50,100
+$100,000
+$103,600
+$100,100
+$150,000
+$155,100
+$150,100
+Example (funded): On a $50,000 funded account, once your end-of-day closing balance reaches $52,100, your maximum loss limit locks at $50,100. Any further profits increase the distance between your balance and this fixed limit.
+Is there a monthly fee or activation fee?
+No. Blue Guardian Futures does not require any monthly subscription fees or activation fees before receiving your funded account.
+The only payment required is the initial account purchase fee at checkout.
+News Trading Rule
+News trading is allowed on both Challenge and Funded Accounts .
+Traders are free to open, manage and close trades during high-impact news events. However, we strongly advise traders to remain cautious during volatile market conditions, as slippage and spread widening may occur.
+Stop Loss Rules
+At Blue Guardian Futures , using a Stop Loss is not mandatory , but it is strongly encouraged as part of proper risk management.
+The purpose is to promote disciplined trading and prevent reckless behavior such as intentionally relying on the account’s trailing threshold or maximum loss limits as a substitute for a stop loss.
+Trading without a clear risk management plan, using excessive sizing, inconsistent contract sizes, or “all-in” strategies may be considered gambling and can lead to account review.
+We encourage all traders to:
+- Define their risk before entering a trade
+- Use consistent position sizing
+- Follow a structured trading plan
+- Avoid martingale or loss-recovery strategies
+Successful trading is built on consistency, discipline, and proper risk management, not on relying solely on account limits to control losses.
+Can I use copy trading or trade copiers?
+Copy trading is allowed at Blue Guardian Futures, including the use of third-party copier software , provided all copied trades are between accounts legally owned by the same trader . This includes copying between your own Blue Guardian Futures accounts and your own external accounts .
+Copying trades from other traders , signal providers, trade groups, or allowing third parties to manage or execute trades on your behalf is strictly prohibited and may result in account review or termination.
+Microscalping Rule
+At Blue Guardian Futures , scalping is allowed; however, micro scalping is restricted . Less than 50% of your total profits may come from trades held for under 10 seconds .
+This rule applies during both the Evaluation and Funded phases. Excessive reliance on ultra-short duration trades may result in profit removal, payout review or further account action.
+Consistency Rule
+At Blue Guardian Futures Standard Accounts , a 40% consistency rule applies on Funded Accounts only .
+This means that one trading day cannot account for more than 40% of your total profits within a payout cycle. If your highest profit day is equal to or greater than 40% of your total profits , the payout request option will remain unavailable until additional profits are made and your consistency falls below the 40% threshold. Violating the consistency rule does not breach or terminate your account. You will simply need to continue trading until your profit distribution becomes compliant.
+Example:
+If you make $2,000 in one trading day, your total profits must reach at least $5,000 to fall below the 40% consistency requirement.
+How does payouts affect Standard Drawdown?
+After any payout/withdrawal , the drawdown floor will locked at your starting balance + $100 . This ensures the account remains active and prevents traders from withdrawing down to the exact breach level.
+Examples:
+- $25,000 Account: Drawdown locks at $25,100
+- $50,000 Account: Drawdown locks at $50,100
+- $100,000 Account: Drawdown locks at $100,100
+- $150,000 Account: Drawdown locks at $150,100
+Rewards and Payout Structure
+Payout cap
+The payout cap varies depending on your account size and is designed to promote steady, sustainable account growth while rewarding consistency over time.
+For the Blue Guardian Futures Standard model, payouts now follow a tiered cap structure , where the first payout is subject to an initial cap, while subsequent payouts unlock the full payout potential as outlined in the table below. This approach helps traders secure profits early while progressing toward greater flexibility and higher withdrawals.
+Account Size
+1st Payout Cap
+2nd+ payout cap
+$25,000
+$1,500
+$2,000
+$50,000
+$2,500
+$3,000
+$100,000
+$3,000
+$3,500
+$150,000
+$4,000
+$4,500
+Buffer Balance (Payout Threshold)
+For the Standard model, the account balance must remain above the required buffer threshold before a payout can be requested.
+This means withdrawals are only available from profits earned beyond the buffer amount, and the buffer must stay intact at all times when submitting a payout request.
+Account Size
+Funded Buffer
+$25,000
+$1,100
+$50,000
+$2,100
+$100,000
+$3,600
+$150,000
+$5,100
+Example: A trader passes the evaluation and starts with a funded balance of $50,000 .To become eligible for a payout, the account balance must first exceed the required buffer of $52,100 .
+e.g if the balance reaches $54,000 , the trader would have $1,900 available for withdrawal ( $54,000 − $52,100 = $1,900 ), subject to the applicable payout cap.
+Profit Split
+Funded traders receive a 90% profit split .
+Example:
+If a trader earns $1,000 in profit , the payout would be:
+- Trader receives $900
+- Firm receives $100
+Payout Schedule
+- Payout Frequency: 3 days after placing first trade
+- Processing Time: 24 business hour
+- Withdrawal Methods: Rise or Crypto
+- Minimum Withdrawal : $500 via crypto and $500 via rise
+Standard Account Reset Fees
+Standard accounts can be reset if breached, allowing traders to restart their evaluation without purchasing a new account. Reset fees are fixed based on account size and remain unchanged regardless of any active promotions or discount codes.
+Please refer to the table below for the applicable reset fees by account size.
+Account Size
+Reset Fee
+$25,000
+$104
+$50,000
+$141
+$100,000
+$223
+$150,000
+$286
+Standard Funded Account Reactivation
+Traders on the Standard model may be eligible to reactivate a breached funded account without repeating the evaluation process. This allows you to return directly to funded status by paying a reactivation fee.
+How it works:
+- Available only if the account is breached before the first payout .
+- Once a payout has been received, the account is no longer eligible for reactivation.
+- Traders can reactivate the same account up to 2 times . After that, a new evaluation must be completed.
+- The reactivation option remains available for 30 calendar days from the date of breach.
+- Once the fee is paid, the account will be reactivated at the start of the next trading session.
+Please refer to the table below for the applicable reactivation fees by account size.
+Account Size
+Reactivation Fee
+$25,000
+$450
+$50,000
+$750
+$100,000
+$900
+$150,000
+$1,200
+For any additional questions or assistance, please contact the Blue Guardian support team through live chat or via email at [email protected] . We’re always happy to help.
+Related Articles
+- Reserve Account Rules
+- Express Account Rules
+- Direct Account Rules
+- What is the Blue Guardian Futures Live Account?
+- Legacy Account Models (Old account)
+Related Articles
+- Reserve Account Rules
+- Express Account Rules
+- Direct Account Rules
+- Legacy Account Models (Old account)
+- Payout Policy
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+Trade like a Guardian
+-
+-
+-

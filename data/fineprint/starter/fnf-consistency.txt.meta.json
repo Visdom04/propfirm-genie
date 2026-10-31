@@ -1,6 +1,8 @@
 {
   "url": "https://helpfutures.fundednext.com/en/articles/17230245-is-there-any-consistency-rule-to-be-followed-in-the-fundednext-futures-challenge-fundednext-account",
   "hash": "d0ba0ac3aba246445811d830a1d3d45902a083ebd40b2b1d86887dfd30dea2af",
-  "state": "baseline",
-  "checkedAt": "2026-10-28T12:59:58.070Z"
+  "state": "pending",
+  "checkedAt": "2026-10-31T09:54:24.806Z",
+  "pendingHash": "3e2294e9b13709b332fbd8906f0e7f43c98edf42791f95317e6f76aae7a95808",
+  "pendingSince": "2026-10-31T09:54:24.806Z"
 }

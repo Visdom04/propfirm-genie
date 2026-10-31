@@ -1,0 +1,116 @@
+Core Futures Funding | IQ Capital Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+IQ Capital Home Dashboard English Deutsch English
+Search ⌘ K
+- General Informations
+- Trading Rules
+- Futures Accounts
+- Crypto Accounts
+- CFD Accounts
+- Performance-Rewards
+- Elite Accounts
+All Collections Futures Accounts Futures Instant- / Funding Core Futures Funding Core Futures Funding
+Written by Theo T.
+Updated this week
+Copy for LLM
+What is a Core Futures Funded Account?
+The Core Futures Funded Account is the next stage after passing the challenge and allows you to trade under realistic conditions while qualifying for performance rewards.
+Are profits withdrawable?
+Yes, profits generated in the Funded Account can be paid out according to the performance reward structure.
+Core Futures Funded Account Sizes & Rules
+Rule
+$50,000 Account
+$100,000 Account
+Max Drawdown
+$3,000
+$6,000
+Max Position Loss
+0.5%*
+0.5%*
+Breach Logic*
+2x Soft / 3x Hard
+2x Soft / 3x Hard
+Daily Loss Limit (DLL)
+No Limit
+No Limit
+Consistency
+30%
+30%
+Max Position Size
+5 Minis / 50 Micros
+10 Minis / 100 Micros
+Extension Fee
+$19
+$ 0 **
+$19
+$ 0 **
+Duration
+30 Days
+unlimited **
+30 Days
+unlimited **
+Inactivity Rule **
+8 Days
+8 Days
+Max Accounts
+10
+10
+*Reaching the daily loss limit results in a "soft breach"; reaching it a second time constitutes a "hard breach," meaning the account will be closed.
+​
+** For accounts purchased on or after October 26, 2022, at 6:00 PM (18:00)
+Consistency & Profit Target
+In the Core Futures Funded Account, the profit target is determined by the 30% consistency rule.
+Your best trading day may not exceed 30% of your total profits.
+The consistency resets after each performance reward payout and is recalculated based on your next highest profit day.
+Example
+You start with a fresh account and make:
+- Day 1: $300 profit
+- Day 2: $270 profit
+Your highest profit day determines the required profit target.
+→ Best Day: $300
+Since this may only represent 30% of the total profit:
+300÷ 0.30 = 1000
+This means you must reach a total profit of $1,000 for your $300 best day to represent only 30% of total profits and satisfy the consistency rule.
+As long as you do not exceed $300 profit in a single day, the target remains unchanged.
+​
+Drawdown Adjustment After First Payout
+Once you receive your first performance reward payout, the Max Drawdown is adjusted to the account's original starting balance of $50,000 or $100,000. From this point on, the drawdown level is fixed.
+​
+​
+What happens if I violate a rule?
+If you lose the account through a hard breach, you may start a new funded account by paying a reset fee.
+Duration / Inactivity
+A Funded Account is valid for 30 days.
+You may manually extend it in the dashboard for an additional 30 days for $19.
+If no extension is purchased, access to the account will permanently expire.
+​
+** There is no fixed duration limit for a funded account; however, there is an inactivity rule. At least one trade must be executed within an 8-day period; otherwise, access to the account will be permanently terminated.
+Did this answer your question? Disappointed Reaction Neutral Reaction Smiley Reaction
+On this page
+- What is a Core Futures Funded Account?
+- Are profits withdrawable?
+- Core Futures Funded Account Sizes & Rules
+- Consistency & Profit Target
+- Drawdown Adjustment After First Payout
+- What happens if I violate a rule?
+- Duration / Inactivity
+IQ Capital Help Center

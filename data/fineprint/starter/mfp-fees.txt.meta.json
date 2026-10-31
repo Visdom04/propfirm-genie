@@ -1,6 +1,8 @@
 {
   "url": "https://docs.myfundedperpetuals.com/guides/commissions-and-fees",
   "hash": "e4e90fb1ee512ea7753a425dff6c7c3bef9d3c80929f4adaaf9d6422964a1816",
-  "state": "baseline",
-  "checkedAt": "2026-10-28T12:59:58.070Z"
+  "state": "pending",
+  "checkedAt": "2026-10-31T09:54:24.806Z",
+  "pendingHash": "f3ec8c8d60fc9058c8b44d58793a471aa937c52d695436a48c417d3f8c8a996b",
+  "pendingSince": "2026-10-31T09:54:24.806Z"
 }

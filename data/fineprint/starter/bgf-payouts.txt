@@ -1,0 +1,207 @@
+Payout Policy | Blue Guardian | Futures
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+< Go to website English Français Deutsch Ελληνικά हिन्दी Italiano Português Español English
+< Go to website English Français Deutsch Ελληνικά हिन्दी Italiano Português Español English
+Search for articles...
+- All Collections
+- Payouts
+- Payout Policy
+Payout Policy
+Updated this week
+Table of contents
+Futures Rewards & Payout Structure
+At Blue Guardian Futures, our payout system is designed to balance flexibility, consistency, and long-term account growth. Each funded model has its own payout structure, caps, and requirements tailored to different trading styles.
+How do payouts affect my drawdown?
+After any approved payout or withdrawal, your drawdown floor will automatically lock at:
+Starting Balance + $100
+This ensures your account remains active and prevents withdrawals down to the exact breach level.
+Examples
+Account Size
+Locked Drawdown Floor
+$25,000
+$25,100
+$50,000
+$50,100
+$100,000
+$100,100
+$150,000
+$150,100
+Payout Comparison by Account Type
+Standard Account
+Designed for traders who want structured growth with increasing payout flexibility.
+Payout Caps
+Account Size
+1st Payout Cap
+2nd+ Payout Cap
+$25,000
+$1,500
+$2,000
+$50,000
+$2,500
+$3,000
+$100,000
+$3,000
+$3,500
+$150,000
+$4,000
+$4,500
+Funded Buffer
+Withdrawals cannot be requested from the buffer amount. Only profits generated above the required buffer are eligible for withdrawal.
+Account Size
+Buffer Required
+$25,000
+$1,100
+$50,000
+$2,100
+$100,000
+$3,600
+$150,000
+$5,100
+Payout Requirements
+- Must meet payout target
+- Must maintain funded buffer
+- Payout available 3 days after first trade
+Reserve Account
+Built for traders who want flexibility without buffer restrictions.
+Payout Caps
+Account Size
+Cap Per Request
+$25,000
+50% of profit (up to $1,000)
+$50,000
+50% of profit (up to $2,000)
+$100,000
+50% of profit (up to $2,500)
+$150,000
+50% of profit (up to $3,000)
+Winning Day Requirement
+Account Size
+Minimum Winning Day
+$25,000
+$100
+$50,000
+$150
+$100,000
+$200
+$150,000
+$250
+Payout Requirements
+- Minimum 5 winning days
+- No buffer required
+- Winning days reset after payout
+Express Account
+Designed for traders seeking daily cash flow and fast access to profits.
+Max Daily Payout
+Account Size
+Daily Payout Cap
+$25,000
+$600
+$50,000
+$1,100
+$100,000
+$1,500
+$150,000
+$2,500
+Funded Buffer
+Withdrawals cannot be requested from the buffer amount. Only profits generated above the required buffer are eligible for withdrawal.
+Account Size
+Buffer Required
+$25,000
+$1,100
+$50,000
+$2,100
+$100,000
+$2,600
+$150,000
+$3,600
+Payout Requirements
+- Must maintain funded buffer
+- Instant payout once eligible
+- Subject to daily cap
+Direct Account
+Built for traders who want immediate access with no funded buffer requirement.
+Payout Caps
+Account Size
+Payouts 1–3
+Payouts 4+
+$25,000
+$1,000
+$1,000
+$50,000
+$2,000
+$2,500
+$100,000
+$2,500
+$3,000
+$150,000
+$3,000
+$3,500
+Profit Goals
+Account Size
+1st Payout Goal
+2nd+ Goal
+$25,000
+$1,500
+$1,000
+$50,000
+$3,000
+$2,000
+$100,000
+$6,000
+$3,500
+$150,000
+$9,000
+$4,500
+Payout Requirements
+- Must meet payout target
+- No funded buffer required
+- Subject to consistency rule
+Profit Split
+All funded traders receive a 90% profit split .
+Example:
+If a trader earns $2,000 :
+- Trader receives: $1,800
+- Firm receives: $200
+Payout Schedule
+Rule
+Details
+Processing Time
+Within 24 business hours
+Withdrawal Methods
+Rise or Crypto
+Minimum Withdrawal
+Express: $250 via Crypto or Rise. Standard, Reserve and Direct: $500 via Crypto or Rise.
+Maximum Crypto Payout
+$1,000 per payout request (all account types). Payouts above $1,000 must be requested via Rise, which has no maximum payout limit.
+Payout Processing Fee
+All payouts are subject to a 3% processing fee to cover payment processing and transaction costs.
+This means the final amount received may differ slightly from the amount displayed on your payout certificate.
+For any additional questions or assistance, please contact the Blue Guardian support team through live chat or via email at [email protected] . We’re always happy to help.
+Related Articles
+- Standard Account Rules
+- Reserve Account Rules
+- Express Account Rules
+- Direct Account Rules
+- Legacy Account Models (Old account)
+Related Articles
+- Standard Account Rules
+- Reserve Account Rules
+- Express Account Rules
+- Direct Account Rules
+- Legacy Account Models (Old account)
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+Trade like a Guardian
+-
+-
+-

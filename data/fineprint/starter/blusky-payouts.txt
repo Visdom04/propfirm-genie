@@ -1,0 +1,70 @@
+Payouts | BluSky Rules and Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+BluSky DashBoard BluSky Plans Support Chat English Français 简体中文 Español English
+BluSky DashBoard BluSky Plans Support Chat English Français 简体中文 Español English
+Search for articles...
+- All Collections
+- Funded
+- Payouts
+Payouts
+Payouts Rules
+Updated over 4 weeks ago
+Table of contents
+=> Daily Payout Processing
+Payouts requested before 11AM ET on trading day (excluding holidays) will be processed on the same day. Transfer times may take from 1-3 business days, depending on your bank and payout method. Payouts requested after 11AM ET will be processed the next business day. Remember sometimes there are situations out of our control and payouts can be delayed. We will communicate these situations the best we can.
+Payouts can be submitted by logging into your BluSky dashboard and clicking the menu icon on the upper right hand side of your dashboard:
+And then selecting the "Payouts" option to proceed with your payout request:
+=> No minimum days for payouts
+There are NO minimum days to trade to request payouts as long as you are above your initial starting balance in your Sim Funded or Brokerage Account . You just need to reach the point of profit where your account moves from BluLive to a Sim Funded/Brokerage Account.
+​
+You will be funded in a Sim Funded Account after having passed the Buffer account, so all the profits you make in it are real and we're happy to transfer over the eligible initial balance over to the Sim Funded account. It's also how we scale our business.
+=> Payouts in Brokerage account
+- Minimum Withdrawal Amount: The standard baseline minimum withdrawal amount is $500.
+- Orbit Brokerage Thresholds: For traders operating under Orbit Brokerage Account parameters, you are eligible to request payouts on any profit amounts above a $100 profit threshold. However, requesting a payout down to the $100 initial baseline will result in account closure. Repeatedly withdrawing down to this $100 baseline instead of intentionally trading your account may result in further consequences at the discretion of the Risk Team.
+- Minimum Payout: To qualify your standard Sim Funded/Brokerage Account for payouts, your profit balance must be above your account's initial starting balance (or the $100 profit baseline for Orbit Brokerage Accounts) by $500.
+- Trading Requirement: All you need is one meaningful profitable day between payout requests. (Flipping contracts won’t count — trade with intent.)
+- Max Payout Caps: Max Payout cap amounts per week in Sim Funded can be found here:
+Sim Funded Rules
+Please be reasonable when withdrawing so you leave enough drawdown to continue trading. If you are just creating accounts to immediately close them, we may decline your application of future evaluations.
+Keep in mind when you make it to Brokerage the safety buffer (Minimum account balance) is not available for withdrawal.
+📢 Important Reminder for All Orbit Brokerage Account Holders ($100 Starting Balance)
+Once an Orbit Brokerage payout request has been officially processed, your account equity cannot drop below the $100.00 initial balance baseline at any time. If an account dips below this $100.00 baseline after a request is made, it will result in an immediate automatic account closure .
+Please be reasonable when withdrawing so you leave enough drawdown to continue trading.
+=> Profit Sharing
+Our business model is focused on retaining successful traders. The more you make, the more of that profit you get to keep. All payouts are now 90% Trader / 10% BluSky at all times unless changed by a Risk Team Review.
+=> Payment Processing
+​
+Gusto.com, and Rise Pay (riseworks.io) are used for payouts.
+=> Taxes
+You will be paid as an individual contractor by 1099 (If you need a 1099 for your LLC you must select Gusto as your payout method! Rise will not issue LLC 1099's). It's your responsibility to choose correctly.
+Non-US citizens must submit a W-8BEN on their first payout. No reports are sent for Non-US citizens.
+=> For any tax advice, consult with your personal accountant.
+***Submitted payouts must be claimed within 30 days from the date of the payout request, or they will be forfeited. (You must complete your Rise or Gusto onboarding quickly)***
+BluSky Trading Company LLC reserves the right to payout the trader at any time and under any circumstances.
+​
+For any further information, kindly contact our Support Desk:
+BluSky Support Desk
+Related Articles
+- Sim Funded Payouts
+- Sim Funded Accounts Processing
+- Orbit Plans: Two Phases, Faster Payouts
+- Called Up to Live? Go Live or Take the Buyout
+- Sim Funded Accounts Rules
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+©2025 BluSky Trading Company LLC
+-
+-
+-
+-
+-

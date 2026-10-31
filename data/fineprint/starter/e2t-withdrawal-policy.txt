@@ -1,0 +1,105 @@
+What is the Withdrawal Policy? | Earn2Trade Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+العربية English Français Português Español English
+العربية English Français Português Español English
+Search for articles...
+- All Collections
+- Funding
+- What is the Withdrawal Policy?
+What is the Withdrawal Policy?
+Written by Orianna F.
+Updated over 2 weeks ago
+The profit split depends on withdrawal size, is not based on accumulated profit, it is based on the single withdrawal size. The targets and percentages are:
+Trader Career Path® (TCP):
+Account Size
+50% Profit Split
+80% Profit Split
+LiveSim Max Withdrawal*
+TCP 25
+Under $1,500
+$1,500+
+$1,750
+TCP 50
+Under $2,250
+$2,250+
+$3,000
+TCP 100
+Under $3,000
+$3,000+
+$6,000
+TCP 150
+Under $4,000
+$4,000+
+N/A
+TCP 200
+Under $5,000
+$5,000+
+N/A
+TCP 400
+Fixed 60/40 Split
+Fixed 60/40 Split
+N/A
+Gauntlet Mini™:
+Account Size
+50% Profit Split
+80% Profit Split
+LiveSim Max Withdrawal*
+GM 50
+Under $2,250
+$2,250+
+$5,000
+GM 100
+Under $3,000
+$3,000+
+$5,000
+GM 150
+Under $4,000
+$4,000+
+$5,000
+GM 200
+Under $5,000
+$5,000+
+$5,000
+*LiveSim Max Withdrawal is the total you can withdraw from a LiveSim account before you are automatically moved to a Live account. It is not a limit on any single withdrawal.
+Withdrawals are processed weekly on Wednesdays via Rise or other platforms. Requests must be emailed to the proprietary firm by 2:00 PM CT on the preceding Friday. The minimum net withdrawal amount is $100. Due to regulatory compliance, Rise does not support payouts for traders in certain U.S. territories (Iowa, Minnesota, South Carolina, Guam, Puerto Rico, U.S. Virgin Islands) or Haiti.
+Withdrawal methods are not optional, and the prop firm retains the right to onboard customers to their payment provider of choice, with some options available only in select regions. Direct crypto withdrawals are only available in select cases.
+Withdrawal Method
+Fees
+Rise
+$50 per withdrawal for non-US customers
+1.5% for US customers
+Deel
+$50 per withdrawal
+Bayzat
+$5-$40
+Direct Crypto
+0.735%
+Related Articles
+- What is the Fee Structure on the Live or LiveSim® Accounts?
+- What is the LiveSim®?
+- What is the "Maintain Consistency" Rule?
+- What Happens When I Complete My Evaluation?
+- What is Earn2Trade?
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+- The Trader Career Path
+- The Gauntlet Mini™
+- Beginner Crash Course
+- Risk Disclaimer
+-
+-
+-

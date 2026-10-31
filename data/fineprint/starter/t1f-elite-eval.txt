@@ -1,0 +1,91 @@
+Overview of the Elite Evaluation | Top One Futures Help Center
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Skip to main content
+Top One Futures Home
+Top One Futures Home
+Search for articles...
+- All Collections
+- Elite Accounts
+- Overview of the Elite Evaluation
+Overview of the Elite Evaluation
+This article will give you the overview of our Elite Evaluation and how it works!
+Updated this week
+Table of contents
+At Top One Futures, we offer a dynamic and flexible approach for traders to prove their skills and qualify for a Sim Funded Account through our Elite Evaluation . This Evaluation is designed for traders who demonstrate strong risk management and the ability to meet profit targets, all while ensuring fair and transparent rules for evaluation. Here's a breakdown of the key elements.
+Quick summary: 6% profit target, no consistency rule during the Evaluation, 2.5% Daily Drawdown, Max Trailing Drawdown that locks at your starting balance + $100, a one-time $149 activation fee, and the option to pass in a single trading day.
+1. Profit Target
+Traders in the Elite Evaluation must reach a 6% profit target to qualify for a Sim Funded Account. This target is based on the initial account balance.
+Account size
+Profit target
+$25,000
+$1,500
+$50,000
+$3,000
+$100,000
+$6,000
+$150,000
+$9,000
+Unlike other firms, we have no consistency rule during the Evaluation phase, meaning traders can reach their profit target without worrying about daily profit distribution. Whether you hit the target in one big move or over several sessions, as long as you stay within the risk parameters, you qualify for the next phase.
+2. Risk Management: Drawdown Rules
+At Top One Futures, risk management is key, and our Daily Drawdown and Max Trailing Drawdown are in place to protect traders. The Daily Drawdown is set at 2.5% of the account balance, based on the end-of-day balance. If this is breached, trading will pause for the day, but you can resume the following day. The starting Max Trailing Drawdown is set as follows:
+Account size
+Max Trailing Drawdown
+$25,000
+$1,000
+$50,000
+$2,000
+$100,000
+$3,000
+$150,000
+$4,500
+- Your breach level is active from the moment you start: starting balance minus your max drawdown (e.g. $50,000 − $2,000 = $48,000).
+- It trails upward as your account reaches new highs.
+- It moves up only at the end of the day, based on your closing balance. Intraday highs don’t move it.
+- It does not move down if your balance decreases.
+- The breach level is checked in real time. If your equity goes at or below it at any moment, the account is breached.
+For example, if you close the day at $51,000 on a $50,000 account, the trailing drawdown moves to $49,000. Once you reach the drawdown limit plus $100, it stays locked at your starting balance + $100 , ensuring it no longer trails with your account growth.
+3. Activation Fee
+After successfully completing the Elite Evaluation, there is a one-time activation fee of $149 to activate your Sim Funded Account. This fee applies to all account sizes and covers the transition from Evaluation to live trading.
+4. No Contract Scaling Requirements
+There are no contract scaling requirements for Elite Accounts. The maximum number of contracts allowed for each account size is fixed and does not change as you progress through the Evaluation. This provides flexibility and allows traders to choose the account size best suited to their trading goals.
+5. Consistency Rule for Sim Funded Accounts
+While there is no consistency rule during the Elite Evaluation phase, once you transition to an Elite Sim Funded Account, a 25% consistency rule applies. This rule ensures that no single trading day's profit exceeds 25% of your total profits, promoting steady and sustainable performance. After a payout is taken from an Elite Sim Funded account, the consistency score is reset, and the consistency rule is then applied to new profits moving forward. This ensures that traders demonstrate steady performance rather than relying on one or two highly volatile trading sessions.
+6. Evaluation Account Reset
+If your account is breached, you can reset your Evaluation account at a reduced fee rather than purchasing a new evaluation:
+Evaluation account
+Reset fee
+$25,000
+$29
+$50,000
+$39
+$100,000
+$79
+$150,000
+$119
+This reset restores your account to its starting balance and gives you a fresh start, allowing you to continue your evaluation without starting from scratch.
+7. One-Day Pass
+At Top One Futures, we offer the flexibility to pass the Elite Evaluation in just one trading day . If you hit the 6% profit target on the first day and follow the rules, you can immediately qualify for a Sim Funded Account. This offers a fast, flexible path to funding without unnecessary delays.
+Related articles
+- Pass the Elite Evaluation in Just One Trading Day
+- Understanding the Drawdown in Elite Accounts
+- Activation Fee For Your Elite Sim Funded Account
+- Consistency Rule in Elite Sim Funded Accounts Explained
+- Evaluation Account Reset Fee
+Related Articles
+- No Consistency Rule in Evaluation Accounts
+- Pass the Elite Evaluation in Just One Trading Day
+- Elite ACCESS Accounts – Overview
+- Elite DAILY V2 - Overview
+- Elite ACCESS Intraday Accounts - Overview
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+Intercom We run on Intercom
