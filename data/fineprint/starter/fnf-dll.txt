@@ -33,7 +33,7 @@ Search for articles...
 - Daily Loss Limit and Maximum Loss Limit at FundedNext Futures
 Daily Loss Limit and Maximum Loss Limit at FundedNext Futures
 Important Notice: As of October 11, Legacy Accounts are no longer available for purchase. Existing Legacy Accounts are also not eligible for resets.
-Updated this week
+Updated over a week ago
 Table of contents
 TL;DR: FundedNext Futures has two loss limits. The daily loss limit caps how much you can lose in a single day (closed + floating losses, plus commissions and fees); hitting it is a soft breach — trading pauses until the next day. The Maximum Loss Limit (MLL) is the total you can lose before your account is permanently breached (a hard breach). Both use a trailing End-of-Day (EOD) system, rising with profits and locking once the MLL reaches your initial balance (initial + $100 for Flex and Rapid Pro & Daily).
 FundedNext Futures uses two distinct risk limits. Understanding both is essential to protecting your account.

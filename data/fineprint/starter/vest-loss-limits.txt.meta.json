@@ -1,6 +1,8 @@
 {
   "url": "https://docs.vestmarkets.com/vest-capital/loss-limits",
   "hash": "2bfe36c0a11a88a07ea74de6d369de70acfa2811491e7d15d44e75b9a925a200",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-01T10:45:01.326Z",
+  "pendingHash": "8c961b5589ad1517d1eaada43b273eb0ef844e6a267cf67ce2a3ff936408de75",
+  "pendingSince": "2026-11-01T10:45:01.326Z"
 }

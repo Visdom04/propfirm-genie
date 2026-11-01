@@ -1,5 +1,1137 @@
 [
   {
+    "id": "mfp-fees-0f648b52f5b2",
+    "pageId": "mfp-fees",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Was “After the launch week, Reduced Fees is an optional paid add-on at checkout for”. Now “Reduced Fees is an optional paid add-on at checkout for”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/commissions-and-fees",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "After the launch week, Reduced Fees is an optional paid add-on at checkout for",
+        "after": "Reduced Fees is an optional paid add-on at checkout for",
+        "beforeLine": "After the launch week, Reduced Fees is an optional paid add-on at checkout for",
+        "afterLine": "Reduced Fees is an optional paid add-on at checkout for"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "After the launch week, Reduced Fees is an optional paid add-on at checkout for"
+        ],
+        "after": [
+          "Reduced Fees is an optional paid add-on at checkout for"
+        ],
+        "removed": [
+          "After the launch week, Reduced Fees is an optional paid add-on at checkout for"
+        ],
+        "added": [
+          "Reduced Fees is an optional paid add-on at checkout for"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-fees-bac8e0307033",
+    "pageId": "mfp-fees",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Now “ended; new accounts can add Reduced Fees only as a paid add-on.”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/commissions-and-fees",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "ended; new accounts can add Reduced Fees only as a paid add-on.",
+        "beforeLine": "",
+        "afterLine": "ended; new accounts can add Reduced Fees only as a paid add-on."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "ended; new accounts can add Reduced Fees only as a paid add-on."
+        ],
+        "removed": [],
+        "added": [
+          "ended; new accounts can add Reduced Fees only as a paid add-on."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-fees-92be61dabdd9",
+    "pageId": "mfp-fees",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Was “rates after the launch week ends. Accounts bought without the add-on pay the”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/commissions-and-fees",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "rates after the launch week ends. Accounts bought without the add-on pay the",
+        "after": "—",
+        "beforeLine": "rates after the launch week ends. Accounts bought without the add-on pay the",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "rates after the launch week ends. Accounts bought without the add-on pay the"
+        ],
+        "after": [],
+        "removed": [
+          "rates after the launch week ends. Accounts bought without the add-on pay the"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-fees-dc0c17eed8ad",
+    "pageId": "mfp-fees",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Was “free add-ons you have left. You can turn it off before you pay.”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/commissions-and-fees",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "free add-ons you have left. You can turn it off before you pay.",
+        "after": "—",
+        "beforeLine": "free add-ons you have left. You can turn it off before you pay.",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "free add-ons you have left. You can turn it off before you pay."
+        ],
+        "after": [],
+        "removed": [
+          "free add-ons you have left. You can turn it off before you pay."
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-fees-61223f7e019c",
+    "pageId": "mfp-fees",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Was “add-on on for you while it is free and shows the end date and time and how many”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/commissions-and-fees",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "add-on on for you while it is free and shows the end date and time and how many",
+        "after": "—",
+        "beforeLine": "add-on on for you while it is free and shows the end date and time and how many",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "add-on on for you while it is free and shows the end date and time and how many"
+        ],
+        "after": [],
+        "removed": [
+          "add-on on for you while it is free and shows the end date and time and how many"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-fees-080ed627b1f3",
+    "pageId": "mfp-fees",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Was “multi-account order, each account counts toward the 3. Checkout turns the”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/commissions-and-fees",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "multi-account order, each account counts toward the 3. Checkout turns the",
+        "after": "—",
+        "beforeLine": "multi-account order, each account counts toward the 3. Checkout turns the",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "multi-account order, each account counts toward the 3. Checkout turns the"
+        ],
+        "after": [],
+        "removed": [
+          "multi-account order, each account counts toward the 3. Checkout turns the"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-fees-3afc85cd2635",
+    "pageId": "mfp-fees",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Was “life, including the funded account issued after you pass, and keeps the reduced”. Now “account for its life, including the funded account issued after you pass.”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/commissions-and-fees",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "life, including the funded account issued after you pass, and keeps the reduced",
+        "after": "account for its life, including the funded account issued after you pass.",
+        "beforeLine": "life, including the funded account issued after you pass, and keeps the reduced",
+        "afterLine": "account for its life, including the funded account issued after you pass."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "life, including the funded account issued after you pass, and keeps the reduced"
+        ],
+        "after": [
+          "account for its life, including the funded account issued after you pass."
+        ],
+        "removed": [
+          "life, including the funded account issued after you pass, and keeps the reduced"
+        ],
+        "added": [
+          "account for its life, including the funded account issued after you pass."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-fees-05f90b456af0",
+    "pageId": "mfp-fees",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Was “A free add-on works exactly like a paid one: it stays with the account for its”. Now “An add-on received free works exactly like a paid one: it stays with the”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/commissions-and-fees",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "A free add-on works exactly like a paid one: it stays with the account for its",
+        "after": "An add-on received free works exactly like a paid one: it stays with the",
+        "beforeLine": "A free add-on works exactly like a paid one: it stays with the account for its",
+        "afterLine": "An add-on received free works exactly like a paid one: it stays with the"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "A free add-on works exactly like a paid one: it stays with the account for its"
+        ],
+        "after": [
+          "An add-on received free works exactly like a paid one: it stays with the"
+        ],
+        "removed": [
+          "A free add-on works exactly like a paid one: it stays with the account for its"
+        ],
+        "added": [
+          "An add-on received free works exactly like a paid one: it stays with the"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-fees-c10aa8d6e233",
+    "pageId": "mfp-fees",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Was “free to up to 3 Select, Prime, or Signature accounts in total. In a”. Now “Select, Prime, or Signature accounts per customer. The free launch week has”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/commissions-and-fees",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "free to up to 3 Select, Prime, or Signature accounts in total. In a",
+        "after": "Select, Prime, or Signature accounts per customer. The free launch week has",
+        "beforeLine": "free to up to 3 Select, Prime, or Signature accounts in total. In a",
+        "afterLine": "Select, Prime, or Signature accounts per customer. The free launch week has"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "free to up to 3 Select, Prime, or Signature accounts in total. In a"
+        ],
+        "after": [
+          "Select, Prime, or Signature accounts per customer. The free launch week has"
+        ],
+        "removed": [
+          "free to up to 3 Select, Prime, or Signature accounts in total. In a"
+        ],
+        "added": [
+          "Select, Prime, or Signature accounts per customer. The free launch week has"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-fees-1022f9c233c2",
+    "pageId": "mfp-fees",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Was “October 28, 2026, the Reduced Fees add-on is free at checkout. You can add it”. Now “October 28, 2026, the Reduced Fees add-on was free at checkout on up to 3”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/commissions-and-fees",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "October 28, 2026, the Reduced Fees add-on is free at checkout. You can add it",
+        "after": "October 28, 2026, the Reduced Fees add-on was free at checkout on up to 3",
+        "beforeLine": "October 28, 2026, the Reduced Fees add-on is free at checkout. You can add it",
+        "afterLine": "October 28, 2026, the Reduced Fees add-on was free at checkout on up to 3"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "October 28, 2026, the Reduced Fees add-on is free at checkout. You can add it"
+        ],
+        "after": [
+          "October 28, 2026, the Reduced Fees add-on was free at checkout on up to 3"
+        ],
+        "removed": [
+          "October 28, 2026, the Reduced Fees add-on is free at checkout. You can add it"
+        ],
+        "added": [
+          "October 28, 2026, the Reduced Fees add-on was free at checkout on up to 3"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-elite-fa62e829ed39",
+    "pageId": "mfp-elite",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Was “Passing the evaluation leads to a Sim Funded Elite account. It keeps the same”. Now “Passing the evaluation leads to a Funded Elite account. It keeps the same”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/elite-accounts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Passing the evaluation leads to a Sim Funded Elite account. It keeps the same",
+        "after": "Passing the evaluation leads to a Funded Elite account. It keeps the same",
+        "beforeLine": "Passing the evaluation leads to a Sim Funded Elite account. It keeps the same",
+        "afterLine": "Passing the evaluation leads to a Funded Elite account. It keeps the same"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Passing the evaluation leads to a Sim Funded Elite account. It keeps the same"
+        ],
+        "after": [
+          "Passing the evaluation leads to a Funded Elite account. It keeps the same"
+        ],
+        "removed": [
+          "Passing the evaluation leads to a Sim Funded Elite account. It keeps the same"
+        ],
+        "added": [
+          "Passing the evaluation leads to a Funded Elite account. It keeps the same"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-elite-db254328657f",
+    "pageId": "mfp-elite",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Was “separately, in both the evaluation and Sim Funded stages:”. Now “separately, in both the evaluation and Funded stages:”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/elite-accounts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "separately, in both the evaluation and Sim Funded stages:",
+        "after": "separately, in both the evaluation and Funded stages:",
+        "beforeLine": "separately, in both the evaluation and Sim Funded stages:",
+        "afterLine": "separately, in both the evaluation and Funded stages:"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "separately, in both the evaluation and Sim Funded stages:"
+        ],
+        "after": [
+          "separately, in both the evaluation and Funded stages:"
+        ],
+        "removed": [
+          "separately, in both the evaluation and Sim Funded stages:"
+        ],
+        "added": [
+          "separately, in both the evaluation and Funded stages:"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-elite-9ba66c160d63",
+    "pageId": "mfp-elite",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps rules",
+    "summary": "Was “- The rule applies in both the evaluation and Sim Funded stages, together with”. Now “- The rule applies in both the evaluation and Funded stages, together with”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/elite-accounts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "- The rule applies in both the evaluation and Sim Funded stages, together with",
+        "after": "- The rule applies in both the evaluation and Funded stages, together with",
+        "beforeLine": "- The rule applies in both the evaluation and Sim Funded stages, together with",
+        "afterLine": "- The rule applies in both the evaluation and Funded stages, together with"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "- The rule applies in both the evaluation and Sim Funded stages, together with"
+        ],
+        "after": [
+          "- The rule applies in both the evaluation and Funded stages, together with"
+        ],
+        "removed": [
+          "- The rule applies in both the evaluation and Sim Funded stages, together with"
+        ],
+        "added": [
+          "- The rule applies in both the evaluation and Funded stages, together with"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-elite-45998a9a1d63",
+    "pageId": "mfp-elite",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps daily loss limit",
+    "summary": "Was “daily loss limit. Passing leads to a Sim Funded Elite account with the same”. Now “daily loss limit. Passing leads to a Funded Elite account with the same”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/elite-accounts",
+    "facts": [
+      {
+        "label": "Daily loss limit",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "daily loss limit. Passing leads to a Sim Funded Elite account with the same",
+        "after": "daily loss limit. Passing leads to a Funded Elite account with the same",
+        "beforeLine": "daily loss limit. Passing leads to a Sim Funded Elite account with the same",
+        "afterLine": "daily loss limit. Passing leads to a Funded Elite account with the same"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "daily loss limit. Passing leads to a Sim Funded Elite account with the same"
+        ],
+        "after": [
+          "daily loss limit. Passing leads to a Funded Elite account with the same"
+        ],
+        "removed": [
+          "daily loss limit. Passing leads to a Sim Funded Elite account with the same"
+        ],
+        "added": [
+          "daily loss limit. Passing leads to a Funded Elite account with the same"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-elite-394b1297763a",
+    "pageId": "mfp-elite",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps daily loss limit",
+    "summary": "Was “Elite plan sizes, prices, and daily loss limit options, evaluation and Sim Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts.”. Now “Elite plan sizes, prices, and daily loss limit options, evaluation and Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts.”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/elite-accounts",
+    "facts": [
+      {
+        "label": "Daily loss limit",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Elite plan sizes, prices, and daily loss limit options, evaluation and Sim Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts.",
+        "after": "Elite plan sizes, prices, and daily loss limit options, evaluation and Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts.",
+        "beforeLine": "Elite plan sizes, prices, and daily loss limit options, evaluation and Sim Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts.",
+        "afterLine": "Elite plan sizes, prices, and daily loss limit options, evaluation and Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Elite plan sizes, prices, and daily loss limit options, evaluation and Sim Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts."
+        ],
+        "after": [
+          "Elite plan sizes, prices, and daily loss limit options, evaluation and Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts."
+        ],
+        "removed": [
+          "Elite plan sizes, prices, and daily loss limit options, evaluation and Sim Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts."
+        ],
+        "added": [
+          "Elite plan sizes, prices, and daily loss limit options, evaluation and Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-rules-11dcd139fb0d",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “longer purchase new accounts. Your active funded accounts keep trading and”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "longer purchase new accounts. Your active funded accounts keep trading and",
+        "beforeLine": "",
+        "afterLine": "longer purchase new accounts. Your active funded accounts keep trading and"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "longer purchase new accounts. Your active funded accounts keep trading and"
+        ],
+        "removed": [],
+        "added": [
+          "longer purchase new accounts. Your active funded accounts keep trading and"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-rules-2e0fe005bf2d",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "payouts",
+    "title": "My Funded Perps profit split",
+    "summary": "Now “$100,000, counted after the profit split, you have graduated and can no”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Profit split",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "$100,000, counted after the profit split, you have graduated and can no",
+        "beforeLine": "",
+        "afterLine": "$100,000, counted after the profit split, you have graduated and can no"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "$100,000, counted after the profit split, you have graduated and can no"
+        ],
+        "removed": [],
+        "added": [
+          "$100,000, counted after the profit split, you have graduated and can no"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-rules-ffd71d75b9c0",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “Once your combined payouts across all accounts and model types reach”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "Once your combined payouts across all accounts and model types reach",
+        "beforeLine": "",
+        "afterLine": "Once your combined payouts across all accounts and model types reach"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "Once your combined payouts across all accounts and model types reach"
+        ],
+        "removed": [],
+        "added": [
+          "Once your combined payouts across all accounts and model types reach"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-rules-fc66343038df",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Was “purchases and resets do not reset this cap. Read”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "purchases and resets do not reset this cap. Read",
+        "after": "—",
+        "beforeLine": "purchases and resets do not reset this cap. Read",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "purchases and resets do not reset this cap. Read"
+        ],
+        "after": [],
+        "removed": [
+          "purchases and resets do not reset this cap. Read"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-rules-7a66d2811c3b",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "payouts",
+    "title": "My Funded Perps profit split",
+    "summary": "Was “across all accounts and model types and counted after the profit split. New”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Profit split",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "across all accounts and model types and counted after the profit split. New",
+        "after": "—",
+        "beforeLine": "across all accounts and model types and counted after the profit split. New",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "across all accounts and model types and counted after the profit split. New"
+        ],
+        "after": [],
+        "removed": [
+          "across all accounts and model types and counted after the profit split. New"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-rules-ac3b01302180",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Was “Each user can receive at most $100,000 in total lifetime payouts, combined”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Each user can receive at most $100,000 in total lifetime payouts, combined",
+        "after": "—",
+        "beforeLine": "Each user can receive at most $100,000 in total lifetime payouts, combined",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Each user can receive at most $100,000 in total lifetime payouts, combined"
+        ],
+        "after": [],
+        "removed": [
+          "Each user can receive at most $100,000 in total lifetime payouts, combined"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-rules-bd62c6e3aa4a",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “after. Individual trades and candle wicks are not used, so a wick past a level”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "after. Individual trades and candle wicks are not used, so a wick past a level",
+        "beforeLine": "",
+        "afterLine": "after. Individual trades and candle wicks are not used, so a wick past a level"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "after. Individual trades and candle wicks are not used, so a wick past a level"
+        ],
+        "removed": [],
+        "added": [
+          "after. Individual trades and candle wicks are not used, so a wick past a level"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-rules-fdffb101b578",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps fee",
+    "summary": "Now “floor for an instant, the account fails, even if the price moves back right”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Fee",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "floor for an instant, the account fails, even if the price moves back right",
+        "beforeLine": "",
+        "afterLine": "floor for an instant, the account fails, even if the price moves back right"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "floor for an instant, the account fails, even if the price moves back right"
+        ],
+        "removed": [],
+        "added": [
+          "floor for an instant, the account fails, even if the price moves back right"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-rules-920fc2c25218",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps profit target",
+    "summary": "Now “profit target for an instant, the evaluation passes, and if it reaches a loss”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Profit target",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "profit target for an instant, the evaluation passes, and if it reaches a loss",
+        "beforeLine": "",
+        "afterLine": "profit target for an instant, the evaluation passes, and if it reaches a loss"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "profit target for an instant, the evaluation passes, and if it reaches a loss"
+        ],
+        "removed": [],
+        "added": [
+          "profit target for an instant, the evaluation passes, and if it reaches a loss"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-rules-1852bf4f3b3a",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “settles. A momentary touch counts in both directions: if equity reaches the”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "settles. A momentary touch counts in both directions: if equity reaches the",
+        "beforeLine": "",
+        "afterLine": "settles. A momentary touch counts in both directions: if equity reaches the"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "settles. A momentary touch counts in both directions: if equity reaches the"
+        ],
+        "removed": [],
+        "added": [
+          "settles. A momentary touch counts in both directions: if equity reaches the"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
+    "id": "mfp-rules-b999f6c028bb",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-10-31T09:54:24.806Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "pricing",
+    "title": "My Funded Perps fee",
+    "summary": "Now “Equity is checked every time the mark price moves, not only when a trade”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Fee",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "Equity is checked every time the mark price moves, not only when a trade",
+        "beforeLine": "",
+        "afterLine": "Equity is checked every time the mark price moves, not only when a trade"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "Equity is checked every time the mark price moves, not only when a trade"
+        ],
+        "removed": [],
+        "added": [
+          "Equity is checked every time the mark price moves, not only when a trade"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-01T10:45:01.326Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-01T10:45:01.326Z"
+  },
+  {
     "id": "fnf-flex-reward-5c2b4346b3c3",
     "pageId": "fnf-flex-reward",
     "detectedAt": "2026-10-30T10:23:04.229Z",

@@ -1,6 +1,8 @@
 {
   "url": "https://help.blusky.pro/en/articles/16300846-launch-plans-phases-rules-and-costs",
   "hash": "adf389df786ae5e7ec4ddc071175cf51248edbf2603a98f8efd0c377907aea52",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-01T10:45:01.326Z",
+  "pendingHash": "d520be6f966bd480ebcec259e4009cc05db725b237921cf0c5aaafc92d0cffe9",
+  "pendingSince": "2026-11-01T10:45:01.326Z"
 }

@@ -44,7 +44,6 @@ Guides
 - Tradable Assets
 - Asset Exposure Limits
 - Trading Calculators
-- Custom Scripts
 - Commissions and Fees
 - Trading Journal
 - Challenges and Rules
@@ -90,7 +89,7 @@ Back to top
 - Leverage and exposure
 - Fees
 - Accounts per order
-- Sim Funded
+- Funded
 - High-impact news restriction
 - No Live stage
 - Funded allocation
@@ -100,13 +99,13 @@ Back to top
 Guides
 Elite Accounts
 Copy page Copy page
-Elite plan sizes, prices, and daily loss limit options, evaluation and Sim Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts.
+Elite plan sizes, prices, and daily loss limit options, evaluation and Funded rules, leverage and exposure caps, reduced fees, funded allocation limits, and payouts.
 Copy page Copy page
 Elite is a 1-Step evaluation with a static maximum loss limit, no consistency
 rule, and boosted leverage on NAS100, SP500, US30, gold, and oil. It comes in $5K, $10K,
 $25K, and $50K account sizes, and every size has two options: 3% DLL ,
 which adds a 3% daily loss limit at a lower price, or No DLL , which has no
-daily loss limit. Passing leads to a Sim Funded Elite account with the same
+daily loss limit. Passing leads to a Funded Elite account with the same
 rules. Open the
 challenge selector and choose the
 Elite tab to buy.
@@ -175,7 +174,7 @@ allowance is $1,500.
 positions.
 - The day boundary matches the other plans; see
 Challenges and Rules .
-- The rule applies in both the evaluation and Sim Funded stages, together with
+- The rule applies in both the evaluation and Funded stages, together with
 the static maximum loss limit.
 The option is part of the account you buy. You cannot add or remove the daily
 loss limit after purchase.
@@ -216,7 +215,7 @@ and closes its positions.
 Leverage and exposure
 Elite accounts use boosted leverage on NAS100, SP500, US30, gold, and oil. Each cap
 is a multiple of the account’s starting balance and applies to each account
-separately, in both the evaluation and Sim Funded stages:
+separately, in both the evaluation and Funded stages:
 Markets Maximum leverage Elite $5K exposure Elite $10K exposure Elite $25K exposure Elite $50K exposure
 NAS100, SP500 40x $200,000 $400,000 $1,000,000 $2,000,000
 US30 25x $125,000 $250,000 $625,000 $1,250,000
@@ -242,7 +241,7 @@ rejected. Reducing or closing a position is always allowed.
 ​
 Fees
 Elite accounts pay reduced fees on four markets, in both the evaluation and
-Sim Funded stages:
+Funded stages:
 Markets Elite commission per fill Elite daily swap rate Standard commission Standard daily swap rate
 NAS100, SP500 0.001% 0.01% 0.005% 0.015%
 Gold, WTI Oil 0.001% 0.015% 0.005% 0.015%
@@ -260,8 +259,8 @@ One order can include up to 10 accounts at $5K or $10K, up to 4 at $25K, or
 up to 2 at $50K, all of the same size and option. You can place as many
 orders as you like.
 ​
-Sim Funded
-Passing the evaluation leads to a Sim Funded Elite account. It keeps the same
+Funded
+Passing the evaluation leads to a Funded Elite account. It keeps the same
 rules as the evaluation, without the profit target:
 - the same starting balance;
 - the same 5% static MLL and loss threshold, which does not move after a
@@ -270,11 +269,11 @@ withdrawal;
 - the same daily loss limit option: a 3% daily loss limit on a 3% DLL
 account, or none on a No DLL account;
 - no consistency rule.
-Sim Funded accounts use simulated capital and simulated execution, like every
+Funded accounts use simulated capital and simulated execution, like every
 funded account.
 ​
 High-impact news restriction
-The high-impact news restriction applies to Sim Funded Elite accounts. During
+The high-impact news restriction applies to Funded Elite accounts. During
 the evaluation, news trading is not restricted.
 Time from the release What you can do
 More than 10 minutes before Trade normally. A position already open can be held through the release.
@@ -292,10 +291,10 @@ review.
 ​
 No Live stage
 Elite has no Live stage and no promotion to live trading. Elite accounts
-remain Sim Funded.
+remain Funded.
 ​
 Funded allocation
-Each customer can hold up to $100,000 of active Sim Funded Elite
+Each customer can hold up to $100,000 of active Funded Elite
 allocation , summed by the original starting size of each funded Elite
 account across every size and both options. That allows 20 × $5K,
 10 × $10K, 4 × $25K, 2 × $50K, or any mix that totals $100,000 or less. Profits, losses, and withdrawals do not
@@ -362,10 +361,12 @@ Daily loss limit after a withdrawal .
 Lifetime payout cap
 Elite payouts count toward the
 $100,000 lifetime payout cap
-per user, combined across every plan and counted after the profit split. This
-is separate from the $100,000 Elite funded allocation cap: the payout cap
-limits the money you can receive, while the funded cap limits the total
-starting size of your active Sim Funded Elite accounts.
+per user, combined across every plan and counted after the profit split. At
+$100,000 you have graduated and can no longer purchase new accounts, while
+your active funded accounts keep paying out. This is separate from the
+$100,000 Elite funded allocation cap: the payout cap decides when you
+graduate, while the funded cap limits the total
+starting size of your active Funded Elite accounts.
 Challenges and Rules
 Competitions
 website

@@ -44,7 +44,6 @@ Guides
 - Tradable Assets
 - Asset Exposure Limits
 - Trading Calculators
-- Custom Scripts
 - Commissions and Fees
 - Trading Journal
 - Challenges and Rules
@@ -118,6 +117,12 @@ The profit target and loss rules use account equity, including
 open-position profit or loss. On plans with a daily loss limit, daily loss is
 measured from start-of-day equity at midnight America/New_York, including
 daylight saving time, with a dollar allowance of 3% of starting balance.
+Equity is checked every time the mark price moves, not only when a trade
+settles. A momentary touch counts in both directions: if equity reaches the
+profit target for an instant, the evaluation passes, and if it reaches a loss
+floor for an instant, the account fails, even if the price moves back right
+after. Individual trades and candle wicks are not used, so a wick past a level
+does not always reach it.
 ​
 Select prize accounts
 $1K and $2.5K Select accounts are prizes from giveaways and promotions. They
@@ -242,9 +247,10 @@ account; see Elite Accounts .
 A rejected request restores the allowance, and submitted requests
 cannot be cancelled. Each account has its own allowance, even when one trader holds
 several accounts.
-Each user can receive at most $100,000 in total lifetime payouts, combined
-across all accounts and model types and counted after the profit split. New
-purchases and resets do not reset this cap. Read
+Once your combined payouts across all accounts and model types reach
+$100,000, counted after the profit split, you have graduated and can no
+longer purchase new accounts. Your active funded accounts keep trading and
+paying out, even above $100,000. Read
 Lifetime Payout Cap .
 Payout requests require a flat account and temporarily lock trading while the
 request is pending. Read Payouts for the

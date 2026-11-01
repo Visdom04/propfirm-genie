@@ -1,6 +1,8 @@
 {
   "url": "https://bulenox.com/help-center/qualification",
   "hash": "d5cafbd761b56121980e45d17742066864f1a3744b88e3f4f1e6728279bdeaa7",
-  "state": "baseline",
-  "checkedAt": "2026-10-28T12:59:58.070Z"
+  "state": "pending",
+  "checkedAt": "2026-11-01T10:45:01.326Z",
+  "pendingHash": "86483c952847192d4f7f433b24b6d5eb62ae134cebd275798d86d729ffa4c58a",
+  "pendingSince": "2026-11-01T10:45:01.326Z"
 }

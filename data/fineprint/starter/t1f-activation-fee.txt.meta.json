@@ -1,6 +1,8 @@
 {
   "url": "https://help.toponefutures.com/en/articles/10907249-activation-fee-for-your-elite-sim-funded-account",
   "hash": "3fdacface2422ffc13e62f033cbe994b4adf660cfd4b41b1cdbda4d359fa6355",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-01T10:45:01.326Z",
+  "pendingHash": "7a9ae3ba9687c92d0b58a974ca8791db284afc348788c55bc5809e909543cf5c",
+  "pendingSince": "2026-11-01T10:45:01.326Z"
 }

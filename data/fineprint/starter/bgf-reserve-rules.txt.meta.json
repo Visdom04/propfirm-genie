@@ -1,6 +1,8 @@
 {
   "url": "https://helpfutures.blueguardian.com/en/articles/15678716-reserve-account-rules",
   "hash": "387ab44f9ed1e7369d0d75bb7f520384a474a69471359143691297d9bc03a717",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-01T10:45:01.326Z",
+  "pendingHash": "f373601630e23c4fa519e07b429e14d1e03d28987f9b393e616dcc09851c0832",
+  "pendingSince": "2026-11-01T10:45:01.326Z"
 }

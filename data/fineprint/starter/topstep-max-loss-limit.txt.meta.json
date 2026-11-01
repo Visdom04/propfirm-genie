@@ -1,6 +1,8 @@
 {
   "url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
   "hash": "200251a2ce86f5407c1348a8d7127c0c3c2538f52931f0df2c9df0ec59996f0b",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-01T10:45:01.326Z",
+  "pendingHash": "28a0dff70d8898a896203df4f90b52cad4814ee807b80d55aa890d9fdc57cf9c",
+  "pendingSince": "2026-11-01T10:45:01.326Z"
 }

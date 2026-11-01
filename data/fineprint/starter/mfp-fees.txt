@@ -44,7 +44,6 @@ Guides
 - Tradable Assets
 - Asset Exposure Limits
 - Trading Calculators
-- Custom Scripts
 - Commissions and Fees
 - Trading Journal
 - Challenges and Rules
@@ -169,21 +168,14 @@ not adjusted.
 ​
 Free launch week
 From 9:00 a.m. Eastern Time on October 21, 2026 to 9:00 a.m. Eastern Time on
-October 28, 2026, the Reduced Fees add-on is free at checkout. You can add it
-free to up to 3 Select, Prime, or Signature accounts in total. In a
-multi-account order, each account counts toward the 3. Checkout turns the
-add-on on for you while it is free and shows the end date and time and how many
-free add-ons you have left. You can turn it off before you pay.
-A free add-on works exactly like a paid one: it stays with the account for its
-life, including the funded account issued after you pass, and keeps the reduced
-rates after the launch week ends. Accounts bought without the add-on pay the
-standard rates. The launch week does not reduce fees on accounts you already
-hold.
-The 7 days are one shared launch window, not a separate trial for each
-customer.
+October 28, 2026, the Reduced Fees add-on was free at checkout on up to 3
+Select, Prime, or Signature accounts per customer. The free launch week has
+ended; new accounts can add Reduced Fees only as a paid add-on.
+An add-on received free works exactly like a paid one: it stays with the
+account for its life, including the funded account issued after you pass.
 ​
 Buy the add-on
-After the launch week, Reduced Fees is an optional paid add-on at checkout for
+Reduced Fees is an optional paid add-on at checkout for
 every Select, Prime, and Signature account size. Read
 Buying a Challenge
 for pricing. The add-on stays with the account for its life, including the
@@ -203,7 +195,7 @@ for liquidation and close-out consequences.
 Read Challenges and Rules
 for the daily loss reset time, or Payouts
 for payout windows and the store-credit option.
-Custom Scripts
+Trading Calculators
 Trading Journal
 website
 Powered by This documentation is built and hosted on Mintlify, a developer documentation platform
