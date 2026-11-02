@@ -1,5 +1,4 @@
 -
-) -->
 Qualification Account — Help Center — Bulenox
 -
 -
@@ -38,6 +37,10 @@ Third-Party API and Trader Composite Software are provided by independent compan
 Objective
 Your objective is to reach the profit target and qualify for a Master Account.
 🎯 One clear goal, no time pressure, and full control over your own schedule.
+What happens when an account is suspended
+If a Qualification account reaches its maximum drawdown, it is suspended. It is removed from the trading platform within 24 hours and no longer appears in your dashboard.
+Your subscription stays in your profile until its expiration date, so you can still reset the account before then.
+Note: you need at least one active account to log in. If all your accounts are suspended, reset one or purchase a new account to restore access.
 Instruments & Commissions
 Status: Professional or Non-Professional
 Option 1 — No Scaling Account (Trailing Drawdown)

@@ -1,6 +1,8 @@
 {
   "url": "https://support.lucidtrading.com/en/articles/12945790-lucidflex-evaluation-account",
   "hash": "e563ce40057a94af4b9a4488fd1d44ddd7c0ea1cf9840e20a8dab29c2cc5622a",
-  "state": "noise",
-  "checkedAt": "2026-10-30T10:23:04.229Z"
+  "state": "pending",
+  "checkedAt": "2026-11-02T11:36:44.343Z",
+  "pendingHash": "401212b6a88a4cc23c933ffa18ebd7e19b5a7613ad8175471589fc432f0343d4",
+  "pendingSince": "2026-11-02T11:36:44.343Z"
 }

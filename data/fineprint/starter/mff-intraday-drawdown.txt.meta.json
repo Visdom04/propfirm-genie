@@ -1,6 +1,8 @@
 {
   "url": "https://help.myfundedfutures.com/en/articles/12802721-intraday-drawdown-explained",
   "hash": "7865021eb4b0e8fdc1d778f8d221d76c5be81b97665471d8ee15344ab615d361",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-02T11:36:44.343Z",
+  "pendingHash": "9c15207ecd5959caffcb755f8b65d46f81891e0cb3d6861777161315161f7691",
+  "pendingSince": "2026-11-02T11:36:44.343Z"
 }

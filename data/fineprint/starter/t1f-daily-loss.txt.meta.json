@@ -1,6 +1,8 @@
 {
   "url": "https://help.toponefutures.com/en/articles/10907081-daily-drawdown-what-you-need-to-know",
   "hash": "9cb64e703c42f7620df9782da19dc7b78bcfc9e94104a4f427d6fd3921378fd5",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-02T11:36:44.343Z",
+  "pendingHash": "09b078bdc96222c680f60d9e0ba825050bb2b03a26125e62b01a0f93b984ba02",
+  "pendingSince": "2026-11-02T11:36:44.343Z"
 }

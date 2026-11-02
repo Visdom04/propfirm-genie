@@ -1,5 +1,4 @@
 -
-) -->
 Fast Track Account — Help Center — Bulenox
 -
 -
@@ -33,6 +32,7 @@ $50,000 $488 $2,000 $1,200 4 minis (40 micros)
 $100,000 $648 $4,000 $2,500 8 minis (80 micros)
 $150,000 $788 $5,500 $3,300 12 minis (120 micros)
 📘 1 mini = 10 micros.
+📘 A friendly reminder: overnight positions aren’t allowed on this account. Please close all open positions before the end of the trading session (15:59 CT). This keeps your account safe and in line with the rules.
 Both options share the same risk logic. Option 1 uses the trailing drawdown. Option 2 uses the end-of-day drawdown together with a daily loss limit and has no scaling plan.
 On both options the drawdown follows the balance upward and then stops for good once it reaches the starting balance plus $100. From that point it is a fixed floor and no longer moves.
 On Option 2 the daily loss limit stays active for the whole life of the account and is never lifted. The $25,000 Option 2 account is the exception: it has no daily loss limit.

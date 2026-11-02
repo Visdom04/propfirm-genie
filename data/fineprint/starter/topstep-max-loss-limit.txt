@@ -108,10 +108,10 @@ Best Practices
 - Avoid trading during high-impact news events
 ⚠️ Your Maximum Loss Limit is calculated on real-time unrealized P&L. The moment your open loss hits the threshold, the system automatically closes your position via market order; slippage may push the fill slightly above or below the limit, but if the threshold was breached while the trade was open, the liquidation stands.
 Related Articles
+- What is a Reset?
 - Express Funded Account™ Parameters
 - Topstep Payout Policy
 - Daily Loss Limit in the Trading Combine and Express Funded Account
-- Risk Adjustments: High Risk/High Volatility
 - What is a Pro Account?
 Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
 Table of contents

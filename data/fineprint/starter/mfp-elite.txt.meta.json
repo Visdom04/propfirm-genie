@@ -1,6 +1,8 @@
 {
   "url": "https://docs.myfundedperpetuals.com/guides/elite-accounts",
   "hash": "12cd186f6d49909fa62d41d533cec94ed737e51e80ddec7f3a4e937593017b11",
-  "state": "changed",
-  "checkedAt": "2026-11-01T10:45:01.326Z"
+  "state": "pending",
+  "checkedAt": "2026-11-02T11:36:44.343Z",
+  "pendingHash": "3ed5e9a85b0ab4592c57765c75a98f0dbd6022a5f2310ebac19c9d04b518bee8",
+  "pendingSince": "2026-11-02T11:36:44.343Z"
 }

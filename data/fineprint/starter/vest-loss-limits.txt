@@ -147,7 +147,7 @@ Other evaluation accounts , Fail Price shows the price that would trigger Max. D
 Use estimated Fail Price to check your downside before submitting a trade. See Order Types for more.
 Previous Account Tiers
 Next Claiming Profit
-Last updated 29 days ago
+Last updated 1 month ago
 Was this helpful?
 x-twitter discord linkedin
 Vest Markets

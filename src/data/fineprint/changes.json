@@ -1,5 +1,215 @@
 [
   {
+    "id": "topstep-max-loss-limit-14c58d32fc5f",
+    "pageId": "topstep-max-loss-limit",
+    "detectedAt": "2026-11-01T10:45:01.326Z",
+    "firm": "Topstep",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Topstep rules",
+    "summary": "Was “- Risk Adjustments: High Risk/High Volatility”.",
+    "sourceUrl": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "- Risk Adjustments: High Risk/High Volatility",
+        "after": "—",
+        "beforeLine": "- Risk Adjustments: High Risk/High Volatility",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "- Risk Adjustments: High Risk/High Volatility"
+        ],
+        "after": [],
+        "removed": [
+          "- Risk Adjustments: High Risk/High Volatility"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-02T11:36:44.343Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-02T11:36:44.343Z"
+  },
+  {
+    "id": "bulenox-fast-track-45ed9c8178ef",
+    "pageId": "bulenox-fast-track",
+    "detectedAt": "2026-11-01T10:45:01.326Z",
+    "firm": "Bulenox",
+    "market": "futures",
+    "plan": null,
+    "kind": "pricing",
+    "title": "Bulenox rules",
+    "summary": "Now “📘 A friendly reminder: overnight positions aren’t allowed on this account. Please close all open positions before the end of the trading session (15:59 CT). This keeps your account safe and in line with the rules.”.",
+    "sourceUrl": "https://bulenox.com/help-center/fast-track",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "pricing",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "📘 A friendly reminder: overnight positions aren’t allowed on this account. Please close all open positions before the end of the trading session (15:59 CT). This keeps your account safe and in line with the rules.",
+        "beforeLine": "",
+        "afterLine": "📘 A friendly reminder: overnight positions aren’t allowed on this account. Please close all open positions before the end of the trading session (15:59 CT). This keeps your account safe and in line with the rules."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "📘 A friendly reminder: overnight positions aren’t allowed on this account. Please close all open positions before the end of the trading session (15:59 CT). This keeps your account safe and in line with the rules."
+        ],
+        "removed": [],
+        "added": [
+          "📘 A friendly reminder: overnight positions aren’t allowed on this account. Please close all open positions before the end of the trading session (15:59 CT). This keeps your account safe and in line with the rules."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-02T11:36:44.343Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-02T11:36:44.343Z"
+  },
+  {
+    "id": "bulenox-qualification-37a14aac31ec",
+    "pageId": "bulenox-qualification",
+    "detectedAt": "2026-11-01T10:45:01.326Z",
+    "firm": "Bulenox",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Bulenox rules",
+    "summary": "Now “Your subscription stays in your profile until its expiration date, so you can still reset the account before then.”.",
+    "sourceUrl": "https://bulenox.com/help-center/qualification",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "Your subscription stays in your profile until its expiration date, so you can still reset the account before then.",
+        "beforeLine": "",
+        "afterLine": "Your subscription stays in your profile until its expiration date, so you can still reset the account before then."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "Your subscription stays in your profile until its expiration date, so you can still reset the account before then."
+        ],
+        "removed": [],
+        "added": [
+          "Your subscription stays in your profile until its expiration date, so you can still reset the account before then."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-02T11:36:44.343Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-02T11:36:44.343Z"
+  },
+  {
+    "id": "bulenox-qualification-e0e4b25c90e1",
+    "pageId": "bulenox-qualification",
+    "detectedAt": "2026-11-01T10:45:01.326Z",
+    "firm": "Bulenox",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Bulenox drawdown",
+    "summary": "Now “If a Qualification account reaches its maximum drawdown, it is suspended. It is removed from the trading platform within 24 hours and no longer appears in your dashboard.”.",
+    "sourceUrl": "https://bulenox.com/help-center/qualification",
+    "facts": [
+      {
+        "label": "Drawdown",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "If a Qualification account reaches its maximum drawdown, it is suspended. It is removed from the trading platform within 24 hours and no longer appears in your dashboard.",
+        "beforeLine": "",
+        "afterLine": "If a Qualification account reaches its maximum drawdown, it is suspended. It is removed from the trading platform within 24 hours and no longer appears in your dashboard."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "If a Qualification account reaches its maximum drawdown, it is suspended. It is removed from the trading platform within 24 hours and no longer appears in your dashboard."
+        ],
+        "removed": [],
+        "added": [
+          "If a Qualification account reaches its maximum drawdown, it is suspended. It is removed from the trading platform within 24 hours and no longer appears in your dashboard."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-02T11:36:44.343Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-02T11:36:44.343Z"
+  },
+  {
+    "id": "bulenox-qualification-415594f0f9a5",
+    "pageId": "bulenox-qualification",
+    "detectedAt": "2026-11-01T10:45:01.326Z",
+    "firm": "Bulenox",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Bulenox rules",
+    "summary": "Now “What happens when an account is suspended”.",
+    "sourceUrl": "https://bulenox.com/help-center/qualification",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "What happens when an account is suspended",
+        "beforeLine": "",
+        "afterLine": "What happens when an account is suspended"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "What happens when an account is suspended"
+        ],
+        "removed": [],
+        "added": [
+          "What happens when an account is suspended"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-02T11:36:44.343Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-02T11:36:44.343Z"
+  },
+  {
     "id": "mfp-fees-0f648b52f5b2",
     "pageId": "mfp-fees",
     "detectedAt": "2026-10-31T09:54:24.806Z",
