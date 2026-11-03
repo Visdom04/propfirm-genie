@@ -1,6 +1,8 @@
 {
   "url": "https://helpfutures.fundednext.com/en/articles/14298337-what-are-the-prohibited-trading-strategies-of-fundednext-futures",
   "hash": "df714d994ab754cedb0c96667c9c74ddf688c96480c2a300921c0a2765c10b90",
-  "state": "changed",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-03T11:15:43.871Z",
+  "pendingHash": "60075dbb7d40dc6c47ac131373da10dcca84fdf12ea8a9653915db70efd12e61",
+  "pendingSince": "2026-11-03T11:15:43.871Z"
 }

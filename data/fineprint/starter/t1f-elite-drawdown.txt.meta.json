@@ -1,6 +1,8 @@
 {
   "url": "https://help.toponefutures.com/en/articles/10907134-understanding-the-drawdown-in-elite-accounts",
   "hash": "ba4759477ea20851cadc92fe88da149cb40a80301176b15c758f0db6d7795f3f",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-03T11:15:43.871Z",
+  "pendingHash": "8bd8baea861d9302481901c5667e499e9fa21dc50f8367f6b353f9a94027fe20",
+  "pendingSince": "2026-11-03T11:15:43.871Z"
 }

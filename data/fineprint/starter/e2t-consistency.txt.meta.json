@@ -1,6 +1,8 @@
 {
   "url": "https://help.earn2trade.com/en/articles/3849975-what-is-the-maintain-consistency-rule",
   "hash": "7c76be428bb07716d249a1560199e108d80a5a73e4be5a244c121ebe8e37d3f0",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-03T11:15:43.871Z",
+  "pendingHash": "45b40fffcec99298491c40b0dff254bbd3e03e3133b9149b02112eb7b87369ae",
+  "pendingSince": "2026-11-03T11:15:43.871Z"
 }

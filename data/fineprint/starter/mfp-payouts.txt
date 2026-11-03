@@ -44,7 +44,6 @@ Guides
 - Tradable Assets
 - Asset Exposure Limits
 - Trading Calculators
-- Custom Scripts
 - Commissions and Fees
 - Trading Journal
 - Challenges and Rules
@@ -52,6 +51,7 @@ Guides
 - Competitions
 - Launch competition
 - October competition
+- MyFundedPerps Weekly Blitz
 - Copy Trading Guide
 - Affiliate Program
 - Second Chance Offer
@@ -92,6 +92,7 @@ Back to top
 - Daily loss limit after a withdrawal
 - Split cash and store credit
 - Submit and wait for review
+- Connect a payout leaderboard
 Challenge Lifecycle
 Payouts
 Copy page Copy page
@@ -148,15 +149,19 @@ qualifying-day requirement, consistency gate, or payout count cap per account.
 The lifetime payout cap below still applies.
 ​
 Lifetime payout cap
-Each user can receive at most $100,000 in total lifetime payouts across
-all MyFundedPerps accounts. The cap is per user, combined across every
+The lifetime payout cap is $100,000 per user, combined across every
 account and model type (Select, Prime, Signature, and Elite), not per account.
-The cap counts the payout amount you actually receive after the profit split,
-not the gross amount deducted from the account. Purchasing new accounts or
+It counts the payout amount you actually receive after the profit split, not
+the gross amount deducted from the account. Purchasing new accounts or
 resetting existing accounts does not reset it.
+Once your combined payouts reach $100,000, you have graduated from the
+MyFundedPerps funded trader program and can no longer purchase new accounts.
+Your active funded accounts are not closed: you can keep trading them and
+taking payouts from them, even if those payouts take your total above
+$100,000.
 The lifetime cap is separate from the per-request rules on this page. The
 plan’s gross minimum and, outside Elite, the daily request allowance still
-apply to every request, and staying within them does not raise the lifetime cap. It is also
+apply to every request. It is also
 separate from the $100K funded allocation limit per model type, which limits
 the starting size of your active funded accounts rather than the money you
 receive.
@@ -182,6 +187,9 @@ the next two days. Each new invitation replaces the previous one, so accept
 the most recent. We also email you on the first day with steps to find it, and
 once more a few days later as a final reminder. Reminders stop as soon as you
 accept the invitation.
+You have one Rise account for every payout. Competition prize payouts use the
+same Rise account and the same identity check; see
+Physical prize payouts .
 Check the email carefully. Approved payouts are delivered to the connected
 Rise account. While Streamer Mode is on, the Rise
 email is blurred everywhere it appears, including the confirmation after the
@@ -308,6 +316,17 @@ Share to Claim
 on Rewards.
 Eligibility is checked again when the request is submitted. If account state
 changed, review the updated blocker and try again only after it is resolved.
+​
+Connect a payout leaderboard
+Some partner competitions rank traders by how many payouts they have been paid
+and how much.
+If a partner asks you to connect your MyFundedPerps account, open the connect
+link it gives you, sign in, and select Get Connection Code . Paste the code
+on the partner’s site within 10 minutes. Each code works once.
+The partner sees only the payouts paid to you in the competition window: when
+each was paid and its amount, including any part taken as store credit. It
+does not see your email, Rise details, or trading accounts. To stop sharing, open the same connect link and select
+Disconnect .
 Becoming Funded
 Billing and Rewards
 website

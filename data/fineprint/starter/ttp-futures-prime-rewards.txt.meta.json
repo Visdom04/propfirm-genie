@@ -1,6 +1,8 @@
 {
   "url": "https://support.thetradingpit.com/en/articles/836079-futures-prime-rewards",
   "hash": "4aec6a0af79602056846e1a98c865b0cd482afcf995b10bf6a1000ac327da2d1",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-03T11:15:43.871Z",
+  "pendingHash": "391f744103c05d89a515e307ca178ceff72bccbdff8250597b5d13b0a823fdd3",
+  "pendingSince": "2026-11-03T11:15:43.871Z"
 }

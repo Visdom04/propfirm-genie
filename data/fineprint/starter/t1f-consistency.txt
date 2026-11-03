@@ -18,7 +18,7 @@ Search for articles...
 - Consistency Rule in Elite Sim Funded Accounts Explained
 Consistency Rule in Elite Sim Funded Accounts Explained
 This article will explain how the 25% consistency rule works in the Elite Sim Funded accounts
-Updated over 4 weeks ago
+October 2, 2026
 Table of contents
 At Top One Futures, we prioritize disciplined and sustainable trading practices. One of our key risk management guidelines is the Consistency Rule , set at 25% on Elite Sim Funded accounts (20% for Instant Sim Funded Accounts) that have been upgraded from Evaluation accounts. Note: there is no consistency rule in the Elite Evaluation phase .
 Please note: for the purposes of consistency rule calculation, a trading day ends at 5:00pm EST .

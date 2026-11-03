@@ -1,6 +1,8 @@
 {
   "url": "https://support.thetradingpit.com/how-does-the-daily-pause-work-on-futures-prime-accounts",
   "hash": "346017d27fe892c4deea3d751b2eb0ca8ff603a9445e0e4a4acf2d9fe375953b",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-03T11:15:43.871Z",
+  "pendingHash": "3711440b23e04d3acce7d44b63cf724488e9cc9be246ddc4c449cd7f4aa05dcc",
+  "pendingSince": "2026-11-03T11:15:43.871Z"
 }

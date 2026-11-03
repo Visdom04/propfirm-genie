@@ -1,5 +1,559 @@
 [
   {
+    "id": "mff-intraday-drawdown-a66dcee7ad2b",
+    "pageId": "mff-intraday-drawdown",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Futures",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Futures rules",
+    "summary": "Was “- Rapid Plan 100k - A Comprehensive Look”.",
+    "sourceUrl": "https://help.myfundedfutures.com/en/articles/12802721-intraday-drawdown-explained",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "- Rapid Plan 100k - A Comprehensive Look",
+        "after": "—",
+        "beforeLine": "- Rapid Plan 100k - A Comprehensive Look",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "- Rapid Plan 100k - A Comprehensive Look"
+        ],
+        "after": [],
+        "removed": [
+          "- Rapid Plan 100k - A Comprehensive Look"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
+    "id": "mfp-payouts-f9e1b43a23b5",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “same Rise account and the same identity check; see”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "same Rise account and the same identity check; see",
+        "beforeLine": "",
+        "afterLine": "same Rise account and the same identity check; see"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "same Rise account and the same identity check; see"
+        ],
+        "removed": [],
+        "added": [
+          "same Rise account and the same identity check; see"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
+    "id": "mfp-payouts-caefa29e1002",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "payouts",
+    "title": "My Funded Perps payout terms",
+    "summary": "Now “You have one Rise account for every payout. Competition prize payouts use the”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Payout terms",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "You have one Rise account for every payout. Competition prize payouts use the",
+        "beforeLine": "",
+        "afterLine": "You have one Rise account for every payout. Competition prize payouts use the"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "You have one Rise account for every payout. Competition prize payouts use the"
+        ],
+        "removed": [],
+        "added": [
+          "You have one Rise account for every payout. Competition prize payouts use the"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
+    "id": "mfp-payouts-c7dd80788dc2",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Was “apply to every request, and staying within them does not raise the lifetime cap. It is also”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "apply to every request, and staying within them does not raise the lifetime cap. It is also",
+        "after": "—",
+        "beforeLine": "apply to every request, and staying within them does not raise the lifetime cap. It is also",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "apply to every request, and staying within them does not raise the lifetime cap. It is also"
+        ],
+        "after": [],
+        "removed": [
+          "apply to every request, and staying within them does not raise the lifetime cap. It is also"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
+    "id": "mfp-payouts-6505d7b13fa7",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “taking payouts from them, even if those payouts take your total above”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "taking payouts from them, even if those payouts take your total above",
+        "beforeLine": "",
+        "afterLine": "taking payouts from them, even if those payouts take your total above"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "taking payouts from them, even if those payouts take your total above"
+        ],
+        "removed": [],
+        "added": [
+          "taking payouts from them, even if those payouts take your total above"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
+    "id": "mfp-payouts-9115073b040f",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “Your active funded accounts are not closed: you can keep trading them and”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "Your active funded accounts are not closed: you can keep trading them and",
+        "beforeLine": "",
+        "afterLine": "Your active funded accounts are not closed: you can keep trading them and"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "Your active funded accounts are not closed: you can keep trading them and"
+        ],
+        "removed": [],
+        "added": [
+          "Your active funded accounts are not closed: you can keep trading them and"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
+    "id": "mfp-payouts-3eb8d4125d58",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “MyFundedPerps funded trader program and can no longer purchase new accounts.”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "MyFundedPerps funded trader program and can no longer purchase new accounts.",
+        "beforeLine": "",
+        "afterLine": "MyFundedPerps funded trader program and can no longer purchase new accounts."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "MyFundedPerps funded trader program and can no longer purchase new accounts."
+        ],
+        "removed": [],
+        "added": [
+          "MyFundedPerps funded trader program and can no longer purchase new accounts."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
+    "id": "mfp-payouts-0ec72ac1a807",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “Once your combined payouts reach $100,000, you have graduated from the”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "Once your combined payouts reach $100,000, you have graduated from the",
+        "beforeLine": "",
+        "afterLine": "Once your combined payouts reach $100,000, you have graduated from the"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "Once your combined payouts reach $100,000, you have graduated from the"
+        ],
+        "removed": [],
+        "added": [
+          "Once your combined payouts reach $100,000, you have graduated from the"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
+    "id": "mfp-payouts-a05d22029fb5",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Was “not the gross amount deducted from the account. Purchasing new accounts or”. Now “the gross amount deducted from the account. Purchasing new accounts or”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "not the gross amount deducted from the account. Purchasing new accounts or",
+        "after": "the gross amount deducted from the account. Purchasing new accounts or",
+        "beforeLine": "not the gross amount deducted from the account. Purchasing new accounts or",
+        "afterLine": "the gross amount deducted from the account. Purchasing new accounts or"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "not the gross amount deducted from the account. Purchasing new accounts or"
+        ],
+        "after": [
+          "the gross amount deducted from the account. Purchasing new accounts or"
+        ],
+        "removed": [
+          "not the gross amount deducted from the account. Purchasing new accounts or"
+        ],
+        "added": [
+          "the gross amount deducted from the account. Purchasing new accounts or"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
+    "id": "mfp-payouts-05adb724d8df",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "payouts",
+    "title": "My Funded Perps profit split",
+    "summary": "Was “The cap counts the payout amount you actually receive after the profit split,”. Now “It counts the payout amount you actually receive after the profit split, not”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Profit split",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "The cap counts the payout amount you actually receive after the profit split,",
+        "after": "It counts the payout amount you actually receive after the profit split, not",
+        "beforeLine": "The cap counts the payout amount you actually receive after the profit split,",
+        "afterLine": "It counts the payout amount you actually receive after the profit split, not"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "The cap counts the payout amount you actually receive after the profit split,"
+        ],
+        "after": [
+          "It counts the payout amount you actually receive after the profit split, not"
+        ],
+        "removed": [
+          "The cap counts the payout amount you actually receive after the profit split,"
+        ],
+        "added": [
+          "It counts the payout amount you actually receive after the profit split, not"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
+    "id": "mfp-payouts-f287323aa8e8",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "payouts",
+    "title": "My Funded Perps maximum payout",
+    "summary": "Now “The lifetime payout cap is $100,000 per user, combined across every”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Maximum payout",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "The lifetime payout cap is $100,000 per user, combined across every",
+        "beforeLine": "",
+        "afterLine": "The lifetime payout cap is $100,000 per user, combined across every"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "The lifetime payout cap is $100,000 per user, combined across every"
+        ],
+        "removed": [],
+        "added": [
+          "The lifetime payout cap is $100,000 per user, combined across every"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
+    "id": "mfp-payouts-cca73cd3487f",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Was “all MyFundedPerps accounts. The cap is per user, combined across every”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "all MyFundedPerps accounts. The cap is per user, combined across every",
+        "after": "—",
+        "beforeLine": "all MyFundedPerps accounts. The cap is per user, combined across every",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "all MyFundedPerps accounts. The cap is per user, combined across every"
+        ],
+        "after": [],
+        "removed": [
+          "all MyFundedPerps accounts. The cap is per user, combined across every"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
+    "id": "mfp-payouts-50e4425f63ff",
+    "pageId": "mfp-payouts",
+    "detectedAt": "2026-11-02T11:36:44.343Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Was “Each user can receive at most $100,000 in total lifetime payouts across”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenge-lifecycle/payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Each user can receive at most $100,000 in total lifetime payouts across",
+        "after": "—",
+        "beforeLine": "Each user can receive at most $100,000 in total lifetime payouts across",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Each user can receive at most $100,000 in total lifetime payouts across"
+        ],
+        "after": [],
+        "removed": [
+          "Each user can receive at most $100,000 in total lifetime payouts across"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-03T11:15:43.871Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-03T11:15:43.871Z"
+  },
+  {
     "id": "topstep-max-loss-limit-14c58d32fc5f",
     "pageId": "topstep-max-loss-limit",
     "detectedAt": "2026-11-01T10:45:01.326Z",

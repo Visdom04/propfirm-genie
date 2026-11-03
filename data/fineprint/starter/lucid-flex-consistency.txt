@@ -21,7 +21,7 @@ LucidFlex Consistency Percentage
 How the LucidFlex consistency rule works: 40% standard, 50% with the add-on, the calculation, and what it means for passing.
 O
 Written by Operations Lead
-Updated over a week ago
+Updated over 2 weeks ago
 Table of contents
 Consistency
 The Consistency Percentage tracks a traders ability to earn profits over multiple sessions. This demonstrates a that a trader has and can adhere to a risk management strategy.

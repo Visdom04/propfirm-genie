@@ -51,6 +51,7 @@ Guides
 - Competitions
 - Launch competition
 - October competition
+- MyFundedPerps Weekly Blitz
 - Copy Trading Guide
 - Affiliate Program
 - Second Chance Offer
