@@ -1,6 +1,8 @@
 {
   "url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
   "hash": "66f77f5e2f0ab3b5a7d7e081a517205ed60f85c88c60678c6cf66a365012c00c",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-04T11:26:34.842Z",
+  "pendingHash": "b1712760fba16db624ac28334ad6121b4c14fc01915f7801de89920091727967",
+  "pendingSince": "2026-11-04T11:26:34.842Z"
 }

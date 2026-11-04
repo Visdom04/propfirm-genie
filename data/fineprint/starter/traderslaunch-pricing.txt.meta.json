@@ -1,6 +1,8 @@
 {
   "url": "https://traderslaunch.com/pricing",
   "hash": "5d37d451afd339477de4cca28a854b48940f67a711104f9132f4fa4e8c0863a3",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-04T11:26:34.842Z",
+  "pendingHash": "f53dd3fc3fd11944645841cd2ecc182408a8b5561e742f1cd29df7c47ce1925b",
+  "pendingSince": "2026-11-04T11:26:34.842Z"
 }

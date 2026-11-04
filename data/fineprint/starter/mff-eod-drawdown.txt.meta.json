@@ -1,6 +1,8 @@
 {
   "url": "https://help.myfundedfutures.com/en/articles/8348565-end-of-day-eod-drawdown-explained",
   "hash": "d13f99c1985f36e983d713fba58fff1d76071a8ff34df96751d99cba00a1d627",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-04T11:26:34.842Z",
+  "pendingHash": "81b72b63a368a7a352853f92cb535474a26854090d8aa9802621bd662419edeb",
+  "pendingSince": "2026-11-04T11:26:34.842Z"
 }

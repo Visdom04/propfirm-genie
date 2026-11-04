@@ -1,6 +1,8 @@
 {
   "url": "https://support.iqcapital.io/en/articles/16087436-core-dll-futures-challenge",
   "hash": "b1012498b076b68e35c942382a5bbd41b474c8a99010b30c1c35df295f951e4b",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-04T11:26:34.842Z",
+  "pendingHash": "0f6901ef55e3cbbe733843983c6ac8701cf8fd566c8fe52b66a90c1537858e45",
+  "pendingSince": "2026-11-04T11:26:34.842Z"
 }

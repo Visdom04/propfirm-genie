@@ -1,5 +1,89 @@
 [
   {
+    "id": "e2t-consistency-a291e8567a49",
+    "pageId": "e2t-consistency",
+    "detectedAt": "2026-11-03T11:15:43.871Z",
+    "firm": "Earn2Trade",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Earn2Trade rules",
+    "summary": "Now “- What is the Progression Ladder in the Gauntlet Mini™?”.",
+    "sourceUrl": "https://help.earn2trade.com/en/articles/3849975-what-is-the-maintain-consistency-rule",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- What is the Progression Ladder in the Gauntlet Mini™?",
+        "beforeLine": "",
+        "afterLine": "- What is the Progression Ladder in the Gauntlet Mini™?"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- What is the Progression Ladder in the Gauntlet Mini™?"
+        ],
+        "removed": [],
+        "added": [
+          "- What is the Progression Ladder in the Gauntlet Mini™?"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-04T11:26:34.842Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-04T11:26:34.842Z"
+  },
+  {
+    "id": "t1f-daily-loss-b0f995c4bf1f",
+    "pageId": "t1f-daily-loss",
+    "detectedAt": "2026-11-03T11:15:43.871Z",
+    "firm": "Top One Futures",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Top One Futures daily loss limit",
+    "summary": "Now “- Elite ACCESS Static - Daily Loss Limit (DLL)”.",
+    "sourceUrl": "https://help.toponefutures.com/en/articles/10907081-daily-drawdown-what-you-need-to-know",
+    "facts": [
+      {
+        "label": "Daily loss limit",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- Elite ACCESS Static - Daily Loss Limit (DLL)",
+        "beforeLine": "",
+        "afterLine": "- Elite ACCESS Static - Daily Loss Limit (DLL)"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- Elite ACCESS Static - Daily Loss Limit (DLL)"
+        ],
+        "removed": [],
+        "added": [
+          "- Elite ACCESS Static - Daily Loss Limit (DLL)"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-04T11:26:34.842Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-04T11:26:34.842Z"
+  },
+  {
     "id": "mff-intraday-drawdown-a66dcee7ad2b",
     "pageId": "mff-intraday-drawdown",
     "detectedAt": "2026-11-02T11:36:44.343Z",

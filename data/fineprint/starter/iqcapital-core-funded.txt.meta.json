@@ -1,6 +1,8 @@
 {
   "url": "https://support.iqcapital.io/en/articles/14964929-core-futures-funding",
   "hash": "98309849c14d2cade5ae844fe131ba71ee5ced7d42d84d1d33d0cd004fbba738",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-04T11:26:34.842Z",
+  "pendingHash": "df2aedba13d38e6fb9f5b1c74f79270b7c2df6595396e906d1947fa54199083f",
+  "pendingSince": "2026-11-04T11:26:34.842Z"
 }

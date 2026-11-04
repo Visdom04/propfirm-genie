@@ -33,6 +33,7 @@ The Maintain Consistency rule does not apply on the LiveSim ® and/or Live accou
 The daily PnL is calculated into this rule regardless of whether or not the account balance is below or over the starting account balance.
 Related Articles
 - What is the Maximum Drawdown on The Trader Career Path® and The Gauntlet Mini™ Challenges?
+- What is the Progression Ladder in the Gauntlet Mini™?
 - What is the Withdrawal Policy?
 - What Are the Evaluation Rules?
 - What Happens When I Complete My Evaluation?

@@ -1,8 +1,6 @@
 {
   "url": "https://support.lucidtrading.com/en/articles/11404734-prohibited-hedging",
-  "hash": "1204bd2743ea6f0fb3a68b590d843977f61c70ebe8df4309bac2cd9c774fe883",
-  "state": "pending",
-  "checkedAt": "2026-11-03T11:15:43.871Z",
-  "pendingHash": "c78f6700920a6813173f518e9897fc02b7e791d7f57b0e17d65dc20c7cfc83ef",
-  "pendingSince": "2026-11-03T11:15:43.871Z"
+  "hash": "c78f6700920a6813173f518e9897fc02b7e791d7f57b0e17d65dc20c7cfc83ef",
+  "state": "noise",
+  "checkedAt": "2026-11-04T11:26:34.842Z"
 }

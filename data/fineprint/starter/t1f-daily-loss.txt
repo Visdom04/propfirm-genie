@@ -18,7 +18,7 @@ Search for articles...
 - Daily Drawdown: What You Need to Know
 Daily Drawdown: What You Need to Know
 The Daily Loss Limit per account type and size, what happens when you hit it, and how it is calculated from your previous day's close.
-Updated this week
+Updated over a week ago
 Table of contents
 The daily drawdown , also called the Daily Loss Limit (DLL) , is a fixed dollar amount set per account type and size, roughly 1% to 2.5% of your account balance depending on the program. It helps manage risk and ensures responsible trading. This article shows the limit for each account size and explains what happens when you hit it and how it is calculated.
 💡 Prefer to trade without a Daily Loss Limit? The No Daily Loss Limit add-on is available at checkout for Elite ACCESS, Elite ACCESS Intraday, Elite Daily and Ignite accounts, for about 30% more than the base price. On Elite ACCESS and Elite ACCESS Intraday, the evaluation price stays the same and the extra is added to the activation fee instead. The add-on can only be chosen during the initial checkout. Learn more: No Daily Loss Limit Add-On .
@@ -107,10 +107,10 @@ Related articles
 - Top One Futures Account Comparison: Elite vs. Instant vs. Ignite
 Related Articles
 - Elite Daily V2 – Daily Loss Limit (DLL) - Funded Phase
-- Elite Daily V2 – Max Loss Limit (MLL)
 - Elite ACCESS – Daily Loss Limit (DLL)
 - Elite Daily V2 – Daily Loss Limit (DLL) - Evaluation Phase
 - Elite ACCESS Intraday - Daily Loss Limit (DLL)
+- Elite ACCESS Static - Daily Loss Limit (DLL)
 Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
 Table of contents
 Intercom We run on Intercom

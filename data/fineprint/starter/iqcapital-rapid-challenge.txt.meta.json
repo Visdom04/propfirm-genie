@@ -1,6 +1,8 @@
 {
   "url": "https://support.iqcapital.io/en/articles/16087696-rapid-futures-challenge",
   "hash": "6e41bca42512a39b8b314acf6bbc6a6bf5b8bc351d7d1720874ab9e3dddc91de",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-04T11:26:34.842Z",
+  "pendingHash": "2c75f64aee0fd0ed665f1e939318ae9748b86c8caa480b8523f373f8c2f71d3a",
+  "pendingSince": "2026-11-04T11:26:34.842Z"
 }

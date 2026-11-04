@@ -1,8 +1,6 @@
 {
   "url": "https://support.thetradingpit.com/en/articles/836068-futures-prime-how-it-works",
-  "hash": "6208ad190824cf2864842763aec2286fbd80781d8a7677dc9c2bca77eef200d2",
-  "state": "pending",
-  "checkedAt": "2026-11-03T11:15:43.871Z",
-  "pendingHash": "3ae1d8dc6a32c6c682fc5a26a0ab8b4e226ab880de5a43b6d7f1c94e3bd59e33",
-  "pendingSince": "2026-11-03T11:15:43.871Z"
+  "hash": "3ae1d8dc6a32c6c682fc5a26a0ab8b4e226ab880de5a43b6d7f1c94e3bd59e33",
+  "state": "noise",
+  "checkedAt": "2026-11-04T11:26:34.842Z"
 }
