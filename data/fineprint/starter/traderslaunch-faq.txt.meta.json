@@ -1,8 +1,6 @@
 {
   "url": "https://traderslaunch.com/faq",
-  "hash": "3db71bb94c84e8d542337b92999387124470decdaecd4dfec4720d6fc0f89e87",
-  "state": "pending",
-  "checkedAt": "2026-11-04T11:26:34.842Z",
-  "pendingHash": "6026610b97262ae6ebf7ba8cadfd4e4ff27aef2c6ce684592fed9082ee431ac8",
-  "pendingSince": "2026-11-04T11:26:34.842Z"
+  "hash": "6026610b97262ae6ebf7ba8cadfd4e4ff27aef2c6ce684592fed9082ee431ac8",
+  "state": "changed",
+  "checkedAt": "2026-11-05T11:24:22.325Z"
 }

@@ -13,8 +13,8 @@ Futures Evaluation Rules
 The rules for the futures program: the one-step evaluation, the EOD drawdown, account limits and the payout rules for SimFunded accounts.
 Last reviewed July 16, 2026
 Evaluation Type One-step evaluation
-Trading Days Minimum 3 trading days
-Account Limit Up to 5 funded Futures accounts per user at a time
+Trading Days No minimum
+Account Limit Up to 5 evaluations and up to 5 funded Futures accounts per user at a time
 Payout Eligibility SimFunded account above +1%
 Drawdown EOD drawdown, no intraday trailing
 Fees Once Funded $0 activation or ongoing fees
@@ -26,18 +26,18 @@ On This Page
 See Futures Pricing
 01 Evaluation Rules
 - One-step evaluation with no Phase 2
-- Best day must be 40% or less of total profits
-- Minimum 3 trading days
+- Profit in one session cannot go above 40% of the profit target (50% on static plans)
+- No minimum trading days on futures plans; a plan card that shows one has it
 - 60-day maximum time limit to pass
-- At least 1 trade per week
+- At least 1 trade in any 7 days on every account
 - EOD drawdown locks at starting balance with no intraday trailing
 - Hedging is not permitted, including same-instrument, correlated-instrument, or coordinated cross-trader hedging
 - Reasonable scaling and averaging are allowed; excessive martingale-style trading may trigger an account review
 - Scalping trades held for 5–30 seconds are allowed; HFT-style trading is not permitted, and accounts may be paused for review when more than 10% of trades are opened and fully closed within two seconds
 02 SimFunded Account Rules
 - Eligible for payouts once funded account profit is above +1%
-- Same-day payout processing when eligible
-- Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities
+- Payout requests any day, answered within up to 2 business days
+- No per-payout cap; at $100,000 in total payouts the next request pauses for a review of up to 5 business days
 - No time restriction on withdrawals
 - No consistency rules once funded
 - No activation fees

@@ -51,6 +51,7 @@ Guides
 - Competitions
 - Launch competition
 - October competition
+- MyFundedPerps Weekly Blitz
 - Copy Trading Guide
 - Affiliate Program
 - Second Chance Offer
@@ -77,6 +78,7 @@ Settings
 - API Key Settings
 - Notification Settings
 - Certificates
+- Archived Accounts
 - Purchase History
 On this page
 Back to top
@@ -123,6 +125,11 @@ profit target for an instant, the evaluation passes, and if it reaches a loss
 floor for an instant, the account fails, even if the price moves back right
 after. Individual trades and candle wicks are not used, so a wick past a level
 does not always reach it.
+On mobile, the trade page’s Account tab shows the equity floor for each
+loss rule on your plan. When your account has both a daily loss limit and a
+maximum drawdown, the floor your equity would reach first is listed first.
+After a losing day that is often the daily loss limit, even though its
+allowance is smaller.
 ​
 Select prize accounts
 $1K and $2.5K Select accounts are prizes from giveaways and promotions. They

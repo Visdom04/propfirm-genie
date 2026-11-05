@@ -1,6 +1,8 @@
 {
   "url": "https://daytraders.com/help/articles/17704120-market-data-add-ons-and-fees",
   "hash": "ea4dbdf3a597ff66986ad881ca61977541a4443dd06e5c4db66638edc895fd63",
-  "state": "noise",
-  "checkedAt": "2026-11-04T11:26:34.842Z"
+  "state": "pending",
+  "checkedAt": "2026-11-05T11:24:22.325Z",
+  "pendingHash": "f35e545b46b8ee36c5b5af597791be26c54c20f5c8a11983a61037345a1f9a84",
+  "pendingSince": "2026-11-05T11:24:22.325Z"
 }

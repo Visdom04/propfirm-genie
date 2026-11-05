@@ -113,7 +113,7 @@ How does the Daily Loss Limit work in the Live Funded Account?
 All Live Funded Account accounts have a Daily Loss Limit. Learn more here .
 Related Articles
 - What is the Maximum Loss Limit?
-- Live Funded Account Parameters
+- Express Funded Account™ Parameters
 - Dynamic Live Risk Expansion
 - What is the Responsible Trading Program?
 - TopstepX™

@@ -9,12 +9,12 @@ Sign In Get Funded
 -
 -
 Payout Rules
-Same-Day Payout Processing
-Traders Launch processes eligible payouts the same day. Futures funded accounts are eligible once the account is above +1% profit. Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities.
+Daily Payout Requests
+You can request a payout any day. We answer within up to two business days and start the payment within up to two business days of approval. Wire transfers go out weekly. Futures funded accounts are eligible once the account is above +1% profit. No per-payout cap. When your total payouts reach $100,000, your next request pauses for a review of up to 5 business days.
 Last reviewed July 16, 2026
-Processing Same-day when eligible
+Processing Answered within 2 business days
 Futures Eligibility SimFunded account above +1%
-Payout Policy $100,000 scaling review threshold
+Payout Policy No per-payout cap · $100,000 review
 Payout Timing No time restriction
 Fees No activation fees · no additional fees once funded
 Terms Rules and restrictions apply
@@ -25,16 +25,16 @@ On This Page
 - 04 Related Pages
 See Trader Results
 01 Key Points
-- Same-day payout processing when eligible
+- Payout requests any day, answered within up to 2 business days
 - Futures funded accounts are eligible once above +1%
-- Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities
+- No per-payout cap; at $100,000 in total payouts the next request pauses for a review of up to 5 business days
 - No time restriction on withdrawals
 - No consistency rules once funded
 - No activation fees
 - No additional fees once funded
 - Payouts and funded account restrictions are subject to program rules and Terms
 02 Why Payout Rules Matter
-Payout rules are one of the clearest ways to compare prop firms. Traders Launch keeps payout eligibility, the $100,000 scaling review threshold and processing terms visible, with requests subject to program rules and Terms.
+Payout rules are one of the clearest ways to compare prop firms. Traders Launch keeps payout eligibility, the $100,000 payout review and processing terms visible, with requests subject to program rules and Terms.
 03 Fees
 Futures and crypto evaluations both have a one-time fee. Once you are funded, there are no recurring charges.
 04 Related Pages

@@ -1,6 +1,8 @@
 {
   "url": "https://daytraders.com/help/articles/17684746-eod-drawdown",
   "hash": "e87ecda7744b4529aff50d3262b54524186e7f520ce68d74fc56686d83c72df0",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-05T11:24:22.325Z",
+  "pendingHash": "56f83265d4a0ef23c801159773c58c54831a5ae1a8dbca18b97d13531175b16a",
+  "pendingSince": "2026-11-05T11:24:22.325Z"
 }

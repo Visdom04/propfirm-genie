@@ -1,6 +1,8 @@
 {
   "url": "https://helpfutures.blueguardian.com/en/articles/15679519-direct-account-rules",
   "hash": "ebd50d5700adb246b29489c9fd3147847083ff5490c68c6149d558eca4131999",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-05T11:24:22.325Z",
+  "pendingHash": "60ec9084e2a00f5308553521a96561a8b4df4a927765bb637642cdad1cfc0de0",
+  "pendingSince": "2026-11-05T11:24:22.325Z"
 }

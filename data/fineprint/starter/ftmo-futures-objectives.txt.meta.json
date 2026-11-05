@@ -1,6 +1,8 @@
 {
   "url": "https://ftmo.com/en/futures/trading-objectives-and-rules/",
   "hash": "a18fcf6777af57a2f797042513998fdf31ea748fbdff3bd1cd6a85a1bdfa555c",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-05T11:24:22.325Z",
+  "pendingHash": "f78b466f477e6fc3020c13da32cd241a8981af35ef55fe8c5bd5a26249a3490c",
+  "pendingSince": "2026-11-05T11:24:22.325Z"
 }

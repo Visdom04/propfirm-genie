@@ -1,6 +1,8 @@
 {
   "url": "https://helpfutures.blueguardian.com/en/articles/15679143-express-account-rules",
   "hash": "f6e9174a4e2661da92151b56ce0514e7d510b529579c4ced91ecea7502445e96",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-05T11:24:22.325Z",
+  "pendingHash": "5f95b3bfefb96bdf40788b416002092f7150d61191e5d7f807dfd253465b9f36",
+  "pendingSince": "2026-11-05T11:24:22.325Z"
 }

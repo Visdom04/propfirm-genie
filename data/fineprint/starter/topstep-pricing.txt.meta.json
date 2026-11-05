@@ -1,6 +1,8 @@
 {
   "url": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
   "hash": "30276d82837e873df626fb97f9cd7a82053568b5f799126981e519f7ac8f368e",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-05T11:24:22.325Z",
+  "pendingHash": "5afcf7d7f7d6ba8c041785e2c03c1c2a547f8414ce192498730f4a66b6169254",
+  "pendingSince": "2026-11-05T11:24:22.325Z"
 }

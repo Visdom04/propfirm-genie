@@ -1,5 +1,1709 @@
 [
   {
+    "id": "traderslaunch-payouts-e41b81981a29",
+    "pageId": "traderslaunch-payouts",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch payout terms",
+    "summary": "Was “Payout rules are one of the clearest ways to compare prop firms. Traders Launch keeps payout eligibility, the $100,000 scaling review threshold and processing terms visible, with requests subject to program rules and ...”. Now “Payout rules are one of the clearest ways to compare prop firms. Traders Launch keeps payout eligibility, the $100,000 payout review and processing terms visible, with requests subject to program rules and Terms.”.",
+    "sourceUrl": "https://traderslaunch.com/payout-rules",
+    "facts": [
+      {
+        "label": "Payout terms",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Payout rules are one of the clearest ways to compare prop firms. Traders Launch keeps payout eligibility, the $100,000 scaling review threshold and processing terms visible, with requests subject to program rules and Terms.",
+        "after": "Payout rules are one of the clearest ways to compare prop firms. Traders Launch keeps payout eligibility, the $100,000 payout review and processing terms visible, with requests subject to program rules and Terms.",
+        "beforeLine": "Payout rules are one of the clearest ways to compare prop firms. Traders Launch keeps payout eligibility, the $100,000 scaling review threshold and processing terms visible, with requests subject to program rules and Terms.",
+        "afterLine": "Payout rules are one of the clearest ways to compare prop firms. Traders Launch keeps payout eligibility, the $100,000 payout review and processing terms visible, with requests subject to program rules and Terms."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Payout rules are one of the clearest ways to compare prop firms. Traders Launch keeps payout eligibility, the $100,000 scaling review threshold and processing terms visible, with requests subject to program rules and Terms."
+        ],
+        "after": [
+          "Payout rules are one of the clearest ways to compare prop firms. Traders Launch keeps payout eligibility, the $100,000 payout review and processing terms visible, with requests subject to program rules and Terms."
+        ],
+        "removed": [
+          "Payout rules are one of the clearest ways to compare prop firms. Traders Launch keeps payout eligibility, the $100,000 scaling review threshold and processing terms visible, with requests subject to program rules and Terms."
+        ],
+        "added": [
+          "Payout rules are one of the clearest ways to compare prop firms. Traders Launch keeps payout eligibility, the $100,000 payout review and processing terms visible, with requests subject to program rules and Terms."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-payouts-57cd175ba47d",
+    "pageId": "traderslaunch-payouts",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch maximum payout",
+    "summary": "Now “- No per-payout cap; at $100,000 in total payouts the next request pauses for a review of up to 5 business days”.",
+    "sourceUrl": "https://traderslaunch.com/payout-rules",
+    "facts": [
+      {
+        "label": "Maximum payout",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- No per-payout cap; at $100,000 in total payouts the next request pauses for a review of up to 5 business days",
+        "beforeLine": "",
+        "afterLine": "- No per-payout cap; at $100,000 in total payouts the next request pauses for a review of up to 5 business days"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- No per-payout cap; at $100,000 in total payouts the next request pauses for a review of up to 5 business days"
+        ],
+        "removed": [],
+        "added": [
+          "- No per-payout cap; at $100,000 in total payouts the next request pauses for a review of up to 5 business days"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-payouts-4fc8ac7449df",
+    "pageId": "traderslaunch-payouts",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch rules",
+    "summary": "Was “- Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities”.",
+    "sourceUrl": "https://traderslaunch.com/payout-rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "- Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities",
+        "after": "—",
+        "beforeLine": "- Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "- Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities"
+        ],
+        "after": [],
+        "removed": [
+          "- Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-payouts-136bf4304dc7",
+    "pageId": "traderslaunch-payouts",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch payout terms",
+    "summary": "Now “- Payout requests any day, answered within up to 2 business days”.",
+    "sourceUrl": "https://traderslaunch.com/payout-rules",
+    "facts": [
+      {
+        "label": "Payout terms",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- Payout requests any day, answered within up to 2 business days",
+        "beforeLine": "",
+        "afterLine": "- Payout requests any day, answered within up to 2 business days"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- Payout requests any day, answered within up to 2 business days"
+        ],
+        "removed": [],
+        "added": [
+          "- Payout requests any day, answered within up to 2 business days"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-payouts-62c2bba4109d",
+    "pageId": "traderslaunch-payouts",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch payout terms",
+    "summary": "Was “- Same-day payout processing when eligible”.",
+    "sourceUrl": "https://traderslaunch.com/payout-rules",
+    "facts": [
+      {
+        "label": "Payout terms",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "- Same-day payout processing when eligible",
+        "after": "—",
+        "beforeLine": "- Same-day payout processing when eligible",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "- Same-day payout processing when eligible"
+        ],
+        "after": [],
+        "removed": [
+          "- Same-day payout processing when eligible"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-payouts-756230bdaec8",
+    "pageId": "traderslaunch-payouts",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch maximum payout",
+    "summary": "Now “Payout Policy No per-payout cap · $100,000 review”.",
+    "sourceUrl": "https://traderslaunch.com/payout-rules",
+    "facts": [
+      {
+        "label": "Maximum payout",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "Payout Policy No per-payout cap · $100,000 review",
+        "beforeLine": "",
+        "afterLine": "Payout Policy No per-payout cap · $100,000 review"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "Payout Policy No per-payout cap · $100,000 review"
+        ],
+        "removed": [],
+        "added": [
+          "Payout Policy No per-payout cap · $100,000 review"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-payouts-70df32f82d97",
+    "pageId": "traderslaunch-payouts",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch payout terms",
+    "summary": "Was “Payout Policy $100,000 scaling review threshold”.",
+    "sourceUrl": "https://traderslaunch.com/payout-rules",
+    "facts": [
+      {
+        "label": "Payout terms",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Payout Policy $100,000 scaling review threshold",
+        "after": "—",
+        "beforeLine": "Payout Policy $100,000 scaling review threshold",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Payout Policy $100,000 scaling review threshold"
+        ],
+        "after": [],
+        "removed": [
+          "Payout Policy $100,000 scaling review threshold"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-payouts-0031b07d307c",
+    "pageId": "traderslaunch-payouts",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch rules",
+    "summary": "Now “Processing Answered within 2 business days”.",
+    "sourceUrl": "https://traderslaunch.com/payout-rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "Processing Answered within 2 business days",
+        "beforeLine": "",
+        "afterLine": "Processing Answered within 2 business days"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "Processing Answered within 2 business days"
+        ],
+        "removed": [],
+        "added": [
+          "Processing Answered within 2 business days"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-payouts-41f1dd45a4a6",
+    "pageId": "traderslaunch-payouts",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch maximum payout",
+    "summary": "Now “You can request a payout any day. We answer within up to two business days and start the payment within up to two business days of approval. Wire transfers go out weekly. Futures funded accounts are eligible once the ...”.",
+    "sourceUrl": "https://traderslaunch.com/payout-rules",
+    "facts": [
+      {
+        "label": "Maximum payout",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "You can request a payout any day. We answer within up to two business days and start the payment within up to two business days of approval. Wire transfers go out weekly. Futures funded accounts are eligible once the account is above +1% profit. No per-payout cap. When your total payouts reach $100,000, your next request pauses for a review of up to 5 business days.",
+        "beforeLine": "",
+        "afterLine": "You can request a payout any day. We answer within up to two business days and start the payment within up to two business days of approval. Wire transfers go out weekly. Futures funded accounts are eligible once the account is above +1% profit. No per-payout cap. When your total payouts reach $100,000, your next request pauses for a review of up to 5 business days."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "You can request a payout any day. We answer within up to two business days and start the payment within up to two business days of approval. Wire transfers go out weekly. Futures funded accounts are eligible once the account is above +1% profit. No per-payout cap. When your total payouts reach $100,000, your next request pauses for a review of up to 5 business days."
+        ],
+        "removed": [],
+        "added": [
+          "You can request a payout any day. We answer within up to two business days and start the payment within up to two business days of approval. Wire transfers go out weekly. Futures funded accounts are eligible once the account is above +1% profit. No per-payout cap. When your total payouts reach $100,000, your next request pauses for a review of up to 5 business days."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-payouts-f64f8bf91a04",
+    "pageId": "traderslaunch-payouts",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch rules",
+    "summary": "Was “Traders Launch processes eligible payouts the same day. Futures funded accounts are eligible once the account is above +1% profit. Traders pause at $100,000 cumulative payouts and become eligible for scaling opportuni...”.",
+    "sourceUrl": "https://traderslaunch.com/payout-rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Traders Launch processes eligible payouts the same day. Futures funded accounts are eligible once the account is above +1% profit. Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities.",
+        "after": "—",
+        "beforeLine": "Traders Launch processes eligible payouts the same day. Futures funded accounts are eligible once the account is above +1% profit. Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities.",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Traders Launch processes eligible payouts the same day. Futures funded accounts are eligible once the account is above +1% profit. Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities."
+        ],
+        "after": [],
+        "removed": [
+          "Traders Launch processes eligible payouts the same day. Futures funded accounts are eligible once the account is above +1% profit. Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities."
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-futures-rules-57cd175ba47d",
+    "pageId": "traderslaunch-futures-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch maximum payout",
+    "summary": "Now “- No per-payout cap; at $100,000 in total payouts the next request pauses for a review of up to 5 business days”.",
+    "sourceUrl": "https://traderslaunch.com/futures/rules",
+    "facts": [
+      {
+        "label": "Maximum payout",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- No per-payout cap; at $100,000 in total payouts the next request pauses for a review of up to 5 business days",
+        "beforeLine": "",
+        "afterLine": "- No per-payout cap; at $100,000 in total payouts the next request pauses for a review of up to 5 business days"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- No per-payout cap; at $100,000 in total payouts the next request pauses for a review of up to 5 business days"
+        ],
+        "removed": [],
+        "added": [
+          "- No per-payout cap; at $100,000 in total payouts the next request pauses for a review of up to 5 business days"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-futures-rules-136bf4304dc7",
+    "pageId": "traderslaunch-futures-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch payout terms",
+    "summary": "Now “- Payout requests any day, answered within up to 2 business days”.",
+    "sourceUrl": "https://traderslaunch.com/futures/rules",
+    "facts": [
+      {
+        "label": "Payout terms",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- Payout requests any day, answered within up to 2 business days",
+        "beforeLine": "",
+        "afterLine": "- Payout requests any day, answered within up to 2 business days"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- Payout requests any day, answered within up to 2 business days"
+        ],
+        "removed": [],
+        "added": [
+          "- Payout requests any day, answered within up to 2 business days"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-futures-rules-4fc8ac7449df",
+    "pageId": "traderslaunch-futures-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch rules",
+    "summary": "Was “- Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities”.",
+    "sourceUrl": "https://traderslaunch.com/futures/rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "- Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities",
+        "after": "—",
+        "beforeLine": "- Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "- Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities"
+        ],
+        "after": [],
+        "removed": [
+          "- Traders pause at $100,000 cumulative payouts and become eligible for scaling opportunities"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-futures-rules-62c2bba4109d",
+    "pageId": "traderslaunch-futures-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch payout terms",
+    "summary": "Was “- Same-day payout processing when eligible”.",
+    "sourceUrl": "https://traderslaunch.com/futures/rules",
+    "facts": [
+      {
+        "label": "Payout terms",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "- Same-day payout processing when eligible",
+        "after": "—",
+        "beforeLine": "- Same-day payout processing when eligible",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "- Same-day payout processing when eligible"
+        ],
+        "after": [],
+        "removed": [
+          "- Same-day payout processing when eligible"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-futures-rules-ff88e308491e",
+    "pageId": "traderslaunch-futures-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch rules",
+    "summary": "Now “- At least 1 trade in any 7 days on every account”.",
+    "sourceUrl": "https://traderslaunch.com/futures/rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- At least 1 trade in any 7 days on every account",
+        "beforeLine": "",
+        "afterLine": "- At least 1 trade in any 7 days on every account"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- At least 1 trade in any 7 days on every account"
+        ],
+        "removed": [],
+        "added": [
+          "- At least 1 trade in any 7 days on every account"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-futures-rules-66062b77411d",
+    "pageId": "traderslaunch-futures-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch minimum trading days",
+    "summary": "Now “- No minimum trading days on futures plans; a plan card that shows one has it”.",
+    "sourceUrl": "https://traderslaunch.com/futures/rules",
+    "facts": [
+      {
+        "label": "Minimum trading days",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- No minimum trading days on futures plans; a plan card that shows one has it",
+        "beforeLine": "",
+        "afterLine": "- No minimum trading days on futures plans; a plan card that shows one has it"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- No minimum trading days on futures plans; a plan card that shows one has it"
+        ],
+        "removed": [],
+        "added": [
+          "- No minimum trading days on futures plans; a plan card that shows one has it"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-futures-rules-f7d8e157c2f4",
+    "pageId": "traderslaunch-futures-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch profit target",
+    "summary": "Now “- Profit in one session cannot go above 40% of the profit target (50% on static plans)”.",
+    "sourceUrl": "https://traderslaunch.com/futures/rules",
+    "facts": [
+      {
+        "label": "Profit target",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- Profit in one session cannot go above 40% of the profit target (50% on static plans)",
+        "beforeLine": "",
+        "afterLine": "- Profit in one session cannot go above 40% of the profit target (50% on static plans)"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- Profit in one session cannot go above 40% of the profit target (50% on static plans)"
+        ],
+        "removed": [],
+        "added": [
+          "- Profit in one session cannot go above 40% of the profit target (50% on static plans)"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-futures-rules-df86bdc5bae4",
+    "pageId": "traderslaunch-futures-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch rules",
+    "summary": "Was “- Best day must be 40% or less of total profits”.",
+    "sourceUrl": "https://traderslaunch.com/futures/rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "- Best day must be 40% or less of total profits",
+        "after": "—",
+        "beforeLine": "- Best day must be 40% or less of total profits",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "- Best day must be 40% or less of total profits"
+        ],
+        "after": [],
+        "removed": [
+          "- Best day must be 40% or less of total profits"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-futures-rules-c84098a6fa4b",
+    "pageId": "traderslaunch-futures-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch rules",
+    "summary": "Was “Account Limit Up to 5 funded Futures accounts per user at a time”. Now “Account Limit Up to 5 evaluations and up to 5 funded Futures accounts per user at a time”.",
+    "sourceUrl": "https://traderslaunch.com/futures/rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Account Limit Up to 5 funded Futures accounts per user at a time",
+        "after": "Account Limit Up to 5 evaluations and up to 5 funded Futures accounts per user at a time",
+        "beforeLine": "Account Limit Up to 5 funded Futures accounts per user at a time",
+        "afterLine": "Account Limit Up to 5 evaluations and up to 5 funded Futures accounts per user at a time"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Account Limit Up to 5 funded Futures accounts per user at a time"
+        ],
+        "after": [
+          "Account Limit Up to 5 evaluations and up to 5 funded Futures accounts per user at a time"
+        ],
+        "removed": [
+          "Account Limit Up to 5 funded Futures accounts per user at a time"
+        ],
+        "added": [
+          "Account Limit Up to 5 evaluations and up to 5 funded Futures accounts per user at a time"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-faq-b29c3ae7d054",
+    "pageId": "traderslaunch-faq",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch rules",
+    "summary": "Was “Up to 5 funded futures accounts at a time. All funded traders move into a SimFunded account once they clear the buffer stage.”. Now “Up to 5 evaluations and up to 5 funded futures accounts at a time. All funded traders move into a SimFunded account once they clear the buffer stage.”.",
+    "sourceUrl": "https://traderslaunch.com/faq",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Up to 5 funded futures accounts at a time. All funded traders move into a SimFunded account once they clear the buffer stage.",
+        "after": "Up to 5 evaluations and up to 5 funded futures accounts at a time. All funded traders move into a SimFunded account once they clear the buffer stage.",
+        "beforeLine": "Up to 5 funded futures accounts at a time. All funded traders move into a SimFunded account once they clear the buffer stage.",
+        "afterLine": "Up to 5 evaluations and up to 5 funded futures accounts at a time. All funded traders move into a SimFunded account once they clear the buffer stage."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Up to 5 funded futures accounts at a time. All funded traders move into a SimFunded account once they clear the buffer stage."
+        ],
+        "after": [
+          "Up to 5 evaluations and up to 5 funded futures accounts at a time. All funded traders move into a SimFunded account once they clear the buffer stage."
+        ],
+        "removed": [
+          "Up to 5 funded futures accounts at a time. All funded traders move into a SimFunded account once they clear the buffer stage."
+        ],
+        "added": [
+          "Up to 5 evaluations and up to 5 funded futures accounts at a time. All funded traders move into a SimFunded account once they clear the buffer stage."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-faq-cdf1f656894c",
+    "pageId": "traderslaunch-faq",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch rules",
+    "summary": "Was “Three: TradingView (in the browser, no download), Volumetrica (desktop and web), and Quantower (desktop). All three work for evaluation and SimFunded accounts. MES and MNQ come preloaded on every account; MGC (micro g...”. Now “TradingView (in the browser, no download), Volumetrica (desktop and web), and Quantower (desktop) work for evaluation and SimFunded accounts. Hyperprop (web and app) runs with your own Hyperprop login; TL Drop #2 runs...”.",
+    "sourceUrl": "https://traderslaunch.com/faq",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Three: TradingView (in the browser, no download), Volumetrica (desktop and web), and Quantower (desktop). All three work for evaluation and SimFunded accounts. MES and MNQ come preloaded on every account; MGC (micro gold), MCL (micro crude oil), SIL (micro silver), and MYM (micro Dow) are available on request.",
+        "after": "TradingView (in the browser, no download), Volumetrica (desktop and web), and Quantower (desktop) work for evaluation and SimFunded accounts. Hyperprop (web and app) runs with your own Hyperprop login; TL Drop #2 runs on Hyperprop only. MES and MNQ come preloaded on every account; MGC (micro gold), MCL (micro crude oil), SIL (micro silver), and MYM (micro Dow) are available on request.",
+        "beforeLine": "Three: TradingView (in the browser, no download), Volumetrica (desktop and web), and Quantower (desktop). All three work for evaluation and SimFunded accounts. MES and MNQ come preloaded on every account; MGC (micro gold), MCL (micro crude oil), SIL (micro silver), and MYM (micro Dow) are available on request.",
+        "afterLine": "TradingView (in the browser, no download), Volumetrica (desktop and web), and Quantower (desktop) work for evaluation and SimFunded accounts. Hyperprop (web and app) runs with your own Hyperprop login; TL Drop #2 runs on Hyperprop only. MES and MNQ come preloaded on every account; MGC (micro gold), MCL (micro crude oil), SIL (micro silver), and MYM (micro Dow) are available on request."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Three: TradingView (in the browser, no download), Volumetrica (desktop and web), and Quantower (desktop). All three work for evaluation and SimFunded accounts. MES and MNQ come preloaded on every account; MGC (micro gold), MCL (micro crude oil), SIL (micro silver), and MYM (micro Dow) are available on request."
+        ],
+        "after": [
+          "TradingView (in the browser, no download), Volumetrica (desktop and web), and Quantower (desktop) work for evaluation and SimFunded accounts. Hyperprop (web and app) runs with your own Hyperprop login; TL Drop #2 runs on Hyperprop only. MES and MNQ come preloaded on every account; MGC (micro gold), MCL (micro crude oil), SIL (micro silver), and MYM (micro Dow) are available on request."
+        ],
+        "removed": [
+          "Three: TradingView (in the browser, no download), Volumetrica (desktop and web), and Quantower (desktop). All three work for evaluation and SimFunded accounts. MES and MNQ come preloaded on every account; MGC (micro gold), MCL (micro crude oil), SIL (micro silver), and MYM (micro Dow) are available on request."
+        ],
+        "added": [
+          "TradingView (in the browser, no download), Volumetrica (desktop and web), and Quantower (desktop) work for evaluation and SimFunded accounts. Hyperprop (web and app) runs with your own Hyperprop login; TL Drop #2 runs on Hyperprop only. MES and MNQ come preloaded on every account; MGC (micro gold), MCL (micro crude oil), SIL (micro silver), and MYM (micro Dow) are available on request."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-faq-f94b2868d486",
+    "pageId": "traderslaunch-faq",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch payout terms",
+    "summary": "Now “You can request a payout any day. We answer within up to two business days and start the payment within up to two business days of approval. Methods: crypto (USDT on Solana), ACH bank transfer and wire. Wire transfers...”.",
+    "sourceUrl": "https://traderslaunch.com/faq",
+    "facts": [
+      {
+        "label": "Payout terms",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "You can request a payout any day. We answer within up to two business days and start the payment within up to two business days of approval. Methods: crypto (USDT on Solana), ACH bank transfer and wire. Wire transfers go out weekly, and when the funds arrive depends on your bank's processing time.",
+        "beforeLine": "",
+        "afterLine": "You can request a payout any day. We answer within up to two business days and start the payment within up to two business days of approval. Methods: crypto (USDT on Solana), ACH bank transfer and wire. Wire transfers go out weekly, and when the funds arrive depends on your bank's processing time."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "You can request a payout any day. We answer within up to two business days and start the payment within up to two business days of approval. Methods: crypto (USDT on Solana), ACH bank transfer and wire. Wire transfers go out weekly, and when the funds arrive depends on your bank's processing time."
+        ],
+        "removed": [],
+        "added": [
+          "You can request a payout any day. We answer within up to two business days and start the payment within up to two business days of approval. Methods: crypto (USDT on Solana), ACH bank transfer and wire. Wire transfers go out weekly, and when the funds arrive depends on your bank's processing time."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-faq-259afbf51f63",
+    "pageId": "traderslaunch-faq",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch rules",
+    "summary": "Was “Payouts are processed daily. Crypto (USDT on Solana) and ACH bank transfers are processed every 24 hours. Wire transfers are processed weekly, and when the funds arrive depends on your bank's processing time.”.",
+    "sourceUrl": "https://traderslaunch.com/faq",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Payouts are processed daily. Crypto (USDT on Solana) and ACH bank transfers are processed every 24 hours. Wire transfers are processed weekly, and when the funds arrive depends on your bank's processing time.",
+        "after": "—",
+        "beforeLine": "Payouts are processed daily. Crypto (USDT on Solana) and ACH bank transfers are processed every 24 hours. Wire transfers are processed weekly, and when the funds arrive depends on your bank's processing time.",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Payouts are processed daily. Crypto (USDT on Solana) and ACH bank transfers are processed every 24 hours. Wire transfers are processed weekly, and when the funds arrive depends on your bank's processing time."
+        ],
+        "after": [],
+        "removed": [
+          "Payouts are processed daily. Crypto (USDT on Solana) and ACH bank transfers are processed every 24 hours. Wire transfers are processed weekly, and when the funds arrive depends on your bank's processing time."
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-faq-6fc1b13892d0",
+    "pageId": "traderslaunch-faq",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "Traders Launch profit split",
+    "summary": "Was “You can request a payout once your SimFunded account is above +1% profit from its starting balance. You keep the profit split of the plan you chose at purchase: 60% or 80% on standard accounts, 55% or 80% on Legacy NY...”. Now “You can request a payout once your SimFunded account is above +1% profit from its starting balance. You keep the profit split of the plan you chose at purchase: 60% or 80% on standard accounts, 55% or 80% on Legacy NY...”.",
+    "sourceUrl": "https://traderslaunch.com/faq",
+    "facts": [
+      {
+        "label": "Profit split",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "You can request a payout once your SimFunded account is above +1% profit from its starting balance. You keep the profit split of the plan you chose at purchase: 60% or 80% on standard accounts, 55% or 80% on Legacy NYC and earlier 55% accounts. There is no consistency rule once you're SimFunded and no restriction on when you can request. At $100,000 in cumulative payouts you are paused and become eligible for scaling opportunities, including increased allocations and priority consideration for live-capital opportunities.",
+        "after": "You can request a payout once your SimFunded account is above +1% profit from its starting balance. You keep the profit split of the plan you chose at purchase: 60% or 80% on standard accounts, 55% or 80% on Legacy NYC and earlier 55% accounts. There is no consistency rule once you're SimFunded and no restriction on when you can request. No per-payout cap. When your total payouts reach $100,000, your next request pauses for a review of up to 5 business days.",
+        "beforeLine": "You can request a payout once your SimFunded account is above +1% profit from its starting balance. You keep the profit split of the plan you chose at purchase: 60% or 80% on standard accounts, 55% or 80% on Legacy NYC and earlier 55% accounts. There is no consistency rule once you're SimFunded and no restriction on when you can request. At $100,000 in cumulative payouts you are paused and become eligible for scaling opportunities, including increased allocations and priority consideration for live-capital opportunities.",
+        "afterLine": "You can request a payout once your SimFunded account is above +1% profit from its starting balance. You keep the profit split of the plan you chose at purchase: 60% or 80% on standard accounts, 55% or 80% on Legacy NYC and earlier 55% accounts. There is no consistency rule once you're SimFunded and no restriction on when you can request. No per-payout cap. When your total payouts reach $100,000, your next request pauses for a review of up to 5 business days."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "You can request a payout once your SimFunded account is above +1% profit from its starting balance. You keep the profit split of the plan you chose at purchase: 60% or 80% on standard accounts, 55% or 80% on Legacy NYC and earlier 55% accounts. There is no consistency rule once you're SimFunded and no restriction on when you can request. At $100,000 in cumulative payouts you are paused and become eligible for scaling opportunities, including increased allocations and priority consideration for live-capital opportunities."
+        ],
+        "after": [
+          "You can request a payout once your SimFunded account is above +1% profit from its starting balance. You keep the profit split of the plan you chose at purchase: 60% or 80% on standard accounts, 55% or 80% on Legacy NYC and earlier 55% accounts. There is no consistency rule once you're SimFunded and no restriction on when you can request. No per-payout cap. When your total payouts reach $100,000, your next request pauses for a review of up to 5 business days."
+        ],
+        "removed": [
+          "You can request a payout once your SimFunded account is above +1% profit from its starting balance. You keep the profit split of the plan you chose at purchase: 60% or 80% on standard accounts, 55% or 80% on Legacy NYC and earlier 55% accounts. There is no consistency rule once you're SimFunded and no restriction on when you can request. At $100,000 in cumulative payouts you are paused and become eligible for scaling opportunities, including increased allocations and priority consideration for live-capital opportunities."
+        ],
+        "added": [
+          "You can request a payout once your SimFunded account is above +1% profit from its starting balance. You keep the profit split of the plan you chose at purchase: 60% or 80% on standard accounts, 55% or 80% on Legacy NYC and earlier 55% accounts. There is no consistency rule once you're SimFunded and no restriction on when you can request. No per-payout cap. When your total payouts reach $100,000, your next request pauses for a review of up to 5 business days."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-faq-c48f54530a1b",
+    "pageId": "traderslaunch-faq",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch position size",
+    "summary": "Was “Your starting contract limit depends on account size and type. Standard 60% and 80% accounts start at 2 minis or 20 micros on $100K, 4 minis or 40 micros on $200K, and 6 minis or 60 micros on $300K. Legacy NYC account...”. Now “Your starting contract limit depends on account size and type. Standard 60% and 80% accounts start at 2 minis or 20 micros on $100K, 4 minis or 40 micros on $200K, and 6 minis or 60 micros on $300K. Legacy NYC account...”.",
+    "sourceUrl": "https://traderslaunch.com/faq",
+    "facts": [
+      {
+        "label": "Position size",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Your starting contract limit depends on account size and type. Standard 60% and 80% accounts start at 2 minis or 20 micros on $100K, 4 minis or 40 micros on $200K, and 6 minis or 60 micros on $300K. Legacy NYC accounts start at 5 micros on $100K, 1 mini or 10 micros on $200K, and 2 minis or 20 micros on $300K. The maximum across all account sizes is 15 minis, or the equivalent in micros.",
+        "after": "Your starting contract limit depends on account size and type. Standard 60% and 80% accounts start at 2 minis or 20 micros on $100K, 4 minis or 40 micros on $200K, and 6 minis or 60 micros on $300K. Legacy NYC accounts start at 5 micros on $100K, 1 mini or 10 micros on $200K, and 2 minis or 20 micros on $300K. Your starting size is your limit; it does not grow over time.",
+        "beforeLine": "Your starting contract limit depends on account size and type. Standard 60% and 80% accounts start at 2 minis or 20 micros on $100K, 4 minis or 40 micros on $200K, and 6 minis or 60 micros on $300K. Legacy NYC accounts start at 5 micros on $100K, 1 mini or 10 micros on $200K, and 2 minis or 20 micros on $300K. The maximum across all account sizes is 15 minis, or the equivalent in micros.",
+        "afterLine": "Your starting contract limit depends on account size and type. Standard 60% and 80% accounts start at 2 minis or 20 micros on $100K, 4 minis or 40 micros on $200K, and 6 minis or 60 micros on $300K. Legacy NYC accounts start at 5 micros on $100K, 1 mini or 10 micros on $200K, and 2 minis or 20 micros on $300K. Your starting size is your limit; it does not grow over time."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Your starting contract limit depends on account size and type. Standard 60% and 80% accounts start at 2 minis or 20 micros on $100K, 4 minis or 40 micros on $200K, and 6 minis or 60 micros on $300K. Legacy NYC accounts start at 5 micros on $100K, 1 mini or 10 micros on $200K, and 2 minis or 20 micros on $300K. The maximum across all account sizes is 15 minis, or the equivalent in micros."
+        ],
+        "after": [
+          "Your starting contract limit depends on account size and type. Standard 60% and 80% accounts start at 2 minis or 20 micros on $100K, 4 minis or 40 micros on $200K, and 6 minis or 60 micros on $300K. Legacy NYC accounts start at 5 micros on $100K, 1 mini or 10 micros on $200K, and 2 minis or 20 micros on $300K. Your starting size is your limit; it does not grow over time."
+        ],
+        "removed": [
+          "Your starting contract limit depends on account size and type. Standard 60% and 80% accounts start at 2 minis or 20 micros on $100K, 4 minis or 40 micros on $200K, and 6 minis or 60 micros on $300K. Legacy NYC accounts start at 5 micros on $100K, 1 mini or 10 micros on $200K, and 2 minis or 20 micros on $300K. The maximum across all account sizes is 15 minis, or the equivalent in micros."
+        ],
+        "added": [
+          "Your starting contract limit depends on account size and type. Standard 60% and 80% accounts start at 2 minis or 20 micros on $100K, 4 minis or 40 micros on $200K, and 6 minis or 60 micros on $300K. Legacy NYC accounts start at 5 micros on $100K, 1 mini or 10 micros on $200K, and 2 minis or 20 micros on $300K. Your starting size is your limit; it does not grow over time."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-faq-c001d9399555",
+    "pageId": "traderslaunch-faq",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch rules",
+    "summary": "Now “Yes. Place at least one trade in any 7 days in a row, on every account. A passed account waiting on hold needs nothing until it's issued; the 7 days start then. An account with no trade for 7 days is turned off. It is...”.",
+    "sourceUrl": "https://traderslaunch.com/faq",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "Yes. Place at least one trade in any 7 days in a row, on every account. A passed account waiting on hold needs nothing until it's issued; the 7 days start then. An account with no trade for 7 days is turned off. It is not a breach: turn it back on in Billing and Accounts with Reactivate account, or ask support.",
+        "beforeLine": "",
+        "afterLine": "Yes. Place at least one trade in any 7 days in a row, on every account. A passed account waiting on hold needs nothing until it's issued; the 7 days start then. An account with no trade for 7 days is turned off. It is not a breach: turn it back on in Billing and Accounts with Reactivate account, or ask support."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "Yes. Place at least one trade in any 7 days in a row, on every account. A passed account waiting on hold needs nothing until it's issued; the 7 days start then. An account with no trade for 7 days is turned off. It is not a breach: turn it back on in Billing and Accounts with Reactivate account, or ask support."
+        ],
+        "removed": [],
+        "added": [
+          "Yes. Place at least one trade in any 7 days in a row, on every account. A passed account waiting on hold needs nothing until it's issued; the 7 days start then. An account with no trade for 7 days is turned off. It is not a breach: turn it back on in Billing and Accounts with Reactivate account, or ask support."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-faq-d71d44b256d3",
+    "pageId": "traderslaunch-faq",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch rules",
+    "summary": "Was “Yes. You must place at least 1 trade per week, both during the evaluation and in your SimFunded account. In the evaluation, missing a week deactivates your account. In your SimFunded account, missing a week pauses it:...”.",
+    "sourceUrl": "https://traderslaunch.com/faq",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Yes. You must place at least 1 trade per week, both during the evaluation and in your SimFunded account. In the evaluation, missing a week deactivates your account. In your SimFunded account, missing a week pauses it: you remain eligible for profits and payouts, but you need to reactivate the account.",
+        "after": "—",
+        "beforeLine": "Yes. You must place at least 1 trade per week, both during the evaluation and in your SimFunded account. In the evaluation, missing a week deactivates your account. In your SimFunded account, missing a week pauses it: you remain eligible for profits and payouts, but you need to reactivate the account.",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Yes. You must place at least 1 trade per week, both during the evaluation and in your SimFunded account. In the evaluation, missing a week deactivates your account. In your SimFunded account, missing a week pauses it: you remain eligible for profits and payouts, but you need to reactivate the account."
+        ],
+        "after": [],
+        "removed": [
+          "Yes. You must place at least 1 trade per week, both during the evaluation and in your SimFunded account. In the evaluation, missing a week deactivates your account. In your SimFunded account, missing a week pauses it: you remain eligible for profits and payouts, but you need to reactivate the account."
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-faq-c606b5b5a745",
+    "pageId": "traderslaunch-faq",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch profit target",
+    "summary": "Now “During the evaluation, your profit in one session cannot go above 40% of the profit target (50% on static plans). When you reach it, positions are closed and trading pauses until the next session. It is not a breach. ...”.",
+    "sourceUrl": "https://traderslaunch.com/faq",
+    "facts": [
+      {
+        "label": "Profit target",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "During the evaluation, your profit in one session cannot go above 40% of the profit target (50% on static plans). When you reach it, positions are closed and trading pauses until the next session. It is not a breach. The 40% rule does not apply in your SimFunded account.",
+        "beforeLine": "",
+        "afterLine": "During the evaluation, your profit in one session cannot go above 40% of the profit target (50% on static plans). When you reach it, positions are closed and trading pauses until the next session. It is not a breach. The 40% rule does not apply in your SimFunded account."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "During the evaluation, your profit in one session cannot go above 40% of the profit target (50% on static plans). When you reach it, positions are closed and trading pauses until the next session. It is not a breach. The 40% rule does not apply in your SimFunded account."
+        ],
+        "removed": [],
+        "added": [
+          "During the evaluation, your profit in one session cannot go above 40% of the profit target (50% on static plans). When you reach it, positions are closed and trading pauses until the next session. It is not a breach. The 40% rule does not apply in your SimFunded account."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-faq-3b9368b6622f",
+    "pageId": "traderslaunch-faq",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch rules",
+    "summary": "Was “During the evaluation, no single trading day can account for more than 40% of your total profits at evaluation end. If you're about to hit that limit, the system auto-closes your positions and locks you out for the re...”.",
+    "sourceUrl": "https://traderslaunch.com/faq",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "During the evaluation, no single trading day can account for more than 40% of your total profits at evaluation end. If you're about to hit that limit, the system auto-closes your positions and locks you out for the rest of that session. This prevents a single lucky day from carrying the whole evaluation. The 40% rule does not apply in your Simfunded account. On our no-buffer static accounts the rule is 50% during the evaluation.",
+        "after": "—",
+        "beforeLine": "During the evaluation, no single trading day can account for more than 40% of your total profits at evaluation end. If you're about to hit that limit, the system auto-closes your positions and locks you out for the rest of that session. This prevents a single lucky day from carrying the whole evaluation. The 40% rule does not apply in your Simfunded account. On our no-buffer static accounts the rule is 50% during the evaluation.",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "During the evaluation, no single trading day can account for more than 40% of your total profits at evaluation end. If you're about to hit that limit, the system auto-closes your positions and locks you out for the rest of that session. This prevents a single lucky day from carrying the whole evaluation. The 40% rule does not apply in your Simfunded account. On our no-buffer static accounts the rule is 50% during the evaluation."
+        ],
+        "after": [],
+        "removed": [
+          "During the evaluation, no single trading day can account for more than 40% of your total profits at evaluation end. If you're about to hit that limit, the system auto-closes your positions and locks you out for the rest of that session. This prevents a single lucky day from carrying the whole evaluation. The 40% rule does not apply in your Simfunded account. On our no-buffer static accounts the rule is 50% during the evaluation."
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-faq-a2bb49d28a37",
+    "pageId": "traderslaunch-faq",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch drawdown",
+    "summary": "Now “No minimum on futures plans: if you reach the target while staying above your drawdown floor, you pass, even on day one. A plan card that shows a minimum has one. SimFunded accounts have no minimum number of trading d...”.",
+    "sourceUrl": "https://traderslaunch.com/faq",
+    "facts": [
+      {
+        "label": "Drawdown",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "No minimum on futures plans: if you reach the target while staying above your drawdown floor, you pass, even on day one. A plan card that shows a minimum has one. SimFunded accounts have no minimum number of trading days before you request a payout.",
+        "beforeLine": "",
+        "afterLine": "No minimum on futures plans: if you reach the target while staying above your drawdown floor, you pass, even on day one. A plan card that shows a minimum has one. SimFunded accounts have no minimum number of trading days before you request a payout."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "No minimum on futures plans: if you reach the target while staying above your drawdown floor, you pass, even on day one. A plan card that shows a minimum has one. SimFunded accounts have no minimum number of trading days before you request a payout."
+        ],
+        "removed": [],
+        "added": [
+          "No minimum on futures plans: if you reach the target while staying above your drawdown floor, you pass, even on day one. A plan card that shows a minimum has one. SimFunded accounts have no minimum number of trading days before you request a payout."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "traderslaunch-faq-96201ee8b9b0",
+    "pageId": "traderslaunch-faq",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Traders Launch",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Traders Launch profit target",
+    "summary": "Was “Yes. The evaluation requires at least 3 trading days, so you can't pass in a single day even if you reach the profit target. SimFunded accounts have no minimum number of trading days before you request a payout.”.",
+    "sourceUrl": "https://traderslaunch.com/faq",
+    "facts": [
+      {
+        "label": "Profit target",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "Yes. The evaluation requires at least 3 trading days, so you can't pass in a single day even if you reach the profit target. SimFunded accounts have no minimum number of trading days before you request a payout.",
+        "after": "—",
+        "beforeLine": "Yes. The evaluation requires at least 3 trading days, so you can't pass in a single day even if you reach the profit target. SimFunded accounts have no minimum number of trading days before you request a payout.",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "Yes. The evaluation requires at least 3 trading days, so you can't pass in a single day even if you reach the profit target. SimFunded accounts have no minimum number of trading days before you request a payout."
+        ],
+        "after": [],
+        "removed": [
+          "Yes. The evaluation requires at least 3 trading days, so you can't pass in a single day even if you reach the profit target. SimFunded accounts have no minimum number of trading days before you request a payout."
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "t1f-elite-drawdown-2af3d6d30862",
+    "pageId": "t1f-elite-drawdown",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Top One Futures",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Top One Futures drawdown",
+    "summary": "Now “- Elite ACCESS Static - Maximum Loss Limit - Evaluation Phase (Static)”.",
+    "sourceUrl": "https://help.toponefutures.com/en/articles/10907134-understanding-the-drawdown-in-elite-accounts",
+    "facts": [
+      {
+        "label": "Drawdown",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- Elite ACCESS Static - Maximum Loss Limit - Evaluation Phase (Static)",
+        "beforeLine": "",
+        "afterLine": "- Elite ACCESS Static - Maximum Loss Limit - Evaluation Phase (Static)"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- Elite ACCESS Static - Maximum Loss Limit - Evaluation Phase (Static)"
+        ],
+        "removed": [],
+        "added": [
+          "- Elite ACCESS Static - Maximum Loss Limit - Evaluation Phase (Static)"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "t1f-elite-drawdown-6c084ffc1b16",
+    "pageId": "t1f-elite-drawdown",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Top One Futures",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Top One Futures drawdown",
+    "summary": "Was “- Trailing Drawdown on Instant Sim Funded Accounts: How It Works”.",
+    "sourceUrl": "https://help.toponefutures.com/en/articles/10907134-understanding-the-drawdown-in-elite-accounts",
+    "facts": [
+      {
+        "label": "Drawdown",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "- Trailing Drawdown on Instant Sim Funded Accounts: How It Works",
+        "after": "—",
+        "beforeLine": "- Trailing Drawdown on Instant Sim Funded Accounts: How It Works",
+        "afterLine": ""
+      }
+    ],
+    "hunks": [
+      {
+        "before": [
+          "- Trailing Drawdown on Instant Sim Funded Accounts: How It Works"
+        ],
+        "after": [],
+        "removed": [
+          "- Trailing Drawdown on Instant Sim Funded Accounts: How It Works"
+        ],
+        "added": []
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "t1f-elite-eval-0ebbed444f39",
+    "pageId": "t1f-elite-eval",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "Top One Futures",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "Top One Futures rules",
+    "summary": "Now “- Elite ACCESS Static Accounts - Overview”.",
+    "sourceUrl": "https://help.toponefutures.com/en/articles/11020730-overview-of-the-elite-evaluation",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- Elite ACCESS Static Accounts - Overview",
+        "beforeLine": "",
+        "afterLine": "- Elite ACCESS Static Accounts - Overview"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- Elite ACCESS Static Accounts - Overview"
+        ],
+        "removed": [],
+        "added": [
+          "- Elite ACCESS Static Accounts - Overview"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "mff-payouts-260040f2cf6e",
+    "pageId": "mff-payouts",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "My Funded Futures",
+    "market": "futures",
+    "plan": null,
+    "kind": "payouts",
+    "title": "My Funded Futures rules",
+    "summary": "Now “- Industry Leading Futures Prop Firm: Start Trading with MyFundedFutures”.",
+    "sourceUrl": "https://help.myfundedfutures.com/en/articles/13745661-payout-policy-overview-best-and-fastest-prop-firm-payouts",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "payouts",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- Industry Leading Futures Prop Firm: Start Trading with MyFundedFutures",
+        "beforeLine": "",
+        "afterLine": "- Industry Leading Futures Prop Firm: Start Trading with MyFundedFutures"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- Industry Leading Futures Prop Firm: Start Trading with MyFundedFutures"
+        ],
+        "removed": [],
+        "added": [
+          "- Industry Leading Futures Prop Firm: Start Trading with MyFundedFutures"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "mff-intraday-drawdown-22db0691b1c6",
+    "pageId": "mff-intraday-drawdown",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "My Funded Futures",
+    "market": "futures",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Futures rules",
+    "summary": "Now “- Rapid Plan 100k - A Comprehensive Look”.",
+    "sourceUrl": "https://help.myfundedfutures.com/en/articles/12802721-intraday-drawdown-explained",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "- Rapid Plan 100k - A Comprehensive Look",
+        "beforeLine": "",
+        "afterLine": "- Rapid Plan 100k - A Comprehensive Look"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "- Rapid Plan 100k - A Comprehensive Look"
+        ],
+        "removed": [],
+        "added": [
+          "- Rapid Plan 100k - A Comprehensive Look"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "mfp-rules-48492379b460",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps daily loss limit",
+    "summary": "Now “After a losing day that is often the daily loss limit, even though its”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Daily loss limit",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "After a losing day that is often the daily loss limit, even though its",
+        "beforeLine": "",
+        "afterLine": "After a losing day that is often the daily loss limit, even though its"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "After a losing day that is often the daily loss limit, even though its"
+        ],
+        "removed": [],
+        "added": [
+          "After a losing day that is often the daily loss limit, even though its"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "mfp-rules-25aa96b53644",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps drawdown",
+    "summary": "Now “maximum drawdown, the floor your equity would reach first is listed first.”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Drawdown",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "maximum drawdown, the floor your equity would reach first is listed first.",
+        "beforeLine": "",
+        "afterLine": "maximum drawdown, the floor your equity would reach first is listed first."
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "maximum drawdown, the floor your equity would reach first is listed first."
+        ],
+        "removed": [],
+        "added": [
+          "maximum drawdown, the floor your equity would reach first is listed first."
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "mfp-rules-2e32dfbe063c",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps daily loss limit",
+    "summary": "Now “loss rule on your plan. When your account has both a daily loss limit and a”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Daily loss limit",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "loss rule on your plan. When your account has both a daily loss limit and a",
+        "beforeLine": "",
+        "afterLine": "loss rule on your plan. When your account has both a daily loss limit and a"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "loss rule on your plan. When your account has both a daily loss limit and a"
+        ],
+        "removed": [],
+        "added": [
+          "loss rule on your plan. When your account has both a daily loss limit and a"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
+    "id": "mfp-rules-20b76e61ad8c",
+    "pageId": "mfp-rules",
+    "detectedAt": "2026-11-04T11:26:34.842Z",
+    "firm": "My Funded Perps",
+    "market": "crypto",
+    "plan": null,
+    "kind": "rules",
+    "title": "My Funded Perps rules",
+    "summary": "Now “On mobile, the trade page’s Account tab shows the equity floor for each”.",
+    "sourceUrl": "https://docs.myfundedperpetuals.com/guides/challenges-and-rules",
+    "facts": [
+      {
+        "label": "Rule wording",
+        "kind": "rules",
+        "stage": "published page",
+        "verdict": "unscored",
+        "before": "—",
+        "after": "On mobile, the trade page’s Account tab shows the equity floor for each",
+        "beforeLine": "",
+        "afterLine": "On mobile, the trade page’s Account tab shows the equity floor for each"
+      }
+    ],
+    "hunks": [
+      {
+        "before": [],
+        "after": [
+          "On mobile, the trade page’s Account tab shows the equity floor for each"
+        ],
+        "removed": [],
+        "added": [
+          "On mobile, the trade page’s Account tab shows the equity floor for each"
+        ]
+      }
+    ],
+    "status": "published",
+    "publishedAt": "2026-11-05T11:24:22.325Z",
+    "trending": false,
+    "publishReason": "auto",
+    "origin": "watcher",
+    "confirmedAt": "2026-11-05T11:24:22.325Z"
+  },
+  {
     "id": "e2t-consistency-a291e8567a49",
     "pageId": "e2t-consistency",
     "detectedAt": "2026-11-03T11:15:43.871Z",

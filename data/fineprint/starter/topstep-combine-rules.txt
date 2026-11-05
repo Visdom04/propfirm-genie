@@ -100,7 +100,7 @@ Yes, with conditions. Topstep won't help set up or troubleshoot automated strate
 - Permitted Products and Trading Hours
 Related Articles
 - Trading Combine Subscriptions
-- When and What Products Can I Trade?
+- New to Topstep? Start here.
 - Express Funded Account™ Parameters
 - Topstep Payout Policy
 - Daily Loss Limit in the Trading Combine and Express Funded Account

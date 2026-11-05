@@ -18,7 +18,7 @@ Search for articles...
 - Understanding the Drawdown in Elite Accounts
 Understanding the Drawdown in Elite Accounts
 This article explains how the Daily Drawdown (Max Daily Loss) and Max Drawdown (Max Total Loss) works for Elite Accounts.
-Updated this week
+Updated over a week ago
 Table of contents
 At Top One Futures, effective risk management is the foundation of our trading programs. Our drawdown rules ensure a fair and transparent trading environment while protecting traders from excessive losses. This article explains how the Max Trailing Drawdown operates on Elite accounts (for the Daily Drawdown, see Daily Drawdown: What You Need to Know ). Note: the drawdown rules are the same for both Elite Evaluation Accounts and Elite Sim Funded Accounts .
 Important note on intraday breaches: while the Max Trailing Drawdown moves up based on your end-of-day balance, you cannot go at or below the drawdown threshold at any time intraday. For example, on a $50,000 account with a $2,000 Max Trailing Drawdown, if your equity goes at or below $48,000, even for a moment, this will trigger a breach. Recovering above the threshold later in the session does not reverse the breach.
@@ -93,11 +93,11 @@ Related articles
 - Evaluation Account Reset Fee
 - Elite Sim Funded Account Reset Explained
 Related Articles
-- Trailing Drawdown on Instant Sim Funded Accounts: How It Works
 - Elite Daily V2 – Max Loss Limit (MLL)
 - Elite ACCESS – Maximum Loss Limit (MLL) (EOD)
 - Elite ACCESS Intraday - Maximum Loss Limit - Evaluation Phase (EOD)
 - X-Daily Spark – Maximum Drawdown (MLL) (EOD)
+- Elite ACCESS Static - Maximum Loss Limit - Evaluation Phase (Static)
 Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
 Table of contents
 Intercom We run on Intercom

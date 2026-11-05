@@ -78,6 +78,7 @@ Settings
 - API Key Settings
 - Notification Settings
 - Certificates
+- Archived Accounts
 - Purchase History
 On this page
 Back to top

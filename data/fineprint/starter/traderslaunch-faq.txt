@@ -43,15 +43,15 @@ See Pricing
 - Is there a maximum time limit to pass?
 Yes. The evaluation window is 60 days. If you haven't passed by day 60 but you're above 50% of your profit target, you get a free 30-day extension automatically, at no extra cost. SimFunded accounts have no time limit once you're funded.
 - Is there a minimum number of trading days?
-Yes. The evaluation requires at least 3 trading days, so you can't pass in a single day even if you reach the profit target. SimFunded accounts have no minimum number of trading days before you request a payout.
+No minimum on futures plans: if you reach the target while staying above your drawdown floor, you pass, even on day one. A plan card that shows a minimum has one. SimFunded accounts have no minimum number of trading days before you request a payout.
 - How does the drawdown work?
 Traders Launch uses an end-of-day (EOD) drawdown, not an intraday trailing one. Your drawdown level is calculated from your closing balance each session, and it only moves up, never down. Once your account grows enough that the drawdown floor would reach your starting balance, it locks there permanently. On standard 60% and 80% accounts the drawdown is $1,000 on $100K, $2,000 on $200K, and $3,000 on $300K. On Legacy NYC accounts it is $1,000 on $100K, $1,000 on $200K, and $2,000 on $300K. We don't use intraday trailing drawdown, which we consider predatory.
 - What is the 40% rule?
-During the evaluation, no single trading day can account for more than 40% of your total profits at evaluation end. If you're about to hit that limit, the system auto-closes your positions and locks you out for the rest of that session. This prevents a single lucky day from carrying the whole evaluation. The 40% rule does not apply in your Simfunded account. On our no-buffer static accounts the rule is 50% during the evaluation.
+During the evaluation, your profit in one session cannot go above 40% of the profit target (50% on static plans). When you reach it, positions are closed and trading pauses until the next session. It is not a breach. The 40% rule does not apply in your SimFunded account.
 - Are there inactivity rules?
-Yes. You must place at least 1 trade per week, both during the evaluation and in your SimFunded account. In the evaluation, missing a week deactivates your account. In your SimFunded account, missing a week pauses it: you remain eligible for profits and payouts, but you need to reactivate the account.
+Yes. Place at least one trade in any 7 days in a row, on every account. A passed account waiting on hold needs nothing until it's issued; the 7 days start then. An account with no trade for 7 days is turned off. It is not a breach: turn it back on in Billing and Accounts with Reactivate account, or ask support.
 - What are the contract limits?
-Your starting contract limit depends on account size and type. Standard 60% and 80% accounts start at 2 minis or 20 micros on $100K, 4 minis or 40 micros on $200K, and 6 minis or 60 micros on $300K. Legacy NYC accounts start at 5 micros on $100K, 1 mini or 10 micros on $200K, and 2 minis or 20 micros on $300K. The maximum across all account sizes is 15 minis, or the equivalent in micros.
+Your starting contract limit depends on account size and type. Standard 60% and 80% accounts start at 2 minis or 20 micros on $100K, 4 minis or 40 micros on $200K, and 6 minis or 60 micros on $300K. Legacy NYC accounts start at 5 micros on $100K, 1 mini or 10 micros on $200K, and 2 minis or 20 micros on $300K. Your starting size is your limit; it does not grow over time.
 - What is the commission per contract?
 Commissions are charged per contract, per side: once when you open a position and once when you close it. Micro contracts (such as MES, MNQ and MGC) cost $0.87 per side, or $1.74 per round trip. Most full-size contracts (such as ES, NQ, GC and YM) cost $2.00 per side, or $4.00 per round trip. Crude oil (CL) costs $2.70 per side, or $5.40 per round trip. A few contracts, such as agricultural and Bitcoin futures, cost more; your platform shows the exact charge on every trade.
 - Are there restrictions on hedging?
@@ -72,15 +72,15 @@ Getting Funded 1
 After passing the evaluation you're moved into a buffer account. Before requesting your first payout, you need to build a small profit buffer above your starting balance. Buffer amounts: standard 60% and 80% accounts: 100K: $1,000; 200K: $2,000; 300K: $3,000. Legacy NYC accounts: 100K: $1,000; 200K: $1,000; 300K: $2,000. Once you've cleared your buffer and completed contract signing and KYC, you move into your payout-eligible Simfunded account.
 Payouts 3
 - What are the payout rules?
-You can request a payout once your SimFunded account is above +1% profit from its starting balance. You keep the profit split of the plan you chose at purchase: 60% or 80% on standard accounts, 55% or 80% on Legacy NYC and earlier 55% accounts. There is no consistency rule once you're SimFunded and no restriction on when you can request. At $100,000 in cumulative payouts you are paused and become eligible for scaling opportunities, including increased allocations and priority consideration for live-capital opportunities.
+You can request a payout once your SimFunded account is above +1% profit from its starting balance. You keep the profit split of the plan you chose at purchase: 60% or 80% on standard accounts, 55% or 80% on Legacy NYC and earlier 55% accounts. There is no consistency rule once you're SimFunded and no restriction on when you can request. No per-payout cap. When your total payouts reach $100,000, your next request pauses for a review of up to 5 business days.
 Read the Payout Rules
 - How and when do I get paid?
-Payouts are processed daily. Crypto (USDT on Solana) and ACH bank transfers are processed every 24 hours. Wire transfers are processed weekly, and when the funds arrive depends on your bank's processing time.
+You can request a payout any day. We answer within up to two business days and start the payment within up to two business days of approval. Methods: crypto (USDT on Solana), ACH bank transfer and wire. Wire transfers go out weekly, and when the funds arrive depends on your bank's processing time.
 - Do payouts affect my drawdown level?
 No. Taking a payout does not lower your drawdown floor. Once your drawdown locks at your starting balance, which happens as you grow past the buffer stage, it stays fixed regardless of payouts. Your drawdown is permanently locked once you've cleared the buffer stage and entered your SimFunded account.
 Platforms and Trading 5
 - What trading platforms are available?
-Three: TradingView (in the browser, no download), Volumetrica (desktop and web), and Quantower (desktop). All three work for evaluation and SimFunded accounts. MES and MNQ come preloaded on every account; MGC (micro gold), MCL (micro crude oil), SIL (micro silver), and MYM (micro Dow) are available on request.
+TradingView (in the browser, no download), Volumetrica (desktop and web), and Quantower (desktop) work for evaluation and SimFunded accounts. Hyperprop (web and app) runs with your own Hyperprop login; TL Drop #2 runs on Hyperprop only. MES and MNQ come preloaded on every account; MGC (micro gold), MCL (micro crude oil), SIL (micro silver), and MYM (micro Dow) are available on request.
 - What are the trading hours?
 Our standard 60% and 80% accounts trade from 6:00pm–4:00pm ET the following day. Legacy NYC accounts trade from 9:30am–4:00pm ET and remain available in the Legacy accounts section. Legacy pricing, targets, contract limits, and drawdown still apply. You can't switch sessions mid-evaluation.
 - What instruments can I trade?
@@ -91,7 +91,7 @@ Yes, through their futures equivalents: SPX as ES or MES, NDX as NQ or MNQ, gold
 Use your Volumetrica credentials to connect Quantower to your Traders Launch account. Access is included, so you don't need a separate Quantower subscription. Full setup instructions are in your account setup email. If you run into issues, ask in Discord.
 Account Management 1
 - How many accounts can I have?
-Up to 5 funded futures accounts at a time. All funded traders move into a SimFunded account once they clear the buffer stage.
+Up to 5 evaluations and up to 5 funded futures accounts at a time. All funded traders move into a SimFunded account once they clear the buffer stage.
 Still Have Questions?
 Ask in our Discord. Traders and staff answer questions there every day.
 Join Discord See How the Program Works

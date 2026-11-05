@@ -18,7 +18,7 @@ Search for articles...
 - Overview of the Elite Evaluation
 Overview of the Elite Evaluation
 This article will give you the overview of our Elite Evaluation and how it works!
-Updated this week
+Updated over a week ago
 Table of contents
 At Top One Futures, we offer a dynamic and flexible approach for traders to prove their skills and qualify for a Sim Funded Account through our Elite Evaluation . This Evaluation is designed for traders who demonstrate strong risk management and the ability to meet profit targets, all while ensuring fair and transparent rules for evaluation. Here's a breakdown of the key elements.
 Quick summary: 6% profit target, no consistency rule during the Evaluation, 2.5% Daily Drawdown, Max Trailing Drawdown that locks at your starting balance + $100, a one-time $149 activation fee, and the option to pass in a single trading day.
@@ -83,9 +83,9 @@ Related articles
 Related Articles
 - No Consistency Rule in Evaluation Accounts
 - Pass the Elite Evaluation in Just One Trading Day
-- Elite ACCESS Accounts – Overview
 - Elite DAILY V2 - Overview
 - Elite ACCESS Intraday Accounts - Overview
+- Elite ACCESS Static Accounts - Overview
 Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
 Table of contents
 Intercom We run on Intercom

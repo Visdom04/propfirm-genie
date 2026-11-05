@@ -1,6 +1,8 @@
 {
   "url": "https://daytraders.com/help/articles/17684729-eod-evaluation",
   "hash": "7290c3a035224053f76c1055e274f6e986d25c43a6f9d9c05f41092f05deb53d",
-  "state": "baseline",
-  "checkedAt": "2026-10-31T09:54:24.806Z"
+  "state": "pending",
+  "checkedAt": "2026-11-05T11:24:22.325Z",
+  "pendingHash": "cb8621009fe0d94f29b96d8c931b00f970248d8435387ef061503d0dd12a466d",
+  "pendingSince": "2026-11-05T11:24:22.325Z"
 }

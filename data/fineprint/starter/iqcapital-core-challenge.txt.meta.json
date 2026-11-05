@@ -1,8 +1,6 @@
 {
   "url": "https://support.iqcapital.io/en/articles/14964304-core-futures-challenge",
-  "hash": "f6364e61989831be92aa9f38be715b8f5bf50802487c324c201591423cd002b5",
-  "state": "pending",
-  "checkedAt": "2026-11-04T11:26:34.842Z",
-  "pendingHash": "3c0c2d51d2042f31aecea5e79ee07c709da875bb21144632235a67ea52050a49",
-  "pendingSince": "2026-11-04T11:26:34.842Z"
+  "hash": "3c0c2d51d2042f31aecea5e79ee07c709da875bb21144632235a67ea52050a49",
+  "state": "noise",
+  "checkedAt": "2026-11-05T11:24:22.325Z"
 }

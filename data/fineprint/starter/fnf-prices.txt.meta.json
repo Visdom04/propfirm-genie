@@ -1,6 +1,8 @@
 {
   "url": "https://helpfutures.fundednext.com/en/articles/17228899-what-are-the-available-account-sizes-and-their-prices-in-fundednext-futures",
   "hash": "01b8e63199bda67d1a8c8b4536f98d1dec03fd692927267cc84aea2e97afcf4c",
-  "state": "noise",
-  "checkedAt": "2026-11-04T11:26:34.842Z"
+  "state": "pending",
+  "checkedAt": "2026-11-05T11:24:22.325Z",
+  "pendingHash": "376175508a728586cf5dcc9827fe537479279280731b3ea6580f2936e06b845f",
+  "pendingSince": "2026-11-05T11:24:22.325Z"
 }
